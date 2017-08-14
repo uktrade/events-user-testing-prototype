@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">
+        Business West events
+      </h1>{{releaseVersion | log }}
+
+
+
+
+		<div>
+			<p class="heading-small"> Up and Away at Bristol's International Balloon Fiesta 2017
+				<br>
+				<span style="font-weight:400;">25 September 2017</span>
+			</p>
+			<p>
+				<a href="/">View event page</a>  <br>
+				<a href="/">Manage event</a>     <br>
+				<a href="/">View event dashboard</a>
+
+		</div>
+
+
+		<br>
+
+		<div class="form-group">
+			<input type="submit" class="button" value="Create new event">
+		</div>
+
+		<br>
+		<br>
+
+		<h2 class="heading-medium">
+			Past events
+		</h2>
+
+
+		<div>
+			<p class="heading-small">Marketing Made Easy
+				<br>
+				<span style="font-weight:400;">15 August 2017</span>
+
+			</p>
+
+			<p>
+				<a href="/">View event page</a>  <br>
+				<a href="/">Manage event</a>     <br>
+				<a href="/">View event dashboard</a>
+			</p>
+		</div>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
