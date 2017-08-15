@@ -16,43 +16,55 @@
       </h1>{{releaseVersion | log }}
 
 
+      <p>Use your DIT email credentials to access your events account.</p>
+
+
 	  <form action="/signin-output" method="get" class="form">
 
 
 		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
 			<label class="form-label-bold" for="email-address">
-					Email address
+					DIT email address
 			</label>
 			<input type="text" class="form-control" id="email-address">
-
-			<div class="form-group" style="padding-top: 10px; margin: 0px;">
-			  <details role="group">
-				  <summary role="button" aria-controls="details-content-0" aria-expanded="false">
-					  <span class="summary">Help with which email address</span></summary>
-				  <div class="panel" id="details-content-0" aria-hidden="true">
-					  <p>
-						  If you work for DIT use an email address ending in
-						  <br>trade.gov.uk
-						  <br>mobile.ukti.gov.uk
-						  <br>gsi.gov.uk
-					  </p>
-				  </div>
-			  </details>
-			</div>
 		  </div>
 
 
 		  <div class="form-group" >
 			<label class="form-label-bold" for="full-name">Password</label>
 			<input type="text" class="form-control" id="full-name" style="width: 150px">
+		  </div>
 
-			  <div class="form-group" style="padding-top: 10px; margin: 0px;">
+
+		  <div class="form-group">
+			<input type="submit" class="button" value="Sign in">
+		  </div>
+
+          <h3 class="heading-small">Problems signing in?</h3>
+
+		  <div class="form-group" style="padding-top: 10px; margin: 0px;">
+			  <details role="group">
+				  <summary role="button" aria-controls="details-content-0" aria-expanded="false">
+					  <span class="summary">Email address help</span></summary>
+				  <div class="panel" id="details-content-0" aria-hidden="true">
+					  <p>
+						  Your DIT email address uses one of the following domain names:</p>
+						  <ul>
+						  <li>trade.gov.uk</li>
+						  <li>mobile.ukti.gov.uk</li>
+						  <li>gsi.gov.uk</li>
+						  </ul> 
+				  </div>
+			  </details>
+		   </div>
+
+		    <div class="form-group" style="padding-top: 10px; margin: 0px;">
 				  <details role="group">
 					  <summary role="button" aria-controls="details-content-0" aria-expanded="false">
-						  <span class="summary">Help with your password</span></summary>
+						  <span class="summary">Password help</span></summary>
 					  <div class="panel" id="details-content-0" aria-hidden="true">
 						  <p>
-							  If you work for DIT use the password you use to log into your emails.
+							  Enter the same password you use to log in to your DIT work email.
 
 							  <!--
 							  Otherwise use the password you used to create a DIT events account.
@@ -62,12 +74,8 @@
 					  </div>
 				  </details>
 			  </div>
-		  </div>
 
 
-		  <div class="form-group">
-			<input type="submit" class="button" value="Sign in">
-		  </div>
 
 	  </form>
 
