@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">
+        Event description
+      </h1>
+
+
+	  <form action="/create-event/attendees" method="get" class="form">
+
+
+		  <!--
+		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
+			<label class="form-label-bold" for="target-audience">
+					Target audience
+			</label>
+			  <p class="form-hint"  style="margin-bottom:5px">The kind of business that should attend this event</p>
+			  <input type="text" class="form-control" id="target-audience" style="width: 100%">
+		  </div>
+			-->
+
+		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
+			  <label class="form-label-bold visuallyhidden" for="event-description">
+				  Event description
+			  </label>
+			  <textarea class="form-control" name="textarea" id="event-description" rows="5" style="width: 100%"></textarea>
+		  </div>
+
+
+		  <div class="form-group" style="margin-top:20px">
+			  <input type="submit" class="button" value="Continue">
+		  </div>
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

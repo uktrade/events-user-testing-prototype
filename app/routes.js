@@ -7,7 +7,6 @@ router.get('/', function (req, res) {
 })
 
 
-
 // SIGNING PAGE
 router.get('/signin-output', function (req, res) {
   res.redirect('/account');

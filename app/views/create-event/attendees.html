@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">
+        Attendees
+      </h1>
+
+	  <form action="/sss" method="get" class="form">
+
+		  <fieldset class="form-group">
+			  <label class="form-label-bold">
+				  Maximum number places for attendees
+			  </label>
+
+			  <div class="form-date">
+				  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
+
+				  <div class="form-group form-group-day">
+					  <input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+				  </div>
+
+			  </div>
+		  </fieldset>
+
+
+		  <div class="form-group" style="margin-top:40px">
+			  <input type="submit" class="button" value="Continue">
+		  </div>
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

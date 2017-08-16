@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">
+        Event location
+      </h1>
+
+
+	  <form action="/create-event/description" method="get" class="form">
+
+
+		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
+			<label class="form-label-bold" for="address-building">
+					Building and Street
+			</label>
+			<input type="text" class="form-control" id="address-building" >
+
+			<input type="text" class="form-control" id="address-street" style="margin-top:10px">
+		  </div>
+
+
+		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
+			  <label class="form-label-bold" for="event-town">
+				  Town or city
+			  </label>
+			  <input type="text" class="form-control" id="event-town">
+		  </div>
+
+		  <div class="form-group" style="margin-top:10px; margin-bottom:20px; width:240px">
+			  <label class="form-label-bold" for="event-postcode">
+				  Postcode
+			  </label>
+			  <input type="text" class="form-control" id="event-postcode">
+		  </div>
+
+
+		  <div class="form-group" style="margin-top:20px">
+			  <input type="submit" class="button" value="Continue">
+		  </div>
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
