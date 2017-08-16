@@ -12,21 +12,11 @@
 
 
       <h1 class="heading-large">
-        Create an event
+        When is the event
       </h1>
 
 
-	  <form action="/create-event/address" method="get" class="form">
-
-
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
-			<label class="form-label-bold" for="event-name">
-				Event name
-			</label>
-			<input type="text" class="form-control" id="event-name" style="width: 100%">
-		  </div>
-
-
+	  <form action="/create-event/venue" method="get" class="form">
 
 		  <fieldset class="form-group">
 			  <label class="form-label-bold">
@@ -35,7 +25,6 @@
 			  <div class="form-date">
 
 				  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
-
 				  <div class="form-group form-group-day">
 					  <label for="dob-day">Day</label>
 					  <input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
@@ -54,8 +43,74 @@
 			  </div>
 		  </fieldset>
 
+
+
+			  <fieldset class="form-group">
+				  <label class="form-label-bold">
+					  Start time
+				  </label>
+				  <div class="form-date">
+					  <!-- <p class="form-hint">For example, 9 30</p>  -->
+					  <div class="form-group form-group-day">
+						  <label for="start-hours">Hours</label>
+						  <input class="form-control" id="start-hours" name="start-hours" type="number" pattern="[0-9]*" min="0" max="">
+					  </div>
+					  <div class="form-group form-group-month">
+						  <label for="start-hours">Minutes</label>
+						  <input class="form-control" id="start-minutes" name="start-minutes" type="number" pattern="[0-9]*" min="0" max="">
+					  </div>
+
+					  <!--
+					  <div class="form-group form-group-month multiple-choice" style="margin-left:25px; margin-top:28px">
+						  <input id="radio-inline-1" type="radio" name="radio-inline-group" value="AM">
+						  <label for="radio-inline-1">AM</label>
+					  </div>
+					  <div class="form-group form-group-month multiple-choice" style="margin-left:25px; margin-top:28px">
+						  <input id="radio-inline-2" type="radio" name="radio-inline-group" value="PM">
+						  <label for="radio-inline-2">PM</label>
+					  </div>
+					  -->
+
+				  </div>
+			  </fieldset>
+
+
+
+		  <fieldset class="form-group">
+			  <label class="form-label-bold">
+				  Finish time
+			  </label>
+			  <div class="form-date">
+				  <!-- <p class="form-hint">For example, 9 30</p>  -->
+				  <div class="form-group form-group-day">
+					  <label for="finish-hours">Hours</label>
+					  <input class="form-control" id="finish-hours" name="start-hours" type="number" pattern="[0-9]*" min="0" max="">
+				  </div>
+				  <div class="form-group form-group-month">
+					  <label for="finish-hours">Minutes</label>
+					  <input class="form-control" id="finish-minutes" name="start-minutes" type="number" pattern="[0-9]*" min="0" max="">
+				  </div>
+
+				  <!--
+					  <div class="form-group form-group-month multiple-choice" style="margin-left:25px; margin-top:28px">
+						  <input id="radio-inline-1" type="radio" name="radio-inline-group" value="AM">
+						  <label for="radio-inline-1">AM</label>
+					  </div>
+					  <div class="form-group form-group-month multiple-choice" style="margin-left:25px; margin-top:28px">
+						  <input id="radio-inline-2" type="radio" name="radio-inline-group" value="PM">
+						  <label for="radio-inline-2">PM</label>
+					  </div>
+				  -->
+
+			  </div>
+		  </fieldset>
+
+
+
+
 		  <div class="form-group">
 			<input type="submit" class="button" value="Continue">
+			<p style="margin-top:20px"><a href="/create-event/venue">I don't know the date or time</a></p>
 		  </div>
 
 	  </form>
