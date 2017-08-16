@@ -16,7 +16,7 @@
       </h1>
 
 
-	  <form action="/create-event/venue" method="get" class="form">
+	  <form action="/create-event/create-event-onwards" method="get" class="form">
 
 		  <fieldset class="form-group">
 			  <label class="form-label-bold">
@@ -26,18 +26,18 @@
 
 				  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
 				  <div class="form-group form-group-day">
-					  <label for="dob-day">Day</label>
-					  <input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+					  <label for="event-day">Day</label>
+					  <input class="form-control" id="event-day" name="event-day" type="number" pattern="[0-9]*" >
 				  </div>
 
 				  <div class="form-group form-group-month">
-					  <label for="dob-month">Month</label>
-					  <input class="form-control" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+					  <label for="event-month">Month</label>
+					  <input class="form-control" id="event-month" name="event-month" type="number" pattern="[0-9]*" >
 				  </div>
 
 				  <div class="form-group form-group-year">
-					  <label for="dob-year">Year</label>
-					  <input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2014">
+					  <label for="event-year">Year</label>
+					  <input class="form-control" id="event-year" name="event-year" type="number" pattern="[0-9]*">
 				  </div>
 
 			  </div>
@@ -50,14 +50,14 @@
 					  Start time
 				  </label>
 				  <div class="form-date">
-					  <!-- <p class="form-hint">For example, 9 30</p>  -->
+					  <p class="form-hint">For example, 14 00</p>
 					  <div class="form-group form-group-day">
 						  <label for="start-hours">Hours</label>
-						  <input class="form-control" id="start-hours" name="start-hours" type="number" pattern="[0-9]*" min="0" max="">
+						  <input class="form-control" id="start-hours" name="start-hours" type="number" pattern="[0-9]*" >
 					  </div>
 					  <div class="form-group form-group-month">
-						  <label for="start-hours">Minutes</label>
-						  <input class="form-control" id="start-minutes" name="start-minutes" type="number" pattern="[0-9]*" min="0" max="">
+						  <label for="start-minutes">Minutes</label>
+						  <input class="form-control" id="start-minutes" name="start-minutes" type="number" pattern="[0-9]*" >
 					  </div>
 
 					  <!--
@@ -84,11 +84,11 @@
 				  <!-- <p class="form-hint">For example, 9 30</p>  -->
 				  <div class="form-group form-group-day">
 					  <label for="finish-hours">Hours</label>
-					  <input class="form-control" id="finish-hours" name="start-hours" type="number" pattern="[0-9]*" min="0" max="">
+					  <input class="form-control" id="finish-hours" name="finish-hours" type="number" pattern="[0-9]*">
 				  </div>
 				  <div class="form-group form-group-month">
-					  <label for="finish-hours">Minutes</label>
-					  <input class="form-control" id="finish-minutes" name="start-minutes" type="number" pattern="[0-9]*" min="0" max="">
+					  <label for="finish-minutes">Minutes</label>
+					  <input class="form-control" id="finish-minutes" name="finish-minutes" type="number" pattern="[0-9]*">
 				  </div>
 
 				  <!--
