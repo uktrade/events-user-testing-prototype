@@ -14,6 +14,8 @@
         Summary
       </h1>
 
+	  <br>
+
 	  <form action="/" method="get" class="form">
 
 
@@ -70,11 +72,14 @@
 					  Venue
 				  </dt>
 				  <dd class="cya-answer">
-					  XYZ
+					  {{ data['address-venue-name'] }}  <br>
+					  {{ data['address-street'] }}      <br>
+					  {{ data['event-town'] }}          <br>
+					  {{ data['event-postcode'] }}
 				  </dd>
-				  <dd class="cya-change">
+				  <dd class="cya-change ">
 					  <a href="#">
-						  Change<span class="visually-hidden"> home address</span>
+						  Change<span class="visually-hidden">home address</span>
 					  </a>
 				  </dd>
 			  </div>
@@ -84,7 +89,7 @@
 					  Attendee places
 				  </dt>
 				  <dd class="cya-answer">
-					  XYZ
+					  {{ data['attendee-quantity'] }}
 				  </dd>
 				  <dd class="cya-change">
 					  <a href="#">
@@ -97,9 +102,7 @@
 				  <dt class="cya-question">
 					  Event description
 				  </dt>
-				  <dd class="cya-answer">
-					  {{ data['event-description'] }}
-				  </dd>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>
