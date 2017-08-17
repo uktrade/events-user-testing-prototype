@@ -13,6 +13,7 @@ router.get('/signin-output', function (req, res) {
 })
 
 
+
 // CREATE EVENT ONWARDS TO NEXT PAGE
 router.get('/create-event/create-event-onwards', function (req, res) {
 
@@ -21,19 +22,75 @@ router.get('/create-event/create-event-onwards', function (req, res) {
   req.session.data['event-month'];
   req.session.data['event-year'];
 
-  var monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  if(req.session.data['event-month'] <= 13)
-  { req.session.data['event-month'] =  monthNames[req.session.data['event-month']-1]; }
+  var errorDayFound = false;
+  var errorMonthFound = false;
+  var errorYearFound = false;
+
+  if (req.session.data['event-day'] != undefined)
+  {
+    if(1 <= req.session.data['event-day'] && req.session.data['event-day'] <= 31)
+    {    }
+    else
+    {
+      errorDayFound = true;
+    }
+  }
 
 
-  //SAVE THE TIMES
-  req.session.data['event-start-time'] = req.session.data['start-hours'] + ":" + req.session.data['start-minutes'];
-  req.session.data['event-finish-time'] =  req.session.data['finish-hours'] + ":" + req.session.data['finish-minutes'];
+  if (req.session.data['event-month'] != undefined)
+  {
+    if(1 <= req.session.data['event-month'] && req.session.event_month <= 12)
+    {
+      var monthNames = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"
+                      ];
+      if(req.session.data['event-month'] <= 13)
+      { req.session.data['event-month'] =  monthNames[req.session.data['event-month']-1]; }
+    }
+    else
+    {
+      errorMonthFound = true;
+    }
+  }
 
-  res.redirect('/create-event/venue');
+
+  if (req.session.data['event-year'] != undefined)
+  {
+    if(2017 <= req.session.data['event-year'] && req.session.data['event-year'] <= 2020)
+    {}
+    else
+    {
+      errorYearFound = true;
+    }
+  }
+
+
+  if((errorDayFound || errorMonthFound || errorYearFound) == false)
+  {
+    //SAVE THE TIMES
+    req.session.data['event-start-time'] = req.session.data['start-hours'] + ":" + req.session.data['start-minutes'];
+    req.session.data['event-finish-time'] =  req.session.data['finish-hours'] + ":" + req.session.data['finish-minutes'];
+
+    res.redirect('/create-event/venue');
+  }
+  else
+  {
+    res.render('create-event/index',
+        {
+          'errorOnDayTime': true,
+          'errorDayFound': errorDayFound,
+          'errorMonthFound': errorMonthFound,
+          'errorYearFound': errorYearFound
+        }
+    );
+  }
+
+
+
 })
+
+
+
 
 
 // VENUE PAGE ONWARDS BUTTON
@@ -45,8 +102,9 @@ router.get('/create-event/venue-onwards', function (req, res) {
   req.session.data['event-postcode'];
 
   res.redirect('/create-event/description');
-
 })
+
+
 
 
 // DESCRIPTION PAGE ONWARDS BUTTON
@@ -61,13 +119,29 @@ router.get('/create-event/description-onwards', function (req, res) {
 
 
 
-// ATENDEE PAGE ONWARDS BUTTON
+// ATTENDEE PAGE ONWARDS BUTTON
 router.get('/create-event/attendee-onwards', function (req, res) {
 
   req.session.data['attendee-quantity'];
 
-  res.redirect('/create-event/summary');
+  // check for errors
+  if(0 < req.session.data['attendee-quantity'])
+  {
+    res.redirect('/create-event/summary');
+  }
+  // No errors so carry on
+  else
+  {
+    res.render('create-event/attendees',
+        {
+          'errorAttendee': true
+        }
+    );
+  }
 })
+
+
+
 
 
 module.exports = router
