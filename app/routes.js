@@ -26,6 +26,8 @@ router.get('/create-event/create-event-onwards', function (req, res) {
   var errorMonthFound = false;
   var errorYearFound = false;
 
+
+  // DAY
   if (req.session.data['event-day'] != undefined)
   {
     if(1 <= req.session.data['event-day'] && req.session.data['event-day'] <= 31)
@@ -36,16 +38,16 @@ router.get('/create-event/create-event-onwards', function (req, res) {
     }
   }
 
-
+  //  MONTH
   if (req.session.data['event-month'] != undefined)
   {
-    if(1 <= req.session.data['event-month'] && req.session.event_month <= 12)
+    if(1 <= req.session.data['event-month'] && req.session.data['event-month'] <= 12)
     {
       var monthNames = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"
                       ];
       if(req.session.data['event-month'] <= 13)
-      { req.session.data['event-month'] =  monthNames[req.session.data['event-month']-1]; }
+      { req.session.data['event-month-name'] =  monthNames[req.session.data['event-month']-1]; }
     }
     else
     {
@@ -54,6 +56,7 @@ router.get('/create-event/create-event-onwards', function (req, res) {
   }
 
 
+  // YEAR
   if (req.session.data['event-year'] != undefined)
   {
     if(2017 <= req.session.data['event-year'] && req.session.data['event-year'] <= 2020)
@@ -63,6 +66,8 @@ router.get('/create-event/create-event-onwards', function (req, res) {
       errorYearFound = true;
     }
   }
+
+
 
 
   if((errorDayFound || errorMonthFound || errorYearFound) == false)
@@ -80,7 +85,8 @@ router.get('/create-event/create-event-onwards', function (req, res) {
           'errorOnDayTime': true,
           'errorDayFound': errorDayFound,
           'errorMonthFound': errorMonthFound,
-          'errorYearFound': errorYearFound
+          'errorYearFound': errorYearFound,
+          'errorOnDate': (errorDayFound || errorMonthFound || errorYearFound),
         }
     );
   }

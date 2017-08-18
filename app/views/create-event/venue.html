@@ -19,25 +19,98 @@
 	  </div>
 
 	  <h1 class="heading-large" style="margin-top:15px">
-        Venue location
+        Venue
       </h1>
 
 	  <form action="/create-event/venue-onwards" method="get" class="form">
 
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
-			  <label class="form-label-bold" for="address-venue-name">
-				  Venue name
+		  <!--   PLACES  -->
+		  <fieldset class="form-group">
+
+			  {% if errorAttendee %}
+			  <div class="form-group  form-group-error">
+				  {% endif %}
+
+				  <label class="form-label-bold">
+					  Number of attendee places
+
+					  {% if errorAttendee %}
+							  <span class="error-message">
+								  Error message about personal details goes here
+							  </span>
+					  {% endif %}
+				  </label>
+
+
+
+				  <div class="form-date">
+					  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
+					  <div class="form-group form-group-day">
+						  <input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
+								 id="attendee-quantity" name="attendee-quantity" type="number" pattern="[0-9]*" >
+					  </div>
+
+				  </div>
+
+				  {% if errorAttendee %}
+			  </div>
+			  {% endif %}
+
+		  </fieldset>
+
+
+
+		  <!--   ADDRESS  -->
+		  <div class="form-group" style="margin-top:10px; margin-bottom:20px; width:100%;">
+			  <label class="form-label-bold" for="autocomplete">
+				  Venue address
 			  </label>
-			  <input type="text" class="form-control" id="address-venue-name" name="address-venue-name">
-			  <!-- <input type="text" class="form-control" id="address-street" style="margin-top:10px">  -->
+
+			  <input class="form-control" id="autocomplete" type="text" style="width:100%;" placeholder=""> </input>
 		  </div>
 
+
+
+		  <table id="address">
+			  <tr>
+				  <td class="label">Street address</td>
+				  <td class="slimField"><input class="field" id="street_number"
+											   disabled="true"> </input></td>
+				  <td class="wideField" colspan="2"><input class="field" id="route"
+														   disabled="true"> </input></td>
+			  </tr>
+			  <tr>
+				  <td class="label">City</td>
+				  <!-- Note: Selection of address components in this example is typical.
+                       You may need to adjust it for the locations relevant to your app. See
+                       https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+                  -->
+				  <td class="wideField" colspan="3"><input class="field" id="postal_town"
+														   disabled="true"></input></td>
+			  </tr>
+			  <tr>
+				  <td class="label">State</td>
+				  <td class="slimField"><input class="field"
+											   id="administrative_area_level_1" disabled="true"></input></td>
+				  <td class="label">Zip code</td>
+				  <td class="wideField"><input class="field" id="postal_code"
+											   disabled="true"></input></td>
+			  </tr>
+			  <tr>
+				  <td class="label">Country</td>
+				  <td class="wideField" colspan="3"><input class="field"
+														   id="country" disabled="true"></input></td>
+			  </tr>
+		  </table>
+
+
+
+		  <!--
 		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
 			<label class="form-label-bold" for="address-street">
 					Street
 			</label>
 			<input type="text" class="form-control" id="address-street" name="address-street">
-			<!-- <input type="text" class="form-control" id="address-street" style="margin-top:10px">  -->
 		  </div>
 
 
@@ -54,6 +127,7 @@
 			  </label>
 			  <input type="text" class="form-control" id="event-postcode"  name="event-postcode">
 		  </div>
+		  -->
 
 
 		  <div class="form-group" style="margin-top:20px">
@@ -65,8 +139,81 @@
 
     </div>
   </div>
+
+
+	<script>
+		// This example displays an address form, using the autocomplete feature
+		// of the Google Places API to help users fill in the information.
+
+		// This example requires the Places library. Include the libraries=places
+		// parameter when you first load the API. For example:
+		// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+		var placeSearch, autocomplete;
+		var componentForm = {
+			street_number: 'short_name',
+			route: 'long_name',
+			postal_town: 'long_name',
+			administrative_area_level_1: 'short_name',
+			country: 'long_name',
+			postal_code: 'short_name'
+		};
+
+		function initAutocomplete() {
+			// Create the autocomplete object, restricting the search to geographical
+			// location types.
+			autocomplete = new google.maps.places.Autocomplete(
+					/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+					{types: ['geocode']});
+
+			// When the user selects an address from the dropdown, populate the address
+			// fields in the form.
+			autocomplete.addListener('place_changed', fillInAddress);
+		}
+
+		function fillInAddress() {
+			// Get the place details from the autocomplete object.
+			var place = autocomplete.getPlace();
+
+			for (var component in componentForm) {
+				document.getElementById(component).value = '';
+				document.getElementById(component).disabled = false;
+			}
+
+			// Get each component of the address from the place details
+			// and fill the corresponding field on the form.
+			for (var i = 0; i < place.address_components.length; i++) {
+				var addressType = place.address_components[i].types[0];
+				if (componentForm[addressType]) {
+					var val = place.address_components[i][componentForm[addressType]];
+					document.getElementById(addressType).value = val;
+				}
+			}
+		}
+
+		// Bias the autocomplete object to the user's geographical location,
+		// as supplied by the browser's 'navigator.geolocation' object.
+		function geolocate() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					var geolocation = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					};
+					var circle = new google.maps.Circle({
+						center: geolocation,
+						radius: position.coords.accuracy
+					});
+					autocomplete.setBounds(circle.getBounds());
+				});
+			}
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClQzPEKHRfpqPQ6sdf4Ivdxg8pFvnxO80&libraries=places&callback=initAutocomplete"
+			async defer></script>
+
+
 </main>
 
 {% endblock %}
-
 
