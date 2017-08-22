@@ -21,7 +21,7 @@
 
 
 		<!-- CONDITIONAL ERROR  -->
-		{% if errorMissingTitle %}
+		{% if errorMissingImage %}
 		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
 			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
@@ -34,7 +34,7 @@
 
 			<ul class="error-summary-list">
 				{% if errorMissingTitle %}
-				<li><a href="#example-personal-details">Descriptive link to MISSING TITLE error</a></li>
+				<li><a href="#example-personal-details">Descriptive link to MISSING IMAGE error</a></li>
 				{% endif %}
 			</ul>
 
@@ -44,46 +44,47 @@
 
 
 	  <h1 class="heading-large" style="margin-top:15px">
-        Description
+        Images and logos
       </h1>
 
 
-	  <form action="/create-event/description-onwards" method="get" class="form">
+	  <form action="/create-event/images-onwards" method="get" class="form">
 
-		  {% if errorMissingTitle %}
+		  <!-- MAIN IMAGE LOGO -->
+		  {% if errorMissingImage %}
 		  	<div class="form-group form-group-error">
 		  {% endif %}
 
 			  <div class="form-group"
 				   style="margin-top:10px; margin-bottom:20px">
 				  <label class="form-label-bold" for="event-title">
-					  Event title
+					  Main image of event
 				  </label>
-				  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-						 id="event-title" name="event-title" value="{{ data['event-title'] }}" style="width: 100%">
+
 			  </div>
 
-		  {% if errorMissingTitle %}
+		  {% if errorMissingImage %}
 			</div>
 		  {% endif %}
 
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
-			  <label class="form-label-bold" for="event-description">
-				  Event description
-			  </label>
-			  <textarea class="form-control" name="event-description" id="event-description" rows="5" style="width: 100%; "  ></textarea>
-		  </div>
 
 
-		  <!--
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
-			<label class="form-label-bold" for="target-audience">
-					Target audience
-			</label>
-			  <p class="form-hint"  style="margin-bottom:5px">The kind of business that should attend this event</p>
-			  <input type="text" class="form-control" id="target-audience" style="width: 100%">
+		  <!--  THE PARTNER LOGOS  -->
+		  {% if errorMissingPartnerImage %}
+		  <div class="form-group form-group-error">
+			  {% endif %}
+
+			  <div class="form-group"
+				   style="margin-top:10px; margin-bottom:20px">
+				  <label class="form-label-bold" for="event-title">
+					  Partner logos
+				  </label>
+
+			  </div>
+
+			  {% if errorMissingPartnerImage %}
 		  </div>
-			-->
+		  {% endif %}
 
 
 		  <div class="form-group" style="margin-top:20px">

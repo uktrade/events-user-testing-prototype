@@ -26,6 +26,13 @@ router.get('/create-event/create-event-onwards', function (req, res) {
   var errorMonthFound = false;
   var errorYearFound = false;
 
+  var errorStartHour = false;
+  var errorStartMinutes = false;
+
+  var errorFinishHour = false;
+  var errorFinishMinutes = false;
+
+
 
   // DAY
   if (req.session.data['event-day'] != undefined)
@@ -69,13 +76,89 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 
 
 
-
-  if((errorDayFound || errorMonthFound || errorYearFound) == false)
+  //START TIME
+  if (req.session.data['start-hours'] != undefined)
   {
-    //SAVE THE TIMES
-    req.session.data['event-start-time'] = req.session.data['start-hours'] + ":" + req.session.data['start-minutes'];
-    req.session.data['event-finish-time'] =  req.session.data['finish-hours'] + ":" + req.session.data['finish-minutes'];
+    if (req.session.data['start-hours']  == "")
+    {
+      req.session.data['start-hours'] = -1;
+    }
+    // HOURS CHECK
+    if (0 <= req.session.data['start-hours'] && req.session.data['start-hours'] <= 24)
+    {   }
+    else
+    {
+      errorStartHour = true;
+      console.log("start code checker  run  and error");
+    }
+  }
 
+
+  if (req.session.data['start-minutes']  == "")
+  {
+    req.session.data['start-minutes'] = -1;
+  }
+  if (req.session.data['start-minutes'] != undefined )
+  {
+    // MINUTES CHECK
+    if(0 <= req.session.data['start-minutes'] && req.session.data['start-minutes'] <= 60)
+    {}
+    else
+    {
+      errorStartMinutes = true;
+    }
+  }
+
+  // IF NO ERRORS SAVE THE DATA
+  if(errorStartHour == false  &&  errorStartMinutes == false)
+  {
+    req.session.data['event-start-time'] = req.session.data['start-hours'] + ":" + req.session.data['start-minutes'];
+  }
+
+
+
+  //FINISH TIME
+  if (req.session.data['finish-hours'] != undefined  &&  req.session.data['finish-minutes'] != undefined )
+  {
+    // HOURS CHECK
+    if (req.session.data['finish-hours']  == "")
+    {
+      req.session.data['finish-hours'] = -1;
+    }
+    if(0 <= req.session.data['finish-hours'] && req.session.data['finish-hours'] <= 24)
+    {}
+    else
+    {
+      errorFinishHour = true;
+    }
+
+    // MINUTES CHECK
+    if (req.session.data['finish-minutes']  == "")
+    {
+      req.session.data['finish-minutes'] = -1;
+    }
+    if(0 <= req.session.data['finish-minutes'] && req.session.data['finish-minutes'] <= 60)
+    {}
+    else
+    {
+      errorFinishMinutes = true;
+    }
+
+    // IF NO ERRORS SAVE THE DATA
+    if(errorFinishHour == false  &&  errorFinishMinutes == false)
+    {
+      req.session.data['event-finish-time'] =  req.session.data['finish-hours'] + ":" + req.session.data['finish-minutes'];
+    }
+  }
+
+
+
+
+
+
+
+  if((errorDayFound || errorMonthFound || errorYearFound  || errorStartHour || errorStartMinutes || errorFinishHour || errorFinishMinutes) == false)
+  {
     res.redirect('/create-event/venue');
   }
   else
@@ -83,10 +166,18 @@ router.get('/create-event/create-event-onwards', function (req, res) {
     res.render('create-event/index',
         {
           'errorOnDayTime': true,
+
+          'errorOnDate': (errorDayFound || errorMonthFound || errorYearFound),
           'errorDayFound': errorDayFound,
           'errorMonthFound': errorMonthFound,
           'errorYearFound': errorYearFound,
-          'errorOnDate': (errorDayFound || errorMonthFound || errorYearFound),
+
+          'errorOnStartTime': (errorStartHour || errorStartMinutes),
+          'errorOnFinishTime': (errorFinishHour || errorFinishMinutes),
+          'errorOnStartHour': errorStartHour,
+          'errorOnStartMinutes': errorStartMinutes,
+          'errorOnFinishHour': errorFinishHour,
+          'errorOnFinishMinutes': errorFinishMinutes,
         }
     );
   }
@@ -94,6 +185,9 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 
 
 })
+
+
+
 
 
 
@@ -113,13 +207,30 @@ router.get('/create-event/venue-onwards', function (req, res) {
 
 
 
+
+
 // DESCRIPTION PAGE ONWARDS BUTTON
-router.get('/create-event/description-onwards', function (req, res) {
+router.get('/create-event/description-onwards', function (req, res)
+{
+  var errorMissingTitle = false;
 
-  req.session.data['event-title'];
-  req.session.data['event-description'];
+  if(req.session.data['event-title'] === "")
+  {
+    errorMissingTitle = true;
+  }
 
-  res.redirect('/create-event/attendees');
+  if((errorMissingTitle) == false)
+  {
+    res.redirect('/create-event/attendees');
+  }
+  else
+  {
+    res.render('create-event/description',
+        {
+          'errorMissingTitle': errorMissingTitle,
+        }
+    );
+  }
 })
 
 
@@ -133,7 +244,7 @@ router.get('/create-event/attendee-onwards', function (req, res) {
   // check for errors
   if(0 < req.session.data['attendee-quantity'])
   {
-    res.redirect('/create-event/summary');
+    res.redirect('/create-event/images');
   }
   // No errors so carry on
   else
@@ -146,6 +257,30 @@ router.get('/create-event/attendee-onwards', function (req, res) {
   }
 })
 
+
+
+
+
+// IMAGES PAGE ONWARDS BUTTON
+router.get('/create-event/images-onwards', function (req, res)
+{
+
+
+  // check for errors
+  if(true)
+  {
+    res.redirect('/create-event/summary');
+  }
+  // No errors so carry on
+  else
+  {
+    res.render('create-event/images',
+        {
+          'errorAttendee': true
+        }
+    );
+  }
+})
 
 
 

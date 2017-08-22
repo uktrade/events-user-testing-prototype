@@ -24,115 +24,44 @@
 
 	  <form action="/create-event/venue-onwards" method="get" class="form">
 
-		  <!--   PLACES  -->
-		  <fieldset class="form-group">
-
-			  {% if errorAttendee %}
-			  <div class="form-group  form-group-error">
-				  {% endif %}
-
-				  <label class="form-label-bold">
-					  Number of attendee places
-
-					  {% if errorAttendee %}
-							  <span class="error-message">
-								  Error message about personal details goes here
-							  </span>
-					  {% endif %}
-				  </label>
-
-
-
-				  <div class="form-date">
-					  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
-					  <div class="form-group form-group-day">
-						  <input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
-								 id="attendee-quantity" name="attendee-quantity" type="number" pattern="[0-9]*" >
-					  </div>
-
-				  </div>
-
-				  {% if errorAttendee %}
-			  </div>
-			  {% endif %}
-
-		  </fieldset>
-
-
-
 		  <!--   ADDRESS  -->
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px; width:100%;">
+		  <div class="form-group" style="margin-top:10px; margin-bottom:0px; width:100%;">
 			  <label class="form-label-bold" for="autocomplete">
 				  Venue address
 			  </label>
 
 			  <input class="form-control" id="autocomplete" type="text" style="width:100%;" placeholder=""> </input>
+
+			  <div style="padding-bottom:82px" id="initial-filler-sapce">
+					<p>&nbsp;</p>
+			  </div>
+
+			  <div id="edit-address" style="display: none;">
+
+				  <p>
+					  <span id="premise">&nbsp;</span><br>
+					  <span id="street_number">&nbsp;</span>&nbsp;
+					  <span id="route">&nbsp;</span><br>
+					  <span id="postal_town">&nbsp;</span><br>
+					  <span id="postal_code">&nbsp;</span><br>
+				  </p>
+
+				  <p>
+					  <a href="/">Edit address</a> or <a href="/">enter a new address</a>
+				  </p>
+
+			  </div>
 		  </div>
 
-
-
-		  <table id="address">
-			  <tr>
-				  <td class="label">Street address</td>
-				  <td class="slimField"><input class="field" id="street_number"
-											   disabled="true"> </input></td>
-				  <td class="wideField" colspan="2"><input class="field" id="route"
-														   disabled="true"> </input></td>
-			  </tr>
-			  <tr>
-				  <td class="label">City</td>
-				  <!-- Note: Selection of address components in this example is typical.
-                       You may need to adjust it for the locations relevant to your app. See
-                       https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-                  -->
-				  <td class="wideField" colspan="3"><input class="field" id="postal_town"
-														   disabled="true"></input></td>
-			  </tr>
-			  <tr>
-				  <td class="label">State</td>
-				  <td class="slimField"><input class="field"
-											   id="administrative_area_level_1" disabled="true"></input></td>
-				  <td class="label">Zip code</td>
-				  <td class="wideField"><input class="field" id="postal_code"
-											   disabled="true"></input></td>
-			  </tr>
-			  <tr>
-				  <td class="label">Country</td>
-				  <td class="wideField" colspan="3"><input class="field"
-														   id="country" disabled="true"></input></td>
-			  </tr>
-		  </table>
-
-
-
-		  <!--
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
-			<label class="form-label-bold" for="address-street">
-					Street
-			</label>
-			<input type="text" class="form-control" id="address-street" name="address-street">
-		  </div>
-
-
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
-			  <label class="form-label-bold" for="event-town">
-				  Town or city
-			  </label>
-			  <input type="text" class="form-control" id="event-town"  name="event-town">
-		  </div>
-
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px; width:240px">
-			  <label class="form-label-bold" for="event-postcode">
-				  Postcode
-			  </label>
-			  <input type="text" class="form-control" id="event-postcode"  name="event-postcode">
-		  </div>
-		  -->
 
 
 		  <div class="form-group" style="margin-top:20px">
 			  <input type="submit" class="button" value="Continue">
 			  <p style="margin-top:30px"><a href="/create-event/venue-onwards">I don't know the venue</a></p>
+
+			  <p id="enter-new-address" style="display:none">
+
+			  </p>
 		  </div>
 
 	  </form>
@@ -151,12 +80,11 @@
 
 		var placeSearch, autocomplete;
 		var componentForm = {
-			street_number: 'short_name',
+			premise: 'long_name',
+			street_number: 'long_name',
 			route: 'long_name',
 			postal_town: 'long_name',
-			administrative_area_level_1: 'short_name',
-			country: 'long_name',
-			postal_code: 'short_name'
+			postal_code: 'long_name'
 		};
 
 		function initAutocomplete() {
@@ -186,10 +114,30 @@
 				var addressType = place.address_components[i].types[0];
 				if (componentForm[addressType]) {
 					var val = place.address_components[i][componentForm[addressType]];
-					document.getElementById(addressType).value = val;
+					document.getElementById(addressType).innerHTML  = val;
+
+					console.log("fhusdyrkukhfjljsvld3hkvufkljicf;akhuynbkvlafjir" + val);
 				}
 			}
+
+			// GUY CODE
+			var entryBox = document.getElementById('autocomplete');
+			entryBox.style.display = 'none';
+
+			var editAddress = document.getElementById('edit-address');
+			editAddress.style.display = 'inline';
+
+			var newAddress = document.getElementById('enter-new-address');
+			newAddress.style.display = 'inline'
+
+			var theFiller = document.getElementById('initial-filler-sapce');
+			theFiller.style.display = 'none'
 		}
+
+
+
+
+
 
 		// Bias the autocomplete object to the user's geographical location,
 		// as supplied by the browser's 'navigator.geolocation' object.
@@ -209,6 +157,7 @@
 			}
 		}
 	</script>
+
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClQzPEKHRfpqPQ6sdf4Ivdxg8pFvnxO80&libraries=places&callback=initAutocomplete"
 			async defer></script>
 

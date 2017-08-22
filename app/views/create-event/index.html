@@ -43,6 +43,20 @@
 				{% if errorYearFound %}
 				<li><a href="#example-personal-details">Descriptive link to YEAR error</a></li>
 				{% endif %}
+
+				{% if errorOnStartHour %}
+				<li><a href="#example-personal-details">Descriptive link to START TIME HOUR error</a></li>
+				{% endif %}
+				{% if errorOnStartMinutes %}
+				<li><a href="#example-personal-details">Descriptive link to START TIME MINS error</a></li>
+				{% endif %}
+
+				{% if errorOnFinishHour %}
+				<li><a href="#example-personal-details">Descriptive link to FINISH TIME HOUR error</a></li>
+				{% endif %}
+				{% if errorOnFinishMinutes %}
+				<li><a href="#example-personal-details">Descriptive link to FINISH TIME MINS error</a></li>
+				{% endif %}
 			</ul>
 
 		</div>
@@ -115,19 +129,44 @@
 		  </fieldset>
 
 
+
+
+
+		  <!--   START TIME  --->
 		  <fieldset class="form-group">
+
+			{% if errorOnStartTime %}
+			  <div class="form-group form-group-error">
+			{% endif %}
+
 			  <label class="form-label-bold">
 				  Start time
+
+				  {% if errorOnStartHour %}
+						  <span class="error-message">
+							  Enter an hour from 0 to 23
+						  </span>
+				  {% endif %}
+
+				  {% if errorOnStartMinutes %}
+						  <span class="error-message">
+							  Enter a minute from 00 to 59
+						  </span>
+				  {% endif %}
+
 			  </label>
+
 			  <div class="form-date">
 				  <p class="form-hint" style="margin-bottom: 0px;">For example, 14 00</p>
 				  <div class="form-group form-group-day">
 					  <label for="start-hours">Hours</label>
-					  <input class="form-control" id="start-hours" name="start-hours" type="number" pattern="[0-9]*" value="{{ data['start-hours'] }}">
+					  <input class="form-control  {% if errorOnStartHour %} form-control-error {% endif %}"
+							 id="start-hours" name="start-hours" type="tel" pattern="[0-9]*" value="{{ data['start-hours'] }}">
 				  </div>
 				  <div class="form-group form-group-month">
 					  <label for="start-minutes">Minutes</label>
-					  <input class="form-control" id="start-minutes" name="start-minutes" type="number" pattern="[0-9]*" value="{{ data['start-minutes'] }}" >
+					  <input class="form-control  {% if errorOnStartMinutes %} form-control-error {% endif %}"
+							 id="start-minutes" name="start-minutes" type="tel" pattern="[0-9]*" value="{{ data['start-minutes'] }}" >
 				  </div>
 
 				  <!--
@@ -142,39 +181,58 @@
 				  -->
 
 			  </div>
+
+			{% if errorOnStartTime %}
+			  </div>
+			{% endif %}
+
 		  </fieldset>
 
 
 
+
+		  <!--   FINISH TIME  --->
 		  <fieldset class="form-group">
+
+			{% if errorOnFinishTime %}
+			  <div class="form-group  form-group-error">
+			{% endif %}
+
 			  <label class="form-label-bold">
 				  Finish time
+
+				  {% if errorOnFinishHour %}
+					  <span class="error-message">
+						  Enter an hour from 0 to 23
+					  </span>
+				  {% endif %}
+
+				  {% if errorOnFinishMinutes %}
+					  <span class="error-message">
+						  Enter a minute from 00 to 59
+					  </span>
+				  {% endif %}
+
 			  </label>
+
 			  <div class="form-date">
 				  <!-- <p class="form-hint">For example, 9 30</p>  -->
 				  <div class="form-group form-group-day">
 					  <label for="finish-hours">Hours</label>
-					  <input class="form-control" id="finish-hours" name="finish-hours" type="number" pattern="[0-9]*"  value="{{ data['finish-hours'] }}">
+					  <input class="form-control  {% if errorOnFinishHour %} form-control-error {% endif %}" id="finish-hours" name="finish-hours" type="number" pattern="[0-9]*"  value="{{ data['finish-hours'] }}">
 				  </div>
 				  <div class="form-group form-group-month">
 					  <label for="finish-minutes">Minutes</label>
-					  <input class="form-control" id="finish-minutes" name="finish-minutes" type="number" pattern="[0-9]*" value="{{ data['finish-minutes'] }}" >
+					  <input class="form-control  {% if errorOnFinishMinutes %} form-control-error {% endif %}" id="finish-minutes" name="finish-minutes" type="number" pattern="[0-9]*" value="{{ data['finish-minutes'] }}" >
 				  </div>
 
-				  <!--
-					  <div class="form-group form-group-month multiple-choice" style="margin-left:25px; margin-top:28px">
-						  <input id="radio-inline-1" type="radio" name="radio-inline-group" value="AM">
-						  <label for="radio-inline-1">AM</label>
-					  </div>
-					  <div class="form-group form-group-month multiple-choice" style="margin-left:25px; margin-top:28px">
-						  <input id="radio-inline-2" type="radio" name="radio-inline-group" value="PM">
-						  <label for="radio-inline-2">PM</label>
-					  </div>
-				  -->
-
 			  </div>
-		  </fieldset>
 
+			{% if errorOnFinishTime %}
+			  </div>
+			{% endif %}
+
+		  </fieldset>
 
 
 
