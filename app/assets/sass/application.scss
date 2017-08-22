@@ -28,4 +28,18 @@ $path: "/public/images/";
   }
 }
 
+
+.button-secondary
+{
+  @include button ($panel-colour);
+  @include box-sizing (border-box);
+
+  @include media (mobile) {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

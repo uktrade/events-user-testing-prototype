@@ -54,6 +54,9 @@
 		  </div>
 
 
+		  <textarea class="form-control" name="full-address-holder" id="full-address-holder" rows="5" style="width: 100%;"></textarea>
+
+
 
 		  <div class="form-group" style="margin-top:20px">
 			  <input type="submit" class="button" value="Continue">
@@ -116,7 +119,20 @@
 					var val = place.address_components[i][componentForm[addressType]];
 					document.getElementById(addressType).innerHTML  = val;
 
-					console.log("fhusdyrkukhfjljsvld3hkvufkljicf;akhuynbkvlafjir" + val);
+
+					if(val != null)
+					{
+						// GUY CODE
+						var newline = "\n";
+						if(isNaN(val) == false)
+						{
+							newline = " ";
+						}
+						document.getElementById('full-address-holder').value
+								= document.getElementById('full-address-holder').value +  val + newline;
+						console.log("fhusdyfjir" + val);
+					}
+
 				}
 			}
 

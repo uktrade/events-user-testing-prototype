@@ -18,8 +18,6 @@
 		</ol>
 	  </div>
 
-
-
 		<!-- CONDITIONAL ERROR  -->
 		{% if errorMissingImage %}
 		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
@@ -48,19 +46,29 @@
       </h1>
 
 
-	  <form action="/create-event/images-onwards" method="get" class="form">
+
 
 		  <!-- MAIN IMAGE LOGO -->
 		  {% if errorMissingImage %}
 		  	<div class="form-group form-group-error">
 		  {% endif %}
 
-			  <div class="form-group"
-				   style="margin-top:10px; margin-bottom:20px">
-				  <label class="form-label-bold" for="event-title">
+			  <div class="form-group" style="margin-top:10px; height:150px" id="new-image-area">
+				  <label class="form-label-bold">
 					  Main image of event
 				  </label>
+				  <div style="margin-top:5px">
+				  	<input type="submit" class="button-secondary" value="Choose an image" id="main-button-image"
+						   onclick="hide()">
 
+					<div style="margin-bottom:25px; display:none "  id="image-area" >
+						<img src="/public/images/exportingheroimagesmall.jpg" style="width:240px;height:100px;">
+						<p style="margin-bottom:25px;">
+							<a href="#">Select a different image</a>
+						</p>
+					</div>
+
+				  </div>
 			  </div>
 
 		  {% if errorMissingImage %}
@@ -76,16 +84,19 @@
 
 			  <div class="form-group"
 				   style="margin-top:10px; margin-bottom:20px">
-				  <label class="form-label-bold" for="event-title">
+				  <label class="form-label-bold" >
 					  Partner logos
 				  </label>
-
+				  <div style="margin-top:5px">
+					  <input type="submit" class="button-secondary" value="Choose an image">
+				  </div>
 			  </div>
 
 			  {% if errorMissingPartnerImage %}
 		  </div>
 		  {% endif %}
 
+		<form action="/create-event/images-onwards" method="get" class="form">
 
 		  <div class="form-group" style="margin-top:20px">
 			  <input type="submit" class="button" value="Continue">
@@ -97,6 +108,22 @@
   </div>
 </main>
 
+
+
+
+<script>
+	// When pressing the get main image button it swap in an image
+
+	function hide()
+	{
+		document.getElementById('main-button-image').style.display = 'none';
+		document.getElementById('image-area').style.display = 'inline';
+	}
+
+</script>
+
 {% endblock %}
+
+
 
 

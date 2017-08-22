@@ -196,10 +196,7 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/venue-onwards', function (req, res) {
 
-  req.session.data['address-venue-name'];
-  req.session.data['address-street'];
-  req.session.data['event-town'];
-  req.session.data['event-postcode'];
+  console.log(req.session.data['full-address-holder']);
 
   res.redirect('/create-event/description');
 })
@@ -244,6 +241,7 @@ router.get('/create-event/attendee-onwards', function (req, res) {
   // check for errors
   if(0 < req.session.data['attendee-quantity'])
   {
+    res.redirect('/create-event/images');
     res.redirect('/create-event/images');
   }
   // No errors so carry on
