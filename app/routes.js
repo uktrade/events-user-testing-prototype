@@ -238,6 +238,17 @@ router.get('/create-event/attendee-onwards', function (req, res) {
 
   req.session.data['attendee-quantity'];
 
+  console.log(req.session.data['radio-group-ticket-gone']);
+
+  if(req.session.data['radio-group-ticket-gone'] == "close-registrations")
+  {
+    req.session.data['after-tickets-gone'] = "Close registrations";
+  }
+  else
+  {
+    req.session.data['after-tickets-gone'] = "Have a waiting list";
+  }
+
   // check for errors
   if(0 < req.session.data['attendee-quantity'])
   {
