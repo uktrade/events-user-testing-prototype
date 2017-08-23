@@ -253,7 +253,6 @@ router.get('/create-event/attendee-onwards', function (req, res) {
   if(0 < req.session.data['attendee-quantity'])
   {
     res.redirect('/create-event/images');
-    res.redirect('/create-event/images');
   }
   // No errors so carry on
   else
