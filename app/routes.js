@@ -84,7 +84,7 @@ router.get('/create-event/create-event-onwards', function (req, res) {
       req.session.data['start-hours'] = -1;
     }
     // HOURS CHECK
-    if (0 <= req.session.data['start-hours'] && req.session.data['start-hours'] <= 24)
+    if (0 <= req.session.data['start-hours'] && req.session.data['start-hours'] <= 23)
     {   }
     else
     {
@@ -116,16 +116,15 @@ router.get('/create-event/create-event-onwards', function (req, res) {
   }
 
 
-
   //FINISH TIME
-  if (req.session.data['finish-hours'] != undefined  &&  req.session.data['finish-minutes'] != undefined )
+  if (req.session.data['finish-hours'] != undefined  &&  req.session.data['finish-minutes'] != undefined)
   {
     // HOURS CHECK
     if (req.session.data['finish-hours']  == "")
     {
       req.session.data['finish-hours'] = -1;
     }
-    if(0 <= req.session.data['finish-hours'] && req.session.data['finish-hours'] <= 24)
+    if(0 <= req.session.data['finish-hours'] && req.session.data['finish-hours'] <= 23)
     {}
     else
     {
@@ -204,8 +203,6 @@ router.get('/create-event/venue-onwards', function (req, res) {
 
 
 
-
-
 // DESCRIPTION PAGE ONWARDS BUTTON
 router.get('/create-event/description-onwards', function (req, res)
 {
@@ -218,7 +215,7 @@ router.get('/create-event/description-onwards', function (req, res)
 
   if((errorMissingTitle) == false)
   {
-    res.redirect('/create-event/attendees');
+    res.redirect('/create-event/images');
   }
   else
   {
@@ -232,29 +229,73 @@ router.get('/create-event/description-onwards', function (req, res)
 
 
 
+// IMAGES PAGE ONWARDS BUTTON
+router.get('/create-event/images-onwards', function (req, res)
+{
+  // check for errors
+  if(true)
+  {
+    res.redirect('/create-event/attendees');
+  }
+  // No errors so carry on
+  else
+  {
+    res.render('create-event/images',
+        {
+          'errorAttendee': true
+        }
+    );
+  }
+})
+
+
+
+
+
 
 // ATTENDEE PAGE ONWARDS BUTTON
+
+
 router.get('/create-event/attendee-onwards', function (req, res) {
 
   req.session.data['attendee-quantity'];
 
-  console.log(req.session.data['radio-group-ticket-gone']);
 
-  if(req.session.data['radio-group-ticket-gone'] == "close-registrations")
-  {
-    req.session.data['after-tickets-gone'] = "Close registrations";
-  }
-  else
-  {
-    req.session.data['after-tickets-gone'] = "Have a waiting list";
-  }
+  // stuff for setting up a waiting list
+  /*
+   console.log(req.session.data['radio-group-ticket-gone']);
+
+   if(req.session.data['radio-group-ticket-gone'] == "close-registrations")
+   {
+   req.session.data['after-tickets-gone'] = "Close registrations";
+   }
+   else
+   {
+   req.session.data['after-tickets-gone'] = "Have a waiting list";
+   }
+   */
+
+  // Add additional pages if there are additional questions
+  console.log(req.session.data['radio-additional-questions-quantity']);
+
+
+
 
   // check for errors
   if(0 < req.session.data['attendee-quantity'])
   {
-    res.redirect('/create-event/images');
+    if(0 < req.session.data['radio-additional-questions-quantity'])
+    {
+      req.session.data['additional-questions-incrementer'] = 1;
+      res.redirect('/create-event/additional-questions');
+    }
+    else
+    {
+      res.redirect('/create-event/summary');
+    }
+
   }
-  // No errors so carry on
+  // Errors found so refresh page with errors
   else
   {
     res.render('create-event/attendees',
@@ -267,28 +308,192 @@ router.get('/create-event/attendee-onwards', function (req, res) {
 
 
 
+// Setting up the store for the questiosna and answers
+// 2D. one item per question.  Second demotion is Question, Answer type, Answer, Answer...Answer
+var questionsData = [];
+
 
 
 // IMAGES PAGE ONWARDS BUTTON
-router.get('/create-event/images-onwards', function (req, res)
+router.get('/create-event/question-onwards', function (req, res)
 {
+  var errorQuestionMissing = false;
+  var answerTypeEmpty = false;
+  var answerError = false;
+  var answersTotallyMissing = false;
+  var answersMissingOneEntered = false;
 
+  // Selected radio
+  var answerTypeOneSelected = false;
+  var answerTypeMultipleSelected = false;
 
-  // check for errors
-  if(true)
+  // Check if the answer has been entered and throw error if not
+  if(req.session.data['question'] == "")
   {
-    res.redirect('/create-event/summary');
+    errorQuestionMissing = true;
   }
-  // No errors so carry on
+
+  // Check if the type of answer has been selected and throw answer if not
+  if(req.session.data['radio-additional-questions-answers-type'] === undefined)
+  {
+    console.log("output of radio selection is TOTALLY UNDEFINED");
+    answerTypeEmpty = true;
+  }
   else
   {
-    res.render('create-event/images',
+    // Check that answers have been added if not a free text answer
+    if(req.session.data['radio-additional-questions-answers-type'] != "enter-text")
+    {
+      var numberOfAnswrs = 0;
+      for(x=1; x<11; x++)
+      {
+        if(req.session.data['answer-'+x] != "")
         {
-          'errorAttendee': true
+          numberOfAnswrs = numberOfAnswrs + 1;
+        }
+      }
+      if(numberOfAnswrs == 0)
+      {
+        answersTotallyMissing = true;
+        answerError = true;
+      }
+      else if(numberOfAnswrs == 1)
+      {
+        answersMissingOneEntered = true;
+        answerError = true;
+      }
+      console.log("The answer are empty  " + answerError);
+
+      // Save which radio button was selected, Since page is refreshed istead of rerendered
+      if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
+      {
+        answerTypeOneSelected = true;
+      }
+      else if(req.session.data['radio-additional-questions-answers-type'] == "select-multiple")
+      {
+        answerTypeMultipleSelected = true;
+      }
+    }
+  }
+
+
+  // check for errors - No errors found
+  if((errorQuestionMissing || answerTypeEmpty || answerError) == false)
+  {
+      // Save the data for this question to an array
+      var thisNewQuestionData = [];
+
+      // Question
+      thisNewQuestionData[0] = req.session.data['question'];
+      console.log(thisNewQuestionData[0]);
+
+      // Type of answers
+      if(req.session.data['radio-additional-questions-answers-type'] == "enter-text")
+      {
+        thisNewQuestionData[1] = "Enter text";
+      }
+      else if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
+      {
+        thisNewQuestionData[1] = "Select one answer";
+      }
+      else if(req.session.data['radio-additional-questions-answers-type'] == "select-multiple")
+      {
+        thisNewQuestionData[1] = "Select multiple answers";
+      }
+      console.log(thisNewQuestionData[1]);
+
+
+      // Answers
+      for(answersIncrementer=1; answersIncrementer<11; answersIncrementer++)
+      {
+        if(req.session.data['answer-'+answersIncrementer] != "")
+        {
+          thisNewQuestionData.push(req.session.data['answer-'+answersIncrementer]);
+          console.log(req.session.data['answer-'+answersIncrementer]);
+        }
+      }
+
+    // SAVE THE DATA TO THE ARRAY
+    questionsData.push(thisNewQuestionData);
+
+
+
+    // Check if ths is not the final question
+    if(req.session.data['additional-questions-incrementer'] < req.session.data['radio-additional-questions-quantity'])
+    {
+      req.session.data['question'] = "";
+      req.session.data['radio-additional-questions-answers-type'] = "";
+      for(x=1; x<11; x++)
+      {
+        req.session.data['answer-'+x] = "";
+      }
+
+      // increase question number
+      req.session.data['additional-questions-incrementer'] = req.session.data['additional-questions-incrementer'] + 1;
+
+      console.log(" the question we are on now  " + req.session.data['additional-questions-incrementer']);
+      console.log(" the total number of questions " + req.session.data['radio-additional-questions-quantity']);
+
+      res.redirect('/create-event/additional-questions');
+      //res.render('create-event/additional-questions',{});
+    }
+    else
+    {
+      // Final question move on to summary
+      res.redirect('/create-event/summary');
+    }
+  }
+
+  // ERRORS FOUND stay on same page
+  else
+  {
+    res.render('create-event/additional-questions',
+        {
+          'errorQuestions': true,
+          'errorQuestionEmpty' : errorQuestionMissing,
+          'errorAnswersError' : answerError,
+          'errorAnswerTypeEmpty' : answerTypeEmpty,
+          'errorAnswersEmpty' : answersTotallyMissing,
+          'errorAnswersOnlyOneEntered' : answersMissingOneEntered,
+          'errorOneSelected' : answerTypeOneSelected,
+          'errorMultipleSelected' : answerTypeMultipleSelected
         }
     );
   }
 })
+
+
+// VENUE PAGE ONWARDS BUTTON
+router.get('/create-event/summary-prelude', function (req, res) {
+
+  req.session.data['question-1'] = false;
+  req.session.data['question-2'] = false;
+  req.session.data['question-3'] = false;
+  req.session.data['question-4'] = false;
+  req.session.data['question-5'] = false;
+
+  for(var x=1; x<(req.session.data['radio-additional-questions-quantity']+1) ;x++)
+  {
+    req.session.data['question-'+x] = true;
+  }
+
+  console.log(req.session.data['question-1']);
+
+  res.render('create-event/summary',
+      {
+        'questionsOne': req.session.data['question-1'],
+        'questionsTwo': req.session.data['question-2'],
+        'questionsThree': req.session.data['question-3'],
+        'questionsFour': req.session.data['question-4'],
+        'questionsFive': req.session.data['question-5']
+      }
+  );
+})
+
+
+
+
+
 
 
 

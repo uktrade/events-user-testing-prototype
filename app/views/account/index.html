@@ -8,7 +8,7 @@
 
 <main id="content" role="main">
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="column-full">
 
       <h1 class="heading-large">
         Business West events
@@ -22,20 +22,56 @@
 		</h2>
 		-->
 
-		<div>
-			<p class="heading-small"> Up and Away at Bristol's International Balloon Fiesta 2017
-				<br>
-				<span style="font-weight:400;">25 September 2017</span>
-			</p>
-			<p>
-				<a href="/">View event page</a>  <br>
-				<a href="/">Edit</a>     <br>
-				<a href="/">Event data</a>
-			</p>
-		</div>
+		<table style="width:100%">
+			<thead>
+				<tr>
+					<th scope="col" style="width:52%"> </th>
+					<th class="col" style="width:20%" scope="col"></th>
+					<th class="col" style="width:16%" scope="col"></th>
+					<th class="col" style="width:13%" scope="col"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<th scope="row">Up and Away at Bristol's International Balloon Fiesta<br>
+						<table>
+							<thead>
+							<tr>
+								<td valign="top" style="border: 0px"><a href="#">View event page</a></td>
+								<td valign="top" style="border: 0px"><a href="#">Monitor event</a></td>
+								<td valign="top" style="width:40%; border: 0px; padding-right: 0px;">
+									<details style="display:inline;">
+										<summary><span class="summary">More options</span></summary>
+										<div class="panel panel-border-narrow">
+											<p>
+												<a href="#">Edit event</a> <br>
+												<a href="#">Clone event</a>   <br>
+												<a href="#">Close registrations</a> <br>
+												<a href="#">Delete event</a>
+											</p>
+										</div>
+									</details>
+								</td>
+							</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</th>
+					<td class="row" valign="top">25 September 2017</td>
+					<td class="row" valign="top">20 tickets left</td>
+					<td class="row" valign="top" style="padding-right:0px; font-weight:700; color:#B10E1E;">Private draft</td>
+
+				</tr>
+
+			</tbody>
+		</table>
+
 
 
 		<form action="/create-event" method="get" class="form">
+			<br>
 			<br>
 			<div class="form-group">
 				<input type="submit" class="button-secondary" value="Create new event">
@@ -44,24 +80,58 @@
 			<br>
 		</form>
 
-		<h2 class="heading-medium">
+		<h2 class="heading-medium" style="margin-bottom: 0px">
 			Past events
 		</h2>
 
 
-		<div>
-			<p class="heading-small">Marketing Made Easy
-				<br>
-				<span style="font-weight:400;">15 August 2017</span>
+		<table style="width:100%">
+			<thead>
+			<tr>
+				<th scope="col" style="width:52%"></th>
+				<th class="col" style="width:20%" scope="col"></th>
+				<th class="col" style="width:16%" scope="col"></th>
+				<th class="col" style="width:13%" scope="col"></th>
+			</tr>
+			</thead>
 
-			</p>
+			<tbody>
+			<tr>
+				<th scope="row">Marketing Made Easy<br>
+					<table>
+						<thead>
+						<tr>
+							<td valign="top" style="border: 0px"><a href="#">View event page</a></td>
+							<td valign="top" style="border: 0px"><a href="#">Monitor event</a></td>
+							<td valign="top" style="width:40%; border: 0px; padding-right: 0px;">
+								<details style="display:inline;">
+									<summary><span class="summary">More options</span></summary>
+									<div class="panel panel-border-narrow">
+										<p>
+											<a href="#">Edit event</a> <br>
+											<a href="#">Clone event</a>   <br>
+											<a href="#">Close registrations</a> <br>
+											<a href="#">Delete event</a>
+										</p>
+									</div>
+								</details>
+							</td>
+						</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</th>
+				<td class="row" valign="top">15 August 2017</td>
+				<td class="row" valign="top"></td>
+				<td class="row" valign="top" style="padding-right:0px; font-weight:700; ">Finished</td>
 
-			<p>
-				<a href="/">View event page</a>  <br>
-				<a href="/">Edit</a>     <br>
-				<a href="/">Event data</a>
-			</p>
-		</div>
+			</tr>
+
+			</tbody>
+		</table>
+
+
 
 
 

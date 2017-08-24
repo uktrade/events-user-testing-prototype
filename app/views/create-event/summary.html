@@ -127,19 +127,38 @@
 			  </div>
 
 			  <div>
-				  <dt class="cya-question">
-					  Main image
-				  </dt>
+				  <dt class="cya-question" style="vertical-align:top">Main image</dt>
 				  <dd class="cya-answer">
-					  <img src="/public/images/exportingheroimagesmall.jpg" style="width:240px;height:100px;">
+					  <img src="/public/images/exportingheroimagesmall.jpg" style="width:240px; height:100px;">
 				  </dd>
-				  <dd class="cya-change">
+				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>
 					  </a>
 				  </dd>
 			  </div>
+
+			  {% if questionsOne %}
+				  <div>
+					  <dt class="cya-question">
+						  Question 1
+					  </dt>
+					  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
+					  <dd class="cya-change">
+						  <a href="#">
+							  Change<span class="visually-hidden"> contact details</span>
+						  </a>
+					  </dd>
+				  </div>
+			  {% endif %}
+
+
 		  </dl>
+
+
+
+
+
 
 
 

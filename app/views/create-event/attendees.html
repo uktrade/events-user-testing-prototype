@@ -41,6 +41,7 @@
         Tickets
       </h1>
 
+
 	  <form action="/create-event/attendee-onwards" method="get" class="form">
 
 		  <!--   PLACES  -->
@@ -59,21 +60,126 @@
 					  {% endif %}
 				  </label>
 
+
 				  <div class="form-date">
-					  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
+						<!-- <p class="form-hint">For example, 31 3 1980</p>  -->
 					  <div class="form-group form-group-day">
-						  <input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
-								 id="attendee-quantity" name="attendee-quantity" type="number" pattern="[0-9]*" >
-					  </div>
+						   <input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
+								  id="attendee-quantity" name="attendee-quantity" type="number" pattern="[0-9]*"
+								  value="{{ data['attendee-quantity'] }}">
+				      </div>
 				  </div>
 
 			  {% if errorAttendee %}
-			  	</div>
+				</div>
 			  {% endif %}
 
 		  </fieldset>
 
 
+		  <fieldset class="form-group">
+			  <!--  message user will see when all tickets are gone -->
+			  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
+				  <label class="form-label-bold" for="sold-out-message">
+					Text displayed when tickets are sold out (optional)
+				  </label>
+				  <textarea class="form-control" name="sold-out-message" id="sold-out-message" rows="2" style="width: 100%;"></textarea>
+			  </div>
+		  </fieldset>
+
+
+		  <fieldset class="form-group inline">
+				  <!--  Addtional questions that the registering user need to answer  -->
+				  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
+					  <label class="form-label-bold">
+					  	  Do you have additional registration questions?
+					  </label>
+					  <div class="form-date" style="margin-top:5px">
+						  <div class="multiple-choice">
+							  <input id="radio-inline-0" type="radio" name="radio-additional-questions-quantity" value="0" checked="checked">
+							  <label for="radio-inline-0">0</label>
+					  	  </div>
+						  <div class="multiple-choice">
+							  <input id="radio-inline-1" type="radio" name="radio-additional-questions-quantity" value="1">
+							  <label for="radio-inline-1">1</label>
+						  </div>
+						  <div class="multiple-choice">
+							  <input id="radio-inline-2" type="radio" name="radio-additional-questions-quantity" value="2">
+							  <label for="radio-inline-2">2</label>
+						  </div>
+						  <div class="multiple-choice">
+							  <input id="radio-inline-3" type="radio" name="radio-additional-questions-quantity" value="3">
+							  <label for="radio-inline-3">3</label>
+						  </div>
+						  <div class="multiple-choice">
+							  <input id="radio-inline-4" type="radio" name="radio-additional-questions-quantity" value="4">
+							  <label for="radio-inline-4">4</label>
+						  </div>
+						  <div class="multiple-choice">
+							  <input id="radio-inline-5" type="radio" name="radio-additional-questions-quantity" value="5">
+							  <label for="radio-inline-5">5</label>
+						  </div>
+					  </div>
+				  </div>
+		  </fieldset>
+						  <!--
+						  <div id="q-1-section" style="display:none">
+							  <label class="form-label" for="question-one">
+								  Question 1
+							  </label>
+							  <input type="text" class="form-control" id="question-one" name="event-title"
+									 value="{{ data['question-one'] }}" style="width: 100%; margin-bottom: 20px;">
+						  </div>
+
+						  <div id="q-2-section" style="display:none">
+							  <label class="form-label" for="question-two">
+								  Question 2
+							  </label>
+							  <input type="text" class="form-control" id="question-two" name="event-title"
+									 value="{{ data['question-two'] }}" style="width: 100%; margin-bottom: 20px;">
+						  </div>
+
+						  <div id="q-3-section" style="display:none">
+							  <label class="form-label" for="question-two">
+								  Question 3
+							  </label>
+							  <input type="text" class="form-control" id="question-three" name="event-title"
+									 value="{{ data['question-three'] }}" style="width: 100%; margin-bottom: 20px;">
+						  </div>
+
+						  <div id="q-4-section" style="display:none">
+							  <label class="form-label" for="question-two">
+								  Question 4
+							  </label>
+							  <input type="text" class="form-control" id="question-four" name="event-title"
+									 value="{{ data['question-four'] }}" style="width: 100%; margin-bottom: 20px;">
+						  </div>
+
+						  <div id="q-5-section" style="display:none">
+							  <label class="form-label" for="question-five">
+								  Question 5
+							  </label>
+							  <input type="text" class="form-control" id="question-five" name="event-title"
+									 value="{{ data['question-five'] }}" style="width: 100%; margin-bottom: 20px;">
+						  </div>
+
+						  <input type="submit" id="add-question-button" class="button-secondary" value="Add a question" onclick="showAnotherQuestion()">
+							-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		  <!--
 
 		  <fieldset class="form-group">
 
@@ -91,7 +197,7 @@
 			  </div>
 
 		  </fieldset>
-
+			-->
 
 
 
@@ -107,6 +213,39 @@
     </div>
   </div>
 </main>
+
+
+
+<script>
+
+	function showAnotherQuestion()
+	{
+		if(document.getElementById('q-1-section').style.display == 'none')
+		{
+			document.getElementById('q-1-section').style.display = 'inline';
+		}
+		else if (document.getElementById('q-2-section').style.display == 'none')
+		{
+			document.getElementById('q-2-section').style.display = 'inline';
+		}
+		else if (document.getElementById('q-3-section').style.display == 'none')
+		{
+			document.getElementById('q-3-section').style.display = 'inline';
+		}
+		else if (document.getElementById('q-4-section').style.display == 'none')
+		{
+			document.getElementById('q-4-section').style.display = 'inline';
+		}
+		else if (document.getElementById('q-5-section').style.display == 'none')
+		{
+			document.getElementById('q-5-section').style.display = 'inline';
+			document.getElementById('add-question-button').style.display = 'none';
+		}
+
+
+	}
+</script>
+
 
 {% endblock %}
 

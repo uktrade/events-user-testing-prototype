@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		<ol>
+			<li><a href="/account">Account home</a></li>
+		</ol>
+	  </div>
+
+
+	  <!-- CONDITIONAL ERROR  -->
+		{% if errorQuestions %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Message to alert the user to a problem goes here
+			</h2>
+
+			<p>
+				Optional description of the errors and how to correct them
+			</p>
+
+			{% if errorQuestionEmpty %}
+				<ul class="error-summary-list">
+					<li><a href="#example-personal-details">Need to enter the question</a></li>
+				</ul>
+			{% endif %}
+
+			{% if errorAnswerTypeEmpty %}
+				<ul class="error-summary-list">
+					<li><a href="#example-personal-details">Need to select the type of answers for their question</a></li>
+				</ul>
+			{% endif %}
+
+			{% if errorAnswersError %}
+			<ul class="error-summary-list">
+				<li><a href="#example-personal-details">You need to enter at least 2 answers</a></li>
+			</ul>
+			{% endif %}
+
+
+
+		</div>
+      {% endif %}
+
+	  <h1 class="heading-large" style="margin-top:15px">
+		  Question {{ data['additional-questions-incrementer'] }}
+      </h1>
+
+
+	  <form action="/create-event/question-onwards" method="get" class="form">
+
+		  <!--   PLACES  -->
+		  <fieldset class="form-group">
+
+				<div class="form-group" style="margin-top:10px; margin-bottom:0px">
+
+					{% if errorQuestionEmpty %}
+						<div class="form-group  form-group-error">
+					{% endif %}
+
+						<label class="form-label-bold" for="question">
+							Question for attendee
+							{% if errorQuestionEmpty %}
+							  <span class="error-message">
+								  Error message about answer type being missing
+							  </span>
+							{% endif %}
+						</label>
+						<input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+							   id="question" name="question" value="{{ data['question'] }}" style="width:100%">
+
+					{% if errorQuestionEmpty %}
+						</div>
+					{% endif %}
+
+				</div>
+
+		  </fieldset>
+
+
+		  <fieldset class="form-group">
+				  <!--  Addtional questions that the registering user need to answer  -->
+
+
+
+				  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
+
+					  {% if errorAnswerTypeEmpty %}
+					  	<div class="form-group form-group-error">
+					  {% endif %}
+
+						  <label class="form-label-bold">
+							  How should attendees answer this question?
+							  {% if errorAnswerTypeEmpty %}
+								  <span class="error-message">
+									  Error message about question being missing
+								  </span>
+							  {% endif %}
+						  </label>
+						  <div class="form-date" style="margin-top:5px">
+							  <div class="multiple-choice">
+								  <input id="enter-text" type="radio" name="radio-additional-questions-answers-type" value="enter-text">
+								  <label for="enter-text">Enter text</label>
+							  </div>
+							  <div class="multiple-choice" data-target="show-answers">
+								  <input id="select-one" type="radio" name="radio-additional-questions-answers-type" value="select-one"
+										 {% if errorOneSelected %} checked="checked" {% endif %} >
+								  <label for="select-one">Select one answer</label>
+							  </div>
+							  <div class="multiple-choice" data-target="show-answers">
+								  <input id="select-multiple" type="radio" name="radio-additional-questions-answers-type" value="select-multiple"
+										 {% if errorMultipleSelected %} checked="checked" {% endif %} >
+								  <label for="select-multiple">Select multiple answers</label>
+							  </div>
+						  </div>
+
+					  {% if errorAnswerTypeEmpty %}
+						</div>
+					  {% endif %}
+
+				  </div>
+
+
+
+
+
+			  <!--   THE ANSWERS -->
+			  <div class="form-group  js-hidden" style="margin-bottom:0px; margin-top:30px;" id="show-answers">
+
+				  {% if errorAnswersError %}
+				  	<div class="form-group  form-group-error">
+				  {% endif %}
+
+					  <label class="form-label-bold">
+						  Enter the answers
+						  {% if errorAnswersError %}
+							  <span class="error-message">
+								  Error message about not providing enough (2 or more) answers go here.
+							  </span>
+						  {% endif %}
+					  </label>
+
+					  <div style="width:50%; float:left; margin-top:5px">
+						  <input type="text" class="form-control  {% if errorAnswersEmpty %} form-control-error {% endif %}"
+								 id="answer-1" name="answer-1" value="{{ data['answer-1'] }}" style="width:90%; margin-bottom: 15px;">
+						  <input type="text" class="form-control   {% if errorAnswersEmpty %} form-control-error {% endif %}
+								  								   {% if errorAnswersOnlyOneEntered %}  form-control-error {% endif %}"
+								 id="answer-2" name="answer-2" value="{{ data['answer-2'] }}" style="width:90%; margin-bottom: 15px;">
+						  <input type="text" class="form-control"
+								 id="answer-3" name="answer-3" value="{{ data['answer-3'] }}" style="width:90%; margin-bottom: 15px;">
+						  <input type="text" class="form-control"
+								 id="answer-4" name="answer-4" value="{{ data['answer-4'] }}" style="width:90%; margin-bottom: 15px;">
+						  <input type="text" class="form-control"
+								 id="answer-5" name="answer-5" value="{{ data['answer-5'] }}" style="width:90%; margin-bottom: 0px;">
+					  </div>
+
+					  <div style="width:50%; float:right; margin-top:5px" align="right">
+						  <input type="text" class="form-control"
+								 id="answer-6" name="answer-6" value="{{ data['answer-6'] }}" style="width:90%; margin-bottom: 15px;">
+						  <input type="text" class="form-control"
+								 id="answer-7" name="answer-7" value="{{ data['answer-7'] }}" style="width:90%; margin-bottom: 15px;">
+						  <input type="text" class="form-control"
+								 id="answer-8" name="answer-8" value="{{ data['answer-8'] }}" style="width:90%; margin-bottom: 15px;">
+						  <input type="text" class="form-control"
+								 id="answer-9" name="answer-9" value="{{ data['answer-9'] }}" style="width:90%; margin-bottom: 15px;">
+						  <input type="text" class="form-control"
+								 id="answer-10" name="answer-10" value="{{ data['answer-10'] }}"style="width:90%; margin-bottom: 0px;">
+					  </div>
+
+				  {% if errorAnswersError %}
+					  </div>
+				  {% endif %}
+
+			  </div>
+
+		  </fieldset>
+
+
+
+
+
+
+
+
+		  <div class="form-group" style="margin-top:20px">
+			  <input type="submit" class="button" value="Continue">
+		  </div>
+
+
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+
+
+
+
+{% endblock %}
+
+
