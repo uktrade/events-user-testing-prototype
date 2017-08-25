@@ -102,10 +102,10 @@
 
 			  <div>
 				  <dt class="cya-question">
-					  When all ticket are gone
+					  Message displayed when all tickets are sold out
 				  </dt>
 				  <dd class="cya-answer">
-					  {{ data['after-tickets-gone'] }}
+					  {{ data['sold-out-message'] }}
 				  </dd>
 				  <dd class="cya-change">
 					  <a href="#">
@@ -141,9 +141,10 @@
 			  {% if questionsOne %}
 				  <div>
 					  <dt class="cya-question">
-						  Question 1
+						  Question 1<br><br>
+						  Answers
 					  </dt>
-					  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
+					  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ questionsDataForSummary[0][0] }}<br><br>{{ questionsDataForSummary[0][2] }}</dd>
 					  <dd class="cya-change">
 						  <a href="#">
 							  Change<span class="visually-hidden"> contact details</span>
@@ -152,6 +153,65 @@
 				  </div>
 			  {% endif %}
 
+			  {% if questionsTwo %}
+			  <div>
+				  <dt class="cya-question">
+					  Question 2<br><br>
+					  Answers
+				  </dt>
+				  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ questionsDataForSummary[1][0] }}<br><br>{{ questionsDataForSummary[1][2] }}</dd>
+				  <dd class="cya-change">
+					  <a href="#">
+						  Change<span class="visually-hidden"> contact details</span>
+					  </a>
+				  </dd>
+			  </div>
+			  {% endif %}
+
+			  {% if questionsThree %}
+			  <div>
+				  <dt class="cya-question">
+					  Question 3<br><br>
+					  Answers
+				  </dt>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ questionsDataForSummary[2][0] }}<br><br>{{ questionsDataForSummary[2][2] }}</dd>
+				  <dd class="cya-change">
+					  <a href="#">
+						  Change<span class="visually-hidden"> contact details</span>
+					  </a>
+				  </dd>
+			  </div>
+			  {% endif %}
+
+			  {% if questionsFour %}
+			  <div>
+				  <dt class="cya-question">
+					  Question 4<br><br>
+					  Answers
+				  </dt>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ questionsDataForSummary[3][0] }}<br><br>{{ questionsDataForSummary[3][2] }}</dd>
+				  <dd class="cya-change">
+					  <a href="#">
+						  Change<span class="visually-hidden"> contact details</span>
+					  </a>
+				  </dd>
+			  </div>
+			  {% endif %}
+
+			  {% if questionsFive %}
+			  <div>
+				  <dt class="cya-question">
+					  Question 5<br><br>
+					  Answers
+				  </dt>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ questionsDataForSummary[4][0] }}<br><br>{{ questionsDataForSummary[4][2] }}</dd>
+				  <dd class="cya-change">
+					  <a href="#">
+						  Change<span class="visually-hidden"> contact details</span>
+					  </a>
+				  </dd>
+			  </div>
+			  {% endif %}
 
 		  </dl>
 

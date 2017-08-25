@@ -193,9 +193,16 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 
 
 // VENUE PAGE ONWARDS BUTTON
-router.get('/create-event/venue-onwards', function (req, res) {
+router.get('/create-event/venue-onwards', function (req, res)
+{
+
 
   console.log(req.session.data['full-address-holder']);
+
+  if(req.session.data['full-address-holder'] == "")
+  {
+    req.session.data['full-address-holder'] = "Not entered"
+  }
 
   res.redirect('/create-event/description');
 })
@@ -254,12 +261,18 @@ router.get('/create-event/images-onwards', function (req, res)
 
 
 // ATTENDEE PAGE ONWARDS BUTTON
-
+// Quantity of questions saved globally
+var quantityOfQuestions = 0;
 
 router.get('/create-event/attendee-onwards', function (req, res) {
 
   req.session.data['attendee-quantity'];
 
+  //  message for when tickets are gone and nothing is entered in the box
+  if(req.session.data['sold-out-message'] == "")
+  {
+    req.session.data['sold-out-message'] = "No message will be shown";
+  }
 
   // stuff for setting up a waiting list
   /*
@@ -278,6 +291,7 @@ router.get('/create-event/attendee-onwards', function (req, res) {
   // Add additional pages if there are additional questions
   console.log(req.session.data['radio-additional-questions-quantity']);
 
+  quantityOfQuestions = req.session.data['radio-additional-questions-quantity'];
 
 
 
@@ -293,7 +307,6 @@ router.get('/create-event/attendee-onwards', function (req, res) {
     {
       res.redirect('/create-event/summary');
     }
-
   }
   // Errors found so refresh page with errors
   else
@@ -388,9 +401,11 @@ router.get('/create-event/question-onwards', function (req, res)
       console.log(thisNewQuestionData[0]);
 
       // Type of answers
+      var answersString = "";
       if(req.session.data['radio-additional-questions-answers-type'] == "enter-text")
       {
         thisNewQuestionData[1] = "Enter text";
+        answersString="Enter text"
       }
       else if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
       {
@@ -403,15 +418,22 @@ router.get('/create-event/question-onwards', function (req, res)
       console.log(thisNewQuestionData[1]);
 
 
-      // Answers
-      for(answersIncrementer=1; answersIncrementer<11; answersIncrementer++)
+      if((req.session.data['radio-additional-questions-answers-type'] == "select-one") ||
+         (req.session.data['radio-additional-questions-answers-type'] == "select-multiple"))
       {
-        if(req.session.data['answer-'+answersIncrementer] != "")
+        // Check through answer boxes ad make a text string of them all
+        for(answersIncrementer=1; answersIncrementer<11; answersIncrementer++)
         {
-          thisNewQuestionData.push(req.session.data['answer-'+answersIncrementer]);
-          console.log(req.session.data['answer-'+answersIncrementer]);
+          if(req.session.data['answer-'+answersIncrementer] != "")
+          {
+            answersString = answersString + (req.session.data['answer-'+answersIncrementer]) + "\n";
+            console.log(req.session.data['answer-'+answersIncrementer]);
+          }
         }
       }
+
+      thisNewQuestionData[2]= answersString;
+
 
     // SAVE THE DATA TO THE ARRAY
     questionsData.push(thisNewQuestionData);
@@ -440,7 +462,7 @@ router.get('/create-event/question-onwards', function (req, res)
     else
     {
       // Final question move on to summary
-      res.redirect('/create-event/summary');
+      res.redirect('/create-event/summary-prelude');
     }
   }
 
@@ -472,12 +494,17 @@ router.get('/create-event/summary-prelude', function (req, res) {
   req.session.data['question-4'] = false;
   req.session.data['question-5'] = false;
 
-  for(var x=1; x<(req.session.data['radio-additional-questions-quantity']+1) ;x++)
+  for(var k=1; k<(parseInt(quantityOfQuestions)+1); k++)
   {
-    req.session.data['question-'+x] = true;
+    req.session.data['question-'+k] = true;
   }
 
-  console.log(req.session.data['question-1']);
+  console.log("quantity of questions + 1 is " + (parseInt(quantityOfQuestions)+1));
+  console.log("what is question one " + req.session.data['question-1']);
+  console.log("what is question two " + req.session.data['question-2']);
+  console.log("what is question three " + req.session.data['question-3']);
+  console.log("what is question four " + req.session.data['question-4']);
+  console.log("what is question five " + req.session.data['question-5']);
 
   res.render('create-event/summary',
       {
@@ -485,7 +512,8 @@ router.get('/create-event/summary-prelude', function (req, res) {
         'questionsTwo': req.session.data['question-2'],
         'questionsThree': req.session.data['question-3'],
         'questionsFour': req.session.data['question-4'],
-        'questionsFive': req.session.data['question-5']
+        'questionsFive': req.session.data['question-5'],
+        'questionsDataForSummary' : questionsData
       }
   );
 })
