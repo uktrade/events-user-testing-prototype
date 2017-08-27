@@ -138,13 +138,13 @@
 				  </dd>
 			  </div>
 
-			  {% if questionsOne %}
+			  {% if session.questionsExist[0] %}
 				  <div>
 					  <dt class="cya-question">
 						  Question 1<br><br>
 						  Answers
 					  </dt>
-					  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ questionsDataForSummary[0][0] }}<br><br>{{ questionsDataForSummary[0][2] }}</dd>
+					  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ session.questionsDataForSummary[0][0] }}<br><br>{{ session.questionsDataForSummary[0][2] }}</dd>
 					  <dd class="cya-change">
 						  <a href="#">
 							  Change<span class="visually-hidden"> contact details</span>
@@ -153,13 +153,13 @@
 				  </div>
 			  {% endif %}
 
-			  {% if questionsTwo %}
+			  {% if session.questionsExist[1] %}
 			  <div>
 				  <dt class="cya-question">
 					  Question 2<br><br>
 					  Answers
 				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ questionsDataForSummary[1][0] }}<br><br>{{ questionsDataForSummary[1][2] }}</dd>
+				  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ session.questionsDataForSummary[1][0] }}<br><br>{{ session.questionsDataForSummary[1][2] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>
@@ -168,13 +168,13 @@
 			  </div>
 			  {% endif %}
 
-			  {% if questionsThree %}
+			  {% if session.questionsExist[2] %}
 			  <div>
 				  <dt class="cya-question">
 					  Question 3<br><br>
 					  Answers
 				  </dt>
-				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ questionsDataForSummary[2][0] }}<br><br>{{ questionsDataForSummary[2][2] }}</dd>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsDataForSummary[2][0] }}<br><br>{{ session.questionsDataForSummary[2][2] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>
@@ -183,13 +183,13 @@
 			  </div>
 			  {% endif %}
 
-			  {% if questionsFour %}
+			  {% if session.questionsExist[3] %}
 			  <div>
 				  <dt class="cya-question">
 					  Question 4<br><br>
 					  Answers
 				  </dt>
-				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ questionsDataForSummary[3][0] }}<br><br>{{ questionsDataForSummary[3][2] }}</dd>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsDataForSummary[3][0] }}<br><br>{{ session.questionsDataForSummary[3][2] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>
@@ -198,13 +198,13 @@
 			  </div>
 			  {% endif %}
 
-			  {% if questionsFive %}
+			  {% if session.questionsExist[4] %}
 			  <div>
 				  <dt class="cya-question">
 					  Question 5<br><br>
 					  Answers
 				  </dt>
-				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ questionsDataForSummary[4][0] }}<br><br>{{ questionsDataForSummary[4][2] }}</dd>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsDataForSummary[4][0] }}<br><br>{{ session.questionsDataForSummary[4][2] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>

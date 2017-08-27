@@ -7,10 +7,110 @@ router.get('/', function (req, res) {
 })
 
 
+
+
+
+router.use(function (req, res, next)
+{
+  res.locals.session = req.session;
+
+  // Set up how many events there are
+  if(req.session.eventsLiveBoolean == undefined) {
+    req.session.eventsLiveBoolean = [false, false, false, false, false, false, false, false, false, false];
+  }
+  if(req.session.eventsDraftBoolean == undefined) {
+    req.session.eventsDraftBoolean = [false, false, false, false, false, false, false, false, false, false];
+  }
+  if(req.session.eventsTemplatesBoolean == undefined) {
+    req.session.eventsTemplatesBoolean = [false, false, false, false, false, false, false, false, false, false];
+  }
+  if(req.session.eventsPastBoolean == undefined) {
+    req.session.eventsPastBoolean = [false, false, false, false, false, false, false, false, false, false];
+  }
+  if(req.session.eventsLive == undefined) {
+    req.session.eventsLive = [];
+  }
+  if(req.session.eventsDraft == undefined) {
+    req.session.eventsDraft = [];
+  }
+  if(req.session.eventsTemplates == undefined) {
+    req.session.eventsTemplates = [];
+  }
+  if(req.session.eventsPast == undefined) {
+    req.session.eventsPast = [];
+  }
+
+
+  // Setting up the store for the questiosna and answers
+// 2D. one item per question.  Second demotion is Question, Answer type, Answer, Answer...Answer
+  if(req.session.questionsData == undefined)
+  {
+    req.session.questionsData = [];
+  }
+
+  if(req.session.questionsExist == undefined) {
+    req.session.questionsExist = [false, false, false, false, false];
+  }
+
+// ATTENDEE PAGE ONWARDS BUTTON
+// Quantity of questions saved globally
+
+  if(req.session.quantityOfQuestions == undefined) {
+    req.session.quantityOfQuestions = 0;
+  }
+
+  console.log("INITIAL CODE RUN ______________");
+
+  next();
+
+});
+
+
 // SIGNING PAGE
-router.get('/signin-output', function (req, res) {
-  res.redirect('/account');
+router.get('/homepage-prelude', function (req, res)
+{
+  console.log("the first event from data is " + req.session.eventsDraftBoolean[0]);
+  console.log("event title is saved as HOMEPAGE LENGTH  " + req.session.eventsDraft.length);
+  if(1 <  req.session.eventsDraft.length )
+  {
+    console.log("event title is saved as HOMEPAGE" + req.session.eventsDraft[0][0]);
+  }
+
+
+  res.redirect('account/index');
 })
+
+
+router.get('/scenario-1', function (req, res)
+{
+  // empty account
+  res.redirect('/signin');
+})
+
+router.get('/scenario-2', function (req, res)
+{
+  // empty account
+  res.redirect('/signin');
+})
+
+router.get('/scenario-3', function (req, res)
+{
+  // empty account
+  res.redirect('/signin');
+})
+
+router.get('/scenario-4', function (req, res)
+{
+  // empty account
+  res.redirect('/signin');
+})
+
+router.get('/scenario-5', function (req, res)
+{
+  // empty account
+  res.redirect('/signin');
+})
+
 
 
 
@@ -188,10 +288,6 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 
 
 
-
-
-
-
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/venue-onwards', function (req, res)
 {
@@ -260,9 +356,7 @@ router.get('/create-event/images-onwards', function (req, res)
 
 
 
-// ATTENDEE PAGE ONWARDS BUTTON
-// Quantity of questions saved globally
-var quantityOfQuestions = 0;
+
 
 router.get('/create-event/attendee-onwards', function (req, res) {
 
@@ -291,9 +385,13 @@ router.get('/create-event/attendee-onwards', function (req, res) {
   // Add additional pages if there are additional questions
   console.log(req.session.data['radio-additional-questions-quantity']);
 
-  quantityOfQuestions = req.session.data['radio-additional-questions-quantity'];
+  req.session.quantityOfQuestions = req.session.data['radio-additional-questions-quantity'];
 
-
+  // record in array which questions will exist
+  for(var d=0; d<req.session.quantityOfQuestions; d++)
+  {
+    req.session.questionsExist[d] = true;
+  }
 
   // check for errors
   if(0 < req.session.data['attendee-quantity'])
@@ -305,7 +403,7 @@ router.get('/create-event/attendee-onwards', function (req, res) {
     }
     else
     {
-      res.redirect('/create-event/summary');
+      res.redirect('/create-event/summary-prelude');
     }
   }
   // Errors found so refresh page with errors
@@ -321,9 +419,6 @@ router.get('/create-event/attendee-onwards', function (req, res) {
 
 
 
-// Setting up the store for the questiosna and answers
-// 2D. one item per question.  Second demotion is Question, Answer type, Answer, Answer...Answer
-var questionsData = [];
 
 
 
@@ -436,7 +531,7 @@ router.get('/create-event/question-onwards', function (req, res)
 
 
     // SAVE THE DATA TO THE ARRAY
-    questionsData.push(thisNewQuestionData);
+    req.session.questionsData.push(thisNewQuestionData);
 
 
 
@@ -488,38 +583,63 @@ router.get('/create-event/question-onwards', function (req, res)
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/summary-prelude', function (req, res) {
 
-  req.session.data['question-1'] = false;
-  req.session.data['question-2'] = false;
-  req.session.data['question-3'] = false;
-  req.session.data['question-4'] = false;
-  req.session.data['question-5'] = false;
 
-  for(var k=1; k<(parseInt(quantityOfQuestions)+1); k++)
-  {
-    req.session.data['question-'+k] = true;
-  }
+  console.log("quantity of questions + 1 is " + (parseInt(req.session.quantityOfQuestions)+1));
+  console.log("question one existis " + req.session.questionsExist[0]);
 
-  console.log("quantity of questions + 1 is " + (parseInt(quantityOfQuestions)+1));
-  console.log("what is question one " + req.session.data['question-1']);
-  console.log("what is question two " + req.session.data['question-2']);
-  console.log("what is question three " + req.session.data['question-3']);
-  console.log("what is question four " + req.session.data['question-4']);
-  console.log("what is question five " + req.session.data['question-5']);
+  res.redirect('/store-current-event');
 
-  res.render('create-event/summary',
-      {
-        'questionsOne': req.session.data['question-1'],
-        'questionsTwo': req.session.data['question-2'],
-        'questionsThree': req.session.data['question-3'],
-        'questionsFour': req.session.data['question-4'],
-        'questionsFive': req.session.data['question-5'],
-        'questionsDataForSummary' : questionsData
-      }
-  );
+})
+
+
+router.get('/create-event/summary-page', function (req, res)
+{
+  //console.log("event title is saved as suymmary" + req.session.eventsDraft[0].get('title'));
+  res.redirect('/create-event/summary');
+
 })
 
 
 
+
+
+// STORE EVENT
+router.get('/store-current-event', function (req, res)
+{
+  var eventDataMap = [];
+  eventDataMap[0] = req.session.data['event-title'];
+  eventDataMap[1] = req.session.data['event-start-time'];
+  eventDataMap[2] = req.session.data['event-finish-time'];
+  eventDataMap[3] = req.session.data['event-day'];
+  eventDataMap[4] = req.session.data['event-month'];
+  eventDataMap[5] = req.session.data['event-month-name'];
+  eventDataMap[6] = req.session.data['event-year'];
+  eventDataMap[7] = req.session.data['full-address-holder'];
+  eventDataMap[8] = req.session.data['attendee-quantity'];
+  eventDataMap[9] = req.session.data['sold-out-message'];
+  eventDataMap[10] = req.session.data['event-description'];
+  eventDataMap[11] = req.session.questionsExist;
+  eventDataMap[12] = req.session.questionsData;
+
+  //eventDataMap.set('imageURL', req.session.data['event-title']);
+
+
+  req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
+  req.session.eventsDraft.push(eventDataMap);
+
+
+  console.log("event title is saved as " + req.session.eventsDraft[0][0]);
+
+  res.redirect('/create-event/summary-page');
+})
+
+
+
+
+router.get('/clear-session', function (req, res) {
+  req.session.destroy();
+  res.redirect('/');
+});
 
 
 
@@ -527,3 +647,7 @@ router.get('/create-event/summary-prelude', function (req, res) {
 
 
 module.exports = router
+
+
+
+

@@ -11,137 +11,86 @@
     <div class="column-full">
 
       <h1 class="heading-large">
-        Business West events
+        Region abcxyz events
       </h1>{{releaseVersion | log }}
 
 
 
-		<!--
-		<h2 class="heading-medium">
-			Your upcoming events
-		</h2>
-		-->
 
-		<table style="width:100%">
-			<thead>
-				<tr>
-					<th scope="col" style="width:52%"> </th>
-					<th class="col" style="width:20%" scope="col"></th>
-					<th class="col" style="width:16%" scope="col"></th>
-					<th class="col" style="width:13%" scope="col"></th>
-				</tr>
-			</thead>
+		<!--  TABS FOR TYPES OF EVENT STATUS  -->
 
-			<tbody>
-				<tr>
-					<th scope="row">Up and Away at Bristol's International Balloon Fiesta<br>
-						<table>
-							<thead>
-							<tr>
-								<td valign="top" style="border: 0px"><a href="#">View event page</a></td>
-								<td valign="top" style="border: 0px"><a href="#">Monitor event</a></td>
-								<td valign="top" style="width:40%; border: 0px; padding-right: 0px;">
-									<details style="display:inline;">
-										<summary><span class="summary">More options</span></summary>
-										<div class="panel panel-border-narrow">
-											<p>
-												<a href="#">Edit event</a> <br>
-												<a href="#">Clone event</a>   <br>
-												<a href="#">Close registrations</a> <br>
-												<a href="#">Delete event</a>
-											</p>
-										</div>
-									</details>
-								</td>
-							</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</th>
-					<td class="row" valign="top">25 September 2017</td>
-					<td class="row" valign="top">20 tickets left</td>
-					<td class="row" valign="top" style="padding-right:0px; font-weight:700; color:#B10E1E;">Private draft</td>
+		<div class="tabs">
 
-				</tr>
-
-			</tbody>
-		</table>
-
-
-
-		<form action="/create-event" method="get" class="form">
-			<br>
-			<br>
-			<div class="form-group">
-				<input type="submit" class="button-secondary" value="Create new event">
+			<div class="tabs-nav">
+				<ul class="tabs-list">
+					<li><a class="address" href="#live-events">Live</a></li>
+					<li><a class="name" href="#draft-events">Draft</a></li>
+					<li><a class="phone" href="#template-events">Templates</a></li>
+					<li><a class="email" href="#past-events">Past</a></li>
+				</ul>
 			</div>
-			<br>
-			<br>
-		</form>
-
-		<h2 class="heading-medium" style="margin-bottom: 0px">
-			Past events
-		</h2>
 
 
-		<table style="width:100%">
-			<thead>
-			<tr>
-				<th scope="col" style="width:52%"></th>
-				<th class="col" style="width:20%" scope="col"></th>
-				<th class="col" style="width:16%" scope="col"></th>
-				<th class="col" style="width:13%" scope="col"></th>
-			</tr>
-			</thead>
 
-			<tbody>
-			<tr>
-				<th scope="row">Marketing Made Easy<br>
-					<table>
-						<thead>
-						<tr>
-							<td valign="top" style="border: 0px"><a href="#">View event page</a></td>
-							<td valign="top" style="border: 0px"><a href="#">Monitor event</a></td>
-							<td valign="top" style="width:40%; border: 0px; padding-right: 0px;">
-								<details style="display:inline;">
-									<summary><span class="summary">More options</span></summary>
-									<div class="panel panel-border-narrow">
-										<p>
-											<a href="#">Edit event</a> <br>
-											<a href="#">Clone event</a>   <br>
-											<a href="#">Close registrations</a> <br>
-											<a href="#">Delete event</a>
-										</p>
-									</div>
-								</details>
-							</td>
-						</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				</th>
-				<td class="row" valign="top">15 August 2017</td>
-				<td class="row" valign="top"></td>
-				<td class="row" valign="top" style="padding-right:0px; font-weight:700; ">Finished</td>
+			<div class="tabs-content">
 
-			</tr>
+				<!-- Live -->
+				<div class="tabs-panel" id="live-events" style="border-left:1px solid #bfc1c3; border-right:1px solid #bfc1c3;">
+					<div class="tabs-panel-inner">
 
-			</tbody>
-		</table>
+					</div>
+				</div>
+
+				<!--  Draft   -->
+				<div class="tabs-panel" id="draft-events" style="border-top:1px solid #bfc1c3;">
+					<div class="tabs-panel-inner">
+						{% include "includes/draft-events.html" %}
+					</div>
+				</div>
+
+				<!--  Templates   -->
+				<div class="tabs-panel" id="template-events" style="border-left:1px solid #bfc1c3; border-right:1px solid #bfc1c3;">
+					<div class="tabs-panel-inner">
+
+					</div>
+				</div>
+
+				<!--   Past   -->
+				<div class="tabs-panel" id="past-events" style="border-left:1px solid #bfc1c3; border-right:1px solid #bfc1c3;">
+					<div class="tabs-panel-inner">
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
 
 
 
 
+		<br>
+
+		<br>
+
+		<br>
 
 
 
-<br>
+		<br>
+		<br>
 
     </div>
   </div>
 </main>
+
+
+
+
+
+
+
+<script src="/public/javascripts/jquery.tabs.js" type="text/javascript"></script>
 
 {% endblock %}
 
