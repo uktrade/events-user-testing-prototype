@@ -16,7 +16,7 @@ border-top:0!important
 width:42%
 }
 .tabs-nav li a {
-font-size:16px
+font-size:24px
 }
 @media (min-width: 641px) {
 .tabs [role="tablist"] {
@@ -61,7 +61,7 @@ outline:3px
 border:0 none;
 float:left;
 margin:.26316em .26316em .26316em 0;
-padding:.47368em 1em;
+padding:.47368em 2em;
 text-align:center;
 text-decoration: underline;
 }
@@ -78,7 +78,8 @@ text-decoration: underline;
 background-color:#fff;
 color:#0b0c0c;
 cursor:default;
-text-decoration:none
+text-decoration:none;
+font-weight:700;
 }
 @media (min-width: 641px) {
 .tabs [role="tablist"] li [aria-selected="true"] {
@@ -86,7 +87,7 @@ border:1px solid #bfc1c3;
 border-bottom:1px solid transparent;
 margin-top:0;
 margin-bottom:0;
-padding:.68421em .94737em .73684em
+padding:.68421em 1.95em .73684em
 }
 }
 .tabs-content {

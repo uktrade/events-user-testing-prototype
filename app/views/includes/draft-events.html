@@ -2,19 +2,19 @@
 <!--  MACRO TO MAKE EACH DRAFT LINE ITEM -->
 {% macro draftEvent(itemRow) %}
 <tr>
-  <th scope="row">{{ session.eventsDraft[itemRow][0] }}<br>
+  <th scope="row" style="padding-top:18px; padding-bottom: 11px;">{{ session.eventsDraft[itemRow][0] }}<br>
     <table style="margin-top: 0px;">
       <thead>
       <tr>
-        <td valign="top" style="border: 0px; padding-top: 8px;"><a href="#">View event page</a></td>
-        <td valign="top" style="border: 0px; padding-top: 8px;"><a href="#">Monitor event</a></td>
-        <td valign="top" style="width:40%; border: 0px; padding-right: 0px;; padding-top: 8px;">
+        <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 0px;"><a href="#">View event page</a></td>
+        <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 0px;"><a href="#">Monitor event</a></td>
+        <td valign="top" style="width:40%; border: 0px; padding-right: 0px; padding-top: 2px; padding-bottom: 0px;">
           <details style="display:inline;">
             <summary><span class="summary">More options</span></summary>
             <div class="panel panel-border-narrow">
               <p>
                 <a href="#">Edit event</a> <br>
-                <a href="#">Clone event</a>   <br>
+                <a href="/clone-event">Clone event</a>   <br>
                 <a href="#">Close registrations</a> <br>
                 <a href="#">Delete event</a>
               </p>
@@ -27,9 +27,9 @@
       </tbody>
     </table>
   </th>
-  <td class="row" valign="top">{{ session.eventsDraft[itemRow][3] }} {{ session.eventsDraft[itemRow][5] }} {{ session.eventsDraft[itemRow][6] }}</td>
-  <td class="row" valign="top">20 tickets left</td>
-  <td class="row" valign="top" style="padding-right:0px; font-weight:700; color:#B10E1E;">Private draft</td>
+  <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px;">{{ session.eventsDraft[itemRow][3] }} {{ session.eventsDraft[itemRow][5] }} {{ session.eventsDraft[itemRow][6] }}</td>
+  <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px; padding-right:0px; text-align:right;">{{ session.eventsDraft[itemRow][8] }} tickets</td>
+  <!--<td class="row" valign="top" style="padding-right:0px; font-weight:700; color:#B10E1E;">Private draft</td>-->
 </tr>
 {% endmacro %}
 
@@ -39,22 +39,41 @@
 
 <div >
 
-  <!-- EVENT ONE  -->
-  <table style="width:100%;">
-    <thead>
-    <tr>
-      <th scope="col" style="width:52%; border-bottom: 0px; padding-top: 0px;"> </th>
-      <th class="col" style="width:20%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>
-      <th class="col" style="width:16%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>
-      <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>
-    </tr>
-    </thead>
+  <!-- EMPTY LIST STATE  -->
+  {% if session.eventsDraft.length == 0 %}
+    <br>
+    <br>
 
-    <tbody>
+    <p>You don't have any live events right now.</p>
+
+    <form action="/create-event/new" method="get" class="form">
+
+      <div class="form-group">
+        <input type="submit" class="button-secondary" value="Create new event">
+      </div>
+
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  {% else %}
+    <table style="width:100%;">
+      <thead>
+      <tr>
+        <th scope="col" style="width:65%; border-bottom: 0px; padding-top: 0px;"> </th>
+        <th class="col" style="width:20%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>
+        <th class="col" style="width:16%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>
+        <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+      </tr>
+      </thead>
+
+      <tbody>
 
       <!-- EVENT ONE  -->
       {% if session.eventsDraftBoolean[0] %}
-          {{ draftEvent(0) }}
+        {{ draftEvent(0) }}
       {% endif %}
 
       <!-- EVENT TWO  -->
@@ -67,8 +86,11 @@
         {{ draftEvent(2) }}
       {% endif %}
 
+      </tbody>
+    </table>
+  {% endif %}
 
-    </tbody>
-  </table>
+
+
 
 </div>

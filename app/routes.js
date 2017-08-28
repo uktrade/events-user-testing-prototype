@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
 
 
 
-
+// SETUP STUFF
 router.use(function (req, res, next)
 {
   res.locals.session = req.session;
@@ -40,6 +40,13 @@ router.use(function (req, res, next)
     req.session.eventsPast = [];
   }
 
+  // Making a change from summary
+  if(req.session.changingFromSummary == undefined) {
+    req.session.changingFromSummary = false;
+  }
+
+
+
 
   // Setting up the store for the questiosna and answers
 // 2D. one item per question.  Second demotion is Question, Answer type, Answer, Answer...Answer
@@ -52,9 +59,8 @@ router.use(function (req, res, next)
     req.session.questionsExist = [false, false, false, false, false];
   }
 
-// ATTENDEE PAGE ONWARDS BUTTON
-// Quantity of questions saved globally
-
+  // ATTENDEE PAGE ONWARDS BUTTON
+  // Quantity of questions saved globally
   if(req.session.quantityOfQuestions == undefined) {
     req.session.quantityOfQuestions = 0;
   }
@@ -113,10 +119,86 @@ router.get('/scenario-5', function (req, res)
 
 
 
+// CREATE EVENT SETUP
+// VENUE PAGE ONWARDS BUTTON
+router.get('/create-event/new', function (req, res)
+{
+  req.session.data['event-title'] = undefined;
+  req.session.data['start-hours'] = undefined;
+  req.session.data['start-minutes'] = undefined;
+  req.session.data['finish-hours'] = undefined;
+  req.session.data['finish-minutes'] = undefined;
+  req.session.data['event-start-time'] = undefined;
+  req.session.data['event-finish-time'] = undefined;
+  req.session.data['event-day'] = undefined;
+  req.session.data['event-month'] = undefined;
+  req.session.data['event-month-name'] = undefined;
+  req.session.data['event-year'] = undefined;
+  req.session.data['full-address-holder'] = undefined;
+  req.session.data['attendee-quantity'] = undefined;
+  req.session.data['sold-out-message'] = undefined;
+  req.session.data['event-description'] = undefined;
+  req.session.questionsExist = undefined;
+  req.session.questionsData = undefined;
+
+  req.session.data['question'] = undefined;
+  req.session.data['radio-additional-questions-answers-type'] = undefined;
+  for(var x=1; x<11; x++)
+  {
+    req.session.data['answer-'+x] = "";
+  }
+
+  res.redirect('/create-event/');
+})
+
+
+
+
+
+
+
+
+// Clear current event data
+router.get('/clear-current-event-data', function (req, res)
+{
+  req.session.data['event-title'] = undefined;
+  req.session.data['start-hours'] = undefined;
+  req.session.data['start-minutes'] = undefined;
+  req.session.data['finish-hours'] = undefined;
+  req.session.data['finish-minutes'] = undefined;
+  req.session.data['event-start-time'] = undefined;
+  req.session.data['event-finish-time'] = undefined;
+  req.session.data['event-day'] = undefined;
+  req.session.data['event-month'] = undefined;
+  req.session.data['event-month-name'] = undefined;
+  req.session.data['event-year'] = undefined;
+  req.session.data['full-address-holder'] = undefined;
+  req.session.data['attendee-quantity'] = undefined;
+  req.session.data['sold-out-message'] = undefined;
+  req.session.data['event-description'] = undefined;
+  req.session.questionsExist = undefined;
+  req.session.questionsData = undefined;
+
+  req.session.data['question'] = undefined;
+  req.session.data['radio-additional-questions-answers-type'] = undefined;
+  for(var x=1; x<11; x++)
+  {
+    req.session.data['answer-'+x] = "";
+  }
+
+  console.log("STUFF RAN FINE");
+
+  res.redirect('/create-event/summary');
+
+})
+
+
+
+
 
 // CREATE EVENT ONWARDS TO NEXT PAGE
-router.get('/create-event/create-event-onwards', function (req, res) {
-
+router.get('/create-event/create-event-onwards', function (req, res)
+{
   // Save event date
   req.session.data['event-day'];
   req.session.data['event-month'];
@@ -131,7 +213,6 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 
   var errorFinishHour = false;
   var errorFinishMinutes = false;
-
 
 
   // DAY
@@ -196,7 +277,7 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 
   if (req.session.data['start-minutes']  == "")
   {
-    req.session.data['start-minutes'] = -1;
+    req.session.data['start-minutes'] = "00";
   }
   if (req.session.data['start-minutes'] != undefined )
   {
@@ -234,7 +315,7 @@ router.get('/create-event/create-event-onwards', function (req, res) {
     // MINUTES CHECK
     if (req.session.data['finish-minutes']  == "")
     {
-      req.session.data['finish-minutes'] = -1;
+      req.session.data['finish-minutes'] = "00";
     }
     if(0 <= req.session.data['finish-minutes'] && req.session.data['finish-minutes'] <= 60)
     {}
@@ -252,13 +333,18 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 
 
 
-
-
-
-
+  // no errors
   if((errorDayFound || errorMonthFound || errorYearFound  || errorStartHour || errorStartMinutes || errorFinishHour || errorFinishMinutes) == false)
   {
-    res.redirect('/create-event/venue');
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/venue');
+    }
+
   }
   else
   {
@@ -287,7 +373,6 @@ router.get('/create-event/create-event-onwards', function (req, res) {
 
 
 
-
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/venue-onwards', function (req, res)
 {
@@ -302,7 +387,6 @@ router.get('/create-event/venue-onwards', function (req, res)
 
   res.redirect('/create-event/description');
 })
-
 
 
 
@@ -350,9 +434,6 @@ router.get('/create-event/images-onwards', function (req, res)
     );
   }
 })
-
-
-
 
 
 
@@ -416,7 +497,6 @@ router.get('/create-event/attendee-onwards', function (req, res) {
     );
   }
 })
-
 
 
 
@@ -580,32 +660,18 @@ router.get('/create-event/question-onwards', function (req, res)
 })
 
 
+
+
+
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/summary-prelude', function (req, res) {
+
 
 
   console.log("quantity of questions + 1 is " + (parseInt(req.session.quantityOfQuestions)+1));
   console.log("question one existis " + req.session.questionsExist[0]);
 
-  res.redirect('/store-current-event');
 
-})
-
-
-router.get('/create-event/summary-page', function (req, res)
-{
-  //console.log("event title is saved as suymmary" + req.session.eventsDraft[0].get('title'));
-  res.redirect('/create-event/summary');
-
-})
-
-
-
-
-
-// STORE EVENT
-router.get('/store-current-event', function (req, res)
-{
   var eventDataMap = [];
   eventDataMap[0] = req.session.data['event-title'];
   eventDataMap[1] = req.session.data['event-start-time'];
@@ -624,14 +690,108 @@ router.get('/store-current-event', function (req, res)
   //eventDataMap.set('imageURL', req.session.data['event-title']);
 
 
-  req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
-  req.session.eventsDraft.push(eventDataMap);
+  // FOR NEW EVENTS
+  if(req.session.changingFromSummary == false)
+  {
+    req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
+    req.session.eventsDraft.push(eventDataMap);
+  }
+  else   //  FOR CHANGES TO EXISTING EVENTS
+  {
+    //req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
+    // NEEDS FIXING - blindly assuming the event being edited is the most recent event created
+    req.session.eventsDraft.pop;
+    req.session.eventsDraft.push(eventDataMap);
+  }
 
+
+
+
+
+  // WIPE flag for changes from summary page
+  req.session.changingFromSummary = false;
 
   console.log("event title is saved as " + req.session.eventsDraft[0][0]);
 
-  res.redirect('/create-event/summary-page');
+  res.redirect('/create-event/summary');
+
 })
+
+
+
+
+
+
+// CHANGE DETAILS LINKS
+router.get('/create-event/change-date', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event');
+})
+
+
+
+
+
+
+// STORE EVENT
+router.get('/clone-event', function (req, res)
+{
+  req.session.data['start-hours'] = undefined;
+  req.session.data['start-minutes'] = undefined;
+  req.session.data['finish-hours'] = undefined;
+  req.session.data['finish-minutes'] = undefined;
+  req.session.data['event-start-time'] = undefined;
+  req.session.data['event-finish-time'] = undefined;
+  req.session.data['event-day'] = undefined;
+  req.session.data['event-month'] = undefined;
+  req.session.data['event-month-name'] = undefined;
+  req.session.data['event-year'] = undefined;
+  req.session.data['full-address-holder'] = undefined;
+  req.session.data['attendee-quantity'] = undefined;
+  req.session.data['sold-out-message'] = undefined;
+  req.session.data['event-description'] = undefined;
+  req.session.questionsExist = undefined;
+  req.session.questionsData = undefined;
+
+  req.session.data['question'] = undefined;
+  req.session.data['radio-additional-questions-answers-type'] = undefined;
+  for(var x=1; x<11; x++)
+  {
+    req.session.data['answer-'+x] = "";
+  }
+
+
+
+
+
+  console.log("EVENT CLONE HAPPENING");
+
+  var eventDataMapTEMP = req.session.eventsDraft[0];
+
+  req.session.data['event-title'] = eventDataMapTEMP[0];
+  req.session.data['event-start-time'] = eventDataMapTEMP[1];
+  req.session.data['event-finish-time'] = eventDataMapTEMP[2];
+  req.session.data['event-day'] = eventDataMapTEMP[3];
+  req.session.data['event-month'] = eventDataMapTEMP[4];
+  req.session.data['event-month-name'] = eventDataMapTEMP[5];
+  req.session.data['event-year'] = eventDataMapTEMP[6];
+  req.session.data['full-address-holder'] = eventDataMapTEMP[7];
+  req.session.data['attendee-quantity'] = eventDataMapTEMP[8];
+  req.session.data['sold-out-message'] = eventDataMapTEMP[9];
+  req.session.data['event-description'] = eventDataMapTEMP[10];
+  req.session.questionsExist = eventDataMapTEMP[11];
+  req.session.questionsData = eventDataMapTEMP[12];
+
+  req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
+  req.session.eventsDraft.push(eventDataMapTEMP);
+
+  console.log("Loaded event title is " + req.session.data['event-title']);
+
+  res.redirect('/create-event/summary-prelude');
+})
+
 
 
 

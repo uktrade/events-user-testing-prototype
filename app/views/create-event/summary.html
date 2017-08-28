@@ -23,7 +23,7 @@
 
 	  <br>
 
-	  <form action="/" method="get" class="form">
+	  <form action="/account" method="get" class="form">
 
 
 
@@ -54,8 +54,8 @@
 					  {{ data['event-start-time'] }} to {{ data['event-finish-time'] }}
 				  </dd>
 				  <dd class="cya-change">
-					  <a href="#">
-						  Change<span class="visually-hidden"> date of birth</span>
+					  <a href="/create-event/change-date">
+						  Change
 					  </a>
 				  </dd>
 			  </div>
@@ -68,8 +68,8 @@
 					  {{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
 				  </dd>
 				  <dd class="cya-change">
-					  <a href="#">
-						  Change<span class="visually-hidden">date of birth</span>
+					  <a href="/create-event/change-date">
+						  Change
 					  </a>
 				  </dd>
 			  </div>
@@ -81,7 +81,7 @@
 				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</dd>
 				  <dd class="cya-change ">
 					  <a href="#">
-						  Change<span class="visually-hidden">home address</span>
+						  Change
 					  </a>
 				  </dd>
 			  </div>
@@ -144,7 +144,7 @@
 						  Question 1<br><br>
 						  Answers
 					  </dt>
-					  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ session.questionsDataForSummary[0][0] }}<br><br>{{ session.questionsDataForSummary[0][2] }}</dd>
+					  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ session.questionsData[0][0] }}<br><br>{{ session.questionsData[0][2] }}</dd>
 					  <dd class="cya-change">
 						  <a href="#">
 							  Change<span class="visually-hidden"> contact details</span>
@@ -159,7 +159,7 @@
 					  Question 2<br><br>
 					  Answers
 				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ session.questionsDataForSummary[1][0] }}<br><br>{{ session.questionsDataForSummary[1][2] }}</dd>
+				  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ session.questionsData[1][0] }}<br><br>{{ session.questionsData[1][2] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>
@@ -174,7 +174,7 @@
 					  Question 3<br><br>
 					  Answers
 				  </dt>
-				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsDataForSummary[2][0] }}<br><br>{{ session.questionsDataForSummary[2][2] }}</dd>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[2][0] }}<br><br>{{ session.questionsData[2][2] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>
@@ -189,7 +189,7 @@
 					  Question 4<br><br>
 					  Answers
 				  </dt>
-				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsDataForSummary[3][0] }}<br><br>{{ session.questionsDataForSummary[3][2] }}</dd>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[3][0] }}<br><br>{{ session.questionsData[3][2] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>
@@ -204,7 +204,7 @@
 					  Question 5<br><br>
 					  Answers
 				  </dt>
-				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsDataForSummary[4][0] }}<br><br>{{ session.questionsDataForSummary[4][2] }}</dd>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[4][0] }}<br><br>{{ session.questionsData[4][2] }}</dd>
 				  <dd class="cya-change">
 					  <a href="#">
 						  Change<span class="visually-hidden"> contact details</span>

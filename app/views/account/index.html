@@ -12,21 +12,19 @@
 
       <h1 class="heading-large">
         Region abcxyz events
-      </h1>{{releaseVersion | log }}
-
-
+      </h1>
 
 
 		<!--  TABS FOR TYPES OF EVENT STATUS  -->
 
-		<div class="tabs">
+		<div class="tabs" style="margin-top:30px;">
 
 			<div class="tabs-nav">
 				<ul class="tabs-list">
-					<li><a class="address" href="#live-events">Live</a></li>
-					<li><a class="name" href="#draft-events">Draft</a></li>
-					<li><a class="phone" href="#template-events">Templates</a></li>
-					<li><a class="email" href="#past-events">Past</a></li>
+					<li><a class="address" href="#live-events" style="text-decoration: none;">Live</a></li>
+					<li><a class="name" href="#draft-events" style="text-decoration: none;">Draft</a></li>
+					<li><a class="phone" href="#template-events" style="text-decoration: none;">Templates</a></li>
+					<li><a class="email" href="#past-events" style="text-decoration: none;">Past</a></li>
 				</ul>
 			</div>
 
@@ -35,9 +33,25 @@
 			<div class="tabs-content">
 
 				<!-- Live -->
-				<div class="tabs-panel" id="live-events" style="border-left:1px solid #bfc1c3; border-right:1px solid #bfc1c3;">
+				<div class="tabs-panel" id="live-events" style="border-top:1px solid #bfc1c3;">
 					<div class="tabs-panel-inner">
+						<br>
+						<br>
 
+						<p>You don't have any live events right now.</p>
+
+						<form action="/create-event/new" method="get" class="form">
+
+							<div class="form-group">
+								<input type="submit" class="button-secondary" value="Create new event">
+							</div>
+
+						</form>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
 					</div>
 				</div>
 
@@ -68,15 +82,10 @@
 
 
 
-
 		<br>
-
 		<br>
-
 		<br>
-
-
-
+		<br>
 		<br>
 		<br>
 
