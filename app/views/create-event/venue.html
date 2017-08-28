@@ -32,28 +32,47 @@
 
 			  <input class="form-control" id="autocomplete" type="text" style="width:100%;" placeholder=""> </input>
 
-			  <div style="padding-bottom:82px" id="initial-filler-sapce">
+			  <div style="padding-bottom:100px" id="initial-filler-sapce">
 					<p>&nbsp;</p>
 			  </div>
 
 			  <div id="edit-address" style="display: none;">
 
-				  <p>
-					  <span id="premise"></span><br>
-					  <span id="street_number"></span><span id="route"></span><br>
-					  <span id="postal_town"></span><br>
-					  <span id="postal_code"></span><br>
+
+				  <textarea class="form-control" name="full-address-holder" id="full-address-holder" rows="6" style="width: 50%; " ></textarea>
+
+
+				  <p style="white-space: pre-wrap;" style="display:none">
+					  <span id="premise"></span>
+					  <span id="subpremise"></span>
+
+					  <span id="street_number"></span><span id="route"></span>
+					  <span id="postal_town"></span>
+					  <span id="postal_code"></span>
+
+					  <span id="administrative_area_level_3"></span>
+					  <span id="administrative_area_level_2"></span>
+					  <span id="administrative_area_level_1"></span>
+
+					  <span id="point_of_interest"></span>
+
+					  <span id="establishment"></span>
+					  <span id="street_address"></span>
+
 				  </p>
 
+				  <br>
+					<!--
 				  <p>
-					  <a href="#">Edit address</a> or <a href="#">enter a new address</a>
+					  <a href="#">Edit address</a> or <a href="/create-event/venue">enter a new address</a>
 				  </p>
+				  -->
 
 			  </div>
 		  </div>
 
 
-		  <textarea class="form-control" name="full-address-holder" id="full-address-holder" rows="5" style="width: 100%; display: none;"></textarea>
+
 
 		  <div class="form-group" style="margin-top:20px">
 			  <input type="submit" class="button" value="Continue">
@@ -68,6 +87,10 @@
 
     </div>
   </div>
+
+
+
+
 
 
 	<script>
@@ -85,6 +108,13 @@
 			route: 'long_name',
 			postal_town: 'long_name',
 			postal_code: 'long_name'
+			//establishment: 'long_name',
+			//street_address : 'long_name'
+			//administrative_area_level_3: 'long_name',
+			//administrative_area_level_2: 'long_name',
+			//administrative_area_level_1: 'long_name',
+			//point_of_interest: 'long_name',
+			//subpremise: 'long_name'
 		};
 
 		function initAutocomplete() {
@@ -94,10 +124,17 @@
 					/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
 					{types: ['geocode']});
 
+			// GUY CODE
+			autocomplete.setComponentRestrictions({'country': ['gb']});
+
+
 			// When the user selects an address from the dropdown, populate the address
 			// fields in the form.
 			autocomplete.addListener('place_changed', fillInAddress);
 		}
+
+
+
 
 		function fillInAddress() {
 			// Get the place details from the autocomplete object.
@@ -107,6 +144,10 @@
 				document.getElementById(component).value = '';
 				document.getElementById(component).disabled = false;
 			}
+
+
+			// GUY CODE - WIFE PREVIOUSE ADDRESSES LOOKED UP
+			document.getElementById('full-address-holder').value = "";
 
 			// Get each component of the address from the place details
 			// and fill the corresponding field on the form.
@@ -149,8 +190,7 @@
 
 
 
-
-
+		///  GUY - NEVER GONNA USE THIS I THINK
 
 		// Bias the autocomplete object to the user's geographical location,
 		// as supplied by the browser's 'navigator.geolocation' object.

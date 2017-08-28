@@ -40,8 +40,8 @@
 					  {{ data['event-title'] }}
 				  </dd>
 				  <dd class="cya-change">
-					  <a href="#">
-						  Change<span class="visually-hidden"> name</span>
+					  <a href="/create-event/change-description">
+						  Change
 					  </a>
 				  </dd>
 			  </div>
@@ -90,12 +90,12 @@
 				  <dt class="cya-question">
 					  Attendee places
 				  </dt>
-				  <dd class="cya-answer">
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">
 					  {{ data['attendee-quantity'] }}
 				  </dd>
 				  <dd class="cya-change">
-					  <a href="#">
-						  Change<span class="visually-hidden"> contact details</span>
+					  <a href="/create-event/change-attendees">
+						  Change
 					  </a>
 				  </dd>
 			  </div>
@@ -108,8 +108,8 @@
 					  {{ data['sold-out-message'] }}
 				  </dd>
 				  <dd class="cya-change">
-					  <a href="#">
-						  Change<span class="visually-hidden"> contact details</span>
+					  <a href="/create-event/change-attendees">
+						  Change
 					  </a>
 				  </dd>
 			  </div>
@@ -120,8 +120,8 @@
 				  </dt>
 				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
 				  <dd class="cya-change">
-					  <a href="#">
-						  Change<span class="visually-hidden"> contact details</span>
+					  <a href="/create-event/change-description">
+						  Change
 					  </a>
 				  </dd>
 			  </div>
@@ -132,8 +132,8 @@
 					  <img src="/public/images/exportingheroimagesmall.jpg" style="width:240px; height:100px;">
 				  </dd>
 				  <dd class="cya-change" style="vertical-align:top">
-					  <a href="#">
-						  Change<span class="visually-hidden"> contact details</span>
+					  <a href="/create-event/change-images">
+						  Change
 					  </a>
 				  </dd>
 			  </div>
@@ -224,6 +224,7 @@
 
 		  <div class="form-group" style="margin-top:40px">
 			  <input type="submit" class="button" value="Preview event page">
+			  <p style="margin-top:30px"><a href="/create-event/venue-onwards">Account home</a></p>
 		  </div>
 
 	  </form>

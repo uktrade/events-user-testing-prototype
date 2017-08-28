@@ -402,7 +402,14 @@ router.get('/create-event/description-onwards', function (req, res)
 
   if((errorMissingTitle) == false)
   {
-    res.redirect('/create-event/images');
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/images');
+    }
   }
   else
   {
@@ -422,7 +429,14 @@ router.get('/create-event/images-onwards', function (req, res)
   // check for errors
   if(true)
   {
-    res.redirect('/create-event/attendees');
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/attendees');
+    }
   }
   // No errors so carry on
   else
@@ -477,15 +491,25 @@ router.get('/create-event/attendee-onwards', function (req, res) {
   // check for errors
   if(0 < req.session.data['attendee-quantity'])
   {
-    if(0 < req.session.data['radio-additional-questions-quantity'])
-    {
-      req.session.data['additional-questions-incrementer'] = 1;
-      res.redirect('/create-event/additional-questions');
-    }
-    else
+    if(req.session.changingFromSummary == true)
     {
       res.redirect('/create-event/summary-prelude');
     }
+    else
+    {
+      if(0 < req.session.data['radio-additional-questions-quantity'])
+      {
+        req.session.data['additional-questions-incrementer'] = 1;
+        res.redirect('/create-event/additional-questions');
+      }
+      else
+      {
+        res.redirect('/create-event/summary-prelude');
+      }
+    }
+
+
+
   }
   // Errors found so refresh page with errors
   else
@@ -730,8 +754,26 @@ router.get('/create-event/change-date', function (req, res)
   res.redirect('/create-event');
 })
 
+router.get('/create-event/change-description', function (req, res)
+{
+  req.session.changingFromSummary = true;
 
+  res.redirect('/create-event/description');
+})
 
+router.get('/create-event/change-images', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/images');
+})
+
+router.get('/create-event/change-attendees', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/attendees');
+})
 
 
 
