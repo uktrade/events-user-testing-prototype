@@ -46,6 +46,11 @@ router.use(function (req, res, next)
   }
 
 
+  // The current event being edited
+  if(req.session.currentEvent == undefined) {
+    req.session.currentEvent = 0;
+  }
+
 
 
   // Setting up the store for the questiosna and answers
@@ -65,7 +70,7 @@ router.use(function (req, res, next)
     req.session.quantityOfQuestions = 0;
   }
 
-  console.log("INITIAL CODE RUN ______________");
+  //console.log("INITIAL CODE RUN ______________");
 
   next();
 
@@ -75,7 +80,7 @@ router.use(function (req, res, next)
 // SIGNING PAGE
 router.get('/homepage-prelude', function (req, res)
 {
-  console.log("the first event from data is " + req.session.eventsDraftBoolean[0]);
+  //console.log("the first event from data is " + req.session.eventsDraftBoolean[0]);
   console.log("event title is saved as HOMEPAGE LENGTH  " + req.session.eventsDraft.length);
   if(1 <  req.session.eventsDraft.length )
   {
@@ -688,12 +693,12 @@ router.get('/create-event/question-onwards', function (req, res)
 
 
 // VENUE PAGE ONWARDS BUTTON
-router.get('/create-event/summary-prelude', function (req, res) {
-
+router.get('/create-event/summary-prelude', function (req, res)
+{
 
 
   console.log("quantity of questions + 1 is " + (parseInt(req.session.quantityOfQuestions)+1));
-  console.log("question one existis " + req.session.questionsExist[0]);
+  console.log("question one exists " + req.session.questionsExist[0]);
 
 
   var eventDataMap = [];
@@ -717,8 +722,10 @@ router.get('/create-event/summary-prelude', function (req, res) {
   // FOR NEW EVENTS
   if(req.session.changingFromSummary == false)
   {
+    console.log("BRAND NEW EVENT SAVED ----");
     req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
     req.session.eventsDraft.push(eventDataMap);
+
   }
   else   //  FOR CHANGES TO EXISTING EVENTS
   {
@@ -727,9 +734,6 @@ router.get('/create-event/summary-prelude', function (req, res) {
     req.session.eventsDraft.pop;
     req.session.eventsDraft.push(eventDataMap);
   }
-
-
-
 
 
   // WIPE flag for changes from summary page
@@ -777,9 +781,17 @@ router.get('/create-event/change-attendees', function (req, res)
 
 
 
+
+
+
+
 // STORE EVENT
-router.get('/clone-event', function (req, res)
+router.get('/clone-event/:listitem', function (req, res)
 {
+  console.log("EVENT CLONE HAPPENING");
+
+  console.log("input number is : " + req.params.listitem);
+
   req.session.data['start-hours'] = undefined;
   req.session.data['start-minutes'] = undefined;
   req.session.data['finish-hours'] = undefined;
@@ -805,12 +817,11 @@ router.get('/clone-event', function (req, res)
   }
 
 
+  // Set which event is being edited
+  req.session.currentEvent = req.params.listitem;
 
-
-
-  console.log("EVENT CLONE HAPPENING");
-
-  var eventDataMapTEMP = req.session.eventsDraft[0];
+  // Add in the copy
+  var eventDataMapTEMP = req.session.eventsDraft[req.params.listitem];
 
   req.session.data['event-title'] = eventDataMapTEMP[0];
   req.session.data['event-start-time'] = eventDataMapTEMP[1];
@@ -826,12 +837,20 @@ router.get('/clone-event', function (req, res)
   req.session.questionsExist = eventDataMapTEMP[11];
   req.session.questionsData = eventDataMapTEMP[12];
 
+
+  console.log("draft events list before  " + req.session.eventsDraftBoolean);
+
+
   req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
   req.session.eventsDraft.push(eventDataMapTEMP);
 
-  console.log("Loaded event title is " + req.session.data['event-title']);
 
-  res.redirect('/create-event/summary-prelude');
+
+  console.log("NUMEBR of draft events is  " + req.session.eventsDraft.length);
+  console.log("Loaded event title is " + req.session.data['event-title']);
+  console.log("draft events list after  " + req.session.eventsDraftBoolean);
+
+  res.redirect('/create-event/summary');
 })
 
 
