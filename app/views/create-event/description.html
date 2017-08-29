@@ -25,16 +25,16 @@
 		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
 			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Message to alert the user to a problem goes here
+				Missing fields
 			</h2>
 
 			<p>
-				Optional description of the errors and how to correct them
+				Please check the following errors and try again.
 			</p>
 
 			<ul class="error-summary-list">
 				{% if errorMissingTitle %}
-				<li><a href="#example-personal-details">Descriptive link to MISSING TITLE error</a></li>
+				<li><a href="#title-section">Missing title</a></li>
 				{% endif %}
 			</ul>
 
@@ -54,10 +54,17 @@
 		  	<div class="form-group form-group-error">
 		  {% endif %}
 
-			  <div class="form-group"
-				   style="margin-top:10px; margin-bottom:20px">
+			  <div id="title-section" class="form-group" style="margin-top:10px; margin-bottom:20px">
 				  <label class="form-label-bold" for="event-title">
+
 					  Event title
+
+					  {% if errorMissingTitle %}
+						  <span class="error-message">
+							  Please enter a clear and descriptive title for your event
+						  </span>
+					  {% endif %}
+
 				  </label>
 				  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
 						 id="event-title" name="event-title" value="{{ data['event-title'] }}" style="width: 100%">

@@ -35,27 +35,27 @@
 
 			<ul class="error-summary-list">
 				{% if errorDayFound %}
-				<li><a href="#example-personal-details">Event date: day</a></li>
+					<li><a href="#date-area">Event date: day</a></li>
 				{% endif %}
 				{% if errorMonthFound %}
-				<li><a href="#example-personal-details">Event date: month</a></li>
+					<li><a href="#date-area">Event date: month</a></li>
 				{% endif %}
 				{% if errorYearFound %}
-				<li><a href="#example-personal-details">Event date: year</a></li>
+					<li><a href="#date-area">Event date: year</a></li>
 				{% endif %}
 
 				{% if errorOnStartHour %}
-				<li><a href="#example-personal-details">Start time: hour</a></li>
+					<li><a href="#start-time-area">Start time: hour</a></li>
 				{% endif %}
 				{% if errorOnStartMinutes %}
-				<li><a href="#example-personal-details">Start time: minutes</a></li>
+					<li><a href="#start-time-area">Start time: minutes</a></li>
 				{% endif %}
 
 				{% if errorOnFinishHour %}
-				<li><a href="#example-personal-details">Finish time: hour</a></li>
+					<li><a href="#finish-time-area">Finish time: hour</a></li>
 				{% endif %}
 				{% if errorOnFinishMinutes %}
-				<li><a href="#example-personal-details">Finish time: minutes</a></li>
+					<li><a href="#finish-time-area">Finish time: minutes</a></li>
 				{% endif %}
 			</ul>
 
@@ -70,7 +70,7 @@
 
 	  <form action="/create-event/create-event-onwards" method="get" class="form">
 
-		  <fieldset class="form-group">
+		  <fieldset id="date-area" class="form-group">
 
 			  {% if errorOnDate %}
 			  <div class="form-group  form-group-error">
@@ -83,15 +83,13 @@
 						  <span class="error-message">
 							  Please enter a valid future date (from 2017 onwards)
 						  </span>
-					  {% endif %}
 
-					  {% if errorMonthFound %}
+					  {% elif errorMonthFound %}
 						  <span class="error-message">
 							  Please enter a valid future date (from 2017 onwards)
 						  </span>
-					  {% endif %}
 
-					  {% if errorYearFound %}
+					  {% elif errorYearFound %}
 						  <span class="error-message">
 							  Please enter a valid future date (from 2017 onwards)
 						  </span>
@@ -133,7 +131,7 @@
 
 
 		  <!--   START TIME  --->
-		  <fieldset class="form-group">
+		  <fieldset id="start-time-area" class="form-group">
 
 			{% if errorOnStartTime %}
 			  <div class="form-group form-group-error">
@@ -143,15 +141,15 @@
 				  Start time
 
 				  {% if errorOnStartHour %}
-						  <span class="error-message">
-							  Please enter a valid hour (0 to 23)
-						  </span>
+					  <span class="error-message">
+						  Please enter a valid hour (0 to 23)
+					  </span>
 				  {% endif %}
 
 				  {% if errorOnStartMinutes %}
-						  <span class="error-message">
-							  Please enter a valid minute (0 to 59)
-						  </span>
+					  <span class="error-message">
+						  Please enter a valid minute (0 to 59)
+					  </span>
 				  {% endif %}
 
 			  </label>
@@ -192,7 +190,7 @@
 
 
 		  <!--   FINISH TIME  --->
-		  <fieldset class="form-group">
+		  <fieldset  id="finish-time-area" class="form-group">
 
 			{% if errorOnFinishTime %}
 			  <div class="form-group  form-group-error">
