@@ -26,36 +26,36 @@
 		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
 			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Message to alert the user to a problem goes here
+				Invalid or missing fields
 			</h2>
 
 			<p>
-				Optional description of the errors and how to correct them
+				Please check the following errors and try again
 			</p>
 
 			<ul class="error-summary-list">
 				{% if errorDayFound %}
-				<li><a href="#example-personal-details">Descriptive link to DAY error</a></li>
+				<li><a href="#example-personal-details">Event date: day</a></li>
 				{% endif %}
 				{% if errorMonthFound %}
-				<li><a href="#example-personal-details">Descriptive link to MONTH error</a></li>
+				<li><a href="#example-personal-details">Event date: month</a></li>
 				{% endif %}
 				{% if errorYearFound %}
-				<li><a href="#example-personal-details">Descriptive link to YEAR error</a></li>
+				<li><a href="#example-personal-details">Event date: year</a></li>
 				{% endif %}
 
 				{% if errorOnStartHour %}
-				<li><a href="#example-personal-details">Descriptive link to START TIME HOUR error</a></li>
+				<li><a href="#example-personal-details">Start time: hour</a></li>
 				{% endif %}
 				{% if errorOnStartMinutes %}
-				<li><a href="#example-personal-details">Descriptive link to START TIME MINS error</a></li>
+				<li><a href="#example-personal-details">Start time: minutes</a></li>
 				{% endif %}
 
 				{% if errorOnFinishHour %}
-				<li><a href="#example-personal-details">Descriptive link to FINISH TIME HOUR error</a></li>
+				<li><a href="#example-personal-details">Finish time: hour</a></li>
 				{% endif %}
 				{% if errorOnFinishMinutes %}
-				<li><a href="#example-personal-details">Descriptive link to FINISH TIME MINS error</a></li>
+				<li><a href="#example-personal-details">Finish time: minutes</a></li>
 				{% endif %}
 			</ul>
 
@@ -64,7 +64,7 @@
 
 
       <h1 class="heading-large" style="margin-top:15px">
-        When is the event
+		 When is the event?
       </h1>
 
 
@@ -81,19 +81,19 @@
 
 					  {% if errorDayFound %}
 						  <span class="error-message">
-							  Enter a day from 1 to 31
+							  Please enter a valid future date (from 2017 onwards)
 						  </span>
 					  {% endif %}
 
 					  {% if errorMonthFound %}
 						  <span class="error-message">
-							  Enter a month from 1 to 12
+							  Please enter a valid future date (from 2017 onwards)
 						  </span>
 					  {% endif %}
 
 					  {% if errorYearFound %}
 						  <span class="error-message">
-							  Enter 2017 or later
+							  Please enter a valid future date (from 2017 onwards)
 						  </span>
 					  {% endif %}
 
@@ -144,13 +144,13 @@
 
 				  {% if errorOnStartHour %}
 						  <span class="error-message">
-							  Enter an hour from 0 to 23
+							  Please enter a valid hour (0 to 23)
 						  </span>
 				  {% endif %}
 
 				  {% if errorOnStartMinutes %}
 						  <span class="error-message">
-							  Enter a minute from 00 to 59
+							  Please enter a valid minute (0 to 59)
 						  </span>
 				  {% endif %}
 
@@ -203,13 +203,13 @@
 
 				  {% if errorOnFinishHour %}
 					  <span class="error-message">
-						  Enter an hour from 0 to 23
+						  Please enter a valid hour (0 to 23)
 					  </span>
 				  {% endif %}
 
 				  {% if errorOnFinishMinutes %}
 					  <span class="error-message">
-						  Enter a minute from 00 to 59
+						  Please enter a valid minute (0 to 59)
 					  </span>
 				  {% endif %}
 
@@ -238,7 +238,7 @@
 
 		  <div class="form-group" style="margin-top:5px">
 			  <input type="submit" class="button" value="Continue">
-			  <p style="margin-top:25px"><a href="/create-event/create-event-onwards">I don't know the date or time</a></p>
+			  <p style="margin-top:25px"><a href="/create-event/create-event-onwards">I don't yet know when my event will happen - I'll complete this later</a></p>
 		  </div>
 
 	  </form>

@@ -17,14 +17,21 @@
 
 		<!--  TABS FOR TYPES OF EVENT STATUS  -->
 
+		<form action="/create-event/new" method="get" class="form">
+
 		<div class="tabs" style="margin-top:30px;">
 
 			<div class="tabs-nav">
 				<ul class="tabs-list">
-					<li><a class="address" href="#live-events" style="text-decoration: none;">Live</a></li>
-					<li><a class="name" href="#draft-events" style="text-decoration: none;">Draft</a></li>
-					<li><a class="phone" href="#template-events" style="text-decoration: none;">Templates</a></li>
-					<li><a class="email" href="#past-events" style="text-decoration: none;">Past</a></li>
+					<li><a class="live-events" href="#live-events" style="text-decoration: none;">Live</a></li>
+					<li><a class="draft-events" href="#draft-events" style="text-decoration: none;">Draft</a></li>
+					<li><a class="template-events" href="#template-events" style="text-decoration: none;">Templates</a></li>
+					<li><a class="past-events" href="#past-events" style="text-decoration: none;">Past</a></li>
+					<li>
+						<div style="margin-left:123px; margin-top:9px;">
+							<input type="submit" class="button-secondary" value="Create new event">
+						</div>
+					</li>
 				</ul>
 			</div>
 
@@ -43,7 +50,7 @@
 						<form action="/create-event/new" method="get" class="form">
 
 							<div class="form-group">
-								<input type="submit" class="button-secondary" value="Create new event">
+								<input type="submit" class="button" value="Create new event">
 							</div>
 
 						</form>
@@ -71,13 +78,11 @@
 
 						<p>You don't have any templates.</p>
 
-						<form action="/create-event/new" method="get" class="form">
-
 							<div class="form-group">
 								<input type="submit" class="button-secondary" value="Create template">
 							</div>
 
-						</form>
+
 						<br>
 						<br>
 						<br>
@@ -100,7 +105,7 @@
 
 		</div>
 
-
+		</form>
 
 		<br>
 		<br>
@@ -118,9 +123,17 @@
 
 
 
+<script>
 
-<script src="/public/javascripts/jquery.tabs.js" type="text/javascript"></script>
+	$(document).ready(function() {
 
+		console.log("THIS ACTOUN HOME TASB SHIT IS RUN ---------------------");
+		if(window.location.hash) {
+			$("." + window.location.hash.substr(1)).trigger("click");
+		}
+
+	});
+
+</script>
 {% endblock %}
-
 

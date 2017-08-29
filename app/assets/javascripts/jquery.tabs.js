@@ -142,7 +142,6 @@ $('[role="tab"]').on('click', function(e) {
 
 
   // Show corresponding panel
-
   $('#' + $(this).attr('href').substring(1))
     .attr('aria-hidden', null);
 
