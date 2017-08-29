@@ -11,7 +11,7 @@
     <div class="column-full">
 
       <h1 class="heading-large">
-		  {{req.session.regionName}} events
+		  DIT Yorkshire and the Humber events
       </h1>
 
 
@@ -42,23 +42,9 @@
 				<!-- Live -->
 				<div class="tabs-panel" id="live-events" style="border-top:1px solid #bfc1c3;">
 					<div class="tabs-panel-inner">
-						<br>
-						<br>
+						{% include "includes/live-events.html" %}
 
-						<p>You don't have any live events right now.</p>
 
-						<form action="/create-event/new" method="get" class="form">
-
-							<div class="form-group">
-								<input type="submit" class="button" value="Create new event">
-							</div>
-
-						</form>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
 					</div>
 				</div>
 
@@ -81,7 +67,6 @@
 							<div class="form-group">
 								<input type="submit" class="button-secondary" value="Create template">
 							</div>
-
 
 						<br>
 						<br>

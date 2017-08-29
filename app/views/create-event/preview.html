@@ -1,102 +1,156 @@
 <!DOCTYPE html>
 <html>
-  <body style="margin-top: 0px;">
+  <body class="body-of-all">
 
 
-  <style>
-    .right-side-stuff
-    {
-      font-size: 20px;
-      margin-top: 10px;
-      margin-bottom:10px;
-    }
+    <style>
+      .right-side-stuff
+      {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom:10px;
+      }
 
-    .link-style
-    {
-      font-size: 16px;
-      margin-top: 10px;
-      margin-bottom:10px;
-    }
+      .link-style
+      {
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom:10px;
+      }
 
-    .title
-    {
-      font-size: 36px;
-      margin-top:10px;
-      margin-bottom:30px;
-    }
+      .title
+      {
+        font-size: 36px;
+        margin-top:10px;
+        margin-bottom:30px;
+      }
 
-    .description
-    {
-      font-size: 20px;
-      margin-top: 10px;
-      margin-bottom:10px;
-      white-space: pre-wrap;
-    }
+      .description
+      {
+        font-size: 20px;
+        margin-top: 42px;
+        margin-bottom:10px;
+        white-space: pre-wrap;
+      }
 
-    .register-button
-    {
-      padding: 15px 20px;
-      display: inline-block;
-      border: 3px solid #00549F;
-      color: #00549F;
-      text-decoration: none;
-      width:202px
-    }
+      .register-button
+      {
+        padding: 15px 20px;
+        display: inline-block;
+        border: 3px solid #00549F;
+        color: #00549F;
+        text-decoration: none;
+        width:245px;
+        margin-right: 26px;
+      }
 
-    .register-button:hover
-    {
-      color: white;
-      background-color: #00549F;
-    }
+      .register-button:hover
+      {
+        color: white;
+        background-color: #00549F;
+      }
+
+      .body-of-all
+      {
+        background-color: #F5F2ED;
+        margin: 0px;
+      }
+
+      .main-content-div
+      {
+        background-color: #FFFFFF;
+        width:1000px;
+        height:500px;
+      }
+
+      .button
+      {
+        background-color: #00823b;
+        padding: .526315em .789473em .263157em;
+        outline: 1px solid transparent;
+        cursor: pointer;
+        color: #fff;
+        font-size:18px;
+      }
 
 
-  </style>
+
+
+    </style>
+
+
 
 
   <div align="center">
 
-    <div style="width:1000px">
+    <div style="background-color: #fd7521; height:130px; padding-top:20px; padding-bottom:10px; display: flex;" >
 
-      <img src="/public/images/exportingheroimage.jpg" style="width:1000px;height:320px; margin-bottom:20px">
+      <div style="margin-right:50px; margin-left:20px; margin-top:30px; float: left; width:200px;">
+        <p style="font-size:18px;"><a href="/account">Account home</a></p>
+      </div>
 
-      <div style="text-align: left; float: left;">
-        <!-- EVENT title  -->
-        <h1 class="title">{{ data['event-title'] }}</h1>
-
-        <!-- Event description -->
-        <p class="description" style="">{{ data['event-description'] }}</p>
-
+      <div style="float:left; width:100%;">
+        <p style="margin:5px; margin-top:10px; font-size:36px; font-weight:700;">Draft event</p>
+        <p style="margin:25px; font-size:24px">www.great.gov.uk/event/mh43dz</p>
       </div>
 
 
-      <div style="float: right; width:250px; margin-left:20px; margin-top:6px">
+      <form action="/make-draft-live" method="get" class="form">
 
-        <a href="#" class="register-button">Register</a>
-
-        <!--  WHEN -->
-        <div style="text-align: left; margin-bottom: 50px;; margin-top:50px;">
-          <p class="right-side-stuff">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</p>
-          <p class="right-side-stuff">{{ data['event-start-time'] }} to {{ data['event-finish-time'] }}</p>
-          <p class="link-style"><a href="#">Add to calendar</a></p>
+        <div style="margin-left:20px; margin-right:30px; margin-top:40px; float: right;">
+          <input type="submit" class="button" value="Make event live">
         </div>
 
-        <!--  WHERE  -->
-        <div style="text-align: left;">
-          <p class="right-side-stuff"  style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</p>
-          <p class="link-style"><a href="#">View map</a></p>
+      </form>
+
+    </div>
+
+
+    <div style="width:1000px; height:350px; background-color: #FFFFFF; ">
+      <img src="/public/images/exportingheroimage.jpg" style="width:1000px;height:320px; ">
+      <p style="background-color: #FFFFFF; margin-bottom:0px; margin-top:10px">&nbsp;</p>
+    <div>
+
+
+    <!--  DIV FOR ALL THE WORDS  -->
+    <div class="main-content-div">
+
+        <div style="text-align: left; float: left; margin-left:20px; width:630px;">
+          <!-- EVENT title  -->
+          <h1 class="title">{{ data['event-title'] }}</h1>
+
+          <!-- Event description -->
+          <p class="description" >{{ data['event-description'] }}</p>
         </div>
 
-      </div>
 
+        <div style="float: right; width:320px; margin-left:21px; marginn-right:20px; margin-top:0px">
 
+          <a href="#" class="register-button">Register</a>
+
+          <!--  WHEN -->
+          <div style="text-align: left; margin-bottom: 40px;; margin-top:40px;">
+            <p class="right-side-stuff">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</p>
+            <p class="right-side-stuff">{{ data['event-start-time'] }} to {{ data['event-finish-time'] }}</p>
+            <p class="link-style"><a href="#">Add to calendar</a></p>
+          </div>
+
+          <!--  WHERE  -->
+          <div style="text-align: left; margin-bottom: 40px;; margin-top:40px;">
+            <p class="right-side-stuff"  style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</p>
+            <p class="link-style"><a href="#">View map</a></p>
+          </div>
+
+          <!-- WHO  -->
+          <div style="text-align: left; width:300px; margin-right:20px;">
+            <p class="right-side-stuff"  style="white-space: pre-wrap;">Department for International Trade<br>Yorkshire and the Humber</p>
+          </div>
+
+        </div>
 
     </div>
 
   </div>
-
-
-
-
 
 
 

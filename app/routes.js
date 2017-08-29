@@ -51,6 +51,10 @@ router.use(function (req, res, next)
     req.session.currentEvent = 0;
   }
 
+  if(req.session.currentEventShowing == undefined) {
+    req.session.currentEventShowing = 0;
+  }
+
 
 
   // Setting up the store for the questiosna and answers
@@ -83,6 +87,7 @@ router.use(function (req, res, next)
 // SIGNING PAGE
 router.get('/homepage-prelude', function (req, res)
 {
+  req.session.regionName = "DIT Yorkshire and the Humber";
   //console.log("the first event from data is " + req.session.eventsDraftBoolean[0]);
   console.log("event title is saved as HOMEPAGE LENGTH  " + req.session.eventsDraft.length);
   if(1 <  req.session.eventsDraft.length )
@@ -98,6 +103,7 @@ router.get('/homepage-prelude', function (req, res)
 router.get('/scenario-1', function (req, res)
 {
   // empty account
+  req.session.regionName = "DIT Yorkshire and the Humber";
   res.redirect('/signin');
 })
 
@@ -752,6 +758,10 @@ router.get('/create-event/summary-prelude', function (req, res)
 // VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
 router.get('/summary-data/:listitem', function (req, res)
 {
+  req.session.currentEventShowing = req.params.listitem;
+
+  console.log("the event NUMBER for summary  +++++++  "  + req.session.currentEventShowing);
+
   // Load data into working set
   console.log("LOCAD EVENT DATA INTO WORKING SET");
   console.log("input number is : " + req.params.listitem);
@@ -805,6 +815,72 @@ router.get('/summary-data/:listitem', function (req, res)
 
   res.redirect('/create-event/summary');
 })
+
+
+
+
+
+// VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
+router.get('/preview-data/:listitem', function (req, res)
+{
+  req.session.currentEventShowing = req.params.listitem;
+
+  console.log("the event NUMBER for preview  +++++++  "  + req.session.currentEventShowing);
+
+  // Load data into working set
+  console.log("LOCAD EVENT DATA INTO WORKING SET - PREVIEW");
+  console.log("input number is : " + req.params.listitem);
+
+  req.session.data['event-title'] = undefined;
+  req.session.data['start-hours'] = undefined;
+  req.session.data['start-minutes'] = undefined;
+  req.session.data['finish-hours'] = undefined;
+  req.session.data['finish-minutes'] = undefined;
+  req.session.data['event-start-time'] = undefined;
+  req.session.data['event-finish-time'] = undefined;
+  req.session.data['event-day'] = undefined;
+  req.session.data['event-month'] = undefined;
+  req.session.data['event-month-name'] = undefined;
+  req.session.data['event-year'] = undefined;
+  req.session.data['full-address-holder'] = undefined;
+  req.session.data['attendee-quantity'] = undefined;
+  req.session.data['sold-out-message'] = undefined;
+  req.session.data['event-description'] = undefined;
+  req.session.questionsExist = undefined;
+  req.session.questionsData = undefined;
+
+  req.session.data['question'] = undefined;
+  req.session.data['radio-additional-questions-answers-type'] = undefined;
+  for(var x=1; x<11; x++)
+  {
+    req.session.data['answer-'+x] = "";
+  }
+
+
+  // LOAD IN STORED DATA
+  var eventDataMapTEMPLoad = req.session.eventsDraft[req.params.listitem];
+
+  req.session.data['event-title'] = eventDataMapTEMPLoad[0];
+  req.session.data['event-start-time'] = eventDataMapTEMPLoad[1];
+  req.session.data['event-finish-time'] = eventDataMapTEMPLoad[2];
+  req.session.data['event-day'] = eventDataMapTEMPLoad[3];
+  req.session.data['event-month'] = eventDataMapTEMPLoad[4];
+  req.session.data['event-month-name'] = eventDataMapTEMPLoad[5];
+  req.session.data['event-year'] = eventDataMapTEMPLoad[6];
+  req.session.data['full-address-holder'] = eventDataMapTEMPLoad[7];
+  req.session.data['attendee-quantity'] = eventDataMapTEMPLoad[8];
+  req.session.data['sold-out-message'] = eventDataMapTEMPLoad[9];
+  req.session.data['event-description'] = eventDataMapTEMPLoad[10];
+  req.session.questionsExist = eventDataMapTEMPLoad[11];
+  req.session.questionsData = eventDataMapTEMPLoad[12];
+  req.session.data['start-hours'] = eventDataMapTEMPLoad[13];
+  req.session.data['start-minutes'] = eventDataMapTEMPLoad[14];
+  req.session.data['finish-hours'] = eventDataMapTEMPLoad[15];
+  req.session.data['finish-minutes'] = eventDataMapTEMPLoad[16];
+
+  res.redirect('/create-event/preview');
+})
+
 
 
 
@@ -913,6 +989,52 @@ router.get('/clone-event/:listitem', function (req, res)
   console.log("draft events list after  " + req.session.eventsDraftBoolean);
 
   res.redirect('/create-event/summary');
+})
+
+
+
+
+
+// STORE EVENT
+router.get('/make-draft-live', function (req, res)
+{
+  console.log("MOVING EVENT FROM DRAFT TO LIVE");
+  console.log("input number is : " +  req.session.currentEventShowing );
+
+  //get event from drafts
+  var tempEventArray = req.session.eventsDraft[req.session.currentEventShowing];
+
+  console.log("content of event : " + tempEventArray);
+
+  // Copy it into live events
+  req.session.eventsLiveBoolean[req.session.eventsLive.length] = true;
+  req.session.eventsLive[req.session.eventsLive.length] = tempEventArray;
+
+  // Remove the stuff event from draft list
+  req.session.eventsDraft[req.session.currentEventShowing] = undefined;
+
+  for (var i = 0; i < req.session.eventsDraft.length; i++)
+  {
+    if (req.session.eventsDraft[i] == undefined)
+    {
+      req.session.eventsDraft.splice(i, 1);
+      i--;
+    }
+  }
+
+  // Update which event exist.
+  for(var p=0; p<10; p++)
+  {
+    if(req.session.eventsDraft[p] == undefined)
+    {
+      req.session.eventsDraftBoolean = false;
+    }
+  }
+
+  console.log("the events in draft are: " + req.session.eventsDraftBoolean);
+  console.log("the events in draft details are: " + req.session.eventsDraft);
+
+  res.redirect('/account');
 })
 
 

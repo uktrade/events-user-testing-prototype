@@ -1,9 +1,9 @@
 
 <!--  MACRO TO MAKE EACH DRAFT LINE ITEM -->
-{% macro draftEvent(itemRow) %}
+{% macro liveEvent(itemRow) %}
 <tr>
 
-  <th scope="row" style="padding-top:18px; padding-bottom: 11px;">{{ session.eventsDraft[itemRow][0] }}<br>
+  <th scope="row" style="padding-top:18px; padding-bottom: 11px;">{{ session.eventsLive[itemRow][0] }}<br>
     <table style="margin-top: 0px;">
       <thead>
       <tr>
@@ -15,7 +15,7 @@
             <div class="panel panel-border-narrow">
               <p>
                 <a href="/summary-data/{{itemRow}}">Edit event</a> <br>
-                <a href="/clone-event/{{itemRow}}">Clone event</a> <br>
+                <a href="/clone-event/{{itemRow}}">Clone event</a>   <br>
                 <!-- <a href="#">Close registrations</a> <br> -->
                 <a href="#">Delete event</a>
               </p>
@@ -28,8 +28,8 @@
       </tbody>
     </table>
   </th>
-  <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px;">{{ session.eventsDraft[itemRow][3] }} {{ session.eventsDraft[itemRow][5] }} {{ session.eventsDraft[itemRow][6] }}</td>
-  <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px; padding-right:0px; text-align:right;">{{ session.eventsDraft[itemRow][8] }} tickets</td>
+  <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px;">{{ session.eventsLive[itemRow][3] }} {{ session.eventsLive[itemRow][5] }} {{ session.eventsLive[itemRow][6] }}</td>
+  <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px; padding-right:0px; text-align:right;">{{ session.eventsLive[itemRow][8] }} tickets</td>
   <!--<td class="row" valign="top" style="padding-right:0px; font-weight:700; color:#B10E1E;">Private draft</td>-->
 </tr>
 {% endmacro %}
@@ -41,17 +41,17 @@
 <div >
 
   <!-- EMPTY LIST STATE  -->
-  {% if session.eventsDraft.length == 0 %}
+  {% if session.eventsLive.length == 0 %}
     <br>
     <br>
 
-    <p>You don't have any draft events right now.</p>
+  <p>You don't have any live events right now.</p>
 
-    <form action="/create-event/new" method="get" class="form">
+  <form action="/create-event/new" method="get" class="form">
 
-      <div class="form-group">
-        <input type="submit" class="button" value="Create new event">
-      </div>
+    <div class="form-group">
+      <input type="submit" class="button" value="Create new event">
+    </div>
 
     </form>
     <br>
@@ -73,28 +73,28 @@
       <tbody>
 
       <!-- EVENT ONE  -->
-      {% if session.eventsDraftBoolean[0] %}
-        {{ draftEvent(0) }}
+      {% if session.eventsLiveBoolean[0] %}
+        {{ liveEvent(0) }}
       {% endif %}
 
       <!-- EVENT TWO  -->
-      {% if session.eventsDraftBoolean[1] %}
-        {{ draftEvent(1) }}
+      {% if session.eventsLiveBoolean[1] %}
+        {{ liveEvent(1) }}
       {% endif %}
 
       <!-- EVENT THREE  -->
-      {% if session.eventsDraftBoolean[2] %}
-        {{ draftEvent(2) }}
+      {% if session.eventsLiveBoolean[2] %}
+        {{ liveEvent(2) }}
       {% endif %}
 
       <!-- EVENT THREE  -->
-      {% if session.eventsDraftBoolean[3] %}
-      {{ draftEvent(3) }}
+      {% if session.eventsLiveBoolean[3] %}
+        {{ liveEvent(3) }}
       {% endif %}
 
       <!-- EVENT THREE  -->
-      {% if session.eventsDraftBoolean[4] %}
-      {{ draftEvent(4) }}
+      {% if session.eventsLiveBoolean[4] %}
+        {{ liveEvent(4) }}
       {% endif %}
 
 
