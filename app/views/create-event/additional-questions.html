@@ -23,11 +23,11 @@
 		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
 			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Message to alert the user to a problem goes here
+				Missing fields
 			</h2>
 
 			<p>
-				Optional description of the errors and how to correct them
+				Please check the following errors and try again
 			</p>
 
 			{% if errorQuestionEmpty %}
@@ -101,7 +101,7 @@
 					  {% endif %}
 
 						  <label class="form-label-bold">
-							  How should attendees answer this question?
+							  Set response format
 							  {% if errorAnswerTypeEmpty %}
 								  <span class="error-message">
 									  Error message about question being missing
@@ -111,17 +111,17 @@
 						  <div class="form-date" style="margin-top:5px">
 							  <div class="multiple-choice">
 								  <input id="enter-text" type="radio" name="radio-additional-questions-answers-type" value="enter-text">
-								  <label for="enter-text">Enter text</label>
+								  <label for="enter-text">Free text</label>
 							  </div>
 							  <div class="multiple-choice" data-target="show-answers">
 								  <input id="select-one" type="radio" name="radio-additional-questions-answers-type" value="select-one"
 										 {% if errorOneSelected %} checked="checked" {% endif %} >
-								  <label for="select-one">Select one answer</label>
+								  <label for="select-one">Multiple choice: single answer</label>
 							  </div>
 							  <div class="multiple-choice" data-target="show-answers">
 								  <input id="select-multiple" type="radio" name="radio-additional-questions-answers-type" value="select-multiple"
 										 {% if errorMultipleSelected %} checked="checked" {% endif %} >
-								  <label for="select-multiple">Select multiple answers</label>
+								  <label for="select-multiple">ultiple choice: unrestricted</label>
 							  </div>
 						  </div>
 
@@ -143,7 +143,7 @@
 				  {% endif %}
 
 					  <label class="form-label-bold">
-						  Enter the answers
+						  Attendee question missing
 						  {% if errorAnswersError %}
 							  <span class="error-message">
 								  Error message about not providing enough (2 or more) answers go here.

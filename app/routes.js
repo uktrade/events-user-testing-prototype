@@ -606,8 +606,8 @@ router.get('/create-event/question-onwards', function (req, res)
       var answersString = "";
       if(req.session.data['radio-additional-questions-answers-type'] == "enter-text")
       {
-        thisNewQuestionData[1] = "Enter text";
-        answersString="Enter text"
+        thisNewQuestionData[1] = "Free text";
+        answersString="Free text"
       }
       else if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
       {
