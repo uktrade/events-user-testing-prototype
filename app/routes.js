@@ -72,6 +72,9 @@ router.use(function (req, res, next)
 
   //console.log("INITIAL CODE RUN ______________");
 
+  req.session.regionName = "DIT Yorkshire and the Humber";
+
+
   next();
 
 });

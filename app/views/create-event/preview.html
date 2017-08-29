@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <body style="margin-top: 0px;">
+
+
+  <style>
+    .right-side-stuff
+    {
+      font-size: 20px;
+      margin-top: 10px;
+      margin-bottom:10px;
+    }
+
+    .link-style
+    {
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom:10px;
+    }
+
+    .title
+    {
+      font-size: 36px;
+      margin-top:10px;
+      margin-bottom:30px;
+    }
+
+    .description
+    {
+      font-size: 20px;
+      margin-top: 10px;
+      margin-bottom:10px;
+      white-space: pre-wrap;
+    }
+
+    .register-button
+    {
+      padding: 15px 20px;
+      display: inline-block;
+      border: 3px solid #00549F;
+      color: #00549F;
+      text-decoration: none;
+      width:202px
+    }
+
+    .register-button:hover
+    {
+      color: white;
+      background-color: #00549F;
+    }
+
+
+  </style>
+
+
+  <div align="center">
+
+    <div style="width:1000px">
+
+      <img src="/public/images/exportingheroimage.jpg" style="width:1000px;height:320px; margin-bottom:20px">
+
+      <div style="text-align: left; float: left;">
+        <!-- EVENT title  -->
+        <h1 class="title">{{ data['event-title'] }}</h1>
+
+        <!-- Event description -->
+        <p class="description" style="">{{ data['event-description'] }}</p>
+
+      </div>
+
+
+      <div style="float: right; width:250px; margin-left:20px; margin-top:6px">
+
+        <a href="#" class="register-button">Register</a>
+
+        <!--  WHEN -->
+        <div style="text-align: left; margin-bottom: 50px;; margin-top:50px;">
+          <p class="right-side-stuff">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</p>
+          <p class="right-side-stuff">{{ data['event-start-time'] }} to {{ data['event-finish-time'] }}</p>
+          <p class="link-style"><a href="#">Add to calendar</a></p>
+        </div>
+
+        <!--  WHERE  -->
+        <div style="text-align: left;">
+          <p class="right-side-stuff"  style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</p>
+          <p class="link-style"><a href="#">View map</a></p>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+  </body>
+</html>
