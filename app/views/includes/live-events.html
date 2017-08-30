@@ -1,5 +1,5 @@
 
-<!--  MACRO TO MAKE EACH DRAFT LINE ITEM -->
+<!--  MACRO TO MAKE EACH LIVE LINE ITEM -->
 {% macro liveEvent(itemRow) %}
 <tr>
 
@@ -7,16 +7,16 @@
     <table style="margin-top: 0px;">
       <thead>
       <tr>
-        <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 0px;"><a href="/summary-data/{{itemRow}}">View summary</a></td>
-        <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 0px;"><a href="/preview-data/{{itemRow}}">View event page</a></td>
+        <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 0px;"><a href="#">Monitor event</a></td>
+        <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 0px;"><a href="/preview-data/{{itemRow}}/true">View event page</a></td>
         <td valign="top" style="width:40%; border: 0px; padding-right: 0px; padding-top: 2px; padding-bottom: 0px;">
           <details style="display:inline;">
             <summary><span class="summary">More options</span></summary>
             <div class="panel panel-border-narrow">
               <p>
                 <a href="/summary-data/{{itemRow}}">Edit event</a> <br>
-                <a href="/clone-event/{{itemRow}}">Clone event</a>   <br>
-                <!-- <a href="#">Close registrations</a> <br> -->
+                <a href="/clone-event/{{itemRow}}">Clone event</a> <br>
+                <a href="#">Close registrations</a> <br>
                 <a href="#">Delete event</a>
               </p>
             </div>
@@ -29,8 +29,17 @@
     </table>
   </th>
   <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px;">{{ session.eventsLive[itemRow][3] }} {{ session.eventsLive[itemRow][5] }} {{ session.eventsLive[itemRow][6] }}</td>
-  <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px; padding-right:0px; text-align:right;">{{ session.eventsLive[itemRow][8] }} tickets</td>
-  <!--<td class="row" valign="top" style="padding-right:0px; font-weight:700; color:#B10E1E;">Private draft</td>-->
+
+  <!-- Number to match Filips scenarios  -->
+  {% if session.eventsLiveBoolean[1] %}
+    {% if itemRow == 0 %}
+      <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px; padding-right:0px; text-align:right;">18 / {{ session.eventsLive[itemRow][8] }} tickets</td>
+    {% else %}
+    <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px; padding-right:0px; text-align:right;">5 / {{ session.eventsLive[itemRow][8] }} tickets</td>
+    {% endif %}
+  {% else %}
+    <td class="row" valign="top" style="padding-top:18px; padding-bottom: 11px; padding-right:0px; text-align:right;">5 / {{ session.eventsLive[itemRow][8] }} tickets</td>
+  {% endif %}
 </tr>
 {% endmacro %}
 

@@ -56,6 +56,11 @@ router.use(function (req, res, next)
   }
 
 
+  if(req.session.liveOrNot == undefined) {
+  req.session.liveOrNot = false;
+}
+
+
 
   // Setting up the store for the questiosna and answers
 // 2D. one item per question.  Second demotion is Question, Answer type, Answer, Answer...Answer
@@ -732,6 +737,7 @@ router.get('/create-event/summary-prelude', function (req, res)
   if(req.session.changingFromSummary == false)
   {
     console.log("BRAND NEW EVENT SAVED ----");
+    console.log("EVEND DRAFTS NUMBER IS : " + req.session.eventsDraft.length);
     req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
     req.session.eventsDraft[req.session.eventsDraft.length] = eventDataMap;
   }
@@ -747,6 +753,11 @@ router.get('/create-event/summary-prelude', function (req, res)
   req.session.changingFromSummary = false;
 
   console.log("event title is saved as " + req.session.eventsDraft[req.session.eventsDraft.length-1][0]);
+
+  console.log("state of boolean draft  " + req.session.eventsDraftBoolean);
+  console.log("state of draft data  " + req.session.eventsDraft);
+
+
 
   res.redirect('/create-event/summary');
 
@@ -821,8 +832,12 @@ router.get('/summary-data/:listitem', function (req, res)
 
 
 // VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
-router.get('/preview-data/:listitem', function (req, res)
+router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
 {
+  req.session.liveOrNot = req.params.liveevent;
+
+  console.log("the Live event   +++++++  "  + req.session.liveOrNot);
+
   req.session.currentEventShowing = req.params.listitem;
 
   console.log("the event NUMBER for preview  +++++++  "  + req.session.currentEventShowing);
@@ -857,8 +872,19 @@ router.get('/preview-data/:listitem', function (req, res)
   }
 
 
-  // LOAD IN STORED DATA
-  var eventDataMapTEMPLoad = req.session.eventsDraft[req.params.listitem];
+  var eventDataMapTEMPLoad = [];
+  // LOAD IN STORED DATA FROM DRAFT
+  if(req.session.liveOrNot == "true")
+  {
+    eventDataMapTEMPLoad = req.session.eventsLive[req.session.currentEventShowing];
+    console.log("this is a LIVE -  EVENT BEING PREVIEWED");
+  }
+  else
+  {
+    eventDataMapTEMPLoad = req.session.eventsDraft[req.session.currentEventShowing];
+    console.log("this is a DRAFT EVENT BEING PREVIEWED");
+  }
+
 
   req.session.data['event-title'] = eventDataMapTEMPLoad[0];
   req.session.data['event-start-time'] = eventDataMapTEMPLoad[1];
@@ -1027,7 +1053,7 @@ router.get('/make-draft-live', function (req, res)
   {
     if(req.session.eventsDraft[p] == undefined)
     {
-      req.session.eventsDraftBoolean = false;
+      req.session.eventsDraftBoolean[p] = false;
     }
   }
 
