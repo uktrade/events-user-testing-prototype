@@ -758,6 +758,9 @@ router.get('/create-event/summary-prelude', function (req, res)
   console.log("state of draft data  " + req.session.eventsDraft);
 
 
+  // Record that this was a newly created event
+  req.session.liveOrNot = "false";
+  // NEEDS FIXING for the case where a live event is edited
 
   res.redirect('/create-event/summary');
 
@@ -767,8 +770,10 @@ router.get('/create-event/summary-prelude', function (req, res)
 
 
 // VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
-router.get('/summary-data/:listitem', function (req, res)
+router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
 {
+  req.session.liveOrNot = req.params.liveevent;
+
   req.session.currentEventShowing = req.params.listitem;
 
   console.log("the event NUMBER for summary  +++++++  "  + req.session.currentEventShowing);
@@ -802,9 +807,20 @@ router.get('/summary-data/:listitem', function (req, res)
     req.session.data['answer-'+x] = "";
   }
 
-
   // LOAD IN STORED DATA
-  var eventDataMapTEMPLoad = req.session.eventsDraft[req.params.listitem];
+  var eventDataMapTEMPLoad = [];
+  // LOAD IN STORED DATA FROM DRAFT
+  if(req.session.liveOrNot == "true")
+  {
+    eventDataMapTEMPLoad = req.session.eventsLive[req.session.currentEventShowing];
+    console.log("this is a LIVE - EVENT BEING PREVIEWED");
+  }
+  else
+  {
+    eventDataMapTEMPLoad = req.session.eventsDraft[req.session.currentEventShowing];
+    console.log("this is a DRAFT EVENT BEING PREVIEWED");
+  }
+
 
   req.session.data['event-title'] = eventDataMapTEMPLoad[0];
   req.session.data['event-start-time'] = eventDataMapTEMPLoad[1];
@@ -949,8 +965,12 @@ router.get('/create-event/change-attendees', function (req, res)
 
 
 // STORE EVENT
-router.get('/clone-event/:listitem', function (req, res)
+router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
 {
+  req.session.liveOrNot = req.params.liveevent;
+
+  req.session.currentEventShowing = req.params.listitem;
+
   console.log("EVENT CLONE HAPPENING");
   console.log("input number is : " + req.params.listitem);
 
@@ -983,8 +1003,20 @@ router.get('/clone-event/:listitem', function (req, res)
   // Set which event is being edited
   req.session.currentEvent = req.params.listitem;
 
-  // Add in the copy
-  var eventDataMapTEMP = req.session.eventsDraft[req.params.listitem];
+  // May temp event
+  var eventDataMapTEMP = [];
+
+  // LOAD IN STORED DATA FROM DRAFT
+  if(req.session.liveOrNot == "true")
+  {
+    eventDataMapTEMP = req.session.eventsLive[req.session.currentEventShowing];
+    console.log("this is a LIVE - EVENT BEING CLONED");
+  }
+  else
+  {
+    eventDataMapTEMP = req.session.eventsDraft[req.session.currentEventShowing];
+    console.log("this is a DRAFT EVENT BEING CLONED");
+  }
 
   req.session.data['event-title'] = eventDataMapTEMP[0];
   req.session.data['event-start-time'] = eventDataMapTEMP[1];
@@ -1004,8 +1036,7 @@ router.get('/clone-event/:listitem', function (req, res)
   req.session.data['finish-hours'] = eventDataMapTEMP[15];
   req.session.data['finish-minutes'] = eventDataMapTEMP[16];
 
-
-  console.log("draft events list before  " + req.session.eventsDraftBoolean);
+  //console.log("draft events list before  " + req.session.eventsDraftBoolean);
 
   req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
   req.session.eventsDraft.push(eventDataMapTEMP);
@@ -1013,6 +1044,8 @@ router.get('/clone-event/:listitem', function (req, res)
   console.log("NUMEBR of draft events is  " + req.session.eventsDraft.length);
   console.log("Loaded event title is " + req.session.data['event-title']);
   console.log("draft events list after  " + req.session.eventsDraftBoolean);
+
+  req.session.liveOrNot = "false";
 
   res.redirect('/create-event/summary');
 })
