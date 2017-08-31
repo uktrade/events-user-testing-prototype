@@ -452,7 +452,7 @@ router.get('/create-event/images-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/attendees');
+      res.redirect('/create-event/tickets');
     }
   }
   // No errors so carry on
@@ -469,8 +469,7 @@ router.get('/create-event/images-onwards', function (req, res)
 
 
 
-
-router.get('/create-event/attendee-onwards', function (req, res) {
+router.get('/create-event/tickets-onwards', function (req, res) {
 
   req.session.data['attendee-quantity'];
 
@@ -494,39 +493,17 @@ router.get('/create-event/attendee-onwards', function (req, res) {
    }
    */
 
-  // Add additional pages if there are additional questions
-  console.log(req.session.data['radio-additional-questions-quantity']);
-
-  req.session.quantityOfQuestions = req.session.data['radio-additional-questions-quantity'];
-
-  // record in array which questions will exist
-  for(var d=0; d<req.session.quantityOfQuestions; d++)
-  {
-    req.session.questionsExist[d] = true;
-  }
-
   // check for errors
   if(0 < req.session.data['attendee-quantity'])
   {
     if(req.session.changingFromSummary == true)
     {
-      res.redirect('/create-event/summary-prelude');
+        res.redirect('/create-event/summary-prelude');
     }
     else
     {
-      if(0 < req.session.data['radio-additional-questions-quantity'])
-      {
-        req.session.data['additional-questions-incrementer'] = 1;
-        res.redirect('/create-event/additional-questions');
-      }
-      else
-      {
-        res.redirect('/create-event/summary-prelude');
-      }
+        res.redirect('/create-event/attendees');
     }
-
-
-
   }
   // Errors found so refresh page with errors
   else
@@ -537,6 +514,54 @@ router.get('/create-event/attendee-onwards', function (req, res) {
         }
     );
   }
+})
+
+
+
+
+
+
+router.get('/create-event/attendee-onwards', function (req, res)
+{
+  req.session.data['attendee-quantity'];
+
+  //  message for when tickets are gone and nothing is entered in the box
+  if(req.session.data['sold-out-message'] == "")
+  {
+    req.session.data['sold-out-message'] = "No message will be shown";
+  }
+
+  // stuff for setting up a waiting list
+  /*
+   console.log(req.session.data['radio-group-ticket-gone']);
+
+   if(req.session.data['radio-group-ticket-gone'] == "close-registrations")
+   {
+   req.session.data['after-tickets-gone'] = "Close registrations";
+   }
+   else
+   {
+   req.session.data['after-tickets-gone'] = "Have a waiting list";
+   }
+  */
+
+  // Add additional pages if there are additional questions
+  console.log("questions out " + req.session.data['radio-additional-questions-boolean']);
+
+  if(req.session.data['radio-additional-questions-boolean'] == "yes")
+  {
+    req.session.quantityOfQuestions = 1;
+    req.session.questionsExist[0] = true;
+    req.session.data['additional-questions-incrementer'] = 1
+    res.redirect('/create-event/additional-questions');
+  }
+  else
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+
+
+
 })
 
 
@@ -702,8 +727,6 @@ router.get('/create-event/question-onwards', function (req, res)
 
 
 
-
-
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/summary-prelude', function (req, res)
 {
@@ -842,8 +865,6 @@ router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
 
   res.redirect('/create-event/summary');
 })
-
-
 
 
 

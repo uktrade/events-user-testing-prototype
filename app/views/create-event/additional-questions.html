@@ -53,15 +53,18 @@
 		</div>
       {% endif %}
 
+
 	  <h1 class="heading-large" style="margin-top:15px">
 		  Question {{ data['additional-questions-incrementer'] }}
       </h1>
 
 
+
 	  <form action="/create-event/question-onwards" method="get" class="form">
 
-		  <!--   PLACES  -->
+
 		  <fieldset class="form-group">
+			  <!--  Addtional questions that the registering user need to answer  -->
 
 				<div class="form-group" style="margin-top:10px; margin-bottom:0px">
 
@@ -71,28 +74,51 @@
 
 						<label class="form-label-bold" for="question">
 							Question for attendee
-							{% if errorQuestionEmpty %}
-							  <span class="error-message">
-								  Error message about answer type being missing
-							  </span>
+							{% if errorAnswerTypeEmpty %}
+								<span class="error-message">
+									Attendee question missing
+								</span>
 							{% endif %}
 						</label>
-						<input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-							   id="question" name="question" value="{{ data['question'] }}" style="width:100%">
+
+
+						<div class="form-group" style="margin-top:0px; margin-bottom:0px">
+
+							<div class="form-date" style="margin-top:5px">
+
+								<div class="multiple-choice"  data-target="show-answer-type">
+									<input id="new-question" type="radio" name="radio-additional-questions" value="new-question">
+									<label for="enter-text">New Question</label>
+								</div>
+								<div class="multiple-choice" data-target="show-answer-type">
+									<input id="previous-question-one" type="radio" name="radio-additional-questions" value="previous-question-one"
+										   {% if errorOneSelected %} checked="checked" {% endif %} >
+									<label for="select-one">Multiple choice: single answer</label>
+								</div>
+								<div class="multiple-choice" data-target="show-answer-type">
+									<input id="previous-question-two" type="radio" name="radio-additional-questions" value="previous-question-two"
+										   {% if errorMultipleSelected %} checked="checked" {% endif %} >
+									<label for="select-multiple">Multiple choice: unrestricted</label>
+								</div>
+							</div>
+
+						</div>
+
 
 					{% if errorQuestionEmpty %}
 						</div>
 					{% endif %}
 
 				</div>
-
-		  </fieldset>
-
-
-		  <fieldset class="form-group">
-				  <!--  Addtional questions that the registering user need to answer  -->
+		  	  </fieldset>
 
 
+			  <fieldset class="form-group js-hidden" id="show-answer-type">
+
+				  <div id="show-new-question" style="width:100%; margin-left:50px; margin-bottom:25px">
+					  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+							 id="question" name="question" value="{{ data['question'] }}" style="width:100%;">
+				  </div>
 
 				  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
 
@@ -104,7 +130,7 @@
 							  Set response format
 							  {% if errorAnswerTypeEmpty %}
 								  <span class="error-message">
-									  Error message about question being missing
+									  Attendee question missing
 								  </span>
 							  {% endif %}
 						  </label>
@@ -116,12 +142,12 @@
 							  <div class="multiple-choice" data-target="show-answers">
 								  <input id="select-one" type="radio" name="radio-additional-questions-answers-type" value="select-one"
 										 {% if errorOneSelected %} checked="checked" {% endif %} >
-								  <label for="select-one">Multiple choice: single answer</label>
+								  <label for="select-one">Question one one one one</label>
 							  </div>
 							  <div class="multiple-choice" data-target="show-answers">
 								  <input id="select-multiple" type="radio" name="radio-additional-questions-answers-type" value="select-multiple"
 										 {% if errorMultipleSelected %} checked="checked" {% endif %} >
-								  <label for="select-multiple">Multiple choice: unrestricted</label>
+								  <label for="select-multiple">Question two two two</label>
 							  </div>
 						  </div>
 
@@ -131,19 +157,20 @@
 
 				  </div>
 
+		  </fieldset>
 
 
-
+		  <fieldset class="form-group js-hidden" id="show-answers">
 
 			  <!--   THE ANSWERS -->
-			  <div class="form-group  js-hidden" style="margin-bottom:0px; margin-top:30px;" id="show-answers">
+			  <div class="form-group  " style="margin-bottom:0px; margin-top:0px;" >
 
 				  {% if errorAnswersError %}
 				  	<div class="form-group  form-group-error">
 				  {% endif %}
 
 					  <label class="form-label-bold">
-						  Attendee question missing
+						  Answers
 						  {% if errorAnswersError %}
 							  <span class="error-message">
 								  Error message about not providing enough (2 or more) answers go here.
@@ -165,19 +192,6 @@
 								 id="answer-5" name="answer-5" value="{{ data['answer-5'] }}" style="width:90%; margin-bottom: 0px;">
 					  </div>
 
-					  <div style="width:50%; float:right; margin-top:5px" align="right">
-						  <input type="text" class="form-control"
-								 id="answer-6" name="answer-6" value="{{ data['answer-6'] }}" style="width:90%; margin-bottom: 15px;">
-						  <input type="text" class="form-control"
-								 id="answer-7" name="answer-7" value="{{ data['answer-7'] }}" style="width:90%; margin-bottom: 15px;">
-						  <input type="text" class="form-control"
-								 id="answer-8" name="answer-8" value="{{ data['answer-8'] }}" style="width:90%; margin-bottom: 15px;">
-						  <input type="text" class="form-control"
-								 id="answer-9" name="answer-9" value="{{ data['answer-9'] }}" style="width:90%; margin-bottom: 15px;">
-						  <input type="text" class="form-control"
-								 id="answer-10" name="answer-10" value="{{ data['answer-10'] }}"style="width:90%; margin-bottom: 0px;">
-					  </div>
-
 				  {% if errorAnswersError %}
 					  </div>
 				  {% endif %}
@@ -192,8 +206,10 @@
 
 
 
-
 		  <div class="form-group" style="margin-top:20px">
+			  <input type="submit" class="button-secondary" value="Save and add another question">
+			  <br>
+			  <br>
 			  <input type="submit" class="button" value="Save and continue">
 		  </div>
 
