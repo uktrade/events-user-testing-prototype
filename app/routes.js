@@ -58,6 +58,12 @@ router.use(function (req, res, next)
 
   if(req.session.liveOrNot == undefined) {
   req.session.liveOrNot = false;
+
+  //  THE SAVED PREVIOUS CUSTOM QUESTIONS FROM USERS
+  if(req.session.previousQuestions == undefined) {
+    req.session.previousQuestions = [1];
+  }
+
 }
 
 
@@ -568,9 +574,11 @@ router.get('/create-event/attendee-onwards', function (req, res)
 
 
 
+
 // IMAGES PAGE ONWARDS BUTTON
 router.get('/create-event/question-onwards', function (req, res)
 {
+  var errorNewOrOldQuestionMissing = false;
   var errorQuestionMissing = false;
   var answerTypeEmpty = false;
   var answerError = false;
@@ -581,58 +589,108 @@ router.get('/create-event/question-onwards', function (req, res)
   var answerTypeOneSelected = false;
   var answerTypeMultipleSelected = false;
 
-  // Check if the answer has been entered and throw error if not
-  if(req.session.data['question'] == "")
-  {
-    errorQuestionMissing = true;
-  }
+  // Selected radio
+  var newQuestionSelected = false;
+  var oldQuestionOneSelected = false;
+  var oldQuestionTwoSelected = false;
+  var oldQuestionThreeSelected = false;
+  var oldQuestionFourSelected = false;
+  var oldQuestionFiveSelected = false;
 
-  // Check if the type of answer has been selected and throw answer if not
-  if(req.session.data['radio-additional-questions-answers-type'] === undefined)
+
+  //  IF THERE ARE PREVIOUSE QUESTIONS AND NO SELECTION - SAVE THE ERROR
+  if( 0 < req.session.previousQuestions.length && req.session.data['radio-additional-new-old-questions'] == undefined)
   {
-    console.log("output of radio selection is TOTALLY UNDEFINED");
-    answerTypeEmpty = true;
+    errorNewOrOldQuestionMissing = true;
   }
   else
   {
-    // Check that answers have been added if not a free text answer
-    if(req.session.data['radio-additional-questions-answers-type'] != "enter-text")
-    {
-      var numberOfAnswrs = 0;
-      for(x=1; x<11; x++)
+      // IF SELECTION FROM EXISING QUESTIONS THEN SAVE WHICH ONE WAS SELECTED, FOR RELOADING ERROR STATES
+      if(req.session.data['radio-additional-new-old-questions'] == "new-question")
       {
-        if(req.session.data['answer-'+x] != "")
+        newQuestionSelected = true;
+      }
+      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-one")
+      {
+        oldQuestionOneSelected = true;
+      }
+      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-two")
+      {
+        oldQuestionTwoSelected = true;
+      }
+      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-three")
+      {
+        oldQuestionThreeSelected = true;
+      }
+      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-four")
+      {
+        oldQuestionFourSelected = true;
+      }
+      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-five")
+      {
+        oldQuestionFiveSelected = true;
+      }
+
+
+
+    // Check if the answer has been entered and throw error if not
+      if(req.session.data['question'] == "")
+      {
+        errorQuestionMissing = true;
+      }
+
+
+      // Check if the type of answer has been selected and throw answer if not
+      if(req.session.data['radio-additional-questions-answers-type'] === undefined)
+      {
+        console.log("output of radio selection is TOTALLY UNDEFINED");
+        answerTypeEmpty = true;
+      }
+      else
+      {
+        // Check that answers have been added if not a free text answer
+        if(req.session.data['radio-additional-questions-answers-type'] != "enter-text")
         {
-          numberOfAnswrs = numberOfAnswrs + 1;
+          var numberOfAnswrs = 0;
+          for(x=1; x<=2; x++)
+          {
+            if(req.session.data['answer-'+x] != "")
+            {
+              numberOfAnswrs = numberOfAnswrs + 1;
+            }
+          }
+          if(numberOfAnswrs == 0)
+          {
+            answersTotallyMissing = true;
+            answerError = true;
+          }
+          else if(numberOfAnswrs == 1)
+          {
+            answersMissingOneEntered = true;
+            answerError = true;
+          }
+          console.log("The answer are empty  " + answerError);
+
+          // Save which radio button was selected, Since page is refreshed istead of rerendered
+          if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
+          {
+            answerTypeOneSelected = true;
+          }
+          else if(req.session.data['radio-additional-questions-answers-type'] == "select-multiple")
+          {
+            answerTypeMultipleSelected = true;
+          }
         }
       }
-      if(numberOfAnswrs == 0)
-      {
-        answersTotallyMissing = true;
-        answerError = true;
-      }
-      else if(numberOfAnswrs == 1)
-      {
-        answersMissingOneEntered = true;
-        answerError = true;
-      }
-      console.log("The answer are empty  " + answerError);
-
-      // Save which radio button was selected, Since page is refreshed istead of rerendered
-      if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
-      {
-        answerTypeOneSelected = true;
-      }
-      else if(req.session.data['radio-additional-questions-answers-type'] == "select-multiple")
-      {
-        answerTypeMultipleSelected = true;
-      }
-    }
   }
 
 
-  // check for errors - No errors found
-  if((errorQuestionMissing || answerTypeEmpty || answerError) == false)
+
+
+
+
+  // NO ERRORS FOUND
+  if((errorQuestionMissing || answerTypeEmpty || answerError || errorNewOrOldQuestionMissing) == false)
   {
       // Save the data for this question to an array
       var thisNewQuestionData = [];
@@ -713,13 +771,20 @@ router.get('/create-event/question-onwards', function (req, res)
     res.render('create-event/additional-questions',
         {
           'errorQuestions': true,
+          'errorNewQuestionEmpty': errorNewOrOldQuestionMissing,
           'errorQuestionEmpty' : errorQuestionMissing,
           'errorAnswersError' : answerError,
           'errorAnswerTypeEmpty' : answerTypeEmpty,
           'errorAnswersEmpty' : answersTotallyMissing,
           'errorAnswersOnlyOneEntered' : answersMissingOneEntered,
           'errorOneSelected' : answerTypeOneSelected,
-          'errorMultipleSelected' : answerTypeMultipleSelected
+          'errorMultipleSelected' : answerTypeMultipleSelected,
+          'errorNewQuestionSelected' : newQuestionSelected,
+          'errorOldQuestionOneSelected' : oldQuestionOneSelected,
+          'errorOldQuestionTwoSelected' : oldQuestionTwoSelected,
+          'errorOldQuestionThreeSelected' : oldQuestionThreeSelected,
+          'errorOldQuestionFourSelected' : oldQuestionFourSelected,
+          'errorOldQuestionFiveSelected' : oldQuestionFiveSelected
         }
     );
   }
