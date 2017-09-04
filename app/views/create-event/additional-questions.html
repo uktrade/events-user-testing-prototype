@@ -70,10 +70,10 @@
 	  <form action="/create-event/question-onwards" method="get" class="form">
 
 
-		  <fieldset class="form-group" style="margin-bottom:0; padding-bottom:30px" id="previous-questions">
+		  	<fieldset class="form-group {% if session.previousQuestions.length == 0 %} js-hidden {% endif %}" style="margin-bottom:0; padding-bottom:30px" id="previous-questions">
 			  <!--  Additional questions that the registering user need to answer  -->
 
-				<div class="form-group {% if session.previousQuestions.length == 0 %} js-hidden {% endif %}" style="margin-top:10px; margin-bottom:0px">
+				<div class="form-group " style="margin-top:10px; margin-bottom:0px">
 
 					{% if errorNewQuestionEmpty %}
 						<div class="form-group  form-group-error">
@@ -95,37 +95,37 @@
 
 								<div class="multiple-choice"  data-target="show-answer-type">
 									<input id="new-question" type="radio" name="radio-additional-new-old-questions" value="new-question"
-										   {% if errorNewQuestionSelected %} checked="checked" {% endif %} >
+										   {% if errorNewQuestionSelected %} checked="checked" {% endif %}   onclick="prepopClear()">
 									<label for="new-question">New question</label>
 								</div>
 								<div class="multiple-choice" data-target="show-answer-type">
 									<input id="previous-question-one" type="radio" name="radio-additional-new-old-questions" value="previous-question-one"
-										   {% if errorOldQuestionOneSelected %} checked="checked" {% endif %} >
-									<label for="previous-question-one">{{ session.previousQuestions[0][1] }}&nbsp;</label>
+										   {% if errorOldQuestionOneSelected %} checked="checked" {% endif %}   onclick="prepopQuestionOne()">
+									<label for="previous-question-one">{{ session.previousQuestions[0][0] }}&nbsp;</label>
 								</div>
 
 								<div class="multiple-choice {% if session.previousQuestions.length < 2 %} js-hidden {% endif %} " data-target="show-answer-type"
 									 	   {% if errorOldQuestionTwoSelected %} checked="checked" {% endif %} >
-									<input id="previous-question-two" type="radio" name="radio-additional-new-old-questions" value="previous-question-two">
-									<label for="previous-question-two">{{ session.previousQuestions[1][1] }}&nbsp;</label>
+									<input id="previous-question-two" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionTwo()">
+									<label for="previous-question-two">{{ session.previousQuestions[1][0] }}&nbsp;</label>
 								</div>
 
 								<div class="multiple-choice {% if session.previousQuestions.length < 3 %} js-hidden {% endif %} " data-target="show-answer-type"
 									 	   {% if errorOldQuestionThreeSelected %} checked="checked" {% endif %} >
-									<input id="previous-question-three" type="radio" name="radio-additional-new-old-questions" value="previous-question-two">
-									<label for="previous-question-two">{{ session.previousQuestions[2][1] }}&nbsp;</label>
+									<input id="previous-question-three" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionThree()">
+									<label for="previous-question-two">{{ session.previousQuestions[2][0] }}&nbsp;</label>
 								</div>
 
 								<div class="multiple-choice {% if session.previousQuestions.length < 4 %} js-hidden {% endif %} " data-target="show-answer-type"
 									       {% if errorOldQuestionFourSelected %} checked="checked" {% endif %} >
-									<input id="previous-question-four" type="radio" name="radio-additional-new-old-questions" value="previous-question-two">
-									<label for="previous-question-four">{{ session.previousQuestions[3][1] }}&nbsp;</label>
+									<input id="previous-question-four" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionFour()">
+									<label for="previous-question-four">{{ session.previousQuestions[3][0] }}&nbsp;</label>
 								</div>
 
 								<div class="multiple-choice {% if session.previousQuestions.length < 5 %} js-hidden {% endif %} " data-target="show-answer-type"
 									 	   {% if errorOldQuestionFiveSelected %} checked="checked" {% endif %} >
-									<input id="previous-question-five" type="radio" name="radio-additional-new-old-questions" value="previous-question-two">
-									<label for="previous-question-five">{{ session.previousQuestions[4][1] }}&nbsp;</label>
+									<input id="previous-question-five" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"     onclick="prepopQuestionFive()">
+									<label for="previous-question-five">{{ session.previousQuestions[4][0] }}&nbsp;</label>
 								</div>
 							</div>
 
@@ -137,7 +137,8 @@
 					{% endif %}
 
 				</div>
-		  	  </fieldset>
+		  	</fieldset>
+
 
 
 			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
@@ -257,15 +258,17 @@
 
 
 
-
-
-
-
 		  <div class="form-group" style="margin-top:20px">
-			  <input type="submit" class="button-secondary" value="Save and add another question">
-			  <br>
-			  <br>
-			  <input type="submit" class="button" value="Save and continue">
+
+			  <div class=" {% if data['additional-questions-incrementer'] == 5 %}  js-hidden {% endif %} ">
+				  <input type="submit" class="button-secondary" formaction="/create-event/add-other-question-submit" value="Save and add another question">
+
+
+				  <br>
+				  <br>
+			  </div>
+
+			  <input type="submit" class="button" formaction="/create-event/final-question" value="Save and continue">
 		  </div>
 
 
@@ -274,28 +277,314 @@
 
     </div>
   </div>
+
+
+
+
+	<!-- THIS IS ALL HIDDEN AND SHOULD BE.  IT IS TO MAKE PREPOPULATION EASIER -->
+
+	<div class="js-hidden" >
+
+		<!--  All the questions  -->
+		<input id="question-1-label" value="{{ session.previousQuestions[0][0] }}">
+		<input id="question-2-label" value="{{ session.previousQuestions[1][0] }}">
+		<input id="question-3-label" value="{{ session.previousQuestions[2][0] }}">
+		<input id="question-4-label" value="{{ session.previousQuestions[3][0] }}">
+		<input id="question-5-label" value="{{ session.previousQuestions[4][0] }}">
+
+		<br>
+
+		<!--  All the type of answers  -->
+		<input id="at1" value="{{ session.previousQuestions[0][1] }}">
+		<input id="at2" value="{{ session.previousQuestions[1][1] }}">
+		<input id="at3" value="{{ session.previousQuestions[2][1] }}">
+		<input id="at4" value="{{ session.previousQuestions[3][1] }}">
+		<input id="qa5" value="{{ session.previousQuestions[4][1] }}">
+
+
+		<br>
+
+		<!-- ALL THE ANSWERS  -->
+		<input id="ans1-1" value="{{ session.previousQuestions[0][2] }}">
+		<input id="ans1-2" value="{{ session.previousQuestions[0][3] }}">
+		<input id="ans1-3" value="{{ session.previousQuestions[0][4] }}">
+		<input id="ans1-4" value="{{ session.previousQuestions[0][5] }}">
+		<input id="ans1-5" value="{{ session.previousQuestions[0][6] }}">
+
+		<input id="ans2-1" value="{{ session.previousQuestions[1][2] }}">
+		<input id="ans2-2" value="{{ session.previousQuestions[1][3] }}">
+		<input id="ans2-3" value="{{ session.previousQuestions[1][4] }}">
+		<input id="ans2-4" value="{{ session.previousQuestions[1][5] }}">
+		<input id="ans2-5" value="{{ session.previousQuestions[1][6] }}">
+
+		<input id="ans3-1" value="{{ session.previousQuestions[2][2] }}">
+		<input id="ans3-2" value="{{ session.previousQuestions[2][3] }}">
+		<input id="ans3-3" value="{{ session.previousQuestions[2][4] }}">
+		<input id="ans3-4" value="{{ session.previousQuestions[2][5] }}">
+		<input id="ans3-5" value="{{ session.previousQuestions[2][6] }}">
+
+		<input id="ans4-1" value="{{ session.previousQuestions[3][2] }}">
+		<input id="ans4-2" value="{{ session.previousQuestions[3][3] }}">
+		<input id="ans4-3" value="{{ session.previousQuestions[3][4] }}">
+		<input id="ans4-4" value="{{ session.previousQuestions[3][5] }}">
+		<input id="ans4-5" value="{{ session.previousQuestions[3][6] }}">
+
+		<input id="ans5-1" value="{{ session.previousQuestions[4][2] }}">
+		<input id="ans5-2" value="{{ session.previousQuestions[4][3] }}">
+		<input id="ans5-3" value="{{ session.previousQuestions[4][4] }}">
+		<input id="ans5-4" value="{{ session.previousQuestions[4][5] }}">
+		<input id="ans5-5" value="{{ session.previousQuestions[5][6] }}">
+
+	</div>
+
+
 </main>
 
 
-
-
 <script>
-	// When pressing the get main image button it swap in an image
 
+
+
+//  When selecting new question after a preselect make sure to clear fields
+	function prepopClear()
+	{
+		document.getElementById('question').value = "";
+		document.getElementById('enter-text').checked = false;
+		document.getElementById('select-one').checked = false;
+		document.getElementById('select-multiple').checked = false;
+
+		document.getElementById('show-answers').classList.add("js-hidden");
+		document.getElementById('answer-1').value = "";
+		document.getElementById('answer-2').value = "";
+		document.getElementById('answer-3').value = "";
+		document.getElementById('answer-4').value = "";
+		document.getElementById('answer-5').value = "";
+	}
+
+
+
+
+	function prepopQuestionOne()
+	{
+		document.getElementById('question').value = document.getElementById('question-1-label').value;
+
+		if(document.getElementById('at1').value == "Free text")
+		{
+			document.getElementById('enter-text').checked = true;
+			document.getElementById('show-answers').classList.add("js-hidden");
+			document.getElementById('answer-1').value = "";
+			document.getElementById('answer-2').value = "";
+			document.getElementById('answer-3').value = "";
+			document.getElementById('answer-4').value = "";
+			document.getElementById('answer-5').value = "";
+		}
+		else if(document.getElementById('at1').value == "Select one answer")
+		{
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('select-one').checked = true;
+			document.getElementById('answer-1').value =  document.getElementById('ans1-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans1-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans1-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans1-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans1-5').value;
+
+		}
+		else if(document.getElementById('at1').value == "Select multiple answers")
+		{
+			document.getElementById('select-multiple').checked = true;
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('answer-1').value =  document.getElementById('ans1-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans1-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans1-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans1-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans1-5').value;
+		}
+
+
+
+	}
+
+
+	function prepopQuestionTwo()
+	{
+		document.getElementById('question').value = document.getElementById('question-2-label').value;
+
+		if(document.getElementById('at2').value == "Free text")
+		{
+			document.getElementById('enter-text').checked = true;
+			document.getElementById('show-answers').classList.add("js-hidden");
+			document.getElementById('answer-1').value =  "";
+			document.getElementById('answer-2').value = "";
+			document.getElementById('answer-3').value = "";
+			document.getElementById('answer-4').value = "";
+			document.getElementById('answer-5').value = "";
+		}
+		else if(document.getElementById('at2').value == "Select one answer")
+		{
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('select-one').checked = true;
+			document.getElementById('answer-1').value = document.getElementById('ans2-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans2-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans2-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans2-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans2-5').value;
+
+		}
+		else if(document.getElementById('at2').value == "Select multiple answers")
+		{
+			document.getElementById('select-multiple').checked = true;
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('answer-1').value = document.getElementById('ans2-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans2-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans2-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans2-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans2-5').value;
+		}
+
+
+	}
+
+
+
+	function prepopQuestionThree()
+	{
+		document.getElementById('question').value = document.getElementById('question-3-label').value;
+
+		if(document.getElementById('at3').value == "Free text")
+		{
+			document.getElementById('enter-text').checked = true;
+			document.getElementById('show-answers').classList.add("js-hidden");
+			document.getElementById('answer-1').value =  "";
+			document.getElementById('answer-2').value = "";
+			document.getElementById('answer-3').value = "";
+			document.getElementById('answer-4').value = "";
+			document.getElementById('answer-5').value = "";
+		}
+		else if(document.getElementById('at3').value == "Select one answer")
+		{
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('select-one').checked = true;
+			document.getElementById('answer-1').value = document.getElementById('ans3-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans3-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans3-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans3-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans3-5').value;
+		}
+		else if(document.getElementById('at3').value == "Select multiple answers")
+		{
+			document.getElementById('select-multiple').checked = true;
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('answer-1').value = document.getElementById('ans3-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans3-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans3-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans3-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans3-5').value;
+		}
+
+
+	}
+
+	function prepopQuestionFour()
+	{
+		document.getElementById('question').value = document.getElementById('question-4-label').value;
+
+		if(document.getElementById('at4').value == "Free text")
+		{
+			document.getElementById('enter-text').checked = true;
+			document.getElementById('show-answers').classList.add("js-hidden");
+			document.getElementById('answer-1').value =  "";
+			document.getElementById('answer-2').value = "";
+			document.getElementById('answer-3').value = "";
+			document.getElementById('answer-4').value = "";
+			document.getElementById('answer-5').value = "";
+		}
+		else if(document.getElementById('at4').value == "Select one answer")
+		{
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('select-one').checked = true;
+			document.getElementById('answer-1').value = document.getElementById('ans4-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans4-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans4-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans4-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans4-5').value;
+		}
+		else if(document.getElementById('at4').value == "Select multiple answers")
+		{
+			document.getElementById('select-multiple').checked = true;
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('answer-1').value = document.getElementById('ans4-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans4-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans4-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans4-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans4-5').value;
+		}
+
+
+	}
+
+
+	function prepopQuestionFive()
+	{
+		document.getElementById('question').value = document.getElementById('question-5-label').value;
+
+		if(document.getElementById('at5').value == "Free text")
+		{
+			document.getElementById('enter-text').checked = true;
+			document.getElementById('show-answers').classList.add("js-hidden");
+			document.getElementById('answer-1').value =  "";
+			document.getElementById('answer-2').value = "";
+			document.getElementById('answer-3').value = "";
+			document.getElementById('answer-4').value = "";
+			document.getElementById('answer-5').value = "";
+		}
+		else if(document.getElementById('at5').value == "Select one answer")
+		{
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('select-one').checked = true;
+			document.getElementById('answer-1').value = document.getElementById('ans5-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans5-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans5-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans5-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans5-5').value;
+
+		}
+		else if(document.getElementById('at5').value == "Select multiple answers")
+		{
+			document.getElementById('select-multiple').checked = true;
+			document.getElementById('show-answers').classList.remove("js-hidden");
+			document.getElementById('answer-1').value = document.getElementById('ans5-1').value;
+			document.getElementById('answer-2').value = document.getElementById('ans5-2').value;
+			document.getElementById('answer-3').value = document.getElementById('ans5-3').value;
+			document.getElementById('answer-4').value = document.getElementById('ans5-4').value;
+			document.getElementById('answer-5').value = document.getElementById('ans5-5').value;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// SHOW MORE ANSWER BOXES
 	function show3()
 	{
 		document.getElementById('answer-3-add').style.display = 'none';
 		document.getElementById('answer-3-box').style.display = 'inline';
 		document.getElementById('answer-4-add').style.display = 'inline';
 	}
-
 	function show4()
 	{
 		document.getElementById('answer-4-add').style.display = 'none';
 		document.getElementById('answer-4-box').style.display = 'inline';
 		document.getElementById('answer-5-add').style.display = 'inline';
 	}
-
 	function show5()
 	{
 		document.getElementById('answer-5-add').style.display = 'none';
