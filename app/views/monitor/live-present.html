@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+      <h1 class="heading-large">
+        {{ data['event-title'] }}
+      </h1>
+
+
+      <!--  TABS FOR TYPES OF EVENT STATUS  -->
+
+      <form action="/create-event/new" method="get" class="form">
+
+        <div class="tabs" style="margin-top:30px;">
+
+          <div class="tabs-nav">
+            <ul class="tabs-list">
+              <li><a class="stats" href="#stats" style="text-decoration: none;">Statistics</a></li>
+              <li><a class="track-links" href="#track-links" style="text-decoration: none;">Tracking links</a></li>
+              <li><a class="reg-people" href="#reg-people" style="text-decoration: none;">Registered people</a></li>
+            </ul>
+          </div>
+
+
+          <div class="tabs-content">
+
+            <!-- Live -->
+            <div class="tabs-panel" id="stats" >
+              <div class="tabs-panel-inner">
+
+                <br>
+                <br>
+
+                <div id=top-row" display="flex" style="margin-bottom:30px">
+                  <div style="float:left; width:41%;">
+                    <p><span class="heading-xlarge">78%</span> of tickets sold</p>
+                  </div>
+                  <div style="float:left; width:31%; margin-top:8px;" display="flex">
+                    <div>
+                      <p><span class="heading-large">5</span> tickets remaining</p>
+                    </div>
+                  </div>
+                  <div style="float:right; width:28%;  margin-top:8px;">
+                    <div style="float:right;">
+                      <p style="margin-bottom:0px"><span class="heading-large">100</span> tickets total</p>
+                      <p style="margin-top:0px"><a href="#">Change amount of tickets</a></p>
+                    </div>
+                  </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div id=middle-row" display="flex">
+                  <div style="float:left; width:41%; ">
+                    <div style="width:74%">
+                      <p style="margin-bottom:5px">Event page visits</p>
+                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">248</p>
+
+                      <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
+                      <div style="width:100%;" display="flex">
+                        <div style="float:left; width:60%; background-color:#0000FF; height:10px;  margin-top:6px;">&nbsp;</div>
+                        <div style="float:left; width:40px; height:10px;">&nbsp;60%</div>
+                      </div>
+
+                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
+                      <div style="width:100%;" display="flex">
+                        <div style="float:left; width:30%; background-color:#00FF00; height:10px;  margin-top:6px;">&nbsp;</div>
+                        <div style="float:left; width:40px; height:10px;">&nbsp;30%</div>
+                      </div>
+
+                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Partnert</p>
+                      <div style="width:100%;" display="flex">
+                        <div style="float:left; width:9%; background-color:#FF0000; height:10px;  margin-top:6px;">&nbsp;</div>
+                        <div style="float:left; width:40px; height:10px;">&nbsp;9%</div>
+                      </div>
+
+                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Other</p>
+                      <div style="width:100%;" display="flex">
+                        <div style="float:left; width:1%; background-color:#000000; height:10px;  margin-top:6px;">&nbsp;</div>
+                        <div style="float:left; width:40px; height:10px;">&nbsp;1%</div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div style="float:left; width:31%; margin-top:0px;" display="flex">
+                    <div>
+                      <p style="margin-bottom:5px">Registrations</p>
+                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">95</p>
+
+                        <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
+                        <div style="width:100%;" display="flex">
+                          <div style="float:left; width:48%; background-color:#0000FF; height:10px;  margin-top:6px;">&nbsp;</div>
+                          <div style="float:left; width:40px; height:10px;">&nbsp;48%</div>
+                        </div>
+
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
+                        <div style="width:100%;" display="flex">
+                          <div style="float:left; width:50%; background-color:#00FF00; height:10px;  margin-top:6px;">&nbsp;</div>
+                          <div style="float:left; width:40px; height:10px;">&nbsp;50%</div>
+                        </div>
+
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Partnert</p>
+                        <div style="width:100%;" display="flex">
+                          <div style="float:left; width:2%; background-color:#FF0000; height:10px;  margin-top:6px;">&nbsp;</div>
+                          <div style="float:left; width:40px; height:10px;">&nbsp;2%</div>
+                        </div>
+
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Other</p>
+                        <div style="width:100%;" display="flex">
+                          <div style="float:left; width:0%; background-color:#000000; height:10px;  margin-top:6px;">&nbsp;</div>
+                          <div style="float:left; width:40px; height:10px;">0%</div>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div style="float:right; width:28%;  margin-top:8px;">
+                    <div style="float:right;">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!--  Draft   -->
+            <div class="tabs-panel" id="reg-people" style="border-top:0px solid #bfc1c3;">
+              <div class="tabs-panel-inner">
+
+              </div>
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+      </form>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+    </div>
+  </div>
+</main>
+
+
+
+
+
+
+<script>
+
+  $(document).ready(function() {
+
+    console.log("THIS ACTOUN HOME TASB SHIT IS RUN ---------------------");
+    if(window.location.hash) {
+      $("." + window.location.hash.substr(1)).trigger("click");
+    }
+
+  });
+
+</script>
+{% endblock %}
+
