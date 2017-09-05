@@ -38,42 +38,45 @@
       {% endif %}
 
 	  <h1 class="heading-large" style="margin-top:15px">
-        Attendee information
+		  Event registration questions
       </h1>
 
 
 	  <form action="/create-event/attendee-onwards" method="get" class="form">
 
 
-		  <p>During registration, all attendees are required to provide:</p>
+		  <p>In order to register for any event, prospective attendees will always need to provide their:</p>
 		  <ul class="list list-bullet">
-			  <li>Full name</li>
-			  <li>Job title</li>
-			  <li>Phone number</li>
-			  <li>Email address</li>
-			  <li>Company name</li>
-			  <li>Company address</li>
-			  <li>Primary sector</li>
+			  <li>full name</li>
+			  <li>full address and postcode</li>
+			  <li>phone number</li>
+			  <li>company name</li>
+			  <li>primary sector of company</li>
+			  <li>job title</li>
+			  <li>company website</li>
 		  </ul>
 
+		  <br>
+		  <p>The above fields will automatically appear on this event's registration form.</p>
 
-			<br>
+
 
 		  <fieldset class="form-group inline">
 				  <!--  Addtional questions that the registering user need to answer  -->
 				  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
 					  <label class="form-label-bold">
-					  	  Do you have additional registration questions?
+						  Do you need to collect any other details?
 					  </label>
 					  <div class="form-date" style="margin-top:5px">
 						  <div class="multiple-choice">
-							  <input id="radio-inline-1" type="radio" name="radio-additional-questions-boolean" value="yes">
-							  <label for="radio-inline-1">Yes</label>
+							  <input id="radio-inline-2" type="radio" name="radio-additional-questions-boolean" value="no" checked="checked">
+							  <label for="radio-inline-2">No, I don't need to add any further registration questions</label>
 						  </div>
 						  <div class="multiple-choice">
-							  <input id="radio-inline-2" type="radio" name="radio-additional-questions-boolean" value="no" checked="checked">
-							  <label for="radio-inline-2">No</label>
+							  <input id="radio-inline-1" type="radio" name="radio-additional-questions-boolean" value="yes">
+							  <label for="radio-inline-1">Yes, I need to add further registration questions</label>
 						  </div>
+
 					  </div>
 				  </div>
 		  </fieldset>
