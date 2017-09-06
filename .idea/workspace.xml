@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="112e8f47-37cb-4742-9f5d-22074abd4dea" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/includes/checkin-list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/includes/registered-people-list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/additional-questions.html" afterPath="$PROJECT_DIR$/app/views/create-event/additional-questions.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/attendees.html" afterPath="$PROJECT_DIR$/app/views/create-event/attendees.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/description.html" afterPath="$PROJECT_DIR$/app/views/create-event/description.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/images.html" afterPath="$PROJECT_DIR$/app/views/create-event/images.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/index.html" afterPath="$PROJECT_DIR$/app/views/create-event/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/tickets.html" afterPath="$PROJECT_DIR$/app/views/create-event/tickets.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/venue.html" afterPath="$PROJECT_DIR$/app/views/create-event/venue.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/monitor/live-present.html" afterPath="$PROJECT_DIR$/app/views/monitor/live-present.html" />
     </list>
     <ignored path="events-user-testing-prototype.iws" />
@@ -29,72 +29,97 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tickets.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/tickets.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/account/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.346154">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="attendees.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/attendees.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55028903">
-              <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+            <state vertical-scroll-proportion="11.115385">
+              <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/index.html">
+      <file leaf-file-name="live-present.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/monitor/live-present.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.923077">
-              <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5203349">
+              <caret line="211" column="77" selection-start-line="211" selection-start-column="77" selection-end-line="211" selection-end-column="77" />
               <folding>
-                <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="venue.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/venue.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.150944">
-              <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="147" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="description.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.377358">
-              <caret line="97" column="14" selection-start-line="97" selection-start-column="14" selection-end-line="97" selection-end-column="140" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="images.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/images.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.18868">
-              <caret line="103" column="14" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="141" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#5;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#4;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#5;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#td#2;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#td#2;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#3;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#3;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#3;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#td#2;n#tr#3;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,16 +158,18 @@
         <option value="$PROJECT_DIR$/app/views/index.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/summary.html" />
         <option value="$PROJECT_DIR$/app/routes.js" />
-        <option value="$PROJECT_DIR$/app/views/create-event/additional-questions.html" />
         <option value="$PROJECT_DIR$/app/views/monitor/chicken.html" />
         <option value="$PROJECT_DIR$/app/views/includes/live-events.html" />
-        <option value="$PROJECT_DIR$/app/views/create-event/index.html" />
-        <option value="$PROJECT_DIR$/app/views/monitor/live-present.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/venue.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/description.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/images.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/tickets.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/attendees.html" />
+        <option value="$PROJECT_DIR$/app/views/create-event/additional-questions.html" />
+        <option value="$PROJECT_DIR$/app/views/includes/registered-people-list.html" />
+        <option value="$PROJECT_DIR$/app/views/includes/checkin-list.html" />
+        <option value="$PROJECT_DIR$/app/views/create-event/index.html" />
+        <option value="$PROJECT_DIR$/app/views/monitor/live-present.html" />
       </list>
     </option>
   </component>
@@ -189,7 +216,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -294,6 +320,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="create-event" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -340,6 +388,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -352,15 +401,15 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\monitor" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\create-event" />
       <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\includes" />
+      <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\create-event" />
       <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\assets\images" />
       <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\assets\javascripts" />
       <recent name="C:\Users\Guy\Documents\GitHub\events-user-testing-prototype\app\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\monitor" />
     </key>
   </component>
   <component name="RunManager">
@@ -428,10 +477,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-657" y="-1088" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17760417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17760417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.181388" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -489,20 +538,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/dit/multi-column.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.296296">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/jquery.tabs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/includes/scripts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13757226">
@@ -748,45 +783,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/additional-questions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33183858">
-          <caret line="285" column="25" selection-start-line="285" selection-start-column="25" selection-end-line="285" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#3;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#4;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#1;n#input#4;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/summary.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.019058296">
           <caret line="168" column="26" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#dd#0;n#div#8;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#dd#0;n#div#9;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#dd#0;n#div#10;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -795,38 +795,6 @@
         <state vertical-scroll-proportion="0.33333334">
           <caret line="326" column="16" selection-start-line="326" selection-start-column="16" selection-end-line="326" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/includes/live-events.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17152466">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#thead#0;n#table#0;n#th#0;n#tr#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/account/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/preview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5616592">
-          <caret line="93" column="32" selection-start-line="93" selection-start-column="32" selection-end-line="93" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -855,12 +823,176 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="14" selection-start-line="97" selection-start-column="14" selection-end-line="97" selection-end-column="140" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/images.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="14" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="141" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/venue.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.019058296">
+          <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="147" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/tickets.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.047085203">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/preview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0482063">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/includes/live-events.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.038462">
+          <caret line="73" column="6" selection-start-line="73" selection-start-column="6" selection-end-line="78" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/attendees.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6462428">
+          <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="76" />
+          <folding>
+            <element signature="n#style#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/additional-questions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.114349775">
+          <caret line="263" column="155" selection-start-line="263" selection-start-column="155" selection-end-line="263" selection-end-column="155" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#3;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#4;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#input#4;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/includes/checkin-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33410406">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/includes/registered-people-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35144508">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84753364">
+          <caret line="227" column="0" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/account/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="11.115385">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/monitor/live-present.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.058959536">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.5203349">
+          <caret line="211" column="77" selection-start-line="211" selection-start-column="77" selection-end-line="211" selection-end-column="77" />
           <folding>
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -907,69 +1039,31 @@
             <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#td#2;n#tr#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#td#2;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#3;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#3;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#3;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#td#2;n#tr#3;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.923077">
-          <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/venue.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.150944">
-          <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="147" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.377358">
-          <caret line="97" column="14" selection-start-line="97" selection-start-column="14" selection-end-line="97" selection-end-column="140" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/images.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.18868">
-          <caret line="103" column="14" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="141" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/tickets.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.346154">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/attendees.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55028903">
-          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>

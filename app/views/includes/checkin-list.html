@@ -1,0 +1,47 @@
+
+<!--  MACRO TO MAKE EACH LIVE LINE ITEM -->
+{% macro regiseredPerson(name, jobtitle, company, sector, phone, email) %}
+<tr  style="border-bottom: 1px solid #bfc1c3;">
+
+  <td valign="top" style="border: 0px; padding-top: 22px; padding-bottom: 21px; width:75%px;">
+    <p style="font-weight:700; margin:0;">{{ name }}</p>
+  </td>
+
+  <td valign="top" style="border: 0px; padding-top: 15px; padding-bottom: 16px;">
+    <div style="float:right">
+      <input type="submit" class="button" formaction="#" value="Check in">
+    </div>
+
+  </td>
+
+</tr>
+
+
+{% endmacro %}
+
+
+
+
+
+<div >
+
+
+    <table style="width:40%; margin-top:40px;">
+      <thead>
+      </thead>
+
+      <tbody>
+
+      <!-- EVENT ONE  -->
+        {{ regiseredPerson('Joe Desiato', 'CEO', 'Firefield LTD', 'Apparel', '07865 595 588', 'joe.desiato@gmail.com') }}
+        {{ regiseredPerson('Guy Nociar', 'Head of sales', 'Meat professionals  south east', 'Food and drink', '07375 357 382', 'g.nociar@meatSE.com') }}
+        {{ regiseredPerson('Peter Tristram', 'CEO', 'Magic Cars ltd', 'Toys', '07711 736 845', 'peter.tristram@megiccars.com') }}
+        {{ regiseredPerson('Pietro Phillips', 'Export lead', 'Motor Oils West LTD', 'Apparel', '07969 228 316', 'p.phillips@outlook.com') }}
+
+      </tbody>
+    </table>
+
+
+
+
+</div>

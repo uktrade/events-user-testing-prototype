@@ -1,0 +1,68 @@
+
+<!--  MACRO TO MAKE EACH LIVE LINE ITEM -->
+{% macro regiseredPerson(name, jobtitle, company, sector, phone, email) %}
+<tr>
+
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ name }} </td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ jobtitle }} </td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ company }} </td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ sector }} </td>
+
+</tr>
+
+<tr>
+
+  <td colspan="4" style="padding-top:2px;">
+    <div>
+      <details>
+        <summary><span class="summary">More details</span></summary>
+        <div class="panel panel-border-narrow">
+          <p>
+            {{ phone }}
+          </p>
+          <p>
+            {{ email }}
+          </p>
+
+          <p>
+            <a href="#">See full customer record</a>
+          </p>
+        </div>
+      </details>
+    </div>
+  </td>
+
+</tr>
+
+{% endmacro %}
+
+
+
+
+
+<div >
+
+
+    <table style="width:100%; margin-top:40px;">
+      <thead>
+        <tr  style="border-bottom: 1px solid #bfc1c3;">
+          <th scope="col" style="width:20%; padding-bottom:10px; padding-top: 0px;">Name</th>
+          <th class="col" style="width:25%; padding-bottom:10px; padding-top: 0px;">Job title</th>
+          <th class="col" style="width:30%; padding-bottom:10px; padding-top: 0px;">Company</th>
+          <th scope="col" style="width:25%; padding-bottom:10px; padding-top: 0px;">Sector</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+      <!-- EVENT ONE  -->
+        {{ regiseredPerson('Joe Desiato', 'CEO', 'Firefield LTD', 'Apparel', '07865 595 588', 'joe.desiato@gmail.com') }}
+        {{ regiseredPerson('Guy Nociar', 'Head of sales', 'Meat professionals  south east', 'Food and drink', '07375 357 382', 'g.nociar@meatSE.com') }}
+        {{ regiseredPerson('Peter Tristram', 'CEO', 'Magic Cars ltd', 'Toys', '07711 736 845', 'peter.tristram@megiccars.com') }}
+        {{ regiseredPerson('Pietro Phillips', 'Export lead', 'Motor Oils West LTD', 'Apparel', '07969 228 316', 'p.phillips@outlook.com') }}
+
+      </tbody>
+    </table>
+
+
+</div>
