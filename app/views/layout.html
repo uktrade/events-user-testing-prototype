@@ -20,12 +20,11 @@
             {% if serviceName %} {{ serviceName }} {% endif %}
           {% endblock %}
         </a>
-        <!--
+        {% if loggedIn %} 
         <ul id="proposition-links">
-          <li><a href="url-to-page-1" class="active">Navigation item #1</a></li>
-          <li><a href="url-to-page-2">Navigation item #2</a></li>
+          <li><a href="url-to-page-1">Logout</a></li>
         </ul>
-        -->
+        {% endif %}
       </nav>
     </div>
   </div>
@@ -43,6 +42,7 @@
         <a href="/prototype-admin/clear-data">Clear data</a>
       </li>
     </ul>
+
   {% endif %}
 {% endblock %}
 
