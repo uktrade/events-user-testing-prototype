@@ -33,7 +33,7 @@ GOV.UK prototype kit
           <div class="tabs-nav">
             <ul class="tabs-list">
               <li><a class="stats" href="#stats" style="text-decoration: none;">Statistics</a></li>
-              <li><a class="track-links" href="#track-links" style="text-decoration: none;">Tracking links</a></li>
+              <li><a class="trackLinks" href="#trackLinks" style="text-decoration: none;">Tracking links</a></li>
               <li><a class="reg-people" href="#reg-people" style="text-decoration: none;">Registered people</a></li>
               <li><a class="checkin" href="#checkin" style="text-decoration: none;">Check-in</a></li>
             </ul>
@@ -157,7 +157,7 @@ GOV.UK prototype kit
 
 
             <!--  Tracking links for reg  -->
-            <div class="tabs-panel" id="track-links" >
+            <div class="tabs-panel" id="trackLinks" >
               <div class="tabs-panel-inner">
 
                 {% include "includes/tracking-links.html" %}
@@ -221,10 +221,10 @@ GOV.UK prototype kit
 <script>
 
   $(document).ready(function() {
-
-    console.log("THIS ACTOUN HOME TASB SHIT IS RUN ---------------------");
-    if(window.location.hash) {
-      $("." + window.location.hash.substr(1)).trigger("click");
+   
+    console.log("THIS ACTOUN HOME TASB SHIT IS RUN ---------------------" + window.location.hash);
+    if({{tab}} ) {
+      $(".tabs-list li:nth-child(" + {{tab}} + ") a").trigger("click");
     }
 
   });
