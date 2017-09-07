@@ -384,13 +384,14 @@ router.get('/create-event/create-event-onwards', function (req, res)
 router.get('/create-event/venue-onwards', function (req, res)
 {
 
-
   console.log(req.session.data['full-address-holder']);
 
   if(req.session.data['full-address-holder'] == "")
   {
     req.session.data['full-address-holder'] = "Not entered"
   }
+
+
 
   res.redirect('/create-event/description');
 })
