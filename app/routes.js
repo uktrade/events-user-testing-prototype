@@ -1139,6 +1139,13 @@ router.get('/create-event/change-date', function (req, res)
   res.redirect('/create-event');
 })
 
+router.get('/create-event/change-venue', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/venue');
+})
+
 router.get('/create-event/change-description', function (req, res)
 {
   req.session.changingFromSummary = true;
