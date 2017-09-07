@@ -18,7 +18,38 @@
 		</ol>
 	  </div>
 
-	  <h1 class="heading-large" style="margin-top:15px">
+
+		<!-- CONDITIONAL ERROR  -->
+		{% if anError %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Invalid or missing fields
+			</h2>
+
+			<p>
+				Please check the following errors and try again
+			</p>
+
+			<ul class="error-summary-list">
+				{% if errorBuilding %}
+				<li><a href="#date-area">Address: Building</a></li>
+				{% endif %}
+				{% if errorTown %}
+				<li><a href="#date-area">Address: Town or city</a></li>
+				{% endif %}
+				{% if errorPostcode %}
+				<li><a href="#date-area">Address: postcode</a></li>
+				{% endif %}
+
+			</ul>
+
+		</div>
+		{% endif %}
+
+
+
+	  <h1 class="heading-large" style="margin-top:15px; margin-bottom:30px">
 		  Where will the event take place?
       </h1>
 
@@ -33,19 +64,68 @@
 			  </label>
 				-->
 
+			  {% if errorBuilding %}
+			  	<div class="form-group form-group-error">
+			  {% else %}
+				<div class="form-group">
+			  {% endif %}
 
-			  <label class="form-label" for="building"  style="margin-bottom:5px; margin-top:15px; ">Building and street</label>
-			  <input class="form-control" id="building" type="text" name="building" style="width:75%"  value="{{ data['building'] }}" >
-			  <input class="form-control" id="street" type="text" name="street" style="width:75%; margin-top:8px"   value="{{ data['street'] }}" >
+				  <label class="form-label-bold" for="building"  style="margin-bottom:5px;  ">Building and street</label>
+				  {% if errorBuilding %}
+					  <span class="error-message">
+						  Enter building name
+					  </span>
+				  {% endif %}
+				  <input class="form-control {% if errorBuilding %} form-control-error {% endif %}" id="building" type="text" name="building" style="width:75%"  value="{{ data['building'] }}" >
+				  <input class="form-control" id="street" type="text" name="street" style="width:75%; margin-top:8px"   value="{{ data['street'] }}" >
+
+			  {% if errorBuilding %}
+				</div>
+			  {% else %}
+				</div>
+			  {% endif %}
 
 
-			  <label class="form-label" for="town" style="margin-bottom:5px; margin-top:25px; ">Town or city</label>
-			  <input class="form-control" id="town" type="text" name="town" style="width:40%"  value="{{ data['town'] }}">
+			  {% if errorTown %}
+			  	<div class="form-group form-group-error">
+			  {% else %}
+				<div class="form-group">
+			  {% endif %}
+
+				  <label class="form-label-bold" for="town" style="margin-bottom:5px; ">Town or city</label>
+				  {% if errorTown %}
+					  <span class="error-message">
+						  Enter a  town or city
+					  </span>
+				  {% endif %}
+				  <input class="form-control {% if errorTown %} form-control-error {% endif %}" id="town" type="text" name="town" style="width:40%"  value="{{ data['town'] }}">
+
+			  {% if errorTown %}
+				</div>
+			  {% else %}
+				</div>
+			  {% endif %}
 
 
-			  <label class="form-label" for="postcode" style="margin-bottom:5px; margin-top:25px; ">Postcode</label>
-			  <input class="form-control" id="postcode" type="text" name="postcode" style="width:25%"  value="{{ data['postcode'] }}">
+			  {% if errorPostcode %}
+			  	<div class="form-group form-group-error">
+			  {% else %}
+				</div>
+			  {% endif %}
 
+				  <label class="form-label-bold" for="postcode" style="margin-bottom:5px;">Postcode</label>
+				  {% if errorPostcode %}
+					  <span class="error-message">
+						  Enter  valid postcode
+					  </span>
+				  {% endif %}
+				  <input class="form-control {% if errorPostcode %} form-control-error {% endif %}" id="postcode" type="text" name="postcode" style="width:25%"  value="{{ data['postcode'] }}">
+
+			  {% if errorPostcode %}
+				</div>
+			  {% else %}
+			  	</div>
+			  {% endif %}
 
 
 

@@ -386,14 +386,85 @@ router.get('/create-event/venue-onwards', function (req, res)
 
   console.log(req.session.data['full-address-holder']);
 
-  if(req.session.data['full-address-holder'] == "")
+  var errorOnBuilding = false;
+  var errorOnTown = false;
+  var errorOnPostcode = false;
+
+  req.session.data['full-address-holder'] = "";
+
+  // If building is empty then throw error;
+  if(req.session.data['building'] == "")
+  {
+    errorOnBuilding = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['building'];
+  }
+
+  // Add street to output if the field is not empty
+  if(req.session.data['street'] != "")
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['street'];
+  }
+
+
+  // If town is empty then throw error;
+  if(req.session.data['town'] == "")
+  {
+    errorOnTown = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['town'];
+  }
+
+
+  // If building is empty then throw error;
+  if(req.session.data['postcode'] == "")
+  {
+    errorOnPostcode = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['postcode'];
+  }
+
+
+
+  if( req.session.data['full-address-holder'] == "")
   {
     req.session.data['full-address-holder'] = "Not entered"
   }
 
 
+  // no errors
+  if((errorOnBuilding || errorOnTown || errorOnPostcode) == false)
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/description');
+    }
 
-  res.redirect('/create-event/description');
+  }
+  else
+  {
+    res.render('create-event/venue',
+        {
+          'anError' : true,
+          'errorBuilding': errorOnBuilding,
+          'errorTown': errorOnTown,
+          'errorPostcode': errorOnPostcode
+        }
+    );
+  }
+
+
+
 })
 
 
