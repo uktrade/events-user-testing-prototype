@@ -1240,9 +1240,11 @@ router.get('/monitor/add-tracking-link', function (req, res)
 
     errorTrackingNameIs = true;
 
-    res.render('monitor/live-present#track-links',
+    res.render('monitor/live-present',
+
         {
-          'errorTrackingName': errorTrackingNameIs,
+          tab: 2,
+         'errorTrackingName': errorTrackingNameIs,
         }
     );
   }
@@ -1254,7 +1256,7 @@ router.get('/monitor/add-tracking-link', function (req, res)
 
     console.log("the size of the links list is now " +   req.session.trackingLinksNames.length);
 
-    res.redirect('/monitor/live-present#track-links');
+    res.redirect('/monitor/live-present#trackLinks');
   }
 })
 
