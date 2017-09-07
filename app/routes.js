@@ -89,9 +89,10 @@ router.use(function (req, res, next)
   //console.log("INITIAL CODE RUN ______________");
   req.session.regionName = "DIT Yorkshire and the Humber";
 
-
-  req.session.trackingLinksNames = ['Email marketing','Twitter','Other'];
-
+  if(req.session.trackingLinksNames == undefined)
+  {
+    req.session.trackingLinksNames = ['Email marketing','Twitter', 'Partner XYZ','Other'];
+  }
 
 
   next();
@@ -1250,7 +1251,9 @@ router.get('/monitor/add-tracking-link', function (req, res)
   {
     req.session.trackingLinksNames[req.session.trackingLinksNames.length] = req.session.data['new-link-name'];
 
-    console.log("the size of the links list is now " + req.session.trackingLinksNames.length);
+    console.log("the  name added is  " +   req.session.trackingLinksNames[req.session.trackingLinksNames.length-1]);
+
+    console.log("the size of the links list is now " +   req.session.trackingLinksNames.length);
 
     res.redirect('/monitor/live-present#trackLinks');
   }

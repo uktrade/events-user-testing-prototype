@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="112e8f47-37cb-4742-9f5d-22074abd4dea" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/includes/tracking-links.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.js" afterPath="$PROJECT_DIR$/app/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/monitor/live-present.html" afterPath="$PROJECT_DIR$/app/views/monitor/live-present.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/includes/tracking-links.html" afterPath="$PROJECT_DIR$/app/views/includes/tracking-links.html" />
     </list>
     <ignored path="events-user-testing-prototype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,11 +102,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="live-events.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/includes/live-events.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.153846">
+              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="tracking-links.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/includes/tracking-links.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.08133971">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6507177">
+              <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
@@ -127,28 +136,29 @@
       <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1232" column="0" selection-start-line="1232" selection-start-column="0" selection-end-line="1255" selection-end-column="0" />
+            <state vertical-scroll-proportion="-14.827586">
+              <caret line="1254" column="0" selection-start-line="1254" selection-start-column="0" selection-end-line="1254" selection-end-column="0" />
               <folding>
                 <element signature="e#2205#2280#0" expanded="false" />
-                <element signature="e#3194#3302#0" expanded="false" />
-                <element signature="e#5990#10238#0" expanded="false" />
-                <element signature="e#7397#7729#0" expanded="false" />
-                <element signature="e#10334#10562#0" expanded="false" />
-                <element signature="e#11245#11607#0" expanded="false" />
-                <element signature="e#11677#12703#0" expanded="false" />
-                <element signature="e#12774#13872#0" expanded="false" />
-                <element signature="e#14465#23587#0" expanded="false" />
-                <element signature="e#23686#26157#0" expanded="false" />
-                <element signature="e#26278#29215#0" expanded="false" />
-                <element signature="e#29335#32330#0" expanded="false" />
-                <element signature="e#32423#32502#0" expanded="false" />
-                <element signature="e#32572#32663#0" expanded="false" />
-                <element signature="e#32728#32814#0" expanded="false" />
-                <element signature="e#32882#32971#0" expanded="false" />
-                <element signature="e#33065#36335#0" expanded="false" />
-                <element signature="e#36408#37535#0" expanded="false" />
-                <element signature="e#38221#38270#0" expanded="false" />
+                <element signature="e#3267#3375#0" expanded="false" />
+                <element signature="e#3687#4751#0" expanded="false" />
+                <element signature="e#6063#10311#0" expanded="false" />
+                <element signature="e#7470#7802#0" expanded="false" />
+                <element signature="e#10407#10635#0" expanded="false" />
+                <element signature="e#11318#11680#0" expanded="false" />
+                <element signature="e#11750#12776#0" expanded="false" />
+                <element signature="e#12847#13945#0" expanded="false" />
+                <element signature="e#14538#23660#0" expanded="false" />
+                <element signature="e#23759#26230#0" expanded="false" />
+                <element signature="e#26351#29288#0" expanded="false" />
+                <element signature="e#29408#32403#0" expanded="false" />
+                <element signature="e#32496#32575#0" expanded="false" />
+                <element signature="e#32645#32736#0" expanded="false" />
+                <element signature="e#32801#32887#0" expanded="false" />
+                <element signature="e#32955#33044#0" expanded="false" />
+                <element signature="e#33138#36408#0" expanded="false" />
+                <element signature="e#36481#37608#0" expanded="false" />
+                <element signature="e#38414#38463#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -198,8 +208,8 @@
         <option value="$PROJECT_DIR$/app/views/create-event/index.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/description.html" />
         <option value="$PROJECT_DIR$/app/views/monitor/live-present.html" />
-        <option value="$PROJECT_DIR$/app/views/includes/tracking-links.html" />
         <option value="$PROJECT_DIR$/app/routes.js" />
+        <option value="$PROJECT_DIR$/app/views/includes/tracking-links.html" />
       </list>
     </option>
   </component>
@@ -545,11 +555,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>829</line>
+          <line>830</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>579</line>
+          <line>580</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -559,12 +569,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>904</line>
+          <line>905</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>980</line>
+          <line>981</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
@@ -918,47 +928,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/includes/live-events.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12331839">
-          <caret line="73" column="6" selection-start-line="73" selection-start-column="6" selection-end-line="78" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/account/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.730769">
           <caret line="94" column="12" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1232" column="0" selection-start-line="1232" selection-start-column="0" selection-end-line="1255" selection-end-column="0" />
-          <folding>
-            <element signature="e#2205#2280#0" expanded="false" />
-            <element signature="e#3194#3302#0" expanded="false" />
-            <element signature="e#5990#10238#0" expanded="false" />
-            <element signature="e#7397#7729#0" expanded="false" />
-            <element signature="e#10334#10562#0" expanded="false" />
-            <element signature="e#11245#11607#0" expanded="false" />
-            <element signature="e#11677#12703#0" expanded="false" />
-            <element signature="e#12774#13872#0" expanded="false" />
-            <element signature="e#14465#23587#0" expanded="false" />
-            <element signature="e#23686#26157#0" expanded="false" />
-            <element signature="e#26278#29215#0" expanded="false" />
-            <element signature="e#29335#32330#0" expanded="false" />
-            <element signature="e#32423#32502#0" expanded="false" />
-            <element signature="e#32572#32663#0" expanded="false" />
-            <element signature="e#32728#32814#0" expanded="false" />
-            <element signature="e#32882#32971#0" expanded="false" />
-            <element signature="e#33065#36335#0" expanded="false" />
-            <element signature="e#36408#37535#0" expanded="false" />
-            <element signature="e#38221#38270#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1027,10 +1001,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.827586">
+          <caret line="1254" column="0" selection-start-line="1254" selection-start-column="0" selection-end-line="1254" selection-end-column="0" />
+          <folding>
+            <element signature="e#2205#2280#0" expanded="false" />
+            <element signature="e#3267#3375#0" expanded="false" />
+            <element signature="e#3687#4751#0" expanded="false" />
+            <element signature="e#6063#10311#0" expanded="false" />
+            <element signature="e#7470#7802#0" expanded="false" />
+            <element signature="e#10407#10635#0" expanded="false" />
+            <element signature="e#11318#11680#0" expanded="false" />
+            <element signature="e#11750#12776#0" expanded="false" />
+            <element signature="e#12847#13945#0" expanded="false" />
+            <element signature="e#14538#23660#0" expanded="false" />
+            <element signature="e#23759#26230#0" expanded="false" />
+            <element signature="e#26351#29288#0" expanded="false" />
+            <element signature="e#29408#32403#0" expanded="false" />
+            <element signature="e#32496#32575#0" expanded="false" />
+            <element signature="e#32645#32736#0" expanded="false" />
+            <element signature="e#32801#32887#0" expanded="false" />
+            <element signature="e#32955#33044#0" expanded="false" />
+            <element signature="e#33138#36408#0" expanded="false" />
+            <element signature="e#36481#37608#0" expanded="false" />
+            <element signature="e#38414#38463#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/includes/live-events.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.153846">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/includes/tracking-links.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.08133971">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6507177">
+          <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
