@@ -25,14 +25,35 @@
 	  <form action="/create-event/venue-onwards" method="get" class="form">
 
 		  <!--   ADDRESS  -->
-		  <div class="form-group" style="margin-top:10px; margin-bottom:0px; width:100%;">
-			  <label class="form-label-bold" for="autocomplete">
+		  <div class="form-group" style="margin-top:0px; margin-bottom:0px; width:100%;">
+
+			  <!--
+			  <label class="heading-medium" >
 				  Venue address
 			  </label>
+				-->
 
-			  <input class="form-control" id="autocomplete" type="text" style="width:100%;" placeholder=""> </input>
 
-			  <div style="padding-bottom:100px" id="initial-filler-sapce">
+			  <label class="form-label" for="building"  style="margin-bottom:5px; margin-top:15px; ">Building and street</label>
+			  <input class="form-control" id="building" type="text" name="building" style="width:75%"  value="{{ data['building'] }}" >
+			  <input class="form-control" id="street" type="text" name="street" style="width:75%; margin-top:8px"   value="{{ data['street'] }}" >
+
+
+			  <label class="form-label" for="town" style="margin-bottom:5px; margin-top:25px; ">Town or city</label>
+			  <input class="form-control" id="town" type="text" name="town" style="width:40%"  value="{{ data['town'] }}">
+
+
+			  <label class="form-label" for="postcode" style="margin-bottom:5px; margin-top:25px; ">Postcode</label>
+			  <input class="form-control" id="postcode" type="text" name="postcode" style="width:25%"  value="{{ data['postcode'] }}">
+
+
+
+
+
+
+			  <!-- <input class="form-control" id="autocomplete" type="text" style="width:100%;" placeholder=""> </input>  -->
+
+			  <div style="padding-bottom:100px" id="initial-filler-sapce" class="js-hidden">
 					<p>&nbsp;</p>
 			  </div>
 
@@ -61,20 +82,14 @@
 
 				  </p>
 
-				  <br>
-					<!--
-				  <p>
-					  <a href="#">Edit address</a> or <a href="/create-event/venue">enter a new address</a>
-				  </p>
-				  -->
-
+				  <br>r
 			  </div>
 		  </div>
 
 
 
 
-		  <div class="form-group" style="margin-top:20px">
+		  <div class="form-group" style="margin-top:40px">
 			  <input type="submit" class="button" value="Save and continue">
 			  <p style="margin-top:25px"><a href="/create-event/venue-onwards">I'll complete this later - I don't have this information yet</a></p>
 
