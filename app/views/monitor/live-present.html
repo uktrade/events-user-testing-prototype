@@ -175,7 +175,7 @@ GOV.UK prototype kit
                     <td style="padding-top:25px; padding-bottom:20px;">www.great.gov.uk/event/mh43dzsh</td>
                     <td style="padding-top:15px; padding-bottom:15px;" >
                       <div>
-                        <input style="float:right;" type="submit" class="button-secondary" formaction="/monitor/live-present#track-links" value="Copy to clipboard">
+                        <input style="float:right;" type="submit" class="button-secondary" formaction="#" value="Copy to clipboard">
                       </div>
                     </td>
                   </tr>
@@ -184,7 +184,7 @@ GOV.UK prototype kit
                     <td style="padding-top:25px; padding-bottom:20px;">www.great.gov.uk/event/dt74stad</td>
                     <td style="padding-top:15px; padding-bottom:15px;" >
                       <div>
-                        <input style="float:right;" type="submit" class="button-secondary" formaction="/monitor/live-present#track-links" value="Copy to clipboard">
+                        <input style="float:right;" type="submit" class="button-secondary" formaction="#" value="Copy to clipboard">
                       </div>
                     </td>
                   </tr>
@@ -193,7 +193,7 @@ GOV.UK prototype kit
                     <td style="padding-top:25px; padding-bottom:20px;">www.great.gov.uk/event/5gufetui</td>
                     <td style="padding-top:15px; padding-bottom:15px;" >
                       <div>
-                        <input style="float:right;" type="submit" class="button-secondary" formaction="/monitor/live-present#track-links" value="Copy to clipboard">
+                        <input style="float:right;" type="submit" class="button-secondary" formaction="#" value="Copy to clipboard">
                       </div>
                     </td>
                   </tr>
@@ -202,18 +202,39 @@ GOV.UK prototype kit
                     <td style="padding-top:25px; padding-bottom:20px;">www.great.gov.uk/event/loh3infz</td>
                     <td style="padding-top:15px; padding-bottom:15px;" >
                       <div>
-                        <input style="float:right;" type="submit" class="button-secondary" formaction="/monitor/live-present#track-links" value="Copy to clipboard">
+                        <input style="float:right;" type="submit" class="button-secondary" formaction="#" value="Copy to clipboard">
                       </div>
                     </td>
                   </tr>
-                </table>
 
-                <div style="margin-top: 30px; margin-bottom: 30px;">
-                  <input type="submit" class="button-secondary" formaction="#" value="Add new link">
-                </div>
+
+                  <!-- Add new  tracking link -->
+                  <tr>
+                    <td style="font-weight:700; width:30%; padding-top:25px; padding-bottom:20px;";>
+
+                      {% if errorTrackingName %}
+                        <p class="error-message">
+							  Please enter the name of the ...
+						  </p>
+                      {% endif %}
+
+                      <input type="text" class="form-control  {% if errorTrackingName %} form-control-error {% endif %}"
+                             id="new-link-name" name="new-link-name" value="" style="width:80%">
+                    </td>
+                    <td style="padding-top:20px; padding-bottom:20px;">
+                      <div style="margin-top: 0px; margin-bottom: 0px;">
+                        <input type="submit" class="button-secondary" formaction="/monitor/add-tracking-link" value="Add new link">
+                      </div>
+                    </td>
+                    <td style="padding-top:15px; padding-bottom:15px;" >
+                    </td>
+                  </tr>
+
+                </table>
 
               </div>
             </div>
+
 
 
 
@@ -222,7 +243,7 @@ GOV.UK prototype kit
               <div class="tabs-panel-inner">
 
                 <div style="margin-top: 30px; margin-bottom: 30px;">
-                  <input type="submit" class="button-secondary" formaction="/monitor/live-present?#reg-people" value="Download this data">
+                  <input type="submit" class="button-secondary" formaction="#" value="Download this data">
                 </div>
 
                 {% include "includes/registered-people-list.html" %}

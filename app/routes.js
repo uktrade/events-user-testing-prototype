@@ -1224,6 +1224,29 @@ router.get('/make-draft-live', function (req, res)
 
 
 
+// STORE EVENT
+router.get('/monitor/add-tracking-link', function (req, res)
+{
+  if(req.session.data['new-link-name'] === "")
+  {
+    errorMissingTitle = true;
+
+    res.render('create-event/description',
+        {
+          'errorMissingTitle': errorMissingTitle,
+        }
+    );
+  }
+  else
+  {
+    res.redirect('/monitor/live-present');
+  }
+})
+
+
+
+
+
 router.get('/clear-session', function (req, res) {
   req.session.destroy();
   res.redirect('/');
