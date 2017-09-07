@@ -89,6 +89,11 @@ router.use(function (req, res, next)
   //console.log("INITIAL CODE RUN ______________");
   req.session.regionName = "DIT Yorkshire and the Humber";
 
+
+  req.session.trackingLinksNames = ['Email marketing','Twitter','Other'];
+
+
+
   next();
 
 });
@@ -1229,17 +1234,23 @@ router.get('/monitor/add-tracking-link', function (req, res)
 {
   if(req.session.data['new-link-name'] === "")
   {
-    errorMissingTitle = true;
+    console.log("the new link name is empty");
 
-    res.render('create-event/description',
+    errorTrackingNameIs = true;
+
+    res.render('monitor/live-present#track-links',
         {
-          'errorMissingTitle': errorMissingTitle,
+          'errorTrackingName': errorTrackingNameIs,
         }
     );
   }
   else
   {
-    res.redirect('/monitor/live-present');
+    req.session.trackingLinksNames[req.session.trackingLinksNames.length] = req.session.data['new-link-name'];
+
+    console.log("the size of the links list is now " + req.session.trackingLinksNames.length);
+
+    res.redirect('/monitor/live-present#track-links');
   }
 })
 

@@ -1,0 +1,86 @@
+
+<!--  MACRO TO MAKE EACH LIVE LINE ITEM -->
+{% macro trackingLinks(link, number) %}
+<tr>
+  <td style="font-weight:700; width:30%; padding-top:25px; padding-bottom:20px;";>{{ session.trackingLinksNames[number] }}</td>
+  <td style="padding-top:25px; padding-bottom:20px;">{{ link }}</td>
+  <td style="padding-top:15px; padding-bottom:15px;" >
+    <div>
+      <input style="float:right;" type="submit" class="button-secondary" formaction="#" value="Copy to clipboard">
+    </div>
+  </td>
+</tr>
+{% endmacro %}
+
+
+
+<table style="width:100%; margin-top:20px">
+
+
+  {% if 0 < session.trackingLinksNames.length  %}
+    {{ trackingLinks('www.great.gov.uk/event/mh43dzsh', 0) }}
+  {% endif %}
+
+
+  {% if 1 < session.trackingLinksNames.length  %}
+    {{ trackingLinks('www.great.gov.uk/event/dt74stad', 1) }}
+  {% endif %}
+
+
+  {% if 2 < session.trackingLinksNames.length  %}
+    {{ trackingLinks('www.great.gov.uk/event/5gufetui', 2) }}
+  {% endif %}
+
+
+  {% if 3 < session.trackingLinksNames.length  %}
+    {{ trackingLinks('www.great.gov.uk/event/loh3infz', 3) }}
+  {% endif %}
+
+
+  {% if 4 < session.trackingLinksNames.length  %}
+    {{ trackingLinks('www.great.gov.uk/event/l9f61sas', 4) }}
+  {% endif %}
+
+
+
+  <!-- Add new  tracking link -->
+  <tr>
+    <td style="font-weight:700; width:30%; padding-top:25px; padding-bottom:20px;";>
+
+      {% if errorTrackingName %}
+      <p class="error-message">
+        Enter tracking name
+      </p>
+      {% endif %}
+
+      <input type="text" class="form-control  {% if errorTrackingName %} form-control-error {% endif %}"
+             id="new-link-name" name="new-link-name" value="" style="width:80%">
+    </td>
+    <td style="padding-top:21px; padding-bottom:20px;">
+      {% if errorTrackingName %}
+      <div style=" margin-top: 31px; margin-bottom: 0px;">
+        {% else %}
+        <div>
+          {% endif %}
+
+          <input type="submit" class="button-secondary" formaction="/monitor/add-tracking-link" value="Add new link">
+
+          {% if errorTrackingName %}
+        </div>
+        {% else %}
+      </div>
+      {% endif %}
+
+    </td>
+    <td style="padding-top:15px; padding-bottom:15px;" >
+    </td>
+  </tr>
+
+</table>
+
+
+
+
+
+
+
