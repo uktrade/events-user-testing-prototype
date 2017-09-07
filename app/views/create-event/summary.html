@@ -26,8 +26,6 @@
 
 	  <form action="/create-event/preview" method="get" class="form">
 
-
-
 		  <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
 		  <!--   * `cya-questions-short` for short questions -->
 		  <!--   * `cya-questions-long` for long questions -->
@@ -78,8 +76,6 @@
 				  </dd>
 			  </div>
 
-
-
 			  <div>
 				  <dt class="cya-question">
 					  Venue
@@ -108,6 +104,20 @@
 
 			  <div>
 				  <dt class="cya-question">
+					  Registration closing time
+				  </dt>
+				  <dd class="cya-answer">
+					  {{ session.regCloseTime }}
+				  </dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-attendees">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+			  <div>
+				  <dt class="cya-question">
 					  Message displayed when all tickets are sold out
 				  </dt>
 				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sold-out-message'] }}</dd>
@@ -117,6 +127,8 @@
 					  </a>
 				  </dd>
 			  </div>
+
+
 
 			  <div>
 				  <dt class="cya-question">
@@ -130,17 +142,21 @@
 				  </dd>
 			  </div>
 
-			  <div>
-				  <dt class="cya-question" style="vertical-align:top">Main image</dt>
-				  <dd class="cya-answer">
-					  <img src="/public/images/exportingheroimagesmall.jpg" style="width:240px; height:100px;">
-				  </dd>
-				  <dd class="cya-change" style="vertical-align:top">
-					  <a href="/create-event/change-images">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
+
+			  {% if session.questionsData.length == 0  %}
+				  <div>
+					  <dt class="cya-question">
+						  Additional questions
+					  </dt>
+					  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">No additional questions</dd>
+					  <dd class="cya-change">
+						  <a href="/create-event/change-questions">
+							  Change<span class="visually-hidden">Contact details</span>
+						  </a>
+					  </dd>
+				  </div>
+			  {% endif %}
+
 
 			  {% if session.questionsExist[0] %}
 				  <div>
@@ -216,6 +232,21 @@
 				  </dd>
 			  </div>
 			  {% endif %}
+
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Main image</dt>
+				  <dd class="cya-answer">
+					  <img src="/public/images/exportingheroimagesmall.jpg" style="width:240px; height:100px;">
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-images">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
 
 
 		  </dl>

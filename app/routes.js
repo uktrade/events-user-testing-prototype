@@ -94,6 +94,12 @@ router.use(function (req, res, next)
     req.session.trackingLinksNames = ['Email marketing','Twitter', 'Partner XYZ','Other'];
   }
 
+  if(req.session.regCloseTime == undefined)
+  {
+    req.session.regCloseTime = "";
+  }
+
+
 
   next();
 
@@ -541,6 +547,20 @@ router.get('/create-event/tickets-onwards', function (req, res) {
     req.session.data['sold-out-message'] = "No message will be shown";
   }
 
+
+  if(req.session.data['close-reg-early-days'] == undefined  ||  req.session.data['close-reg-early-days'] == "" )
+  {
+    req.session.regCloseTime = req.session.data['event-start-time'] + " " + req.session.data['event-day'] + " " + req.session.data['event-month-name'] + " " +
+                                req.session.data['event-year'] + " (event start time)" ;
+  }
+  else
+  {
+    req.session.regCloseTime = req.session.data['event-start-time'] + '\xa0\xa0\xa0' + (req.session.data['event-day']-req.session.data['close-reg-early-days']) + " " + req.session.data['event-month-name'] + " " +
+                                req.session.data['event-year'] + '\xa0\xa0\xa0' +  "   (" + req.session.data['close-reg-early-days'] + " days before event)";
+  }
+
+
+
   // stuff for setting up a waiting list
   /*
    console.log(req.session.data['radio-group-ticket-gone']);
@@ -932,6 +952,8 @@ router.get('/create-event/summary-prelude', function (req, res)
   eventDataMap[14] = req.session.data['start-minutes'];
   eventDataMap[15] = req.session.data['finish-hours'];
   eventDataMap[16] = req.session.data['finish-minutes'];
+  eventDataMap[16] = req.session.regCloseTime;
+
 
   //eventDataMap.set('imageURL', req.session.data['event-title']);
 
@@ -1146,6 +1168,9 @@ router.get('/create-event/change-venue', function (req, res)
   res.redirect('/create-event/venue');
 })
 
+
+
+
 router.get('/create-event/change-description', function (req, res)
 {
   req.session.changingFromSummary = true;
@@ -1167,6 +1192,12 @@ router.get('/create-event/change-attendees', function (req, res)
   res.redirect('/create-event/attendees');
 })
 
+router.get('/create-event/change-questions', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/attendees');
+})
 
 
 
