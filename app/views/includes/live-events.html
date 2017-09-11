@@ -21,15 +21,8 @@
   <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">{{ session.eventsLive[itemRow][3] }} {{ session.eventsLive[itemRow][5] }} {{ session.eventsLive[itemRow][6] }}</td>
 
   <!-- Number to match Filips scenarios  -->
-  {% if session.eventsLiveBoolean[1] %}
-    {% if itemRow == 0 %}
-    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">18 / {{ session.eventsLive[itemRow][8] }} tickets</td>
-    {% else %}
-    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">5 / {{ session.eventsLive[itemRow][8] }} tickets</td>
-    {% endif %}
-  {% else %}
-    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">5 / {{ session.eventsLive[itemRow][8] }} tickets</td>
-  {% endif %}
+    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">{{session.eventsLive[itemRow][20]}} / {{ session.eventsLive[itemRow][8] }} tickets</td>
+
 </tr>
 
 
@@ -40,9 +33,9 @@
 <table style="width:100%; margin-top:0px; padding-bottom:10px; border-bottom:1px solid #bfc1c3;">
   <thead>
     <tr>
-      <th scope="col" style="width:32%; border-bottom: 0px; padding-top: 0px; padding-bottom: 0px;"> </th>
-      <th class="col" style="width:25%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
-      <th class="col" style="width:43%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
+      <th scope="col" style="width:34%; border-bottom: 0px; padding-top: 0px; padding-bottom: 0px;"> </th>
+      <th class="col" style="width:26%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
+      <th class="col" style="width:40%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
       <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
     </tr>
   </thead>
@@ -53,15 +46,15 @@
     <tr>
 
       <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; ">
-        <a href="/monitor/live-present">Monitor event</a>  &nbsp; &nbsp; &nbsp;
-        <a href="/preview-data/{{itemRow}}/true">View event page</a></td>
+        <a href="/monitor/live-present">Monitor and track</a>  &nbsp; &nbsp; &nbsp;
+        <a href="/preview-data/{{itemRow}}/true">View web page</a></td>
 
       <td valign="top" style=" border: 0px; padding-right: 0px; padding-top: 2px; padding-bottom: 12px;">
         <details style="display:inline;">
           <summary><span class="summary">More options</span></summary>
           <div class="panel panel-border-narrow">
             <ul>
-              <li style="margin-bottom:3px;"><a href="/summary-data/{{itemRow}}/true">Edit event</a></li>
+              <li style="margin-bottom:3px;"><a href="/summary-data/{{itemRow}}/true">Edit page</a></li>
               <li style="margin-bottom:3px;"><a href="/clone-event/{{itemRow}}/true">Clone event</a></li>
 
               {% if session.eventsLive[itemRow][19] == false %}
@@ -70,20 +63,60 @@
                  <li style="margin-bottom:3px;"><a href="/toggle-closed-reg/{{itemRow}}">Open registrations</a></li>
               {% endif %}
 
-              <li style="margin-bottom:3px;"><a href="#">Unpublish event</a></li>
-              <li style="margin-bottom:3px;"><a href="#">Delete event</a></li>
+              <li style="margin-bottom:3px;"><a href="#">Unpublish</a></li>
+              <li style="margin-bottom:3px;"><a href="#">Delete</a></li>
             </ul>
           </div>
         </details>
       </td>
 
+
+
       <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; padding-right:0px; text-align:right;">
         {% if session.eventsLive[itemRow][19] %}
           <span style="font-weight:700">Registrations are closed</span>
         {% else %}
-          <div style="background-color: #FFFFFF; margin-left:290px; border:1px solid #000000; height:5px; border-left:90px solid #000000;;">
-
-          </div>
+            {% if session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.05 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:1px solid #000000;"> </div>
+            {% elif session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.1 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:7px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.15 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:13px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.2 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:19px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.25 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:25px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.3 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:31px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.35 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:37px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.4 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:43px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.45 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:49px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.5 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:55px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.55 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:61px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.6 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:67px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.65 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:73px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.7 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:79px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.75 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:85px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.8 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:91px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.85 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:97px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.9 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:106px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] < 0.95 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:112px solid #000000;"> </div>
+            {% elif  session.eventsLive[itemRow][20]/session.eventsLive[itemRow][8] >= 0.95 %}
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:122px solid #000000;"> </div>
+            {% endif %}
         {% endif %}
       </td>
 
@@ -126,29 +159,11 @@
 
 
       <!-- EVENT ONE  -->
-      {% if session.eventsLiveBoolean[0] %}
-        {{ liveEvent(0) }}
-      {% endif %}
-
-      <!-- EVENT TWO  -->
-      {% if session.eventsLiveBoolean[1] %}
-        {{ liveEvent(1) }}
-      {% endif %}
-
-      <!-- EVENT THREE  -->
-      {% if session.eventsLiveBoolean[2] %}
-        {{ liveEvent(2) }}
-      {% endif %}
-
-      <!-- EVENT THREE  -->
-      {% if session.eventsLiveBoolean[3] %}
-        {{ liveEvent(3) }}
-      {% endif %}
-
-      <!-- EVENT THREE  -->
-      {% if session.eventsLiveBoolean[4] %}
-        {{ liveEvent(4) }}
-      {% endif %}
+      {% for i in range(0, 100) -%}
+          {% if session.eventsLiveBoolean[i] %}
+             {{ liveEvent(i) }}
+          {% endif %}
+      {%- endfor %}
 
 
   {% endif %}

@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		<ol>
+			<li><a href="/account">Account home</a></li>
+		</ol>
+	  </div>
+
+
+
+		<!-- CONDITIONAL ERROR  -->
+		{% if errorsExist %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Missing fields
+			</h2>
+
+			<p>
+				Please check the following errors and try again.
+			</p>
+
+			<ul class="error-summary-list">
+				{% if errorMissingTitle %}
+					<li><a href="#title-section">Missing title</a></li>
+				{% endif %}
+				{% if errorMissingSector %}
+					<li><a href="#sector-area">Missing sector</a></li>
+				{% endif %}
+				{% if errorMissingSectorBox %}
+					<li><a href="#sector-area">Missing sector</a></li>
+				{% endif %}
+			</ul>
+
+		</div>
+		{% endif %}
+
+
+
+	  <h1 class="heading-large" style="margin-top:15px">
+        Title and audience
+      </h1>
+
+
+	  <form action="/create-event/title-onwards" method="get" class="form">
+
+
+			  <div id="title-section" class="form-group" style="margin-top:10px; margin-bottom:35px">
+
+				  {% if errorMissingTitle %}
+				  	<div class="form-group-error">
+				  {% endif %}
+
+
+					  <label class="form-label-bold" for="event-title">
+					  Event title
+					  {% if errorMissingTitle %}
+						  <span class="error-message">
+							  Please enter a clear and descriptive title for your event
+						  </span>
+					  {% endif %}
+					  </label>
+
+					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+							 id="event-title" name="event-title" value="{{ data['event-title'] }}" style="width: 100%">
+
+				  {% if errorMissingTitle %}
+			  		</div>
+				  {% endif %}
+
+			  </div>
+
+
+
+
+		  <!--  Sector  -->
+		  <div class="form-group" id="sector-area" style="margin-bottom:10px" >
+
+			  {% if errorMissingSector %}
+			  	<div class="form-group-error">
+			  {% endif %}
+
+				  <label class="form-label-bold" >
+					  Is this event aimed at any specific sectors?
+
+					  {% if errorMissingSector %}
+						  <span class="error-message">
+							  Please enter a sector
+						  </span>
+					  {% endif %}
+				  </label>
+
+				  <div style="margin-top:5px;">
+
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="radio-inline-2" type="radio" name="radio-sector" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
+						  <label for="radio-inline-2">No, this is relevant to all sectors</label>
+					  </div>
+
+					  <div class="multiple-choice" style="margin-bottom:10px" data-target="sector-section">
+						  <input id="radio-inline-1" type="radio" name="radio-sector" value="yes"
+								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+						  <label for="radio-inline-1">Yes</label>
+					  </div>
+
+					  &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+
+				  </div>
+
+			  {% if errorMissingSector %}
+				</div>
+			  {% endif %}
+
+		  </div>
+
+
+			<div class="form-group js-hidden {% if errorMissingSectorBox %} form-group-error {% endif %}"  id="sector-section" style="margin-bottom:20px">
+
+				<label class="form-label-bold" for="sector-box">
+					Sectors
+					{% if errorMissingSectorBox %}
+				  <span class="error-message">
+					  Please enter a sector
+				  </span>
+					{% endif %}
+				</label>
+				<input type="text" class="form-control  {% if errorMissingSectorBox %} form-control-error {% endif %}"  style="width:50%; margin-bottom:10px"
+					   id="sector-box" name="sector-box" value="{{ data['sector-box'] }}" >
+				<input type="text" class="form-control"  style="width:50%; margin-bottom:10px;"
+					   id="sector-box-2" name="sector-box-2" value="{{ data['sector-box-2'] }}">
+				<input type="text" class="form-control"  style="width:50%;"
+					   id="sector-box-3" name="sector-box-2" value="{{ data['sector-box-3'] }}" >
+
+			</div>
+
+
+
+
+		  <!--  Summary of target audience    -->
+		  <div class="form-group" style="margin-top:20px" >
+			  <label class="form-label-bold" >
+				  What level of export experience is this event aimed at?
+			  </label>
+			  <div class="form-date" style="margin-top:5px">
+				  <div class="multiple-choice" style="margin-bottom:10px">
+					  <input id="radio-inline-audience-1" type="radio" name="radio-audience-experience" value="new" {% if experienceNew %} checked="checked" {% endif %}>
+					  <label for="radio-inline-audience-1">New to export</label>
+				  </div>
+				  <div class="multiple-choice" style="margin-bottom:10px">
+					  <input id="radio-inline-audience-2" type="radio" name="radio-audience-experience" value="experienced" {% if experienceOld %} checked="checked" {% endif %}>
+					  <label for="radio-inline-audience-2">Experienced exporters</label>
+				  </div>
+				  <div class="multiple-choice" style="margin-bottom:10px">
+					  <input id="radio-inline-audience-3" type="radio" name="radio-audience-experience" value="open" {% if experienceAll %} checked="checked" {% endif %}>
+					  <label for="radio-inline-audience-3">Open to all</label>
+				  </div>
+			  </div>
+		  </div>
+
+
+
+
+
+		  <!--  Summary of target audience  -->
+		  <div class="form-group" style="margin-top:0px; margin-bottom:20px">
+			  <label class="form-label-bold" for="summary-target-audience">
+				  Who would be a good fit for this event? If you have any eligibility criteria, include it here.
+			  </label>
+			  <textarea class="form-control" name="summary-target-audience" id="summary-target-audience" rows="4" style="width: 100%;"  ></textarea>
+		  </div>
+
+
+
+
+		  <div class="form-group" style="margin-top:20px">
+			  <input type="submit" class="button" value="Save and continue">
+			  <p style="margin-top:25px"><a href="/create-event/description">I'll complete this later - I don't have this information yet</a></p>
+		  </div>
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

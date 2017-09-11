@@ -33,7 +33,7 @@ GOV.UK prototype kit
 
           <div class="tabs-nav">
             <ul class="tabs-list">
-              <li><a class="stats" href="#stats" style="text-decoration: none;">Statistics</a></li>
+              <li><a class="stats" href="#stats" style="text-decoration: none;">Performance</a></li>
               <li><a class="track-links" href="#track-links" style="text-decoration: none;">Tracking links</a></li>
               <li><a class="reg-people" href="#reg-people" style="text-decoration: none;">Registered people</a></li>
               <li><a class="checkin" href="#checkin" style="text-decoration: none;">Check-in</a></li>
@@ -52,16 +52,16 @@ GOV.UK prototype kit
 
                 <div id=top-row" display="flex" style="margin-bottom:30px">
                   <div style="float:left; width:41%;">
-                    <p><span class="heading-xlarge">83%</span> of tickets sold</p>
+                    <p><span class="heading-xlarge">{{session.ticketsSoldPercentage}}%</span> of tickets sold</p>
                   </div>
                   <div style="float:left; width:31%; margin-top:8px;" display="flex">
                     <div>
-                      <p><span class="heading-large">12</span> tickets remaining</p>
+                      <p><span class="heading-large">{{session.ticketsRemaining}}</span> tickets remaining</p>
                     </div>
                   </div>
                   <div style="float:right; width:28%;  margin-top:8px;">
                     <div style="margin-left:40px">
-                      <p style="margin-bottom:0px"><span class="heading-large">70</span> tickets total</p>
+                      <p style="margin-bottom:0px"><span class="heading-large">20</span> ticket capacity</p>
                       <p style="margin-top:0px"><a href="#">Change amount of tickets</a></p>
                     </div>
                   </div>
@@ -76,31 +76,32 @@ GOV.UK prototype kit
                   <div style="float:left; width:41%; ">
                     <div style="width:74%">
 
-                      <p style="margin-bottom:5px">Event page visits</p>
-                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">248</p>
+                      <p style="margin-bottom:5px">Visitors to event page</p>
+                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">
+                          {{session.trackingTotalViews}}</p>
 
                       <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
                       <div style="width:100%;" display="flex">
                         <div style="float:left; width:60%; background-color:#005EA5; height:10px;  margin-top:6px;">&nbsp;</div>
-                        <div style="float:left; width:40px; height:10px;">&nbsp;60%</div>
+                        <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingViewsPercentages[0]}}%</div>
                       </div>
 
                       <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
                       <div style="width:100%;" display="flex">
                         <div style="float:left; width:30%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-                        <div style="float:left; width:40px; height:10px;">&nbsp;30%</div>
+                        <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingViewsPercentages[1]}}%</div>
                       </div>
 
-                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Partner</p>
+                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
                       <div style="width:100%;" display="flex">
                         <div style="float:left; width:9%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
-                        <div style="float:left; width:40px; height:10px;">&nbsp;9%</div>
+                        <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingViewsPercentages[2]}}%</div>
                       </div>
 
-                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Other</p>
+                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
                       <div style="width:100%;" display="flex">
                         <div style="float:left; width:1%; background-color:#2E358B; height:10px;  margin-top:6px;">&nbsp;</div>
-                        <div style="float:left; width:40px; height:10px;">&nbsp;1%</div>
+                        <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingViewsPercentages[3]}}%</div>
                       </div>
 
                     </div>
@@ -110,31 +111,31 @@ GOV.UK prototype kit
                   <div style="float:left; width:31%; margin-top:0px;" display="flex">
                     <div>
 
-                      <p style="margin-bottom:5px">Registrations</p>
-                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">58</p>
+                      <p style="margin-bottom:5px">Total registrations</p>
+                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{session.trackingTotalReg}}</p>
 
                         <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
                         <div style="width:100%;" display="flex">
                           <div style="float:left; width:48%; background-color:#005EA5; height:10px;  margin-top:6px;">&nbsp;</div>
-                          <div style="float:left; width:40px; height:10px;">&nbsp;48%</div>
+                          <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingLinksRegistrationPercentages[0]}}%</div>
                         </div>
 
                         <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
                         <div style="width:100%;" display="flex">
                           <div style="float:left; width:50%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-                          <div style="float:left; width:40px; height:10px;">&nbsp;50%</div>
+                          <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingLinksRegistrationPercentages[1]}}%</div>
                         </div>
 
-                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Partner</p>
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
                         <div style="width:100%;" display="flex">
                           <div style="float:left; width:2%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
-                          <div style="float:left; width:40px; height:10px;">&nbsp;2%</div>
+                          <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingLinksRegistrationPercentages[2]}}%</div>
                         </div>
 
-                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Other</p>
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
                         <div style="width:100%;" display="flex">
                           <div style="float:left; width:0%; background-color:#2E358B; height:10px;  margin-top:6px;">&nbsp;</div>
-                          <div style="float:left; width:40px; height:10px;">0%</div>
+                          <div style="float:left; width:40px; height:10px;">{{session.trackingLinksRegistrationPercentages[3]}}%</div>
                         </div>
 
                       </div>
@@ -144,7 +145,7 @@ GOV.UK prototype kit
                   <!--  Registrations  -->
                   <div style="float:right; width:28%;  margin-top:8px;">
                     <div style="margin-left:40px">
-                      <p style="margin-bottom:5px">Check-in attendees</p>
+                      <p style="margin-bottom:5px">Checked-in attendees</p>
                       <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">0</p>
                     </div>
                   </div>

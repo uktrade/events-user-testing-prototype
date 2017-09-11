@@ -44,54 +44,105 @@
 
 
 
-	  <h1 class="heading-large" style="margin-top:15px">
-        Description
+	  <h1 class="heading-large" style="margin-top:15px; margin-bottom:30px;">
+		  Event details and description
       </h1>
+
+
 
 
 	  <form action="/create-event/description-onwards" method="get" class="form">
 
-		  {% if errorMissingTitle %}
-		  	<div class="form-group form-group-error">
-		  {% endif %}
+		  <!--  markets  -->
+		  <div class="form-group">
+			  <fieldset>
 
-			  <div id="title-section" class="form-group" style="margin-top:10px; margin-bottom:20px">
-				  <label class="form-label-bold" for="event-title">
+				  <legend class="form-label-bold" style="margin-bottom:10px;">
+					  What specific benefits or outcomes will attendees get from this event?
+				  </legend>
 
-					  Event title
 
-					  {% if errorMissingTitle %}
-						  <span class="error-message">
-							  Please enter a clear and descriptive title for your event
-						  </span>
-					  {% endif %}
+				  <div class="multiple-choice">
+					  <input id="buyers" name="benefits" type="checkbox" value="Meet with buyers">
+					  <label for="buyers">Meet with buyers</label>
+				  </div>
+				  <div class="multiple-choice">
+					  <input id="expert" name="benefits" type="checkbox" value="Hear from industry experts">
+					  <label for="expert">Hear from industry experts</label>
+				  </div>
+				  <div class="multiple-choice">
+					  <input id="skills" name="benefits" type="checkbox" value="Learn new skills">
+					  <label for="skills">Learn new skills</label>
+				  </div>
+				  <div class="multiple-choice">
+					  <input id="network" name="benefits" type="checkbox" value="Network with other businessses">
+					  <label for="network">Network with other businessses</label>
+				  </div>
+				  <div class="multiple-choice" data-target="add-benefit-section">
+					  <input id="add-other" name="benefits" type="checkbox" value="Add your own">
+					  <label for="add-other">Add your own</label>
+				  </div>
 
+
+				  <div class="panel panel-border-narrow js-hidden" id="add-benefit-section" style="margin-bottom:20px">
+					  <label class="form-label js-hidden" for="add-benefit">Add your own</label>
+					  <input class="form-control" type="text" id="add-benefit" name="add-benefit" style="margin-bottom:10px;">
+					  <input class="form-control" type="text" id="add-benefit-2" name="add-benefit" style="margin-bottom:10px;">
+					  <input class="form-control" type="text" id="add-benefit-3" name="add-benefit" >
+				  </div>
+
+			  </fieldset>
+		  </div>
+
+
+
+
+		  <!--  markets  -->
+		  <div class="form-group" style="margin-bottom:10px" >
+			  <label class="form-label-bold" >
+				  Is this event related to export in any specific international markets?
+			  </label>
+			  <div class="form-date" style="margin-top:5px">
+				  <div class="multiple-choice" style="margin-bottom:10px">
+					  <input id="radio-inline-2" type="radio" name="radio-market" value="no">
+					  <label for="radio-inline-2">No, this is relevant to all markets</label>
+				  </div>
+				  <div class="multiple-choice" style="margin-bottom:10px" data-target="market-section">
+					  <input id="radio-inline-1" type="radio" name="radio-market" value="yes">
+					  <label for="radio-inline-1">Yes</label>
+				  </div>
+			  </div>
+		  </div>
+
+		  <div class="form-group js-hidden"  id="market-section" style="margin-bottom:30px">
+			  <label class="form-label-bold" for="event-description">
+				  Markets
+			  </label>
+			  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
+					 id="market-box" name="sector" value="{{ data['market'] }}">
+			  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
+					 id="market-box-2" name="sector" value="{{ data['market-box-2'] }}">
+			  <input type="text" class="form-control"  style="width:80%;"
+					 id="market-box-3" name="sector" value="{{ data['market-box-3'] }}">
+		  </div>
+
+
+
+
+
+		  <!--  Detailed event description  -->
+		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
+			  <div>
+				  <label class="form-label-bold" for="event-description" style="float:left; margin-top:4px;">
+					  Detailed event description
 				  </label>
-				  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-						 id="event-title" name="event-title" value="{{ data['event-title'] }}" style="width: 100%">
+				  <img  src="/public/images/editicons.png" style="width:104px;height:36px; float: right; margin-bottom:4px">
 			  </div>
 
-		  {% if errorMissingTitle %}
-			</div>
-		  {% endif %}
-
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
-			  <label class="form-label-bold" for="event-description">
-				  Event description
-			  </label>
-			  <textarea class="form-control" name="event-description" id="event-description" rows="8" style="width: 100%; "  ></textarea>
+			  <textarea class="form-control" name="event-description" id="event-description" rows="12" style="width: 100%; "  ></textarea>
 		  </div>
 
 
-		  <!--
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
-			<label class="form-label-bold" for="target-audience">
-					Target audience
-			</label>
-			  <p class="form-hint"  style="margin-bottom:5px">The kind of business that should attend this event</p>
-			  <input type="text" class="form-control" id="target-audience" style="width: 100%">
-		  </div>
-			-->
 
 
 		  <div class="form-group" style="margin-top:20px">

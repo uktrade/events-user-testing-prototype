@@ -68,7 +68,6 @@ router.use(function (req, res, next)
 }
 
 
-
   // Setting up the store for the questiosna and answers
 // 2D. one item per question.  Second demotion is Question, Answer type, Answer, Answer...Answer
   if(req.session.questionsData == undefined)
@@ -91,8 +90,41 @@ router.use(function (req, res, next)
 
   if(req.session.trackingLinksNames == undefined)
   {
-    req.session.trackingLinksNames = ['Email marketing','Twitter', 'Partner XYZ','Other'];
+    req.session.trackingLinksNames = ['Email marketing','Twitter', 'Export for Growth','Enterprise M3'];
   }
+
+  if(req.session.trackingTotalViews == undefined)
+  {
+    req.session.trackingTotalViews = 0;
+  }
+
+  if(req.session.trackingViewsPercentages == undefined)
+  {
+    req.session.trackingViewsPercentages = [0,0,0,0,0,0,0,0,0,0];
+  }
+
+  if(req.session.trackingTotalReg == undefined)
+  {
+    req.session.trackingTotalReg = 0;
+  }
+
+  if(req.session.trackingLinksRegistrationPercentages == undefined)
+  {
+    req.session.trackingLinksRegistrationPercentages = [0,0,0,0,0,0,0,0,0,0];
+  }
+
+  if(req.session.ticketsRemaining == undefined)
+  {
+    req.session.ticketsRemaining = 0;
+  }
+
+  if(req.session.ticketsSoldPercentage == undefined)
+  {
+    req.session.ticketsSoldPercentage = 0;
+  }
+
+
+
 
   if(req.session.data['reg-close-time'] == undefined)
   {
@@ -103,6 +135,10 @@ router.use(function (req, res, next)
   {
     req.session.data['reg-is-closed'] = false;
   }
+
+
+
+
 
 
 
@@ -123,17 +159,723 @@ router.get('/homepage-prelude', function (req, res)
     console.log("event title is saved as HOMEPAGE" + req.session.eventsDraft[0][0]);
   }
 
-
   res.redirect('account/index');
 })
 
 
+
+
+
+
+
+
+
+
 router.get('/scenario-1', function (req, res)
 {
-  // empty account
-  req.session.regionName = "DIT Yorkshire and the Humber";
+
+
   res.redirect('/signin');
 })
+
+
+
+
+
+router.get('/scenario-2', function (req, res)
+{
+  // empty account
+  //req.session.regionName = "DIT Yorkshire and the Humber";
+
+  req.session.ticketsSoldPercentage = 10;
+  req.session.ticketsRemaining = 18;
+
+  req.session.trackingTotalViews = 65;
+  req.session.trackingViewsPercentages[0] = 62;
+  req.session.trackingViewsPercentages[1] = 23;
+  req.session.trackingViewsPercentages[2] = 6;
+  req.session.trackingViewsPercentages[3] = 9;
+
+  req.session.trackingTotalReg = 2;
+  req.session.trackingLinksRegistrationPercentages[0] = 100;
+  req.session.trackingLinksRegistrationPercentages[1] = 0;
+  req.session.trackingLinksRegistrationPercentages[2] = 0;
+  req.session.trackingLinksRegistrationPercentages[3] = 0;
+
+
+  var eventcCount = 16;
+
+  req.session.eventsLiveBoolean[eventcCount];
+  for(var x=0; x< eventcCount; x++)
+  {
+    req.session.eventsLive[x] = ["empty"];
+    req.session.eventsLiveBoolean[x] = true;
+  }
+
+
+  req.session.eventsLive[0][0] = "Six Steps to E-Commerce Success";
+  req.session.eventsLive[1][0] = "Managing Agents & Distributors";
+  req.session.eventsLive[2][0] = "International Food and Drink Network";
+  req.session.eventsLive[3][0] = "Low Carbon Vehicles 2017";
+  req.session.eventsLive[4][0] = "Coal Mongolia 2017";
+  req.session.eventsLive[5][0] = "Researching Overseas Markets Masterclass";
+  req.session.eventsLive[6][0] = "International Market Research";
+  req.session.eventsLive[7][0] = "Grow your Business with Social Media";
+  req.session.eventsLive[8][0] = "How to Grow your Engineering Business Internationally";
+  req.session.eventsLive[9][0] = "Exporter Bootcamp";
+  req.session.eventsLive[10][0] = "DIT Masterclass: Food Labelling Workshop";
+  req.session.eventsLive[11][0] = "Exporting mining equipment and services to the Middle East";
+  req.session.eventsLive[12][0] = "Meet the Rail Experts: Austria and South Africa";
+  req.session.eventsLive[13][0] = "Digital Trade Advice Clinic";
+  req.session.eventsLive[14][0] = "Indirect Tax & International Trade - Retail and Consumer Products Exporting";
+  req.session.eventsLive[15][0] = "Trade Mission to Ireland - Smart Cities";
+
+  req.session.eventsLive[0][3] = "18";
+  req.session.eventsLive[1][3] = "23";
+  req.session.eventsLive[2][3] = "25";
+  req.session.eventsLive[3][3] = "29";
+  req.session.eventsLive[4][3] = "2";
+  req.session.eventsLive[5][3] = "7";
+  req.session.eventsLive[6][3] = "10";
+  req.session.eventsLive[7][3] = "11";
+  req.session.eventsLive[8][3] = "15";
+  req.session.eventsLive[9][3] = "20";
+  req.session.eventsLive[10][3] = "22";
+  req.session.eventsLive[11][3] = "25";
+  req.session.eventsLive[12][3] = "28";
+  req.session.eventsLive[13][3] = "4";
+  req.session.eventsLive[14][3] = "10";
+  req.session.eventsLive[15][3] = "12";
+
+  req.session.eventsLive[0][5] = "September";
+  req.session.eventsLive[1][5] = "September";
+  req.session.eventsLive[2][5] = "September";
+  req.session.eventsLive[3][5] = "September";
+  req.session.eventsLive[4][5] = "October";
+  req.session.eventsLive[5][5] = "October";
+  req.session.eventsLive[6][5] = "October";
+  req.session.eventsLive[7][5] = "October";
+  req.session.eventsLive[8][5] = "October";
+  req.session.eventsLive[9][5] = "October";
+  req.session.eventsLive[10][5] = "October";
+  req.session.eventsLive[11][5] = "October";
+  req.session.eventsLive[12][5] = "October";
+  req.session.eventsLive[13][5] = "November";
+  req.session.eventsLive[14][5] = "November";
+  req.session.eventsLive[15][5] = "November";
+
+
+  req.session.eventsLive[0][6] = "2017";
+  req.session.eventsLive[1][6] = "2017";
+  req.session.eventsLive[2][6] = "2017";
+  req.session.eventsLive[3][6] = "2017";
+  req.session.eventsLive[4][6] = "2017";
+  req.session.eventsLive[5][6] = "2017";
+  req.session.eventsLive[6][6] = "2017";
+  req.session.eventsLive[7][6] = "2017";
+  req.session.eventsLive[8][6] = "2017";
+  req.session.eventsLive[9][6] = "2017";
+  req.session.eventsLive[10][6] = "2017";
+  req.session.eventsLive[11][6] = "2017";
+  req.session.eventsLive[12][6] = "2017";
+  req.session.eventsLive[13][6] = "2017";
+  req.session.eventsLive[14][6] = "2017";
+  req.session.eventsLive[15][6] = "2017";
+
+
+  req.session.eventsLive[0][8] = 16;
+  req.session.eventsLive[1][8] = 24;
+  req.session.eventsLive[2][8] = 50;
+  req.session.eventsLive[3][8] = 12;
+  req.session.eventsLive[4][8] = 14;
+  req.session.eventsLive[5][8] = 14;
+  req.session.eventsLive[6][8] = 18;
+  req.session.eventsLive[7][8] = 16;
+  req.session.eventsLive[8][8] = 12;
+  req.session.eventsLive[9][8] = 20;
+  req.session.eventsLive[10][8] = 12;
+  req.session.eventsLive[11][8] = 20;
+  req.session.eventsLive[12][8] = 14;
+  req.session.eventsLive[13][8] = 6;
+  req.session.eventsLive[14][8] = 18;
+  req.session.eventsLive[15][8] = 10;
+
+
+  req.session.eventsLive[0][20] = 16;
+  req.session.eventsLive[1][20] = 8;
+  req.session.eventsLive[2][20] = 49;
+  req.session.eventsLive[3][20] = 2;
+  req.session.eventsLive[4][20] = 7;
+  req.session.eventsLive[5][20] = 2;
+  req.session.eventsLive[6][20] = 0;
+  req.session.eventsLive[7][20] = 3;
+  req.session.eventsLive[8][20] = 12;
+  req.session.eventsLive[9][20] = 10;
+  req.session.eventsLive[10][20] = 0;
+  req.session.eventsLive[11][20] = 0;
+  req.session.eventsLive[12][20] = 2;
+  req.session.eventsLive[13][20] = 4;
+  req.session.eventsLive[14][20] = 3;
+  req.session.eventsLive[15][20] = 5;
+
+  req.session.eventsLive[0][19] = false;
+  req.session.eventsLive[1][19] = false;
+  req.session.eventsLive[2][19] = false;
+  req.session.eventsLive[3][19] = false;
+  req.session.eventsLive[4][19] = false;
+  req.session.eventsLive[5][19] = false;
+  req.session.eventsLive[6][19] = false;
+  req.session.eventsLive[7][19] = false;
+  req.session.eventsLive[8][19] = false;
+  req.session.eventsLive[9][19] = false;
+  req.session.eventsLive[10][19] = false;
+  req.session.eventsLive[11][19] = false;
+  req.session.eventsLive[12][19] = false;
+  req.session.eventsLive[13][19] = false;
+  req.session.eventsLive[14][19] = false;
+  req.session.eventsLive[15][19] = false;
+
+
+
+/*
+
+      ,18-Sep-17	16/16
+  ,	23-Sep-17	8/24
+  ,	25-Sep-17	49/50
+  ,	29-Sep-17	2/12
+  ,	2-Oct-17	7/14
+  ,	7-Oct-17	2/14
+ ,	10-Oct-17	0/18
+  , 	11-Oct-17	3/16
+  ,	15-Oct-17	12/12
+ ,	20-Oct-17	10/20
+  ,	22-Oct-17	0/12
+  ,	25-Oct-17	0/20
+  ,	28-Oct-17	2/14
+  ,	4-Nov-17	4/6
+  ,	10-Nov-17	3/18
+  ,	12-Nov-17	5/10
+
+
+
+*/
+
+
+
+
+
+
+
+  res.redirect('/signin');
+})
+
+router.get('/scenario-3', function (req, res)
+{
+  // empty account
+  //req.session.regionName = "DIT Yorkshire and the Humber";
+  req.session.ticketsSoldPercentage = 50;
+  req.session.ticketsRemaining = 10;
+
+
+  req.session.trackingTotalViews = 207;
+  req.session.trackingViewsPercentages[0] = 55;
+  req.session.trackingViewsPercentages[1] = 19;
+  req.session.trackingViewsPercentages[2] = 14;
+  req.session.trackingViewsPercentages[3] = 12;
+
+  req.session.trackingTotalReg = 10;
+  req.session.trackingLinksRegistrationPercentages[0] = 40;
+  req.session.trackingLinksRegistrationPercentages[1] = 0;
+  req.session.trackingLinksRegistrationPercentages[2] = 30;
+  req.session.trackingLinksRegistrationPercentages[3] = 30;
+
+
+
+  var eventcCount = 16;
+
+  req.session.eventsLiveBoolean[eventcCount];
+  for(var x=0; x< eventcCount; x++)
+  {
+    req.session.eventsLive[x] = ["empty"];
+    req.session.eventsLiveBoolean[x] = true;
+  }
+
+
+  req.session.eventsLive[0][0] = "Low Carbon Vehicles 2017";
+  req.session.eventsLive[1][0] = "Coal Mongolia 2017";
+  req.session.eventsLive[2][0] = "Researching Overseas Markets Masterclass";
+  req.session.eventsLive[3][0] = "International Market Research";
+  req.session.eventsLive[4][0] = "Grow your Business with Social Media";
+  req.session.eventsLive[5][0] = "How to Grow your Engineering Business Internationally";
+  req.session.eventsLive[6][0] = "Exporter Bootcamp";
+  req.session.eventsLive[7][0] = "DIT Masterclass: Food Labelling Workshop";
+  req.session.eventsLive[8][0] = "Exporting mining equipment and services to the Middle East";
+  req.session.eventsLive[9][0] = "Meet the Rail Experts: Austria and South Africa";
+  req.session.eventsLive[10][0] = "Digital Trade Advice Clinic";
+  req.session.eventsLive[11][0] = "Indirect Tax & International Trade - Retail and Consumer Products Exporting";
+  req.session.eventsLive[12][0] = "Trade Mission to Ireland - Smart Cities";
+  req.session.eventsLive[13][0] = "Six Steps to E-Commerce Success";
+  req.session.eventsLive[14][0] = "Managing Agents & Distributors";
+  req.session.eventsLive[15][0] = "International Food and Drink Network";
+
+
+
+  req.session.eventsLive[0][3] = "29";
+  req.session.eventsLive[1][3] = "2";
+  req.session.eventsLive[2][3] = "7";
+  req.session.eventsLive[3][3] = "10";
+  req.session.eventsLive[4][3] = "11";
+  req.session.eventsLive[5][3] = "15";
+  req.session.eventsLive[6][3] = "20";
+  req.session.eventsLive[7][3] = "22";
+  req.session.eventsLive[8][3] = "25";
+  req.session.eventsLive[9][3] = "28";
+  req.session.eventsLive[10][3] = "4";
+  req.session.eventsLive[11][3] = "10";
+  req.session.eventsLive[12][3] = "12";
+  req.session.eventsLive[13][3] = "18";
+  req.session.eventsLive[14][3] = "23";
+  req.session.eventsLive[15][3] = "25";
+
+
+
+  req.session.eventsLive[0][5] = "September";
+  req.session.eventsLive[1][5] = "October";
+  req.session.eventsLive[2][5] = "October";
+  req.session.eventsLive[3][5] = "October";
+  req.session.eventsLive[4][5] = "October";
+  req.session.eventsLive[5][5] = "October";
+  req.session.eventsLive[6][5] = "October";
+  req.session.eventsLive[7][5] = "October";
+  req.session.eventsLive[8][5] = "October";
+  req.session.eventsLive[9][5] = "October";
+  req.session.eventsLive[10][5] = "November";
+  req.session.eventsLive[11][5] = "November";
+  req.session.eventsLive[12][5] = "November";
+  req.session.eventsLive[13][5] = "November";
+  req.session.eventsLive[14][5] = "November";
+  req.session.eventsLive[15][5] = "November";
+
+
+  req.session.eventsLive[0][6] = "2017";
+  req.session.eventsLive[1][6] = "2017";
+  req.session.eventsLive[2][6] = "2017";
+  req.session.eventsLive[3][6] = "2017";
+  req.session.eventsLive[4][6] = "2017";
+  req.session.eventsLive[5][6] = "2017";
+  req.session.eventsLive[6][6] = "2017";
+  req.session.eventsLive[7][6] = "2017";
+  req.session.eventsLive[8][6] = "2017";
+  req.session.eventsLive[9][6] = "2017";
+  req.session.eventsLive[10][6] = "2017";
+  req.session.eventsLive[11][6] = "2017";
+  req.session.eventsLive[12][6] = "2017";
+  req.session.eventsLive[13][6] = "2017";
+  req.session.eventsLive[14][6] = "2017";
+  req.session.eventsLive[15][6] = "2017";
+
+
+  req.session.eventsLive[0][8] = 12;
+  req.session.eventsLive[1][8] = 14;
+  req.session.eventsLive[2][8] = 14;
+  req.session.eventsLive[3][8] = 18;
+  req.session.eventsLive[4][8] = 16;
+  req.session.eventsLive[5][8] = 12;
+  req.session.eventsLive[6][8] = 20;
+  req.session.eventsLive[7][8] = 12;
+  req.session.eventsLive[8][8] = 20;
+  req.session.eventsLive[9][8] = 14;
+  req.session.eventsLive[10][8] = 6;
+  req.session.eventsLive[11][8] = 18;
+  req.session.eventsLive[12][8] = 10;
+  req.session.eventsLive[13][8] = 16;
+  req.session.eventsLive[14][8] = 24;
+  req.session.eventsLive[15][8] = 50;
+
+
+  req.session.eventsLive[0][20] = 8;
+  req.session.eventsLive[1][20] = 13;
+  req.session.eventsLive[2][20] = 8;
+  req.session.eventsLive[3][20] = 3;
+  req.session.eventsLive[4][20] = 6;
+  req.session.eventsLive[5][20] = 12;
+  req.session.eventsLive[6][20] = 16;
+  req.session.eventsLive[7][20] = 3;
+  req.session.eventsLive[8][20] = 2;
+  req.session.eventsLive[9][20] = 7;
+  req.session.eventsLive[10][20] = 4;
+  req.session.eventsLive[11][20] = 9;
+  req.session.eventsLive[12][20] = 5;
+  req.session.eventsLive[13][20] = 0;
+  req.session.eventsLive[14][20] = 2;
+  req.session.eventsLive[15][20] = 5;
+
+
+  req.session.eventsLive[0][19] = false;
+  req.session.eventsLive[1][19] = false;
+  req.session.eventsLive[2][19] = false;
+  req.session.eventsLive[3][19] = false;
+  req.session.eventsLive[4][19] = false;
+  req.session.eventsLive[5][19] = false;
+  req.session.eventsLive[6][19] = false;
+  req.session.eventsLive[7][19] = false;
+  req.session.eventsLive[8][19] = false;
+  req.session.eventsLive[9][19] = false;
+  req.session.eventsLive[10][19] = false;
+  req.session.eventsLive[11][19] = false;
+  req.session.eventsLive[12][19] = false;
+  req.session.eventsLive[13][19] = false;
+  req.session.eventsLive[14][19] = false;
+  req.session.eventsLive[15][19] = false;
+
+
+
+  res.redirect('/signin');
+})
+
+router.get('/scenario-4', function (req, res)
+{
+  // empty account
+  //req.session.regionName = "DIT Yorkshire and the Humber";
+  req.session.ticketsSoldPercentage = 85;
+  req.session.ticketsRemaining = 17;
+
+
+  req.session.trackingTotalViews = 364;
+  req.session.trackingViewsPercentages[0] = 41;
+  req.session.trackingViewsPercentages[1] = 13;
+  req.session.trackingViewsPercentages[2] = 24;
+  req.session.trackingViewsPercentages[3] = 22;
+
+  req.session.trackingTotalReg = 17;
+  req.session.trackingLinksRegistrationPercentages[0] = 29;
+  req.session.trackingLinksRegistrationPercentages[1] = 6;
+  req.session.trackingLinksRegistrationPercentages[2] = 35;
+  req.session.trackingLinksRegistrationPercentages[3] = 29;
+
+
+  var eventcCount = 16;
+
+  req.session.eventsLiveBoolean[eventcCount];
+  for(var x=0; x< eventcCount; x++)
+  {
+    req.session.eventsLive[x] = ["empty"];
+    req.session.eventsLiveBoolean[x] = true;
+  }
+
+
+  req.session.eventsLive[0][0] = "Researching Overseas Markets Masterclass";
+  req.session.eventsLive[1][0] = "International Market Research";
+  req.session.eventsLive[2][0] = "Grow your Business with Social Media";
+  req.session.eventsLive[3][0] = "How to Grow your Engineering Business Internationally";
+  req.session.eventsLive[4][0] = "Exporter Bootcamp";
+  req.session.eventsLive[5][0] = "DIT Masterclass: Food Labelling Workshop";
+  req.session.eventsLive[6][0] = "Exporting mining equipment and services to the Middle East";
+  req.session.eventsLive[7][0] = "Meet the Rail Experts: Austria and South Africa";
+  req.session.eventsLive[8][0] = "Digital Trade Advice Clinic";
+  req.session.eventsLive[9][0] = "Indirect Tax & International Trade - Retail and Consumer Products Exporting";
+  req.session.eventsLive[10][0] = "Trade Mission to Ireland - Smart Cities";
+  req.session.eventsLive[1][0] = "Six Steps to E-Commerce Success";
+  req.session.eventsLive[12][0] = "Managing Agents & Distributors";
+  req.session.eventsLive[13][0] = "International Food and Drink Network";
+  req.session.eventsLive[14][0] = "Low Carbon Vehicles 2017";
+  req.session.eventsLive[15][0] = "Coal Mongolia 2017";
+
+
+
+  req.session.eventsLive[0][3] = "7";
+  req.session.eventsLive[1][3] = "10";
+  req.session.eventsLive[2][3] = "11";
+  req.session.eventsLive[3][3] = "15";
+  req.session.eventsLive[4][3] = "20";
+  req.session.eventsLive[5][3] = "22";
+  req.session.eventsLive[6][3] = "25";
+  req.session.eventsLive[7][3] = "28";
+  req.session.eventsLive[8][3] = "4";
+  req.session.eventsLive[9][3] = "10";
+  req.session.eventsLive[10][3] = "12";
+  req.session.eventsLive[11][3] = "18";
+  req.session.eventsLive[12][3] = "23";
+  req.session.eventsLive[13][3] = "25";
+  req.session.eventsLive[14][3] = "29";
+  req.session.eventsLive[15][3] = "2";
+
+
+
+  req.session.eventsLive[0][5] = "October";
+  req.session.eventsLive[1][5] = "October";
+  req.session.eventsLive[2][5] = "October";
+  req.session.eventsLive[3][5] = "October";
+  req.session.eventsLive[4][5] = "October";
+  req.session.eventsLive[5][5] = "October";
+  req.session.eventsLive[6][5] = "October";
+  req.session.eventsLive[7][5] = "October";
+  req.session.eventsLive[8][5] = "November";
+  req.session.eventsLive[9][5] = "November";
+  req.session.eventsLive[10][5] = "November";
+  req.session.eventsLive[11][5] = "November";
+  req.session.eventsLive[12][5] = "November";
+  req.session.eventsLive[13][5] = "November";
+  req.session.eventsLive[14][5] = "November";
+  req.session.eventsLive[15][5] = "December";
+
+
+  req.session.eventsLive[0][6] = "2017";
+  req.session.eventsLive[1][6] = "2017";
+  req.session.eventsLive[2][6] = "2017";
+  req.session.eventsLive[3][6] = "2017";
+  req.session.eventsLive[4][6] = "2017";
+  req.session.eventsLive[5][6] = "2017";
+  req.session.eventsLive[6][6] = "2017";
+  req.session.eventsLive[7][6] = "2017";
+  req.session.eventsLive[8][6] = "2017";
+  req.session.eventsLive[9][6] = "2017";
+  req.session.eventsLive[10][6] = "2017";
+  req.session.eventsLive[11][6] = "2017";
+  req.session.eventsLive[12][6] = "2017";
+  req.session.eventsLive[13][6] = "2017";
+  req.session.eventsLive[14][6] = "2017";
+  req.session.eventsLive[15][6] = "2017";
+
+
+
+  req.session.eventsLive[0][8] = 14;
+  req.session.eventsLive[1][8] = 18;
+  req.session.eventsLive[2][8] = 16;
+  req.session.eventsLive[3][8] = 12;
+  req.session.eventsLive[4][8] = 20;
+  req.session.eventsLive[5][8] = 12;
+  req.session.eventsLive[6][8] = 20;
+  req.session.eventsLive[7][8] = 14;
+  req.session.eventsLive[8][8] = 6;
+  req.session.eventsLive[9][8] = 18;
+  req.session.eventsLive[10][8] = 10;
+  req.session.eventsLive[11][8] = 16;
+  req.session.eventsLive[12][8] = 24;
+  req.session.eventsLive[13][8] = 50;
+  req.session.eventsLive[14][8] = 12;
+  req.session.eventsLive[15][8] = 14;
+
+
+  req.session.eventsLive[0][20] = 14;
+  req.session.eventsLive[1][20] = 16;
+  req.session.eventsLive[2][20] = 15;
+  req.session.eventsLive[3][20] = 12;
+  req.session.eventsLive[4][20] = 17;
+  req.session.eventsLive[5][20] = 5;
+  req.session.eventsLive[6][20] = 10;
+  req.session.eventsLive[7][20] = 8;
+  req.session.eventsLive[8][20] = 6;
+  req.session.eventsLive[9][20] = 9;
+  req.session.eventsLive[10][20] = 8;
+  req.session.eventsLive[11][20] = 9;
+  req.session.eventsLive[12][20] = 10;
+  req.session.eventsLive[13][20] = 18;
+  req.session.eventsLive[14][20] = 1;
+  req.session.eventsLive[15][20] = 0;
+
+
+  req.session.eventsLive[0][19] = false;
+  req.session.eventsLive[1][19] = false;
+  req.session.eventsLive[2][19] = false;
+  req.session.eventsLive[3][19] = false;
+  req.session.eventsLive[4][19] = false;
+  req.session.eventsLive[5][19] = false;
+  req.session.eventsLive[6][19] = false;
+  req.session.eventsLive[7][19] = false;
+  req.session.eventsLive[8][19] = false;
+  req.session.eventsLive[9][19] = false;
+  req.session.eventsLive[10][19] = false;
+  req.session.eventsLive[11][19] = false;
+  req.session.eventsLive[12][19] = false;
+  req.session.eventsLive[13][19] = false;
+  req.session.eventsLive[14][19] = false;
+  req.session.eventsLive[15][19] = false;
+
+
+
+  res.redirect('/signin');
+})
+
+router.get('/scenario-5', function (req, res)
+{
+  // empty account
+  //req.session.regionName = "DIT Yorkshire and the Humber";
+  req.session.ticketsSoldPercentage = 85;
+  req.session.ticketsRemaining = 17;
+
+  req.session.trackingTotalViews = 364;
+  req.session.trackingViewsPercentages[0] = 41;
+  req.session.trackingViewsPercentages[1] = 13;
+  req.session.trackingViewsPercentages[2] = 24;
+  req.session.trackingViewsPercentages[3] = 22;
+
+  req.session.trackingTotalReg = 17;
+  req.session.trackingLinksRegistrationPercentages[0] = 29;
+  req.session.trackingLinksRegistrationPercentages[1] = 6;
+  req.session.trackingLinksRegistrationPercentages[2] = 35;
+  req.session.trackingLinksRegistrationPercentages[3] = 29;
+
+
+  var eventcCount = 16;
+
+  req.session.eventsLiveBoolean[eventcCount];
+  for(var x=0; x< eventcCount; x++)
+  {
+    req.session.eventsLive[x] = ["empty"];
+    req.session.eventsLiveBoolean[x] = true;
+  }
+
+
+  req.session.eventsLive[0][0] = "Grow your Business with Social Media";
+  req.session.eventsLive[1][0] = "How to Grow your Engineering Business Internationally";
+  req.session.eventsLive[2][0] = "Exporter Bootcamp";
+  req.session.eventsLive[3][0] = "DIT Masterclass: Food Labelling Workshop";
+  req.session.eventsLive[4][0] = " [User Generated Event]";
+  req.session.eventsLive[5][0] = "Meet the Rail Experts: Austria and South Africa";
+  req.session.eventsLive[6][0] = "Digital Trade Advice Clinic";
+  req.session.eventsLive[7][0] = "Indirect Tax & International Trade - Retail and Consumer Products Exporting";
+  req.session.eventsLive[8][0] = "Trade Mission to Ireland - Smart Cities";
+  req.session.eventsLive[9][0] = "Six Steps to E-Commerce Success";
+  req.session.eventsLive[10][0] = "Managing Agents & Distributors";
+  req.session.eventsLive[11][0] = "International Food and Drink Network";
+  req.session.eventsLive[12][0] = "Low Carbon Vehicles 2017";
+  req.session.eventsLive[13][0] = "Coal Mongolia 2017";
+  req.session.eventsLive[14][0] = "Researching Overseas Markets Masterclass";
+  req.session.eventsLive[15][0] = "International Market Research";
+
+
+
+  req.session.eventsLive[0][3] = "11";
+  req.session.eventsLive[1][3] = "15";
+  req.session.eventsLive[2][3] = "20";
+  req.session.eventsLive[3][3] = "22";
+  req.session.eventsLive[4][3] = "25";
+  req.session.eventsLive[5][3] = "28";
+  req.session.eventsLive[6][3] = "4";
+  req.session.eventsLive[7][3] = "10";
+  req.session.eventsLive[8][3] = "12";
+  req.session.eventsLive[9][3] = "18";
+  req.session.eventsLive[10][3] = "23";
+  req.session.eventsLive[11][3] = "25";
+  req.session.eventsLive[12][3] = "29";
+  req.session.eventsLive[13][3] = "2";
+  req.session.eventsLive[14][3] = "7";
+  req.session.eventsLive[15][3] = "10";
+
+
+
+
+  req.session.eventsLive[0][5] = "October";
+  req.session.eventsLive[1][5] = "October";
+  req.session.eventsLive[2][5] = "October";
+  req.session.eventsLive[3][5] = "October";
+  req.session.eventsLive[4][5] = "October";
+  req.session.eventsLive[5][5] = "October";
+  req.session.eventsLive[6][5] = "November";
+  req.session.eventsLive[7][5] = "November";
+  req.session.eventsLive[8][5] = "November";
+  req.session.eventsLive[9][5] = "November";
+  req.session.eventsLive[10][5] = "November";
+  req.session.eventsLive[11][5] = "November";
+  req.session.eventsLive[12][5] = "November";
+  req.session.eventsLive[13][5] = "December";
+  req.session.eventsLive[14][5] = "December";
+  req.session.eventsLive[15][5] = "December";
+
+
+  req.session.eventsLive[0][6] = "2017";
+  req.session.eventsLive[1][6] = "2017";
+  req.session.eventsLive[2][6] = "2017";
+  req.session.eventsLive[3][6] = "2017";
+  req.session.eventsLive[4][6] = "2017";
+  req.session.eventsLive[5][6] = "2017";
+  req.session.eventsLive[6][6] = "2017";
+  req.session.eventsLive[7][6] = "2017";
+  req.session.eventsLive[8][6] = "2017";
+  req.session.eventsLive[9][6] = "2017";
+  req.session.eventsLive[10][6] = "2017";
+  req.session.eventsLive[11][6] = "2017";
+  req.session.eventsLive[12][6] = "2017";
+  req.session.eventsLive[13][6] = "2017";
+  req.session.eventsLive[14][6] = "2017";
+  req.session.eventsLive[15][6] = "2017";
+
+
+  req.session.eventsLive[0][8] = 16;
+  req.session.eventsLive[1][8] = 12;
+  req.session.eventsLive[2][8] = 20;
+  req.session.eventsLive[3][8] = 12;
+  req.session.eventsLive[4][8] = 20;
+  req.session.eventsLive[5][8] = 14;
+  req.session.eventsLive[6][8] = 6;
+  req.session.eventsLive[7][8] = 18;
+  req.session.eventsLive[8][8] = 10;
+  req.session.eventsLive[9][8] = 16;
+  req.session.eventsLive[10][8] = 24;
+  req.session.eventsLive[11][8] = 50;
+  req.session.eventsLive[12][8] = 12;
+  req.session.eventsLive[13][8] = 14;
+  req.session.eventsLive[14][8] = 14;
+  req.session.eventsLive[15][8] = 18;
+
+
+  req.session.eventsLive[0][20] = 16;
+  req.session.eventsLive[1][20] = 12;
+  req.session.eventsLive[2][20] = 17;
+  req.session.eventsLive[3][20] = 5;
+  req.session.eventsLive[4][20] = 10;
+  req.session.eventsLive[5][20] = 8;
+  req.session.eventsLive[6][20] = 6;
+  req.session.eventsLive[7][20] = 9;
+  req.session.eventsLive[8][20] = 8;
+  req.session.eventsLive[9][20] = 9;
+  req.session.eventsLive[10][20] = 16;
+  req.session.eventsLive[11][20] = 30;
+  req.session.eventsLive[12][20] = 12;
+  req.session.eventsLive[13][20] = 14;
+  req.session.eventsLive[14][20] = 14;
+  req.session.eventsLive[15][20] = 0;
+
+
+  req.session.eventsLive[0][19] = false;
+  req.session.eventsLive[1][19] = false;
+  req.session.eventsLive[2][19] = false;
+  req.session.eventsLive[3][19] = false;
+  req.session.eventsLive[4][19] = false;
+  req.session.eventsLive[5][19] = false;
+  req.session.eventsLive[6][19] = false;
+  req.session.eventsLive[7][19] = false;
+  req.session.eventsLive[8][19] = false;
+  req.session.eventsLive[9][19] = false;
+  req.session.eventsLive[10][19] = false;
+  req.session.eventsLive[11][19] = false;
+  req.session.eventsLive[12][19] = false;
+  req.session.eventsLive[13][19] = false;
+  req.session.eventsLive[14][19] = false;
+  req.session.eventsLive[15][19] = false;
+
+  res.redirect('/signin');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.get('/scenario-previous-questions', function (req, res)
 {
@@ -390,8 +1132,6 @@ router.get('/create-event/create-event-onwards', function (req, res)
 
 })
 
-
-
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/venue-onwards', function (req, res)
 {
@@ -459,7 +1199,7 @@ router.get('/create-event/venue-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/description');
+      res.redirect('/create-event/title');
     }
 
   }
@@ -474,11 +1214,107 @@ router.get('/create-event/venue-onwards', function (req, res)
         }
     );
   }
-
-
-
 })
 
+
+
+// DESCRIPTION PAGE ONWARDS BUTTON
+router.get('/create-event/title-onwards', function (req, res)
+{
+  var errorMissingTitle = false;
+  var errorMissingSector = false;
+  var errorMissingSectorEntry = false;
+
+  var sectorNo = false;
+  var sectorYes = false;
+
+  var errorMissingExperience = false;
+  var experienceNewSelected = false;
+  var experienceOldSelected = false;
+  var experienceAllSelected = false;
+
+
+  // EVENT TITLE
+  if(req.session.data['event-title'] === "")
+  {
+    errorMissingTitle = true;
+  }
+
+  console.log("sector -------------- " + req.session.data['radio-sector']);
+  console.log("sector box -------------- " + req.session.data['sector-box']);
+
+
+  // RADIO SECTOR
+  if(req.session.data['radio-sector'] == undefined)
+  {
+    errorMissingSector = true;
+  }
+  else if(req.session.data['radio-sector'] == "yes")
+  {
+    sectorYes = true;
+    if(req.session.data['sector-box'] == undefined   ||  req.session.data['sector-box']  === "")
+    {
+      errorMissingSectorEntry = true;
+    }
+  }
+  else if(req.session.data['radio-sector'] == "no")
+  {
+    sectorNo = true;
+  }
+
+
+  // EXPERIENCE
+  if(req.session.data['radio-audience-experience'] == undefined)
+  {
+    errorMissingExperience = true;
+  }
+  else if(req.session.data['radio-audience-experience'] == "new")
+  {
+    experienceNewSelected = true;
+  }
+  else if(req.session.data['radio-audience-experience'] == "experienced")
+  {
+    experienceOldSelected = true;
+  }
+  else if(req.session.data['radio-audience-experience'] == "open")
+  {
+    experienceAllSelected = true;
+  }
+
+
+
+
+
+  // ERRORS OR PROCEED
+  if((errorMissingTitle || errorMissingSector || errorMissingSectorEntry) == false)
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/description');
+    }
+  }
+  else
+  {
+    res.render('create-event/title',
+        {
+          'errorsExist': true,
+          'errorMissingTitle': errorMissingTitle,
+          'errorMissingSector': errorMissingSector,
+          'errorMissingSectorBox': errorMissingSectorEntry,
+          'sectorIsNo': sectorNo,
+          'sectorIsYes': sectorYes,
+          'experienceEmpty': errorMissingExperience,
+          'experienceNew': experienceNewSelected,
+          'experienceOld' : experienceOldSelected,
+          'experienceAll': experienceAllSelected
+        }
+    );
+  }
+})
 
 
 // DESCRIPTION PAGE ONWARDS BUTTON
@@ -511,36 +1347,6 @@ router.get('/create-event/description-onwards', function (req, res)
     );
   }
 })
-
-
-
-// IMAGES PAGE ONWARDS BUTTON
-router.get('/create-event/images-onwards', function (req, res)
-{
-  // check for errors
-  if(true)
-  {
-    if(req.session.changingFromSummary == true)
-    {
-      res.redirect('/create-event/summary-prelude');
-    }
-    else
-    {
-      res.redirect('/create-event/tickets');
-    }
-  }
-  // No errors so carry on
-  else
-  {
-    res.render('create-event/images',
-        {
-          'errorAttendee': true
-        }
-    );
-  }
-})
-
-
 
 
 router.get('/create-event/tickets-onwards', function (req, res) {
@@ -605,8 +1411,6 @@ router.get('/create-event/tickets-onwards', function (req, res) {
 })
 
 
-
-
 router.get('/create-event/attendee-onwards', function (req, res)
 {
   req.session.data['attendee-quantity'];
@@ -645,14 +1449,7 @@ router.get('/create-event/attendee-onwards', function (req, res)
   {
     res.redirect('/create-event/summary-prelude');
   }
-
-
-
 })
-
-
-
-
 
 router.get('/create-event/add-other-question-submit', function (req, res)
 {
@@ -660,6 +1457,33 @@ router.get('/create-event/add-other-question-submit', function (req, res)
 
   res.redirect('/create-event/question-onwards');
   console.log("********************** the alternativ thing worked");
+})
+
+
+// IMAGES PAGE ONWARDS BUTTON
+router.get('/create-event/images-onwards', function (req, res)
+{
+  // check for errors
+  if(true)
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/tickets');
+    }
+  }
+  // No errors so carry on
+  else
+  {
+    res.render('create-event/images',
+        {
+          'errorAttendee': true
+        }
+    );
+  }
 })
 
 
@@ -672,7 +1496,6 @@ router.get('/create-event/final-question', function (req, res)
 
   res.redirect('/create-event/question-onwards');
 })
-
 
 // IMAGES PAGE ONWARDS BUTTON
 router.get('/create-event/question-onwards', function (req, res)
@@ -930,9 +1753,6 @@ router.get('/create-event/question-onwards', function (req, res)
   }
 })
 
-
-
-
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/summary-prelude', function (req, res)
 {
@@ -961,6 +1781,7 @@ router.get('/create-event/summary-prelude', function (req, res)
   eventDataMap[17] = req.session.data['event-state'];
   eventDataMap[18] = req.session.data['reg-close-time'];
   eventDataMap[19] = req.session.data['reg-is-closed']
+  eventDataMap[20] = req.session.data['registered'];
 
 
   //eventDataMap.set('imageURL', req.session.data['event-title']);
@@ -999,6 +1820,16 @@ router.get('/create-event/summary-prelude', function (req, res)
   res.redirect('/create-event/summary');
 
 })
+
+
+
+
+
+
+
+
+
+
 
 
 

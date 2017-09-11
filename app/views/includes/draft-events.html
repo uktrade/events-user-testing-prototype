@@ -38,8 +38,8 @@
   <thead>
   <tr>
     <th scope="col" style="width:32%; border-bottom: 0px; padding-top: 0px; padding-bottom: 0px;"> </th>
-    <th class="col" style="width:25%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
-    <th class="col" style="width:43%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
+    <th class="col" style="width:60%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
+    <th class="col" style="width:8%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
     <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
   </tr>
   </thead>
@@ -51,7 +51,7 @@
 
     <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; ">
       <a href="/summary-data/{{itemRow}}/true">View summary</a>  &nbsp; &nbsp; &nbsp;
-      <a href="/preview-data/{{itemRow}}/false">View event page</a>
+      <a href="/preview-data/{{itemRow}}/false">View web page</a>
     </td>
 
 
@@ -60,10 +60,10 @@
         <summary><span class="summary">More options</span></summary>
         <div class="panel panel-border-narrow">
           <ul>
-            <li style="margin-bottom:3px;"><a href="/monitor/live-present#track-links">Share draft</a></li>
-            <li style="margin-bottom:3px;"><a href="/summary-data/{{itemRow}}/true">Edit event</a></li>
+            <li style="margin-bottom:3px;"><span>Share draft: </span>&nbsp;www.great.gov.uk/event/mh43dz</li>
+            <li style="margin-bottom:3px;"><a href="/summary-data/{{itemRow}}/true">Edit page</a></li>
             <li style="margin-bottom:3px;"><a href="/clone-event/{{itemRow}}/true">Clone event</a></li>
-            <li style="margin-bottom:3px;"><a href="#">Delete event</a></li>
+            <li style="margin-bottom:3px;"><a href="#">Delete</a></li>
             <li style="margin-bottom:3px;">
               <div style="margin-left:0px; margin-top:20px;">
                 <input type="submit" class="button-secondary" value="Make event live" formaction="/account#draft-events">
