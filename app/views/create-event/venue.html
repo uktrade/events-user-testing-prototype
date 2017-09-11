@@ -71,10 +71,10 @@
 				<div class="form-group">
 			  {% endif %}
 
-				  <label class="form-label-bold" for="building"  style="margin-bottom:5px;  ">Building and street</label>
+				  <label class="form-label-bold" for="building"  style="margin-bottom:5px;  ">Venue and street</label>
 				  {% if errorBuilding %}
 					  <span class="error-message">
-						  Enter building name
+						  Enter venue name
 					  </span>
 				  {% endif %}
 				  <input class="form-control {% if errorBuilding %} form-control-error {% endif %}" id="building" type="text" name="building" style="width:75%"  value="{{ data['building'] }}" >

@@ -94,10 +94,16 @@ router.use(function (req, res, next)
     req.session.trackingLinksNames = ['Email marketing','Twitter', 'Partner XYZ','Other'];
   }
 
-  if(req.session.regCloseTime == undefined)
+  if(req.session.data['reg-close-time'] == undefined)
   {
-    req.session.regCloseTime = "";
+    req.session.data['reg-close-time'] = "";
   }
+
+  if(req.session.data['reg-is-closed'] == undefined)
+  {
+    req.session.data['reg-is-closed'] = false;
+  }
+
 
 
 
@@ -550,13 +556,13 @@ router.get('/create-event/tickets-onwards', function (req, res) {
 
   if(req.session.data['close-reg-early-days'] == undefined  ||  req.session.data['close-reg-early-days'] == "" )
   {
-    req.session.regCloseTime = req.session.data['event-start-time'] + " " + req.session.data['event-day'] + " " + req.session.data['event-month-name'] + " " +
-                                req.session.data['event-year'] + " (event start time)" ;
+    req.session.data['reg-close-time'] = req.session.data['event-start-time'] + " " + req.session.data['event-day'] + " " + req.session.data['event-month-name'] + " " +
+                                        req.session.data['event-year'] + " (event start time)" ;
   }
   else
   {
-    req.session.regCloseTime = req.session.data['event-start-time'] + '\xa0\xa0\xa0' + (req.session.data['event-day']-req.session.data['close-reg-early-days']) + " " + req.session.data['event-month-name'] + " " +
-                                req.session.data['event-year'] + '\xa0\xa0\xa0' +  "   (" + req.session.data['close-reg-early-days'] + " days before event)";
+    req.session.data['reg-close-time'] = req.session.data['event-start-time'] + '\xa0\xa0\xa0' + (req.session.data['event-day']-req.session.data['close-reg-early-days']) + " " + req.session.data['event-month-name'] + " " +
+                                        req.session.data['event-year'] + '\xa0\xa0\xa0' +  "   (" + req.session.data['close-reg-early-days'] + " days before event)";
   }
 
 
@@ -952,7 +958,9 @@ router.get('/create-event/summary-prelude', function (req, res)
   eventDataMap[14] = req.session.data['start-minutes'];
   eventDataMap[15] = req.session.data['finish-hours'];
   eventDataMap[16] = req.session.data['finish-minutes'];
-  eventDataMap[16] = req.session.regCloseTime;
+  eventDataMap[17] = req.session.data['event-state'];
+  eventDataMap[18] = req.session.data['reg-close-time'];
+  eventDataMap[19] = req.session.data['reg-is-closed']
 
 
   //eventDataMap.set('imageURL', req.session.data['event-title']);
@@ -995,6 +1003,26 @@ router.get('/create-event/summary-prelude', function (req, res)
 
 
 
+// Vlose registraton for a live event// VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
+router.get('/toggle-closed-reg/:liveeventnumber?', function (req, res)
+{
+  if( req.session.eventsLive[req.params.liveeventnumber][19] == true )
+  {
+    req.session.eventsLive[req.params.liveeventnumber][19] = false;
+  }
+  else
+  {
+    req.session.eventsLive[req.params.liveeventnumber][19] = true;
+  }
+
+  res.redirect('/account#live-events');
+})
+
+
+
+
+
+
 // VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
 router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
 {
@@ -1023,8 +1051,10 @@ router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
   req.session.data['attendee-quantity'] = undefined;
   req.session.data['sold-out-message'] = undefined;
   req.session.data['event-description'] = undefined;
+  req.session.data['event-state'] = undefined;
   req.session.questionsExist = undefined;
   req.session.questionsData = undefined;
+  req.session.data['reg-close-time'] = undefined;
 
   req.session.data['question'] = undefined;
   req.session.data['radio-additional-questions-answers-type'] = undefined;
@@ -1065,6 +1095,11 @@ router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
   req.session.data['start-minutes'] = eventDataMapTEMPLoad[14];
   req.session.data['finish-hours'] = eventDataMapTEMPLoad[15];
   req.session.data['finish-minutes'] = eventDataMapTEMPLoad[16];
+  req.session.data['event-state'] = eventDataMapTEMPLoad[17];
+  req.session.data['reg-close-time'] = eventDataMapTEMPLoad[18];
+  req.session.data['reg-is-closed'] = eventDataMapTEMPLoad[19];
+
+
 
   res.redirect('/create-event/summary');
 })
@@ -1101,8 +1136,11 @@ router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
   req.session.data['attendee-quantity'] = undefined;
   req.session.data['sold-out-message'] = undefined;
   req.session.data['event-description'] = undefined;
+  req.session.data['event-state'] = undefined;
   req.session.questionsExist = undefined;
   req.session.questionsData = undefined;
+  req.session.data['reg-close-time'] = undefined;
+  req.session.data['reg-is-closed'] = undefined;
 
   req.session.data['question'] = undefined;
   req.session.data['radio-additional-questions-answers-type'] = undefined;
@@ -1143,6 +1181,9 @@ router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
   req.session.data['start-minutes'] = eventDataMapTEMPLoad[14];
   req.session.data['finish-hours'] = eventDataMapTEMPLoad[15];
   req.session.data['finish-minutes'] = eventDataMapTEMPLoad[16];
+  req.session.data['event-state'] = eventDataMapTEMPLoad[17];
+  req.session.data['reg-close-time'] = eventDataMapTEMPLoad[18];
+  req.session.data['reg-is-closed'] = eventDataMapTEMPLoad[19];
 
   res.redirect('/create-event/preview');
 })
@@ -1152,59 +1193,7 @@ router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
 
 
 
-
-// CHANGE DETAILS LINKS
-router.get('/create-event/change-date', function (req, res)
-{
-  req.session.changingFromSummary = true;
-
-  res.redirect('/create-event');
-})
-
-router.get('/create-event/change-venue', function (req, res)
-{
-  req.session.changingFromSummary = true;
-
-  res.redirect('/create-event/venue');
-})
-
-
-
-
-router.get('/create-event/change-description', function (req, res)
-{
-  req.session.changingFromSummary = true;
-
-  res.redirect('/create-event/description');
-})
-
-router.get('/create-event/change-images', function (req, res)
-{
-  req.session.changingFromSummary = true;
-
-  res.redirect('/create-event/images');
-})
-
-router.get('/create-event/change-attendees', function (req, res)
-{
-  req.session.changingFromSummary = true;
-
-  res.redirect('/create-event/attendees');
-})
-
-router.get('/create-event/change-questions', function (req, res)
-{
-  req.session.changingFromSummary = true;
-
-  res.redirect('/create-event/attendees');
-})
-
-
-
-
-
-
-// STORE EVENT
+// ClONE EVENT
 router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
 {
   req.session.liveOrNot = req.params.liveevent;
@@ -1229,8 +1218,11 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
   req.session.data['attendee-quantity'] = undefined;
   req.session.data['sold-out-message'] = undefined;
   req.session.data['event-description'] = undefined;
+  req.session.data['event-state'] = undefined;
   req.session.questionsExist = undefined;
   req.session.questionsData = undefined;
+  req.session.data['reg-close-time'] = undefined;
+  req.session.data['reg-is-closed'] = undefined;
 
   req.session.data['question'] = undefined;
   req.session.data['radio-additional-questions-answers-type'] = undefined;
@@ -1275,8 +1267,9 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
   req.session.data['start-minutes'] = eventDataMapTEMP[14];
   req.session.data['finish-hours'] = eventDataMapTEMP[15];
   req.session.data['finish-minutes'] = eventDataMapTEMP[16];
-
-  //console.log("draft events list before  " + req.session.eventsDraftBoolean);
+  req.session.data['event-state'] = eventDataMapTEMP[17];
+  req.session.data['reg-close-time'] = eventDataMapTEMP[18];
+  req.session.data['reg-is-closed'] = eventDataMapTEMP[19];
 
   req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
   req.session.eventsDraft.push(eventDataMapTEMP);
@@ -1294,6 +1287,63 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
 
 
 
+
+
+
+
+
+
+
+// CHANGE DETAILS LINKS
+router.get('/create-event/change-date', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event');
+})
+
+router.get('/create-event/change-venue', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/venue');
+})
+
+router.get('/create-event/change-description', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/description');
+})
+
+router.get('/create-event/change-images', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/images');
+})
+
+router.get('/create-event/change-attendees', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/attendees');
+})
+
+router.get('/create-event/change-questions', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/attendees');
+})
+
+
+
+
+
+
+
+
 // STORE EVENT
 router.get('/make-draft-live', function (req, res)
 {
@@ -1305,9 +1355,15 @@ router.get('/make-draft-live', function (req, res)
 
   console.log("content of event : " + tempEventArray);
 
+
+  // SET EVENT STATE TO LIVE
+  tempEventArray[17] = "live";
+
+
   // Copy it into live events
   req.session.eventsLiveBoolean[req.session.eventsLive.length] = true;
   req.session.eventsLive[req.session.eventsLive.length] = tempEventArray;
+
 
   // Remove the stuff event from draft list
   req.session.eventsDraft[req.session.currentEventShowing] = undefined;
