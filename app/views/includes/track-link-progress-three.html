@@ -1,0 +1,59 @@
+
+{% macro tracklincone (linkNumber) %}
+
+<div style="width:100%;" display="flex">
+
+    {% if linkNumber < 5 %}
+        <div style="float:left; width:0%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 10 %}
+        <div style="float:left; width:5%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 15 %}
+        <div style="float:left; width:10%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 20 %}
+        <div style="float:left; width:15%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 25 %}
+        <div style="float:left; width:20%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 30 %}
+        <div style="float:left; width:25%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 35 %}
+        <div style="float:left; width:30%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 40 %}
+        <div style="float:left; width:35%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 45 %}
+        <div style="float:left; width:40%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 50 %}
+        <div style="float:left; width:45%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 55 %}
+        <div style="float:left; width:50%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 60 %}
+        <div style="float:left; width:55%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 65 %}
+        <div style="float:left; width:60%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 70 %}
+        <div style="float:left; width:65%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 75 %}
+        <div style="float:left; width:70%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 80 %}
+        <div style="float:left; width:75%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 85 %}
+        <div style="float:left; width:80%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 90 %}
+        <div style="float:left; width:85%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 95 %}
+        <div style="float:left; width:90%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber < 100 %}
+        <div style="float:left; width:95%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumber >= 100 %}
+        <div style="float:left; width:100%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% endif %}
+
+
+    <div style="float:left; width:40px; height:10px;">&nbsp;{{linkNumber}}%</div>
+
+</div>
+
+
+{% endmacro %}
+
+
+{{ tracklincone(session.trackingViewsPercentages[2]) }}

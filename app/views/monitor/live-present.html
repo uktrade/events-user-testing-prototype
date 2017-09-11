@@ -77,32 +77,18 @@ GOV.UK prototype kit
                     <div style="width:74%">
 
                       <p style="margin-bottom:5px">Visitors to event page</p>
-                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">
-                          {{session.trackingTotalViews}}</p>
-
+                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{session.trackingTotalViews}}</p>
                       <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
-                      <div style="width:100%;" display="flex">
-                        <div style="float:left; width:60%; background-color:#005EA5; height:10px;  margin-top:6px;">&nbsp;</div>
-                        <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingViewsPercentages[0]}}%</div>
-                      </div>
+                      {% include "includes/track-link-progress-one.html" %}
 
                       <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
-                      <div style="width:100%;" display="flex">
-                        <div style="float:left; width:30%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-                        <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingViewsPercentages[1]}}%</div>
-                      </div>
+                      {% include "includes/track-link-progress-two.html" %}
 
                       <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
-                      <div style="width:100%;" display="flex">
-                        <div style="float:left; width:9%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
-                        <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingViewsPercentages[2]}}%</div>
-                      </div>
+                      {% include "includes/track-link-progress-three.html" %}
 
                       <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
-                      <div style="width:100%;" display="flex">
-                        <div style="float:left; width:1%; background-color:#2E358B; height:10px;  margin-top:6px;">&nbsp;</div>
-                        <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingViewsPercentages[3]}}%</div>
-                      </div>
+                      {% include "includes/track-link-progress-four.html" %}
 
                     </div>
                   </div>
@@ -115,28 +101,16 @@ GOV.UK prototype kit
                       <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{session.trackingTotalReg}}</p>
 
                         <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
-                        <div style="width:100%;" display="flex">
-                          <div style="float:left; width:48%; background-color:#005EA5; height:10px;  margin-top:6px;">&nbsp;</div>
-                          <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingLinksRegistrationPercentages[0]}}%</div>
-                        </div>
+                        {% include "includes/track-link-progress-reg-one.html" %}
 
                         <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
-                        <div style="width:100%;" display="flex">
-                          <div style="float:left; width:50%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-                          <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingLinksRegistrationPercentages[1]}}%</div>
-                        </div>
+                        {% include "includes/track-link-progress-reg-two.html" %}
 
                         <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
-                        <div style="width:100%;" display="flex">
-                          <div style="float:left; width:2%; background-color:#DF3034; height:10px;  margin-top:6px;">&nbsp;</div>
-                          <div style="float:left; width:40px; height:10px;">&nbsp;{{session.trackingLinksRegistrationPercentages[2]}}%</div>
-                        </div>
+                        {% include "includes/track-link-progress-reg-three.html" %}
 
                         <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
-                        <div style="width:100%;" display="flex">
-                          <div style="float:left; width:0%; background-color:#2E358B; height:10px;  margin-top:6px;">&nbsp;</div>
-                          <div style="float:left; width:40px; height:10px;">{{session.trackingLinksRegistrationPercentages[3]}}%</div>
-                        </div>
+                        {% include "includes/track-link-progress-reg-four.html" %}
 
                       </div>
                     </div>
