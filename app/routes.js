@@ -184,8 +184,8 @@ router.get('/scenario-2', function (req, res)
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
 
-  req.session.ticketsSoldPercentage = 0;
-  req.session.ticketsRemaining = 0;
+  req.session.ticketsSoldPercentage = 10;
+  req.session.ticketsRemaining = 18;
 
   req.session.trackingTotalViews = 65;
   req.session.trackingViewsPercentages[0] = 62;
@@ -309,7 +309,7 @@ router.get('/scenario-2', function (req, res)
   req.session.eventsLive[8][20] = 12;
   req.session.eventsLive[9][20] = 10;
   req.session.eventsLive[10][20] = 0;
-  req.session.eventsLive[11][20] = 0;
+  req.session.eventsLive[11][20] = 2;
   req.session.eventsLive[12][20] = 2;
   req.session.eventsLive[13][20] = 4;
   req.session.eventsLive[14][20] = 3;
@@ -334,29 +334,6 @@ router.get('/scenario-2', function (req, res)
 
 
 
-/*
-
-      ,18-Sep-17	16/16
-  ,	23-Sep-17	8/24
-  ,	25-Sep-17	49/50
-  ,	29-Sep-17	2/12
-  ,	2-Oct-17	7/14
-  ,	7-Oct-17	2/14
- ,	10-Oct-17	0/18
-  , 	11-Oct-17	3/16
-  ,	15-Oct-17	12/12
- ,	20-Oct-17	10/20
-  ,	22-Oct-17	0/12
-  ,	25-Oct-17	0/20
-  ,	28-Oct-17	2/14
-  ,	4-Nov-17	4/6
-  ,	10-Nov-17	3/18
-  ,	12-Nov-17	5/10
-
-
-
-*/
-
 
 
 
@@ -370,8 +347,8 @@ router.get('/scenario-3', function (req, res)
 {
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
-  req.session.ticketsSoldPercentage = 10;
-  req.session.ticketsRemaining = 2;
+  req.session.ticketsSoldPercentage = 50;
+  req.session.ticketsRemaining = 10;
 
 
   req.session.trackingTotalViews = 207;
@@ -498,7 +475,7 @@ router.get('/scenario-3', function (req, res)
   req.session.eventsLive[5][20] = 12;
   req.session.eventsLive[6][20] = 16;
   req.session.eventsLive[7][20] = 3;
-  req.session.eventsLive[8][20] = 2;
+  req.session.eventsLive[8][20] = 10;
   req.session.eventsLive[9][20] = 7;
   req.session.eventsLive[10][20] = 4;
   req.session.eventsLive[11][20] = 9;
@@ -534,8 +511,8 @@ router.get('/scenario-4', function (req, res)
 {
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
-  req.session.ticketsSoldPercentage = 50;
-  req.session.ticketsRemaining = 10;
+  req.session.ticketsSoldPercentage = 85;
+  req.session.ticketsRemaining = 3;
 
 
   req.session.trackingTotalViews = 364;
@@ -660,7 +637,7 @@ router.get('/scenario-4', function (req, res)
   req.session.eventsLive[3][20] = 12;
   req.session.eventsLive[4][20] = 17;
   req.session.eventsLive[5][20] = 5;
-  req.session.eventsLive[6][20] = 10;
+  req.session.eventsLive[6][20] = 17;
   req.session.eventsLive[7][20] = 8;
   req.session.eventsLive[8][20] = 6;
   req.session.eventsLive[9][20] = 9;
