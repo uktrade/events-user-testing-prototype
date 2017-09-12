@@ -184,17 +184,17 @@ router.get('/scenario-2', function (req, res)
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
 
-  req.session.ticketsSoldPercentage = 10;
-  req.session.ticketsRemaining = 18;
+  req.session.ticketsSoldPercentage = 0;
+  req.session.ticketsRemaining = 20;
 
-  req.session.trackingTotalViews = 65;
-  req.session.trackingViewsPercentages[0] = 62;
-  req.session.trackingViewsPercentages[1] = 23;
-  req.session.trackingViewsPercentages[2] = 6;
-  req.session.trackingViewsPercentages[3] = 9;
+  req.session.trackingTotalViews = 0;
+  req.session.trackingViewsPercentages[0] = 0;
+  req.session.trackingViewsPercentages[1] = 0;
+  req.session.trackingViewsPercentages[2] = 0;
+  req.session.trackingViewsPercentages[3] = 0;
 
-  req.session.trackingTotalReg = 2;
-  req.session.trackingLinksRegistrationPercentages[0] = 100;
+  req.session.trackingTotalReg = 0;
+  req.session.trackingLinksRegistrationPercentages[0] = 0;
   req.session.trackingLinksRegistrationPercentages[1] = 0;
   req.session.trackingLinksRegistrationPercentages[2] = 0;
   req.session.trackingLinksRegistrationPercentages[3] = 0;
@@ -309,7 +309,7 @@ router.get('/scenario-2', function (req, res)
   req.session.eventsLive[8][20] = 12;
   req.session.eventsLive[9][20] = 10;
   req.session.eventsLive[10][20] = 0;
-  req.session.eventsLive[11][20] = 2;
+  req.session.eventsLive[11][20] = 0;
   req.session.eventsLive[12][20] = 2;
   req.session.eventsLive[13][20] = 4;
   req.session.eventsLive[14][20] = 3;
@@ -347,21 +347,20 @@ router.get('/scenario-3', function (req, res)
 {
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
-  req.session.ticketsSoldPercentage = 50;
-  req.session.ticketsRemaining = 10;
+  req.session.ticketsSoldPercentage = 10;
+  req.session.ticketsRemaining = 18;
 
+  req.session.trackingTotalViews = 65;
+  req.session.trackingViewsPercentages[0] = 62;
+  req.session.trackingViewsPercentages[1] = 23;
+  req.session.trackingViewsPercentages[2] = 6;
+  req.session.trackingViewsPercentages[3] = 9;
 
-  req.session.trackingTotalViews = 207;
-  req.session.trackingViewsPercentages[0] = 55;
-  req.session.trackingViewsPercentages[1] = 19;
-  req.session.trackingViewsPercentages[2] = 14;
-  req.session.trackingViewsPercentages[3] = 12;
-
-  req.session.trackingTotalReg = 10;
-  req.session.trackingLinksRegistrationPercentages[0] = 40;
+  req.session.trackingTotalReg = 2;
+  req.session.trackingLinksRegistrationPercentages[0] = 100;
   req.session.trackingLinksRegistrationPercentages[1] = 0;
-  req.session.trackingLinksRegistrationPercentages[2] = 30;
-  req.session.trackingLinksRegistrationPercentages[3] = 30;
+  req.session.trackingLinksRegistrationPercentages[2] = 0;
+  req.session.trackingLinksRegistrationPercentages[3] = 0;
 
 
 
@@ -475,7 +474,7 @@ router.get('/scenario-3', function (req, res)
   req.session.eventsLive[5][20] = 12;
   req.session.eventsLive[6][20] = 16;
   req.session.eventsLive[7][20] = 3;
-  req.session.eventsLive[8][20] = 10;
+  req.session.eventsLive[8][20] = 2;
   req.session.eventsLive[9][20] = 7;
   req.session.eventsLive[10][20] = 4;
   req.session.eventsLive[11][20] = 9;
@@ -511,21 +510,21 @@ router.get('/scenario-4', function (req, res)
 {
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
-  req.session.ticketsSoldPercentage = 85;
-  req.session.ticketsRemaining = 3;
+  req.session.ticketsSoldPercentage = 50;
+  req.session.ticketsRemaining = 10;
 
 
-  req.session.trackingTotalViews = 364;
-  req.session.trackingViewsPercentages[0] = 41;
-  req.session.trackingViewsPercentages[1] = 13;
-  req.session.trackingViewsPercentages[2] = 24;
-  req.session.trackingViewsPercentages[3] = 22;
+  req.session.trackingTotalViews = 207;
+  req.session.trackingViewsPercentages[0] = 55;
+  req.session.trackingViewsPercentages[1] = 19;
+  req.session.trackingViewsPercentages[2] = 14;
+  req.session.trackingViewsPercentages[3] = 12;
 
-  req.session.trackingTotalReg = 17;
-  req.session.trackingLinksRegistrationPercentages[0] = 29;
-  req.session.trackingLinksRegistrationPercentages[1] = 6;
-  req.session.trackingLinksRegistrationPercentages[2] = 35;
-  req.session.trackingLinksRegistrationPercentages[3] = 29;
+  req.session.trackingTotalReg = 10;
+  req.session.trackingLinksRegistrationPercentages[0] = 40;
+  req.session.trackingLinksRegistrationPercentages[1] = 0;
+  req.session.trackingLinksRegistrationPercentages[2] = 30;
+  req.session.trackingLinksRegistrationPercentages[3] = 30;
 
 
   var eventcCount = 16;
@@ -637,7 +636,7 @@ router.get('/scenario-4', function (req, res)
   req.session.eventsLive[3][20] = 12;
   req.session.eventsLive[4][20] = 17;
   req.session.eventsLive[5][20] = 5;
-  req.session.eventsLive[6][20] = 17;
+  req.session.eventsLive[6][20] = 10;
   req.session.eventsLive[7][20] = 8;
   req.session.eventsLive[8][20] = 6;
   req.session.eventsLive[9][20] = 9;
@@ -798,7 +797,7 @@ router.get('/scenario-5', function (req, res)
   req.session.eventsLive[1][20] = 12;
   req.session.eventsLive[2][20] = 17;
   req.session.eventsLive[3][20] = 5;
-  req.session.eventsLive[4][20] = 10;
+  req.session.eventsLive[4][20] = 17;
   req.session.eventsLive[5][20] = 8;
   req.session.eventsLive[6][20] = 6;
   req.session.eventsLive[7][20] = 9;

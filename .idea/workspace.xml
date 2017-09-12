@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="112e8f47-37cb-4742-9f5d-22074abd4dea" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.js" afterPath="$PROJECT_DIR$/app/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/summary.html" afterPath="$PROJECT_DIR$/app/views/create-event/summary.html" />
     </list>
     <ignored path="events-user-testing-prototype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,37 +26,39 @@
       <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13805105">
-              <caret line="375" column="0" selection-start-line="375" selection-start-column="0" selection-end-line="375" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6299304">
+              <caret line="799" column="36" selection-start-line="799" selection-start-column="36" selection-end-line="799" selection-end-column="36" />
               <folding>
                 <element signature="e#2204#2279#0" expanded="false" />
                 <element signature="e#3724#4135#0" expanded="false" />
                 <element signature="e#4193#4225#0" expanded="false" />
-                <element signature="e#28475#28612#0" expanded="false" />
-                <element signature="e#28721#29785#0" expanded="false" />
-                <element signature="e#29879#30985#0" expanded="false" />
-                <element signature="e#31091#35338#0" expanded="false" />
-                <element signature="e#35432#37202#0" expanded="false" />
-                <element signature="e#42052#43873#0" expanded="false" />
-                <element signature="e#43942#45037#0" expanded="false" />
-                <element signature="e#45114#45278#0" expanded="false" />
-                <element signature="e#45376#45738#0" expanded="false" />
-                <element signature="e#45805#45987#0" expanded="false" />
-                <element signature="e#46085#55207#0" expanded="false" />
-                <element signature="e#55303#57994#0" expanded="false" />
-                <element signature="e#58162#58435#0" expanded="false" />
-                <element signature="e#58555#61782#0" expanded="false" />
-                <element signature="e#61902#65234#0" expanded="false" />
-                <element signature="e#65324#68838#0" expanded="false" />
-                <element signature="e#68921#68963#0" expanded="false" />
-                <element signature="e#69052#69136#0" expanded="false" />
-                <element signature="e#69200#69285#0" expanded="false" />
-                <element signature="e#69355#69446#0" expanded="false" />
-                <element signature="e#69511#69597#0" expanded="false" />
-                <element signature="e#69820#69909#0" expanded="false" />
-                <element signature="e#69985#71176#0" expanded="false" />
-                <element signature="e#71257#71929#0" expanded="false" />
-                <element signature="e#71985#72034#0" expanded="false" />
+                <element signature="e#4275#10258#0" expanded="false" />
+                <element signature="e#10307#16291#0" expanded="false" />
+                <element signature="e#28463#28600#0" expanded="false" />
+                <element signature="e#28709#29773#0" expanded="false" />
+                <element signature="e#29867#30973#0" expanded="false" />
+                <element signature="e#31079#35326#0" expanded="false" />
+                <element signature="e#35420#37190#0" expanded="false" />
+                <element signature="e#42040#43861#0" expanded="false" />
+                <element signature="e#43930#45025#0" expanded="false" />
+                <element signature="e#45102#45266#0" expanded="false" />
+                <element signature="e#45364#45726#0" expanded="false" />
+                <element signature="e#45793#45975#0" expanded="false" />
+                <element signature="e#46073#55195#0" expanded="false" />
+                <element signature="e#55291#57982#0" expanded="false" />
+                <element signature="e#58150#58423#0" expanded="false" />
+                <element signature="e#58543#61770#0" expanded="false" />
+                <element signature="e#61890#65222#0" expanded="false" />
+                <element signature="e#65312#68826#0" expanded="false" />
+                <element signature="e#68909#68951#0" expanded="false" />
+                <element signature="e#69040#69124#0" expanded="false" />
+                <element signature="e#69188#69273#0" expanded="false" />
+                <element signature="e#69343#69434#0" expanded="false" />
+                <element signature="e#69499#69585#0" expanded="false" />
+                <element signature="e#69808#69897#0" expanded="false" />
+                <element signature="e#69973#71164#0" expanded="false" />
+                <element signature="e#71245#71917#0" expanded="false" />
+                <element signature="e#71973#72022#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -524,11 +525,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1792</line>
+          <line>1791</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1542</line>
+          <line>1541</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -538,57 +539,57 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1896</line>
+          <line>1895</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1979</line>
+          <line>1978</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2268</line>
+          <line>2267</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1328</line>
+          <line>1327</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1391</line>
+          <line>1390</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2299</line>
+          <line>2298</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1798</line>
+          <line>1797</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1531</line>
+          <line>1530</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>674</line>
+          <line>673</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1197</line>
+          <line>1196</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>939</line>
+          <line>938</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
@@ -995,37 +996,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13805105">
-          <caret line="375" column="0" selection-start-line="375" selection-start-column="0" selection-end-line="375" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6299304">
+          <caret line="799" column="36" selection-start-line="799" selection-start-column="36" selection-end-line="799" selection-end-column="36" />
           <folding>
             <element signature="e#2204#2279#0" expanded="false" />
             <element signature="e#3724#4135#0" expanded="false" />
             <element signature="e#4193#4225#0" expanded="false" />
-            <element signature="e#28475#28612#0" expanded="false" />
-            <element signature="e#28721#29785#0" expanded="false" />
-            <element signature="e#29879#30985#0" expanded="false" />
-            <element signature="e#31091#35338#0" expanded="false" />
-            <element signature="e#35432#37202#0" expanded="false" />
-            <element signature="e#42052#43873#0" expanded="false" />
-            <element signature="e#43942#45037#0" expanded="false" />
-            <element signature="e#45114#45278#0" expanded="false" />
-            <element signature="e#45376#45738#0" expanded="false" />
-            <element signature="e#45805#45987#0" expanded="false" />
-            <element signature="e#46085#55207#0" expanded="false" />
-            <element signature="e#55303#57994#0" expanded="false" />
-            <element signature="e#58162#58435#0" expanded="false" />
-            <element signature="e#58555#61782#0" expanded="false" />
-            <element signature="e#61902#65234#0" expanded="false" />
-            <element signature="e#65324#68838#0" expanded="false" />
-            <element signature="e#68921#68963#0" expanded="false" />
-            <element signature="e#69052#69136#0" expanded="false" />
-            <element signature="e#69200#69285#0" expanded="false" />
-            <element signature="e#69355#69446#0" expanded="false" />
-            <element signature="e#69511#69597#0" expanded="false" />
-            <element signature="e#69820#69909#0" expanded="false" />
-            <element signature="e#69985#71176#0" expanded="false" />
-            <element signature="e#71257#71929#0" expanded="false" />
-            <element signature="e#71985#72034#0" expanded="false" />
+            <element signature="e#4275#10258#0" expanded="false" />
+            <element signature="e#10307#16291#0" expanded="false" />
+            <element signature="e#28463#28600#0" expanded="false" />
+            <element signature="e#28709#29773#0" expanded="false" />
+            <element signature="e#29867#30973#0" expanded="false" />
+            <element signature="e#31079#35326#0" expanded="false" />
+            <element signature="e#35420#37190#0" expanded="false" />
+            <element signature="e#42040#43861#0" expanded="false" />
+            <element signature="e#43930#45025#0" expanded="false" />
+            <element signature="e#45102#45266#0" expanded="false" />
+            <element signature="e#45364#45726#0" expanded="false" />
+            <element signature="e#45793#45975#0" expanded="false" />
+            <element signature="e#46073#55195#0" expanded="false" />
+            <element signature="e#55291#57982#0" expanded="false" />
+            <element signature="e#58150#58423#0" expanded="false" />
+            <element signature="e#58543#61770#0" expanded="false" />
+            <element signature="e#61890#65222#0" expanded="false" />
+            <element signature="e#65312#68826#0" expanded="false" />
+            <element signature="e#68909#68951#0" expanded="false" />
+            <element signature="e#69040#69124#0" expanded="false" />
+            <element signature="e#69188#69273#0" expanded="false" />
+            <element signature="e#69343#69434#0" expanded="false" />
+            <element signature="e#69499#69585#0" expanded="false" />
+            <element signature="e#69808#69897#0" expanded="false" />
+            <element signature="e#69973#71164#0" expanded="false" />
+            <element signature="e#71245#71917#0" expanded="false" />
+            <element signature="e#71973#72022#0" expanded="false" />
           </folding>
         </state>
       </provider>
