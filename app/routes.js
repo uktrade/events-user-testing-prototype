@@ -179,9 +179,6 @@ router.get('/scenario-1', function (req, res)
 })
 
 
-
-
-
 router.get('/scenario-2', function (req, res)
 {
   // empty account
@@ -731,7 +728,7 @@ router.get('/scenario-5', function (req, res)
   req.session.eventsLive[1][0] = "How to Grow your Engineering Business Internationally";
   req.session.eventsLive[2][0] = "Exporter Bootcamp";
   req.session.eventsLive[3][0] = "DIT Masterclass: Food Labelling Workshop";
-  req.session.eventsLive[4][0] = " [User Generated Event]";
+  req.session.eventsLive[4][0] = "Exporting mining equipment and services to the Middle East";
   req.session.eventsLive[5][0] = "Meet the Rail Experts: Austria and South Africa";
   req.session.eventsLive[6][0] = "Digital Trade Advice Clinic";
   req.session.eventsLive[7][0] = "Indirect Tax & International Trade - Retail and Consumer Products Exporting";
@@ -1291,20 +1288,24 @@ router.get('/create-event/title-onwards', function (req, res)
 
 
   // EXPERIENCE
+  req.session.data['audience-experience'] = "";
   if(req.session.data['radio-audience-experience'] == undefined)
   {
     errorMissingExperience = true;
   }
   else if(req.session.data['radio-audience-experience'] == "new")
   {
+    req.session.data['audience-experience'] = "New to export";
     experienceNewSelected = true;
   }
   else if(req.session.data['radio-audience-experience'] == "experienced")
   {
+    req.session.data['audience-experience'] = "Experienced exporters";
     experienceOldSelected = true;
   }
   else if(req.session.data['radio-audience-experience'] == "open")
   {
+    req.session.data['audience-experience'] = "Open to all";
     experienceAllSelected = true;
   }
 
@@ -1342,6 +1343,8 @@ router.get('/create-event/title-onwards', function (req, res)
     );
   }
 })
+
+
 
 
 // DESCRIPTION PAGE ONWARDS BUTTON
@@ -2217,7 +2220,7 @@ router.get('/create-event/change-attendees', function (req, res)
 {
   req.session.changingFromSummary = true;
 
-  res.redirect('/create-event/attendees');
+  res.redirect('/create-event/tickets');
 })
 
 router.get('/create-event/change-questions', function (req, res)
