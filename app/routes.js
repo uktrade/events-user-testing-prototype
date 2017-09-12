@@ -1322,12 +1322,29 @@ router.get('/create-event/description-onwards', function (req, res)
 {
   var errorMissingTitle = false;
 
-  if(req.session.data['event-title'] === "")
+
+
+  if(req.session.data['radio-markets'] == undefined)
   {
-    errorMissingTitle = true;
+    errorMissingmarketAnswer = true;
+  }
+  else if(req.session.data['radio-markets'] == "no")
+  {
+    marketsNoSelected = true;
+  }
+  else if(req.session.data['radio-markets'] == "yes")
+  {
+    experienceOldSelected = true;
   }
 
-  if((errorMissingTitle) == false)
+
+  //  description fields doesn't need validation
+
+
+
+
+
+  if(true)
   {
     if(req.session.changingFromSummary == true)
     {
@@ -1335,7 +1352,7 @@ router.get('/create-event/description-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/images');
+      res.redirect('/create-event/date');
     }
   }
   else
@@ -1458,6 +1475,7 @@ router.get('/create-event/add-other-question-submit', function (req, res)
   res.redirect('/create-event/question-onwards');
   console.log("********************** the alternativ thing worked");
 })
+
 
 
 // IMAGES PAGE ONWARDS BUTTON
@@ -1851,9 +1869,6 @@ router.get('/toggle-closed-reg/:liveeventnumber?', function (req, res)
 
 
 
-
-
-
 // VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
 router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
 {
@@ -2021,9 +2036,6 @@ router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
 
 
 
-
-
-
 // ClONE EVENT
 router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
 {
@@ -2121,7 +2133,11 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
 
 
 
-
+// CHANGE DETAILS LINKS
+router.get('/create-event/', function (req, res)
+{
+  res.redirect('/create-event/title');
+})
 
 
 
@@ -2130,7 +2146,7 @@ router.get('/create-event/change-date', function (req, res)
 {
   req.session.changingFromSummary = true;
 
-  res.redirect('/create-event');
+  res.redirect('/create-event/data');
 })
 
 router.get('/create-event/change-venue', function (req, res)
@@ -2222,8 +2238,6 @@ router.get('/make-draft-live', function (req, res)
 
   res.redirect('/account');
 })
-
-
 
 
 
