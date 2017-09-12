@@ -96,35 +96,50 @@
 
 
 
+		  <fieldset>
 
-		  <!--  markets  -->
-		  <div class="form-group" style="margin-bottom:10px" >
-			  <label class="form-label-bold" >
-				  Is this event related to export in any specific international markets?
-			  </label>
-			  <div class="form-date" style="margin-top:5px">
-				  <div class="multiple-choice" style="margin-bottom:10px">
-					  <input id="radio-inline-2" type="radio" name="radio-market" value="no">
-					  <label for="radio-inline-2">No, this is relevant to all markets</label>
-				  </div>
-				  <div class="multiple-choice" style="margin-bottom:10px" data-target="market-section">
-					  <input id="radio-inline-1" type="radio" name="radio-market" value="yes">
-					  <label for="radio-inline-1">Yes</label>
+			  <!--  markets  -->
+			  <div class="form-group" style="margin-bottom:10px" >
+				  <label class="form-label-bold" >
+					  Is this event related to export in any specific international markets?
+				  </label>
+				  <div class="form-date" style="margin-top:5px">
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="radio-market-2" type="radio" name="radio-markets" value="no">
+						  <label for="radio-market-2">No, this is relevant to all markets</label>
+					  </div>
+					  <div class="multiple-choice" style="margin-bottom:10px" data-target="market-section">
+						  <input id="radio-market-1" type="radio" name="radio-markets" value="yes">
+						  <label for="radio-market-1">Yes</label>
+					  </div>
 				  </div>
 			  </div>
-		  </div>
 
-		  <div class="form-group js-hidden"  id="market-section" style="margin-bottom:30px">
-			  <label class="form-label-bold" for="event-description">
-				  Markets
-			  </label>
-			  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
-					 id="market-box" name="sector" value="{{ data['market'] }}">
-			  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
-					 id="market-box-2" name="sector" value="{{ data['market-box-2'] }}">
-			  <input type="text" class="form-control"  style="width:80%;"
-					 id="market-box-3" name="sector" value="{{ data['market-box-3'] }}">
-		  </div>
+		  </fieldset>
+
+
+		  <fieldset>
+
+			  <div class="form-group js-hidden"  id="market-section" style="margin-bottom:30px">
+				  <label class="form-label-bold" for="event-description">
+					  Markets
+				  </label>
+				  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
+						 id="market-box" name="market-box" value="{{ data['market-box'] }}">
+
+				  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
+						 id="market-box-2" name="market-box-2" value="{{ data['market-box-2'] }}">
+
+				  <input type="text" class="form-control"  style="width:80%;"
+						 id="market-box-3" name="market-box-3" value="{{ data['market-box-3'] }}">
+			  </div>
+
+
+		  </fieldset>
+
+
+
+
 
 
 

@@ -959,8 +959,10 @@ router.get('/clear-current-event-data', function (req, res)
 
 
 
+
+
 // CREATE EVENT ONWARDS TO NEXT PAGE
-router.get('/create-event/create-event-onwards', function (req, res)
+router.get('/create-event/date-onwards', function (req, res)
 {
   // Save event date
   req.session.data['event-day'];
@@ -1111,7 +1113,7 @@ router.get('/create-event/create-event-onwards', function (req, res)
   }
   else
   {
-    res.render('create-event/index',
+    res.render('create-event/date',
         {
           'errorOnDayTime': true,
 
@@ -1199,7 +1201,7 @@ router.get('/create-event/venue-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/title');
+      res.redirect('/create-event/images');
     }
 
   }
@@ -1215,7 +1217,6 @@ router.get('/create-event/venue-onwards', function (req, res)
     );
   }
 })
-
 
 
 // DESCRIPTION PAGE ONWARDS BUTTON
@@ -1248,6 +1249,7 @@ router.get('/create-event/title-onwards', function (req, res)
   if(req.session.data['radio-sector'] == undefined)
   {
     errorMissingSector = true;
+
   }
   else if(req.session.data['radio-sector'] == "yes")
   {
@@ -1256,11 +1258,36 @@ router.get('/create-event/title-onwards', function (req, res)
     {
       errorMissingSectorEntry = true;
     }
+    else
+    {
+      req.session.data['sectors'] = "";
+      if(req.session.data['sector-box'] != undefined)
+      {
+        req.session.data['sectors'] = req.session.data['sector-box'];
+      }
+      if(req.session.data['sector-box-2'] != undefined)
+      {
+        req.session.data['sectors'] = req.session.data['sectors'] + "\n" +  req.session.data['sector-box-2'];
+      }
+      if(req.session.data['sector-box-3'] != undefined)
+      {
+        req.session.data['sectors'] = req.session.data['sectors'] + "\n" + req.session.data['sector-box-3'];
+      }
+    }
   }
   else if(req.session.data['radio-sector'] == "no")
   {
+    req.session.data['sectors'] = "Relevant to all sectors";
     sectorNo = true;
   }
+
+
+
+
+
+
+
+
 
 
   // EXPERIENCE
@@ -1323,23 +1350,39 @@ router.get('/create-event/description-onwards', function (req, res)
   var errorMissingTitle = false;
 
 
+  console.log(" the radio for markets is --*/*/*/  " + req.session.data['radio-markets']);
+
 
   if(req.session.data['radio-markets'] == undefined)
   {
     errorMissingmarketAnswer = true;
+    req.session.data['markets'] = "Relevant to all markets";
   }
   else if(req.session.data['radio-markets'] == "no")
   {
     marketsNoSelected = true;
+    req.session.data['markets'] = "Relevant to all markets";
   }
   else if(req.session.data['radio-markets'] == "yes")
   {
-    experienceOldSelected = true;
+    marketsYesSelected = true;
+
+    if(req.session.data['market-box'] != undefined)
+    {
+      req.session.data['markets'] = req.session.data['market-box'];
+    }
+    if(req.session.data['market-box-2'] != undefined)
+    {
+      req.session.data['markets'] = req.session.data['markets'] + "\n" +  req.session.data['market-box-2'];
+    }
+    if(req.session.data['market-box-3'] != undefined)
+    {
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-3'];
+    }
   }
 
 
   //  description fields doesn't need validation
-
 
 
 
