@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="112e8f47-37cb-4742-9f5d-22074abd4dea" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.js" afterPath="$PROJECT_DIR$/app/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/attendees.html" afterPath="$PROJECT_DIR$/app/views/create-event/attendees.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/summary.html" afterPath="$PROJECT_DIR$/app/views/create-event/summary.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/title.html" afterPath="$PROJECT_DIR$/app/views/create-event/title.html" />
     </list>
@@ -27,55 +25,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.732142">
-              <caret line="1307" column="22" selection-start-line="1307" selection-start-column="22" selection-end-line="1307" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.41415313">
+              <caret line="538" column="0" selection-start-line="538" selection-start-column="0" selection-end-line="538" selection-end-column="0" />
               <folding>
                 <element signature="e#2204#2279#0" expanded="false" />
                 <element signature="e#3724#4135#0" expanded="false" />
                 <element signature="e#4193#4225#0" expanded="false" />
-                <element signature="e#4275#10581#0" expanded="false" />
-                <element signature="e#10630#16620#0" expanded="false" />
-                <element signature="e#16669#22663#0" expanded="false" />
-                <element signature="e#22712#28707#0" expanded="false" />
-                <element signature="e#28792#28929#0" expanded="false" />
-                <element signature="e#29038#30102#0" expanded="false" />
-                <element signature="e#30196#31302#0" expanded="false" />
-                <element signature="e#31408#35655#0" expanded="false" />
-                <element signature="e#35749#37519#0" expanded="false" />
-                <element signature="e#42369#44190#0" expanded="false" />
-                <element signature="e#44259#45354#0" expanded="false" />
-                <element signature="e#45431#45595#0" expanded="false" />
-                <element signature="e#45693#46055#0" expanded="false" />
-                <element signature="e#46122#46304#0" expanded="false" />
-                <element signature="e#46402#55524#0" expanded="false" />
-                <element signature="e#55620#58311#0" expanded="false" />
-                <element signature="e#58479#58752#0" expanded="false" />
-                <element signature="e#58872#62099#0" expanded="false" />
-                <element signature="e#62219#65551#0" expanded="false" />
-                <element signature="e#65641#69155#0" expanded="false" />
-                <element signature="e#69238#69280#0" expanded="false" />
-                <element signature="e#69369#69453#0" expanded="false" />
-                <element signature="e#69517#69602#0" expanded="false" />
-                <element signature="e#69672#69763#0" expanded="false" />
-                <element signature="e#69828#69914#0" expanded="false" />
-                <element signature="e#70137#70226#0" expanded="false" />
-                <element signature="e#70302#71493#0" expanded="false" />
-                <element signature="e#71574#72246#0" expanded="false" />
-                <element signature="e#72302#72351#0" expanded="false" />
+                <element signature="e#28789#28926#0" expanded="false" />
+                <element signature="e#29035#30099#0" expanded="false" />
+                <element signature="e#30193#31299#0" expanded="false" />
+                <element signature="e#31405#35652#0" expanded="false" />
+                <element signature="e#35746#37516#0" expanded="false" />
+                <element signature="e#42366#44187#0" expanded="false" />
+                <element signature="e#44256#45351#0" expanded="false" />
+                <element signature="e#45428#45592#0" expanded="false" />
+                <element signature="e#45690#46052#0" expanded="false" />
+                <element signature="e#46119#46301#0" expanded="false" />
+                <element signature="e#46399#55521#0" expanded="false" />
+                <element signature="e#55617#58308#0" expanded="false" />
+                <element signature="e#58476#58749#0" expanded="false" />
+                <element signature="e#58869#62096#0" expanded="false" />
+                <element signature="e#62216#65548#0" expanded="false" />
+                <element signature="e#65638#69152#0" expanded="false" />
+                <element signature="e#69235#69277#0" expanded="false" />
+                <element signature="e#69366#69450#0" expanded="false" />
+                <element signature="e#69514#69599#0" expanded="false" />
+                <element signature="e#69669#69760#0" expanded="false" />
+                <element signature="e#69825#69911#0" expanded="false" />
+                <element signature="e#70134#70223#0" expanded="false" />
+                <element signature="e#70299#71490#0" expanded="false" />
+                <element signature="e#71571#72243#0" expanded="false" />
+                <element signature="e#72299#72348#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="date.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/date.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3076923">
-              <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -83,23 +67,24 @@
       <file leaf-file-name="summary.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/summary.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.609756">
-              <caret line="127" column="59" selection-start-line="127" selection-start-column="59" selection-end-line="127" selection-end-column="59" />
+            <state vertical-scroll-proportion="-7.02439">
+              <caret line="138" column="108" selection-start-line="138" selection-start-column="108" selection-end-line="138" selection-end-column="108" />
               <folding>
                 <element signature="n#style#0;n#dd#0;n#div#4;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#dd#0;n#div#5;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#dd#0;n#div#6;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#dd#0;n#div#10;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#dd#0;n#div#7;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#dd#0;n#div#11;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="attendees.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="attendees.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/attendees.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4716763">
-              <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+            <state vertical-scroll-proportion="-7.3773584">
+              <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -108,38 +93,9 @@
       <file leaf-file-name="venue.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/venue.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-0.65384614">
               <caret line="104" column="22" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="description.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="16" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#legend#0;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#5;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#5;n#fieldset#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#2;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -147,8 +103,8 @@
       <file leaf-file-name="title.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/title.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5636363">
-              <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+            <state vertical-scroll-proportion="-9.054545">
+              <caret line="183" column="51" selection-start-line="183" selection-start-column="51" selection-end-line="183" selection-end-column="74" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -220,10 +176,10 @@
         <option value="$PROJECT_DIR$/app/views/create-event/venue.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/description.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/date.html" />
-        <option value="$PROJECT_DIR$/app/views/create-event/title.html" />
-        <option value="$PROJECT_DIR$/app/routes.js" />
-        <option value="$PROJECT_DIR$/app/views/create-event/summary.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/attendees.html" />
+        <option value="$PROJECT_DIR$/app/views/create-event/title.html" />
+        <option value="$PROJECT_DIR$/app/views/create-event/summary.html" />
+        <option value="$PROJECT_DIR$/app/routes.js" />
       </list>
     </option>
   </component>
@@ -944,9 +900,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/additional-questions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6737669">
+          <caret line="210" column="10" selection-start-line="210" selection-start-column="10" selection-end-line="210" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/attendees.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.3773584">
+          <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/date.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.038116593">
+          <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.019058296">
           <caret line="94" column="16" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -971,16 +950,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/additional-questions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6737669">
-          <caret line="210" column="10" selection-start-line="210" selection-start-column="10" selection-end-line="210" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/venue.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-0.65384614">
           <caret line="104" column="22" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
           <folding />
         </state>
@@ -988,8 +960,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/title.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5636363">
-          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+        <state vertical-scroll-proportion="-9.054545">
+          <caret line="183" column="51" selection-start-line="183" selection-start-column="51" selection-end-line="183" selection-end-column="74" />
           <folding>
             <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -1008,73 +980,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/date.html">
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/summary.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3076923">
-          <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
-          <folding />
+        <state vertical-scroll-proportion="-7.02439">
+          <caret line="138" column="108" selection-start-line="138" selection-start-column="108" selection-end-line="138" selection-end-column="108" />
+          <folding>
+            <element signature="n#style#0;n#dd#0;n#div#4;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#dd#0;n#div#5;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#dd#0;n#div#6;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#dd#0;n#div#7;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#dd#0;n#div#11;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.732142">
-          <caret line="1307" column="22" selection-start-line="1307" selection-start-column="22" selection-end-line="1307" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.41415313">
+          <caret line="538" column="0" selection-start-line="538" selection-start-column="0" selection-end-line="538" selection-end-column="0" />
           <folding>
             <element signature="e#2204#2279#0" expanded="false" />
             <element signature="e#3724#4135#0" expanded="false" />
             <element signature="e#4193#4225#0" expanded="false" />
-            <element signature="e#4275#10581#0" expanded="false" />
-            <element signature="e#10630#16620#0" expanded="false" />
-            <element signature="e#16669#22663#0" expanded="false" />
-            <element signature="e#22712#28707#0" expanded="false" />
-            <element signature="e#28792#28929#0" expanded="false" />
-            <element signature="e#29038#30102#0" expanded="false" />
-            <element signature="e#30196#31302#0" expanded="false" />
-            <element signature="e#31408#35655#0" expanded="false" />
-            <element signature="e#35749#37519#0" expanded="false" />
-            <element signature="e#42369#44190#0" expanded="false" />
-            <element signature="e#44259#45354#0" expanded="false" />
-            <element signature="e#45431#45595#0" expanded="false" />
-            <element signature="e#45693#46055#0" expanded="false" />
-            <element signature="e#46122#46304#0" expanded="false" />
-            <element signature="e#46402#55524#0" expanded="false" />
-            <element signature="e#55620#58311#0" expanded="false" />
-            <element signature="e#58479#58752#0" expanded="false" />
-            <element signature="e#58872#62099#0" expanded="false" />
-            <element signature="e#62219#65551#0" expanded="false" />
-            <element signature="e#65641#69155#0" expanded="false" />
-            <element signature="e#69238#69280#0" expanded="false" />
-            <element signature="e#69369#69453#0" expanded="false" />
-            <element signature="e#69517#69602#0" expanded="false" />
-            <element signature="e#69672#69763#0" expanded="false" />
-            <element signature="e#69828#69914#0" expanded="false" />
-            <element signature="e#70137#70226#0" expanded="false" />
-            <element signature="e#70302#71493#0" expanded="false" />
-            <element signature="e#71574#72246#0" expanded="false" />
-            <element signature="e#72302#72351#0" expanded="false" />
+            <element signature="e#28789#28926#0" expanded="false" />
+            <element signature="e#29035#30099#0" expanded="false" />
+            <element signature="e#30193#31299#0" expanded="false" />
+            <element signature="e#31405#35652#0" expanded="false" />
+            <element signature="e#35746#37516#0" expanded="false" />
+            <element signature="e#42366#44187#0" expanded="false" />
+            <element signature="e#44256#45351#0" expanded="false" />
+            <element signature="e#45428#45592#0" expanded="false" />
+            <element signature="e#45690#46052#0" expanded="false" />
+            <element signature="e#46119#46301#0" expanded="false" />
+            <element signature="e#46399#55521#0" expanded="false" />
+            <element signature="e#55617#58308#0" expanded="false" />
+            <element signature="e#58476#58749#0" expanded="false" />
+            <element signature="e#58869#62096#0" expanded="false" />
+            <element signature="e#62216#65548#0" expanded="false" />
+            <element signature="e#65638#69152#0" expanded="false" />
+            <element signature="e#69235#69277#0" expanded="false" />
+            <element signature="e#69366#69450#0" expanded="false" />
+            <element signature="e#69514#69599#0" expanded="false" />
+            <element signature="e#69669#69760#0" expanded="false" />
+            <element signature="e#69825#69911#0" expanded="false" />
+            <element signature="e#70134#70223#0" expanded="false" />
+            <element signature="e#70299#71490#0" expanded="false" />
+            <element signature="e#71571#72243#0" expanded="false" />
+            <element signature="e#72299#72348#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/summary.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.609756">
-          <caret line="127" column="59" selection-start-line="127" selection-start-column="59" selection-end-line="127" selection-end-column="59" />
-          <folding>
-            <element signature="n#style#0;n#dd#0;n#div#4;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#dd#0;n#div#5;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#dd#0;n#div#6;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#dd#0;n#div#10;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/attendees.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4716763">
-          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>

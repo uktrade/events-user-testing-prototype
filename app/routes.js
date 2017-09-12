@@ -184,8 +184,8 @@ router.get('/scenario-2', function (req, res)
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
 
-  req.session.ticketsSoldPercentage = 10;
-  req.session.ticketsRemaining = 18;
+  req.session.ticketsSoldPercentage = 0;
+  req.session.ticketsRemaining = 0;
 
   req.session.trackingTotalViews = 65;
   req.session.trackingViewsPercentages[0] = 62;
@@ -370,8 +370,8 @@ router.get('/scenario-3', function (req, res)
 {
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
-  req.session.ticketsSoldPercentage = 50;
-  req.session.ticketsRemaining = 10;
+  req.session.ticketsSoldPercentage = 10;
+  req.session.ticketsRemaining = 2;
 
 
   req.session.trackingTotalViews = 207;
@@ -534,8 +534,8 @@ router.get('/scenario-4', function (req, res)
 {
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
-  req.session.ticketsSoldPercentage = 85;
-  req.session.ticketsRemaining = 17;
+  req.session.ticketsSoldPercentage = 50;
+  req.session.ticketsRemaining = 10;
 
 
   req.session.trackingTotalViews = 364;
