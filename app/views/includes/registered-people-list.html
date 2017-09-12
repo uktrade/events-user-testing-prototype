@@ -56,10 +56,56 @@
       <tbody>
 
       <!-- EVENT ONE  -->
+
+
+      {% if session.trackingTotalReg == 2 %}
         {{ regiseredPerson('Joe Desiato', 'CEO', 'Firefield LTD', 'Apparel', '07865 595 588', 'joe.desiato@gmail.com') }}
         {{ regiseredPerson('Guy Nociar', 'Head of sales', 'Meat professionals  south east', 'Food and drink', '07375 357 382', 'g.nociar@meatSE.com') }}
-        {{ regiseredPerson('Peter Tristram', 'CEO', 'Magic Cars ltd', 'Toys', '07711 736 845', 'peter.tristram@megiccars.com') }}
-        {{ regiseredPerson('Pietro Phillips', 'Export lead', 'Motor Oils West LTD', 'Apparel', '07969 228 316', 'p.phillips@outlook.com') }}
+
+      {% elif session.trackingTotalReg == 10 %}
+
+        {{ regiseredPerson('Joe Desiato', 'CEO', 'Firefield LTD', 'Apparel', '07865 595 588', 'joe.desiato@gmail.com') }}
+        {{ regiseredPerson('Guy Nociar', 'Head of sales', 'Meat professionals  south east', 'Food and drink', '07375 357 382', 'g.nociar@meatSE.com') }}
+
+        {{ regiseredPerson('Henry Brown', 'CEO', 'Crane Electronics Ltd.', 'Electronics & IT hardware', '07933465544', 'henry@crane.co.uk') }}
+        {{ regiseredPerson('Geoff Clooney', 'International Sales Director', 'Crystalclear Aspects Ltd', 'Chemicals', '07986366723', 'geoff@crystalclear.co.uk') }}
+        {{ regiseredPerson('Katie Howard', 'Finance Manager', 'CWSEC Ltd', 'Construction', '07974652277', 'katie@cwsec.com') }}
+        {{ regiseredPerson('Robert McKinley', 'Sales Executive', 'David Jerome Ltd', 'Communications', '07933465544', 'robert@jerome.co.uk') }}
+        {{ regiseredPerson('Charlotte Walsh', 'Creative Director', 'Dianne Illsley', 'Creative & Media', '07986366723', 'charlotte@diannecreative.com') }}
+
+        {{ regiseredPerson('Gavin Bell', 'Sales Manager', 'Direct Trade Bags Company Ltd', 'Household Goods, Furniture & Furnishings', '07974652277', 'gavin@tradebags.co.uk') }}
+        {{ regiseredPerson('Deepak Patel', 'Head of Engineering', 'Dy-Pack UK Ltd', 'Mining', '07933465544', 'deepak@dypack.com') }}
+        {{ regiseredPerson('Mohammed Akram', 'International Sales Manager', 'Elat3d Ltd', 'Mining', '07986366723', 'moh@elat3d.com') }}
+
+      {% elif session.trackingTotalReg == 17 %}
+
+        {{ regiseredPerson('Joe Desiato', 'CEO', 'Firefield LTD', 'Apparel', '07865 595 588', 'joe.desiato@gmail.com') }}
+        {{ regiseredPerson('Guy Nociar', 'Head of sales', 'Meat professionals  south east', 'Food and drink', '07375 357 382', 'g.nociar@meatSE.com') }}
+
+        {{ regiseredPerson('Henry Brown', 'CEO', 'Crane Electronics Ltd.', 'Electronics & IT hardware', '07933465544', 'henry@crane.co.uk') }}
+        {{ regiseredPerson('Geoff Clooney', 'International Sales Director', 'Crystalclear Aspects Ltd', 'Chemicals', '07986366723', 'geoff@crystalclear.co.uk') }}
+        {{ regiseredPerson('Katie Howard', 'Finance Manager', 'CWSEC Ltd', 'Construction', '07974652277', 'katie@cwsec.com') }}
+        {{ regiseredPerson('Robert McKinley', 'Sales Executive', 'David Jerome Ltd', 'Communications', '07933465544', 'robert@jerome.co.uk') }}
+        {{ regiseredPerson('Charlotte Walsh', 'Creative Director', 'Dianne Illsley', 'Creative & Media', '07986366723', 'charlotte@diannecreative.com') }}
+
+        {{ regiseredPerson('Gavin Bell', 'Sales Manager', 'Direct Trade Bags Company Ltd', 'Household Goods, Furniture & Furnishings', '07974652277', 'gavin@tradebags.co.uk') }}
+        {{ regiseredPerson('Deepak Patel', 'Head of Engineering', 'Dy-Pack UK Ltd', 'Mining', '07933465544', 'deepak@dypack.com') }}
+        {{ regiseredPerson('Mohammed Akram', 'International Sales Manager', 'Elat3d Ltd', 'Mining', '07986366723', 'moh@elat3d.com') }}
+        {{ regiseredPerson('Jane Green', 'Director', 'Empirical Science Education CIC', 'Education & Training', '07974652277', 'jane@science.co.uk') }}
+        {{ regiseredPerson('Nadia Panucci', 'Sales Executive', 'Jet Pumps UK Ltd', 'Environment & Water', '07933465544', 'nadia@jetpumps.com') }}
+
+        {{ regiseredPerson('Connor Shaw', 'Chief Engineer', 'Equiture Limited', 'Oil & Gas', '07986366723', 'connor@equiture.co.uk') }}
+        {{ regiseredPerson('Victoria O Leary', 'Creative Consultant', 'Fi Burke Contemporary Art', 'Creative & Media', '07974652277', 'victoria@burke.com') }}
+        {{ regiseredPerson('Solomon Yakubu', 'Marketing Manager', 'Illuminow Ltd', 'Oil & Gas', '07933465544', 'solomon@illuminow.co.uk') }}
+        {{ regiseredPerson('Joseph Goldberg', 'Chief Finance Officer', 'IMS Risk Solutions Ltd', 'Advanced Engineering', '07986366723', 'joseph@ims.co.uk') }}
+        {{ regiseredPerson('Magda Michalenko', 'International Growth Manager', 'India Impex (UK) Ltd', 'Mining', '07974652277', 'magda@impex.com') }}
+
+      {% endif  %}
+
+
+
+
+
 
       </tbody>
     </table>

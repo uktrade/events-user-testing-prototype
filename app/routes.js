@@ -675,7 +675,7 @@ router.get('/scenario-5', function (req, res)
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
   req.session.ticketsSoldPercentage = 85;
-  req.session.ticketsRemaining = 17;
+  req.session.ticketsRemaining = 3;
 
   req.session.trackingTotalViews = 364;
   req.session.trackingViewsPercentages[0] = 41;
@@ -830,6 +830,7 @@ router.get('/scenario-5', function (req, res)
 
   res.redirect('/signin');
 })
+
 
 
 
