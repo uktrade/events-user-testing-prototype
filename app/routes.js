@@ -136,9 +136,10 @@ router.use(function (req, res, next)
     req.session.data['reg-is-closed'] = false;
   }
 
-
-
-
+  if(req.session.data['organiser-name'] == undefined)
+  {
+    req.session.data['organiser-name'] = "Yorkshire and the Humber";
+  }
 
 
 
@@ -177,7 +178,6 @@ router.get('/scenario-1', function (req, res)
 
   res.redirect('/signin');
 })
-
 
 router.get('/scenario-2', function (req, res)
 {
@@ -846,11 +846,6 @@ router.get('/scenario-5', function (req, res)
 
 
 
-
-
-
-
-
 router.get('/scenario-previous-questions', function (req, res)
 {
   req.session.previousQuestions = [['Do you have an ITA?', 'select-one', 'yes', 'no']];
@@ -935,6 +930,202 @@ router.get('/clear-current-event-data', function (req, res)
 
 
 
+
+
+// DESCRIPTION PAGE ONWARDS BUTTON
+router.get('/create-event/title-onwards', function (req, res)
+{
+  var errorMissingTitle = false;
+  var errorMissingSector = false;
+  var errorMissingSectorEntry = false;
+
+  var sectorNo = false;
+  var sectorYes = false;
+
+  var errorMissingExperience = false;
+  var experienceNewSelected = false;
+  var experienceOldSelected = false;
+  var experienceAllSelected = false;
+
+
+  // EVENT TITLE
+  if(req.session.data['event-title'] === "")
+  {
+    errorMissingTitle = true;
+  }
+
+  console.log("sector -------------- " + req.session.data['radio-sector']);
+  console.log("sector box -------------- " + req.session.data['sector-box']);
+
+
+  // RADIO SECTOR
+  if(req.session.data['radio-sector'] == undefined)
+  {
+    errorMissingSector = true;
+
+  }
+  else if(req.session.data['radio-sector'] == "yes")
+  {
+    sectorYes = true;
+    if(req.session.data['sector-box'] == undefined   ||  req.session.data['sector-box']  === "")
+    {
+      errorMissingSectorEntry = true;
+    }
+    else
+    {
+      req.session.data['sectors'] = "";
+      if(req.session.data['sector-box'] != undefined)
+      {
+        req.session.data['sectors'] = req.session.data['sector-box'];
+      }
+      if(req.session.data['sector-box-2'] != undefined)
+      {
+        req.session.data['sectors'] = req.session.data['sectors'] + "\n" +  req.session.data['sector-box-2'];
+      }
+      if(req.session.data['sector-box-3'] != undefined)
+      {
+        req.session.data['sectors'] = req.session.data['sectors'] + "\n" + req.session.data['sector-box-3'];
+      }
+    }
+  }
+  else if(req.session.data['radio-sector'] == "no")
+  {
+    req.session.data['sectors'] = "Relevant to all sectors";
+    sectorNo = true;
+  }
+
+
+
+
+
+
+
+
+
+
+  // EXPERIENCE
+  req.session.data['audience-experience'] = "";
+  if(req.session.data['radio-audience-experience'] == undefined)
+  {
+    errorMissingExperience = true;
+  }
+  else if(req.session.data['radio-audience-experience'] == "new")
+  {
+    req.session.data['audience-experience'] = "New to export";
+    experienceNewSelected = true;
+  }
+  else if(req.session.data['radio-audience-experience'] == "experienced")
+  {
+    req.session.data['audience-experience'] = "Experienced exporters";
+    experienceOldSelected = true;
+  }
+  else if(req.session.data['radio-audience-experience'] == "open")
+  {
+    req.session.data['audience-experience'] = "Open to all";
+    experienceAllSelected = true;
+  }
+
+
+
+
+
+  // ERRORS OR PROCEED
+  if((errorMissingTitle || errorMissingSector || errorMissingSectorEntry) == false)
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/description');
+    }
+  }
+  else
+  {
+    res.render('create-event/title',
+        {
+          'errorsExist': true,
+          'errorMissingTitle': errorMissingTitle,
+          'errorMissingSector': errorMissingSector,
+          'errorMissingSectorBox': errorMissingSectorEntry,
+          'sectorIsNo': sectorNo,
+          'sectorIsYes': sectorYes,
+          'experienceEmpty': errorMissingExperience,
+          'experienceNew': experienceNewSelected,
+          'experienceOld' : experienceOldSelected,
+          'experienceAll': experienceAllSelected
+        }
+    );
+  }
+})
+
+
+// DESCRIPTION PAGE ONWARDS BUTTON
+router.get('/create-event/description-onwards', function (req, res)
+{
+  var errorMissingTitle = false;
+
+
+  console.log(" the radio for markets is --*/*/*/  " + req.session.data['radio-markets']);
+
+
+  if(req.session.data['radio-markets'] == undefined)
+  {
+    errorMissingmarketAnswer = true;
+    req.session.data['markets'] = "Relevant to all markets";
+  }
+  else if(req.session.data['radio-markets'] == "no")
+  {
+    marketsNoSelected = true;
+    req.session.data['markets'] = "Relevant to all markets";
+  }
+  else if(req.session.data['radio-markets'] == "yes")
+  {
+    marketsYesSelected = true;
+
+    if(req.session.data['market-box'] != undefined)
+    {
+      req.session.data['markets'] = req.session.data['market-box'];
+    }
+    if(req.session.data['market-box-2'] != undefined)
+    {
+      req.session.data['markets'] = req.session.data['markets'] + "\n" +  req.session.data['market-box-2'];
+    }
+    if(req.session.data['market-box-3'] != undefined)
+    {
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-3'];
+    }
+  }
+
+
+  //  description fields doesn't need validation
+
+
+
+
+  if(true)
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/date');
+    }
+  }
+  else
+  {
+    res.render('create-event/description',
+        {
+          'errorMissingTitle': errorMissingTitle,
+        }
+    );
+  }
+})
+
+
 // CREATE EVENT ONWARDS TO NEXT PAGE
 router.get('/create-event/date-onwards', function (req, res)
 {
@@ -971,8 +1162,8 @@ router.get('/create-event/date-onwards', function (req, res)
     if(1 <= req.session.data['event-month'] && req.session.data['event-month'] <= 12)
     {
       var monthNames = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"
-                      ];
+        "July", "August", "September", "October", "November", "December"
+      ];
       if(req.session.data['event-month'] <= 13)
       { req.session.data['event-month-name'] =  monthNames[req.session.data['event-month']-1]; }
     }
@@ -1108,6 +1299,7 @@ router.get('/create-event/date-onwards', function (req, res)
 
 })
 
+
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/venue-onwards', function (req, res)
 {
@@ -1175,7 +1367,7 @@ router.get('/create-event/venue-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/images');
+      res.redirect('/create-event/organiser');
     }
 
   }
@@ -1193,105 +1385,22 @@ router.get('/create-event/venue-onwards', function (req, res)
 })
 
 
-// DESCRIPTION PAGE ONWARDS BUTTON
-router.get('/create-event/title-onwards', function (req, res)
+router.get('/create-event/organiser-onwards', function (req, res)
 {
-  var errorMissingTitle = false;
-  var errorMissingSector = false;
-  var errorMissingSectorEntry = false;
-
-  var sectorNo = false;
-  var sectorYes = false;
-
-  var errorMissingExperience = false;
-  var experienceNewSelected = false;
-  var experienceOldSelected = false;
-  var experienceAllSelected = false;
+  var errorMissingNameFound = false;
+  var errorInvalidEmailFound = false;
+  var errorInvalidPhoneFound = false;
 
 
   // EVENT TITLE
   if(req.session.data['event-title'] === "")
   {
-    errorMissingTitle = true;
+    errorMissingName = true;
   }
-
-  console.log("sector -------------- " + req.session.data['radio-sector']);
-  console.log("sector box -------------- " + req.session.data['sector-box']);
-
-
-  // RADIO SECTOR
-  if(req.session.data['radio-sector'] == undefined)
-  {
-    errorMissingSector = true;
-
-  }
-  else if(req.session.data['radio-sector'] == "yes")
-  {
-    sectorYes = true;
-    if(req.session.data['sector-box'] == undefined   ||  req.session.data['sector-box']  === "")
-    {
-      errorMissingSectorEntry = true;
-    }
-    else
-    {
-      req.session.data['sectors'] = "";
-      if(req.session.data['sector-box'] != undefined)
-      {
-        req.session.data['sectors'] = req.session.data['sector-box'];
-      }
-      if(req.session.data['sector-box-2'] != undefined)
-      {
-        req.session.data['sectors'] = req.session.data['sectors'] + "\n" +  req.session.data['sector-box-2'];
-      }
-      if(req.session.data['sector-box-3'] != undefined)
-      {
-        req.session.data['sectors'] = req.session.data['sectors'] + "\n" + req.session.data['sector-box-3'];
-      }
-    }
-  }
-  else if(req.session.data['radio-sector'] == "no")
-  {
-    req.session.data['sectors'] = "Relevant to all sectors";
-    sectorNo = true;
-  }
-
-
-
-
-
-
-
-
-
-
-  // EXPERIENCE
-  req.session.data['audience-experience'] = "";
-  if(req.session.data['radio-audience-experience'] == undefined)
-  {
-    errorMissingExperience = true;
-  }
-  else if(req.session.data['radio-audience-experience'] == "new")
-  {
-    req.session.data['audience-experience'] = "New to export";
-    experienceNewSelected = true;
-  }
-  else if(req.session.data['radio-audience-experience'] == "experienced")
-  {
-    req.session.data['audience-experience'] = "Experienced exporters";
-    experienceOldSelected = true;
-  }
-  else if(req.session.data['radio-audience-experience'] == "open")
-  {
-    req.session.data['audience-experience'] = "Open to all";
-    experienceAllSelected = true;
-  }
-
-
-
 
 
   // ERRORS OR PROCEED
-  if((errorMissingTitle || errorMissingSector || errorMissingSectorEntry) == false)
+  if((errorMissingNameFound || errorInvalidEmailFound || errorInvalidPhoneFound) == false)
   {
     if(req.session.changingFromSummary == true)
     {
@@ -1299,7 +1408,7 @@ router.get('/create-event/title-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/description');
+      res.redirect('/create-event/images');
     }
   }
   else
@@ -1307,66 +1416,19 @@ router.get('/create-event/title-onwards', function (req, res)
     res.render('create-event/title',
         {
           'errorsExist': true,
-          'errorMissingTitle': errorMissingTitle,
-          'errorMissingSector': errorMissingSector,
-          'errorMissingSectorBox': errorMissingSectorEntry,
-          'sectorIsNo': sectorNo,
-          'sectorIsYes': sectorYes,
-          'experienceEmpty': errorMissingExperience,
-          'experienceNew': experienceNewSelected,
-          'experienceOld' : experienceOldSelected,
-          'experienceAll': experienceAllSelected
+          'errorMissingName': errorMissingNameFound,
+          'errorInvalidEmail': errorInvalidEmailFound,
+          'errorInvalidPhone': errorInvalidPhoneFound
         }
     );
   }
 })
 
 
-
-
-// DESCRIPTION PAGE ONWARDS BUTTON
-router.get('/create-event/description-onwards', function (req, res)
+// IMAGES PAGE ONWARDS BUTTON
+router.get('/create-event/images-onwards', function (req, res)
 {
-  var errorMissingTitle = false;
-
-
-  console.log(" the radio for markets is --*/*/*/  " + req.session.data['radio-markets']);
-
-
-  if(req.session.data['radio-markets'] == undefined)
-  {
-    errorMissingmarketAnswer = true;
-    req.session.data['markets'] = "Relevant to all markets";
-  }
-  else if(req.session.data['radio-markets'] == "no")
-  {
-    marketsNoSelected = true;
-    req.session.data['markets'] = "Relevant to all markets";
-  }
-  else if(req.session.data['radio-markets'] == "yes")
-  {
-    marketsYesSelected = true;
-
-    if(req.session.data['market-box'] != undefined)
-    {
-      req.session.data['markets'] = req.session.data['market-box'];
-    }
-    if(req.session.data['market-box-2'] != undefined)
-    {
-      req.session.data['markets'] = req.session.data['markets'] + "\n" +  req.session.data['market-box-2'];
-    }
-    if(req.session.data['market-box-3'] != undefined)
-    {
-      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-3'];
-    }
-  }
-
-
-  //  description fields doesn't need validation
-
-
-
-
+  // check for errors
   if(true)
   {
     if(req.session.changingFromSummary == true)
@@ -1375,21 +1437,23 @@ router.get('/create-event/description-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/date');
+      res.redirect('/create-event/tickets');
     }
   }
+  // No errors so carry on
   else
   {
-    res.render('create-event/description',
+    res.render('create-event/images',
         {
-          'errorMissingTitle': errorMissingTitle,
+          'errorAttendee': true
         }
     );
   }
 })
 
 
-router.get('/create-event/tickets-onwards', function (req, res) {
+router.get('/create-event/tickets-onwards', function (req, res)
+{
 
   req.session.data['attendee-quantity'];
 
@@ -1491,40 +1555,13 @@ router.get('/create-event/attendee-onwards', function (req, res)
   }
 })
 
+
 router.get('/create-event/add-other-question-submit', function (req, res)
 {
   req.session.addOneMoreQuestion = true;
 
   res.redirect('/create-event/question-onwards');
   console.log("********************** the alternativ thing worked");
-})
-
-
-
-// IMAGES PAGE ONWARDS BUTTON
-router.get('/create-event/images-onwards', function (req, res)
-{
-  // check for errors
-  if(true)
-  {
-    if(req.session.changingFromSummary == true)
-    {
-      res.redirect('/create-event/summary-prelude');
-    }
-    else
-    {
-      res.redirect('/create-event/tickets');
-    }
-  }
-  // No errors so carry on
-  else
-  {
-    res.render('create-event/images',
-        {
-          'errorAttendee': true
-        }
-    );
-  }
 })
 
 
@@ -1537,6 +1574,7 @@ router.get('/create-event/final-question', function (req, res)
 
   res.redirect('/create-event/question-onwards');
 })
+
 
 // IMAGES PAGE ONWARDS BUTTON
 router.get('/create-event/question-onwards', function (req, res)
@@ -1794,6 +1832,7 @@ router.get('/create-event/question-onwards', function (req, res)
   }
 })
 
+
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/summary-prelude', function (req, res)
 {
@@ -1823,6 +1862,13 @@ router.get('/create-event/summary-prelude', function (req, res)
   eventDataMap[18] = req.session.data['reg-close-time'];
   eventDataMap[19] = req.session.data['reg-is-closed']
   eventDataMap[20] = req.session.data['registered'];
+  eventDataMap[21] = req.session.data['organiser-name'];
+  eventDataMap[22] = req.session.data['contact-email'];
+  eventDataMap[23] = req.session.data['contact-phone'];
+  eventDataMap[24] = req.session.data['building'];
+  eventDataMap[25] = req.session.data['street'];
+  eventDataMap[26] = req.session.data['town'];
+  eventDataMap[27] = req.session.data['postcode'];
 
 
   //eventDataMap.set('imageURL', req.session.data['event-title']);
@@ -1891,7 +1937,6 @@ router.get('/toggle-closed-reg/:liveeventnumber?', function (req, res)
 })
 
 
-
 // VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
 router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
 {
@@ -1932,6 +1977,18 @@ router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
     req.session.data['answer-'+x] = "";
   }
 
+  req.session.data['building'] = undefined;
+  req.session.data['street'] = undefined;
+  req.session.data['town'] = undefined;
+  req.session.data['postcode'] = undefined;
+
+  req.session.data['organiser-name'] = undefined;
+  req.session.data['contact-email'] = undefined;
+  req.session.data['contact-phone'] = undefined;
+
+
+
+
   // LOAD IN STORED DATA
   var eventDataMapTEMPLoad = [];
   // LOAD IN STORED DATA FROM DRAFT
@@ -1967,12 +2024,19 @@ router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
   req.session.data['event-state'] = eventDataMapTEMPLoad[17];
   req.session.data['reg-close-time'] = eventDataMapTEMPLoad[18];
   req.session.data['reg-is-closed'] = eventDataMapTEMPLoad[19];
+  req.session.data['registered'] = eventDataMapTEMPLoad[20];
+  req.session.data['organiser-name'] = eventDataMapTEMPLoad[21];
+  req.session.data['contact-email'] = eventDataMapTEMPLoad[22];
+  req.session.data['contact-phone'] = eventDataMapTEMPLoad[23];
+  req.session.data['building'] = eventDataMapTEMPLoad[24];
+  req.session.data['street'] = eventDataMapTEMPLoad[25];
+  req.session.data['town'] = eventDataMapTEMPLoad[26];
+  req.session.data['postcode'] = eventDataMapTEMPLoad[27];
 
 
 
   res.redirect('/create-event/summary');
 })
-
 
 
 // VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
@@ -2018,6 +2082,15 @@ router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
     req.session.data['answer-'+x] = "";
   }
 
+  req.session.data['building'] = undefined;
+  req.session.data['street'] = undefined;
+  req.session.data['town'] = undefined;
+  req.session.data['postcode'] = undefined;
+
+  req.session.data['organiser-name'] = undefined;
+  req.session.data['contact-email'] = undefined;
+  req.session.data['contact-phone'] = undefined;
+
 
   var eventDataMapTEMPLoad = [];
   // LOAD IN STORED DATA FROM DRAFT
@@ -2053,10 +2126,17 @@ router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
   req.session.data['event-state'] = eventDataMapTEMPLoad[17];
   req.session.data['reg-close-time'] = eventDataMapTEMPLoad[18];
   req.session.data['reg-is-closed'] = eventDataMapTEMPLoad[19];
+  req.session.data['registered'] = eventDataMapTEMPLoad[20];
+  req.session.data['organiser-name'] = eventDataMapTEMPLoad[21];
+  req.session.data['contact-email'] = eventDataMapTEMPLoad[22];
+  req.session.data['contact-phone'] = eventDataMapTEMPLoad[23];
+  req.session.data['building'] = eventDataMapTEMPLoad[24];
+  req.session.data['street'] = eventDataMapTEMPLoad[25];
+  req.session.data['town'] = eventDataMapTEMPLoad[26];
+  req.session.data['postcode'] = eventDataMapTEMPLoad[27];
 
   res.redirect('/create-event/preview');
 })
-
 
 
 // ClONE EVENT
@@ -2097,6 +2177,16 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
     req.session.data['answer-'+x] = "";
   }
 
+  req.session.data['building'] = undefined;
+  req.session.data['street'] = undefined;
+  req.session.data['town'] = undefined;
+  req.session.data['postcode'] = undefined;
+
+  req.session.data['organiser-name'] = undefined;
+  req.session.data['contact-email'] = undefined;
+  req.session.data['contact-phone'] = undefined;
+
+
 
   // Set which event is being edited
   req.session.currentEvent = req.params.listitem;
@@ -2136,6 +2226,15 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
   req.session.data['event-state'] = eventDataMapTEMP[17];
   req.session.data['reg-close-time'] = eventDataMapTEMP[18];
   req.session.data['reg-is-closed'] = eventDataMapTEMP[19];
+  req.session.data['registered'] = eventDataMapTEMP[20];
+  req.session.data['organiser-name'] = eventDataMapTEMP[21];
+  req.session.data['contact-email'] = eventDataMapTEMP[22];
+  req.session.data['contact-phone'] = eventDataMapTEMP[23];
+  req.session.data['building'] = eventDataMapTEMP[24];
+  req.session.data['street'] = eventDataMapTEMP[25];
+  req.session.data['town'] = eventDataMapTEMP[26];
+  req.session.data['postcode'] = eventDataMapTEMP[27];
+
 
   req.session.eventsDraftBoolean[req.session.eventsDraft.length] = true;
   req.session.eventsDraft.push(eventDataMapTEMP);
@@ -2261,7 +2360,6 @@ router.get('/make-draft-live', function (req, res)
 
   res.redirect('/account');
 })
-
 
 
 // STORE EVENT

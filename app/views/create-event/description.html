@@ -53,7 +53,48 @@
 
 	  <form action="/create-event/description-onwards" method="get" class="form">
 
-		  <!--  markets  -->
+		  <!--  MARKETS  -->
+		  <div class="form-group">
+			  <fieldset>
+				  <div  >
+					  <label class="form-label-bold" >
+						  Is this event related to export in any specific international markets?
+					  </label>
+					  <div class="form-date" style="margin-top:5px">
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-market-2" type="radio" name="radio-markets" value="no">
+							  <label for="radio-market-2">No, this is relevant to all markets</label>
+						  </div>
+						  <div class="multiple-choice" style="margin-bottom:10px" data-target="market-section">
+							  <input id="radio-market-1" type="radio" name="radio-markets" value="yes">
+							  <label for="radio-market-1">Yes</label>
+						  </div>
+					  </div>
+				  </div>
+			  </fieldset>
+
+
+			  <fieldset>
+				  <div class="form-group js-hidden"  id="market-section" style="margin-top:10px; margin-bottom:20px;">
+					  <label class="form-label-bold" for="event-description">
+						  Markets
+					  </label>
+					  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
+							 id="market-box" name="market-box" value="{{ data['market-box'] }}">
+
+					  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
+							 id="market-box-2" name="market-box-2" value="{{ data['market-box-2'] }}">
+
+					  <input type="text" class="form-control"  style="width:80%;"
+							 id="market-box-3" name="market-box-3" value="{{ data['market-box-3'] }}">
+				  </div>
+			  </fieldset>
+		  </div>
+
+
+
+
+		  <!--   BENEFITS   -->
 		  <div class="form-group">
 			  <fieldset>
 
@@ -96,49 +137,119 @@
 
 
 
-		  <fieldset>
 
-			  <!--  markets  -->
-			  <div class="form-group" style="margin-bottom:10px" >
-				  <label class="form-label-bold" >
-					  Is this event related to export in any specific international markets?
-				  </label>
-				  <div class="form-date" style="margin-top:5px">
-					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-market-2" type="radio" name="radio-markets" value="no">
-						  <label for="radio-market-2">No, this is relevant to all markets</label>
+		  <!--   AGENDA   -->
+		  <div class="form-group">
+
+			  <fieldset>
+				  <div style="" id="answer-types">
+
+					  {% if errorAnswerTypeEmpty %}
+					  <div class="form-group form-group-error">
+						  {% endif %}
+
+						  <label class="form-label-bold">
+							  Does the event have an agenda?
+							  {% if errorAnswerTypeEmpty %}
+										  <span class="error-message">
+											  Select type of answer
+										  </span>
+							  {% endif %}
+						  </label>
+						  <div class="form-date" style="margin-top:5px">
+							  <div class="multiple-choice">
+								  <input id="enter-text" type="radio" name="radio-additional-questions-answers-type" value="enter-text" checked="checked">
+								  <label for="enter-text">No</label>
+							  </div>
+							  <div class="multiple-choice" data-target="show-answers">
+								  <input id="select-one" type="radio" name="radio-additional-questions-answers-type" value="select-one"
+										 {% if errorOneSelected %} checked="checked" {% endif %} >
+								  <label for="select-one">Yes</label>
+							  </div>
+						  </div>
+
+						  {% if errorAnswerTypeEmpty %}
 					  </div>
-					  <div class="multiple-choice" style="margin-bottom:10px" data-target="market-section">
-						  <input id="radio-market-1" type="radio" name="radio-markets" value="yes">
-						  <label for="radio-market-1">Yes</label>
-					  </div>
+					  {% endif %}
+
 				  </div>
-			  </div>
-
-		  </fieldset>
-
-
-		  <fieldset>
-
-			  <div class="form-group js-hidden"  id="market-section" style="margin-bottom:30px">
-				  <label class="form-label-bold" for="event-description">
-					  Markets
-				  </label>
-				  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
-						 id="market-box" name="market-box" value="{{ data['market-box'] }}">
-
-				  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
-						 id="market-box-2" name="market-box-2" value="{{ data['market-box-2'] }}">
-
-				  <input type="text" class="form-control"  style="width:80%;"
-						 id="market-box-3" name="market-box-3" value="{{ data['market-box-3'] }}">
-			  </div>
-
-
-		  </fieldset>
+			  </fieldset>
 
 
 
+			  <fieldset class="form-group js-hidden" id="show-answers" style="margin-top:20px; margin-bottom:0px">
+
+				  <!--   THE ANSWERS -->
+				  <div class="" style="margin-bottom:0px; margin-top:0px;" >
+
+					  {% if errorAnswersError %}
+					  	  <div class="form-group  form-group-error">
+					  {% endif %}
+
+						  <label class="form-label-bold">
+							  Agenda
+							  {% if errorAnswersError %}
+								  <span class="error-message">
+									  Error message about not providing enough (2 or more) answers go here.
+								  </span>
+							  {% endif %}
+						  </label>
+
+						  <div style="width:100%; float:left; margin-top:5px">
+
+							  <div>
+								  <p style="margin-bottom: 10px">Hours &nbsp;&nbsp;&nbsp;&nbsp; Minutes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity</p>
+							  </div>
+
+							  <!-- Row one -->
+							  <div style="  margin-bottom: 15px;">
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-1" name="agenda-hour-1" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-1'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-1" name="agenda-minutes-1" type="number"  value="{{ data['agenda-minutes-1'] }}">
+
+								  <input class="form-control" style="width:350px"
+										 id="agenda-1" name="event-month" type="text"  value="{{ data['agenda-1'] }}">
+							  </div>
+							  <!-- Row two -->
+							  <div style="  margin-bottom: 15px;">
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-2" name="agenda-hour-2" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-2'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-2" name="agenda-minutes-2" type="number"  value="{{ data['agenda-minutes-2'] }}">
+
+								  <input class="form-control" style="width:350px"
+										 id="agenda-2" name="agenda-2" type="text"  value="{{ data['agenda-2'] }}">
+							  </div>
+							  <!-- Row three -->
+							  <div style="  margin-bottom: 15px;">
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="event-day" name="event-day" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-3'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-3" name="agenda-minutes-3" type="number"  value="{{ data['agenda-minutes-3'] }}">
+
+								  <input class="form-control" style="width:350px"
+										 id="agenda-3" name="agenda-3" type="text"  value="{{ data['agenda-3'] }}">
+							  </div>
+
+
+							  <p id="answer-5-add" style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;" onclick="show5()">Add another item</p>
+							  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
+									 id="answer-5-box" name="answer-5" value="{{ data['answer-5'] }}" style="width:90%; margin-bottom: 0px;">
+						  </div>
+
+						  {% if errorAnswersError %}
+					  </div>
+					  {% endif %}
+
+				  </div>
+
+			  </fieldset>
+
+		  </div>
 
 
 
