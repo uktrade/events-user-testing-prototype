@@ -1424,6 +1424,44 @@ router.get('/create-event/organiser-onwards', function (req, res)
   }
 })
 
+router.get('/create-event/organiser-onwards', function (req, res)
+{
+  var errorMissingNameFound = false;
+  var errorInvalidEmailFound = false;
+  var errorInvalidPhoneFound = false;
+
+
+  // EVENT TITLE
+  if(req.session.data['event-title'] === "")
+  {
+    errorMissingName = true;
+  }
+
+
+  // ERRORS OR PROCEED
+  if((errorMissingNameFound || errorInvalidEmailFound || errorInvalidPhoneFound) == false)
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/images');
+    }
+  }
+  else
+  {
+    res.render('create-event/title',
+        {
+          'errorsExist': true,
+          'errorMissingName': errorMissingNameFound,
+          'errorInvalidEmail': errorInvalidEmailFound,
+          'errorInvalidPhone': errorInvalidPhoneFound
+        }
+    );
+  }
+})
 
 // IMAGES PAGE ONWARDS BUTTON
 router.get('/create-event/images-onwards', function (req, res)
@@ -1551,7 +1589,14 @@ router.get('/create-event/attendee-onwards', function (req, res)
   }
   else
   {
-    res.redirect('/create-event/summary-prelude');
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/template-reg');
+    }
   }
 })
 
@@ -1801,7 +1846,7 @@ router.get('/create-event/question-onwards', function (req, res)
       console.log("the answers STRING IS for the questions at the end of questions pages" + req.session.questionsData + "\n");
 
       // Final question move on to summary
-      res.redirect('/create-event/summary-prelude');
+      res.redirect('/create-event/template-reg');
     }
   }
 
@@ -1830,6 +1875,25 @@ router.get('/create-event/question-onwards', function (req, res)
         }
     );
   }
+})
+
+
+router.get('/create-event/template-reg-onwards', function (req, res)
+{
+  if(req.session.changingFromSummary == true)
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+  else
+  {
+    res.redirect('/create-event/template-reminder');
+  }
+})
+
+
+router.get('/create-event/template-reminder-onwards', function (req, res)
+{
+    res.redirect('/create-event/summary-prelude');
 })
 
 
@@ -2255,15 +2319,14 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
 
 
 
+
+
 // CHANGE DETAILS LINKS
 router.get('/create-event/', function (req, res)
 {
   res.redirect('/create-event/title');
 })
 
-
-
-// CHANGE DETAILS LINKS
 router.get('/create-event/change-date', function (req, res)
 {
   req.session.changingFromSummary = true;
@@ -2305,6 +2368,32 @@ router.get('/create-event/change-questions', function (req, res)
 
   res.redirect('/create-event/attendees');
 })
+
+router.get('/create-event/change-registration-message', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/template-reg');
+})
+
+router.get('/create-event/change-reminder-message', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/template-reminder');
+})
+
+router.get('/create-event/change-organiser', function (req, res)
+{
+  req.session.changingFromSummary = true;
+
+  res.redirect('/create-event/organiser');
+})
+
+
+
+
+
 
 
 

@@ -9,7 +9,7 @@
 
 <main id="content" role="main">
   <div class="grid-row">
-    <div class="full-grid-mode">
+    <div class="full-grid-mode" style="margin-left:15px">
 
 
 	  <!--  BREADCRUMB  -->
@@ -21,49 +21,26 @@
 
 
 
-		<!-- CONDITIONAL ERROR  -->
-		{% if errorsExist %}
-		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
-			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Missing fields
-			</h2>
-
-			<p>
-				Please check the following errors and try again.
-			</p>
-
-			<ul class="error-summary-list">
-				{% if errorMissingName %}
-					<li><a href="#title-section">Missing title</a></li>
-				{% endif %}
-				{% if errorInvalidEmail %}
-					<li><a href="#sector-area">Invalid email address</a></li>
-				{% endif %}
-				{% if errorInvalidPhone %}
-					<li><a href="#sector-area">Invalid sector</a></li>
-				{% endif %}
-			</ul>
-
-		</div>
-		{% endif %}
-
-
-
-	  <h1 class="heading-large" style="margin-top:15px">
-        Registration notifications
+	  <h1 class="heading-large" style="margin-top:15px; margin-bottom:35px">
+		  Set event registration message
       </h1>
 
 
-	  <form action="/create-event/organiser-onwards" method="get" class="form">
+	  <form action="/create-event/template-reg-onwards" method="get" class="form">
 
-		  <div id="organiser-name-section" class="form-group panel panel-border-narrow" style="margin-top:10px;">
+		  <p class="heading-small">Email subject</p>
 
-			  {% if errorMissingName %}
-				<div class="form-group-error">
-			  {% endif %}
+		  <div id="email-reg-subject-section" class="form-group panel panel-border-narrow" >
+			  <p style="margin-left:5px; ">Your event booking</p>
+		  </div>
 
-				  <p class="heading-medium" style="margin-left:5px; ">Your event booking</p>
+
+		  <p class="heading-small">Email body</p>
+
+		  <div id="email-reg-body-section" class="form-group panel panel-border-narrow" style="margin-top:10px;">
+
+
 
 				  <p style="margin-left:5px; ">Dear [NAME]<br><br>
 
@@ -78,7 +55,7 @@
 
 
 
-					<textarea class="form-control" name="event-description" id="event-description" rows="20" style="width: 80%; "
+					<textarea class="form-control" name="event-reg-body" id="event-reg-body" rows="20" style="width: 80%;"
 					>We really hope that you enjoy the experience and that it will be a valuable part of your business export journey with us.
 
 Remember to regularly check the event web page for latest additions to the agenda, confirmed speakers and experts - plus a list of fellow attendees that could prove useful for networking opportunities.
@@ -97,16 +74,7 @@ Department for International Trade
 {{ data['contact-phone'] }}</textarea>
 
 
-
-			  {% if errorMissingName %}
-				</div>
-			  {% endif %}
-
 		  </div>
-
-
-
-
 
 
 		  <div class="form-group" style="margin-top:10px">

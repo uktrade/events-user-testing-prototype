@@ -135,17 +135,6 @@
 
 
 
-			  <div>
-				  <dt class="cya-question">
-					  Event description
-				  </dt>
-				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
-				  <dd class="cya-change">
-					  <a href="/create-event/change-description">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
 
 
 			  <div>
@@ -155,19 +144,6 @@
 				  <dd class="cya-answer"    style="white-space: pre-wrap;">{{ data['sectors'] }}</dd>
 				  <dd class="cya-change" >
 					  <a href="/create-event/change-title">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
-
-
-			  <div>
-				  <dt class="cya-question">
-					  International markets
-				  </dt>
-				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['markets'] }}</dd>
-				  <dd class="cya-change">
-					  <a href="/create-event/change-description">
 						  Change
 					  </a>
 				  </dd>
@@ -194,6 +170,63 @@
 				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['summary-target-audience'] }}</dd>
 				  <dd class="cya-change">
 					  <a href="/create-event/change-title">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Benefits or outcomes
+				  </dt>
+				  <dd class="cya-answer"     style="white-space: pre-wrap;"></dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-description">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Agenda
+				  </dt>
+				  <dd class="cya-answer"     style="white-space: pre-wrap;"></dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-description">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+			  <div>
+				  <dt class="cya-question">
+					  International markets
+				  </dt>
+				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['markets'] }}</dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-description">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+
+
+
+
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Event description
+				  </dt>
+				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-description">
 						  Change
 					  </a>
 				  </dd>
@@ -306,6 +339,77 @@
 			  </div>
 
 
+
+			  <!--   EMAIL TEMPLATES  -->
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Registration message</dt>
+				  <dd class="cya-answer">
+					  Your event booking ...
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-registration-message">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Reminder message</dt>
+				  <dd class="cya-answer">
+					  Reminder of your upcoming event ...
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-reminder-message">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+
+
+
+
+			  <!-- contact details -->
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Event organiser</dt>
+				  <dd class="cya-answer">
+					  Department for International Trade
+					  <br>{{ data['organiser-name'] }}
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-organiser">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Contact email address</dt>
+				  <dd class="cya-answer">
+					  {{ data['contact-email'] }}
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-organiser">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Contact phone number</dt>
+				  <dd class="cya-answer">
+					  {{ data['contact-phone'] }}
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-organiser">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
 
 
 		  </dl>
