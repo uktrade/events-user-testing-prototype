@@ -50,6 +50,22 @@
 
 
 		  <!-- MAIN IMAGE LOGO -->
+
+		  <!-- styles to adjust checkboxes positioning. To be fixed with a cleaner solution :D -->
+		  <style>
+		  	.multiple-choice input {
+		  		margin-top: 28px;
+		  	}
+
+		  	.multiple-choice label::before {
+		  		margin-top: 27px;
+		  	}
+
+		  	.multiple-choice label::after {
+		  		margin-top: 27px;
+		  	}
+		  </style>
+
 		  {% if errorMissingImage %}
 		  	<div class="form-group form-group-error">
 		  {% endif %}
