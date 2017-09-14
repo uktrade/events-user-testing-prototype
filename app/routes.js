@@ -90,7 +90,7 @@ router.use(function (req, res, next)
 
   if(req.session.trackingLinksNames == undefined)
   {
-    req.session.trackingLinksNames = ['Email marketing','Twitter', 'Export for Growth','Enterprise M3'];
+    req.session.trackingLinksNames = ['Email marketing','Twitter'];
   }
 
   if(req.session.trackingTotalViews == undefined)
@@ -141,9 +141,9 @@ router.use(function (req, res, next)
     req.session.data['organiser-name'] = "East midlands";
   }
 
-  if(req.session.data['close-reg-early-days'] == undefined)
+  if(req.session.data['sold-out-message'] == undefined)
   {
-    req.session.data['close-reg-early-days'] = "This event is now full. Places may be freed up subject to cancellations - check back here for availability.";
+    req.session.data['sold-out-message'] = "This event is now full. Places may be freed up subject to cancellations - check back here for availability.";
   }
 
 
