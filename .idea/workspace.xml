@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="112e8f47-37cb-4742-9f5d-22074abd4dea" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/create-event/go-live.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/description.html" afterPath="$PROJECT_DIR$/app/views/create-event/description.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/images.html" afterPath="$PROJECT_DIR$/app/views/create-event/images.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.js" afterPath="$PROJECT_DIR$/app/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/preview.html" afterPath="$PROJECT_DIR$/app/views/create-event/preview.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/includes/tracking-links.html" afterPath="$PROJECT_DIR$/app/views/includes/tracking-links.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/monitor/live-present.html" afterPath="$PROJECT_DIR$/app/views/monitor/live-present.html" />
     </list>
     <ignored path="events-user-testing-prototype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,56 +31,61 @@
       <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1848" column="46" selection-start-line="1848" selection-start-column="46" selection-end-line="1848" selection-end-column="46" />
+            <state vertical-scroll-proportion="-8.625">
+              <caret line="135" column="46" selection-start-line="135" selection-start-column="46" selection-end-line="135" selection-end-column="46" />
               <folding>
                 <element signature="e#2204#2279#0" expanded="false" />
-                <element signature="e#3852#4263#0" expanded="false" />
-                <element signature="e#4321#4353#0" expanded="false" />
-                <element signature="e#4402#10385#0" expanded="false" />
-                <element signature="e#10434#16418#0" expanded="false" />
-                <element signature="e#16467#22461#0" expanded="false" />
-                <element signature="e#22510#28504#0" expanded="false" />
-                <element signature="e#28585#28722#0" expanded="false" />
-                <element signature="e#28831#29895#0" expanded="false" />
-                <element signature="e#29989#31095#0" expanded="false" />
-                <element signature="e#31202#34374#0" expanded="false" />
-                <element signature="e#34481#35881#0" expanded="false" />
-                <element signature="e#35983#40198#0" expanded="false" />
-                <element signature="e#40293#42066#0" expanded="false" />
-                <element signature="e#42136#42927#0" expanded="false" />
-                <element signature="e#42996#43787#0" expanded="false" />
-                <element signature="e#43883#44245#0" expanded="false" />
-                <element signature="e#44313#46134#0" expanded="false" />
-                <element signature="e#46203#47431#0" expanded="false" />
-                <element signature="e#47509#47673#0" expanded="false" />
-                <element signature="e#57213#57389#0" expanded="false" />
-                <element signature="e#57467#57521#0" expanded="false" />
-                <element signature="e#57618#60676#0" expanded="false" />
-                <element signature="e#60844#61117#0" expanded="false" />
-                <element signature="e#61236#65270#0" expanded="false" />
-                <element signature="e#65389#69525#0" expanded="false" />
-                <element signature="e#69614#73902#0" expanded="false" />
-                <element signature="e#73987#74029#0" expanded="false" />
-                <element signature="e#74092#74176#0" expanded="false" />
-                <element signature="e#74240#74325#0" expanded="false" />
-                <element signature="e#74395#74486#0" expanded="false" />
-                <element signature="e#74551#74637#0" expanded="false" />
-                <element signature="e#75028#75120#0" expanded="false" />
-                <element signature="e#75195#75292#0" expanded="false" />
-                <element signature="e#75360#75449#0" expanded="false" />
-                <element signature="e#75530#76721#0" expanded="false" />
-                <element signature="e#76801#77473#0" expanded="false" />
-                <element signature="e#77529#77578#0" expanded="false" />
+                <element signature="e#4069#4480#0" expanded="false" />
+                <element signature="e#4538#4570#0" expanded="false" />
+                <element signature="e#4619#10602#0" expanded="false" />
+                <element signature="e#10651#16635#0" expanded="false" />
+                <element signature="e#16684#22678#0" expanded="false" />
+                <element signature="e#22727#28721#0" expanded="false" />
+                <element signature="e#28802#28939#0" expanded="false" />
+                <element signature="e#29048#30112#0" expanded="false" />
+                <element signature="e#30206#31312#0" expanded="false" />
+                <element signature="e#31419#34591#0" expanded="false" />
+                <element signature="e#34698#36098#0" expanded="false" />
+                <element signature="e#36200#40415#0" expanded="false" />
+                <element signature="e#40510#42283#0" expanded="false" />
+                <element signature="e#42353#43144#0" expanded="false" />
+                <element signature="e#43213#44004#0" expanded="false" />
+                <element signature="e#44100#44462#0" expanded="false" />
+                <element signature="e#46420#47648#0" expanded="false" />
+                <element signature="e#47726#47890#0" expanded="false" />
+                <element signature="e#57430#57606#0" expanded="false" />
+                <element signature="e#57684#57738#0" expanded="false" />
+                <element signature="e#61061#61334#0" expanded="false" />
+                <element signature="e#74204#74246#0" expanded="false" />
+                <element signature="e#74309#74393#0" expanded="false" />
+                <element signature="e#74457#74542#0" expanded="false" />
+                <element signature="e#74612#74703#0" expanded="false" />
+                <element signature="e#74768#74854#0" expanded="false" />
+                <element signature="e#75245#75337#0" expanded="false" />
+                <element signature="e#75412#75509#0" expanded="false" />
+                <element signature="e#75577#75666#0" expanded="false" />
+                <element signature="e#75747#76938#0" expanded="false" />
+                <element signature="e#77018#77690#0" expanded="false" />
+                <element signature="e#77746#77795#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="images.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tickets.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/create-event/tickets.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.23077">
+              <caret line="102" column="39" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="images.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/images.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68786126">
+            <state vertical-scroll-proportion="-11.226415">
               <caret line="107" column="89" selection-start-line="107" selection-start-column="89" selection-end-line="107" selection-end-column="89" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -101,17 +109,71 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="preview.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="preview.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/preview.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.26923">
-              <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.6485549">
+              <caret line="117" column="71" selection-start-line="117" selection-start-column="71" selection-end-line="117" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#p#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#3;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#4;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="go-live.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/create-event/go-live.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.622642">
+              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="live-present.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/monitor/live-present.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.346153">
+              <caret line="136" column="49" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tracking-links.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/includes/tracking-links.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.461538">
+              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="title.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/create-event/title.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.461538">
+              <caret line="156" column="73" selection-start-line="156" selection-start-column="73" selection-end-line="156" selection-end-column="73" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -124,7 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/node_modules/govuk_template_jinja/views/layouts/govuk_template.html" />
         <option value="$PROJECT_DIR$/govuk_modules/govuk_template/layouts/govuk_template.html" />
         <option value="$PROJECT_DIR$/lib/govuk_template.html" />
         <option value="$PROJECT_DIR$/lib/govuk_template_unbranded.html" />
@@ -145,7 +206,6 @@
         <option value="$PROJECT_DIR$/app/views/create-event/tickets.html" />
         <option value="$PROJECT_DIR$/app/views/includes/checkin-list.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/index.html" />
-        <option value="$PROJECT_DIR$/app/views/includes/tracking-links.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/additional-questions.html" />
         <option value="$PROJECT_DIR$/app/views/includes/draft-events.html" />
         <option value="$PROJECT_DIR$/app/assets/sass/dit-elements/_tabs.scss" />
@@ -159,7 +219,6 @@
         <option value="$PROJECT_DIR$/app/views/includes/track-link-progress-reg-one.html" />
         <option value="$PROJECT_DIR$/app/views/includes/track-link-progress-reg-four.html" />
         <option value="$PROJECT_DIR$/app/views/includes/track-link-progress-reg-three.html" />
-        <option value="$PROJECT_DIR$/app/views/monitor/live-present.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/date.html" />
         <option value="$PROJECT_DIR$/app/views/includes/registered-people-list.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/title.html" />
@@ -167,14 +226,17 @@
         <option value="$PROJECT_DIR$/app/views/create-event/venue.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/templates.html" />
         <option value="$PROJECT_DIR$/app/views/account/index.html" />
-        <option value="$PROJECT_DIR$/app/views/create-event/preview.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/template-reminder.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/template-reg.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/summary.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/attendees.html" />
-        <option value="$PROJECT_DIR$/app/routes.js" />
         <option value="$PROJECT_DIR$/app/views/create-event/description.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/images.html" />
+        <option value="$PROJECT_DIR$/app/routes.js" />
+        <option value="$PROJECT_DIR$/app/views/monitor/live-present.html" />
+        <option value="$PROJECT_DIR$/app/views/includes/tracking-links.html" />
+        <option value="$PROJECT_DIR$/app/views/create-event/go-live.html" />
+        <option value="$PROJECT_DIR$/app/views/create-event/preview.html" />
       </list>
     </option>
   </component>
@@ -304,6 +366,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="monitor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="create-event" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -362,15 +468,15 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\monitor" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\create-event" />
       <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\includes" />
       <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\assets\images" />
       <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\assets\javascripts" />
       <recent name="C:\Users\Guy\Documents\GitHub\events-user-testing-prototype\app\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\guytr\Documents\GitHub\events-user-testing-prototype\app\views\monitor" />
     </key>
   </component>
   <component name="RunManager">
@@ -476,11 +582,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1875</line>
+          <line>1881</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1625</line>
+          <line>1631</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -490,57 +596,57 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2005</line>
+          <line>2011</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2455</line>
+          <line>2461</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1065</line>
+          <line>1071</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1492</line>
+          <line>1498</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2486</line>
+          <line>2492</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1901</line>
+          <line>1907</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1613</line>
+          <line>1619</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>673</line>
+          <line>679</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>936</line>
+          <line>942</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>506</line>
+          <line>512</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1604</line>
+          <line>1610</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
@@ -549,13 +655,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/views/examples/blank-govuk.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/views/examples/blank-unbranded.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -689,13 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/tickets.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.927273">
-          <caret line="69" column="48" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/includes/draft-events.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.60762334">
@@ -714,13 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.514574">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/includes/tracking-links.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15758981">
-          <caret line="8" column="106" selection-start-line="8" selection-start-column="106" selection-end-line="8" selection-end-column="106" />
         </state>
       </provider>
     </entry>
@@ -787,20 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/title.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.384615">
-          <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/monitor/live-present.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-33.0">
-          <caret line="58" column="57" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/includes/registered-people-list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.846153">
@@ -841,6 +912,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6311659">
           <caret line="123" column="38" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -868,13 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/template-reminder.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5997758">
-          <caret line="57" column="101" selection-start-line="57" selection-start-column="101" selection-end-line="57" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/template-reg.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -888,14 +961,6 @@
             <element signature="n#style#0;n#p#1;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#textarea#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/additional-questions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -954,69 +1019,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.js">
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/additional-questions.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1848" column="46" selection-start-line="1848" selection-start-column="46" selection-end-line="1848" selection-end-column="46" />
-          <folding>
-            <element signature="e#2204#2279#0" expanded="false" />
-            <element signature="e#3852#4263#0" expanded="false" />
-            <element signature="e#4321#4353#0" expanded="false" />
-            <element signature="e#4402#10385#0" expanded="false" />
-            <element signature="e#10434#16418#0" expanded="false" />
-            <element signature="e#16467#22461#0" expanded="false" />
-            <element signature="e#22510#28504#0" expanded="false" />
-            <element signature="e#28585#28722#0" expanded="false" />
-            <element signature="e#28831#29895#0" expanded="false" />
-            <element signature="e#29989#31095#0" expanded="false" />
-            <element signature="e#31202#34374#0" expanded="false" />
-            <element signature="e#34481#35881#0" expanded="false" />
-            <element signature="e#35983#40198#0" expanded="false" />
-            <element signature="e#40293#42066#0" expanded="false" />
-            <element signature="e#42136#42927#0" expanded="false" />
-            <element signature="e#42996#43787#0" expanded="false" />
-            <element signature="e#43883#44245#0" expanded="false" />
-            <element signature="e#44313#46134#0" expanded="false" />
-            <element signature="e#46203#47431#0" expanded="false" />
-            <element signature="e#47509#47673#0" expanded="false" />
-            <element signature="e#57213#57389#0" expanded="false" />
-            <element signature="e#57467#57521#0" expanded="false" />
-            <element signature="e#57618#60676#0" expanded="false" />
-            <element signature="e#60844#61117#0" expanded="false" />
-            <element signature="e#61236#65270#0" expanded="false" />
-            <element signature="e#65389#69525#0" expanded="false" />
-            <element signature="e#69614#73902#0" expanded="false" />
-            <element signature="e#73987#74029#0" expanded="false" />
-            <element signature="e#74092#74176#0" expanded="false" />
-            <element signature="e#74240#74325#0" expanded="false" />
-            <element signature="e#74395#74486#0" expanded="false" />
-            <element signature="e#74551#74637#0" expanded="false" />
-            <element signature="e#75028#75120#0" expanded="false" />
-            <element signature="e#75195#75292#0" expanded="false" />
-            <element signature="e#75360#75449#0" expanded="false" />
-            <element signature="e#75530#76721#0" expanded="false" />
-            <element signature="e#76801#77473#0" expanded="false" />
-            <element signature="e#77529#77578#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-1.0100896">
+          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/preview.html">
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/template-reminder.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.26923">
-          <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.61771303">
+          <caret line="57" column="101" selection-start-line="57" selection-start-column="101" selection-end-line="57" selection-end-column="101" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#p#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/images.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68786126">
+        <state vertical-scroll-proportion="-11.226415">
           <caret line="107" column="89" selection-start-line="107" selection-start-column="89" selection-end-line="107" selection-end-column="89" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -1035,6 +1064,115 @@
             <element signature="n#style#0;n#input#0;n#div#3;n#fieldset#0;n#div#0;n#div#3;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#label#0;n#div#3;n#fieldset#0;n#div#0;n#div#3;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/title.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.461538">
+          <caret line="156" column="73" selection-start-line="156" selection-start-column="73" selection-end-line="156" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/tickets.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.23077">
+          <caret line="102" column="39" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.625">
+          <caret line="135" column="46" selection-start-line="135" selection-start-column="46" selection-end-line="135" selection-end-column="46" />
+          <folding>
+            <element signature="e#2204#2279#0" expanded="false" />
+            <element signature="e#4069#4480#0" expanded="false" />
+            <element signature="e#4538#4570#0" expanded="false" />
+            <element signature="e#4619#10602#0" expanded="false" />
+            <element signature="e#10651#16635#0" expanded="false" />
+            <element signature="e#16684#22678#0" expanded="false" />
+            <element signature="e#22727#28721#0" expanded="false" />
+            <element signature="e#28802#28939#0" expanded="false" />
+            <element signature="e#29048#30112#0" expanded="false" />
+            <element signature="e#30206#31312#0" expanded="false" />
+            <element signature="e#31419#34591#0" expanded="false" />
+            <element signature="e#34698#36098#0" expanded="false" />
+            <element signature="e#36200#40415#0" expanded="false" />
+            <element signature="e#40510#42283#0" expanded="false" />
+            <element signature="e#42353#43144#0" expanded="false" />
+            <element signature="e#43213#44004#0" expanded="false" />
+            <element signature="e#44100#44462#0" expanded="false" />
+            <element signature="e#46420#47648#0" expanded="false" />
+            <element signature="e#47726#47890#0" expanded="false" />
+            <element signature="e#57430#57606#0" expanded="false" />
+            <element signature="e#57684#57738#0" expanded="false" />
+            <element signature="e#61061#61334#0" expanded="false" />
+            <element signature="e#74204#74246#0" expanded="false" />
+            <element signature="e#74309#74393#0" expanded="false" />
+            <element signature="e#74457#74542#0" expanded="false" />
+            <element signature="e#74612#74703#0" expanded="false" />
+            <element signature="e#74768#74854#0" expanded="false" />
+            <element signature="e#75245#75337#0" expanded="false" />
+            <element signature="e#75412#75509#0" expanded="false" />
+            <element signature="e#75577#75666#0" expanded="false" />
+            <element signature="e#75747#76938#0" expanded="false" />
+            <element signature="e#77018#77690#0" expanded="false" />
+            <element signature="e#77746#77795#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/includes/tracking-links.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.461538">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/monitor/live-present.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.346153">
+          <caret line="136" column="49" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/go-live.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.622642">
+          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/preview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6485549">
+          <caret line="117" column="71" selection-start-line="117" selection-start-column="71" selection-end-line="117" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#p#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#3;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#4;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

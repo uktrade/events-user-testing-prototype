@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="full-grid-mode" style="margin-left:15px">
+
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		<ol>
+			<li><a href="/account">Account home</a></li>
+		</ol>
+	  </div>
+
+		<!-- CONDITIONAL ERROR  -->
+		{% if errorMissingImage %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Message to alert the user to a problem goes here
+			</h2>
+
+			<p>
+				Optional description of the errors and how to correct them
+			</p>
+
+			<ul class="error-summary-list">
+				{% if errorMissingTitle %}
+				<li><a href="#example-personal-details">Descriptive link to MISSING IMAGE error</a></li>
+				{% endif %}
+			</ul>
+
+		</div>
+		{% endif %}
+
+
+
+	  <h1 class="heading-large" style="margin-top:15px">
+		  Event publishing options
+      </h1>
+
+
+		<div class="form-group" style="margin-top:20px; margin-bottom:30px" >
+			<label class="form-label-bold" >
+				Who can access the event page?
+			</label>
+			<div class="form-date" style="margin-top:5px">
+				<div class="multiple-choice" style="margin-bottom:10px">
+					<input id="radio-inline-audience-1" type="radio" name="radio-audience-experience" value="new" {% if experienceNew %} checked="checked" {% endif %}>
+					<label for="radio-inline-audience-1">
+						Publish event to public </label>
+				</div>
+				<div class="multiple-choice" style="margin-bottom:10px">
+					<input id="radio-inline-audience-2" type="radio" name="radio-audience-experience" value="experienced" {% if experienceOld %} checked="checked" {% endif %}>
+					<label for="radio-inline-audience-2">Anyone with the link</label>
+				</div>
+			</div>
+		</div>
+
+
+		<div style="margin-top:60px; margin-bottom:20px;">
+			<p class="heading-medium">Tracking links</p>
+			{% include "includes/tracking-links.html" %}
+		</div>
+
+
+
+
+
+		<form action="/make-draft-live" method="get" class="form">
+
+		  <div class="form-group" style="margin-top:20px">
+			  <input type="submit" class="button" value="Make the event live">
+			  <p style="margin-top:25px"><a href="/create-event/tickets">I'll complete this later - I don't have this information yet</a></p>
+		  </div>
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+
+
+
+<script>
+	// When pressing the get main image button it swap in an image
+
+	function hide()
+	{
+		document.getElementById('main-button-image').style.display = 'none';
+		document.getElementById('image-area').style.display = 'inline';
+	}
+
+</script>
+
+{% endblock %}
+
+
+
+

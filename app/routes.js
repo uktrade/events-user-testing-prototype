@@ -138,8 +138,14 @@ router.use(function (req, res, next)
 
   if(req.session.data['organiser-name'] == undefined)
   {
-    req.session.data['organiser-name'] = "Yorkshire and the Humber";
+    req.session.data['organiser-name'] = "East midlands";
   }
+
+  if(req.session.data['close-reg-early-days'] == undefined)
+  {
+    req.session.data['close-reg-early-days'] = "This event is now full. Places may be freed up subject to cancellations - check back here for availability.";
+  }
+
 
 
 
