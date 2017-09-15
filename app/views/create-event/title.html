@@ -9,7 +9,7 @@
 
 <main id="content" role="main">
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="full-grid-mode" style="margin-left:15px">
 
 
 	  <!--  BREADCRUMB  -->
@@ -50,7 +50,7 @@
 
 
 
-	  <h1 class="heading-large" style="margin-top:15px">
+	  <h1 class="heading-large" style="margin-top:15px;">
         Title and audience
       </h1>
 
@@ -58,7 +58,7 @@
 	  <form action="/create-event/title-onwards" method="get" class="form">
 
 
-			  <div id="title-section" class="form-group" style="margin-top:10px; margin-bottom:35px">
+			  <div id="title-section" class="form-group" style="margin-top:10px; margin-bottom:35px;  width:630px;">
 
 				  {% if errorMissingTitle %}
 				  	<div class="form-group-error">
@@ -87,7 +87,7 @@
 
 
 		  <!--  Sector  -->
-		  <div class="form-group" id="sector-area" style="margin-bottom:10px" >
+		  <div class="form-group" id="sector-area" style="margin-bottom:10px;" >
 
 			  {% if errorMissingSector %}
 			  	<div class="form-group-error">
@@ -127,7 +127,7 @@
 		  </div>
 
 
-			<div class="form-group js-hidden {% if errorMissingSectorBox %} form-group-error {% endif %}"  id="sector-section" style="margin-bottom:20px">
+			<div class="form-group panel panel-border-narrow js-hidden {% if errorMissingSectorBox %} form-group-error {% endif %}"  id="sector-section" style="margin-bottom:20px">
 
 				<label class="form-label-bold" for="sector-box">
 					Sectors
@@ -137,14 +137,177 @@
 				  </span>
 					{% endif %}
 				</label>
-				<input type="text" class="form-control  {% if errorMissingSectorBox %} form-control-error {% endif %}"  style="width:50%; margin-bottom:10px"
-					   id="sector-box" name="sector-box" value="{{ data['sector-box'] }}" >
 
-				<input type="text" class="form-control"  style="width:50%; margin-bottom:10px;"
-					   id="sector-box-2" name="sector-box-2" value="{{ data['sector-box-2'] }}">
 
-				<input type="text" class="form-control"  style="width:50%;"
-					   id="sector-box-3" name="sector-box-3" value="{{ data['sector-box-3'] }}" >
+				<div style="margin-top:5px; display: flex;" >
+
+					<!-- COLUMN 2 -->
+					<div style="width:50%">
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Aerospace">
+							<label for="buyers">Aerospace</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Airports">
+							<label for="buyers">Airports</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Biotechnology and pharmaceuticals">
+							<label for="buyers">Biotechnology and pharmaceuticals</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Chemicals">
+							<label for="buyers">Chemicals</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Communications">
+							<label for="buyers">Communications</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Creative and media">
+							<label for="buyers">Creative and media</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Electronics and IT hardware">
+							<label for="buyers">Electronics and IT hardware</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Financial and professional services">
+							<label for="buyers">Financial and professional services</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Giftware, jewellery and tableware">
+							<label for="buyers">Giftware, jewellery and tableware</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Healthcare and medical">
+							<label for="buyers">Healthcare and medical</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Leisure and tourism">
+							<label for="buyers">Leisure and tourism</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Marine">
+							<label for="buyers">Marine</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Metallurgical process plant">
+							<label for="buyers">Metallurgical process plant</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Mining">
+							<label for="buyers">Mining</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Ports and logistics">
+							<label for="buyers">Ports and logistics</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Railways">
+							<label for="buyers">Railways</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Retail and luxury">
+							<label for="buyers">Retail and luxury</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Software and computer services">
+							<label for="buyers">Software and computer services</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Water">
+							<label for="buyers">Water</label>
+						</div>
+
+
+					</div>
+
+
+					<!-- COLUMN 3 -->
+					<div style="width:50%">
+
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Agriculture, horticulture and fisheries">
+							<label for="buyers">Agriculture, horticulture and fisheries</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Automotive">
+							<label for="buyers">Automotive</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Business and consumer services">
+							<label for="buyers">Business and consumer services</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Clothing, footwear and fashion">
+							<label for="buyers">Clothing, footwear and fashion</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Construction">
+							<label for="buyers">Construction</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Education and training">
+							<label for="buyers">Education and training</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Environment">
+							<label for="buyers">Environment</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Food and drink">
+							<label for="buyers">Food and drink</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Global sports infrastructure">
+							<label for="buyers">Global sports infrastructure</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Household goods, furniture and furnishings">
+							<label for="buyers">Household goods, furniture and furnishings</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Legal services">
+							<label for="buyers">Legal services</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Mechanical electrical and process engineering">
+							<label for="buyers">Mechanical electrical and process engineering</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Metals, minerals and materials">
+							<label for="buyers">Metals, minerals and materials</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Oil and gas">
+							<label for="buyers">Oil and gas</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Power">
+							<label for="buyers">Power</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Renewable energy">
+							<label for="buyers">Renewable energy</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Security">
+							<label for="buyers">Security</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="buyers" name="sectors" type="checkbox" value="Textiles, interior textiles and carpets">
+							<label for="buyers">Textiles, interior textiles and carpets</label>
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+
 
 			</div>
 
@@ -177,9 +340,9 @@
 
 
 		  <!--  Summary of target audience  -->
-		  <div class="form-group" style="margin-top:0px; margin-bottom:20px">
+		  <div class="form-group" style="margin-top:0px; margin-bottom:20px; width:630px;">
 			  <label class="form-label-bold" for="summary-target-audience">
-				  Describe your overall target audience for this event, including any eligibility criteria.
+				  Summarise who this event is for, including any eligibility criteria.
 			  </label>
 			  <textarea class="form-control" name="summary-target-audience" id="summary-target-audience" rows="4" style="width: 100%;"></textarea>
 		  </div>

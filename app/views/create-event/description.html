@@ -9,7 +9,7 @@
 
 <main id="content" role="main">
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="full-grid-mode" style="margin-left:15px;">
 
 
 	  <!--  BREADCRUMB  -->
@@ -75,18 +75,21 @@
 
 
 			  <fieldset>
-				  <div class="form-group js-hidden"  id="market-section" style="margin-top:10px; margin-bottom:20px;">
-					  <label class="form-label-bold" for="event-description">
+				  <div class="form-group panel panel-border-narrow js-hidden"  id="market-section" style="margin-top:10px; margin-bottom:20px;">
+					  <label class="form-label-bold" for="event-description" style="margin-bottom:6px;">
 						  Markets
 					  </label>
-					  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
-							 id="market-box" name="market-box" value="{{ data['market-box'] }}">
+					  <div style="width:70%">
+						  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
+								 id="market-box" name="market-box" value="{{ data['market-box'] }}">
 
-					  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
-							 id="market-box-2" name="market-box-2" value="{{ data['market-box-2'] }}">
+						  <input type="text" class="form-control"  style="width:80%; margin-bottom:10px;"
+								 id="market-box-2" name="market-box-2" value="{{ data['market-box-2'] }}">
 
-					  <input type="text" class="form-control"  style="width:80%;"
-							 id="market-box-3" name="market-box-3" value="{{ data['market-box-3'] }}">
+						  <input type="text" class="form-control"  style="width:80%;"
+								 id="market-box-3" name="market-box-3" value="{{ data['market-box-3'] }}">
+					  </div>
+
 				  </div>
 			  </fieldset>
 		  </div>
@@ -95,10 +98,10 @@
 
 
 		  <!--   BENEFITS   -->
-		  <div class="form-group">
+		  <div class="form-group" style="margin-bottom:10px;">
 			  <fieldset>
 
-				  <legend class="form-label-bold" style="margin-bottom:10px;">
+				  <legend class="form-label-bold" style="margin-bottom:13px;">
 					  What specific benefits or outcomes will attendees get from this event?
 				  </legend>
 
@@ -119,27 +122,50 @@
 					  <input id="network" name="benefits" type="checkbox" value="Network with other businessses">
 					  <label for="network">Network with other businessses</label>
 				  </div>
-				  <div class="multiple-choice" data-target="add-benefit-section">
-					  <input id="add-other" name="benefits" type="checkbox" value="Add your own">
-					  <label for="add-other">Add your own</label>
-				  </div>
-
-
-				  <div class="panel panel-border-narrow js-hidden" id="add-benefit-section" style="margin-bottom:20px">
-					  <label class="form-label js-hidden" for="add-benefit">Add your own</label>
-					  <input class="form-control" type="text" id="add-benefit" name="add-benefit" style="margin-bottom:10px;">
-					  <input class="form-control" type="text" id="add-benefit-2" name="add-benefit" style="margin-bottom:10px;">
-					  <input class="form-control" type="text" id="add-benefit-3" name="add-benefit" >
-				  </div>
 
 			  </fieldset>
 		  </div>
 
+		  <p id="add-benefit-link-5" style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-left:52px; display: inline;"  onclick="showbenefit5()">Add a benefit</p>
+
+		  <div id="benefit-section-5" style="margin-top:0px;  display: none">
+			  <div class="multiple-choice" style="padding-right:0px;">
+				  <input id="add-other1" name="benefits" type="checkbox" value="" checked="checked">
+				  <label for="add-other1">&nbsp;
+				  </label>
+			  </div>
+
+			  <input type="text" class="form-control" id="cutom-benefit-1" name="event-title" value="{{ data['benefit-input-1'] }}" style="width: 50%; display:inline;">
+		  </div>
+
+		  <p id="add-benefit-link-6" style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-left:52px; display: none;"  onclick="showbenefit6()">Add a benefit</p>
+
+		  <div id="benefit-section-6" style="margin-top:10px;  display: none">
+			  <div class="multiple-choice" style="padding-right:0px;">
+				  <input id="add-other2" name="benefits" type="checkbox" value="" checked="checked">
+				  <label for="add-other2">&nbsp;
+				  </label>
+			  </div>
+
+			  <input type="text" class="form-control" id="custom-benefit-2" name="event-title" value="{{ data['benefit-input-2'] }}" style="width: 50%; display:inline;">
+		  </div>
+
+		  <p id="add-benefit-link-7" style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-left:52px; display: none;"  onclick="showbenefit7()">Add a benefit</p>
+
+		  <div id="benefit-section-7" style="margin-top:10px; margin-bottom:30px; display: none">
+			  <div class="multiple-choice" style="padding-right:0px;">
+				  <input id="add-other3" name="benefits" type="checkbox" value="" checked="checked">
+				  <label for="add-other3">&nbsp;
+				  </label>
+			  </div>
+
+			  <input type="text" class="form-control" id="custom-benefit-3" name="event-title" value="{{ data['benefit-input-3'] }}" style="width: 50%; display:inline;">
+		  </div>
 
 
 
 		  <!--   AGENDA   -->
-		  <div class="form-group">
+		  <div class="form-group" style="margin-top:40px">
 
 			  <fieldset>
 				  <div style="" id="answer-types">
@@ -156,7 +182,8 @@
 										  </span>
 							  {% endif %}
 						  </label>
-						  <div class="form-date" style="margin-top:5px">
+
+						  <div class="form-date " style="margin-top:5px">
 							  <div class="multiple-choice">
 								  <input id="enter-text" type="radio" name="radio-additional-questions-answers-type" value="enter-text" checked="checked">
 								  <label for="enter-text">No</label>
@@ -177,7 +204,7 @@
 
 
 
-			  <fieldset class="form-group js-hidden" id="show-answers" style="margin-top:20px; margin-bottom:0px">
+			  <fieldset class="form-group js-hidden panel panel-border-narrow" id="show-answers" style="margin-top:20px; margin-bottom:0px">
 
 				  <!--   THE ANSWERS -->
 				  <div class="" style="margin-bottom:0px; margin-top:0px;" >
@@ -223,8 +250,10 @@
 								  <input class="form-control" style="width:462px"
 										 id="agenda-2" name="agenda-2" type="text"  value="{{ data['agenda-2'] }}">
 							  </div>
+
+							  <p id="agenda-3-add" style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;" onclick="show3()">Add another activtiy</p>
 							  <!-- Row three -->
-							  <div style="  margin-bottom: 15px;">
+							  <div id="agenda-3-area"  style="display:none; margin-bottom: 15px;">
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-3" name="agenda-hour-3" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-3'] }}">
 
@@ -235,10 +264,50 @@
 										 id="agenda-3" name="agenda-3" type="text"  value="{{ data['agenda-3'] }}">
 							  </div>
 
+							  <p id="agenda-4-add" style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none" onclick="show4()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-4-area"  style="display:none; margin-bottom: 15px;">
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-4" name="agenda-hour-4" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-4'] }}">
 
-							  <p id="answer-5-add" style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;" onclick="show5()">Add another item</p>
-							  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
-									 id="answer-5-box" name="answer-5" value="{{ data['answer-5'] }}" style="width:90%; margin-bottom: 0px;">
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-4" name="agenda-minutes-4" type="number"  value="{{ data['agenda-minutes-4'] }}">
+
+								  <input class="form-control" style="width:462px"
+										 id="agenda-4" name="agenda-4" type="text"  value="{{ data['agenda-4'] }}">
+							  </div>
+
+
+							  <p id="agenda-5-add" style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none" onclick="show5()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-5-area"  style="display:none; margin-bottom: 15px;">
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-5" name="agenda-hour-5" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-5'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-5" name="agenda-minutes-5" type="number"  value="{{ data['agenda-minutes-5'] }}">
+
+								  <input class="form-control" style="width:462px"
+										 id="agenda-5" name="agenda-5" type="text"  value="{{ data['agenda-5'] }}">
+							  </div>
+
+
+							  <p id="agenda-6-add" style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none" onclick="show6()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-6-area"  style="display:none; margin-bottom: 15px;">
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-6" name="agenda-hour-6" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-6'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-6" name="agenda-minutes-6" type="number"  value="{{ data['agenda-minutes-6'] }}">
+
+								  <input class="form-control" style="width:462px"
+										 id="agenda-6" name="agenda-6" type="text"  value="{{ data['agenda-6'] }}">
+							  </div>
+
+
+
+
 						  </div>
 
 					  {% if errorAnswersError %}
@@ -257,7 +326,7 @@
 
 
 		  <!--  Detailed event description  -->
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px">
+		  <div class="form-group" style="margin-top:10px; margin-bottom:20px; width:650px;">
 			  <div>
 				  <label class="form-label-bold" for="event-description" style="float:left; margin-top:4px;">
 					  Detailed event description
@@ -282,6 +351,69 @@
   </div>
 </main>
 
+
+
+
+<script>
+
+	// SHOW MORE ANSWER BOXES
+	function show3()
+	{
+		document.getElementById('agenda-3-add').style.display = 'none';
+		document.getElementById('agenda-3-area').style.display = 'block';
+		document.getElementById('agenda-4-add').style.display = 'block';
+	}
+	function show4()
+	{
+		document.getElementById('agenda-4-add').style.display = 'none';
+		document.getElementById('agenda-4-area').style.display = 'block';
+		document.getElementById('agenda-5-add').style.display = 'block';
+	}
+	function show5()
+	{
+		document.getElementById('agenda-5-add').style.display = 'none';
+		document.getElementById('agenda-5-area').style.display = 'block';
+		document.getElementById('agenda-6-add').style.display = 'block';
+	}
+	function show6()
+	{
+		document.getElementById('agenda-6-add').style.display = 'none';
+		document.getElementById('agenda-6-area').style.display = 'block';
+	}
+
+
+
+	// SHw custom benefits
+	function showbenefit5()
+	{
+		document.getElementById('add-benefit-link-5').style.display = 'none';
+		document.getElementById('benefit-section-5').style.display = 'block';
+		document.getElementById('add-benefit-link-6').style.display = 'block';
+	}
+
+	function showbenefit6()
+	{
+		document.getElementById('add-benefit-link-6').style.display = 'none';
+		document.getElementById('benefit-section-6').style.display = 'block';
+		document.getElementById('add-benefit-link-7').style.display = 'block';
+	}
+
+	function showbenefit7()
+	{
+		document.getElementById('add-benefit-link-7').style.display = 'none';
+		document.getElementById('benefit-section-7').style.display = 'block';
+		//document.getElementById('add-benefit-link-7').style.display = 'block';
+	}
+
+
+</script>
+
+
+
+
 {% endblock %}
+
+
+
 
 
