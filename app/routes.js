@@ -8,7 +8,6 @@ router.get('/', function (req, res) {
 
 
 
-
 // SETUP STUFF
 router.use(function (req, res, next)
 {
@@ -2466,7 +2465,7 @@ router.get('/monitor/add-tracking-link', function (req, res)
 
     errorTrackingNameIs = true;
 
-    res.render('monitor/live-present',
+    res.render('/monitor/live-present',
 
         {
           tab: 2,
@@ -2482,7 +2481,7 @@ router.get('/monitor/add-tracking-link', function (req, res)
 
     console.log("the size of the links list is now " +   req.session.trackingLinksNames.length);
 
-    res.redirect('/monitor/live-present#trackLinks');
+    res.redirect('/monitor/live-present#track-links');
   }
 })
 

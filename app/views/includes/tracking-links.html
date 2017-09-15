@@ -63,17 +63,17 @@
 
     <td style="padding-top:21px; padding-bottom:20px;">
       {% if errorTrackingName %}
-      <div style=" margin-top: 31px; margin-bottom: 0px;">
-        {% else %}
+        <div style=" margin-top: 31px; margin-bottom: 0px;">
+      {% else %}
         <div>
-          {% endif %}
+      {% endif %}
 
-          <input type="submit" class="button-secondary" formaction="/monitor/add-tracking-link" value="Add new link">
+          <input type="submit" class="button-secondary" formaction="/monitor/add-tracking-link" value="Generate lik">
 
-          {% if errorTrackingName %}
+      {% if errorTrackingName %}
         </div>
-        {% else %}
-      </div>
+      {% else %}
+        </div>
       {% endif %}
 
     </td>
