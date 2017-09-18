@@ -9,7 +9,7 @@
 
 <main id="content" role="main">
   <div class="grid-row">
-    <div class="column-full">
+    <div class="full-grid-mode" style="margin-left:15px; width:957px">
 
       <!--  BREADCRUMB  -->
 	  <div class="breadcrumbs">
@@ -32,14 +32,14 @@
 		  <!--   * none for single group of q&a -->
 		  <dl class="govuk-check-your-answers cya-questions-short">
 			  <div>
-				  <dt class="cya-question">
+				  <dt class="cya-question" style="width:30%">
 					  Title
 				  </dt>
 				  <dd class="cya-answer">
 					  {{ data['event-title'] }}
 				  </dd>
 				  <dd class="cya-change">
-					  <a href="/create-event/change-description">
+					  <a href="/create-event/change-title">
 						  Change
 					  </a>
 				  </dd>
@@ -165,7 +165,7 @@
 
 			  <div>
 				  <dt class="cya-question">
-					  Who would be a good fit
+					  Target audience summary
 				  </dt>
 				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['summary-target-audience'] }}</dd>
 				  <dd class="cya-change">
@@ -180,7 +180,7 @@
 				  <dt class="cya-question">
 					  Benefits or outcomes
 				  </dt>
-				  <dd class="cya-answer"     style="white-space: pre-wrap;"></dd>
+				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['benefits'] }}</dd>
 				  <dd class="cya-change">
 					  <a href="/create-event/change-description">
 						  Change
@@ -193,7 +193,7 @@
 				  <dt class="cya-question">
 					  Agenda
 				  </dt>
-				  <dd class="cya-answer"     style="white-space: pre-wrap;"></dd>
+				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['agenda'] }}</dd>
 				  <dd class="cya-change">
 					  <a href="/create-event/change-description">
 						  Change

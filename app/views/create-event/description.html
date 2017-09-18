@@ -22,24 +22,29 @@
 
 
 		<!-- CONDITIONAL ERROR  -->
-		{% if errorMissingTitle %}
-		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+		{% if errorExists %}
+			<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
-			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Missing fields
-			</h2>
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					Missing fields
+				</h2>
 
-			<p>
-				Please check the following errors and try again.
-			</p>
+				<p>
+					Please check the following errors and try again.
+				</p>
 
-			<ul class="error-summary-list">
-				{% if errorMissingTitle %}
-					<li><a href="#title-section">Missing title</a></li>
-				{% endif %}
-			</ul>
+				<ul class="error-summary-list">
 
-		</div>
+					{% if errorMissingEventBenefit %}
+						<li><a href="#benefits-section">Please enter benefits</a></li>
+					{% endif %}
+
+					{% if errorMissingEventDescription %}
+					<li><a href="#description-section">Missing description</a></li>
+					{% endif %}
+				</ul>
+
+			</div>
 		{% endif %}
 
 
@@ -98,14 +103,19 @@
 
 
 		  <!--   BENEFITS   -->
-		  <div class="form-group" style="margin-bottom:10px;">
+		  <div class="form-group" style="margin-bottom:10px;" id="benefits-section">
+			  <legend class="form-label-bold" style="margin-bottom:10px;">
+				  What specific benefits or outcomes will attendees get from this event?
+				  <span class="form-hint" style="margin-bottom: 0px; margin-top:3px;">For example, Meet with buyers</span>
+
+
+
+			  </legend>
+
+
+
+			  <!--   errorMissingEventBenefit
 			  <fieldset>
-
-				  <legend class="form-label-bold" style="margin-bottom:13px;">
-					  What specific benefits or outcomes will attendees get from this event?
-				  </legend>
-
-
 				  <div class="multiple-choice">
 					  <input id="buyers" name="benefits" type="checkbox" value="Meet with buyers">
 					  <label for="buyers">Meet with buyers</label>
@@ -122,50 +132,66 @@
 					  <input id="network" name="benefits" type="checkbox" value="Network with other businessses">
 					  <label for="network">Network with other businessses</label>
 				  </div>
-
 			  </fieldset>
-		  </div>
+			  -->
 
-		  <p id="add-benefit-link-5" style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-left:52px; display: inline;"  onclick="showbenefit5()">Add a benefit</p>
 
-		  <div id="benefit-section-5" style="margin-top:0px;  display: none">
-			  <div class="multiple-choice" style="padding-right:0px;">
-				  <input id="add-other1" name="benefits" type="checkbox" value="" checked="checked">
-				  <label for="add-other1">&nbsp;
-				  </label>
+			  <div id="benefit-section-4" style="margin-top:0px;" class=" {% if errorMissingEventBenefit %} form-group-error {% endif %}">
+				  {% if errorMissingEventBenefit %}
+					  <span class="error-message">
+						  Enter 1 or more benefits
+					  </span>
+				  {% endif %}
+
+				  <input type="text" class="form-control {% if errorMissingEventBenefit %} form-control-error {% endif %}" id="benefit-input-0" name="benefit-input-0" value="{{ data['benefit-input-0'] }}" style="width: 50%; display:inline;">
 			  </div>
 
-			  <input type="text" class="form-control" id="cutom-benefit-1" name="event-title" value="{{ data['benefit-input-1'] }}" style="width: 50%; display:inline;">
-		  </div>
 
-		  <p id="add-benefit-link-6" style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-left:52px; display: none;"  onclick="showbenefit6()">Add a benefit</p>
+			  <p id="add-benefit-link-5"
+				 {% if showBenefitTwo == false %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% else %}
+				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% endif %}
+				 onclick="showbenefit5()">Add a benefit</p>
 
-		  <div id="benefit-section-6" style="margin-top:10px;  display: none">
-			  <div class="multiple-choice" style="padding-right:0px;">
-				  <input id="add-other2" name="benefits" type="checkbox" value="" checked="checked">
-				  <label for="add-other2">&nbsp;
-				  </label>
+
+			  <div id="benefit-section-5"   {% if showBenefitTwo == true %} style="margin-top:10px;" {% else %} style="margin-top:10px; display: none" {% endif %}>
+				  <input type="text" class="form-control" id="benefit-input-1" name="benefit-input-1" value="{{ data['benefit-input-1'] }}" style="width: 50%; display:inline;">
 			  </div>
 
-			  <input type="text" class="form-control" id="custom-benefit-2" name="event-title" value="{{ data['benefit-input-2'] }}" style="width: 50%; display:inline;">
-		  </div>
+			  <p id="add-benefit-link-6"
+				 {% if showBenefitThree == false and showBenefitTwo == true %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% else %}
+				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% endif %}
+				 onclick="showbenefit6()">Add a benefit</p>
 
-		  <p id="add-benefit-link-7" style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-left:52px; display: none;"  onclick="showbenefit7()">Add a benefit</p>
-
-		  <div id="benefit-section-7" style="margin-top:10px; margin-bottom:30px; display: none">
-			  <div class="multiple-choice" style="padding-right:0px;">
-				  <input id="add-other3" name="benefits" type="checkbox" value="" checked="checked">
-				  <label for="add-other3">&nbsp;
-				  </label>
+			  <div id="benefit-section-6" {% if showBenefitThree == true %} style="margin-top:10px;" {% else %} style="margin-top:10px; display: none" {% endif %}>
+				  <input type="text" class="form-control" id="benefit-input-2" name="benefit-input-2" value="{{ data['benefit-input-2'] }}" style="width: 50%; display:inline;">
 			  </div>
 
-			  <input type="text" class="form-control" id="custom-benefit-3" name="event-title" value="{{ data['benefit-input-3'] }}" style="width: 50%; display:inline;">
+			  <p id="add-benefit-link-7"
+				 {% if showBenefitFour == false and showBenefitThree == true %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% else %}
+				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% endif %}
+				 onclick="showbenefit7()">Add a benefit</p>
+
+			  <div id="benefit-section-7"  {% if showBenefitFour == true %} style="margin-top:10px;" {% else %} style="margin-top:10px; display: none" {% endif %}>
+				  <input type="text" class="form-control" id="benefit-input-3" name="benefit-input-3" value="{{ data['benefit-input-3'] }}" style="width: 50%; display:inline;">
+			  </div>
+
+			  <p id="add-benefit-link-8"
+				 {% if showBenefitFive == false and showBenefitFour == true %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"
+				 {% else %}	 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% endif %}
+				 onclick="showbenefit8()">Add a benefit</p>
+
+			  <div id="benefit-section-8"  {% if showBenefitFive == true %}  style="margin-top:10px; margin-bottom:10px;"  {% else %} style="margin-top:10px; margin-bottom:10px;  display: none"  {% endif %}>
+				  <input type="text" class="form-control" id="benefit-input-4" name="benefit-input-4" value="{{ data['benefit-input-4'] }}" style="width: 50%; display:inline;">
+			  </div>
+
+
 		  </div>
+
 
 
 
 		  <!--   AGENDA   -->
-		  <div class="form-group" style="margin-top:40px">
+		  <div class="form-group" style="margin-top:30px">
 
 			  <fieldset>
 				  <div style="" id="answer-types">
@@ -185,12 +211,12 @@
 
 						  <div class="form-date " style="margin-top:5px">
 							  <div class="multiple-choice">
-								  <input id="enter-text" type="radio" name="radio-additional-questions-answers-type" value="enter-text" checked="checked">
+								  <input id="enter-text" type="radio" name="radio-agenda" value="enter-text" checked="checked">
 								  <label for="enter-text">No</label>
 							  </div>
 							  <div class="multiple-choice" data-target="show-answers">
-								  <input id="select-one" type="radio" name="radio-additional-questions-answers-type" value="select-one"
-										 {% if errorOneSelected %} checked="checked" {% endif %} >
+								  <input id="select-one" type="radio" name="radio-agenda" value="yes"
+										 {% if agendaSelected %} checked="checked" {% endif %} >
 								  <label for="select-one">Yes</label>
 							  </div>
 						  </div>
@@ -237,7 +263,7 @@
 										 id="agenda-minutes-1" name="agenda-minutes-1" type="number"  value="{{ data['agenda-minutes-1'] }}">
 
 								  <input class="form-control" style="width:462px"
-										 id="agenda-1" name="event-month" type="text"  value="{{ data['agenda-1'] }}">
+										 id="agenda-1" name="agenda-1" type="text"  value="{{ data['agenda-1'] }}">
 							  </div>
 							  <!-- Row two -->
 							  <div style="  margin-bottom: 15px;">
@@ -326,15 +352,21 @@
 
 
 		  <!--  Detailed event description  -->
-		  <div class="form-group" style="margin-top:10px; margin-bottom:20px; width:650px;">
+		  <div class="form-group {% if errorMissingEventDescription %} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:20px; width:650px;" id="description-section">
 			  <div>
 				  <label class="form-label-bold" for="event-description" style="float:left; margin-top:4px;">
 					  Detailed event description
+
+					  {% if errorMissingEventDescription %}
+						  <span class="error-message">
+							  Please enter a description
+						  </span>
+					  {% endif %}
 				  </label>
 				  <img  src="/public/images/editicons.png" style="width:104px;height:36px; float: right; margin-bottom:4px">
 			  </div>
 
-			  <textarea class="form-control" name="event-description" id="event-description" rows="12" style="width: 100%;"></textarea>
+			  <textarea class="form-control {% if errorMissingEventDescription %} form-control-error {% endif %}" name="event-description" id="event-description" rows="12" style="width: 100%;"></textarea>
 		  </div>
 
 
@@ -398,13 +430,18 @@
 		document.getElementById('add-benefit-link-7').style.display = 'block';
 	}
 
-	function showbenefit7()
-	{
+	function showbenefit7() {
 		document.getElementById('add-benefit-link-7').style.display = 'none';
 		document.getElementById('benefit-section-7').style.display = 'block';
-		//document.getElementById('add-benefit-link-7').style.display = 'block';
+		document.getElementById('add-benefit-link-8').style.display = 'block';
 	}
 
+	function showbenefit8()
+	{
+		document.getElementById('add-benefit-link-8').style.display = 'none';
+		document.getElementById('benefit-section-8').style.display = 'block';
+		//document.getElementById('add-benefit-link-9').style.display = 'block';
+	}
 
 </script>
 

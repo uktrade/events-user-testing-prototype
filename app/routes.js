@@ -1143,7 +1143,16 @@ router.get('/create-event/title-onwards', function (req, res)
 // DESCRIPTION PAGE ONWARDS BUTTON
 router.get('/create-event/description-onwards', function (req, res)
 {
-  var errorMissingTitle = false;
+  var errorMissingDescription = false;
+  var errorMissingBenefit = false;
+  var benefitTwo = false;
+  var benefitThree = false;
+  var benefitFour = false;
+  var benefitFive = false;
+
+  var agendaShowIs = false;
+
+  var errorMissingAgenda = false;
 
 
   console.log(" the radio for markets is --*/*/*/  " + req.session.data['radio-markets']);
@@ -1178,12 +1187,93 @@ router.get('/create-event/description-onwards', function (req, res)
   }
 
 
-  //  description fields doesn't need validation
+
+
+
+  // RECORD BENEFITS
+  req.session.data['benefits'] == ""
+
+  if(req.session.data['benefit-input-0'] == "")
+  {
+    errorMissingBenefit = true;
+  }
+  else if(req.session.data['benefit-input-0'] != "")
+  {
+    req.session.data['benefits'] = req.session.data['benefit-input-0'];
+  }
+
+  if(req.session.data['benefit-input-1'] != "")
+  {
+    req.session.data['benefits'] = req.session.data['benefits'] + "\n" + req.session.data['benefit-input-1'];
+    benefitTwo = true;
+  }
+  if(req.session.data['benefit-input-2'] != "")
+  {
+    req.session.data['benefits'] = req.session.data['benefits'] + "\n" + req.session.data['benefit-input-2'];
+    benefitThree = true;
+  }
+  if(req.session.data['benefit-input-3'] != "")
+  {
+    req.session.data['benefits'] = req.session.data['benefits'] + "\n" + req.session.data['benefit-input-3'];
+    benefitFour = true;
+  }
+  if(req.session.data['benefit-input-4'] != "")
+  {
+    req.session.data['benefits'] = req.session.data['benefits'] + "\n" + req.session.data['benefit-input-4'];
+    benefitFive = true;
+  }
 
 
 
 
-  if(true)
+  // SAVE THE AGENDA ON OFF
+  if(req.session.data['radio-agenda'] = "yes")
+  {
+    agendaShowIs = true;
+  }
+  // save agenda data
+  req.session.data['agenda'] == ""
+
+  if(req.session.data['agenda-1'] == "")
+  {
+    errorMissingAgenda = true;
+  }
+  else if(req.session.data['agenda-1'] != "")
+  {
+    req.session.data['agenda'] = req.session.data['agenda-hour-1'] + ":" + req.session.data['agenda-minutes-1'] + "  " + " " + req.session.data['agenda-1'];
+  }
+  if(req.session.data['agenda-2'] != "")
+  {
+    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-2'] + ":" + req.session.data['agenda-minutes-2'] + "  " + " " + req.session.data['agenda-2'];
+  }
+  if(req.session.data['agenda-3'] != "")
+  {
+    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-3'] + ":" + req.session.data['agenda-minutes-3'] + "  " + " " + req.session.data['agenda-3'];
+  }
+  if(req.session.data['agenda-4'] != "")
+  {
+    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-4'] + ":" + req.session.data['agenda-minutes-4'] + "  " + " " + req.session.data['agenda-4'];
+  }
+  if(req.session.data['agenda-5'] != "")
+  {
+    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-5'] + ":" + req.session.data['agenda-minutes-5'] + "  " + " " + req.session.data['agenda-5'];
+  }
+
+
+
+
+  //  DESCRIPTION VALIDATION
+  if(req.session.data['event-description'] == "")
+  {
+    errorMissingDescription = true;
+  }
+
+
+
+
+
+
+  if((errorMissingDescription)  == false)
   {
     if(req.session.changingFromSummary == true)
     {
@@ -1198,7 +1288,18 @@ router.get('/create-event/description-onwards', function (req, res)
   {
     res.render('create-event/description',
         {
-          'errorMissingTitle': errorMissingTitle,
+          'errorExists': true,
+          'errorMissingEventDescription': errorMissingDescription,
+
+          'errorMissingEventBenefit': errorMissingBenefit,
+          'showBenefitTwo': benefitTwo,
+          'showBenefitThree': benefitThree,
+          'showBenefitFour': benefitFour,
+          'showBenefitFive': benefitFive,
+          'agendaSelected': agendaShowIs,
+
+
+          'agendaMisssing':errorMissingAgenda
         }
     );
   }
