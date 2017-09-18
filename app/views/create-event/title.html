@@ -38,11 +38,21 @@
 					<li><a href="#title-section">Missing title</a></li>
 				{% endif %}
 				{% if errorMissingSector %}
-					<li><a href="#sector-area">Missing sector</a></li>
+					<li><a href="#sector-area">Missing sector answer</a></li>
 				{% endif %}
 				{% if errorMissingSectorBox %}
-					<li><a href="#sector-area">Missing sector</a></li>
+					<li><a href="#sector-section">Missing sector</a></li>
 				{% endif %}
+				{% if experienceEmpty %}
+					<li><a href="#export-experience">Missing export experience</a></li>
+				{% endif %}
+
+				{% if emptyTargetAudienceText %}
+					<li><a href="#export-experience">Missing export experience</a></li>
+				{% endif %}
+
+
+
 			</ul>
 
 		</div>
@@ -129,11 +139,11 @@
 
 			<div class="form-group panel panel-border-narrow js-hidden {% if errorMissingSectorBox %} form-group-error {% endif %}"  id="sector-section" style="margin-bottom:20px">
 
-				<label class="form-label-bold" for="sector-box">
+				<label class="form-label-bold" >
 					Sectors
 					{% if errorMissingSectorBox %}
 				  <span class="error-message">
-					  Please enter a sector
+					  Please select 1 or more sectors
 				  </span>
 					{% endif %}
 				</label>
@@ -144,80 +154,80 @@
 					<!-- COLUMN 2 -->
 					<div style="width:50%">
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Aerospace">
-							<label for="buyers">Aerospace</label>
+							<input id="sectors1" name="sectors1" type="checkbox" value="Aerospace" {% if sector1Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors1">Aerospace</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Airports">
-							<label for="buyers">Airports</label>
+							<input id="sectors2" name="sectors2" type="checkbox" value="Airports" {% if sector2Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors2">Airports</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Biotechnology and pharmaceuticals">
-							<label for="buyers">Biotechnology and pharmaceuticals</label>
+							<input id="sectors3" name="sectors3" type="checkbox" value="Biotechnology and pharmaceuticals" {% if sector3Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors3">Biotechnology and pharmaceuticals</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Chemicals">
-							<label for="buyers">Chemicals</label>
+							<input id="sectors4" name="sectors4" type="checkbox" value="Chemicals" {% if sector4Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors4">Chemicals</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Communications">
-							<label for="buyers">Communications</label>
+							<input id="sectors5" name="sectors5" type="checkbox" value="Communications" {% if sector5Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors5">Communications</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Creative and media">
-							<label for="buyers">Creative and media</label>
+							<input id="sectors6" name="sectors6" type="checkbox" value="Creative and media" {% if sector6Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors6">Creative and media</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Electronics and IT hardware">
-							<label for="buyers">Electronics and IT hardware</label>
+							<input id="sectors7" name="sectors7" type="checkbox" value="Electronics and IT hardware" {% if sector7Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors7">Electronics and IT hardware</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Financial and professional services">
-							<label for="buyers">Financial and professional services</label>
+							<input id="sectors8" name="sectors8" type="checkbox" value="Financial and professional services" {% if sector8Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors8">Financial and professional services</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Giftware, jewellery and tableware">
-							<label for="buyers">Giftware, jewellery and tableware</label>
+							<input id="sectors9" name="sectors9" type="checkbox" value="Giftware, jewellery and tableware" {% if sector9Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors9">Giftware, jewellery and tableware</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Healthcare and medical">
-							<label for="buyers">Healthcare and medical</label>
+							<input id="sectors10" name="sectors10" type="checkbox" value="Healthcare and medical" {% if sector10Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors10">Healthcare and medical</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Leisure and tourism">
-							<label for="buyers">Leisure and tourism</label>
+							<input id="sectors11" name="sectors11" type="checkbox" value="Leisure and tourism" {% if sector11Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors11">Leisure and tourism</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Marine">
-							<label for="buyers">Marine</label>
+							<input id="sectors12" name="sectors12" type="checkbox" value="Marine" {% if sector12Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors12">Marine</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Metallurgical process plant">
-							<label for="buyers">Metallurgical process plant</label>
+							<input id="sectors13" name="sectors13" type="checkbox" value="Metallurgical process plant" {% if sector13Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors13">Metallurgical process plant</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Mining">
-							<label for="buyers">Mining</label>
+							<input id="sectors14" name="sectors14" type="checkbox" value="Mining" {% if sector14Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors14">Mining</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Ports and logistics">
-							<label for="buyers">Ports and logistics</label>
+							<input id="sectors15" name="sectors15" type="checkbox" value="Ports and logistics" {% if sector15Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors15">Ports and logistics</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Railways">
-							<label for="buyers">Railways</label>
+							<input id="sectors16" name="sectors16" type="checkbox" value="Railways" {% if sector16Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors16">Railways</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Retail and luxury">
-							<label for="buyers">Retail and luxury</label>
+							<input id="sectors17" name="sectors17" type="checkbox" value="Retail and luxury" {% if sector17Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors17">Retail and luxury</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Software and computer services">
-							<label for="buyers">Software and computer services</label>
+							<input id="sectors18" name="sectors18" type="checkbox" value="Software and computer services" {% if sector18Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors18">Software and computer services</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Water">
-							<label for="buyers">Water</label>
+							<input id="sectors19" name="sectors19" type="checkbox" value="Water" {% if sector19Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors19">Water</label>
 						</div>
 
 
@@ -228,96 +238,96 @@
 					<div style="width:50%">
 
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Agriculture, horticulture and fisheries">
-							<label for="buyers">Agriculture, horticulture and fisheries</label>
+							<input id="sectors20" name="sectors20" type="checkbox" value="Agriculture, horticulture and fisheries" {% if sector20Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors20">Agriculture, horticulture and fisheries</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Automotive">
-							<label for="buyers">Automotive</label>
+							<input id="sectors21" name="sectors21" type="checkbox" value="Automotive" {% if sector21Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors21">Automotive</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Business and consumer services">
-							<label for="buyers">Business and consumer services</label>
+							<input id="sectors22" name="sectors22" type="checkbox" value="Business and consumer services" {% if sector22Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors22">Business and consumer services</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Clothing, footwear and fashion">
-							<label for="buyers">Clothing, footwear and fashion</label>
+							<input id="sectors23" name="sectors23" type="checkbox" value="Clothing, footwear and fashion" {% if sector23Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors23">Clothing, footwear and fashion</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Construction">
-							<label for="buyers">Construction</label>
+							<input id="sectors24" name="sectors24" type="checkbox" value="Construction" {% if sector24Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors24">Construction</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Education and training">
-							<label for="buyers">Education and training</label>
+							<input id="sectors25" name="sectors25" type="checkbox" value="Education and training" {% if sector25Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors25">Education and training</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Environment">
-							<label for="buyers">Environment</label>
+							<input id="sectors26" name="sectors26" type="checkbox" value="Environment" {% if sector26Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors26">Environment</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Food and drink">
-							<label for="buyers">Food and drink</label>
+							<input id="sectors27" name="sectors27" type="checkbox" value="Food and drink" {% if sector27Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors27">Food and drink</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Global sports infrastructure">
-							<label for="buyers">Global sports infrastructure</label>
+							<input id="sectors28" name="sectors28" type="checkbox" value="Global sports infrastructure" {% if sector28Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors28">Global sports infrastructure</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Household goods, furniture and furnishings">
-							<label for="buyers">Household goods, furniture and furnishings</label>
+							<input id="sectors29" name="sectors29" type="checkbox" value="Household goods, furniture and furnishings" {% if sector29Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors29">Household goods, furniture and furnishings</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Legal services">
-							<label for="buyers">Legal services</label>
+							<input id="sectors30" name="sectors30" type="checkbox" value="Legal services" {% if sector30Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors30">Legal services</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Mechanical electrical and process engineering">
-							<label for="buyers">Mechanical electrical and process engineering</label>
+							<input id="sectors31" name="sectors31" type="checkbox" value="Mechanical electrical and process engineering" {% if sector31Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors31">Mechanical electrical and process engineering</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Metals, minerals and materials">
-							<label for="buyers">Metals, minerals and materials</label>
+							<input id="sectors32" name="sectors32" type="checkbox" value="Metals, minerals and materials" {% if sector32Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors32">Metals, minerals and materials</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Oil and gas">
-							<label for="buyers">Oil and gas</label>
+							<input id="sectors33" name="sectors33" type="checkbox" value="Oil and gas" {% if sector33Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors33">Oil and gas</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Power">
-							<label for="buyers">Power</label>
+							<input id="sectors34" name="sectors34" type="checkbox" value="Power" {% if sector34Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors34">Power</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Renewable energy">
-							<label for="buyers">Renewable energy</label>
+							<input id="sectors35" name="sectors35" type="checkbox" value="Renewable energy"  {% if sector35Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors35">Renewable energy</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Security">
-							<label for="buyers">Security</label>
+							<input id="sectors36" name="sectors36" type="checkbox" value="Security"  {% if sector36Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors36">Security</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="buyers" name="sectors" type="checkbox" value="Textiles, interior textiles and carpets">
-							<label for="buyers">Textiles, interior textiles and carpets</label>
+							<input id="sectors37" name="sectors37" type="checkbox" value="Textiles, interior textiles and carpets"  {% if sector37Selected == true %} checked="checked" {% endif %}>
+							<label for="sectors37">Textiles, interior textiles and carpets</label>
 						</div>
 
 					</div>
 
 				</div>
 
-
-
-
-
-
 			</div>
 
 
 
 
-		  <!--  Summary of target audience    -->
-		  <div class="form-group" style="margin-top:20px" >
+		  <!--  EXORT EXPERINCE    -->
+		  <div class="form-group {% if experienceEmpty %} form-group-error {% endif %}" style="margin-top:20px" id="export-experience">
 			  <label class="form-label-bold" >
 				  What level of export experience is this event aimed at?
+				  {% if experienceEmpty %}
+					  <span class="error-message">
+						  Select export experience level
+					  </span>
+				  {% endif %}
 			  </label>
 			  <div class="form-date" style="margin-top:5px">
 				  <div class="multiple-choice" style="margin-bottom:10px">
@@ -340,11 +350,16 @@
 
 
 		  <!--  Summary of target audience  -->
-		  <div class="form-group" style="margin-top:0px; margin-bottom:20px; width:630px;">
-			  <label class="form-label-bold" for="summary-target-audience">
+		  <div class="form-group  {% if emptyTargetAudienceText %} form-group-error {% endif %}" style="margin-top:0px; margin-bottom:20px; width:630px;">
+			  <label class="form-label-bold" for="summary-target-audience" >
 				  Summarise who this event is for, including any eligibility criteria.
+				  {% if emptyTargetAudienceText %}
+					  <span class="error-message">
+						  Ener the summary
+					  </span>
+				  {% endif %}
 			  </label>
-			  <textarea class="form-control" name="summary-target-audience" id="summary-target-audience" rows="4" style="width: 100%;"></textarea>
+			  <textarea class="form-control {% if emptyTargetAudienceText %} form-control-error {% endif %}" name="summary-target-audience" id="summary-target-audience" rows="4" style="width: 100%;"></textarea>
 		  </div>
 
 
