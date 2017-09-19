@@ -1143,6 +1143,10 @@ router.get('/create-event/title-onwards', function (req, res)
 // DESCRIPTION PAGE ONWARDS BUTTON
 router.get('/create-event/description-onwards', function (req, res)
 {
+  var errorMissingmarketAnswer = false;
+  var marketsNoSelected = false;
+  var marketsYesSelected = false;
+
   var errorMissingDescription = false;
   var errorMissingBenefit = false;
   var benefitTwo = false;
@@ -1227,7 +1231,9 @@ router.get('/create-event/description-onwards', function (req, res)
 
 
   // SAVE THE AGENDA ON OFF
-  if(req.session.data['radio-agenda'] = "yes")
+  // console.log("THE AGENDA RADIO IS **** " + req.session.data['radio-agenda']);
+
+  if(req.session.data['radio-agenda'] == "yes")
   {
     agendaShowIs = true;
   }
@@ -1289,7 +1295,11 @@ router.get('/create-event/description-onwards', function (req, res)
     res.render('create-event/description',
         {
           'errorExists': true,
-          'errorMissingEventDescription': errorMissingDescription,
+
+          'errorMissingMarketSelection': errorMissingmarketAnswer,
+          'marketSelectedNo': marketsNoSelected,
+          'marketSelectedYes': marketsYesSelected,
+
 
           'errorMissingEventBenefit': errorMissingBenefit,
           'showBenefitTwo': benefitTwo,
@@ -1298,8 +1308,9 @@ router.get('/create-event/description-onwards', function (req, res)
           'showBenefitFive': benefitFive,
           'agendaSelected': agendaShowIs,
 
+          'agendaMisssing':errorMissingAgenda,
 
-          'agendaMisssing':errorMissingAgenda
+          'errorMissingEventDescription': errorMissingDescription
         }
     );
   }

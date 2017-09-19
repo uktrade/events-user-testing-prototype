@@ -35,12 +35,16 @@
 
 				<ul class="error-summary-list">
 
+					{% if errorMissingMarketSelection %}
+						<li><a href="#benefits-section">Missing market selection</a></li>
+					{% endif %}
+
 					{% if errorMissingEventBenefit %}
-						<li><a href="#benefits-section">Please enter benefits</a></li>
+						<li><a href="#benefits-section">Missing benefits</a></li>
 					{% endif %}
 
 					{% if errorMissingEventDescription %}
-					<li><a href="#description-section">Missing description</a></li>
+						<li><a href="#description-section">Missing description</a></li>
 					{% endif %}
 				</ul>
 
@@ -59,15 +63,22 @@
 	  <form action="/create-event/description-onwards" method="get" class="form">
 
 		  <!--  MARKETS  -->
-		  <div class="form-group">
+		  <div class="form-group {% if errorMissingMarketSelection %} form-group-error {% endif %}">
 			  <fieldset>
 				  <div  >
 					  <label class="form-label-bold" >
 						  Is this event related to export in any specific international markets?
+
+						  {% if errorMissingMarketSelection %}
+							  <span class="error-message">
+								  Select no or yes
+							  </span>
+						  {% endif %}
+
 					  </label>
 					  <div class="form-date" style="margin-top:5px">
 						  <div class="multiple-choice" style="margin-bottom:10px">
-							  <input id="radio-market-2" type="radio" name="radio-markets" value="no">
+							  <input id="radio-market-2" type="radio" name="radio-markets" value="no" {% if errorMissingMarketSelection %} form-group-error {% endif %}>
 							  <label for="radio-market-2">No, this is relevant to all markets</label>
 						  </div>
 						  <div class="multiple-choice" style="margin-bottom:10px" data-target="market-section">
@@ -189,6 +200,7 @@
 		  <!--   AGENDA   -->
 		  <div class="form-group" style="margin-top:30px">
 
+			  <!--  AGENDA RADIO -->
 			  <fieldset>
 				  <div style="" id="answer-types">
 
@@ -199,15 +211,15 @@
 						  <label class="form-label-bold">
 							  Does the event have an agenda?
 							  {% if errorAnswerTypeEmpty %}
-										  <span class="error-message">
-											  Select type of answer
-										  </span>
+								  <span class="error-message">
+									  Select type of answer
+								  </span>
 							  {% endif %}
 						  </label>
 
 						  <div class="form-date " style="margin-top:5px">
 							  <div class="multiple-choice">
-								  <input id="enter-text" type="radio" name="radio-agenda" value="enter-text" checked="checked">
+								  <input id="enter-text" type="radio" name="radio-agenda" value="no" checked="checked">
 								  <label for="enter-text">No</label>
 							  </div>
 							  <div class="multiple-choice" data-target="show-answers">
