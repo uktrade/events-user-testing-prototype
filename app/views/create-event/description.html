@@ -78,11 +78,11 @@
 					  </label>
 					  <div class="form-date" style="margin-top:5px">
 						  <div class="multiple-choice" style="margin-bottom:10px">
-							  <input id="radio-market-2" type="radio" name="radio-markets" value="no" {% if errorMissingMarketSelection %} form-group-error {% endif %}>
+							  <input id="radio-market-2" type="radio" name="radio-markets" value="no" {% if marketSelectedNo %} checked="checked" {% endif %}>
 							  <label for="radio-market-2">No, this is relevant to all markets</label>
 						  </div>
 						  <div class="multiple-choice" style="margin-bottom:10px" data-target="market-section">
-							  <input id="radio-market-1" type="radio" name="radio-markets" value="yes">
+							  <input id="radio-market-1" type="radio" name="radio-markets" value="yes" {% if marketSelectedYes %} checked="checked" {% endif %}>
 							  <label for="radio-market-1">Yes</label>
 						  </div>
 					  </div>
@@ -95,14 +95,13 @@
 					  <label class="form-label-bold" for="event-description" style="margin-bottom:6px;">
 						  Markets
 					  </label>
-					  <select class="form-control" id="location-select-dropdown">
-						  <option value="" disabled selected>
-							  Choose a location
-						  </option>
-						  {% for location in locations %}
-						      <option value="{{location}}">{{location}}</option>
-						  {% endfor %}
-					  </select>
+					  <div style="width:40%; margin-bottom:10px;">
+						  <select class="form-control" name="market-box" id="market-box" style="width:80%; margin-bottom:10px;" value="{{ data['market-box'] }}">
+							  <option id="market-box-option"></option>
+						  </select>
+					  </div>
+
+
 				  </div>
 			  </fieldset>
 		  </div>
@@ -235,20 +234,20 @@
 
 
 
-			  <fieldset class="form-group js-hidden panel panel-border-narrow" id="show-answers" style="margin-top:20px; margin-bottom:0px">
+			  <fieldset class="form-group js-hidden panel panel-border-narrow   {% if agendaMisssing1 %} form-group-error {% endif %}" id="show-answers" style="margin-top:20px; margin-bottom:0px">
 
 				  <!--   THE ANSWERS -->
-				  <div class="" style="margin-bottom:0px; margin-top:0px;" >
+				  <div class="" style="margin-bottom:0px; margin-top:0px;" id="agenda-section">
 
 					  {% if errorAnswersError %}
-					  	  <div class="form-group  form-group-error">
-					  {% endif %}
+					  <div class="form-group  form-group-error">
+						  {% endif %}
 
 						  <label class="form-label-bold">
 							  Agenda
-							  {% if errorAnswersError %}
+							  {% if agendaMisssing1 %}
 								  <span class="error-message">
-									  Error message about not providing enough (2 or more) answers go here.
+									  Enter two or more activities
 								  </span>
 							  {% endif %}
 						  </label>
@@ -267,7 +266,7 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-1" name="agenda-minutes-1" type="number"  value="{{ data['agenda-minutes-1'] }}">
 
-								  <input class="form-control" style="width:462px"
+								  <input class="form-control  {% if agendaMisssing1 %} form-control-error {% endif %}" style="width:462px"
 										 id="agenda-1" name="agenda-1" type="text"  value="{{ data['agenda-1'] }}">
 							  </div>
 							  <!-- Row two -->
@@ -282,22 +281,36 @@
 										 id="agenda-2" name="agenda-2" type="text"  value="{{ data['agenda-2'] }}">
 							  </div>
 
-							  <p id="agenda-3-add" style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;" onclick="show3()">Add another activtiy</p>
+
+							  <p id="agenda-3-add"
+								 {% if agendaShow3 == true %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;" {% endif %}
+								 onclick="show3()">Add another activtiy</p>
 							  <!-- Row three -->
-							  <div id="agenda-3-area"  style="display:none; margin-bottom: 15px;">
+							  <div id="agenda-3-area"
+								   {% if agendaShow3 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+								   >
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-3" name="agenda-hour-3" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-3'] }}">
 
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-3" name="agenda-minutes-3" type="number"  value="{{ data['agenda-minutes-3'] }}">
 
-								  <input class="form-control" style="width:462px"
+								  <input class="form-control " style="width:462px"
 										 id="agenda-3" name="agenda-3" type="text"  value="{{ data['agenda-3'] }}">
 							  </div>
 
-							  <p id="agenda-4-add" style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none" onclick="show4()">Add another activtiy</p>
+
+							  <p id="agenda-4-add"
+								 {% if agendaShow3 == true  and  agendaShow4 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;" {% endif %}
+								 onclick="show4()">Add another activtiy</p>
 							  <!-- Row three -->
-							  <div id="agenda-4-area"  style="display:none; margin-bottom: 15px;">
+							  <div id="agenda-4-area"
+								   {% if agendaShow4 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  	   >
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-4" name="agenda-hour-4" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-4'] }}">
 
@@ -309,9 +322,15 @@
 							  </div>
 
 
-							  <p id="agenda-5-add" style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none" onclick="show5()">Add another activtiy</p>
+							  <p id="agenda-5-add"
+								 {% if agendaShow4 == true  and  agendaShow5 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;" {% endif %}
+								 onclick="show5()">Add another activtiy</p>
 							  <!-- Row three -->
-							  <div id="agenda-5-area"  style="display:none; margin-bottom: 15px;">
+							  <div id="agenda-5-area"
+								   {% if agendaShow5 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  	   >
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-5" name="agenda-hour-5" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-5'] }}">
 
@@ -323,9 +342,15 @@
 							  </div>
 
 
-							  <p id="agenda-6-add" style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none" onclick="show6()">Add another activtiy</p>
+							  <p id="agenda-6-add"
+								 {% if agendaShow5 == true  and  agendaShow6 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;" {% endif %}
+								 onclick="show6()">Add another activtiy</p>
 							  <!-- Row three -->
-							  <div id="agenda-6-area"  style="display:none; margin-bottom: 15px;">
+							  <div id="agenda-6-area"
+								   {% if agendaShow6 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  	   >
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-6" name="agenda-hour-6" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-6'] }}">
 
@@ -341,8 +366,8 @@
 
 						  </div>
 
-					  {% if errorAnswersError %}
-					  	</div>
+						  {% if errorAnswersError %}
+					  </div>
 					  {% endif %}
 
 				  </div>
@@ -448,31 +473,59 @@
 		//document.getElementById('add-benefit-link-9').style.display = 'block';
 	}
 
+
+
 </script>
 
 
+<link rel="stylesheet" href="https://unpkg.com/accessible-typeahead@0.4.1/dist/styled.min.css">
+<style>
+	.typeahead__menu--inline {
+		max-height: none;
+		overflow-x: visible;
+	}
+</style>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/registers-picker-engine@0.0.2"></script>
+<script type="text/javascript" src="https://unpkg.com/accessible-typeahead@0.4.1"></script>
+<script type="text/javascript">
+	var dataFilePath = '/public/data/picker-data-4.json'
+	AccessibleTypeahead.enhanceSelectElement({
+		autoselect: true,
+		selectElement: document.getElementById('market-box'),
+		minLength: 2,
+		source: locationPickerSuggestions(dataFilePath)
+	})
 
+	AccessibleTypeahead.enhanceSelectElement({
+		autoselect: true,
+		selectElement: document.getElementById('market-box-2'),
+		minLength: 2,
+		source: locationPickerSuggestions(dataFilePath)
+	})
+
+	AccessibleTypeahead.enhanceSelectElement({
+		autoselect: true,
+		selectElement: document.getElementById('market-box-3'),
+		minLength: 2,
+		source: locationPickerSuggestions(dataFilePath)
+	})
+
+	AccessibleTypeahead.enhanceSelectElement({
+		autoselect: true,
+		selectElement: document.getElementById('market-box-4'),
+		minLength: 2,
+		source: locationPickerSuggestions(dataFilePath)
+	})
+
+	AccessibleTypeahead.enhanceSelectElement({
+		autoselect: true,
+		selectElement: document.getElementById('market-box-5'),
+		minLength: 2,
+		source: locationPickerSuggestions(dataFilePath)
+	})
+
+</script>
 
 {% endblock %}
 
-{% block body_end %}
-  <link rel="stylesheet" href="https://unpkg.com/accessible-typeahead@0.4.1/dist/styled.min.css">
-  <style>
-    .typeahead__menu--inline {
-      max-height: none;
-      overflow-x: visible;
-    }
-  </style>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-  <script type="text/javascript" src="https://unpkg.com/registers-picker-engine@0.0.2"></script>
-  <script type="text/javascript" src="https://unpkg.com/accessible-typeahead@0.4.1"></script>
-  <script type="text/javascript">
-    var dataFilePath = '/public/data/picker-data-4.json'
-    AccessibleTypeahead.enhanceSelectElement({
-      autoselect: true,
-      selectElement: document.getElementById('location-select-dropdown'),
-      minLength: 2,
-      source: locationPickerSuggestions(dataFilePath)
-    })
-  </script>
-{% endblock %}

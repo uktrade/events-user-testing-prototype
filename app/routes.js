@@ -1155,6 +1155,10 @@ router.get('/create-event/description-onwards', function (req, res)
   var benefitFive = false;
 
   var agendaShowIs = false;
+  var showAgenda3 = false;
+  var showAgenda4 = false;
+  var showAgenda5 = false;
+  var showAgenda6 = false;
 
   var errorMissingAgenda1 = false;
 
@@ -1175,6 +1179,8 @@ router.get('/create-event/description-onwards', function (req, res)
   else if(req.session.data['radio-markets'] == "yes")
   {
     marketsYesSelected = true;
+
+    console.log("The first market is  --**  " + req.session.data['market-box']);
 
     if(req.session.data['market-box'] != undefined)
     {
@@ -1255,17 +1261,24 @@ router.get('/create-event/description-onwards', function (req, res)
   }
   if(req.session.data['agenda-3'] != "")
   {
+    showAgenda3 = true;
     req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-3'] + ":" + req.session.data['agenda-minutes-3'] + "  " + " " + req.session.data['agenda-3'];
   }
   if(req.session.data['agenda-4'] != "")
   {
+    showAgenda4 = true;
     req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-4'] + ":" + req.session.data['agenda-minutes-4'] + "  " + " " + req.session.data['agenda-4'];
   }
   if(req.session.data['agenda-5'] != "")
   {
+    showAgenda5 = true;
     req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-5'] + ":" + req.session.data['agenda-minutes-5'] + "  " + " " + req.session.data['agenda-5'];
   }
-
+  if(req.session.data['agenda-6'] != "")
+  {
+    showAgenda6 = true;
+    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-6'] + ":" + req.session.data['agenda-minutes-6'] + "  " + " " + req.session.data['agenda-6'];
+  }
 
 
 
@@ -1308,7 +1321,11 @@ router.get('/create-event/description-onwards', function (req, res)
           'showBenefitFive': benefitFive,
           'agendaSelected': agendaShowIs,
 
-          'agendaMisssing1':errorMissingAgenda1,
+          'agendaMisssing1': errorMissingAgenda1,
+          'agendaShow3':  showAgenda3,
+          'agendaShow4':  showAgenda4,
+          'agendaShow5':  showAgenda5,
+          'agendaShow6':  showAgenda6,
 
           'errorMissingEventDescription': errorMissingDescription
         }

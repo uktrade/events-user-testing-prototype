@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="112e8f47-37cb-4742-9f5d-22074abd4dea" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/create-event/description-sdfsdfybjtbw.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/events-user-testing-prototype.iml" afterPath="$PROJECT_DIR$/.idea/events-user-testing-prototype.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.js" afterPath="$PROJECT_DIR$/app/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/description.html" afterPath="$PROJECT_DIR$/app/views/create-event/description.html" />
     </list>
     <ignored path="events-user-testing-prototype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.37037">
-              <caret line="1310" column="26" selection-start-line="1310" selection-start-column="11" selection-end-line="1310" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.47699213">
+              <caret line="1316" column="58" selection-start-line="1316" selection-start-column="58" selection-end-line="1316" selection-end-column="58" />
               <folding>
                 <element signature="e#2203#2278#0" expanded="false" />
                 <element signature="e#4023#4434#0" expanded="false" />
@@ -42,37 +42,37 @@
                 <element signature="e#29002#30066#0" expanded="false" />
                 <element signature="e#30160#31266#0" expanded="false" />
                 <element signature="e#31373#36891#0" expanded="false" />
-                <element signature="e#42028#46243#0" expanded="false" />
-                <element signature="e#46338#48111#0" expanded="false" />
-                <element signature="e#48181#48972#0" expanded="false" />
-                <element signature="e#49041#49832#0" expanded="false" />
-                <element signature="e#49928#50290#0" expanded="false" />
-                <element signature="e#50358#52179#0" expanded="false" />
-                <element signature="e#52248#53476#0" expanded="false" />
-                <element signature="e#53554#53718#0" expanded="false" />
-                <element signature="e#53785#53967#0" expanded="false" />
-                <element signature="e#54066#63185#0" expanded="false" />
-                <element signature="e#63258#63434#0" expanded="false" />
-                <element signature="e#63512#63566#0" expanded="false" />
-                <element signature="e#63663#66721#0" expanded="false" />
-                <element signature="e#66889#67162#0" expanded="false" />
-                <element signature="e#67281#71315#0" expanded="false" />
-                <element signature="e#69209#69357#0" expanded="false" />
-                <element signature="e#69367#69515#0" expanded="false" />
-                <element signature="e#71434#75570#0" expanded="false" />
-                <element signature="e#80032#80074#0" expanded="false" />
-                <element signature="e#80287#80371#0" expanded="false" />
-                <element signature="e#80435#80520#0" expanded="false" />
-                <element signature="e#80590#80681#0" expanded="false" />
-                <element signature="e#80746#80832#0" expanded="false" />
-                <element signature="e#80900#80987#0" expanded="false" />
-                <element signature="e#81055#81144#0" expanded="false" />
-                <element signature="e#81223#81315#0" expanded="false" />
-                <element signature="e#81390#81487#0" expanded="false" />
-                <element signature="e#81555#81644#0" expanded="false" />
-                <element signature="e#81725#82916#0" expanded="false" />
-                <element signature="e#82996#83670#0" expanded="false" />
-                <element signature="e#83726#83775#0" expanded="false" />
+                <element signature="e#42712#46927#0" expanded="false" />
+                <element signature="e#47022#48795#0" expanded="false" />
+                <element signature="e#48865#49656#0" expanded="false" />
+                <element signature="e#49725#50516#0" expanded="false" />
+                <element signature="e#50612#50974#0" expanded="false" />
+                <element signature="e#51042#52863#0" expanded="false" />
+                <element signature="e#52932#54160#0" expanded="false" />
+                <element signature="e#54238#54402#0" expanded="false" />
+                <element signature="e#54469#54651#0" expanded="false" />
+                <element signature="e#54750#63869#0" expanded="false" />
+                <element signature="e#63942#64118#0" expanded="false" />
+                <element signature="e#64196#64250#0" expanded="false" />
+                <element signature="e#64347#67405#0" expanded="false" />
+                <element signature="e#67573#67846#0" expanded="false" />
+                <element signature="e#67965#71999#0" expanded="false" />
+                <element signature="e#69893#70041#0" expanded="false" />
+                <element signature="e#70051#70199#0" expanded="false" />
+                <element signature="e#72118#76254#0" expanded="false" />
+                <element signature="e#80716#80758#0" expanded="false" />
+                <element signature="e#80971#81055#0" expanded="false" />
+                <element signature="e#81119#81204#0" expanded="false" />
+                <element signature="e#81274#81365#0" expanded="false" />
+                <element signature="e#81430#81516#0" expanded="false" />
+                <element signature="e#81584#81671#0" expanded="false" />
+                <element signature="e#81739#81828#0" expanded="false" />
+                <element signature="e#81907#81999#0" expanded="false" />
+                <element signature="e#82074#82171#0" expanded="false" />
+                <element signature="e#82239#82328#0" expanded="false" />
+                <element signature="e#82409#83600#0" expanded="false" />
+                <element signature="e#83680#84354#0" expanded="false" />
+                <element signature="e#84410#84459#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -81,26 +81,35 @@
       <file leaf-file-name="description.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-55.615383">
-              <caret line="251" column="54" selection-start-line="0" selection-start-column="0" selection-end-line="464" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.9636364">
+              <caret line="341" column="36" selection-start-line="341" selection-start-column="36" selection-end-line="341" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#2;n#div#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#p#0;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#div#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#p#1;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#p#2;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#2;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#p#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#2;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#label#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
               </folding>
@@ -108,20 +117,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="description-sdfsdfybjtbw.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/create-event/description-sdfsdfybjtbw.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="title.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/title.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.923077">
+            <state vertical-scroll-proportion="-0.65384614">
               <caret line="86" column="61" selection-start-line="86" selection-start-column="61" selection-end-line="86" selection-end-column="119" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -149,7 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/govuk_modules/govuk_template/layouts/govuk_template.html" />
         <option value="$PROJECT_DIR$/lib/govuk_template.html" />
         <option value="$PROJECT_DIR$/lib/govuk_template_unbranded.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/address.html" />
@@ -198,6 +196,7 @@
         <option value="$PROJECT_DIR$/app/views/create-event/attendees.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/title.html" />
         <option value="$PROJECT_DIR$/app/views/create-event/summary.html" />
+        <option value="$PROJECT_DIR$/app/views/create-event/description-sdfsdfybjtbw.html" />
         <option value="$PROJECT_DIR$/app/routes.js" />
         <option value="$PROJECT_DIR$/app/views/create-event/description.html" />
       </list>
@@ -247,7 +246,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -428,8 +426,53 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events-user-testing-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -555,11 +598,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2066</line>
+          <line>2083</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1816</line>
+          <line>1833</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -569,12 +612,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2196</line>
+          <line>2213</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2654</line>
+          <line>2671</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -584,22 +627,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1683</line>
+          <line>1700</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2685</line>
+          <line>2702</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>2092</line>
+          <line>2109</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1804</line>
+          <line>1821</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -619,7 +662,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/routes.js</url>
-          <line>1795</line>
+          <line>1812</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
@@ -628,13 +671,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/views/examples/check-your-answers-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="80.11539">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/views/examples/confirmation-page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -945,82 +981,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/additional-questions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.019058296">
-          <caret line="241" column="74" selection-start-line="241" selection-start-column="74" selection-end-line="241" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/summary.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
           <caret line="195" column="92" selection-start-line="195" selection-start-column="92" selection-end-line="195" selection-end-column="92" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#dt#0;n#div#0;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#dd#0;n#div#10;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#dd#0;n#div#11;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#dd#0;n#div#12;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#dt#0;n#div#0;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#dd#0;n#div#10;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#dd#0;n#div#11;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#dd#0;n#div#12;n#dl#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/data/picker-data-4.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.37037">
-          <caret line="1310" column="26" selection-start-line="1310" selection-start-column="11" selection-end-line="1310" selection-end-column="26" />
-          <folding>
-            <element signature="e#2203#2278#0" expanded="false" />
-            <element signature="e#4023#4434#0" expanded="false" />
-            <element signature="e#4492#4524#0" expanded="false" />
-            <element signature="e#4573#10556#0" expanded="false" />
-            <element signature="e#10605#16589#0" expanded="false" />
-            <element signature="e#16638#22632#0" expanded="false" />
-            <element signature="e#22681#28675#0" expanded="false" />
-            <element signature="e#28756#28893#0" expanded="false" />
-            <element signature="e#29002#30066#0" expanded="false" />
-            <element signature="e#30160#31266#0" expanded="false" />
-            <element signature="e#31373#36891#0" expanded="false" />
-            <element signature="e#42028#46243#0" expanded="false" />
-            <element signature="e#46338#48111#0" expanded="false" />
-            <element signature="e#48181#48972#0" expanded="false" />
-            <element signature="e#49041#49832#0" expanded="false" />
-            <element signature="e#49928#50290#0" expanded="false" />
-            <element signature="e#50358#52179#0" expanded="false" />
-            <element signature="e#52248#53476#0" expanded="false" />
-            <element signature="e#53554#53718#0" expanded="false" />
-            <element signature="e#53785#53967#0" expanded="false" />
-            <element signature="e#54066#63185#0" expanded="false" />
-            <element signature="e#63258#63434#0" expanded="false" />
-            <element signature="e#63512#63566#0" expanded="false" />
-            <element signature="e#63663#66721#0" expanded="false" />
-            <element signature="e#66889#67162#0" expanded="false" />
-            <element signature="e#67281#71315#0" expanded="false" />
-            <element signature="e#69209#69357#0" expanded="false" />
-            <element signature="e#69367#69515#0" expanded="false" />
-            <element signature="e#71434#75570#0" expanded="false" />
-            <element signature="e#80032#80074#0" expanded="false" />
-            <element signature="e#80287#80371#0" expanded="false" />
-            <element signature="e#80435#80520#0" expanded="false" />
-            <element signature="e#80590#80681#0" expanded="false" />
-            <element signature="e#80746#80832#0" expanded="false" />
-            <element signature="e#80900#80987#0" expanded="false" />
-            <element signature="e#81055#81144#0" expanded="false" />
-            <element signature="e#81223#81315#0" expanded="false" />
-            <element signature="e#81390#81487#0" expanded="false" />
-            <element signature="e#81555#81644#0" expanded="false" />
-            <element signature="e#81725#82916#0" expanded="false" />
-            <element signature="e#82996#83670#0" expanded="false" />
-            <element signature="e#83726#83775#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-1.029148">
+          <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/title.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.923077">
+        <state vertical-scroll-proportion="-0.65384614">
           <caret line="86" column="61" selection-start-line="86" selection-start-column="61" selection-end-line="86" selection-end-column="119" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -1039,39 +1025,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/additional-questions.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-55.615383">
-          <caret line="251" column="54" selection-start-line="0" selection-start-column="0" selection-end-line="464" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.020179372">
+          <caret line="241" column="74" selection-start-line="241" selection-start-column="74" selection-end-line="241" selection-end-column="74" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#div#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/description-sdfsdfybjtbw.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.12331839">
+          <caret line="266" column="0" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.9636364">
+          <caret line="341" column="36" selection-start-line="341" selection-start-column="36" selection-end-line="341" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#p#0;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#div#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#p#1;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#div#4;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#p#2;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#div#5;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#p#3;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#div#6;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47699213">
+          <caret line="1316" column="58" selection-start-line="1316" selection-start-column="58" selection-end-line="1316" selection-end-column="58" />
+          <folding>
+            <element signature="e#2203#2278#0" expanded="false" />
+            <element signature="e#4023#4434#0" expanded="false" />
+            <element signature="e#4492#4524#0" expanded="false" />
+            <element signature="e#4573#10556#0" expanded="false" />
+            <element signature="e#10605#16589#0" expanded="false" />
+            <element signature="e#16638#22632#0" expanded="false" />
+            <element signature="e#22681#28675#0" expanded="false" />
+            <element signature="e#28756#28893#0" expanded="false" />
+            <element signature="e#29002#30066#0" expanded="false" />
+            <element signature="e#30160#31266#0" expanded="false" />
+            <element signature="e#31373#36891#0" expanded="false" />
+            <element signature="e#42712#46927#0" expanded="false" />
+            <element signature="e#47022#48795#0" expanded="false" />
+            <element signature="e#48865#49656#0" expanded="false" />
+            <element signature="e#49725#50516#0" expanded="false" />
+            <element signature="e#50612#50974#0" expanded="false" />
+            <element signature="e#51042#52863#0" expanded="false" />
+            <element signature="e#52932#54160#0" expanded="false" />
+            <element signature="e#54238#54402#0" expanded="false" />
+            <element signature="e#54469#54651#0" expanded="false" />
+            <element signature="e#54750#63869#0" expanded="false" />
+            <element signature="e#63942#64118#0" expanded="false" />
+            <element signature="e#64196#64250#0" expanded="false" />
+            <element signature="e#64347#67405#0" expanded="false" />
+            <element signature="e#67573#67846#0" expanded="false" />
+            <element signature="e#67965#71999#0" expanded="false" />
+            <element signature="e#69893#70041#0" expanded="false" />
+            <element signature="e#70051#70199#0" expanded="false" />
+            <element signature="e#72118#76254#0" expanded="false" />
+            <element signature="e#80716#80758#0" expanded="false" />
+            <element signature="e#80971#81055#0" expanded="false" />
+            <element signature="e#81119#81204#0" expanded="false" />
+            <element signature="e#81274#81365#0" expanded="false" />
+            <element signature="e#81430#81516#0" expanded="false" />
+            <element signature="e#81584#81671#0" expanded="false" />
+            <element signature="e#81739#81828#0" expanded="false" />
+            <element signature="e#81907#81999#0" expanded="false" />
+            <element signature="e#82074#82171#0" expanded="false" />
+            <element signature="e#82239#82328#0" expanded="false" />
+            <element signature="e#82409#83600#0" expanded="false" />
+            <element signature="e#83680#84354#0" expanded="false" />
+            <element signature="e#84410#84459#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
