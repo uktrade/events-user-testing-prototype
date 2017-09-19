@@ -172,11 +172,6 @@ router.get('/homepage-prelude', function (req, res)
 
 
 
-
-
-
-
-
 router.get('/scenario-1', function (req, res)
 {
 
@@ -843,14 +838,6 @@ router.get('/scenario-5', function (req, res)
 
 
 
-
-
-
-
-
-
-
-
 router.get('/scenario-previous-questions', function (req, res)
 {
   req.session.previousQuestions = [['Do you have an ITA?', 'select-one', 'yes', 'no']];
@@ -1345,6 +1332,7 @@ router.get('/create-event/date-onwards', function (req, res)
   var errorDayFound = false;
   var errorMonthFound = false;
   var errorYearFound = false;
+  var dateInThePast = false;
 
   var errorStartHour = false;
   var errorStartMinutes = false;
@@ -1392,6 +1380,22 @@ router.get('/create-event/date-onwards', function (req, res)
       errorYearFound = true;
     }
   }
+
+
+  // CHECK IF DATE IS IN THE PAST
+  var currentDate = new Date();
+  var enteredDate = new Date();
+  enteredDate.setFullYear(req.session.data['event-year'], req.session.data['event-month']-1, req.session.data['event-day']);
+
+  console.log("THE CURRENT DTE TIME IS " + currentDate);
+  console.log("THE ENTERED DATE TIME IS " + enteredDate);
+
+  if((enteredDate < currentDate) == -1)
+  {
+    dateInThePast = true;
+  }
+
+
 
 
 
@@ -1472,7 +1476,7 @@ router.get('/create-event/date-onwards', function (req, res)
 
 
   // no errors
-  if((errorDayFound || errorMonthFound || errorYearFound  || errorStartHour || errorStartMinutes || errorFinishHour || errorFinishMinutes) == false)
+  if((errorDayFound || errorMonthFound || errorYearFound  || errorStartHour || errorStartMinutes || errorFinishHour || errorFinishMinutes || dateInThePast) == false)
   {
     if(req.session.changingFromSummary == true)
     {
@@ -1494,6 +1498,7 @@ router.get('/create-event/date-onwards', function (req, res)
           'errorDayFound': errorDayFound,
           'errorMonthFound': errorMonthFound,
           'errorYearFound': errorYearFound,
+          'errorDateInThePast': dateInThePast,
 
           'errorOnStartTime': (errorStartHour || errorStartMinutes),
           'errorOnFinishTime': (errorFinishHour || errorFinishMinutes),

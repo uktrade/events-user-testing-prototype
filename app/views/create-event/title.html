@@ -97,40 +97,32 @@
 
 
 		  <!--  Sector  -->
-		  <div class="form-group" id="sector-area" style="margin-bottom:10px;" >
+		  <div class="form-group {% if errorMissingSector %} form-group-error  {% endif %} " id="sector-area" style="margin-bottom:10px;" >
 
-			  {% if errorMissingSector %}
-			  	<div class="form-group-error">
-			  {% endif %}
+			  <label class="form-label-bold" >
+				  Is this event aimed at any specific sectors?
 
-				  <label class="form-label-bold" >
-					  Is this event aimed at any specific sectors?
+				  {% if errorMissingSector %}
+					  <span class="error-message">
+						  Please enter a sector
+					  </span>
+				  {% endif %}
+			  </label>
 
-					  {% if errorMissingSector %}
-						  <span class="error-message">
-							  Please enter a sector
-						  </span>
-					  {% endif %}
-				  </label>
+			  <div style="margin-top:5px;">
 
-				  <div style="margin-top:5px;">
-
-					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-inline-2" type="radio" name="radio-sector" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
-						  <label for="radio-inline-2">No, this is relevant to all sectors</label>
-					  </div>
-
-					  <div class="multiple-choice" style="margin-bottom:10px" data-target="sector-section">
-						  <input id="radio-inline-1" type="radio" name="radio-sector" value="yes"
-								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
-						  <label for="radio-inline-1">Yes</label>
-					  </div>
-
+				  <div class="multiple-choice" style="margin-bottom:10px">
+					  <input id="radio-inline-2" type="radio" name="radio-sector" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
+					  <label for="radio-inline-2">No, this is relevant to all sectors</label>
 				  </div>
 
-			  {% if errorMissingSector %}
-				</div>
-			  {% endif %}
+				  <div class="multiple-choice" style="margin-bottom:10px" data-target="sector-section">
+					  <input id="radio-inline-1" type="radio" name="radio-sector" value="yes"
+							 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+					  <label for="radio-inline-1">Yes</label>
+				  </div>
+
+			  </div>
 
 		  </div>
 
