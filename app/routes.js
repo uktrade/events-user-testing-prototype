@@ -1156,7 +1156,7 @@ router.get('/create-event/description-onwards', function (req, res)
 
   var agendaShowIs = false;
 
-  var errorMissingAgenda = false;
+  var errorMissingAgenda1 = false;
 
 
   console.log(" the radio for markets is --*/*/*/  " + req.session.data['radio-markets']);
@@ -1242,12 +1242,13 @@ router.get('/create-event/description-onwards', function (req, res)
 
   if(req.session.data['agenda-1'] == "")
   {
-    errorMissingAgenda = true;
+    errorMissingAgenda1 = true;
   }
   else if(req.session.data['agenda-1'] != "")
   {
     req.session.data['agenda'] = req.session.data['agenda-hour-1'] + ":" + req.session.data['agenda-minutes-1'] + "  " + " " + req.session.data['agenda-1'];
   }
+
   if(req.session.data['agenda-2'] != "")
   {
     req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-2'] + ":" + req.session.data['agenda-minutes-2'] + "  " + " " + req.session.data['agenda-2'];
@@ -1300,7 +1301,6 @@ router.get('/create-event/description-onwards', function (req, res)
           'marketSelectedNo': marketsNoSelected,
           'marketSelectedYes': marketsYesSelected,
 
-
           'errorMissingEventBenefit': errorMissingBenefit,
           'showBenefitTwo': benefitTwo,
           'showBenefitThree': benefitThree,
@@ -1308,7 +1308,7 @@ router.get('/create-event/description-onwards', function (req, res)
           'showBenefitFive': benefitFive,
           'agendaSelected': agendaShowIs,
 
-          'agendaMisssing':errorMissingAgenda,
+          'agendaMisssing1':errorMissingAgenda1,
 
           'errorMissingEventDescription': errorMissingDescription
         }
