@@ -107,9 +107,6 @@
 			  <legend class="form-label-bold" style="margin-bottom:10px;">
 				  What specific benefits or outcomes will attendees get from this event?
 				  <span class="form-hint" style="margin-bottom: 0px; margin-top:3px;">For example, Meet with buyers</span>
-
-
-
 			  </legend>
 
 
@@ -148,10 +145,9 @@
 
 
 			  <p id="add-benefit-link-5"
-				 {% if showBenefitTwo == false %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% else %}
-				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% endif %}
+				 {% if showBenefitTwo == true %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block; display: none;"  {% else %}
+				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px;"  {% endif %}
 				 onclick="showbenefit5()">Add a benefit</p>
-
 
 			  <div id="benefit-section-5"   {% if showBenefitTwo == true %} style="margin-top:10px;" {% else %} style="margin-top:10px; display: none" {% endif %}>
 				  <input type="text" class="form-control" id="benefit-input-1" name="benefit-input-1" value="{{ data['benefit-input-1'] }}" style="width: 50%; display:inline;">
