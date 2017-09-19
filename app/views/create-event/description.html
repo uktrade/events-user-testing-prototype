@@ -58,7 +58,7 @@
 
 
 	  <h1 class="heading-large" style="margin-top:15px; margin-bottom:30px;">
-		  Event details and description
+		  Event agenda and outcomes
       </h1>
 
 
@@ -71,7 +71,7 @@
 			  <fieldset>
 				  <div  >
 					  <label class="form-label-bold" >
-						  Is this event related to export in any specific international markets?
+						  Is this event for people interested in any specific international markets?
 
 						  {% if errorMissingMarketSelection %}
 							  <span class="error-message">
@@ -254,10 +254,31 @@
 
 		  <!--   BENEFITS   -->
 		  <div class="form-group {% if errorMissingEventBenefit %} form-group-error {% endif %}" style="margin-bottom:10px;" id="benefits-section" >
-			  <legend class="form-label-bold" style="margin-bottom:10px;">
-				  What specific benefits or outcomes will attendees get from this event?
-				  <span class="form-hint" style="margin-bottom: 0px; margin-top:3px;">For example, Meet with buyers</span>
+			  <legend class="form-label-bold" style="margin-bottom:0px;">
+				  Why attend this event?
+				  <!-- <span class="form-hint" style="margin-bottom: 0px; margin-top:3px;">For example, Meet with buyers</span>  -->
 			  </legend>
+
+
+			  <div>
+				  <details role="group" open="" style="width:650px; margin-bottom:10px;">
+					  <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">Examples and guidance</span></summary>
+					  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
+						  <p>
+							  Listing your event's outcomes and benefits will help visitors to understand why they should register. Add your own unique benefits or alternatively, select any of the default options.
+						  </p>
+
+						  <p style="margin-bottom:5px;">Examples:</p>
+						  <ul class="list list-bullet">
+							  <li>Learn how to set up and manage multiple e-commerce platforms.</li>
+							  <li>Get direct access to sellers, including publishers, librarians and teachers.</li>
+							  <li>Free Wifi, meeting pods, and refreshments provided.</li>
+						  </ul>
+
+					  </div>
+				  </details>
+			  </div>
+
 
 
 
@@ -314,8 +335,8 @@
 			  </div>
 
 			  <p id="add-benefit-link-7"
-				 {% if showBenefitFour == false %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% else %}
-				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% endif %}
+				 {% if showBenefitFour == true %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% else %}
+				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% endif %}
 				 onclick="showbenefit7()">Add a benefit</p>
 
 			  <div id="benefit-section-7"  {% if showBenefitFour == true %} style="margin-top:10px;" {% else %} style="margin-top:10px; display: none" {% endif %}>
@@ -507,12 +528,10 @@
 							  </div>
 
 
-
-
 						  </div>
 
-						  {% if errorAnswersError %}
-					  </div>
+					  {% if errorAnswersError %}
+					  	</div>
 					  {% endif %}
 
 				  </div>
@@ -527,21 +546,24 @@
 
 
 		  <!--  Detailed event description  -->
-		  <div class="form-group {% if errorMissingEventDescription %} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:20px; width:650px;" id="description-section">
+		  <div class="form-group {% if errorMissingEventDescription %} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:0px; width:800px;" id="description-section">
 			  <div>
 				  <label class="form-label-bold" for="event-description" style="float:left; margin-top:4px;">
-					  Detailed event description
+					  Further details and background
+					  <span class="form-hint" style="margin-bottom: 5px; margin-top:3px;">For example, North West-based SMEs looking to do business with South East Asian buyers.</span>
 
 					  {% if errorMissingEventDescription %}
 						  <span class="error-message">
 							  Please enter a description
 						  </span>
 					  {% endif %}
+
 				  </label>
-				  <img  src="/public/images/editicons.png" style="width:104px;height:36px; float: right; margin-bottom:4px">
+
 			  </div>
 
-			  <textarea class="form-control {% if errorMissingEventDescription %} form-control-error {% endif %}" name="event-description" id="event-description" rows="12" style="width: 100%;"></textarea>
+			  <textarea class="form-control {% if errorMissingEventDescription %} form-control-error {% endif %}" name="event-description" id="event-description" rows="12" style="width: 80%;"></textarea>
+			  <img  src="/public/images/editicons.png" style="width:111px;height:36px; float: right; margin-top:5px; margin-right:160px;">
 		  </div>
 
 

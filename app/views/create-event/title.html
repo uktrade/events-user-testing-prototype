@@ -67,6 +67,19 @@
 
 	  <form action="/create-event/title-onwards" method="get" class="form">
 
+		  <p>These fields will be displayed at the top of your event webpage.</p>
+
+		  <!--
+		  <details role="group" open="">
+			  <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">More details</span></summary>
+			  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+				  <p>
+					  This structure is designed to optimise readability and help visitors to quickly decide if this event is relevant to them.
+				  </p>
+			  </div>
+		  </details>
+
+		  -->
 
 			  <div id="title-section" class="form-group" style="margin-top:10px; margin-bottom:35px;  width:630px;">
 
@@ -85,7 +98,7 @@
 					  </label>
 
 					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-							 id="event-title" name="event-title" value="{{ data['event-title'] }}" style="width: 100%">
+							 id="event-title" name="event-title" value="{{ data['event-title'] }}" style="width: 90%">
 
 				  {% if errorMissingTitle %}
 			  		</div>
@@ -312,7 +325,7 @@
 		  <!--  EXORT EXPERINCE    -->
 		  <div class="form-group {% if experienceEmpty %} form-group-error {% endif %}" style="margin-top:20px" id="export-experience">
 			  <label class="form-label-bold" >
-				  What level of export experience is this event aimed at?
+				  Is this event aimed at a specific level of export experience?
 				  {% if experienceEmpty %}
 					  <span class="error-message">
 						  Select export experience level

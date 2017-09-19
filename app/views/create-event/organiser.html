@@ -54,6 +54,8 @@
         Organiser contact details
       </h1>
 
+		<p>This information will appear on your event webpage.</p>
+
 
 	  <form action="/create-event/organiser-onwards" method="get" class="form">
 
@@ -93,7 +95,7 @@
 				  {% endif %}
 
 					  <label class="form-label-bold" for="contact-email">
-						  Email address (optional)
+						  Email address
 						  {% if errorInvalidEmail %}
 							  <span class="error-message">
 								  Please enter an email address
@@ -121,7 +123,7 @@
 			      {% endif %}
 
 					  <label class="form-label-bold" for="contact-phone">
-						  Phone number (optional)
+						  Phone number
 						  {% if errorInvalidPhone %}
 							  <span class="error-message">
 								  Please enter a clear and descriptive title for your event
