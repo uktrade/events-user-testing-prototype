@@ -1133,6 +1133,16 @@ router.get('/create-event/description-onwards', function (req, res)
   var errorMissingmarketAnswer = false;
   var marketsNoSelected = false;
   var marketsYesSelected = false;
+  var marketEntryMissing = false;
+  var market2 = false;
+  var market3 = false;
+  var market4 = false;
+  var market5 = false;
+  var market6 = false;
+  var market7 = false;
+  var market8 = false;
+  var market9 = false;
+  var market10 = false;
 
   var errorMissingDescription = false;
   var errorMissingBenefit = false;
@@ -1141,7 +1151,9 @@ router.get('/create-event/description-onwards', function (req, res)
   var benefitFour = false;
   var benefitFive = false;
 
+  var agendYesNoMissing = false;
   var agendaShowIs = false;
+  var agendaShowNo = false;
   var showAgenda3 = false;
   var showAgenda4 = false;
   var showAgenda5 = false;
@@ -1169,17 +1181,58 @@ router.get('/create-event/description-onwards', function (req, res)
 
     console.log("The first market is  --**  " + req.session.data['market-box']);
 
-    if(req.session.data['market-box'] != undefined)
+    if(req.session.data['market-box-1'] != undefined)
     {
-      req.session.data['markets'] = req.session.data['market-box'];
+      req.session.data['markets'] = req.session.data['market-box-1'];
     }
-    if(req.session.data['market-box-2'] != undefined)
+    else
     {
-      req.session.data['markets'] = req.session.data['markets'] + "\n" +  req.session.data['market-box-2'];
+      marketEntryMissing = true;
     }
-    if(req.session.data['market-box-3'] != undefined)
+    if(req.session.data['market-box-2'] != undefined  &&  req.session.data['market-box-2'] != "")
     {
+      market2 = true;
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-2'];
+    }
+    if(req.session.data['market-box-3'] != undefined  &&  req.session.data['market-box-3'] != "")
+    {
+      market3 = true;
       req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-3'];
+    }
+    if(req.session.data['market-box-4'] != undefined  &&  req.session.data['market-box-4'] != "")
+    {
+      market4 = true;
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-4'];
+    }
+    if(req.session.data['market-box-5'] != undefined  &&  req.session.data['market-box-5'] != "")
+    {
+      market5 = true;
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-5'];
+    }
+    if(req.session.data['market-box-6'] != undefined  &&  req.session.data['market-box-6'] != "")
+    {
+      market6 = true;
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-6'];
+    }
+    if(req.session.data['market-box-7'] != undefined  &&  req.session.data['market-box-7'] != "")
+    {
+      market7 = true;
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-7'];
+    }
+    if(req.session.data['market-box-8'] != undefined  &&  req.session.data['market-box-8'] != "")
+    {
+      market8 = true;
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-8'];
+    }
+    if(req.session.data['market-box-9'] != undefined  &&  req.session.data['market-box-9'] != "")
+    {
+      market9 = true;
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-9'];
+    }
+    if(req.session.data['market-box-10'] != undefined  &&  req.session.data['market-box-10'] != "")
+    {
+      market10 = true;
+      req.session.data['markets'] = req.session.data['markets'] + "\n" + req.session.data['market-box-10'];
     }
   }
 
@@ -1225,47 +1278,64 @@ router.get('/create-event/description-onwards', function (req, res)
 
   // SAVE THE AGENDA ON OFF
   // console.log("THE AGENDA RADIO IS **** " + req.session.data['radio-agenda']);
-
-  if(req.session.data['radio-agenda'] == "yes")
-  {
-    agendaShowIs = true;
-  }
-  // save agenda data
+  console.log("THE AGENDA IS ---**-*-   " + req.session.data['radio-agenda']);
   req.session.data['agenda'] == ""
 
-  if(req.session.data['agenda-1'] == "")
+  if(req.session.data['radio-agenda'] == undefined   ||  req.session.data['radio-agenda'] == ""  )
   {
-    errorMissingAgenda1 = true;
+    agendYesNoMissing = true;
   }
-  else if(req.session.data['agenda-1'] != "")
+  else if(req.session.data['radio-agenda'] == "no")
   {
-    req.session.data['agenda'] = req.session.data['agenda-hour-1'] + ":" + req.session.data['agenda-minutes-1'] + "  " + " " + req.session.data['agenda-1'];
+    agendaShowNo = true;
+    console.log("THE AGENDA IS NO");
+    req.session.data['agenda'] = "No agenda will be shown";
+  }
+  else if(req.session.data['radio-agenda'] == "yes")
+  {
+    agendaShowIs = true;
+    // save agenda data
+
+    if(req.session.data['agenda-1'] == "")
+    {
+      errorMissingAgenda1 = true;
+    }
+    else if(req.session.data['agenda-1'] != "")
+    {
+      req.session.data['agenda'] = req.session.data['agenda-hour-1'] + ":" + req.session.data['agenda-minutes-1'] + "  " + " " + req.session.data['agenda-1'];
+    }
+
+    if(req.session.data['agenda-2'] != "")
+    {
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-2'] + ":" + req.session.data['agenda-minutes-2'] + "  " + " " + req.session.data['agenda-2'];
+    }
+    if(req.session.data['agenda-3'] != "")
+    {
+      showAgenda3 = true;
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-3'] + ":" + req.session.data['agenda-minutes-3'] + "  " + " " + req.session.data['agenda-3'];
+    }
+    if(req.session.data['agenda-4'] != "")
+    {
+      showAgenda4 = true;
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-4'] + ":" + req.session.data['agenda-minutes-4'] + "  " + " " + req.session.data['agenda-4'];
+    }
+    if(req.session.data['agenda-5'] != "")
+    {
+      showAgenda5 = true;
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-5'] + ":" + req.session.data['agenda-minutes-5'] + "  " + " " + req.session.data['agenda-5'];
+    }
+    if(req.session.data['agenda-6'] != "")
+    {
+      showAgenda6 = true;
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-6'] + ":" + req.session.data['agenda-minutes-6'] + "  " + " " + req.session.data['agenda-6'];
+    }
+
+
+
   }
 
-  if(req.session.data['agenda-2'] != "")
-  {
-    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-2'] + ":" + req.session.data['agenda-minutes-2'] + "  " + " " + req.session.data['agenda-2'];
-  }
-  if(req.session.data['agenda-3'] != "")
-  {
-    showAgenda3 = true;
-    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-3'] + ":" + req.session.data['agenda-minutes-3'] + "  " + " " + req.session.data['agenda-3'];
-  }
-  if(req.session.data['agenda-4'] != "")
-  {
-    showAgenda4 = true;
-    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-4'] + ":" + req.session.data['agenda-minutes-4'] + "  " + " " + req.session.data['agenda-4'];
-  }
-  if(req.session.data['agenda-5'] != "")
-  {
-    showAgenda5 = true;
-    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-5'] + ":" + req.session.data['agenda-minutes-5'] + "  " + " " + req.session.data['agenda-5'];
-  }
-  if(req.session.data['agenda-6'] != "")
-  {
-    showAgenda6 = true;
-    req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-6'] + ":" + req.session.data['agenda-minutes-6'] + "  " + " " + req.session.data['agenda-6'];
-  }
+
+
 
 
 
@@ -1280,7 +1350,7 @@ router.get('/create-event/description-onwards', function (req, res)
 
 
 
-  if((errorMissingDescription)  == false)
+  if(( errorMissingmarketAnswer || marketEntryMissing  || errorMissingBenefit  || agendYesNoMissing  || errorMissingAgenda1 || errorMissingDescription)  == false)
   {
     if(req.session.changingFromSummary == true)
     {
@@ -1300,12 +1370,25 @@ router.get('/create-event/description-onwards', function (req, res)
           'errorMissingMarketSelection': errorMissingmarketAnswer,
           'marketSelectedNo': marketsNoSelected,
           'marketSelectedYes': marketsYesSelected,
+          'marketNotEntered': marketEntryMissing,
+          'marketEntered2':  market2,
+          'marketEntered3':  market3,
+          'marketEntered4':  market4,
+          'marketEntered5':  market5,
+          'marketEntered6':  market6,
+          'marketEntered7':  market7,
+          'marketEntered8':  market8,
+          'marketEntered9':  market9,
+          'marketEntered10':  market10,
 
           'errorMissingEventBenefit': errorMissingBenefit,
           'showBenefitTwo': benefitTwo,
           'showBenefitThree': benefitThree,
           'showBenefitFour': benefitFour,
           'showBenefitFive': benefitFive,
+
+          'agendaMissingYesNo': agendYesNoMissing,
+          'agendaNoSelected': agendaShowNo,
           'agendaSelected': agendaShowIs,
 
           'agendaMisssing1': errorMissingAgenda1,
@@ -1390,7 +1473,7 @@ router.get('/create-event/date-onwards', function (req, res)
   console.log("THE CURRENT DTE TIME IS " + currentDate);
   console.log("THE ENTERED DATE TIME IS " + enteredDate);
 
-  if((enteredDate < currentDate) == -1)
+  if(enteredDate < currentDate)
   {
     dateInThePast = true;
   }

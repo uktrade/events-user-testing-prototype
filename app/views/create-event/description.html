@@ -35,6 +35,10 @@
 
 				<ul class="error-summary-list">
 
+					{% if marketNotEntered %}
+					<li><a href="#benefits-section">Missing market</a></li>
+					{% endif %}
+
 					{% if errorMissingMarketSelection %}
 						<li><a href="#benefits-section">Missing market selection</a></li>
 					{% endif %}
@@ -92,16 +96,156 @@
 
 			  <fieldset>
 				  <div class="form-group panel panel-border-narrow js-hidden"  id="market-section" style="margin-top:10px; margin-bottom:20px;">
-					  <label class="form-label-bold" for="event-description" style="margin-bottom:6px;">
+					  <label class="form-label-bold" style="margin-bottom:6px;">
 						  Markets
 					  </label>
-					  <select style="width:40%; margin-bottom:10px;" class="form-control" id="market-box" name="market-box" >
-						  <option value="" disabled selected>
-							  Choose a location
-						  </option>
-					  </select>
+
+					  <div style="width:40%; margin-bottom:10px;" id="market-container-1">
+						  <select class="form-control" id="market-box-1" name="market-box-1" value="{{data['market-box-1']}}">
+							  <option value="" selected="selected">Choose a location</option>
+						  </select>
+				  	  </div>
+
+
+					  <p id="markets-2-add" onclick="showMarket2()"
+						 {% if marketEntered2 == true  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none; "
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;" {% endif %}
+						 >Add another market</p>
+
+					  <div id="market-container-2"
+						  {% if marketEntered2 == true  %} style="width:40%; margin-bottom:10px;"
+						  {% else %} style="width:40%; margin-bottom:10px; display:none;" {% endif %}
+						  >
+						  <select class="form-control" id="market-box-2" name="market-box-2"  >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+					  <p id="markets-3-add" onclick="showMarket3()"
+						 {% if marketEntered2 == true  and  marketEntered3 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
+						 >Add another market</p>
+
+					  <div id="market-container-3"
+						   {% if marketEntered3 == true  %} style="width:40%; margin-bottom:10px;"
+						   {% else %} style="width:40%; margin-bottom:10px; display:none" {% endif %}
+					       >
+						  <select class="form-control" id="market-box-3" name="market-box-3" >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+					  <p id="markets-4-add" onclick="showMarket4()"
+						 {% if marketEntered3 == true  and  marketEntered4 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
+						 >Add another market 444</p>
+
+					  <div id="market-container-4"
+						   {% if marketEntered4 == true  %} style="width:40%; margin-bottom:10px;"
+						   {% else %} style="width:40%; margin-bottom:10px; display:none" {% endif %}
+					  	   >
+						  <select class="form-control" id="market-box-4" name="market-box-4" >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+					  <p id="markets-5-add" onclick="showMarket5()"
+						 {% if marketEntered4 == true  and  marketEntered5 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
+					     >Add another market 55555</p>
+
+					  <div id="market-container-5"
+						   {% if marketEntered5 == true  %} style="width:40%; margin-bottom:10px;"
+						   {% else %} style="width:40%; margin-bottom:10px; display:none" {% endif %}
+					  	   >
+						  <select class="form-control" id="market-box-5" name="market-box-5" >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+					  <p id="markets-6-add" onclick="showMarket6()"
+						 {% if marketEntered5 == true  and  marketEntered6 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
+					     >Add another market  66666</p>
+
+					  <div id="market-container-6"
+						   {% if marketEntered6 == true  %} style="width:40%; margin-bottom:10px;"
+						   {% else %} style="width:40%; margin-bottom:10px; display:none" {% endif %}
+					       >
+						  <select class="form-control" id="market-box-6" name="market-box-6" >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+					  <p id="markets-7-add" onclick="showMarket7()"
+						 {% if marketEntered6 == true  and  marketEntered7 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
+					  		>Add another market  777</p>
+
+					  <div id="market-container-7"
+						   {% if marketEntered7 == true  %} style="width:40%; margin-bottom:10px;"
+						   {% else %} style="width:40%; margin-bottom:10px; display:none" {% endif %}
+					  		>
+						  <select class="form-control" id="market-box-7" name="market-box-7" >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+					  <p id="markets-8-add" onclick="showMarket8()"
+						 {% if marketEntered7 == true  and  marketEntered8 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
+					  	 >Add another market  8888</p>
+
+					  <div id="market-container-8"
+						   {% if marketEntered8 == true  %} style="width:40%; margin-bottom:10px;"
+						   {% else %} style="width:40%; margin-bottom:10px; display:none" {% endif %}
+					  		>
+						  <select class="form-control" id="market-box-8" name="market-box-8" >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+					  <p id="markets-9-add" onclick="showMarket9()"
+						 {% if marketEntered8 == true  and  marketEntered9 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
+					  	 >Add another market  999</p>
+
+					  <div id="market-container-9"
+						   {% if marketEntered9 == true  %} style="width:40%; margin-bottom:10px;"
+						   {% else %} style="width:40%; margin-bottom:10px; display:none" {% endif %}
+					  	   >
+						  <select class="form-control" id="market-box-9" name="market-box-9" >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+					  <p id="markets-10-add" onclick="showMarket10()"
+						 {% if marketEntered9 == true  and  marketEntered10 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
+						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
+					  >Add another market  10</p>
+
+					  <div id="market-container-10"
+						   {% if marketEntered10 == true  %} style="width:40%; margin-bottom:10px;"
+						   {% else %} style="width:40%; margin-bottom:10px; display:none" {% endif %}
+					  >
+						  <select class="form-control" id="market-box-10" name="market-box-10" >
+							  <option value="" disabled selected>Choose a location</option>
+						  </select>
+					  </div>
+
+
+
+
 				  </div>
-				  <a onclick="addMarketBox('market-section')"> Add More Markets</a>
+
 			  </fieldset>
 		  </div>
 
@@ -109,7 +253,7 @@
 
 
 		  <!--   BENEFITS   -->
-		  <div class="form-group" style="margin-bottom:10px;" id="benefits-section">
+		  <div class="form-group {% if errorMissingEventBenefit %} form-group-error {% endif %}" style="margin-bottom:10px;" id="benefits-section" >
 			  <legend class="form-label-bold" style="margin-bottom:10px;">
 				  What specific benefits or outcomes will attendees get from this event?
 				  <span class="form-hint" style="margin-bottom: 0px; margin-top:3px;">For example, Meet with buyers</span>
@@ -139,7 +283,7 @@
 			  -->
 
 
-			  <div id="benefit-section-4" style="margin-top:0px;" class=" {% if errorMissingEventBenefit %} form-group-error {% endif %}">
+			  <div id="benefit-section-4" style="margin-top:0px;" >
 				  {% if errorMissingEventBenefit %}
 					  <span class="error-message">
 						  Enter 1 or more benefits
@@ -149,27 +293,28 @@
 				  <input type="text" class="form-control {% if errorMissingEventBenefit %} form-control-error {% endif %}" id="benefit-input-0" name="benefit-input-0" value="{{ data['benefit-input-0'] }}" style="width: 50%; display:inline;">
 			  </div>
 
-
+			  <!--
 			  <p id="add-benefit-link-5"
-				 {% if showBenefitTwo == true %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block; display: none;"  {% else %}
-				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px;"  {% endif %}
+				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px;"
 				 onclick="showbenefit5()">Add a benefit</p>
+				 -->
 
-			  <div id="benefit-section-5"   {% if showBenefitTwo == true %} style="margin-top:10px;" {% else %} style="margin-top:10px; display: none" {% endif %}>
+			  <div id="benefit-section-5" style="margin-top:10px;">
 				  <input type="text" class="form-control" id="benefit-input-1" name="benefit-input-1" value="{{ data['benefit-input-1'] }}" style="width: 50%; display:inline;">
 			  </div>
 
+			  <!--
 			  <p id="add-benefit-link-6"
-				 {% if showBenefitThree == false and showBenefitTwo == true %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% else %}
-				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% endif %}
+				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"
 				 onclick="showbenefit6()">Add a benefit</p>
+				 -->
 
-			  <div id="benefit-section-6" {% if showBenefitThree == true %} style="margin-top:10px;" {% else %} style="margin-top:10px; display: none" {% endif %}>
+			  <div id="benefit-section-6" style="margin-top:10px;">
 				  <input type="text" class="form-control" id="benefit-input-2" name="benefit-input-2" value="{{ data['benefit-input-2'] }}" style="width: 50%; display:inline;">
 			  </div>
 
 			  <p id="add-benefit-link-7"
-				 {% if showBenefitFour == false and showBenefitThree == true %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% else %}
+				 {% if showBenefitFour == false %} style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"  {% else %}
 				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: none;"  {% endif %}
 				 onclick="showbenefit7()">Add a benefit</p>
 
@@ -199,13 +344,13 @@
 			  <fieldset>
 				  <div style="" id="answer-types">
 
-					  {% if errorAnswerTypeEmpty %}
+					  {% if agendaMissingYesNo %}
 					  <div class="form-group form-group-error">
 						  {% endif %}
 
 						  <label class="form-label-bold">
 							  Does the event have an agenda?
-							  {% if errorAnswerTypeEmpty %}
+							  {% if agendaMissingYesNo %}
 								  <span class="error-message">
 									  Select type of answer
 								  </span>
@@ -214,18 +359,19 @@
 
 						  <div class="form-date " style="margin-top:5px">
 							  <div class="multiple-choice">
-								  <input id="enter-text" type="radio" name="radio-agenda" value="no" checked="checked">
-								  <label for="enter-text">No</label>
+								  <input id="agenda-no" type="radio" name="radio-agenda" value="no"
+										 {% if agendaNoSelected %} checked="checked" {% endif %} >
+								  <label for="agenda-no">No</label>
 							  </div>
 							  <div class="multiple-choice" data-target="show-answers">
-								  <input id="select-one" type="radio" name="radio-agenda" value="yes"
+								  <input id="agenda-yes" type="radio" name="radio-agenda" value="yes"
 										 {% if agendaSelected %} checked="checked" {% endif %} >
-								  <label for="select-one">Yes</label>
+								  <label for="agenda-yes">Yes</label>
 							  </div>
 						  </div>
 
-						  {% if errorAnswerTypeEmpty %}
-					  </div>
+					  {% if agendaMissingYesNo %}
+					  		</div>
 					  {% endif %}
 
 				  </div>
@@ -283,7 +429,7 @@
 
 							  <p id="agenda-3-add"
 								 {% if agendaShow3 == true %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;"
-								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;" {% endif %}
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;" {% endif %}
 								 onclick="show3()">Add another activtiy</p>
 							  <!-- Row three -->
 							  <div id="agenda-3-area"
@@ -303,7 +449,7 @@
 
 							  <p id="agenda-4-add"
 								 {% if agendaShow3 == true  and  agendaShow4 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;"
-								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;" {% endif %}
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
 								 onclick="show4()">Add another activtiy</p>
 							  <!-- Row three -->
 							  <div id="agenda-4-area"
@@ -323,7 +469,7 @@
 
 							  <p id="agenda-5-add"
 								 {% if agendaShow4 == true  and  agendaShow5 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;"
-								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;" {% endif %}
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
 								 onclick="show5()">Add another activtiy</p>
 							  <!-- Row three -->
 							  <div id="agenda-5-area"
@@ -342,8 +488,8 @@
 
 
 							  <p id="agenda-6-add"
-								 {% if agendaShow5 == true  and  agendaShow6 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;"
-								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;" {% endif %}
+								 {% if agendaShow5 == true  and  agendaShow6 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
 								 onclick="show6()">Add another activtiy</p>
 							  <!-- Row three -->
 							  <div id="agenda-6-area"
@@ -416,6 +562,72 @@
 
 
 <script>
+
+	// SHOW MORE MARKET BOXES
+	function showMarket2()
+	{
+		document.getElementById('markets-2-add').style.display = 'none';
+		document.getElementById('market-container-2').style.display = 'block';
+		document.getElementById('markets-3-add').style.display = 'block';
+	}
+
+	function showMarket3()
+	{
+		document.getElementById('markets-3-add').style.display = 'none';
+		document.getElementById('market-container-3').style.display = 'block';
+		document.getElementById('markets-4-add').style.display = 'block';
+	}
+
+	function showMarket4()
+	{
+		document.getElementById('markets-4-add').style.display = 'none';
+		document.getElementById('market-container-4').style.display = 'block';
+		document.getElementById('markets-5-add').style.display = 'block';
+	}
+
+	function showMarket5()
+	{
+		document.getElementById('markets-5-add').style.display = 'none';
+		document.getElementById('market-container-5').style.display = 'block';
+		document.getElementById('markets-6-add').style.display = 'block';
+	}
+
+	function showMarket6()
+	{
+		document.getElementById('markets-6-add').style.display = 'none';
+		document.getElementById('market-container-6').style.display = 'block';
+		document.getElementById('markets-7-add').style.display = 'block';
+	}
+
+	function showMarket7()
+	{
+		document.getElementById('markets-7-add').style.display = 'none';
+		document.getElementById('market-container-7').style.display = 'block';
+		document.getElementById('markets-8-add').style.display = 'block';
+	}
+
+	function showMarket8()
+	{
+		document.getElementById('markets-8-add').style.display = 'none';
+		document.getElementById('market-container-8').style.display = 'block';
+		document.getElementById('markets-9-add').style.display = 'block';
+	}
+
+	function showMarket9()
+	{
+		document.getElementById('markets-9-add').style.display = 'none';
+		document.getElementById('market-container-9').style.display = 'block';
+		document.getElementById('markets-10-add').style.display = 'block';
+	}
+
+	function showMarket10()
+	{
+		document.getElementById('markets-10-add').style.display = 'none';
+		document.getElementById('market-container-10').style.display = 'block';
+		//document.getElementById('markets-4-add').style.display = 'block';
+	}
+
+
 
 	// SHOW MORE ANSWER BOXES
 	function show3()
@@ -507,14 +719,23 @@
 	    AccessibleTypeahead.enhanceSelectElement({
 			autoselect: true,
 			id:elementID,
-			name:'market-box',
+			name:elementID,
 			selectElement: document.getElementById(elementID),
 			minLength: 1,
 			source: source
 		})
 	}
 
-	addMarketBoxJs('market-box', source);
+	addMarketBoxJs('market-box-1', source);
+	addMarketBoxJs('market-box-2', source);
+	addMarketBoxJs('market-box-3', source);
+	addMarketBoxJs('market-box-4', source);
+	addMarketBoxJs('market-box-5', source);
+	addMarketBoxJs('market-box-6', source);
+	addMarketBoxJs('market-box-7', source);
+	addMarketBoxJs('market-box-8', source);
+	addMarketBoxJs('market-box-9', source);
+	addMarketBoxJs('market-box-10', source);
 
 </script>
 
