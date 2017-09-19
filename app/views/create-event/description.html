@@ -95,14 +95,13 @@
 					  <label class="form-label-bold" for="event-description" style="margin-bottom:6px;">
 						  Markets
 					  </label>
-					  <div style="width:40%; margin-bottom:10px;">
-						  <select class="form-control" name="market-box" id="market-box" style="width:80%; margin-bottom:10px;" value="{{ data['market-box'] }}">
-							  <option id="market-box-option"></option>
-						  </select>
-					  </div>
-
-
+					  <select style="width:40%; margin-bottom:10px;" class="form-control" id="market-box" name="market-box" >
+						  <option value="" disabled selected>
+							  Choose a location
+						  </option>
+					  </select>
 				  </div>
+				  <a onclick="addMarketBox('market-section')"> Add More Markets</a>
 			  </fieldset>
 		  </div>
 
@@ -489,41 +488,33 @@
 <script type="text/javascript" src="https://unpkg.com/registers-picker-engine@0.0.2"></script>
 <script type="text/javascript" src="https://unpkg.com/accessible-typeahead@0.4.1"></script>
 <script type="text/javascript">
-	var dataFilePath = '/public/data/picker-data-4.json'
-	AccessibleTypeahead.enhanceSelectElement({
-		autoselect: true,
-		selectElement: document.getElementById('market-box'),
-		minLength: 2,
-		source: locationPickerSuggestions(dataFilePath)
-	})
+	var dataFilePath = '/public/data/picker-data-4.json';
+	var source = locationPickerSuggestions(dataFilePath);
+	var counter = 1;
 
-	AccessibleTypeahead.enhanceSelectElement({
-		autoselect: true,
-		selectElement: document.getElementById('market-box-2'),
-		minLength: 2,
-		source: locationPickerSuggestions(dataFilePath)
-	})
+	function addMarketBox(parentID){
+	    id = 'market-box-' + counter++;
+	    select = document.createElement('select');
+	    select.class = 'form-control';
+	    select.id = id;
+		select.name = id;
+		document.getElementById(parentID).appendChild(select);
 
-	AccessibleTypeahead.enhanceSelectElement({
-		autoselect: true,
-		selectElement: document.getElementById('market-box-3'),
-		minLength: 2,
-		source: locationPickerSuggestions(dataFilePath)
-	})
+		addMarketBoxJs(id, source);
+	}
 
-	AccessibleTypeahead.enhanceSelectElement({
-		autoselect: true,
-		selectElement: document.getElementById('market-box-4'),
-		minLength: 2,
-		source: locationPickerSuggestions(dataFilePath)
-	})
+	function addMarketBoxJs(elementID, source){
+	    AccessibleTypeahead.enhanceSelectElement({
+			autoselect: true,
+			id:elementID,
+			name:'market-box',
+			selectElement: document.getElementById(elementID),
+			minLength: 1,
+			source: source
+		})
+	}
 
-	AccessibleTypeahead.enhanceSelectElement({
-		autoselect: true,
-		selectElement: document.getElementById('market-box-5'),
-		minLength: 2,
-		source: locationPickerSuggestions(dataFilePath)
-	})
+	addMarketBoxJs('market-box', source);
 
 </script>
 
