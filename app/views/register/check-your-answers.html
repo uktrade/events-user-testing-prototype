@@ -1,0 +1,240 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">
+        Check your answers before booking the event
+      </h1>
+
+
+      <!-- only add a heading for a list if there is more than one list -->
+      
+
+      <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+      <!--   * `cya-questions-short` for short questions -->
+      <!--   * `cya-questions-long` for long questions -->
+      <!--   * none for single group of q&a -->
+
+<!-- EVENT DETAILS -->
+
+      
+      <h2 class="heading-medium">
+        Event details
+      </h2>
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Name
+          </dt>
+          <dd class="cya-answer">
+            Astana 2017
+          </dd>
+          <dd class="cya-change">
+            
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Date and time 
+          </dt>
+          <dd class="cya-answer">
+            11 May 2017 <br />
+            11:00 to 17:00<br />
+          </dd>
+          <dd class="cya-change">
+            
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Venue address 
+          </dt>
+          <dd class="cya-answer">
+            Venue Name <br />
+            Address <br />
+          </dd>
+          <dd class="cya-change">
+            
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Ticket price 
+          </dt>
+          <dd class="cya-answer">
+            Free of charge
+          </dd>
+          <dd class="cya-change">
+            
+          </dd>
+        </div>
+      </dl>
+
+
+<!-- BUSINESS DETAILS -->
+        <h2 class="heading-medium">
+        Business details
+      </h2>
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Business name
+          </dt>
+          <dd class="cya-answer">
+            Fisher Ltd
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Primary sector
+          </dt>
+          <dd class="cya-answer">
+            Aerospace
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Business address
+          </dt>
+          <dd class="cya-answer">
+            Address line 1 <br />
+            Address line 2 <br />
+            Town <br />
+            Postcode <br />
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> home address</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Website 
+          </dt>
+          <dd class="cya-answer">
+            www.fisherltd.com<br />
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+
+<!-- TICKET DETAILS -->
+        <h2 class="heading-medium">
+        Ticket details
+      </h2>
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Full name
+          </dt>
+          <dd class="cya-answer">
+            Sarah Philips
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Job title
+          </dt>
+          <dd class="cya-answer">
+            Director
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Email
+          </dt>
+          <dd class="cya-answer">
+            sarah.philips@company.com
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> home address</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Phone number
+          </dt>
+          <dd class="cya-answer">
+            07700 900457<br />
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="heading-medium">Now send your application</h2>
+
+      <p class="text">
+        By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.
+      </p>
+
+      <div class="form-group">
+        <a href="confirmation-page" class="button button-blue">Confirm and book event</a>
+      </div>
+
+    </form>
+
+    </div>
+
+
+  </div>
+
+
+</main>
+
+{% include "includes/great-footer.html" %} 
+
+{% endblock %}

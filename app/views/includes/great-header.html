@@ -1,0 +1,121 @@
+<style>
+	header, #global-header-bar {display: none}
+
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+
+.navigation-strip {
+    padding: 8px 0 3px;
+}
+.background--dark-navy {
+    background-color: #160d37;
+    height: 40px;
+}
+.outer-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigation-main-section.outer-container {
+	display: none;
+}
+.background--great-blue {
+    background-color: #1e1348;
+}
+.navigation a {
+    display: block;
+    float: none
+}
+.navigation-logo-link {
+    margin-bottom: 3px;
+}
+.float--left {
+    float: left;
+}
+a {
+    text-decoration: none;
+}
+
+main#content {max-width: 1200px}
+.breadcrumbs, #global-cookie-message {display: none}
+
+</style>
+
+<div class="navigation">
+      <div class="navigation-strip background--dark-navy">
+        <div class="outer-container">
+          <ul class="list-inline list-separators">
+            <li class="float--left soft-half--right navigation-skip-to"><a class="link link--grey" href="#content" title="Skip to main content"><strong>Skip to main content</strong></a></li>
+            <li class="float--left soft-half--right"><a class="logo-hmg" href="https://www.gov.uk/" title="Go to the GOV.UK homepage"><img src="/public/great-library/images/hm_government_logo_horizontal.svg" alt="HM Government logo"></a></li>
+            <li class="float--left soft-half--left"><a class="link link--white" href="https://great.gov.uk" title="part of great.gov.uk"><span class="hide-mobile font-light-grey font-light">Part of </span><span class="font-regular">great.gov.uk</span></a></li>
+          </ul>
+
+          <ul class="list-inline list-separators float--right navigation-login font-regular" id="sso-signin">
+            <li class="float--left soft-half--right"><a class="link--white" href="https://sso.trade.great.gov.uk/accounts/login/" title="Sign in"><i class="icon icon--left icon-sign-in" style="background-image: url(/public/great-library/images/icons/signin.svg)"></i><span class="hide-mobile">Sign in</span></a></li>
+            <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="https://sso.trade.great.gov.uk/accounts/signup/" title="Register"><span>Register</span></a></li>
+          </ul>
+          <ul class="list-inline list-separators float--right navigation-login font-regular" id="sso-signout" style="display:none">
+            <li class="float--left soft-half--right"><a class="link--white" href="https://profile.great.gov.uk/export-opportunities/applications/" title="Profile"><i class="icon icon--left icon-sign-in" style="background-image: url(/public/great-library/images/icons/signout.svg)"></i><span class="hide-mobile">Profile</span></a></li>
+            <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="https://sso.trade.great.gov.uk/accounts/logout/" title="Register"><span>Sign out</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="background--great-blue">
+        <div class="outer-container">
+          <a href="https://export.great.gov.uk/" title="Go to the Exporting is GREAT homepage" class="navigation-logo-link float--left">
+            <img src="/public/great-library/images/eig_logo_horizontal.svg" alt="Exporting is GREAT logo" class="navigation-logo">
+          </a>
+        </div>
+      </div>
+      <div class="navigation-main background--dark-blue">
+        <div class="navigation-main-section outer-container">
+          <nav>
+            <ul class="list-inline list-separators navigation-main-menu">
+             
+            </ul>
+          </nav>
+          <a class="button navigation-main-button font-white" title="" href=""><i class="icon icon-menu"></i>All</a>
+        </div>
+        <div class="navigation-toggle background--dark-navy">
+          <div class="outer-container">
+            <div class="col-3">
+              <div class="navigation-toggle-services-section">
+                <h3 class="font-large font-light-grey font-light push--bottom hide-mobile">Export readiness</h3>
+                <ul class="font-regular">
+                  <li class="navigation-toggle-item navigation-toggle-services"><a title="new to exporting" href="/new/" class="">New to exporting</a></li>
+                  <li class="navigation-toggle-item navigation-toggle-services"><a title="occasional exporter" href="/occasional/" class="">Occasional exporter</a></li>
+                  <li class="navigation-toggle-item navigation-toggle-services"><a title="regular exporter" href="/regular/" class="last ">Regular exporter</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-3">
+              <h3 class="font-large font-light-grey font-light push--bottom hide-mobile soft--left">Online tools</h3>
+              <ul class="navigation-toggle-middle">
+                <li class="navigation-toggle-item"><a href="https://export.great.gov.uk/opportunities" title="Export opportunities">Export opportunities</a></li>
+                <li class="navigation-toggle-item"><a href="http://find-a-buyer.export.great.gov.uk/" title="Find a buyer">Find a buyer</a></li>
+                <li class="navigation-toggle-item"><a href="https://selling-online-overseas.export.great.gov.uk/markets/" title="Selling online overseas">Selling online overseas</a></li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <h3 class="font-large font-light-grey font-light push--bottom hide-mobile soft--left">Other support</h3>
+              <ul class="navigation-toggle-middle">
+                <li class="navigation-toggle-item"><a href="/get-finance/" title="Get finance" class="">Get finance</a></li>
+                <li class="navigation-toggle-item"><a href="https://events.trade.gov.uk/" title="Events">Events</a></li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <h3 class="font-large font-light-grey font-light soft--left push--bottom hide-mobile">About us</h3>
+              <ul class="navigation-toggle-middle">
+                <li class="navigation-toggle-item"><a href="/about/" title="About great.gov.uk">About great.gov.uk</a></li>
+                <li class="navigation-toggle-item"><a href="https://contact-us.export.great.gov.uk/selling_online_overseas" title="Contact us" class="last">Contact us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
