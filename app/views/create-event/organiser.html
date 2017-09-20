@@ -54,45 +54,49 @@
         Organiser contact details
       </h1>
 
-		<p>This information will appear on your event webpage.</p>
 
 
 	  <form action="/create-event/organiser-onwards" method="get" class="form">
 
 
-			  <div id="organiser-name-section" class="form-group" style="margin-top:10px;">
 
-				  {% if errorMissingName %}
-				  	<div class="form-group-error">
-				  {% endif %}
+			  <div id="event-owner-section" class="form-group {% if errorMissingOwner %} form-group-error {% endif %}" style="margin-top:10px;">
 
-					  <label class="form-label-bold" for="organiser-name">
-						  Event organiser <br>
-							  <span style="font-weight:400">Department for International Trade</span>
-						  {% if errorMissingName %}
+				  <label class="form-label-bold" for="organiser-name">
+					  Event owner (internal use)<br>
+					  {% if errorMissingName %}
 							  <span class="error-message">
 								  Please enter an organiser
 							  </span>
-						  {% endif %}
-					  </label>
+					  {% endif %}
+				  </label>
 
-					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-							 id="organiser-name" name="organiser-name" value="{{ data['organiser-name'] }}" style="width: 60%">
+				  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+						 id="owner-name" name="owner-name" value="{{ data['owner-name'] }}" style="width: 60%">
+			  </div>
 
-				  {% if errorMissingName %}
-			  		</div>
-				  {% endif %}
 
+		 	  <p class="panel panel-border-narrow" style="margin-bottom:0px;">The following information will appear on your event webpage and emails.</p>
+
+			  <div id="organiser-name-section" class="form-group {% if errorMissingName %} form-group-error {% endif %}" style="margin-top:10px;">
+
+				  <label class="form-label-bold" for="organiser-name">
+					  Event organiser <br>
+						  <span style="font-weight:400">Department for International Trade</span>
+					  {% if errorMissingName %}
+						  <span class="error-message">
+							  Please enter an organiser
+						  </span>
+					  {% endif %}
+				  </label>
+
+				  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+						 id="organiser-name" name="organiser-name" value="{{ data['organiser-name'] }}" style="width: 60%">
 			  </div>
 
 
 
-
-			  <div id="contact-email-section" class="form-group" style="">
-
-				  {% if errorInvalidEmail %}
-				      <div class="form-group-error">
-				  {% endif %}
+			  <div id="contact-email-section" class="form-group {% if errorInvalidEmail %} form-group-error {% endif %}" style="">
 
 					  <label class="form-label-bold" for="contact-email">
 						  Email address
@@ -105,22 +109,11 @@
 
 					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
 							 id="contact-email" name="contact-email" value="{{ data['contact-email'] }}" style="width: 60%">
-
-				  {% if errorInvalidEmail %}
-				  	  </div>
-				  {% endif %}
-
 			  </div>
 
 
 
-
-
-			  <div id="contact-phone-section" class="form-group" style=" margin-bottom:35px">
-
-				  {% if errorInvalidPhone %}
-				  	  <div class="form-group-error">
-			      {% endif %}
+			  <div id="contact-phone-section" class="form-group {% if errorInvalidPhone %} form-group-error {% endif %}" style=" margin-bottom:35px">
 
 					  <label class="form-label-bold" for="contact-phone">
 						  Phone number
@@ -133,11 +126,6 @@
 
 					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
 							 id="contact-phone" name="contact-phone" value="{{ data['contact-phone'] }}" style="width: 25%">
-
-				  {% if errorInvalidPhone %}
-				 	   </div>
-				  {% endif %}
-
 			  </div>
 
 
@@ -148,7 +136,7 @@
 
 		  <div class="form-group" style="margin-top:10px">
 			  <input type="submit" class="button" value="Save and continue">
-			  <p style="margin-top:25px"><a href="/create-event/images">I'll complete this later - I don't have this information yet</a></p>
+			  <p style="margin-top:25px"><a href="/create-event/title">I'll complete this later - I don't have this information yet</a></p>
 		  </div>
 
 	  </form>
