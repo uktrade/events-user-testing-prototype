@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="112e8f47-37cb-4742-9f5d-22074abd4dea" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/description.html" afterPath="$PROJECT_DIR$/app/views/create-event/description.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/create-event/title.html" afterPath="$PROJECT_DIR$/app/views/create-event/title.html" />
     </list>
     <ignored path="events-user-testing-prototype.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,8 +64,8 @@
       <file leaf-file-name="description.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58728325">
-              <caret line="578" column="218" selection-start-line="578" selection-start-column="218" selection-end-line="578" selection-end-column="218" />
+            <state vertical-scroll-proportion="0.41156068">
+              <caret line="136" column="91" selection-start-line="136" selection-start-column="91" selection-end-line="136" selection-end-column="91" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -1009,8 +1008,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/create-event/description.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58728325">
-          <caret line="578" column="218" selection-start-line="578" selection-start-column="218" selection-end-line="578" selection-end-column="218" />
+        <state vertical-scroll-proportion="0.41156068">
+          <caret line="136" column="91" selection-start-line="136" selection-start-column="91" selection-end-line="136" selection-end-column="91" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
