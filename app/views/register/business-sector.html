@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+{% macro createSectorList(name) %}
+<li>
+	<div class="multiple-choice">
+		<input id="sector{{name}}" name="sectors" type="radio" value="{{ name }}">
+		<label for="sector{{name}}">{{ name | capitalize}}</label>
+	</div>
+
+</li>
+{% endmacro %}
+
+<main id="content" role="main">
+	  <h1 class="heading-large" >
+		  Which sector does your business operate in?
+      </h1>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		
+	  </div>
+
+
+	  <form action="" method="get" class="form">
+
+			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
+			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
+			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
+			  									(errorAnswersError == undefined or errorAnswersError == false) %}
+			  								 js-hidden
+			  							  {% endif %}"
+						id="show-answer-type">
+
+<style type="text/css">
+.column-one-half {margin-left:auto; width: 50%}
+h2.heading-large{margin-top: 15px}
+ul#sectors {margin-top: 30px}
+ul#sectors li {border-top:1px solid #bfc1c3;padding:15px 30px 43px 10px;}
+</style>
+
+{% set items = ["Aerospace","Agriculture, Horticulture Fisheries","Airports","Automotive","Biotechnology Pharmaceuticals","Business Consumer Services","Chemicals","Clothing, Footwear Fashion","Communications","Construction","Creative Media","Education Training","Electronics IT Hardware","Environment","Financial Professional Services","Food Drink","Giftware, Jewellery Tableware","Global Sports Infrastructure","Healthcare Medical","Household Goods, Furniture Furnishings","Leisure Tourism","Marine","Mechanical Electrical Process Engineering","Metallurgical Process Plant","Metals, Minerals Materials","Mining","Oil and Gas","Ports Logistics","Power","Railways","Renewable Energy","Retail and Luxury","Security","Software Computer Services","Textiles, Interior Textiles Carpets","Water"] %}
+
+<div class="form-group">
+<label class="form-label" for="question">
+						  Type a keyword or select from the list
+						  {% if errorQuestionEmpty %}
+									<span class="error-message">
+										Attendee question missing
+									</span>
+						  {% endif %}
+					  </label>
+<input class="form-control " id="myInput" type="text" onkeyup="myFunction()" style="width:75%" value="">
+<ul id="sectors">
+{% for i in items %}
+ {{ createSectorList(i) }}
+ {% endfor %}
+</ul>
+</div>
+			</fieldset>
+		  <div class="form-group">
+
+			  <input type="submit" class="button button-blue" formaction="/register/ticket-details" value="Continue">
+		  </div>
+
+
+
+	  </form>
+
+    </div>
+
+<div class="column-one-third">
+	{% include "includes/basket.html" %} 
+</div>
+
+  </div>
+
+
+</main>
+
+<script>
+
+function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("sectors");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        label = li[i].getElementsByTagName("label")[0];
+        if (label.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+
+{% include "includes/great-footer.html" %} 
+
+
+{% endblock %}
+
+

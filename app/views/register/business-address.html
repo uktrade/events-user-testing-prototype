@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+<main id="content" role="main">
+	  <h1 class="heading-large" >
+		  Your business address
+      </h1>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		
+	  </div>
+
+   
+
+	  <form action="" method="get" class="form">
+	    <div class="multiple-choice" data-target="country-selection" onclick="checkLabel()">
+        <input id="example-contact-by-email" type="checkbox" name="radio-contact-group" value="Yes">
+        <label for="example-contact-by-email">This business is not based in the UK</label>
+      </div>
+	
+			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
+			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
+			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
+			  									(errorAnswersError == undefined or errorAnswersError == false) %}
+			  								 js-hidden
+			  							  {% endif %}"
+						id="show-answer-type">
+
+<div class="form-group js-hidden" id="country-selection">
+        <label class="form-label" for="contact-email">Country</label>
+        <input class="form-control" name="contact-email" type="text" id="contact-email" style="width:60%">
+      	</div>
+
+				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
+
+					  <label class="form-label" for="question">
+						  Building and street
+						  {% if errorQuestionEmpty %}
+									<span class="error-message">
+										Attendee question missing
+									</span>
+						  {% endif %}
+					  </label>
+				
+			  
+				  <input class="form-control " id="building" type="text" name="building" style="width:75%" value="">
+				  <input class="form-control" id="street" type="text" name="street" style="width:75%; margin-top:8px" value="">
+			  
+				</div>
+			  
+				<div class="form-group">
+			 
+				  <label class="form-label" for="town" style="margin-bottom:5px; ">Town or city</label>
+				  <input class="form-control " id="town" type="text" name="town" style="width:40%" value="">
+
+			 
+				</div>
+			  
+				<div class="form-group">
+				  <label class="form-label" for="postcode" style="margin-bottom:5px;" id="postcode-zipcode">Postcode</label>
+				  <input class="form-control " id="postcode" type="text" name="postcode" style="width:25%" value="">
+
+				</div>
+
+		
+
+			</fieldset>
+		  <div class="form-group">
+
+			  <input type="submit" class="button button-blue" formaction="/register/ticket-details" value="Continue">
+		  </div>
+
+
+
+	  </form>
+
+    </div>
+
+<div class="column-one-third">
+	{% include "includes/basket.html" %} 
+</div>
+
+  </div>
+
+
+</main>
+
+
+{% include "includes/great-footer.html" %} 
+
+    {% include "includes/scripts.html" %}
+
+<script>
+function checkLabel() { 
+	if ($('#country-selection').hasClass("js-hidden"))
+	$('#postcode-zipcode').text("Zipcode")
+	else $('#postcode-zipcode').text("Postcode")
+}
+</script>
+
+{% endblock %}
+
