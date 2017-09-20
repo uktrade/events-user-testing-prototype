@@ -30,7 +30,7 @@
 			</h2>
 
 			<p>
-				Please check the following errors and try again.
+				Check the following errors and try again.
 			</p>
 
 			<ul class="error-summary-list">
@@ -48,7 +48,7 @@
 				{% endif %}
 
 				{% if emptyTargetAudienceText %}
-					<li><a href="#export-experience">Missing export experience</a></li>
+					<li><a href="#export-experience">Missing target audience summary</a></li>
 				{% endif %}
 
 
@@ -92,7 +92,7 @@
 					  Event title
 					  {% if errorMissingTitle %}
 						  <span class="error-message">
-							  Please enter a clear and descriptive title for your event
+							  Enter a clear and descriptive title for your event
 						  </span>
 					  {% endif %}
 					  </label>
@@ -117,7 +117,7 @@
 
 				  {% if errorMissingSector %}
 					  <span class="error-message">
-						  Please select no or yes
+						  Select no or yes
 					  </span>
 				  {% endif %}
 			  </label>
@@ -146,7 +146,7 @@
 					Sectors
 					{% if errorMissingSectorBox %}
 				  <span class="error-message">
-					  If this event is sector-specific, please select at least one sector.
+					  If this event is sector-specific, select at least one sector.
 				  </span>
 					{% endif %}
 				</label>
@@ -328,7 +328,7 @@
 				  Is this event aimed at a specific level of export experience?
 				  {% if experienceEmpty %}
 					  <span class="error-message">
-						  Please indicate the level of export experience this event is relevant to.
+						  Indicate the level of export experience this event is relevant to.
 					  </span>
 				  {% endif %}
 			  </label>
@@ -358,11 +358,11 @@
 				  Summarise who this event is for, including any eligibility criteria.
 				  {% if emptyTargetAudienceText %}
 					  <span class="error-message">
-						  Please provide at least one sentence that describes your overall target audience.
+						  Provide at least one sentence that describes your overall target audience.
 					  </span>
 				  {% endif %}
 			  </label>
-			  <textarea class="form-control {% if emptyTargetAudienceText %} form-control-error {% endif %}" name="summary-target-audience" id="summary-target-audience" rows="4" style="width: 100%;"></textarea>
+			  <textarea class="form-control {% if emptyTargetAudienceText %} form-control-error {% endif %}" name="summary-target-audience" id="summary-target-audience" rows="4" style="width: 100%;">{{ data['summary-target-audience'] }}</textarea>
 		  </div>
 
 

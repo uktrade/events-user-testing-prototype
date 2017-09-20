@@ -30,21 +30,29 @@
 				</h2>
 
 				<p>
-					Please check the following errors and try again.
+					Check the following errors and try again.
 				</p>
 
 				<ul class="error-summary-list">
 
-					{% if marketNotEntered %}
-					<li><a href="#benefits-section">Missing market</a></li>
+					{% if errorMissingMarketSelection %}
+					<li><a href="#markets-section">Missing market selection</a></li>
 					{% endif %}
 
-					{% if errorMissingMarketSelection %}
-						<li><a href="#benefits-section">Missing market selection</a></li>
+					{% if marketNotEntered %}
+						<li><a href="#markets-section">Missing market</a></li>
 					{% endif %}
 
 					{% if errorMissingEventBenefit %}
 						<li><a href="#benefits-section">Missing benefits</a></li>
+					{% endif %}
+
+					{% if agendaMissingYesNo %}
+						<li><a href="#agenda-section">Missing agenda answer</a></li>
+					{% endif %}
+
+					{% if agendaMisssing1 %}
+						<li><a href="#agenda-section">Missing agenda</a></li>
 					{% endif %}
 
 					{% if errorMissingEventDescription %}
@@ -67,7 +75,7 @@
 	  <form action="/create-event/description-onwards" method="get" class="form">
 
 		  <!--  MARKETS  -->
-		  <div class="form-group {% if errorMissingMarketSelection %} form-group-error {% endif %}">
+		  <div class="form-group {% if errorMissingMarketSelection %} form-group-error {% endif %}" id="markets-section">
 			  <fieldset>
 				  <div  >
 					  <label class="form-label-bold" >
@@ -101,7 +109,7 @@
 
 						  {% if marketEntryMissing %}
 							  <span class="error-message">
-								  If this event is related to specific markets, please indicate them here.
+								  If this event is related to specific markets, indicate them here.
 							  </span>
 						  {% endif %}
 					  </label>
@@ -267,7 +275,7 @@
 
 
 			  <div>
-				  <details role="group" open="" style="width:650px; margin-bottom:10px;">
+				  <details role="group" style="width:650px; margin-bottom:10px;">
 					  <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">Examples and guidance</span></summary>
 					  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
 						  <p>
@@ -313,7 +321,7 @@
 			  <div id="benefit-section-4" style="margin-top:0px;" >
 				  {% if errorMissingEventBenefit %}
 					  <span class="error-message">
-						  Please share at least one specific event benefit
+						  Share at least one specific event benefit
 					  </span>
 				  {% endif %}
 
@@ -365,7 +373,7 @@
 
 
 		  <!--   AGENDA   -->
-		  <div class="form-group" style="margin-top:30px">
+		  <div class="form-group" style="margin-top:30px" id="agenda-section">
 
 			  <!--  AGENDA RADIO -->
 			  <fieldset>
@@ -560,7 +568,7 @@
 
 					  {% if errorMissingEventDescription %}
 						  <span class="error-message">
-							  Please enter a description
+							  Enter a description
 						  </span>
 					  {% endif %}
 
@@ -568,7 +576,7 @@
 
 			  </div>
 
-			  <textarea class="form-control {% if errorMissingEventDescription %} form-control-error {% endif %}" name="event-description" id="event-description" rows="12" style="width: 80%;"></textarea>
+			  <textarea class="form-control {% if errorMissingEventDescription %} form-control-error {% endif %}" name="event-description" id="event-description" rows="12" style="width: 80%;">{{ data['event-description'] }}</textarea>
 			  <img  src="/public/images/editicons.png" style="width:111px;height:36px; float: right; margin-top:5px; margin-right:160px;">
 		  </div>
 
