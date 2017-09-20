@@ -1161,9 +1161,7 @@ router.get('/create-event/description-onwards', function (req, res)
 
   var errorMissingAgenda1 = false;
 
-
   console.log(" the radio for markets is --*/*/*/  " + req.session.data['radio-markets']);
-
 
   if(req.session.data['radio-markets'] == undefined)
   {

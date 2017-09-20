@@ -117,7 +117,7 @@
 
 				  {% if errorMissingSector %}
 					  <span class="error-message">
-						  Please enter a sector
+						  Please select no or yes
 					  </span>
 				  {% endif %}
 			  </label>
@@ -146,7 +146,7 @@
 					Sectors
 					{% if errorMissingSectorBox %}
 				  <span class="error-message">
-					  Please select 1 or more sectors
+					  If this event is sector-specific, please select at least one sector.
 				  </span>
 					{% endif %}
 				</label>
@@ -328,7 +328,7 @@
 				  Is this event aimed at a specific level of export experience?
 				  {% if experienceEmpty %}
 					  <span class="error-message">
-						  Select export experience level
+						  Please indicate the level of export experience this event is relevant to.
 					  </span>
 				  {% endif %}
 			  </label>
@@ -358,7 +358,7 @@
 				  Summarise who this event is for, including any eligibility criteria.
 				  {% if emptyTargetAudienceText %}
 					  <span class="error-message">
-						  Enter the summary
+						  Please provide at least one sentence that describes your overall target audience.
 					  </span>
 				  {% endif %}
 			  </label>

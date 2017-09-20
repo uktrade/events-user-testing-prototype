@@ -98,7 +98,16 @@
 				  <div class="form-group panel panel-border-narrow js-hidden"  id="market-section" style="margin-top:10px; margin-bottom:20px;">
 					  <label class="form-label-bold" style="margin-bottom:6px;">
 						  Markets
+
+						  {% if marketEntryMissing %}
+							  <span class="error-message">
+								  If this event is related to specific markets, please indicate them here.
+							  </span>
+						  {% endif %}
 					  </label>
+
+
+
 
 					  <div style="width:40%; margin-bottom:10px;" id="market-container-1">
 						  <select class="form-control" id="market-box-1" name="market-box-1" value="{{data['market-box-1']}}">
@@ -241,9 +250,6 @@
 						  </select>
 					  </div>
 
-
-
-
 				  </div>
 
 			  </fieldset>
@@ -307,7 +313,7 @@
 			  <div id="benefit-section-4" style="margin-top:0px;" >
 				  {% if errorMissingEventBenefit %}
 					  <span class="error-message">
-						  Enter 1 or more benefits
+						  Please share at least one specific event benefit
 					  </span>
 				  {% endif %}
 
