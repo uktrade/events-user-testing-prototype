@@ -751,7 +751,13 @@
 			minLength: 1,
 			source: source
 		});
+
+	    if (value === undefined){
+	        value = "";
+		}
 		$('#' + elementID)[0].value = value;
+		$('#' + elementID + '__listbox')[0].classList.add('typeahead__menu--hidden');
+		$('#' + elementID + '__listbox')[0].classList.remove('typeahead__menu--visible');
 	}
 
 	addMarketBoxJs('market-box-1', source, 	{{ data['market-box-1'] | dump | safe }});
