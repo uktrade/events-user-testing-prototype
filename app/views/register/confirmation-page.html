@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+<main id="content" role="main">
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <div class="govuk-box-highlight background--aqua">
+        <h1 class="bold-large">Ticket confirmation</h1>
+        <p>
+          Your reference number is <br>
+          <strong class="heading-medium">HDJ2123F</strong>
+        </p>
+      </div>
+      <p>We have sent you a confirmation email.</p>
+
+      <h2 class="heading-medium">What happens next</h2>
+      <p>Make sure to bring your confirmation on the day of the event so that you can be check in.</p>
+      <p><a class="link" href="#">What did you think of this service?</a> (takes 30 seconds)</p>
+
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

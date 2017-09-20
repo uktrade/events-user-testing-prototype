@@ -1,0 +1,207 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+<main id="content" role="main">
+<h1 class="heading-large">
+		  Who is attending 
+      </h1>
+      
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		
+	  </div>
+
+	<h2 class="heading-medium" style="margin-top:0">
+		  Ticket 1
+      </h2>
+	  <form action="/create-event/question-onwards" method="get" class="form">
+
+
+		  	<fieldset class="form-group {% if session.previousQuestions.length == 0 %} js-hidden {% endif %}" style="margin-bottom:0; padding-bottom:30px" id="previous-questions">
+			  <!--  Additional questions that the registering user need to answer  -->
+
+				<div class="form-group " style="margin-top:10px; margin-bottom:0px">
+
+					{% if errorNewQuestionEmpty %}
+						<div class="form-group  form-group-error">
+					{% endif %}
+
+						<label class="form-label" for="question">
+							New or previous question
+							{% if errorNewQuestionEmpty %}
+								<span class="error-message">
+									Attendee question missing
+								</span>
+							{% endif %}
+						</label>
+
+
+						<div class="form-group" style="margin-top:0px; margin-bottom:0px">
+
+							<div class="form-date" style="margin-top:5px">
+
+								<div class="multiple-choice"  data-target="show-answer-type">
+									<input id="new-question" type="radio" name="radio-additional-new-old-questions" value="new-question"
+										   {% if errorNewQuestionSelected %} checked="checked" {% endif %}   onclick="prepopClear()">
+									<label for="new-question">New question</label>
+								</div>
+								<div class="multiple-choice" data-target="show-answer-type">
+									<input id="previous-question-one" type="radio" name="radio-additional-new-old-questions" value="previous-question-one"
+										   {% if errorOldQuestionOneSelected %} checked="checked" {% endif %}   onclick="prepopQuestionOne()">
+									<label for="previous-question-one">{{ session.previousQuestions[0][0] }}&nbsp;</label>
+								</div>
+
+								<div class="multiple-choice {% if session.previousQuestions.length < 2 %} js-hidden {% endif %} " data-target="show-answer-type"
+									 	   {% if errorOldQuestionTwoSelected %} checked="checked" {% endif %} >
+									<input id="previous-question-two" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionTwo()">
+									<label for="previous-question-two">{{ session.previousQuestions[1][0] }}&nbsp;</label>
+								</div>
+
+								<div class="multiple-choice {% if session.previousQuestions.length < 3 %} js-hidden {% endif %} " data-target="show-answer-type"
+									 	   {% if errorOldQuestionThreeSelected %} checked="checked" {% endif %} >
+									<input id="previous-question-three" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionThree()">
+									<label for="previous-question-two">{{ session.previousQuestions[2][0] }}&nbsp;</label>
+								</div>
+
+								<div class="multiple-choice {% if session.previousQuestions.length < 4 %} js-hidden {% endif %} " data-target="show-answer-type"
+									       {% if errorOldQuestionFourSelected %} checked="checked" {% endif %} >
+									<input id="previous-question-four" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionFour()">
+									<label for="previous-question-four">{{ session.previousQuestions[3][0] }}&nbsp;</label>
+								</div>
+
+								<div class="multiple-choice {% if session.previousQuestions.length < 5 %} js-hidden {% endif %} " data-target="show-answer-type"
+									 	   {% if errorOldQuestionFiveSelected %} checked="checked" {% endif %} >
+									<input id="previous-question-five" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"     onclick="prepopQuestionFive()">
+									<label for="previous-question-five">{{ session.previousQuestions[4][0] }}&nbsp;</label>
+								</div>
+							</div>
+
+						</div>
+
+
+					{% if errorNewQuestionEmpty %}
+						</div>
+					{% endif %}
+
+				</div>
+		  	</fieldset>
+
+
+
+			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
+			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
+			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
+			  									(errorAnswersError == undefined or errorAnswersError == false) %}
+			  								 js-hidden
+			  							  {% endif %}"
+						id="show-answer-type">
+
+
+
+				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question">
+						  Full name
+						  {% if errorQuestionEmpty %}
+									<span class="error-message">
+										Attendee question missing
+									</span>
+						  {% endif %}
+					  </label>
+					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+								 id="question" name="question" value="" style="width:80%;">
+					  </div>
+				  </div>
+
+				  <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question">
+						  Job title
+						  {% if errorQuestionEmpty %}
+									<span class="error-message">
+										Attendee question missing
+									</span>
+						  {% endif %}
+					  </label>
+					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+								 id="question" name="question" value="" style="width:30%;">
+					  </div>
+				  </div>
+
+				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question">
+						  Email address
+						  {% if errorQuestionEmpty %}
+									<span class="error-message">
+										Attendee question missing
+									</span>
+						  {% endif %}
+					  </label>
+					  <div class="form-hint">We’ll send a confirmation to this email address</div>
+					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+								 id="question" name="question" value="" style="width:80%;">
+					  </div>
+				  </div>
+
+				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question">
+						  Phone number
+						  {% if errorQuestionEmpty %}
+									<span class="error-message">
+										Attendee question missing
+									</span>
+						  {% endif %}
+					  </label>
+					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+								 id="question" name="question" value="" style="width:50%;">
+					  </div>
+				  </div>
+
+		  </fieldset>
+
+		<div class="form-group">
+			<a class="link" href="#">Add another ticket</a><br />
+		</div>
+
+
+		  <div class="form-group">
+			  <input type="submit" class="button button-blue" formaction="/register/additional-questions" value="Continue">
+		  </div>
+
+
+
+	  </form>
+
+    </div>
+
+<div class="column-one-third">
+	{% include "includes/basket.html" %} 
+</div>
+
+  </div>
+
+
+</main>
+
+
+
+
+{% include "includes/great-footer.html" %} 
+
+{% endblock %}
+
+
