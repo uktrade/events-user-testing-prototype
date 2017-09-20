@@ -50,7 +50,7 @@
 
 
 
-	  <h1 class="heading-large" style="margin-top:15px; margin-bottom:30px">
+	  <h1 class="heading-large" style="margin-top:15px; margin-bottom:15px">
 		  Where will the event take place?
       </h1>
 
@@ -59,17 +59,11 @@
 		  <!--   ADDRESS  -->
 		  <div class="form-group" style="margin-top:0px; margin-bottom:0px; width:100%;">
 
-			  <!--
-			  <label class="heading-medium" >
-				  Venue address
-			  </label>
-				-->
+			  <p style="margin-bottom:25px">A link to a map will be shown.</p>
 
-			  {% if errorBuilding %}
-			  	<div class="form-group form-group-error">
-			  {% else %}
-				<div class="form-group">
-			  {% endif %}
+
+			  	<div class="form-group {% if errorBuilding %} form-group-error {% endif %}">
+
 
 				  <label class="form-label-bold" for="building"  style="margin-bottom:5px;  ">Venue and street</label>
 				  {% if errorBuilding %}
@@ -80,18 +74,11 @@
 				  <input class="form-control {% if errorBuilding %} form-control-error {% endif %}" id="building" type="text" name="building" style="width:75%"  value="{{ data['building'] }}" >
 				  <input class="form-control" id="street" type="text" name="street" style="width:75%; margin-top:8px"   value="{{ data['street'] }}" >
 
-			  {% if errorBuilding %}
 				</div>
-			  {% else %}
-				</div>
-			  {% endif %}
 
 
-			  {% if errorTown %}
-			  	<div class="form-group form-group-error">
-			  {% else %}
-				<div class="form-group">
-			  {% endif %}
+
+			  	<div class="form-group {% if errorTown %} form-group-error {% endif %}">
 
 				  <label class="form-label-bold" for="town" style="margin-bottom:5px; ">Town or city</label>
 				  {% if errorTown %}
@@ -101,18 +88,12 @@
 				  {% endif %}
 				  <input class="form-control {% if errorTown %} form-control-error {% endif %}" id="town" type="text" name="town" style="width:40%"  value="{{ data['town'] }}">
 
-			  {% if errorTown %}
 				</div>
-			  {% else %}
-				</div>
-			  {% endif %}
 
 
-			  {% if errorPostcode %}
-			  	<div class="form-group form-group-error">
-			  {% else %}
-				</div>
-			  {% endif %}
+
+			  	<div class="form-group {% if errorPostcode %} form-group-error {% endif %}">
+
 
 				  <label class="form-label-bold" for="postcode" style="margin-bottom:5px;">Postcode</label>
 				  {% if errorPostcode %}
@@ -122,11 +103,19 @@
 				  {% endif %}
 				  <input class="form-control {% if errorPostcode %} form-control-error {% endif %}" id="postcode" type="text" name="postcode" style="width:25%"  value="{{ data['postcode'] }}">
 
-			  {% if errorPostcode %}
-				</div>
-			  {% else %}
 			  	</div>
-			  {% endif %}
+
+
+
+				  <!--  LOCATION NOTeS-->
+				  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
+					  <label class="form-label-bold" for="venue-additional-notes">
+						  Additional venue details (optional)
+
+						  <span class="form-hint" style="margin-bottom: 0px; margin-top:3px;">For example, Ample parking available</span>
+					  </label>
+					  <textarea class="form-control" name="venue-additional-notes" id="venue-additional-notes" rows="3" style="width: 100%;">{{ data['venue-additional-notes'] }}</textarea>
+				  </div>
 
 
 
@@ -160,13 +149,11 @@
 
 					  <span id="establishment"></span>
 					  <span id="street_address"></span>
-
 				  </p>
 
-				  <br>r
+				  <br>
 			  </div>
 		  </div>
-
 
 
 

@@ -82,7 +82,7 @@
 			  <!--  message user will see when all tickets are gone -->
 			  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
 				  <label class="form-label-bold" for="sold-out-message">
-					  Message when event reaches capacity (optional)
+					  Message when event reaches capacity
 				  </label>
 				  <textarea class="form-control" name="sold-out-message" id="sold-out-message" rows="3" style="width: 100%;">{{ data['sold-out-message'] }}</textarea>
 			  </div>
@@ -91,18 +91,17 @@
 
 
 		  <fieldset class="form-group" style="margin-bottom:0px">
+			  <label class="form-label-bold" for="close-reg-early-days">
+				  Close registration before event
+			  </label>
+			  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
+			  <div class="form-group form-group-day form-date">
 
-				  <label class="form-label-bold" for="sold-out-message">
-					  Close registration before event
-				  </label>
-				  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
-				  <div class="form-group form-group-day form-date">
-
-					  <input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
-							 id="close-reg-early-days" name="close-reg-early-days" type="number" pattern="[0-9]*"
-							 value="{{ data['close-reg-early-days'] }}" style="float: left; width:50px;">
-					  <p style="float: left; margin-left:10px; margin-top:8px;"> days before event</p>
-			  	  </div>
+				  <input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
+						 id="close-reg-early-days" name="close-reg-early-days" type="number" pattern="[0-9]*"
+						 value="{{ data['close-reg-early-days'] }}" style="float: left; width:50px;">
+				  <p style="float: left; margin-left:10px; margin-top:8px;"> days before event</p>
+			  </div>
 		  </fieldset>
 
 
