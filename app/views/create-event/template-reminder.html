@@ -32,7 +32,7 @@ GOV.UK prototype kit
 
 				<fieldset class="form-group" style="margin-bottom:20px">
 
-					<label class="form-label-bold" for="sold-out-message">
+					<label class="form-label-bold" for="close-reg-early-days">
 						When to send reminder
 					</label>
 					<!-- <p class="form-hint">For example, 31 3 1980</p>  -->
@@ -70,7 +70,7 @@ GOV.UK prototype kit
 						<br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
 						<br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
 					</p>
-					<p style="white-space: pre-wrap; margin-left:5px; ">{{data['full-address-holder'] }}</p>
+					<p style="white-space: pre-wrap; margin-left:5px; ">{{ data['full-address-holder'] }}<br>{{ data['venue-additional-notes'] }}</p>
 
 
 

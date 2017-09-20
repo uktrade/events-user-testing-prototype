@@ -118,8 +118,8 @@
 
 
 					  <div style="width:40%; margin-bottom:10px;" id="market-container-1">
-						  <select class="form-control" id="market-box-1" name="market-box-1" value="{{data['market-box-1']}}">
-							  <option value="" selected="selected">Choose a location</option>
+						  <select class="form-control" id="market-box-1">
+							  <option value="{{data['market-box-1']}}" selected>{{ data['market-box-1']}}</option>
 						  </select>
 				  	  </div>
 
@@ -157,7 +157,7 @@
 					  <p id="markets-4-add" onclick="showMarket4()"
 						 {% if marketEntered3 == true  and  marketEntered4 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
 						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
-						 >Add another market 444</p>
+						 >Add another market</p>
 
 					  <div id="market-container-4"
 						   {% if marketEntered4 == true  %} style="width:40%; margin-bottom:10px;"
@@ -172,7 +172,7 @@
 					  <p id="markets-5-add" onclick="showMarket5()"
 						 {% if marketEntered4 == true  and  marketEntered5 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
 						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
-					     >Add another market 55555</p>
+					     >Add another market</p>
 
 					  <div id="market-container-5"
 						   {% if marketEntered5 == true  %} style="width:40%; margin-bottom:10px;"
@@ -187,7 +187,7 @@
 					  <p id="markets-6-add" onclick="showMarket6()"
 						 {% if marketEntered5 == true  and  marketEntered6 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
 						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
-					     >Add another market  66666</p>
+					     >Add another market</p>
 
 					  <div id="market-container-6"
 						   {% if marketEntered6 == true  %} style="width:40%; margin-bottom:10px;"
@@ -202,7 +202,7 @@
 					  <p id="markets-7-add" onclick="showMarket7()"
 						 {% if marketEntered6 == true  and  marketEntered7 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
 						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
-					  		>Add another market  777</p>
+					  		>Add another market</p>
 
 					  <div id="market-container-7"
 						   {% if marketEntered7 == true  %} style="width:40%; margin-bottom:10px;"
@@ -217,7 +217,7 @@
 					  <p id="markets-8-add" onclick="showMarket8()"
 						 {% if marketEntered7 == true  and  marketEntered8 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
 						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
-					  	 >Add another market  8888</p>
+					  	 >Add another market</p>
 
 					  <div id="market-container-8"
 						   {% if marketEntered8 == true  %} style="width:40%; margin-bottom:10px;"
@@ -232,7 +232,7 @@
 					  <p id="markets-9-add" onclick="showMarket9()"
 						 {% if marketEntered8 == true  and  marketEntered9 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
 						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
-					  	 >Add another market  999</p>
+					  	 >Add another market</p>
 
 					  <div id="market-container-9"
 						   {% if marketEntered9 == true  %} style="width:40%; margin-bottom:10px;"
@@ -247,7 +247,7 @@
 					  <p id="markets-10-add" onclick="showMarket10()"
 						 {% if marketEntered9 == true  and  marketEntered10 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px;"
 						 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:10px; display:none;" {% endif %}
-					  >Add another market  10</p>
+					  >Add another market</p>
 
 					  <div id="market-container-10"
 						   {% if marketEntered10 == true  %} style="width:40%; margin-bottom:10px;"
@@ -564,7 +564,6 @@
 			  <div>
 				  <label class="form-label-bold" for="event-description" style="float:left; margin-top:4px;">
 					  Further details and background
-					  <span class="form-hint" style="margin-bottom: 5px; margin-top:3px;">For example, North West-based SMEs looking to do business with South East Asian buyers.</span>
 
 					  {% if errorMissingEventDescription %}
 						  <span class="error-message">
@@ -594,9 +593,10 @@
   </div>
 </main>
 
+{% endblock %}
 
 
-
+{% block page_scripts %}
 <script>
 
 	// SHOW MORE MARKET BOXES
@@ -735,23 +735,13 @@
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/registers-picker-engine@0.0.2"></script>
 <script type="text/javascript" src="https://unpkg.com/accessible-typeahead@0.4.1"></script>
-<script type="text/javascript">
+<script>
+
 	var dataFilePath = '/public/data/picker-data-4.json';
 	var source = locationPickerSuggestions(dataFilePath);
 	var counter = 1;
 
-	function addMarketBox(parentID){
-	    id = 'market-box-' + counter++;
-	    select = document.createElement('select');
-	    select.class = 'form-control';
-	    select.id = id;
-		select.name = id;
-		document.getElementById(parentID).appendChild(select);
-
-		addMarketBoxJs(id, source);
-	}
-
-	function addMarketBoxJs(elementID, source){
+	function addMarketBoxJs(elementID, source, value){
 	    AccessibleTypeahead.enhanceSelectElement({
 			autoselect: true,
 			id:elementID,
@@ -759,19 +749,26 @@
 			selectElement: document.getElementById(elementID),
 			minLength: 1,
 			source: source
-		})
+		});
+
+	    if (value === undefined){
+	        value = "";
+		}
+		$('#' + elementID)[0].value = value;
+		$('#' + elementID + '__listbox')[0].classList.add('typeahead__menu--hidden');
+		$('#' + elementID + '__listbox')[0].classList.remove('typeahead__menu--visible');
 	}
 
-	addMarketBoxJs('market-box-1', source);
-	addMarketBoxJs('market-box-2', source);
-	addMarketBoxJs('market-box-3', source);
-	addMarketBoxJs('market-box-4', source);
-	addMarketBoxJs('market-box-5', source);
-	addMarketBoxJs('market-box-6', source);
-	addMarketBoxJs('market-box-7', source);
-	addMarketBoxJs('market-box-8', source);
-	addMarketBoxJs('market-box-9', source);
-	addMarketBoxJs('market-box-10', source);
+	addMarketBoxJs('market-box-1', source, 	{{ data['market-box-1'] | dump | safe }});
+	addMarketBoxJs('market-box-2', source, 	{{ data['market-box-2'] | dump | safe }});
+	addMarketBoxJs('market-box-3', source, 	{{ data['market-box-3'] | dump | safe }});
+	addMarketBoxJs('market-box-4', source, 	{{ data['market-box-4'] | dump | safe }});
+	addMarketBoxJs('market-box-5', source, 	{{ data['market-box-5'] | dump | safe }});
+	addMarketBoxJs('market-box-6', source, 	{{ data['market-box-6'] | dump | safe }});
+	addMarketBoxJs('market-box-7', source, 	{{ data['market-box-7'] | dump | safe }});
+	addMarketBoxJs('market-box-8', source, 	{{ data['market-box-8'] | dump | safe }});
+	addMarketBoxJs('market-box-9', source, 	{{ data['market-box-9'] | dump | safe }});
+	addMarketBoxJs('market-box-10', source, {{ data['market-box-10'] | dump | safe }});
 
 </script>
 
