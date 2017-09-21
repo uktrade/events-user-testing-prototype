@@ -5,6 +5,10 @@
   GOV.UK prototype kit
 {% endblock %}
 
+{% block extrastyle %}
+  <link href="/public/stylesheets/location-autocomplete.min.css" media="screen" rel="stylesheet" type="text/css">
+{% endblock %}
+
 {% block content %}
 
 <main id="content" role="main">
@@ -725,51 +729,40 @@
 
 </script>
 
-
-<link rel="stylesheet" href="https://unpkg.com/accessible-typeahead@0.4.1/dist/styled.min.css">
 <style>
 	.typeahead__menu--inline {
 		max-height: none;
 		overflow-x: visible;
 	}
 </style>
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/registers-picker-engine@0.0.2"></script>
-<script type="text/javascript" src="https://unpkg.com/accessible-typeahead@0.4.1"></script>
+<script type="text/javascript" src="/public/javascripts/typeahead.bundle.js"></script>
+<script type="text/javascript" src="/public/javascripts/location-autocomplete.min.js"></script>
 <script>
 
-	var dataFilePath = '/public/data/picker-data-4.json';
-	var source = locationPickerSuggestions(dataFilePath);
-	var counter = 1;
+	addMarketBoxJs('market-box-1', {{ data['market-box-1'] | dump | safe }});
+	addMarketBoxJs('market-box-2', {{ data['market-box-2'] | dump | safe }});
+	addMarketBoxJs('market-box-3', {{ data['market-box-3'] | dump | safe }});
+	addMarketBoxJs('market-box-4', {{ data['market-box-4'] | dump | safe }});
+	addMarketBoxJs('market-box-5', {{ data['market-box-5'] | dump | safe }});
+	addMarketBoxJs('market-box-6', {{ data['market-box-6'] | dump | safe }});
+	addMarketBoxJs('market-box-7', {{ data['market-box-7'] | dump | safe }});
+	addMarketBoxJs('market-box-8', {{ data['market-box-8'] | dump | safe }});
+	addMarketBoxJs('market-box-9', {{ data['market-box-9'] | dump | safe }});
+	addMarketBoxJs('market-box-10', {{ data['market-box-10'] | dump | safe }});
 
-	function addMarketBoxJs(elementID, source, value){
-	    AccessibleTypeahead.enhanceSelectElement({
-			autoselect: true,
-			id:elementID,
-			name:elementID,
+    function addMarketBoxJs(elementID, value){
+	    openregisterLocationPicker({
 			selectElement: document.getElementById(elementID),
-			minLength: 1,
-			source: source
+			url: '/public/data/location-autocomplete-graph.json',
+			name: elementID,
+			selected: value,
 		});
 
 	    if (value === undefined){
 	        value = "";
 		}
 		$('#' + elementID)[0].value = value;
-		$('#' + elementID + '__listbox')[0].classList.add('typeahead__menu--hidden');
-		$('#' + elementID + '__listbox')[0].classList.remove('typeahead__menu--visible');
 	}
-
-	addMarketBoxJs('market-box-1', source, 	{{ data['market-box-1'] | dump | safe }});
-	addMarketBoxJs('market-box-2', source, 	{{ data['market-box-2'] | dump | safe }});
-	addMarketBoxJs('market-box-3', source, 	{{ data['market-box-3'] | dump | safe }});
-	addMarketBoxJs('market-box-4', source, 	{{ data['market-box-4'] | dump | safe }});
-	addMarketBoxJs('market-box-5', source, 	{{ data['market-box-5'] | dump | safe }});
-	addMarketBoxJs('market-box-6', source, 	{{ data['market-box-6'] | dump | safe }});
-	addMarketBoxJs('market-box-7', source, 	{{ data['market-box-7'] | dump | safe }});
-	addMarketBoxJs('market-box-8', source, 	{{ data['market-box-8'] | dump | safe }});
-	addMarketBoxJs('market-box-9', source, 	{{ data['market-box-9'] | dump | safe }});
-	addMarketBoxJs('market-box-10', source, {{ data['market-box-10'] | dump | safe }});
 
 </script>
 
