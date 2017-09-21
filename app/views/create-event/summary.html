@@ -106,13 +106,12 @@
 			  </div>
 
 
-
 			  <div>
 				  <dt class="cya-question">
 					  Date
 				  </dt>
 				  <dd class="cya-answer">
-					  {{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
+					  {{ data['event-day-of-the-week'] }}<br>{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
 				  </dd>
 				  <dd class="cya-change">
 					  <a href="/create-event/change-date">
@@ -288,7 +287,7 @@
 					  Registration closing time
 				  </dt>
 				  <dd class="cya-answer">
-					  {{ session.regCloseTime }}
+					  {{ data['reg-close-time'] }}
 				  </dd>
 				  <dd class="cya-change">
 					  <a href="/create-event/change-attendees">

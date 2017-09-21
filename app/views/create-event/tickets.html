@@ -82,6 +82,7 @@
 		  </fieldset>
 
 
+
 		  <fieldset class="form-group">
 			  <!--  message user will see when all tickets are gone -->
 			  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
@@ -94,23 +95,145 @@
 
 
 
-		  <fieldset class="form-group" style="margin-bottom:0px">
-			  <label class="form-label-bold" for="close-reg-early-days">
-				  Close registration before event
-			  </label>
-			  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
-			  <div class="form-group form-group-day form-date">
+		  <fieldset class="form-group" style="margin-bottom:0px; margin-top:10px;">
 
-				  <input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
-						 id="close-reg-early-days" name="close-reg-early-days" type="number" pattern="[0-9]*"
-						 value="{{ data['close-reg-early-days'] }}" style="float: left; width:50px;">
-				  <p style="float: left; margin-left:10px; margin-top:8px;"> days before event</p>
+			  <label class="form-label-bold">
+				  Do you want to close registrations early
+			  </label>
+			  <div class="form-date" style="margin-top:5px">
+				  <div class="multiple-choice" style="margin-bottom:10px">
+					  <input id="radio-days-before-no" type="radio" name="radio-close-early-yes-no" value="no" checked="checked">
+					  <label for="radio-days-before-no">No</label>
+				  </div>
+				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="date-selection-area">
+					  <input id="radio-days-before-yes" type="radio" name="radio-close-early-yes-no" value="yes" >
+					  <label for="radio-days-before-yes">Yes - close registration early</label>
+				  </div>
 			  </div>
 		  </fieldset>
 
 
+			  <div class="form-group panel panel-border-narrow js-hidden" id="date-selection-area">
 
-		  <div class="form-group" style="margin-top:0px">
+				  <div style="width:100%">
+					  <label class="form-label-bold">
+						  Close date
+					  </label>
+
+		  			<fieldset>
+					  <div class="" style="margin-top:5px"  style="width:100%">
+						  <div class="multiple-choice" style="margin-bottom:10px; width:100%;" >
+							  <input id="radio-days-before-1" type="radio" name="radio-days-before" value="oneday" >
+							  <label for="radio-days-before-1">{{ data['days-before-1'] }}</label>
+						  </div>
+						  <div class="multiple-choice" style="margin-bottom:10px; width:100%;">
+							  <input id="radio-days-before-2" type="radio" name="radio-days-before" value="twoday" >
+							  <label for="radio-days-before-2">{{ data['days-before-2'] }}</label>
+						  </div>
+						  <div class="multiple-choice" style="margin-bottom:10px; width:100%;">
+							  <input id="radio-days-before-3" type="radio" name="radio-days-before" value="threeday" >
+							  <label for="radio-days-before-3">{{ data['days-before-3'] }}</label>
+						  </div><!--
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-days-before-4" type="radio" name="radio-days-before" value="">
+							  <label for="radio-days-before-4">{{ data['days-before-4'] }}</label>
+						  </div>
+						  -->
+						  <div class="multiple-choice" style="margin-bottom:10px; width:100%;" data-target="specific-date">
+							  <input id="radio-days-before-other" type="radio" name="radio-days-before" value="differentdate" >
+							  <label for="radio-days-before-other">Another date</label>
+						  </div>
+					  </div>
+				  </fieldset>
+
+
+				  <fieldset>
+					  <div class="js-hidden" id="specific-date"  style="width:100%;">
+
+						  <label class="form-label-bold" for="dates" style="width:100%;">
+							  Enter close date
+						  </label>
+
+						  <div class="form-date" id="dates" style="width:100%;">
+
+							  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
+							  <div class="form-group form-group-day">
+								  <label for="event-day-close">Day</label>
+								  <input class="form-control  {% if errorDayFound %} form-control-error {% endif %}"
+										 id="event-day-close" name="event-day-close" type="number" pattern="[0-9]*" value="{{ data['event-day-close'] }}">
+							  </div>
+
+							  <div class="form-group form-group-month">
+								  <label for="event-month-close">Month</label>
+								  <input class="form-control  {% if errorMonthFound %} form-control-error {% endif %}"
+										 id="event-month-close" name="event-month-close" type="number"  value="{{ data['event-month-close'] }}">
+							  </div>
+
+							  <div class="form-group form-group-year">
+								  <label for="event-year-close">Year</label>
+								  <input class="form-control   {% if errorYearFound %} form-control-error {% endif %}"
+										 id="event-year-close" name="event-year-close" type="number"  value="{{ data['event-year-close'] }}">
+							  </div>
+
+							  <div style="width:100%">&nbsp;<br>&nbsp;<br>&nbsp;</div>
+
+						  </div>
+					  </div>
+					</fieldset>
+
+
+				  </div>
+
+
+				  <!-- FINISH TIME -->
+				  <div style="width:100%">&nbsp;</div>
+
+
+		  		<fieldset>
+				  <!-- time -->
+				  <div style="width:100%; display:block;">
+
+					  <label class="form-label-bold" style="margin-top:0px";>
+						  Close time
+
+						  {% if errorOnFinishHour %}
+							  <span class="error-message">
+								  Please enter a valid hour (0 to 23)
+							  </span>
+						  {% endif %}
+
+						  {% if errorOnFinishMinutes %}
+							  <span class="error-message">
+								  Please enter a valid minute (0 to 59)
+							  </span>
+						  {% endif %}
+
+					  </label>
+
+					  <div class="form-date" >
+						  <!-- <p class="form-hint">For example, 9 30</p>  -->
+						  <div class="form-group form-group-day">
+							  <label for="close-hours">Hours</label>
+							  <input class="form-control  {% if errorOnFinishHour %} form-control-error {% endif %}"
+									 id="close-hours" name="close-hours" type="number" pattern="[0-9]*"  value="12">
+						  </div>
+						  <div class="form-group form-group-month">
+							  <label for="close-minutes">Minutes</label>
+							  <input class="form-control  {% if errorOnFinishMinutes %} form-control-error {% endif %}"
+									 id="close-minutes" name="close-minutes" type="number" pattern="[0-9]*" value="00" >
+						  </div>
+					  </div>
+				  </div>
+
+		  		</fieldset>
+
+			  </div>
+
+
+
+
+
+		  <div class="form-group" style="margin-top:40px">
 			  <input type="submit" class="button" value="Save and continue">
 			  <p style="margin-top:25px"><a href="/create-event/attendees">I'll complete this later - I don't have this information yet</a></p>
 		  </div>

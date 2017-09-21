@@ -154,6 +154,23 @@ router.use(function (req, res, next)
     req.session.data['contact-phone'] = "0779 235 9716";
   }
 
+  if(req.session.data['days-before-1'] == undefined)
+  {
+    req.session.data['days-before-1'] = "1 day before"
+  }
+  if(req.session.data['days-before-2'] == undefined)
+  {
+    req.session.data['days-before-2'] = "2 days before";
+  }
+  if(req.session.data['days-before-3'] == undefined)
+  {
+    req.session.data['days-before-3'] = "3 days before";
+  }
+  if(req.session.data['days-before-2'] == undefined)
+  {
+    req.session.data['days-before-4'] = "4 days before";
+  }
+
 
 
 
@@ -1476,6 +1493,8 @@ router.get('/create-event/date-onwards', function (req, res)
 
 
   // DAY
+  var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
   if (req.session.data['event-day'] != undefined)
   {
     if(1 <= req.session.data['event-day'] && req.session.data['event-day'] <= 31)
@@ -1486,14 +1505,19 @@ router.get('/create-event/date-onwards', function (req, res)
     }
   }
 
+
+
   //  MONTH
+  var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+
   if (req.session.data['event-month'] != undefined)
   {
     if(1 <= req.session.data['event-month'] && req.session.data['event-month'] <= 12)
     {
-      var monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
+
       if(req.session.data['event-month'] <= 13)
       { req.session.data['event-month-name'] =  monthNames[req.session.data['event-month']-1]; }
     }
@@ -1516,10 +1540,14 @@ router.get('/create-event/date-onwards', function (req, res)
   }
 
 
+
   // CHECK IF DATE IS IN THE PAST
   var currentDate = new Date();
   var enteredDate = new Date();
   enteredDate.setFullYear(req.session.data['event-year'], req.session.data['event-month']-1, req.session.data['event-day']);
+
+
+  req.session.data['event-day-of-the-week'] = days[enteredDate.getDay()];
 
   console.log("THE CURRENT DTE TIME IS " + currentDate);
   console.log("THE ENTERED DATE TIME IS " + enteredDate);
@@ -1529,6 +1557,29 @@ router.get('/create-event/date-onwards', function (req, res)
     dateInThePast = true;
   }
 
+
+  // SAVE THE DATEs FOR CLOSING REG TIME
+  var oneDayBefore = new Date(enteredDate.getTime());
+  oneDayBefore.setDate(enteredDate.getDate() - 1 );
+
+  var twoDaysBefore = new Date(enteredDate.getTime());
+  twoDaysBefore.setDate(enteredDate.getDate() - 2 );
+
+  var threeDaysBefore = new Date(enteredDate.getTime());
+  threeDaysBefore.setDate(enteredDate.getDate() - 3 );
+
+  var fourDaysBefore = new Date(enteredDate.getTime());
+  fourDaysBefore.setDate(enteredDate.getDate() - 4 );
+
+  req.session.data['days-before-1'] = "1 day before - " + days[oneDayBefore.getDay()] + "  " + oneDayBefore.getDate() + "  " +  monthNames[oneDayBefore.getMonth()] + "  " +  oneDayBefore.getFullYear();
+  req.session.data['days-before-2'] = "2 days before - " + days[twoDaysBefore.getDay()] + "  " + twoDaysBefore.getDate() + "  " +  monthNames[twoDaysBefore.getMonth()] + "  " +  twoDaysBefore.getFullYear();
+  req.session.data['days-before-3'] = "3 days before - " + days[threeDaysBefore.getDay()] + "  " + threeDaysBefore.getDate() + "  " +  monthNames[threeDaysBefore.getMonth()] + "  " +  threeDaysBefore.getFullYear();
+  req.session.data['days-before-4'] = "4 days before - " + days[fourDaysBefore.getDay()] + "  " + fourDaysBefore.getDate() + "  " +  monthNames[fourDaysBefore.getMonth()] + "  " +  fourDaysBefore.getFullYear();
+
+
+  console.log("THE YEAR BEFORE IS +++++++++++ " + oneDayBefore.getFullYear());
+
+  console.log("THE DAY BEFORE IS +++++++++++ " + days[oneDayBefore.getDay()] + "  " + oneDayBefore.getDate() + "  " +  monthNames[oneDayBefore.getMonth()] + "  " +  oneDayBefore.getFullYear());
 
 
 
@@ -1766,21 +1817,100 @@ router.get('/create-event/tickets-onwards', function (req, res)
   req.session.data['attendee-quantity'];
 
   //  message for when tickets are gone and nothing is entered in the box
-  if(req.session.data['sold-out-message'] == "")
-  {
-    req.session.data['sold-out-message'] = "No message will be shown";
-  }
+
+  console.log("the event thing close 999  " + req.session.data['radio-close-early-yes-no']);
 
 
-  if(req.session.data['close-reg-early-days'] == undefined  ||  req.session.data['close-reg-early-days'] == "" )
+  if(req.session.data['radio-close-early-yes-no'] == "no")
   {
-    req.session.data['reg-close-time'] = req.session.data['event-start-time'] + " " + req.session.data['event-day'] + " " + req.session.data['event-month-name'] + " " +
-                                        req.session.data['event-year'] + " (event start time)" ;
+    req.session.data['reg-close-time'] = "12:00 " + req.session.data['event-day-of-the-week'] + " " + req.session.data['event-day'] + " " +  req.session.data['event-month-name'] + " " + req.session.data['event-year'];
   }
-  else
+  else if(req.session.data['radio-close-early-yes-no'] == "yes")
   {
-    req.session.data['reg-close-time'] = req.session.data['event-start-time'] + '\xa0\xa0\xa0' + (req.session.data['event-day']-req.session.data['close-reg-early-days']) + " " + req.session.data['event-month-name'] + " " +
-                                        req.session.data['event-year'] + '\xa0\xa0\xa0' +  "   (" + req.session.data['close-reg-early-days'] + " days before event)";
+    if(req.session.data['radio-days-before'] == "oneday")
+    {
+      req.session.data['reg-close-time'] = " 1 day before - " + req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + " " + req.session.data['days-before-1'].substr(14);
+    }
+    else if(req.session.data['radio-days-before'] == "twoday")
+    {
+      req.session.data['reg-close-time'] = " 2 days before - " + req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + " " + req.session.data['days-before-2'].substr(14);
+    }
+    else if(req.session.data['radio-days-before'] == "threeday")
+    {
+      req.session.data['reg-close-time'] = " 3 days before - " + req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + " " + req.session.data['days-before-3'].substr(14);
+    }
+    else if(req.session.data['radio-days-before'] == "differentdate")
+    {
+      /*
+      if (req.session.data['event-day-close'] != undefined)
+      {
+        if(1 <= req.session.data['event-day-close'] && req.session.data['event-day-close'] <= 31)
+        {    }
+        else
+        {
+          errorDayFound = true;
+        }
+      }
+
+      //  MONTH
+      var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+
+      if (req.session.data['event-month-close'] != undefined)
+      {
+        if(1 <= req.session.data['event-month-close'] && req.session.data['event-month-close'] <= 12)
+        {
+
+          if(req.session.data['event-month-close'] <= 13)
+          { req.session.data['event-month-name'] =  monthNames[req.session.data['event-month-close']-1]; }
+        }
+        else
+        {
+          errorMonthFound = true;
+        }
+      }
+
+      // YEAR
+      if (req.session.data['event-year-close'] != undefined)
+      {
+        if(2017 <= req.session.data['event-year-close'] && req.session.data['event-year-close'] <= 2020)
+        {}
+        else
+        {
+          errorYearFound = true;
+        }
+      }
+      */
+
+
+      // DAY
+      var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+
+      //  MONTH
+      var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+
+      console.log(" the day in  " + req.session.data['event-day-close']);
+      console.log(" the month in " + req.session.data['event-month-close']);
+      console.log(" the year in   " + req.session.data['event-year-close']);
+
+      var enteredCloseDate = new Date();
+      enteredCloseDate.setFullYear(req.session.data['event-year-close'], req.session.data['event-month-close']-1, req.session.data['event-day-close']);
+
+      req.session.data['reg-close-time'] = req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + "  " + days[enteredCloseDate.getDay()] + "  " + enteredCloseDate.getDate() + "  " +  monthNames[enteredCloseDate.getMonth()] + "  " +  enteredCloseDate.getFullYear();
+
+
+      console.log(" the day is - " + enteredCloseDate.getDay());
+      console.log(" the date is - " + enteredCloseDate.getDate());
+      console.log(" the month is - " + enteredCloseDate.getMonth());
+      console.log(" the year is - " + enteredCloseDate.getFullYear());
+
+    }
   }
 
 
