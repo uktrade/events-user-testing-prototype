@@ -49,6 +49,8 @@ $path: "/public/images/";
 #proposition-links {
   float: right;
 } 
-
 a:visited {color:#005ea5;}
+a.link--white {color:white}
+a.link--white:visited {color: white !important}
+
 .breadcrumbs a {color:#0b0c0c}
