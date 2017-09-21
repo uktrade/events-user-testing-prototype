@@ -22,7 +22,6 @@
         Summary
       </h1>
 
-	  <br>
 
 	  <form action="/create-event/preview" method="get" class="form">
 
@@ -30,7 +29,68 @@
 		  <!--   * `cya-questions-short` for short questions -->
 		  <!--   * `cya-questions-long` for long questions -->
 		  <!--   * none for single group of q&a -->
-		  <dl class="govuk-check-your-answers cya-questions-short">
+
+
+		  <!-- contact details -->
+		  <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:35px;">
+
+			  <div>
+				  <dt class="cya-question heading-medium" style="vertical-align:top">Event ownership</dt>
+				  <dd class="cya-answer">  </dd>
+				  <dd class="cya-change" style="vertical-align:top">  </dd>
+			  </div>
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Event organiser</dt>
+				  <dd class="cya-answer">
+					  Department for International Trade
+					  <br>{{ data['organiser-name'] }}
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-organiser">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Contact email address</dt>
+				  <dd class="cya-answer">
+					  {{ data['contact-email'] }}
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-organiser">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Contact phone number</dt>
+				  <dd class="cya-answer">
+					  {{ data['contact-phone'] }}
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-organiser">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+		  </dl>
+
+
+		  <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:45px;">
+
+			  <div>
+				  <dt class="cya-question heading-medium" style="vertical-align:top">Event webpage</dt>
+				  <dd class="cya-answer">  </dd>
+				  <dd class="cya-change" style="vertical-align:top">  </dd>
+			  </div>
+
+
+
 			  <div>
 				  <dt class="cya-question" style="width:30%">
 					  Title
@@ -81,7 +141,7 @@
 				  <dt class="cya-question">
 					  Venue
 				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</dd>
+				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}<br>{{ data['venue-additional-notes'] }}</dd>
 				  <dd class="cya-change ">
 					  <a href="#">
 						  Change
@@ -90,56 +150,9 @@
 			  </div>
 
 
-
-
-
 			  <div>
 				  <dt class="cya-question">
-					  Attendee places
-				  </dt>
-				  <dd class="cya-answer">
-					  {{ data['attendee-quantity'] }}
-				  </dd>
-				  <dd class="cya-change">
-					  <a href="/create-event/change-attendees">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
-
-			  <div>
-				  <dt class="cya-question">
-					  Registration closing time
-				  </dt>
-				  <dd class="cya-answer">
-					  {{ session.regCloseTime }}
-				  </dd>
-				  <dd class="cya-change">
-					  <a href="/create-event/change-attendees">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
-
-			  <div>
-				  <dt class="cya-question">
-					  Message displayed when all tickets are sold out
-				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sold-out-message'] }}</dd>
-				  <dd class="cya-change">
-					  <a href="/create-event/change-attendees">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
-
-
-
-
-
-			  <div>
-				  <dt class="cya-question">
-					  Sectors
+					  Target sectors
 				  </dt>
 				  <dd class="cya-answer"    style="white-space: pre-wrap;">{{ data['sectors'] }}</dd>
 				  <dd class="cya-change" >
@@ -178,9 +191,22 @@
 
 			  <div>
 				  <dt class="cya-question">
-					  Benefits or outcomes
+					  Attendee benefits
 				  </dt>
 				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['benefits'] }}</dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-description">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Target markets
+				  </dt>
+				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['markets'] }}</dd>
 				  <dd class="cya-change">
 					  <a href="/create-event/change-description">
 						  Change
@@ -201,28 +227,10 @@
 				  </dd>
 			  </div>
 
-			  <div>
-				  <dt class="cya-question">
-					  International markets
-				  </dt>
-				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['markets'] }}</dd>
-				  <dd class="cya-change">
-					  <a href="/create-event/change-description">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
-
-
-
-
-
-
-
 
 			  <div>
 				  <dt class="cya-question">
-					  Event description
+					  Further event details
 				  </dt>
 				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
 				  <dd class="cya-change">
@@ -233,6 +241,74 @@
 			  </div>
 
 
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Main image</dt>
+				  <dd class="cya-answer">
+					  <img src="/public/images/exportingheroimagesmall.jpg" style="width:240px; height:100px;">
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-images">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+		  </dl>
+
+
+
+
+		  <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:50px;">
+
+			  <div>
+				  <dt class="cya-question heading-medium" style="vertical-align:top">Registration</dt>
+				  <dd class="cya-answer">  </dd>
+				  <dd class="cya-change" style="vertical-align:top">  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Number of places
+				  </dt>
+				  <dd class="cya-answer">
+					  {{ data['attendee-quantity'] }}
+				  </dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-attendees">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Registration closing time
+				  </dt>
+				  <dd class="cya-answer">
+					  {{ session.regCloseTime }}
+				  </dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-attendees">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Message displayed when event is full
+				  </dt>
+				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sold-out-message'] }}</dd>
+				  <dd class="cya-change">
+					  <a href="/create-event/change-attendees">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
 
 
 			  {% if session.questionsData.length == 0  %}
@@ -326,19 +402,21 @@
 			  {% endif %}
 
 
+
+		  </dl>
+
+
+		  <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:45px;">
+
 			  <div>
-				  <dt class="cya-question" style="vertical-align:top">Main image</dt>
-				  <dd class="cya-answer">
-					  <img src="/public/images/exportingheroimagesmall.jpg" style="width:240px; height:100px;">
-				  </dd>
-				  <dd class="cya-change" style="vertical-align:top">
-					  <a href="/create-event/change-images">
-						  Change
-					  </a>
-				  </dd>
+				  <dd class="cya-answer heading-medium" style="vertical-align:top">Confirmation and reminders</dd>
+				  <dd class="cya-change" style="vertical-align:top">  </dd>
 			  </div>
 
+		  </dl>
 
+
+		  <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:10px;">
 
 			  <!--   EMAIL TEMPLATES  -->
 
@@ -369,55 +447,12 @@
 
 
 
-
-
-
-			  <!-- contact details -->
-
-			  <div>
-				  <dt class="cya-question" style="vertical-align:top">Event organiser</dt>
-				  <dd class="cya-answer">
-					  Department for International Trade
-					  <br>{{ data['organiser-name'] }}
-				  </dd>
-				  <dd class="cya-change" style="vertical-align:top">
-					  <a href="/create-event/change-organiser">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
-
-			  <div>
-				  <dt class="cya-question" style="vertical-align:top">Contact email address</dt>
-				  <dd class="cya-answer">
-					  {{ data['contact-email'] }}
-				  </dd>
-				  <dd class="cya-change" style="vertical-align:top">
-					  <a href="/create-event/change-organiser">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
-
-			  <div>
-				  <dt class="cya-question" style="vertical-align:top">Contact phone number</dt>
-				  <dd class="cya-answer">
-					  {{ data['contact-phone'] }}
-				  </dd>
-				  <dd class="cya-change" style="vertical-align:top">
-					  <a href="/create-event/change-organiser">
-						  Change
-					  </a>
-				  </dd>
-			  </div>
-
-
 		  </dl>
 
 
 
 
-		  <div class="form-group" style="margin-top:40px">
+		  <div class="form-group" style="margin-top:50px">
 			  <input type="submit" class="button" value="Preview event page">
 			  <p style="margin-top:30px"><a href="/account">Account home</a></p>
 		  </div>

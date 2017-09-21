@@ -66,11 +66,8 @@
 		  	}
 		  </style>
 
-		  {% if errorMissingImage %}
-		  	<div class="form-group form-group-error">
-		  {% endif %}
 
-			  <div class="form-group" style="margin-top:10px; height:150px" id="new-image-area">
+			  <div class="form-group {% if errorMissingImage %} form-group-error {% endif %}" style="margin-top:10px; height:150px" id="new-image-area">
 				  <label class="form-label-bold">
 					  Main event image
 				  </label>
@@ -88,11 +85,6 @@
 				  </div>
 			  </div>
 
-		  {% if errorMissingImage %}
-			</div>
-		  {% endif %}
-
-
 
 		  <!--  THE PARTNER LOGOS  -->
 		  {% if errorMissingPartnerImage %}
@@ -104,26 +96,40 @@
 				  <label class="form-label-bold" style="margin-bottom:10px;">
 					  Select partner logos
 				  </label>
-				  <fieldset style="width:100%; display: flex;">
+				  <fieldset style="width:100%;;">
 
-					  <div class="multiple-choice" style="float: left; padding-top:0px; width:300px">
-						  <input id="eu-logo" name="eu-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
-						  <label for="eu-logo"><img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
+					  <div style=" padding-top:0px; width:500px; display: flex; ">
+
+						  <div class="multiple-choice" style="margin-right:30px; padding-top:0px;">
+							  <input id="eu-logo" name="eu-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
+							  <label for="eu-logo"><img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
+						  </div>
+
+						  <div>
+							  &nbsp;
+						  </div>
+
+						  <div class="multiple-choice" style="float: left; padding-top:0px; ">
+							  <input id="dit-logo" name="dit-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
+							  <label for="dit-logo"><img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
+						  </div>
 					  </div>
 
-					  <div class="multiple-choice" style="float: left; padding-top:0px; ">
-						  <input id="dit-logo" name="dit-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
-						  <label for="dit-logo"><img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
-					  </div>
+					  <div style=" padding-top:0px; width:500px;  display: flex;">
 
-					  <div class="multiple-choice" style="float: left; padding-top:0px; ">
-						  <input id="growth-logo" name="growth-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
-						  <label for="growth-logo"><img src="/public/images/partner13.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
-					  </div>
+						  <div class="multiple-choice" style="margin-right:30px;">
+							  <input id="growth-logo" name="growth-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
+							  <label for="growth-logo"><img src="/public/images/partner13.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
+						  </div>
 
-					  <div class="multiple-choice" style="float: right; padding-top:0px; ">
-						  <input id="bw-logo" name="bw-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
-						  <label for="bw-logo"><img src="/public/images/partner14.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
+						  <div>
+							  &nbsp;
+						  </div>
+
+						  <div class="multiple-choice" style="float: left; padding-top:0px; ">
+							  <input id="bw-logo" name="bw-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
+							  <label for="bw-logo"><img src="/public/images/partner14.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
+						  </div>
 					  </div>
 
 				  </fieldset>

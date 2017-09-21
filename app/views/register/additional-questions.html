@@ -12,7 +12,7 @@
 
 <main id="content" role="main">
 <h1 class="heading-large">
-		  Additional questions
+		  Registration questions
       </h1>
   <div class="grid-row">
     <div class="column-two-thirds">
@@ -152,7 +152,7 @@
 
 
 				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="bold" for="question">
+					  <label class="form-label" for="question">
 						  Question with short answer
 						  {% if errorQuestionEmpty %}
 									<span class="error-message">
@@ -167,7 +167,7 @@
 				  </div>
 
 				  <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="bold" for="question">
+					  <label class="form-label" for="question">
 						  Question with long answer
 						  {% if errorQuestionEmpty %}
 									<span class="error-message">
@@ -182,7 +182,7 @@
 				  </div>
 				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
 
-					  <label class="form-label-bold" for="question">
+					  <label class="form-label" for="question">
 						  Question with yes or no
 						  {% if errorQuestionEmpty %}
 									<span class="error-message">
@@ -207,7 +207,7 @@
 							  
 				<div class="form-group">
 			 
-				  <label class="form-label-bold" for="town" style="margin-bottom:5px; ">Question with multiple answers</label>
+				  <label class="form-label" for="town" style="margin-bottom:5px; ">Question with multiple answers</label>
 				  <fieldset>
 			      <legend>
 			        <span class="visually-hidden">Which types of waste do you transport regularly?</span>
@@ -234,7 +234,7 @@
 </fieldset>
 		  <div class="form-group">
 
-			  <input type="submit" class="button button-blue" formaction="/register/contact-preferences" value="Continue">
+			  <input type="submit" class="button button-blue" formaction="/register/check-your-answers" value="Continue">
 		  </div>
 
 

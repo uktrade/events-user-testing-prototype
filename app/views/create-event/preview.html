@@ -1,6 +1,15 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
 <!DOCTYPE html>
-<html>
-  <body class="body-of-all">
 
 
     <style>
@@ -163,7 +172,7 @@
 
         <div style="float: right; width:320px; margin-left:21px; marginn-right:20px; margin-top:0px">
 
-          <a href="#" class="register-button">Register</a>
+          <a href="/register" class="register-button">Register</a>
 
           <!--  WHEN -->
           <div style="text-align: left; margin-bottom: 40px;; margin-top:40px;">
@@ -189,8 +198,6 @@
 
   </div>
 
+{% include "includes/great-footer.html" %} 
 
-
-
-  </body>
-</html>
+{% endblock %}

@@ -137,7 +137,7 @@ router.use(function (req, res, next)
 
   if(req.session.data['organiser-name'] == undefined)
   {
-    req.session.data['organiser-name'] = "East midlands";
+    req.session.data['organiser-name'] = "South West ";
   }
 
   if(req.session.data['sold-out-message'] == undefined)
@@ -145,6 +145,14 @@ router.use(function (req, res, next)
     req.session.data['sold-out-message'] = "This event is now full. Places may be freed up subject to cancellations - check back here for availability.";
   }
 
+  if(req.session.data['contact-email'] == undefined)
+  {
+    req.session.data['contact-email'] = "events@businesswest.co.uk"
+  }
+  if(req.session.data['contact-phone'] == undefined)
+  {
+    req.session.data['contact-phone'] = "0779 235 9716";
+  }
 
 
 
@@ -850,37 +858,6 @@ router.get('/scenario-previous-questions', function (req, res)
 
 // CREATE EVENT SETUP
 // VENUE PAGE ONWARDS BUTTON
-router.get('/create-event/new', function (req, res)
-{
-  req.session.data['event-title'] = undefined;
-  req.session.data['start-hours'] = undefined;
-  req.session.data['start-minutes'] = undefined;
-  req.session.data['finish-hours'] = undefined;
-  req.session.data['finish-minutes'] = undefined;
-  req.session.data['event-start-time'] = undefined;
-  req.session.data['event-finish-time'] = undefined;
-  req.session.data['event-day'] = undefined;
-  req.session.data['event-month'] = undefined;
-  req.session.data['event-month-name'] = undefined;
-  req.session.data['event-year'] = undefined;
-  req.session.data['full-address-holder'] = undefined;
-  req.session.data['attendee-quantity'] = undefined;
-  req.session.data['sold-out-message'] = undefined;
-  req.session.data['event-description'] = undefined;
-  req.session.questionsExist = undefined;
-  req.session.questionsData = undefined;
-
-  req.session.data['question'] = undefined;
-  req.session.data['radio-additional-questions-answers-type'] = undefined;
-  for(var x=1; x<11; x++)
-  {
-    req.session.data['answer-'+x] = "";
-  }
-
-  res.redirect('/create-event/');
-})
-
-
 
 
 // Clear current event data
@@ -921,7 +898,83 @@ router.get('/clear-current-event-data', function (req, res)
 
 
 
+router.get('/create-event/new', function (req, res)
+{
+  req.session.data['event-title'] = undefined;
+  req.session.data['start-hours'] = undefined;
+  req.session.data['start-minutes'] = undefined;
+  req.session.data['finish-hours'] = undefined;
+  req.session.data['finish-minutes'] = undefined;
+  req.session.data['event-start-time'] = undefined;
+  req.session.data['event-finish-time'] = undefined;
+  req.session.data['event-day'] = undefined;
+  req.session.data['event-month'] = undefined;
+  req.session.data['event-month-name'] = undefined;
+  req.session.data['event-year'] = undefined;
+  req.session.data['full-address-holder'] = undefined;
+  req.session.data['attendee-quantity'] = undefined;
+  req.session.data['sold-out-message'] = undefined;
+  req.session.data['event-description'] = undefined;
+  req.session.questionsExist = undefined;
+  req.session.questionsData = undefined;
 
+  req.session.data['question'] = undefined;
+  req.session.data['radio-additional-questions-answers-type'] = undefined;
+  for(var x=1; x<11; x++)
+  {
+    req.session.data['answer-'+x] = "";
+  }
+
+  res.redirect('/create-event/');
+})
+
+router.get('/create-event/', function (req, res)
+{
+  res.redirect('/create-event/organiser');
+})
+
+
+
+
+router.get('/create-event/organiser-onwards', function (req, res)
+{
+  var errorMissingNameFound = false;
+  var errorInvalidEmailFound = false;
+  var errorInvalidPhoneFound = false;
+  var errorInvalidOrganiser = false;
+
+
+  // EVENT TITLE
+  if(req.session.data['event-title'] === "")
+  {
+    errorMissingName = true;
+  }
+
+
+  // ERRORS OR PROCEED
+  if((errorMissingNameFound || errorInvalidEmailFound || errorInvalidPhoneFound) == false)
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/title');
+    }
+  }
+  else
+  {
+    res.render('create-event/organiser',
+        {
+          'errorsExist': true,
+          'errorMissingName': errorMissingNameFound,
+          'errorInvalidEmail': errorInvalidEmailFound,
+          'errorInvalidPhone': errorInvalidPhoneFound
+        }
+    );
+  }
+})
 
 
 // DESCRIPTION PAGE ONWARDS BUTTON
@@ -1661,7 +1714,7 @@ router.get('/create-event/venue-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/organiser');
+      res.redirect('/create-event/images');
     }
 
   }
@@ -1679,83 +1732,6 @@ router.get('/create-event/venue-onwards', function (req, res)
 })
 
 
-router.get('/create-event/organiser-onwards', function (req, res)
-{
-  var errorMissingNameFound = false;
-  var errorInvalidEmailFound = false;
-  var errorInvalidPhoneFound = false;
-
-
-  // EVENT TITLE
-  if(req.session.data['event-title'] === "")
-  {
-    errorMissingName = true;
-  }
-
-
-  // ERRORS OR PROCEED
-  if((errorMissingNameFound || errorInvalidEmailFound || errorInvalidPhoneFound) == false)
-  {
-    if(req.session.changingFromSummary == true)
-    {
-      res.redirect('/create-event/summary-prelude');
-    }
-    else
-    {
-      res.redirect('/create-event/images');
-    }
-  }
-  else
-  {
-    res.render('create-event/title',
-        {
-          'errorsExist': true,
-          'errorMissingName': errorMissingNameFound,
-          'errorInvalidEmail': errorInvalidEmailFound,
-          'errorInvalidPhone': errorInvalidPhoneFound
-        }
-    );
-  }
-})
-
-router.get('/create-event/organiser-onwards', function (req, res)
-{
-  var errorMissingNameFound = false;
-  var errorInvalidEmailFound = false;
-  var errorInvalidPhoneFound = false;
-
-
-  // EVENT TITLE
-  if(req.session.data['event-title'] === "")
-  {
-    errorMissingName = true;
-  }
-
-
-  // ERRORS OR PROCEED
-  if((errorMissingNameFound || errorInvalidEmailFound || errorInvalidPhoneFound) == false)
-  {
-    if(req.session.changingFromSummary == true)
-    {
-      res.redirect('/create-event/summary-prelude');
-    }
-    else
-    {
-      res.redirect('/create-event/images');
-    }
-  }
-  else
-  {
-    res.render('create-event/title',
-        {
-          'errorsExist': true,
-          'errorMissingName': errorMissingNameFound,
-          'errorInvalidEmail': errorInvalidEmailFound,
-          'errorInvalidPhone': errorInvalidPhoneFound
-        }
-    );
-  }
-})
 
 // IMAGES PAGE ONWARDS BUTTON
 router.get('/create-event/images-onwards', function (req, res)
@@ -2616,11 +2592,6 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
 
 
 // CHANGE DETAILS LINKS
-router.get('/create-event/', function (req, res)
-{
-  res.redirect('/create-event/title');
-})
-
 
 router.get('/create-event/change-title', function (req, res)
 {

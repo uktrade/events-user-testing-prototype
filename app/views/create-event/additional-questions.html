@@ -31,7 +31,6 @@
 				Please check the following errors and try again
 			</p>
 
-
 			{% if errorNewQuestionEmpty %}
 				<ul class="error-summary-list">
 					<li><a href="#previous-questions">Need select a new question or a previous question</a></li>
@@ -56,8 +55,6 @@
 			</ul>
 			{% endif %}
 
-
-
 		</div>
       {% endif %}
 
@@ -69,7 +66,6 @@
 
 
 	  <form action="/create-event/question-onwards" method="get" class="form">
-
 
 		  	<fieldset class="form-group {% if session.previousQuestions.length == 0 %} js-hidden {% endif %}" style="margin-bottom:0; padding-bottom:30px" id="previous-questions">
 			  <!--  Additional questions that the registering user need to answer  -->
@@ -131,7 +127,6 @@
 							</div>
 
 						</div>
-
 
 					{% if errorNewQuestionEmpty %}
 						</div>

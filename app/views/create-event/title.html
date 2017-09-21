@@ -353,16 +353,20 @@
 
 
 		  <!--  Summary of target audience  -->
-		  <div class="form-group  {% if emptyTargetAudienceText %} form-group-error {% endif %}" style="margin-top:0px; margin-bottom:20px; width:630px;">
+		  <div class="form-group  {% if emptyTargetAudienceText %} form-group-error {% endif %}" style="margin-top:0px; margin-bottom:20px;">
 			  <label class="form-label-bold" for="summary-target-audience" >
 				  Summarise who this event is for, including any eligibility criteria.
+
+				  <span class="form-hint" style="margin-bottom: 5px; margin-top:3px;">For example, North West-based SMEs looking to do business with South East Asian buyers.</span>
+
 				  {% if emptyTargetAudienceText %}
 					  <span class="error-message">
 						  Provide at least one sentence that describes your overall target audience.
 					  </span>
 				  {% endif %}
 			  </label>
-			  <textarea class="form-control {% if emptyTargetAudienceText %} form-control-error {% endif %}" name="summary-target-audience" id="summary-target-audience" rows="4" style="width: 100%;">{{ data['summary-target-audience'] }}</textarea>
+			  <textarea class="form-control {% if emptyTargetAudienceText %} form-control-error {% endif %}"
+						name="summary-target-audience" id="summary-target-audience" rows="4" style="width:570px;%;">{{ data['summary-target-audience'] }}</textarea>
 		  </div>
 
 

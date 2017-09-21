@@ -12,7 +12,7 @@
 
 <main id="content" role="main">
 <h1 class="heading-large">
-		  Who is attending 
+		  Attendee details 
       </h1>
       
   <div class="grid-row">
@@ -23,9 +23,7 @@
 		
 	  </div>
 
-	<h2 class="heading-medium" style="margin-top:0">
-		  Ticket 1
-      </h2>
+
 	  <form action="/create-event/question-onwards" method="get" class="form">
 
 
@@ -169,12 +167,17 @@
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
 								 id="question" name="question" value="" style="width:50%;">
 					  </div>
+					  <div class="multiple-choice" style="margin-top:15px">
+  						<input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
+ 						<label for="checkbox-telephone-number">I'd like to receive free text reminders on this number</label>
+					</div>
 				  </div>
+				  
 
 		  </fieldset>
 
 		<div class="form-group">
-			<a class="link" href="#">Add another ticket</a><br />
+			<a class="link" href="#">Add another attendee</a><br />
 		</div>
 
 
