@@ -49,7 +49,7 @@
 		  <fieldset class="form-group {% if errorAttendee %} form-group-error {% endif %}">
 
 			  <label class="form-label-bold">
-				  How many people do you want to be able to register for this event?
+				  The maximum number of registrations allowed for this event?
 				  {% if errorAttendee %}
 					  <span class="error-message">
 						  Error message about personal details goes here
@@ -87,8 +87,9 @@
 			  <!--  message user will see when all tickets are gone -->
 			  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
 				  <label class="form-label-bold" for="sold-out-message">
-					  Message when event reaches capacity
+					  Set a message to display once the registration limit has been reached
 				  </label>
+				  <p style="margin-top:5px; margin-bottom:5px">A waiting list feature will be introduced soon. In the meantime, you may want to use this space to communicate waiting list instructions.</p>
 				  <textarea class="form-control" name="sold-out-message" id="sold-out-message" rows="3" style="width: 100%;">{{ data['sold-out-message'] }}</textarea>
 			  </div>
 		  </fieldset>

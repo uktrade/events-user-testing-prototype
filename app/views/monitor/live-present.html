@@ -56,13 +56,13 @@ GOV.UK prototype kit
                   </div>
                   <div style="float:left; width:31%; margin-top:8px;" display="flex">
                     <div>
-                      <p><span class="heading-large">{{20 - session.trackingTotalReg}}</span> tickets remaining</p>
+                      <p><span class="heading-large">{{data['attendee-quantity'] - data['attendee-reg-count']}}</span> tickets remaining</p>
                     </div>
                   </div>
                   <div style="float:right; width:28%;  margin-top:8px;">
                     <div style="margin-left:40px">
-                      <p style="margin-bottom:0px"><span class="heading-large">20</span> ticket capacity</p>
-                      <p style="margin-top:0px"><a href="#">Change event capacity</a></p>
+                      <p style="margin-bottom:0px"><span class="heading-large">{{data['attendee-quantity']}}</span> ticket capacity</p>
+                      <p style="margin-top:0px"><a href="/create-event/tickets">Change event capacity</a></p>
                     </div>
                   </div>
                 </div>
@@ -98,7 +98,7 @@ GOV.UK prototype kit
                     <div>
 
                       <p style="margin-bottom:5px">Total registrations</p>
-                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{session.trackingTotalReg}}</p>
+                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{ data['attendee-reg-count'] }}</p>
 
                         <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
                         {% include "includes/track-link-progress-reg-one.html" %}

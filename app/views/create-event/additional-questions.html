@@ -256,16 +256,44 @@
 
 
 
-		  <div class="form-group" style="margin-top:20px">
+
+
+		  <fieldset class="form-group inline" style="margin-bottom:15px">
+			  <!--  Addtional questions that the registering user need to answer  -->
+			  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
+				  <label class="form-label-bold" style="margin-bottom:10px">
+					  Is this question mandatory?
+				  </label>
+				  <div class="" style="margin-top:5px">
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="radio-mandatory-no" type="radio" name="radio-additional-question-mandatory" value="no" checked="checked">
+						  <label for="radio-mandatory-no">No</label>
+					  </div>
+					  <br>
+					  <br>
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="radio-mandatory-yes" type="radio" name="radio-additional-question-mandatory" value="yes">
+						  <label for="radio-mandatory-yes">Yes - mandatory</label>
+					  </div>
+				  </div>
+			  </div>
+
+		  </fieldset>
+
+
+
+
+		  <div class="form-group" style="margin-top:30px">
 
 			  <div class=" {% if data['additional-questions-incrementer'] == 5 %}  js-hidden {% endif %} ">
-				  <input type="submit" class="button-secondary" formaction="/create-event/add-other-question-submit" value="Save and add another question">
+				  <input type="submit" class="button-secondary" formaction="/create-event/add-other-question-submit" value="Add another question and save this question">
 
 				  <br>
 				  <br>
 			  </div>
 
-			  <input type="submit" class="button" formaction="/create-event/final-question" value="Save and continue">
+			  <input type="submit" class="button" formaction="/create-event/final-question" value="Save final question and continue">
+			  <p style="margin-top:40px"><a href="/create-event/summary-prelude">Discard this question and continue</a></p>
 		  </div>
 
 

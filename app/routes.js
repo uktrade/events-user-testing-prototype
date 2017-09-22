@@ -1009,7 +1009,6 @@ router.get('/create-event/title-onwards', function (req, res)
   }
 
 
-
   var sectorNo = false;
   var sectorYes = false;
 
@@ -1038,7 +1037,6 @@ router.get('/create-event/title-onwards', function (req, res)
   if(req.session.data['radio-sector'] == undefined)
   {
     errorMissingSector = true;
-
   }
   else if(req.session.data['radio-sector'] == "yes")
   {
@@ -2131,7 +2129,18 @@ router.get('/create-event/question-onwards', function (req, res)
   }
 
 
+  //  MANDATORY OR NOT
+  var menditoryMessage = ""
+  if(req.session.data['radio-additional-question-mandatory'] == "no")
+  {
+    menditoryMessage = "Not mandatory"
+  }
+  else if(req.session.data['radio-additional-question-mandatory'] == "yes")
+  {
+    menditoryMessage = "Mandatory"
+  }
 
+  console.log("the manditory message is *+*+*  -  " + menditoryMessage);
 
 
 
@@ -2141,11 +2150,13 @@ router.get('/create-event/question-onwards', function (req, res)
       // Save the data for this question to an array
       var thisNewQuestionData = new Array(14);
 
-      // Question
+      // QUESTION -  INDEX 0
       thisNewQuestionData[0] = req.session.data['question'];
       console.log(thisNewQuestionData[0]);
 
-      // Type of answers
+
+
+      // RTYPE OF ANSWER - INDEX 1
       var answersString = "";
       if(req.session.data['radio-additional-questions-answers-type'] == "enter-text")
       {
@@ -2163,6 +2174,7 @@ router.get('/create-event/question-onwards', function (req, res)
       console.log(thisNewQuestionData[1]);
 
 
+      //  ANSWERS AT ONE STRING OF TEXT  -  INDEX 2
       if((req.session.data['radio-additional-questions-answers-type'] == "select-one") ||
          (req.session.data['radio-additional-questions-answers-type'] == "select-multiple"))
       {
@@ -2176,19 +2188,20 @@ router.get('/create-event/question-onwards', function (req, res)
           }
         }
       }
+      console.log("the answers STRING IS - " + thisNewQuestionData[2]  + "\n");
 
-      //thisNewQuestionData[2]= answersString;
 
+      // MANDATORY OR NOT
+      //thisNewQuestionData[3] = menditoryMessage;
 
-    console.log("the answers STRING IS - " + thisNewQuestionData[2]  + "\n");
 
 
     // SAVE THE DATA TO THE ARRAY   --  FOR SUMMARY PAGE ONLY
-    req.session.questionsData[req.session.questionsData.length] = [thisNewQuestionData[0],thisNewQuestionData[1],answersString];
+    req.session.questionsData[req.session.questionsData.length] = [thisNewQuestionData[0],thisNewQuestionData[1],answersString,menditoryMessage];
 
 
 
-                console.log("the answers STRING IS -" + req.session.questionsData[req.session.questionsData.length-1]  + "------\n");
+    console.log("the answers STRING IS -" + req.session.questionsData[req.session.questionsData.length-1]  + "------\n");
 
 
     console.log("3333333333333333333333the answers STRING IS for the questions before the end " + req.session.questionsData + "\n");
@@ -2854,7 +2867,10 @@ router.get('/make-draft-live', function (req, res)
 })
 
 
-// STORE EVENT
+
+
+
+// STORE NEW MONITOR LINK
 router.get('/monitor/add-tracking-link', function (req, res)
 {
   if(req.session.data['new-link-name'] === "")
@@ -2864,7 +2880,6 @@ router.get('/monitor/add-tracking-link', function (req, res)
     errorTrackingNameIs = true;
 
     res.render('/monitor/live-present',
-
         {
           tab: 2,
          'errorTrackingName': errorTrackingNameIs,
@@ -2881,6 +2896,84 @@ router.get('/monitor/add-tracking-link', function (req, res)
 
     res.redirect('/monitor/live-present#track-links');
   }
+})
+
+
+// WHEN SOMEONE CLICKS MONITOR, LOAD THE CORRESPONDING EVENT DETAILS
+router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
+{
+  req.session.liveOrNot = req.params.liveevent;
+
+  console.log("the Live event   +++++++  "  + req.session.liveOrNot);
+
+  req.session.currentEventShowing = req.params.listitem;
+
+  console.log("the event NUMBER for preview  +++++++  "  + req.session.currentEventShowing);
+
+  // Load data into working set
+  console.log("LOCAD EVENT DATA INTO WORKING SET - PREVIEW");
+  console.log("input number is : " + req.params.listitem);
+
+  req.session.data['event-title'] = undefined;
+  req.session.data['start-hours'] = undefined;
+  req.session.data['start-minutes'] = undefined;
+  req.session.data['finish-hours'] = undefined;
+  req.session.data['finish-minutes'] = undefined;
+  req.session.data['event-start-time'] = undefined;
+  req.session.data['event-finish-time'] = undefined;
+  req.session.data['event-day'] = undefined;
+  req.session.data['event-month'] = undefined;
+  req.session.data['event-month-name'] = undefined;
+  req.session.data['event-year'] = undefined;
+  req.session.data['full-address-holder'] = undefined;
+  req.session.data['attendee-quantity'] = undefined;
+  req.session.data['sold-out-message'] = undefined;
+  req.session.data['event-description'] = undefined;
+  req.session.data['event-state'] = undefined;
+  req.session.questionsExist = undefined;
+  req.session.questionsData = undefined;
+  req.session.data['reg-close-time'] = undefined;
+  req.session.data['reg-is-closed'] = undefined;
+
+  req.session.data['question'] = undefined;
+  req.session.data['radio-additional-questions-answers-type'] = undefined;
+  for(var x=1; x<11; x++)
+  {
+    req.session.data['answer-'+x] = "";
+  }
+
+  req.session.data['building'] = undefined;
+  req.session.data['street'] = undefined;
+  req.session.data['town'] = undefined;
+  req.session.data['postcode'] = undefined;
+
+  req.session.data['organiser-name'] = undefined;
+  req.session.data['contact-email'] = undefined;
+  req.session.data['contact-phone'] = undefined;
+
+
+  var eventDataMapTEMPLoad = [30];
+  // LOAD IN STORED DATA FROM DRAFT
+  if(req.session.liveOrNot == "true")
+  {
+    eventDataMapTEMPLoad = req.session.eventsLive[req.session.currentEventShowing];
+    console.log("this is a LIVE -  EVENT BEING PREVIEWED");
+    console.log("this is a LIVE -  THE NAME OF THE EVENT IS " + eventDataMapTEMPLoad[0]);
+  }
+  else
+  {
+    // THIS IS DRAFT BUT NEEDS TO BE CHNAGED TO PASSED EVENTS EVENTUALLY
+    eventDataMapTEMPLoad = req.session.eventsDraft[req.session.currentEventShowing];
+    console.log("this is a DRAFT EVENT BEING PREVIEWED");
+  }
+
+  req.session.data['event-title'] = eventDataMapTEMPLoad[0];
+  req.session.data['attendee-quantity'] = eventDataMapTEMPLoad[8];
+  req.session.data['attendee-reg-count'] = eventDataMapTEMPLoad[20];
+  req.session.ticketsSoldPercentage = Math.round(eventDataMapTEMPLoad[20] / eventDataMapTEMPLoad[8]*100);
+
+  res.redirect('/monitor/live-present');
+
 })
 
 
