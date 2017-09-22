@@ -4,7 +4,7 @@ var router = express.Router()
 // Route index page
 router.get('/', function (req, res) {
   res.render('index')
-})
+});
 
 
 
@@ -2734,7 +2734,7 @@ router.get('/create-event/change-date', function (req, res)
 {
   req.session.changingFromSummary = true;
 
-  res.redirect('/create-event/data');
+  res.redirect('/create-event/date');
 })
 
 router.get('/create-event/change-venue', function (req, res)

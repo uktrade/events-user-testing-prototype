@@ -20,8 +20,6 @@ GOV.UK prototype kit
 			</div>
 
 
-
-
 			<h1 class="heading-large" style="margin-top:15px; margin-bottom:35px">
 				Set event reminder message
 			</h1>
@@ -30,25 +28,51 @@ GOV.UK prototype kit
 			<form action="/create-event/template-reminder-onwards" method="get" class="form">
 
 
-				<fieldset class="form-group" style="margin-bottom:20px">
+				<fieldset class="form-group" style="margin-bottom:0px">
 
-					<label class="form-label-bold" for="close-reg-early-days">
+					<label class="form-label-bold" for="email-reminder-1">
 						When to send reminder
 					</label>
 					<!-- <p class="form-hint">For example, 31 3 1980</p>  -->
-					<div class="form-group form-group-day form-date">
+					<div class="form-group-day form-date">
 
 						<input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
-							   id="close-reg-early-days" name="close-reg-early-days" type="number" pattern="[0-9]*"
+							   id="email-reminder-1" name="email-reminder-1" type="number" pattern="[0-9]*"
 							   value="2" style="float: left; width:50px;">
-						<p style="float: left; margin-left:10px; margin-top:8px;"> days before event</p>
+						<p style="float: left; margin-left:10px; margin-top:8px;">days before event</p>
 					</div>
 				</fieldset>
 
-				<br>
+				<p id="add-second-reminder"
+				   style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+				   onclick="showSecondReminder()">Add another reminder</p>
 
 
-				<p class="heading-small">Email subject</p>
+				<div id="second-reminder-section"  style="display:none; ">
+					<fieldset class="form-group" style="margin-bottom:0px; margin-top:20px;" >
+
+						<label class="form-label-bold" for="email-reminder-2">
+							Second reminder
+						</label>
+						<!-- <p class="form-hint">For example, 31 3 1980</p>  -->
+						<div class="form-group-day form-date">
+
+							<input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
+								   id="email-reminder-2" name="email-reminder-2" type="number" pattern="[0-9]*"
+								   value="0" style="float: left; width:50px;">
+							<p style="float: left; margin-left:10px; margin-top:8px;"> days before event</p>
+
+						</div>
+
+					</fieldset>
+					<p id="remove-second-reminder"
+					   style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+					   onclick="hideSecondReminder()">Remove this reminder</p>
+				</div>
+
+
+
+				<p class="heading-small" style="margin-top:50px;" >Email subject</p>
 
 				<div id="email-reg-subject-section" class="form-group panel panel-border-narrow" >
 					<p style="margin-left:5px; ">Reminder of your upcoming event</p>
@@ -59,20 +83,24 @@ GOV.UK prototype kit
 
 				<div id="email-reg-body-section" class="form-group panel panel-border-narrow" style="margin-top:10px;">
 
-
-
-					<p style="margin-left:5px; ">Dear [NAME]<br><br>
-
+					<p style="margin-left:5px;  margin-bottom:5px;">Dear [NAME]<br><br>
 						We're getting in touch to remind you about your upcoming event
 						<br>
-						<br>{{data['event-title']}}
-						<br>
+						<br>{{ data['event-day-of-the-week'] }}
 						<br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
 						<br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
 					</p>
-					<p style="white-space: pre-wrap; margin-left:5px; ">{{ data['full-address-holder'] }}<br>{{ data['venue-additional-notes'] }}</p>
+					<p style="margin-left:5px; margin-top:5px;"><a href="#">Add to calendar</a></p>
 
 
+					<p class="heading-small" style="margin-left:5px; ">Venue</p>
+					<p style="white-space: pre-wrap; margin-left:5px; margin-bottom:5px; ">{{ data['full-address-holder'] }}</p>
+
+					<p style="margin-left:5px; margin-top:5px;"><a href="#">Map of venue</a></p>
+
+
+					<p class="heading-small" style="margin-left:5px; ">Additional venue details</p>
+					<p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
 
 					<textarea class="form-control" name="event-reminder-body" id="event-reminder-body" rows="12" style="width: 80%;"
 					>If you have any questions or special requests that will help you to get the most out of the day, please don't hesitate to get in touch. We'd be happy to assist.
@@ -104,3 +132,23 @@ Department for International Trade
 {% endblock %}
 
 
+{% block page_scripts %}
+<script>
+
+	// SHOW AND HIDE THE SEOND REMINDER OPTION
+	function showSecondReminder()
+	{
+		document.getElementById('add-second-reminder').style.display = 'none';
+		document.getElementById('second-reminder-section').style.display = 'block';
+		document.getElementById('email-reminder-2').value = '10';
+	}
+
+	function hideSecondReminder()
+	{
+		document.getElementById('add-second-reminder').style.display = 'block';
+		document.getElementById('second-reminder-section').style.display = 'none';
+		document.getElementById('email-reminder-2').value = '0';
+	}
+
+</script>
+{% endblock %}

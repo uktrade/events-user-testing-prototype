@@ -35,7 +35,7 @@
 		  <p class="heading-small">Email subject</p>
 
 		  <div id="email-reg-subject-section" class="form-group panel panel-border-narrow" >
-			  <p style="margin-left:5px; ">Your event booking</p>
+			  <p style="margin-left:5px; ">Your event booking - {{data['event-title']}}</p>
 		  </div>
 
 
@@ -45,17 +45,27 @@
 
 
 
-				  <p style="margin-left:5px; ">Dear [NAME]<br><br>
+		  <p style="margin-left:5px; margin-bottom:5px; ">Dear [NAME]<br><br>
 
-					 Thank you for deciding to join us for the following event
-					  <br>
-					  <br>{{data['event-title']}}
-					  <br>
-					  <br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
-					  <br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
-				  </p>
-				  <p style="white-space: pre-wrap; margin-left:5px; ">{{ data['full-address-holder'] }}<br>{{ data['venue-additional-notes'] }}</p>
+			 Thank you for deciding to join us for the following event
+			  <br>
+			  <br>{{data['event-title']}}
+			  <br>
+			  <br>{{ data['event-day-of-the-week'] }}
+			  <br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
+			  <br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
+		  </p>
+		  <p style="margin-left:5px; margin-top:5px;"><a href="#">Add to calendar</a></p>
 
+
+		  <p class="heading-small" style="margin-left:5px; ">Venue</p>
+		  <p style="white-space: pre-wrap; margin-left:5px; margin-bottom:5px; ">{{ data['full-address-holder'] }}</p>
+
+		  <p style="margin-left:5px; margin-top:5px;"><a href="#">Map of venue</a></p>
+
+
+		  <p class="heading-small" style="margin-left:5px; ">Additional venue details</p>
+		  <p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
 
 
 					<textarea class="form-control" name="event-reg-body" id="event-reg-body" rows="20" style="width: 80%;"

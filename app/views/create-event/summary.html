@@ -140,9 +140,22 @@
 				  <dt class="cya-question">
 					  Venue
 				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}<br>{{ data['venue-additional-notes'] }}</dd>
+				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</dd>
 				  <dd class="cya-change ">
-					  <a href="#">
+					  <a href="/create-event/change-venue">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Additional venue details
+				  </dt>
+				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['venue-additional-notes'] }}</dd>
+				  <dd class="cya-change ">
+					  <a href="/create-event/change-venue">
 						  Change
 					  </a>
 				  </dd>
@@ -443,6 +456,32 @@
 					  </a>
 				  </dd>
 			  </div>
+
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Reminder send time</dt>
+				  <dd class="cya-answer">
+					  {{ data['email-reminder-1'] }} days before the event
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-reminder-message">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+			  {% if  data['email-reminder-2'] != 0 %}
+				  <div>
+					  <dt class="cya-question" style="vertical-align:top">Second reminder send time</dt>
+					  <dd class="cya-answer">
+						  {{ data['email-reminder-2'] }} days before the event
+					  </dd>
+					  <dd class="cya-change" style="vertical-align:top">
+						  <a href="/create-event/change-reminder-message">
+							  Change
+						  </a>
+					  </dd>
+				  </div>
+			  {% endif %}
 
 
 
