@@ -112,6 +112,11 @@ router.use(function (req, res, next)
     req.session.trackingLinksRegistrationPercentages = [0,0,0,0,0,0,0,0,0,0];
   }
 
+  if(req.session.trackingViewsNumbers == undefined)
+  {
+    req.session.trackingViewsNumbers = [0,0,0,0,0,0,0,0,0,0];
+  }
+
   if(req.session.ticketsRemaining == undefined)
   {
     req.session.ticketsRemaining = 0;
@@ -380,6 +385,13 @@ router.get('/scenario-3', function (req, res)
   req.session.trackingViewsPercentages[1] = 23;
   req.session.trackingViewsPercentages[2] = 6;
   req.session.trackingViewsPercentages[3] = 9;
+
+  req.session.trackingViewsNumbers[0] = 67;
+  req.session.trackingViewsNumbers[1] = 23;
+  req.session.trackingViewsNumbers[2] = 6;
+  req.session.trackingViewsNumbers[3] = 9;
+
+
 
   req.session.trackingTotalReg = 2;
   req.session.trackingLinksRegistrationPercentages[0] = 100;
@@ -1785,7 +1797,47 @@ router.get('/create-event/venue-onwards', function (req, res)
 // IMAGES PAGE ONWARDS BUTTON
 router.get('/create-event/images-onwards', function (req, res)
 {
-  // check for errors
+  //console.log("\nreq.session.data['eu-logo'] \n\n")
+
+  if(req.session.data['eu-logo'] != undefined)
+  {
+    req.session.data['eu-logo-selected'] = true;
+    console.log("\n the logo for the eu worked \n\n")
+  }
+  else
+  {
+    req.session.data['eu-logo-selected'] = false;
+  }
+
+  if(req.session.data['dit-logo'] != undefined)
+  {
+    req.session.data['dit-logo-selected'] = true;
+  }
+  else
+  {
+    req.session.data['dit-logo-selected'] = false;
+  }
+
+  if(req.session.data['growth-logo'] != undefined)
+  {
+    req.session.data['growth-logo-selected'] = true;
+  }
+  else
+  {
+    req.session.data['growth-logo-selected'] = false;
+  }
+
+  if(req.session.data['bw-logo'] != undefined)
+  {
+    req.session.data['bw-logo-selected'] = true;
+  }
+  else
+  {
+    req.session.data['bw-logo-selected'] = false;
+  }
+
+
+  // check for errors- never any
   if(true)
   {
     if(req.session.changingFromSummary == true)

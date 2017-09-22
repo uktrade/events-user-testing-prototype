@@ -89,7 +89,6 @@
 				  <label class="form-label-bold" for="sold-out-message">
 					  Set a message to display once the registration limit has been reached
 				  </label>
-				  <p style="margin-top:5px; margin-bottom:5px">A waiting list feature will be introduced soon. In the meantime, you may want to use this space to communicate waiting list instructions.</p>
 				  <textarea class="form-control" name="sold-out-message" id="sold-out-message" rows="3" style="width: 100%;">{{ data['sold-out-message'] }}</textarea>
 			  </div>
 		  </fieldset>
@@ -98,13 +97,15 @@
 
 		  <fieldset class="form-group" style="margin-bottom:0px; margin-top:10px;">
 
+			  <p class="panel panel-border-narrow" style="padding-bottom:15px;">Registration will automatically close at 12:00 on the day of the event</p>
+
 			  <label class="form-label-bold">
-				  Do you want to close registrations early
+				  Do you want to edit the closure date?
 			  </label>
 			  <div class="form-date" style="margin-top:5px">
 				  <div class="multiple-choice" style="margin-bottom:10px">
 					  <input id="radio-days-before-no" type="radio" name="radio-close-early-yes-no" value="no" checked="checked">
-					  <label for="radio-days-before-no">No</label>
+					  <label for="radio-days-before-no">No, shut registrations on the day of the event</label>
 				  </div>
 				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="date-selection-area">
 					  <input id="radio-days-before-yes" type="radio" name="radio-close-early-yes-no" value="yes" >
@@ -244,6 +245,27 @@
 	  </form>
 
     </div>
+
+
+	  <div class="column-third add-title-margin" style="margin-top:50px;">
+		  <aside class="govuk-related-items" data-module="track-click" role="complementary">
+			  <p class="heading-small" style="margin-top:5px; margin-bottom:15px;">
+				  Waiting lists
+			  </p>
+
+			  <p>  <!-- note these are made up -->
+				  A waiting list feature is being developed.
+			  </p>
+
+			  <p>
+				  In the meantime, you can use the message editor to communicate any waiting list instructions and details to visitors.
+			  </p>
+
+		  </aside>
+
+	  </div>
+
+
   </div>
 </main>
 

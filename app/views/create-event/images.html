@@ -47,8 +47,8 @@
 	  <h1 class="heading-large" style="margin-top:15px">
         Images and logos
       </h1>
-		
 
+		<form action="/create-event/images-onwards" method="get" class="form">
 
 		  <!-- MAIN IMAGE LOGO -->
 
@@ -68,35 +68,62 @@
 		  </style>
 
 
-			  <div class="form-group {% if errorMissingImage %} form-group-error {% endif %}" style="margin-top:10px; height:150px" id="new-image-area">
-				  <label class="form-label-bold">
-					  Main event image
-				  </label>
-				  <div style="margin-top:5px">
-				  	<input type="submit" class="button-secondary" value="Choose an image" id="main-button-image"
-						   onclick="hide()">
-
-					<div style="margin-bottom:25px; display:none "  id="image-area" >
-						<img src="/public/images/exportingheroimagesmall.jpg" style="width:240px;height:100px;">
-						<p style="margin-bottom:25px;">
-							<a href="#">Choose a different image</a>
-						</p>
-					</div>
 
 
+		  <div class="form-group {% if errorMissingImage %} form-group-error {% endif %}" style="margin-top:10px; height:150px" id="new-image-area">
+			  <label class="form-label-bold">
+				  Main event image
+			  </label>
+			  <div style="margin-top:5px">
+				<input type="submit" class="button-secondary" value="Choose an image" id="main-button-image"
+					   onclick="hide()">
 
+				  <div style="display:block" >
+					  <details role="group" style="width:650px;  ">
+						  <summary role="button" aria-controls="details-content-0" aria-expanded="false"
+								   style="margin-top:10px;"><span class="summary">Image guidance</span></summary>
+						  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
+							  <p>  <!-- note these are made up -->
+								  Required image resolution:<br>1000px by 300px
+							  </p>
+
+							  <p>  <!-- note these are made up -->
+								  File types accepted:<br>JPEG and PNG
+							  </p>
+
+							  <p>
+								  You may find the GREAT brand website [hyperlink text] useful. It includes:
+							  </p>
+
+							  <ul class="list list-bullet">
+								  <li>an image library containing fully licensed stock photography</li>
+								  <li>official DIT and GREAT brand assets, including logos</li>
+								  <li>full brand guidelines and supporting documentation</li>
+							  </ul>
+
+							  <p>
+								  If you decide to independently source your own webpage photography or assets, make sure that you have relevant permissions to use them and that they adhere to brand guidelines.
+							  </p>
+						  </div>
+					  </details>
 				  </div>
+
+				<div style="margin-bottom:25px; display:none "  id="image-area" >
+					<img src="/public/images/exportingheroimagesmall.jpg" style="width:240px;height:100px;">
+					<p style="margin-bottom:25px;">
+						<a href="#">Choose a different image</a>
+					</p>
+				</div>
 
 
 
 			  </div>
 
 
-		  <!--  THE PARTNER LOGOS  -->
-		  {% if errorMissingPartnerImage %}
-		  	  <div class="form-group form-group-error">
-		  {% endif %}
 
+		  </div>
+
+			  <!--  THE PARTNER LOGOS  -->
 			  <div class="form-group"
 				   style="margin-top:10px; margin-bottom:20px">
 				  <label class="form-label-bold" style="margin-bottom:10px;">
@@ -107,7 +134,7 @@
 					  <div style=" padding-top:0px; width:500px; display: flex; ">
 
 						  <div class="multiple-choice" style="margin-right:30px; padding-top:0px;">
-							  <input id="eu-logo" name="eu-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
+							  <input id="eu-logo" name="eu-logo" type="checkbox" value="" style="margin-top:5px">
 							  <label for="eu-logo"><img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
 						  </div>
 
@@ -116,7 +143,7 @@
 						  </div>
 
 						  <div class="multiple-choice" style="float: left; padding-top:0px; ">
-							  <input id="dit-logo" name="dit-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
+							  <input id="dit-logo" name="dit-logo" type="checkbox" value="" style="margin-top:5px">
 							  <label for="dit-logo"><img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
 						  </div>
 					  </div>
@@ -124,7 +151,7 @@
 					  <div style=" padding-top:0px; width:500px;  display: flex;">
 
 						  <div class="multiple-choice" style="margin-right:30px;">
-							  <input id="growth-logo" name="growth-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
+							  <input id="growth-logo" name="growth-logo" type="checkbox" value="" style="margin-top:5px">
 							  <label for="growth-logo"><img src="/public/images/partner13.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
 						  </div>
 
@@ -133,7 +160,7 @@
 						  </div>
 
 						  <div class="multiple-choice" style="float: left; padding-top:0px; ">
-							  <input id="bw-logo" name="bw-logo" type="checkbox" value="Meet with buyers" style="margin-top:5px">
+							  <input id="bw-logo" name="bw-logo" type="checkbox" value="" style="margin-top:5px">
 							  <label for="bw-logo"><img src="/public/images/partner14.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
 						  </div>
 					  </div>
@@ -145,52 +172,19 @@
 				  </div>
 			  </div>
 
-		  {% if errorMissingPartnerImage %}
-		  		</div>
-		  {% endif %}
 
 
-		<form action="/create-event/images-onwards" method="get" class="form">
 
-		  <div class="form-group" style="margin-top:20px">
-			  <input type="submit" class="button" value="Save and continue">
-			  <p style="margin-top:25px"><a href="/create-event/tickets">I'll complete this later - I don't have this information yet</a></p>
-		  </div>
+			  <div class="form-group" style="margin-top:20px">
+				  <input type="submit" class="button" value="Save and continue">
+				  <p style="margin-top:25px"><a href="/create-event/tickets">I'll complete this later - I don't have this information yet</a></p>
+			  </div>
+
+			</div>
 
 	  </form>
 
     </div>
-
-    <div class="column-third add-title-margin" style="margin-top:120px;">
-		  <aside class="govuk-related-items" data-module="track-click" role="complementary">
-			  <p class="heading-small" style="margin-top:5px; margin-bottom:15px;">
-				  Image guidance
-			  </p>
-
-			  <p>  <!-- note these are made up -->
-				  Required image resolution:<br>1000px by 300px
-			  </p>
-
-			  <p>  <!-- note these are made up -->
-				  File types accepted:<br>JPEG and PNG
-			  </p>
-
-			  <p>
-				  You may find the GREAT brand website [hyperlink text] useful. It includes:
-			  </p>
-
-			  <ul class="list list-bullet">
-				  <li>an image library containing fully licensed stock photography</li>
-				  <li>official DIT and GREAT brand assets, including logos</li>
-				  <li>full brand guidelines and supporting documentation</li>
-			  </ul>
-
-			  <p>
-				  If you decide to independently source your own webpage photography or assets, make sure that you have relevant permissions to use them and that they adhere to brand guidelines.
-			  </p>
-		  </aside>
-
-	  </div>
 
 
   </div>

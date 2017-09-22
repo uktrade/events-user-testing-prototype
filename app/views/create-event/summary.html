@@ -266,7 +266,33 @@
 			  </div>
 
 
+			  <div>
+				  <dt class="cya-question" style="vertical-align:top">Partner logos</dt>
+				  <dd class="cya-answer">
+					  {% if data['eu-logo-selected'] %}
+					  	<img src="/public/images/partner11.jpg" style="width:240px; height:100px;">
+					  {% endif %}
+					  {% if data['dit-logo-selected'] %}
+					  	<img src="/public/images/partner12.jpg" style="width:240px; height:100px;">
+					  {% endif %}
+					  {% if data['growth-logo-selected'] %}
+					  	<img src="/public/images/partner13.jpg" style="width:240px; height:100px;">
+					  {% endif %}
+					  {% if data['bw-logo-selected'] %}
+					  	<img src="/public/images/partner14.jpg" style="width:240px; height:100px;">
+					  {% endif %}
+				  </dd>
+				  <dd class="cya-change" style="vertical-align:top">
+					  <a href="/create-event/change-images">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
 		  </dl>
+
+
 
 
 
@@ -413,9 +439,11 @@
 			  </div>
 			  {% endif %}
 
-
-
 		  </dl>
+
+
+
+
 
 
 		  <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:45px;">
