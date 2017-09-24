@@ -428,6 +428,45 @@ router.get('/scenario-1', function (req, res)
 
 
 
+
+  // SECOND LIST OF REGISTERED PEOPLE
+
+  req.session.registeredPeopleData2 = [];
+
+  req.session.registeredPeopleData2[0] =
+      ["25 September 2017","16:47","Connor Shaw","Equiture Limited","CEO","07986366723","connor@equiture.co.uk","Yes","3 Stamford Street","Bristol","BS3 6QD","Manufacturing","Don't have website","No","£500,000","No","New to DIT"];
+
+  req.session.registeredPeopleData2[1] =
+      ["25 September 2017","15:25","Victoria O' Leary","Fi Burke Contemporary Art","International","Sales Director","07974652277","victoria@burke.com","No	58 Bloomsbury Street","Bristol","BS3 8NP","Mining","www.burke.com","No","£1,500,000","No","DIT record"];
+
+  req.session.registeredPeopleData2[2] =
+      ["22 September 2017","20:45","Solomon Yakubu","Illuminow Ltd","Finance Manager","07933465544","solomon@illuminow.co.uk","Yes","3 Stamford Street","Bristol","BS14 9WG","Manufacturing","Don't have website","Yes","£2,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData2[3] =
+      ["19 September 2017","18:08","Joseph Goldberg","IMS Risk Solutions Ltd","Sales Executive","07986366723","joseph@ims.co.uk","No","5 Strategy House, Kings Innovation Park","Leicester","LE1 1AD","Transport","www.ims.co.uk","Yes","£1,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData2[4] =
+      ["15 September 2017","09:23","Magda Michalenko","India Impex (UK) Ltd","Director","07974652277","magda@impex.com","No","5 Innovation House, Exeter Business Park","Exeter","EX4 7PJ","Technology","www.impex.com","Yes","£100,000","Yes","DIT record"];
+
+  req.session.registeredPeopleData2[5] =
+      ["15 September 2017","08:56","Gavin Bell","Direct Trade Bags Company Ltd","Sales Manager","07974652277","gavin@tradebags.co.uk","Yes","45 Pierrepoint Road","Cardiff","CF15 4BP","Technology","www.tradebags.co.uk","Yes","£500,000","No","New to DIT"];
+
+  req.session.registeredPeopleData2[6] =
+      ["09 September 2017","14:37","Deepak Patel","Dy-Pack UK Ltd","Head of Engineering","07933465544","deepak@dypack.com","Yes","4 Wayferry Street","Poole","BH13","Mining","www.dypack.com","No","£1,500,000","No","New to DIT"];
+
+
+
+  // Checkin - Alphabetical order of name of reg.
+  req.session.registeredPeopleCheckinNames2 = [];
+
+  for(var k=0; k<req.session.registeredPeopleData2.length; k++)
+  {
+    req.session.registeredPeopleCheckinNames2[k] = req.session.registeredPeopleData2[k][2];
+  }
+  req.session.registeredPeopleCheckinNames2.sort();
+
+
+
   res.redirect('/signin');
 })
 
