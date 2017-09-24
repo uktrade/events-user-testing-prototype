@@ -1,13 +1,18 @@
 
 <!--  MACRO TO MAKE EACH LIVE LINE ITEM -->
-{% macro regiseredPerson(name, jobtitle, company, sector, phone, email, cdms) %}
+{% macro regiseredPerson(listItemNumber, whichList) %}
 <tr>
 
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ name }} </td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ jobtitle }} </td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ company }} </td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ sector }} </td>
-
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData1[listItemNumber][2] }} </td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData1[listItemNumber][3] }}</td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> DIT South West</td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;">
+    {% if session.registeredPeopleData1[listItemNumber][16] == "New to DIT"  %}
+      <span style="font-weight:700;">{{ session.registeredPeopleData1[listItemNumber][16] }}</span>
+    {% else %}
+      {{ session.registeredPeopleData1[listItemNumber][16] }}
+    {% endif  %}
+   </td>
 </tr>
 
 <tr>
@@ -17,13 +22,43 @@
       <details>
         <summary><span class="summary">More details</span></summary>
         <div class="panel panel-border-narrow">
-          <p>
-            {{ phone }}
+          <p><span style="font-weight:700;">Registration Time</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][1] }}<br>{{ session.registeredPeopleData1[listItemNumber][0] }}
+          </p>
+          <p><span style="font-weight:700;">Job title</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][4] }}
+          </p>
+          <p><span style="font-weight:700;">Phone Number</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][5] }}
+          </p>
+          <p><span style="font-weight:700;">Email address</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][6] }}
+          </p>
+          <p><span style="font-weight:700;">Consent for marketing</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][7] }}
+          </p>
+          <p><span style="font-weight:700;">Address</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][8] }} <br>
+            {{ session.registeredPeopleData1[listItemNumber][9] }} <br>
+            {{ session.registeredPeopleData1[listItemNumber][10] }}
+          </p>
+          <p><span style="font-weight:700;">Sector</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][11] }} <br>
+          </p>
+          <p><span style="font-weight:700;">Website</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][12] }} <br>
+          </p>
+          <p><span style="font-weight:700;">Currently exporting</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][13] }} <br>
+          </p>
+          <p><span style="font-weight:700;">Company turnover</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][14] }} <br>
           </p>
           <p>
-            {{ email }}
-          </p>
 
+          </p><span style="font-weight:700;">Food allergies</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][15] }} <br>
+          </p>
           <p>
             {% if cdms %}
               <a href="#">See full customer record</a>
@@ -48,10 +83,10 @@
     <table style="width:100%; margin-top:40px;">
       <thead>
         <tr  style="border-bottom: 1px solid #bfc1c3;">
-          <th scope="col" style="width:20%; padding-bottom:10px; padding-top: 0px;">Name</th>
-          <th class="col" style="width:25%; padding-bottom:10px; padding-top: 0px;">Job title</th>
-          <th class="col" style="width:30%; padding-bottom:10px; padding-top: 0px;">Company</th>
-          <th scope="col" style="width:25%; padding-bottom:10px; padding-top: 0px;">Sector</th>
+          <th scope="col" style="width:30%; padding-bottom:10px; padding-top: 0px;">Name</th>
+          <th class="col" style="width:35%; padding-bottom:10px; padding-top: 0px;">Company</th>
+          <th class="col" style="width:20%; padding-bottom:10px; padding-top: 0px;">Region</th>
+          <th scope="col" style="width:25%; padding-bottom:10px; padding-top: 0px;">DIT record</th>
         </tr>
       </thead>
 
@@ -60,6 +95,24 @@
       <!-- EVENT ONE  -->
 
 
+      <!-- Low Carbon registrations -->
+      {% if session.currentEventShowing == 0 %}
+          {{ regiseredPerson(0, 1) }}
+          {{ regiseredPerson(1, 1) }}
+          {{ regiseredPerson(2, 1) }}
+          {{ regiseredPerson(3, 1) }}
+          {{ regiseredPerson(4, 1) }}
+          {{ regiseredPerson(5, 1) }}
+          {{ regiseredPerson(6, 1) }}
+          {{ regiseredPerson(7, 1) }}
+          {{ regiseredPerson(8, 1) }}
+          {{ regiseredPerson(9, 1) }}
+      {% endif  %}
+
+
+
+
+      <!--
       {% if session.trackingTotalReg == 2 %}
         {{ regiseredPerson('Joe Desiato', 'CEO', 'Firefield LTD', 'Apparel', '07865 595 588', 'joe.desiato@gmail.com', true) }}
         {{ regiseredPerson('Guy Nociar', 'Head of sales', 'Meat professionals  south east', 'Food and drink', '07375 357 382', 'g.nociar@meatSE.com', true) }}
@@ -103,7 +156,7 @@
         {{ regiseredPerson('Magda Michalenko', 'International Growth Manager', 'India Impex (UK) Ltd', 'Mining', '07974652277', 'magda@impex.com', true) }}
 
       {% endif  %}
-
+    -->
 
 
 

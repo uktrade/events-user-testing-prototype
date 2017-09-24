@@ -379,11 +379,52 @@ router.get('/scenario-1', function (req, res)
      Primary Sector, Company website, Are you currently exporting?, What is your company turnover?,
      Do you have any food allergies?
   */
-  //req.session.registeredPeopleData =
+  req.session.registeredPeopleData1 = [];
+
+  req.session.registeredPeopleData1[0] =
+  ["25 September 2017","16.47","Henry Brown","Crane Electronics Ltd.","CEO","07933465544","henry@crane.co.uk","Yes","3 Waterhouse Square","Bristol","BS8 4JY","Electronics & IT hardware","www.crane.co.uk","Yes","£500,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[1] =
+  ["25 September 2017","15.25","Geoff Clooney","Crystalclear Aspects Ltd","International Sales Director","07986366723","geoff@crystalclear.co.uk","Yes","5 Innovation House, Exeter Business Park","Exeter","EX4 7PJ","Chemicals","www.crystalclear.co.uk","Yes","£1,500,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[2] =
+  ["22 September 2017","20.45","Katie Howard","CWSEC Ltd","Finance Manager","07974652277","katie@cwsec.com","Yes","3 Stamford Street","Bristol","BS3 6QD","Automotive","www.cwsec.com","No","£2,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[3] =
+  ["19 September 2017","18.08","Robert McKinley","David Jerome Ltd","Sales Executive","07933465544","robert@jerome.co.uk","No","58 Bloomsbury Street","Bristol","BS3 8NP","Automotive","www.jerome.co.uk","No","£1,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[4] =
+  ["15 September 2017","09.23","Charlotte Walsh","Dianne Illsley","Sales Executive","07986366723","charlotte@diannecreative.com","No","3 Stamford Street","Bristol","BS14 9WG","Automotive","We do not currently have a website","No","£100,000","Yes","New to DIT"];
+
+  req.session.registeredPeopleData1[5] =
+  ["15 September 2017","08.56","Gavin Bell","Direct Trade Bags Company Ltd","Sales Manager","07974652277","gavin@tradebags.co.uk","Yes","45 Pierrepoint Road","Cardiff","CF15 4BP","Technology","www.tradebags.co.uk","Yes","£500,000","No","New to DIT"];
+
+  req.session.registeredPeopleData1[6] =
+  ["9 September 2017","14.37","Deepak Patel","Dy-Pack UK Ltd","Head of Engineering","07933465544","deepak@dypack.com","Yes","4 Wayferry Street","Poole","BH13 5LD","Mining","www.dypack.com","No","£1,500,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[7] =
+  ["2 September 2017","22.55","Mohammed Akram","Elat3d Ltd","International Sales Manager","07986366723","moh@elat3d.com	","Yes","6 Cavendish Tower","Portcullis Street, Newport","NP20 2ED","Mining","www.elat3d.com","Yes","£2,000,000","Yes","New to DIT"];
+
+  req.session.registeredPeopleData1[8] =
+  ["1 September 2017","19.04","Jane Green","Empirical Science Education CIC","Director","07974652277","jane@science.co.uk","No","7 Stamford Street","Bristol","BS3 6QD","Technology","www.science.co.uk","Yes","£1,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[9] =
+  ["31 August 2017","12.31","Nadia Panucci","Jet Pumps UK Ltd","Sales Executive","07933465544","nadia@jetpumps.com","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Environment & Water","www.jetpumps.co.uk","Yes","£5,000,000","No","DIT record"];
+
+
+
+
 
 
 
   // Checkin - Alphabetical order of name of reg.
+  req.session.registeredPeopleCheckinNames1 = [];
+
+  for(var j=0; j<req.session.registeredPeopleData1.length; j++)
+  {
+    req.session.registeredPeopleCheckinNames1[j] = req.session.registeredPeopleData1[j][2];
+  }
+  req.session.registeredPeopleCheckinNames1.sort();
 
 
 
