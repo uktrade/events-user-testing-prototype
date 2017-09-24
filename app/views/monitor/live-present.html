@@ -20,7 +20,7 @@ GOV.UK prototype kit
       </div>
 
 
-      <h1 class="heading-large">
+      <h1 class="heading-large" style="margin-top:10px; margin-bottom:40px;">
         {{ data['event-title'] }}
       </h1>
 
@@ -83,18 +83,28 @@ GOV.UK prototype kit
                     <div style="width:74%">
 
                       <p style="margin-bottom:5px">Visitors to event page</p>
-                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{session.trackingTotalViews}}</p>
-                      <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
-                      {% include "includes/track-link-progress-one.html" %}
+                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{session.eventsLiveURLS[session.currentEventShowing][2][0]}}</p>
 
-                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
-                      {% include "includes/track-link-progress-two.html" %}
+                      <!-- if the link exisits show it and its count -->
+                      {% if 1 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                          <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
+                          {% include "includes/track-link-progress-one.html" %}
+                      {% endif %}
 
-                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
-                      {% include "includes/track-link-progress-three.html" %}
+                      {% if 2 < session.eventsLiveURLS[session.currentEventShowing][1].length %}
+                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
+                          {% include "includes/track-link-progress-two.html" %}
+                      {% endif %}
 
-                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
-                      {% include "includes/track-link-progress-four.html" %}
+                      {% if 3 < session.eventsLiveURLS[session.currentEventShowing][2].length %}
+                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
+                          {% include "includes/track-link-progress-three.html" %}
+                      {% endif %}
+
+                      {% if 4 < session.eventsLiveURLS[session.currentEventShowing][3].length %}
+                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
+                          {% include "includes/track-link-progress-four.html" %}
+                      {% endif %}
 
                     </div>
                   </div>
@@ -106,17 +116,25 @@ GOV.UK prototype kit
                       <p style="margin-bottom:5px">Total registrations</p>
                       <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{ data['attendee-reg-count'] }}</p>
 
-                        <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
-                        {% include "includes/track-link-progress-reg-one.html" %}
+                      {% if 1 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                          <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
+                          {% include "includes/track-link-progress-reg-one.html" %}
+                      {% endif %}
 
+                      {% if 2 < session.eventsLiveURLS[session.currentEventShowing][1].length %}
                         <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
                         {% include "includes/track-link-progress-reg-two.html" %}
+                      {% endif %}
 
+                      {% if 3 < session.eventsLiveURLS[session.currentEventShowing][2].length %}
                         <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
                         {% include "includes/track-link-progress-reg-three.html" %}
+                      {% endif %}
 
+                      {% if 4 < session.eventsLiveURLS[session.currentEventShowing][3].length %}
                         <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
                         {% include "includes/track-link-progress-reg-four.html" %}
+                      {% endif %}
 
                       </div>
                     </div>

@@ -1,54 +1,54 @@
 
-{% macro tracklincone (linkNumber) %}
+{% macro tracklincone (linkNumberPercntage, linkQuantity) %}
 
 <div style="width:100%;" display="flex">
 
-    {% if linkNumber < 5 %}
+    {% if linkNumberPercntage < 5 %}
         <div style="float:left; width:0%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 10 %}
+    {% elif linkNumberPercntage < 10 %}
         <div style="float:left; width:5%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 15 %}
+    {% elif linkNumberPercntage < 15 %}
         <div style="float:left; width:10%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 20 %}
+    {% elif linkNumberPercntage < 20 %}
         <div style="float:left; width:15%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 25 %}
+    {% elif linkNumberPercntage < 25 %}
         <div style="float:left; width:20%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 30 %}
+    {% elif linkNumberPercntage < 30 %}
         <div style="float:left; width:25%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 35 %}
+    {% elif linkNumberPercntage < 35 %}
         <div style="float:left; width:30%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 40 %}
+    {% elif linkNumberPercntage < 40 %}
         <div style="float:left; width:35%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 45 %}
+    {% elif linkNumberPercntage < 45 %}
         <div style="float:left; width:40%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 50 %}
+    {% elif linkNumberPercntage < 50 %}
         <div style="float:left; width:45%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 55 %}
+    {% elif linkNumberPercntage < 55 %}
         <div style="float:left; width:50%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 60 %}
+    {% elif linkNumberPercntage < 60 %}
         <div style="float:left; width:55%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 65 %}
+    {% elif linkNumberPercntage < 65 %}
         <div style="float:left; width:60%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 70 %}
+    {% elif linkNumberPercntage < 70 %}
         <div style="float:left; width:65%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 75 %}
+    {% elif linkNumberPercntage < 75 %}
         <div style="float:left; width:70%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 80 %}
+    {% elif linkNumberPercntage < 80 %}
         <div style="float:left; width:75%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 85 %}
+    {% elif linkNumberPercntage < 85 %}
         <div style="float:left; width:80%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 90 %}
+    {% elif linkNumberPercntage < 90 %}
         <div style="float:left; width:85%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 95 %}
+    {% elif linkNumberPercntage < 95 %}
         <div style="float:left; width:90%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber < 100 %}
+    {% elif linkNumberPercntage < 100 %}
         <div style="float:left; width:95%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
-    {% elif linkNumber >= 100 %}
+    {% elif linkNumberPercntage >= 100 %}
         <div style="float:left; width:100%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
     {% endif %}
 
 
-    <div style="float:left; width:40px; height:10px;">&nbsp;{{linkNumber}}%</div>
+    <div style="float:left; width:40px; height:10px;">&nbsp;&nbsp;{{linkQuantity}}</div>
 
 </div>
 
@@ -56,4 +56,4 @@
 {% endmacro %}
 
 
-{{ tracklincone(session.trackingViewsPercentages[1]) }}
+{{ tracklincone(session.eventsLiveURLS[session.currentEventShowing][3][2], session.eventsLiveURLS[session.currentEventShowing][2][2]) }}

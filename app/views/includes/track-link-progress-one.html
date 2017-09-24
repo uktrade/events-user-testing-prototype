@@ -48,7 +48,7 @@
     {% endif %}
 
 
-    <div style="float:left; width:40px; height:10px;">&nbsp;{{linkQuantity}}</div>
+    <div style="float:left; width:40px; height:10px;">&nbsp;&nbsp;{{linkQuantity}}</div>
 
 </div>
 
@@ -56,4 +56,4 @@
 {% endmacro %}
 
 
-{{ tracklincone(session.trackingViewsPercentages[0], session.trackingViewsNumbers[0]) }}
+{{ tracklincone(session.eventsLiveURLS[session.currentEventShowing][3][1], session.eventsLiveURLS[session.currentEventShowing][2][1]) }}

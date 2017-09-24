@@ -160,7 +160,7 @@
 
       <!-- EVENT ONE  -->
       {% for i in range(0, 100) -%}
-          {% if session.eventsLiveBoolean[i] %}
+          {% if i < session.eventsLive.length %}
              {{ liveEvent(i) }}
           {% endif %}
       {%- endfor %}
