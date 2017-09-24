@@ -48,7 +48,7 @@
         Images and logos
       </h1>
 
-		<form action="/create-event/images-onwards" method="get" class="form">
+
 
 		  <!-- MAIN IMAGE LOGO -->
 
@@ -70,58 +70,59 @@
 
 
 
-		  <div class="form-group {% if errorMissingImage %} form-group-error {% endif %}" style="margin-top:10px; height:150px" id="new-image-area">
+		  <div class="form-group {% if errorMissingImage %} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:10px;" id="new-image-area">
 			  <label class="form-label-bold">
 				  Main event image
 			  </label>
 			  <div style="margin-top:5px">
-				<input type="submit" class="button-secondary" value="Choose an image" id="main-button-image"
-					   onclick="hide()">
 
-				  <div style="display:block" >
-					  <details role="group" style="width:650px;  ">
-						  <summary role="button" aria-controls="details-content-0" aria-expanded="false"
-								   style="margin-top:10px;"><span class="summary">Image guidance</span></summary>
-						  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
-							  <p>  <!-- note these are made up -->
-								  Required image resolution:<br>1000px by 300px
-							  </p>
+				  <div id="image-and-guidance">
+					  <input type="submit" class="button-secondary" value="Choose an image" id="main-button-image"
+						   onclick="hide()">
 
-							  <p>  <!-- note these are made up -->
-								  File types accepted:<br>JPEG and PNG
-							  </p>
+					  <div style="display:block; margin-bottom:70px;">
+						  <details role="group" style="width:650px;  ">
+							  <summary role="button" aria-controls="details-content-0" aria-expanded="false"
+									   style="margin-top:10px;"><span class="summary">Image guidance</span></summary>
+							  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
+								  <p>  <!-- note these are made up -->
+									  Required image resolution:<br>1000px by 300px
+								  </p>
 
-							  <p>
-								  You may find the GREAT brand website [hyperlink text] useful. It includes:
-							  </p>
+								  <p>  <!-- note these are made up -->
+									  File types accepted:<br>JPEG and PNG
+								  </p>
 
-							  <ul class="list list-bullet">
-								  <li>an image library containing fully licensed stock photography</li>
-								  <li>official DIT and GREAT brand assets, including logos</li>
-								  <li>full brand guidelines and supporting documentation</li>
-							  </ul>
+								  <p>
+									  You may find the <a href="#">GREAT brand website</a> useful. It includes:
+								  </p>
 
-							  <p>
-								  If you decide to independently source your own webpage photography or assets, make sure that you have relevant permissions to use them and that they adhere to brand guidelines.
-							  </p>
-						  </div>
-					  </details>
+								  <ul class="list list-bullet">
+									  <li>an image library containing fully licensed stock photography</li>
+									  <li>official DIT and GREAT brand assets, including logos</li>
+									  <li>full brand guidelines and supporting documentation</li>
+								  </ul>
+
+								  <p>
+									  If you decide to independently source your own webpage photography or assets, make sure that you have relevant permissions to use them and that they adhere to brand guidelines.
+								  </p>
+							  </div>
+						  </details>
+					  </div>
 				  </div>
 
-				<div style="margin-bottom:25px; display:none "  id="image-area" >
+				  <div style="margin-bottom:25px; display:none "  id="image-area" >
 					<img src="/public/images/exportingheroimagesmall.jpg" style="width:240px;height:100px;">
-					<p style="margin-bottom:25px;">
+					<p style="margin-bottom:10px;">
 						<a href="#">Choose a different image</a>
 					</p>
-				</div>
+				  </div>
 
-
-
-			  </div>
-
-
-
+		  	  </div>
 		  </div>
+
+
+		<form action="/create-event/images-onwards" method="get" class="form">
 
 			  <!--  THE PARTNER LOGOS  -->
 			  <div class="form-group"
@@ -198,7 +199,7 @@
 
 	function hide()
 	{
-		document.getElementById('main-button-image').style.display = 'none';
+		document.getElementById('image-and-guidance').style.display = 'none';
 		document.getElementById('image-area').style.display = 'inline';
 	}
 

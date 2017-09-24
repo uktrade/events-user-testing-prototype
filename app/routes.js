@@ -1766,6 +1766,18 @@ router.get('/create-event/venue-onwards', function (req, res)
   }
 
 
+
+  if( req.session.data['venue-additional-notes'] == "")
+  {
+    req.session.data['venue-additional-notes-entered'] = false;
+  }
+  else
+  {
+    req.session.data['venue-additional-notes-entered'] = true;
+  }
+
+
+
   // no errors
   if((errorOnBuilding || errorOnTown || errorOnPostcode) == false)
   {

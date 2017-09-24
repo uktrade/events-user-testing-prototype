@@ -93,14 +93,18 @@ GOV.UK prototype kit
 					<p style="margin-left:5px; margin-top:5px;"><a href="#">Add to calendar</a></p>
 
 
+					<!-- VENUE -->
 					<p class="heading-small" style="margin-left:5px; ">Venue</p>
 					<p style="white-space: pre-wrap; margin-left:5px; margin-bottom:5px; ">{{ data['full-address-holder'] }}</p>
 
 					<p style="margin-left:5px; margin-top:5px;"><a href="#">Map of venue</a></p>
 
+					{% if data['venue-additional-notes-entered'] == true %}
+						<p class="heading-small" style="margin-left:5px; ">Additional venue details</p>
+						<p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
+					{% endif %}
 
-					<p class="heading-small" style="margin-left:5px; ">Additional venue details</p>
-					<p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
+
 
 					<textarea class="form-control" name="event-reminder-body" id="event-reminder-body" rows="12" style="width: 80%;"
 					>If you have any questions or special requests that will help you to get the most out of the day, please don't hesitate to get in touch. We'd be happy to assist.
