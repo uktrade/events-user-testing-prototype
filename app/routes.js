@@ -178,7 +178,6 @@ router.use(function (req, res, next)
 
 
 
-
   next();
 
 });
@@ -363,6 +362,49 @@ router.get('/scenario-2', function (req, res)
   req.session.eventsLive[15][19] = false;
 
 
+  req.session.eventsLiveURLS = [];
+  for(var x=0; x<req.session.eventsLive.length; x++)
+  {
+    var baseURL =  req.session.eventsLive[x][0];
+
+    // Make lower case
+    baseURL = baseURL.toLowerCase();
+
+    // remove space an then hyphens
+    baseURL = baseURL.replace(" - ", " ");
+
+    // remove spaces
+    baseURL = baseURL.replace(/\s/g, '-');
+
+    // remove ampersand
+    baseURL = baseURL.replace(/&/g, "");
+
+    // Add on DIT prefix
+    baseURL = "www.events.great.gov.uk/" + baseURL;
+
+
+    var eachURLarrayName = [];
+    var eachURLarray = [];
+
+    // Save the name of each link
+    eachURLarrayName[0] = "BLANK NULL";
+    eachURLarrayName[1] = "Email Marketing";
+    eachURLarrayName[2] = "Twitter";
+
+    // Save the urls of each link being tracked
+    eachURLarray[0] = baseURL;
+    eachURLarray[1] = baseURL + "-email-marketing";
+    eachURLarray[2] = baseURL + "-twitter";
+
+    var arrayOfNameAndUrls = [];
+    arrayOfNameAndUrls[0] = eachURLarrayName;
+    arrayOfNameAndUrls[1] = eachURLarray;
+
+
+    req.session.eventsLiveURLS[x] = arrayOfNameAndUrls;
+
+    console.log("  --- THE OUTPUT URL IS *+* " + req.session.eventsLiveURLS[x]);
+  }
 
 
 
@@ -953,6 +995,9 @@ router.get('/create-event/new', function (req, res)
   {
     req.session.data['answer-'+x] = "";
   }
+
+
+
 
   res.redirect('/create-event/');
 })
@@ -2451,7 +2496,54 @@ router.get('/create-event/summary-prelude', function (req, res)
 
 
 
+router.get('/create-event/go-live-now', function (req, res)
+{
+  // Make the list of tracking links, assuming it will go live in a moment
+  var x = req.session.eventsLive.length;
 
+  req.session.currentEventShowing = req.session.eventsLive.length;
+
+  var baseURL = req.session.data['event-title'];
+
+  // Make lower case
+  baseURL = baseURL.toLowerCase();
+
+  // remove space an then hyphens
+  baseURL = baseURL.replace(" - ", " ");
+
+  // remove spaces
+  baseURL = baseURL.replace(/\s/g, '-');
+
+  // remove ampersand
+  baseURL = baseURL.replace(/&/g, "");
+
+  // Add on DIT prefix
+  baseURL = "www.events.great.gov.uk/" + baseURL;
+
+  var eachURLarrayName = [];
+  var eachURLarray = [];
+
+  // Save the name of each link
+  eachURLarrayName[0] = "BLANK NULL";
+  eachURLarrayName[1] = "Email Marketing";
+  eachURLarrayName[2] = "Twitter";
+
+  // Save the urls of each link being tracked
+  eachURLarray[0] = baseURL;
+  eachURLarray[1] = baseURL + "-email-marketing";
+  eachURLarray[2] = baseURL + "-twitter";
+
+  var arrayOfNameAndUrls = [];
+  arrayOfNameAndUrls[0] = eachURLarrayName;
+  arrayOfNameAndUrls[1] = eachURLarray;
+
+
+  req.session.eventsLiveURLS[x] = arrayOfNameAndUrls;
+
+  console.log("  --- THE OUTPUT URL IS *+* " + req.session.eventsLiveURLS[x]);
+
+  res.redirect('/create-event/go-live');
+});
 
 
 
@@ -2889,7 +2981,7 @@ router.get('/make-draft-live', function (req, res)
   console.log("input number is : " +  req.session.currentEventShowing );
 
   //get event from drafts
-  var tempEventArray = req.session.eventsDraft[req.session.currentEventShowing];
+  var tempEventArray = req.session.eventsDraft[req.session.eventsDraft.length -1];
 
   console.log("content of event : " + tempEventArray);
 
@@ -2952,7 +3044,15 @@ router.get('/monitor/add-tracking-link', function (req, res)
   }
   else
   {
-    req.session.trackingLinksNames[req.session.trackingLinksNames.length] = req.session.data['new-link-name'];
+    // Add the new tracking name to the end of the list of tracking link names
+    req.session.eventsLiveURLS[req.session.currentEventShowing][0][req.session.eventsLiveURLS[req.session.currentEventShowing][0].length] = req.session.data['new-link-name'];
+
+
+    // Make and save new URL for this new tracking link name
+
+    req.session.eventsLiveURLS[req.session.currentEventShowing][1][req.session.eventsLiveURLS[req.session.currentEventShowing][1].length]
+        = req.session.data['new-url'];
+
 
     console.log("the  name added is  " +   req.session.trackingLinksNames[req.session.trackingLinksNames.length-1]);
 
@@ -2961,6 +3061,46 @@ router.get('/monitor/add-tracking-link', function (req, res)
     res.redirect('/monitor/live-present#track-links');
   }
 })
+
+
+// STORE NEW MONITOR LINK - FROM GO LIVE ONLY
+router.get('/add-tracking-link-go-live', function (req, res)
+{
+  if(req.session.data['new-link-name'] === "")
+  {
+    console.log("the new link name is empty");
+
+    errorTrackingNameIs = true;
+
+    res.render('/monitor/live-present',
+        {
+          tab: 2,
+          'errorTrackingName': errorTrackingNameIs,
+        }
+    );
+  }
+  else
+  {
+    // Add the new tracking name to the end of the list of tracking link names
+    req.session.eventsLiveURLS[req.session.eventsLiveURLS.length -1][0][req.session.eventsLiveURLS[req.session.eventsLiveURLS.length -1][0].length] = req.session.data['new-link-name'];
+
+
+    // Make and save new URL for this new tracking link name
+
+    req.session.eventsLiveURLS[req.session.eventsLiveURLS.length -1][1][req.session.eventsLiveURLS[req.session.eventsLiveURLS.length -1][1].length]
+        = req.session.data['new-url'];
+
+
+    console.log("the  name added is " +   req.session.trackingLinksNames[req.session.trackingLinksNames.length-1]);
+
+    console.log("the size of the links list is now " +   req.session.trackingLinksNames.length);
+
+    res.redirect('/create-event/go-live');
+  }
+})
+
+
+
 
 
 // WHEN SOMEONE CLICKS MONITOR, LOAD THE CORRESPONDING EVENT DETAILS
