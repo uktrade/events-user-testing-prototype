@@ -9,6 +9,91 @@
 
 {% block content %}
 {% include "includes/great-header.html" %} 
+{% set QuestionsCounter = 0 %}
+{{QuestionsCounter}}
+{% macro createYesOrNoQuestion(question, type) %}
+<input type="hidden" name="question{{QuestionsCounter}}" value="{{question}}">
+{% if (type === "yes-or-no") %}
+<div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
+  <label class="form-label" for="question{{QuestionsCounter}}">
+	  {{question}}
+	  {% if errorQuestionEmpty %}
+				<span class="error-message">
+					Attendee question missing
+				</span>
+	  {% endif %}
+  </label>
+
+  <fieldset class="inline">
+    <div class="multiple-choice">
+      <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
+      <label for="radio-inline-1">Yes</label>
+    </div>
+    <div class="multiple-choice">
+      <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
+      <label for="radio-inline-2">No</label>
+    </div>
+  </fieldset>
+</div>
+{% elif (type == "long") %}
+<div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question{{QuestionsCounter}}">
+						  Question with long answer
+						  {% if errorQuestionEmpty %}
+									<span class="error-message">
+										Attendee question missing
+									</span>
+						  {% endif %}
+					  </label>
+					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+						  <textarea class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+								 id="question{{QuestionsCounter}}" name="question{{QuestionsCounter}}" value="" ></textarea>
+					  </div>
+				  </div>
+{% elif (type == "short") %}
+<div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question{{QuestionsCounter}}">
+						  Question with short answer
+						  {% if errorQuestionEmpty %}
+									<span class="error-message">
+										Attendee question missing
+									</span>
+						  {% endif %}
+					  </label>
+					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+								 id="question{{QuestionsCounter}}" name="question{{QuestionsCounter}}" value="" style="width:100%;">
+					  </div>
+				  </div>
+
+{% elif (type == "multiple") %}
+<div class="form-group">
+			 
+				  <label class="form-label" for="town" style="margin-bottom:5px; ">Question with multiple answers</label>
+				  <fieldset>
+			      <legend>
+			        <span class="visually-hidden">Which types of waste do you transport regularly?</span>
+			      </legend>
+			      <div class="multiple-choice">
+			        <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
+			        <label for="waste-type-1">Waste from animal carcasses</label>
+			      </div>
+			      <div class="multiple-choice">
+			        <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
+			        <label for="waste-type-2">Waste from mines or quarries</label>
+			      </div>
+			      <div class="multiple-choice">
+			        <input id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm-agricultural">
+			        <label for="waste-type-3">Farm or agricultural waste</label>
+			      </div>
+			    </fieldset>
+
+			 
+				</div>
+{% endif %}
+{% set QuestionsCounter = randomHash() %}
+{{QuestionsCounter}}
+{% endmacro %}
 
 <main id="content" role="main">
 <h1 class="heading-large">
@@ -70,77 +155,6 @@
 	  <form action="/create-event/question-onwards" method="get" class="form">
 
 
-		  	<fieldset class="form-group {% if session.previousQuestions.length == 0 %} js-hidden {% endif %}" style="margin-bottom:0; padding-bottom:30px" id="previous-questions">
-			  <!--  Additional questions that the registering user need to answer  -->
-
-				<div class="form-group " style="margin-top:10px; margin-bottom:0px">
-
-					{% if errorNewQuestionEmpty %}
-						<div class="form-group  form-group-error">
-					{% endif %}
-
-						<label class="bold" for="question">
-							New or previous question
-							{% if errorNewQuestionEmpty %}
-								<span class="error-message">
-									Attendee question missing
-								</span>
-							{% endif %}
-						</label>
-
-
-						<div class="form-group" style="margin-top:0px; margin-bottom:0px">
-
-							<div class="form-date" style="margin-top:5px">
-
-								<div class="multiple-choice"  data-target="show-answer-type">
-									<input id="new-question" type="radio" name="radio-additional-new-old-questions" value="new-question"
-										   {% if errorNewQuestionSelected %} checked="checked" {% endif %}   onclick="prepopClear()">
-									<label for="new-question">New question</label>
-								</div>
-								<div class="multiple-choice" data-target="show-answer-type">
-									<input id="previous-question-one" type="radio" name="radio-additional-new-old-questions" value="previous-question-one"
-										   {% if errorOldQuestionOneSelected %} checked="checked" {% endif %}   onclick="prepopQuestionOne()">
-									<label for="previous-question-one">{{ session.previousQuestions[0][0] }}&nbsp;</label>
-								</div>
-
-								<div class="multiple-choice {% if session.previousQuestions.length < 2 %} js-hidden {% endif %} " data-target="show-answer-type"
-									 	   {% if errorOldQuestionTwoSelected %} checked="checked" {% endif %} >
-									<input id="previous-question-two" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionTwo()">
-									<label for="previous-question-two">{{ session.previousQuestions[1][0] }}&nbsp;</label>
-								</div>
-
-								<div class="multiple-choice {% if session.previousQuestions.length < 3 %} js-hidden {% endif %} " data-target="show-answer-type"
-									 	   {% if errorOldQuestionThreeSelected %} checked="checked" {% endif %} >
-									<input id="previous-question-three" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionThree()">
-									<label for="previous-question-two">{{ session.previousQuestions[2][0] }}&nbsp;</label>
-								</div>
-
-								<div class="multiple-choice {% if session.previousQuestions.length < 4 %} js-hidden {% endif %} " data-target="show-answer-type"
-									       {% if errorOldQuestionFourSelected %} checked="checked" {% endif %} >
-									<input id="previous-question-four" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"    onclick="prepopQuestionFour()">
-									<label for="previous-question-four">{{ session.previousQuestions[3][0] }}&nbsp;</label>
-								</div>
-
-								<div class="multiple-choice {% if session.previousQuestions.length < 5 %} js-hidden {% endif %} " data-target="show-answer-type"
-									 	   {% if errorOldQuestionFiveSelected %} checked="checked" {% endif %} >
-									<input id="previous-question-five" type="radio" name="radio-additional-new-old-questions" value="previous-question-two"     onclick="prepopQuestionFive()">
-									<label for="previous-question-five">{{ session.previousQuestions[4][0] }}&nbsp;</label>
-								</div>
-							</div>
-
-						</div>
-
-
-					{% if errorNewQuestionEmpty %}
-						</div>
-					{% endif %}
-
-				</div>
-		  	</fieldset>
-
-
-
 			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
 			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
 			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
@@ -149,85 +163,16 @@
 			  							  {% endif %}"
 						id="show-answer-type">
 
+				  
+ 				{{ createYesOrNoQuestion("Long", "long") }}
 
+ 				{{ createYesOrNoQuestion("Short Question", "short") }}
 
-				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="question">
-						  Question with short answer
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
-						  {% endif %}
-					  </label>
-					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question" name="question" value="" style="width:100%;">
-					  </div>
-				  </div>
+ 				{{ createYesOrNoQuestion("Question with yes or no", "yes-or-no") }}
 
-				  <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="question">
-						  Question with long answer
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
-						  {% endif %}
-					  </label>
-					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <textarea class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question" name="question" value="" ></textarea>
-					  </div>
-				  </div>
-				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
-
-					  <label class="form-label" for="question">
-						  Question with yes or no
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
-						  {% endif %}
-					  </label>
-				
-				      <fieldset class="inline">
-				        <legend class="visually-hidden">Do you already have a personal user account?</legend>
-				        <div class="multiple-choice">
-				          <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
-				          <label for="radio-inline-1">Yes</label>
-				        </div>
-				        <div class="multiple-choice">
-				          <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
-				          <label for="radio-inline-2">No</label>
-				        </div>
-				      </fieldset>
-	    		</div>
-			  
+ 				{{ createYesOrNoQuestion("Multiple", "multiple") }}
+		  
 							  
-				<div class="form-group">
-			 
-				  <label class="form-label" for="town" style="margin-bottom:5px; ">Question with multiple answers</label>
-				  <fieldset>
-			      <legend>
-			        <span class="visually-hidden">Which types of waste do you transport regularly?</span>
-			      </legend>
-			      <div class="multiple-choice">
-			        <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
-			        <label for="waste-type-1">Waste from animal carcasses</label>
-			      </div>
-			      <div class="multiple-choice">
-			        <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
-			        <label for="waste-type-2">Waste from mines or quarries</label>
-			      </div>
-			      <div class="multiple-choice">
-			        <input id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm-agricultural">
-			        <label for="waste-type-3">Farm or agricultural waste</label>
-			      </div>
-			    </fieldset>
-
-			 
-				</div>
 			  
 	
 

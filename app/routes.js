@@ -2733,7 +2733,8 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
   req.session.data['event-title'] = eventDataMapTEMPLoad[0];
   req.session.data['attendee-quantity'] = eventDataMapTEMPLoad[8];
   req.session.data['attendee-reg-count'] = eventDataMapTEMPLoad[20];
-  req.session.ticketsSoldPercentage = Math.round(eventDataMapTEMPLoad[20] / eventDataMapTEMPLoad[8]*100);
+  //req.session.ticketsSoldPercentage = Math.round(eventDataMapTEMPLoad[20] / eventDataMapTEMPLoad[8]*100);
+  req.session.ticketsSoldPercentage = 12;
 
   res.redirect('/monitor/live-present');
 

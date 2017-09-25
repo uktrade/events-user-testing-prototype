@@ -16,8 +16,11 @@
       </h1>
       
   <div class="grid-row">
+  
     <div class="column-two-thirds">
-
+    <h2 class="bold-medium" style="margin-bottom:15px">
+		  Attendee 1 
+    </h2>
 	  <!--  BREADCRUMB  -->
 	  <div class="breadcrumbs">
 		
@@ -119,7 +122,7 @@
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question" name="question" value="" style="width:80%;">
+								 id="full-name" name="full-name" value="" style="width:80%;">
 					  </div>
 				  </div>
 
@@ -134,7 +137,7 @@
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question" name="question" value="" style="width:30%;">
+								 id="job-title" name="job-title" value="" style="width:30%;">
 					  </div>
 				  </div>
 
@@ -147,10 +150,10 @@
 									</span>
 						  {% endif %}
 					  </label>
-					  <div class="form-hint">We’ll send a confirmation to this email address</div>
+					 <!-- <div class="form-hint">We’ll send a confirmation to this email address</div> -->
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question" name="question" value="" style="width:80%;">
+								 id="email-address" name="email-address" value="" style="width:80%;">
 					  </div>
 				  </div>
 
@@ -165,10 +168,10 @@
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question" name="question" value="" style="width:50%;">
+								 id="phone-number" name="phone-number" value="" style="width:50%;">
 					  </div>
 					  <div class="multiple-choice" style="margin-top:15px">
-  						<input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
+  						<input id="checkbox-text-reminders" name="checkbox-text-reminders" type="checkbox" value="true">
  						<label for="checkbox-telephone-number">I'd like to receive free text reminders on this number</label>
 					</div>
 				  </div>

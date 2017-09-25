@@ -100,7 +100,7 @@
             Business name
           </dt>
           <dd class="cya-answer">
-            Fisher Ltd
+            {{ data['business-name'] }}
           </dd>
           <dd class="cya-change">
             <a href="#">
@@ -114,7 +114,7 @@
             Primary sector
           </dt>
           <dd class="cya-answer">
-            Aerospace
+            {{ data['sectors'] }}
           </dd>
           <dd class="cya-change">
             <a href="#">
@@ -128,10 +128,10 @@
             Business address
           </dt>
           <dd class="cya-answer">
-            Address line 1 <br />
-            Address line 2 <br />
-            Town <br />
-            Postcode <br />
+            {{ data['building'] }} <br />
+            {{ data['street'] }} <br />
+            {{ data['town'] }} <br />
+            {{ data['postcode'] }} <br />
           </dd>
           <dd class="cya-change">
             <a href="#">
@@ -145,7 +145,7 @@
             Website 
           </dt>
           <dd class="cya-answer">
-            www.fisherltd.com<br />
+            {{ data['website'] }}<br />
           </dd>
           <dd class="cya-change">
             <a href="#">
@@ -169,7 +169,7 @@
             Full name
           </dt>
           <dd class="cya-answer">
-            Sarah Philips
+            {{ data['full-name'] }}
           </dd>
           <dd class="cya-change">
             <a href="#">
@@ -183,7 +183,7 @@
             Job title
           </dt>
           <dd class="cya-answer">
-            Director
+            {{ data['job-title'] }}
           </dd>
           <dd class="cya-change">
             <a href="#">
@@ -197,7 +197,7 @@
             Email
           </dt>
           <dd class="cya-answer">
-            sarah.philips@company.com
+            {{ data['email-address'] }}
           </dd>
           <dd class="cya-change">
             <a href="#">
@@ -211,7 +211,76 @@
             Phone number
           </dt>
           <dd class="cya-answer">
-            07700 900457<br />
+            {{ data['phone-number'] }}<br />
+            Yes to text reminders on this number
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+
+<!-- REGISTRATION QUESTIONS -->
+        <h2 class="heading-medium">
+        Registration questions
+        {{ data['question0'] }}
+        
+      </h2>
+     <!--  <h2 class="heading-small">
+        Ticket 1
+      </h2> -->
+      <dl class="govuk-check-your-answers cya-questions-short">
+        <div>
+          <dt class="cya-question">
+            Full name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['full-name'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Job title
+          </dt>
+          <dd class="cya-answer">
+            {{ data['job-title'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Email
+          </dt>
+          <dd class="cya-answer">
+            {{ data['email-address'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> home address</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Phone number
+          </dt>
+          <dd class="cya-answer">
+            {{ data['phone-number'] }}<br />
             Yes to text reminders on this number
           </dd>
           <dd class="cya-change">
