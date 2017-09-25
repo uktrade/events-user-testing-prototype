@@ -21,8 +21,8 @@
   <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">{{ session.eventsLive[itemRow][3] }} {{ session.eventsLive[itemRow][5] }} {{ session.eventsLive[itemRow][6] }}</td>
 
   <!-- Number to match Filips scenarios  -->
-    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">{{session.eventsLive[itemRow][20]}} / {{ session.eventsLive[itemRow][8] }} tickets</td>
-
+    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">
+    {% if session.eventsLive[itemRow][20] %} {{session.eventsLive[itemRow][20]}} {% else %} 0{% endif %} / {{ session.eventsLive[itemRow][8] }} tickets</td>
 </tr>
 
 

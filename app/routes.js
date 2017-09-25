@@ -237,6 +237,13 @@ router.get('/scenario-1', function (req, res)
   req.session.eventsLive[3][0] = "International Market Research";
   req.session.eventsLive[4][0] = "Grow your Business with Social Media";
 
+  req.session.eventsLive[1][1] = "11:00";
+  req.session.eventsLive[1][2] = "12:00";
+  req.session.eventsLive[1][28] = "11:00";
+  req.session.eventsLive[1][29] = "12:00";
+  req.session.eventsLive[1][30] = "11:00";
+  req.session.eventsLive[1][31] = "12:00";
+
   req.session.eventsLive[0][3] = "29";
   req.session.eventsLive[1][3] = "2";
   req.session.eventsLive[2][3] = "7";
@@ -472,7 +479,53 @@ router.get('/scenario-1', function (req, res)
 
 
 
+router.get('/scenario-2', function (req, res)
+{
+  req.session.data['organiser-name'] = "test";
+  req.session.data['event-title'] = "Introduction to exporting workshop";
+  req.session.data['event-day'] = "1"
+  req.session.data['event-month-name'] = "November";
+  req.session.data['event-year'] = "2017"
 
+  req.session.data['event-start-time'] = "10am";
+  req.session.data['event-finish-time'] = "1pm";
+
+  req.session.data['full-address-holder'] = "Innovation Centre" + "\n" + "University of Exeter" + "\n" + "Rennes Drive" + "\n" + "Exeter" + "\n" + "EX4 4RN";
+
+
+  req.session.data['sectors'] = "All sectors";
+  req.session.data['markets'] = "All markets";
+  req.session.data['audience-experience'] = "New to export";
+
+  req.session.data['summary-target-audience'] = "Anyone with a registered business in the South West region who is new to exporting or thinking about it. Open to all industries, and levels of experience - no previous knowledge of exporting is assumed.";
+  req.session.data['benefits1'] = "Hear from expert speaker Guy Desiato on what it takes to win new business overseas"; 
+  req.session.data['benefits2'] = "Roundtable discussion and workshop on key steps to begin exporting ";
+  req.session.data['benefits3'] = "Create your own export growth action plan to take away "; 
+  req.session.data['benefits2'] = "Free lunch and refreshments provided";
+
+  req.session.data['event-description'] = `Take your first practical steps towards exporting your products or services with this interactive workshop.
+  
+Expert speaker Guy Desiato, CEO of Nociar Ltd, will explain the steps you can take right away to begin selling internationally - including plenty of practical examples and inspiring success stories.
+
+Our expert International Trade Advisers will then facilitate a roundtable discussion and interactive workshop, designed to help you produce an outline 6 to 12-month action plan for international export.
+
+Here’s what attendees have said about past ‘Introduction to export’ events…
+
+‘Such an incredible wealth of knowledge and resources tailored to our requirements.' 
+- Angela Hall, Barefaced Bee
+
+'Even as an experienced business person, I learned loads and everything was explained clearly. Very motivational!' 
+- Barbara Cox, Mr. Lee's Noodles
+`;
+
+  req.session.data['eu-logo-selected'] = true;
+  req.session.data['dit-logo-selected'] = true; 
+  req.session.data['growth-logo-selected'] = true;
+  req.session.data['bw-logo-selected'] = true;
+
+  res.redirect('/create-event/preview');
+ 
+})
 
 
 
@@ -2733,8 +2786,7 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
   req.session.data['event-title'] = eventDataMapTEMPLoad[0];
   req.session.data['attendee-quantity'] = eventDataMapTEMPLoad[8];
   req.session.data['attendee-reg-count'] = eventDataMapTEMPLoad[20];
-  //req.session.ticketsSoldPercentage = Math.round(eventDataMapTEMPLoad[20] / eventDataMapTEMPLoad[8]*100);
-  req.session.ticketsSoldPercentage = 12;
+  req.session.ticketsSoldPercentage = Math.round(eventDataMapTEMPLoad[20] / eventDataMapTEMPLoad[8]*100);
 
   res.redirect('/monitor/live-present');
 
