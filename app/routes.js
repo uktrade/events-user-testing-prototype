@@ -543,6 +543,58 @@ Lunch and networking`;
 
 
 
+router.get('/scenario-3', function (req, res)
+{
+  req.session.data['organiser-name'] = "Business West";
+  req.session.data['event-title'] = "Sweden food and drink seminar";
+  req.session.data['event-day'] = "1"
+  req.session.data['event-month-name'] = "November";
+  req.session.data['event-year'] = "2017"
+
+  req.session.data['event-start-time'] = "10am";
+  req.session.data['event-finish-time'] = "1pm";
+
+  req.session.data['full-address-holder'] = "Innovation Centre" + "\n" + "University of Exeter" + "\n" + "Rennes Drive" + "\n" + "Exeter" + "\n" + "EX4 4RN";
+
+
+  req.session.data['sectors'] = "Food and drink";
+  req.session.data['markets'] = "Sweden";
+  req.session.data['audience-experience'] = "Open to all";
+
+  req.session.data['summary-target-audience'] = "Anyone working in the food and drink industry who is interested in exporting products or services to Sweden. Businesses need to be based in the South West region to register.";
+  req.session.data['benefits1'] = "Hear from DIT speaker Sandra Ideskär, trade expert at the British Embassy in Stockholm"; 
+  req.session.data['benefits2'] = "Learn about latest export trends and opportunities in the Swedish food and drink market";
+  req.session.data['benefits3'] = "Understand key principles and considerations for exporting to Sweden"; 
+
+  req.session.data['event-description'] = `Sweden is an excellent target market choice for UK food and drink companies. It has a long tradition of importing food products and a reputation for choosing high quality products and services. 
+
+According to the 2017 World Banking Report in 2017, Sweden is the ninth easiest country to do business in and is often cited as one of the most receptive markets to new products and concepts.
+
+Our expert speaker Sandra Ideskär, works for Department for International Trade at the British Embassy in Stockholm, assisting UK companies to start exporting to Sweden. Prior to that, Sandra worked for the Swedish government in education and international development. To find out more, see her <a href="#">LinkedIn profile</a>.`;
+
+req.session.data['agenda'] = `10am to 10.15am
+Welcome and refreshments
+
+10.15am to 11.00am
+Expert talk and Q&A with Sandra Ideskär
+
+11am to 11.30am
+Q&A with International Trade Advisers
+
+11.30am to finish
+Refreshments and networking`;
+
+
+  req.session.data['eu-logo-selected'] = true;
+  req.session.data['dit-logo-selected'] = true; 
+  req.session.data['growth-logo-selected'] = true;
+  req.session.data['bw-logo-selected'] = true;
+
+  res.redirect('/create-event/preview');
+ 
+})
+
+
 router.get('/scenario-previous-questions', function (req, res)
 {
   req.session.previousQuestions = [['Do you have an ITA?', 'select-one', 'yes', 'no']];
