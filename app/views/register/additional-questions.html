@@ -10,6 +10,7 @@
 {% block content %}
 {% include "includes/great-header.html" %} 
 
+
 {% macro createYesOrNoQuestion(id, question, type, values) %}
 <input type="hidden" name="question--{{id}}" value="{{question}}">
 <input type="hidden" name="question--{{id}}" value="{{type}}">
@@ -64,7 +65,7 @@
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" style="width:100%;">
+								 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" style="width:30%;">
 					  </div>
 				  </div>
 
@@ -155,7 +156,7 @@
 			  							  {% endif %}"
 						id="show-answer-type">
 
-				  
+				<!--  
  				{{ createYesOrNoQuestion(1, "Long title", "long") }}
 
  				{{ createYesOrNoQuestion(2, "Short title", "short") }}
@@ -163,9 +164,11 @@
  				{{ createYesOrNoQuestion(3, "Yes or no title", "yes-or-no") }}
 
  				{{ createYesOrNoQuestion(4, "Multiple title ", "multiple", ["value1", "value2"]) }}
-		  
-							  
-			  
+		  -->
+				{{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}
+				{{ createYesOrNoQuestion(2, "What is your latest annual turnover? (£)", "short") }}
+				{{ createYesOrNoQuestion(3, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
+
 	
 
 </fieldset>

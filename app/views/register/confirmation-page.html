@@ -22,7 +22,31 @@
           <strong class="heading-medium">HDJ2123F</strong>
         </p>
       </div>
-      <p>We have sent you a confirmation email to {{ data['email-address'] }} .</p>
+
+      <table>
+  
+  <tbody>
+    <tr>
+      <td class="bold">Event details</td>
+      <td>{{ data['event-title'] }}</td>
+    </tr>
+    <tr>
+      <td class="bold">Date and time</td>
+      <td>{{ session.data['event-day'] }} {{ session.data['event-month-name'] }} {{ session.data['event-year'] }} <br />
+            {{ session.data['event-start-time'] }} to {{ session.data['event-finish-time'] }}<br />
+      </td>
+    </tr>
+    <tr>
+      <td class="bold">Venue</td>
+      <td style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</td>
+    </tr>
+    
+  </tbody>
+</table>
+<br />
+      <p>We have sent you a confirmation email to {{ data['email-address'] }}</p>
+
+      <p>You can print this confirmation of <a class="link" href="#">download a PDF</a>.</p>
 
       <h2 class="heading-medium">What happens next</h2>
       <p>Updates and reminders containing further details and instructions will be sent out closer to the day of your event, so do keep an eye on your inbox.</p>
