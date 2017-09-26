@@ -550,7 +550,7 @@ router.get('/scenario-3', function (req, res)
   req.session.data['event-day'] = "1"
   req.session.data['event-month-name'] = "November";
   req.session.data['event-year'] = "2017"
-
+  req.session.data['hero-image'] = "food-drink.png"
   req.session.data['event-start-time'] = "10am";
   req.session.data['event-finish-time'] = "1pm";
 

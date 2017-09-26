@@ -97,15 +97,9 @@
 
 		  <div class="form-group" style="margin-top:30px">
 
-			  <div class=" {% if data['additional-questions-incrementer'] == 5 %}  js-hidden {% endif %} ">
-				  <input type="submit" class="button-secondary" formaction="/create-event/add-other-question-submit" value="Skip and add a new question">
+			  <input type="submit" class="button" formaction="/create-event/additional-questions" value="Save and add another">
+			  <p style="margin-top:30px"><a href="/create-event/additional-questions">Skip this and continue</a></p>
 
-				  <br>
-				  <br>
-				  <br>
-			  </div>
-
-			  <input type="submit" class="button" formaction="/create-event/final-question" value="Save and add another">
 		  </div>
 
 

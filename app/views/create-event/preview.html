@@ -21,35 +21,6 @@
 </style>
   <div class="grid-row" style="margin: 0px 150px;padding-top:30px">
 
-{% if session.liveOrNot == "false" %}
-      <div style="background-color: #FFFFFF; border-bottom: 5px solid #000000; height:130px; padding-top:10px; padding-bottom:10px; display: flex;" >
-
-        <div style="margin-right:0px; margin-left:20px; margin-top:0px; float: left; width:200px;">
-          <p style="font-size:16px; margin-top:10px;" align="left"><a style="color:#000000; font-family: Arial,sans-serif;" href="/account#draft-events">Account home</a></p>
-
-          <p class="form-label-bold" style="font-size:18px; font-family: Arial,sans-serif; margin-top:56px;" align="left">
-            <span style="font-weight:700">Share draft</span><br>
-            www.great.gov.uk/event/mh43dz
-          </p>
-        </div>
-
-        <div style="float:left; width:100%; margin-top:30px;">
-          <p style="margin:5px; margin-top:10px;  margin-right:40px; font-size:36px; font-weight:700; font-family: Arial,sans-serif;">Draft event</p>
-        </div>
-
-
-        <form action="/create-event/go-live-now" method="get" class="form">
-
-          <div style="margin-left:20px; margin-right:30px; margin-top:10px; float: right;">
-            <input type="submit" class="button-grey" value="Make event live" style="margin-bottom:35px; width:170px;">
-
-            <input type="submit" class="button" value="Save draft" style="width:170px;"  formaction="/account#draft-events">
-          </div>
-
-        </form>
-
-      </div>
-    {% endif %}
 
     <div class="grid-row">
 
@@ -102,7 +73,11 @@
 
     </div>
     <div class="column-one-half">
+      {% if data['hero-image'] %}
+      <div style="background-image:url('/public/images/{{data['hero-image']}}');height:350px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
+      {% else %}
       <div style="background-image:url('/public/images/coal-mongolia.jpg');height:350px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
+      {% endif %}
       </div>
 
       <div class="panel">
