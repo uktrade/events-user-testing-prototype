@@ -1,14 +1,12 @@
 <div class="panel panel--info ">
     	<p>You're booking tickets for</p>
-    	<h4 class="heading-small">Intellectual Property Know-How for Small Businesses</h4>
+    	<h4 class="heading-small">{{ data['event-title'] }}</h4>
     	<ul>
     		<div class="bold-xsmall" style="margin-top:15px">Date and time</div>
-    		<li>11 May 2017</li>
-    		<li>11:00 to 17:00 <br /><br /></li>
+    		<li style="font-size:16px">{{ session.data['event-day'] }} {{ session.data['event-month-name'] }} {{ session.data['event-year'] }}</li>
+    		<li style="font-size:16px">{{ session.data['event-start-time'] }} to {{ session.data['event-finish-time'] }} <br /><br /></li>
     		<div class="bold-xsmall">Location</div>
-    		<li>The Bristol Golf Club <br />
-			Almondsbury<br />
-			</li>
+    		<li style="font-size:16px;white-space: pre-wrap;">{{ data['full-address-holder'] }}</li>
     	</ul>
     	<br>
 		<p>Free</p>

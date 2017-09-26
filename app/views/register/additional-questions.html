@@ -9,13 +9,13 @@
 
 {% block content %}
 {% include "includes/great-header.html" %} 
-{% set QuestionsCounter = 0 %}
-{{QuestionsCounter}}
-{% macro createYesOrNoQuestion(question, type) %}
-<input type="hidden" name="question{{QuestionsCounter}}" value="{{question}}">
+
+{% macro createYesOrNoQuestion(id, question, type, values) %}
+<input type="hidden" name="question--{{id}}" value="{{question}}">
+<input type="hidden" name="question--{{id}}" value="{{type}}">
 {% if (type === "yes-or-no") %}
 <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
-  <label class="form-label" for="question{{QuestionsCounter}}">
+  <label class="form-label" for="question--{{id}}">
 	  {{question}}
 	  {% if errorQuestionEmpty %}
 				<span class="error-message">
@@ -26,19 +26,20 @@
 
   <fieldset class="inline">
     <div class="multiple-choice">
-      <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
+      <input id="radio-inline-1" type="radio" name="question--{{id}}" value="Yes">
       <label for="radio-inline-1">Yes</label>
     </div>
     <div class="multiple-choice">
-      <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
+      <input id="radio-inline-2" type="radio" name="question--{{id}}" value="No">
       <label for="radio-inline-2">No</label>
     </div>
   </fieldset>
 </div>
+
 {% elif (type == "long") %}
 <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="question{{QuestionsCounter}}">
-						  Question with long answer
+					  <label class="form-label" for="question--{{id}}">
+						  {{question}}
 						  {% if errorQuestionEmpty %}
 									<span class="error-message">
 										Attendee question missing
@@ -47,13 +48,14 @@
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <textarea class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question{{QuestionsCounter}}" name="question{{QuestionsCounter}}" value="" ></textarea>
+								 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" ></textarea>
 					  </div>
 				  </div>
+
 {% elif (type == "short") %}
 <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="question{{QuestionsCounter}}">
-						  Question with short answer
+					  <label class="form-label" for="question--{{id}}">
+						  {{question}}
 						  {% if errorQuestionEmpty %}
 									<span class="error-message">
 										Attendee question missing
@@ -62,37 +64,27 @@
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question{{QuestionsCounter}}" name="question{{QuestionsCounter}}" value="" style="width:100%;">
+								 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" style="width:100%;">
 					  </div>
 				  </div>
 
 {% elif (type == "multiple") %}
 <div class="form-group">
 			 
-				  <label class="form-label" for="town" style="margin-bottom:5px; ">Question with multiple answers</label>
+				  <label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
 				  <fieldset>
-			      <legend>
-			        <span class="visually-hidden">Which types of waste do you transport regularly?</span>
-			      </legend>
+				  	{% for value in values %}		  	
 			      <div class="multiple-choice">
-			        <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
-			        <label for="waste-type-1">Waste from animal carcasses</label>
+			        <input id="answer{{id}}" name="question--{{id}}" type="checkbox" value="{{value}}">
+			        <label for="{{ value }}">{{ value }}</label>
 			      </div>
-			      <div class="multiple-choice">
-			        <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
-			        <label for="waste-type-2">Waste from mines or quarries</label>
-			      </div>
-			      <div class="multiple-choice">
-			        <input id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm-agricultural">
-			        <label for="waste-type-3">Farm or agricultural waste</label>
-			      </div>
+			      {% endfor %}
 			    </fieldset>
 
 			 
 				</div>
+
 {% endif %}
-{% set QuestionsCounter = 0 %}
-{{QuestionsCounter}}
 {% endmacro %}
 
 <main id="content" role="main">
@@ -164,13 +156,13 @@
 						id="show-answer-type">
 
 				  
- 				{{ createYesOrNoQuestion("Long", "long") }}
+ 				{{ createYesOrNoQuestion(1, "Long title", "long") }}
 
- 				{{ createYesOrNoQuestion("Short Question", "short") }}
+ 				{{ createYesOrNoQuestion(2, "Short title", "short") }}
 
- 				{{ createYesOrNoQuestion("Question with yes or no", "yes-or-no") }}
+ 				{{ createYesOrNoQuestion(3, "Yes or no title", "yes-or-no") }}
 
- 				{{ createYesOrNoQuestion("Multiple", "multiple") }}
+ 				{{ createYesOrNoQuestion(4, "Multiple title ", "multiple", ["value1", "value2"]) }}
 		  
 							  
 			  
