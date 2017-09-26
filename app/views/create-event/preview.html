@@ -2,6 +2,11 @@
 {% set loggedIn = true %}
 {% set external_journey = true %}
 
+<!--
+  {% for key,value in data %}
+            <h4>{{ key }}{{ value }}</h4>
+            {% endfor %}
+-->
 {% block page_title %}
 
   GOV.UK prototype kit
@@ -45,17 +50,18 @@
           <p>{{ data['summary-target-audience'] }}</p>
           <h4 class="bold-small">Why attend</h4> 
           <ul class="list push--bottom">
-          <li class="list-item">{{ data['benefits0'] }}</li>
-          <li class="list-item">{{ data['benefits1'] }}</li>
-          <li class="list-item">{{ data['benefits2'] }}</li>
-          <li class="list-item">{{ data['benefits3'] }}</li>
+            {% for key,value in data %}
+            {% if 'benefit-input-' in key %}
+            <li class="list-item">{{ value }}</li>
+            {% endif %}
+            {% endfor %}
           </ul>
           <h4 class="bold-small">Further details and background</h4> 
           <p style="white-space: pre-wrap;" id="event-description">{{ data['event-description'] }}</p>
 
           <a href="/register" class="button button-blue" style="margin:10px 0 0 0">Register</a>
 
-          <h4 class="bold-xsmall" style="margin-top:30px">Partners</h4>
+          <h4 class="bold-xsmall" style="margin-top:60px">Partners</h4>
           <div style="display: flex;" class="partner-logos">
           {% if data['eu-logo-selected'] %}
           <img src="/public/images/partner11.jpg">

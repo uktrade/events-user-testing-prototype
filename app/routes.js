@@ -498,10 +498,10 @@ router.get('/scenario-2', function (req, res)
   req.session.data['audience-experience'] = "New to export";
 
   req.session.data['summary-target-audience'] = "Anyone with a registered business in the South West region who is new to exporting or thinking about it. Open to all industries, and levels of experience - no previous knowledge of exporting is assumed.";
-  req.session.data['benefits1'] = "Hear from expert speaker Guy Desiato on what it takes to win new business overseas"; 
-  req.session.data['benefits2'] = "Roundtable discussion and workshop on key steps to begin exporting ";
-  req.session.data['benefits3'] = "Create your own export growth action plan to take away "; 
-  req.session.data['benefits2'] = "Free lunch and refreshments provided";
+  req.session.data['benefit-input-0'] = "Hear from expert speaker Guy Desiato on what it takes to win new business overseas"; 
+  req.session.data['benefit-input-1'] = "Roundtable discussion and workshop on key steps to begin exporting ";
+  req.session.data['benefit-input-2'] = "Create your own export growth action plan to take away "; 
+  req.session.data['benefit-input-3'] = "Free lunch and refreshments provided";
 
   req.session.data['event-description'] = `Take your first practical steps towards exporting your products or services with this interactive workshop.
 
@@ -562,9 +562,9 @@ router.get('/scenario-3', function (req, res)
   req.session.data['audience-experience'] = "Open to all";
 
   req.session.data['summary-target-audience'] = "Anyone working in the food and drink industry who is interested in exporting products or services to Sweden. Businesses need to be based in the South West region to register.";
-  req.session.data['benefits1'] = "Hear from DIT speaker Sandra Ideskär, trade expert at the British Embassy in Stockholm"; 
-  req.session.data['benefits2'] = "Learn about latest export trends and opportunities in the Swedish food and drink market";
-  req.session.data['benefits3'] = "Understand key principles and considerations for exporting to Sweden"; 
+  req.session.data['benefit-input-0'] = "Hear from DIT speaker Sandra Ideskär, trade expert at the British Embassy in Stockholm"; 
+  req.session.data['benefit-input-1'] = "Learn about latest export trends and opportunities in the Swedish food and drink market";
+  req.session.data['benefit-input-2'] = "Understand key principles and considerations for exporting to Sweden"; 
 
   req.session.data['event-description'] = `Sweden is an excellent target market choice for UK food and drink companies. It has a long tradition of importing food products and a reputation for choosing high quality products and services. 
 
@@ -597,9 +597,10 @@ Refreshments and networking`;
 
 router.get('/scenario-previous-questions', function (req, res)
 {
-  req.session.previousQuestions = [['Do you have an ITA?', 'select-one', 'yes', 'no']];
+  //req.session.previousQuestions = [['Do you have an ITA?', 'select-one', 'yes', 'no']];
   // empty account
-  res.redirect('/signin');
+  req.session.previousQuestionsPage = true;
+  res.redirect('/scenario-1');
 })
 
 
@@ -1770,7 +1771,12 @@ router.get('/create-event/attendee-onwards', function (req, res)
     req.session.quantityOfQuestions = 1;
     req.session.questionsExist[0] = true;
     req.session.data['additional-questions-incrementer'] = 1
+    if (req.session.previousQuestionsPage == true) {
+      res.redirect('/create-event/load-previous-additional-questions');
+    } 
+    else {
     res.redirect('/create-event/additional-questions');
+    } 
   }
   else
   {
