@@ -34,11 +34,13 @@
       <td class="bold">Date and time</td>
       <td>{{ session.data['event-day'] }} {{ session.data['event-month-name'] }} {{ session.data['event-year'] }} <br />
             {{ session.data['event-start-time'] }} to {{ session.data['event-finish-time'] }}<br />
+            <a href="#">Add to calendar</a>
       </td>
     </tr>
     <tr>
       <td class="bold">Venue</td>
-      <td style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</td>
+      <td style="white-space: pre-wrap;">{{ data['full-address-holder'] }}
+        <a href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View map</a></td>
     </tr>
     
   </tbody>

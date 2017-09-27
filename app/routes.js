@@ -561,7 +561,9 @@ router.get('/scenario-3', function (req, res)
   req.session.data['markets'] = "Sweden";
   req.session.data['audience-experience'] = "Open to all";
 
-  req.session.data['summary-target-audience'] = "Anyone working in the food and drink industry who is interested in exporting products or services to Sweden. Businesses need to be based in the South West region to register.";
+  req.session.data['summary-target-audience'] = `Anyone working in the food and drink industry who is interested in exporting products or services to Sweden. 
+
+Businesses need to be based in the South West region to register.`;
   req.session.data['benefit-input-0'] = "Hear from DIT speaker Sandra Ideskär, trade expert at the British Embassy in Stockholm"; 
   req.session.data['benefit-input-1'] = "Learn about latest export trends and opportunities in the Swedish food and drink market";
   req.session.data['benefit-input-2'] = "Understand key principles and considerations for exporting to Sweden"; 
@@ -570,7 +572,7 @@ router.get('/scenario-3', function (req, res)
 
 According to the 2017 World Banking Report in 2017, Sweden is the ninth easiest country to do business in and is often cited as one of the most receptive markets to new products and concepts.
 
-Our expert speaker Sandra Ideskär, works for Department for International Trade at the British Embassy in Stockholm, assisting UK companies to start exporting to Sweden. Prior to that, Sandra worked for the Swedish government in education and international development. To find out more, see her <a href="#">LinkedIn profile</a>.`;
+Our expert speaker Sandra Ideskär (<a href="#">view LinkedIn profile</a>), works for Department for International Trade at the British Embassy in Stockholm, assisting UK companies to start exporting to Sweden. Prior to that, Sandra worked for the Swedish government in education and international development.`;
 
 req.session.data['agenda'] = `10am to 10.15am
 Welcome and refreshments
@@ -2863,6 +2865,37 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
   res.redirect('/monitor/live-present');
 
 })
+
+
+
+router.get('/register/business-sector', function (req, res) {
+  res.render('register/business-sector',
+        {
+          errorMissingTitle: false
+        });
+  //res.redirect('/register/ticket-details');
+  
+  
+});
+
+router.post('/register/business-sector', function (req, res) {
+  errorMissingTitle = false;
+  console.log(req.session.data['sectors']);
+  if ( req.session.data['sectors'] == undefined) {
+    res.render('register/business-sector',
+        {
+          errorMissingTitle: true
+        });
+              
+
+  }
+  else if (req.session.data['sectors'].length > 0) 
+  {
+  res.redirect('/register/ticket-details');
+  }
+});
+
+
 
 
 

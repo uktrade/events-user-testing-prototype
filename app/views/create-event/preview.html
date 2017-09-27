@@ -35,19 +35,19 @@
           <h1 class="bold-large">{{ data['event-title'] }}</h1>
           <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</h2>
           <br />
-          <h4 class="bold-xsmall">Sectors</h4>
-          <p>{{ data['sectors'] }}</p>
-          <h4 class="bold-xsmall">Markets</h4>
-          <p>{{ data['markets'] }}</p>
-          <h4 class="bold-xsmall">Export experience</h4>
-          <p>{{ data['audience-experience'] }}</p>
+          <h4 class="bold" style="font-size:16px">Sectors</h4>
+          <p style="font-size:16px">{{ data['sectors'] }}</p>
+          <h4 style="font-size:16px" class="boldl">Markets</h4>
+          <p style="font-size:16px">{{ data['markets'] }}</p>
+          <h4 style="font-size:16px" class="bold-">Export experience</h4>
+          <p style="font-size:16px">{{ data['audience-experience'] }}</p>
 
           <a href="/register" class="button button-blue" style="margin:10px 0 0 0">Register</a>
 
           <br />
           <hr style="background-color:#DDD">
           <h4 class="bold-small">Who should attend</h4> 
-          <p>{{ data['summary-target-audience'] }}</p>
+          <p style="white-space: pre-line;" >{{ data['summary-target-audience'] }}</p>
           <h4 class="bold-small">Why attend</h4> 
           <ul class="list push--bottom">
             {% for key,value in data %}
@@ -94,7 +94,7 @@
         <p><a href="#">Add to calendar</a></p>
         <div class="bold-xsmall">Location</div>
         <li style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</li>
-        <p class="link-style"><a href="#">View on a map</a></p>
+        <p class="link-style"><a href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View on a map</a></p>
         <div class="bold-xsmall">Organiser</div>
         <li style="white-space: pre-wrap;">{{ data['organiser-name'] }}
 Phone: 01275 373 373
