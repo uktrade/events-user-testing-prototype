@@ -163,10 +163,24 @@
       <dl class="govuk-check-your-answers cya-questions-short">
         <div>
           <dt class="cya-question">
-            Full name
+            First name
           </dt>
           <dd class="cya-answer">
-            {{ data['full-name'] }}
+            {{ data['first-name'] }}
+          </dd>
+          <dd class="cya-change">
+            <a href="#">
+              Change<span class="visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question">
+            Last name
+          </dt>
+          <dd class="cya-answer">
+            {{ data['last-name'] }}
           </dd>
           <dd class="cya-change">
             <a href="#">
