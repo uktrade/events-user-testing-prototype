@@ -29,20 +29,23 @@
 
     <div class="grid-row">
 
-    <div class="column-one-half">
+    <div class="column-two-thirds">
           <!-- EVENT title  -->
           <div class="grey" style="margin:10px 0;font-size:16px;color:#666666">{{ data['organiser-name'] }}</div>
           <h1 class="bold-large">{{ data['event-title'] }}</h1>
           <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</h2>
           <br />
-          <h4 class="bold" style="font-size:16px">Sectors</h4>
-          <p style="font-size:16px">{{ data['sectors'] }}</p>
-          <h4 style="font-size:16px" class="boldl">Markets</h4>
-          <p style="font-size:16px">{{ data['markets'] }}</p>
-          <h4 style="font-size:16px" class="bold-">Export experience</h4>
-          <p style="font-size:16px">{{ data['audience-experience'] }}</p>
 
-          <a href="/register" class="button button-blue" style="margin:10px 0 0 0">Register</a>
+              <h4 class="bold" style="font-size:16px">Sectors</h4>
+              <p style="font-size:16px">{{ data['sectors'] }}</p>
+              <h4 class="bold" style="font-size:16px" class="boldl">Markets</h4>
+              <p style="font-size:16px">{{ data['markets'] }}</p>
+           
+              <h4 class="bold" style="font-size:16px" class="bold-">Export experience</h4>
+              <p style="font-size:16px">{{ data['audience-experience'] }}</p>
+
+          <br />  
+          <a href="/register" class="button button-blue" >Register</a>
 
           <br />
           <hr style="background-color:#DDD">
@@ -78,9 +81,10 @@
         </div>
 
     </div>
-    <div class="column-one-half">
+
+    <div class="column-one-third">
       {% if data['hero-image'] %}
-      <div style="background-image:url('/public/images/{{data['hero-image']}}');height:350px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
+      <div style="background-image:url('/public/images/{{data['hero-image']}}');height:200px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
       {% else %}
       <div style="background-image:url('/public/images/coal-mongolia.jpg');height:350px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
       {% endif %}
