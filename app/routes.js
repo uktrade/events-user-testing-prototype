@@ -483,6 +483,8 @@ router.get('/scenario-2', function (req, res)
 {
   req.session.data['organiser-name'] = "Department for International Trade South West";
   req.session.data['event-title'] = "Introduction to exporting workshop";
+
+  req.session.data['event-day-of-the-week'] = "Wednesday";
   req.session.data['event-day'] = "1"
   req.session.data['event-month-name'] = "November";
   req.session.data['event-year'] = "2017"
@@ -491,6 +493,13 @@ router.get('/scenario-2', function (req, res)
   req.session.data['event-finish-time'] = "1pm";
 
   req.session.data['full-address-holder'] = "Innovation Centre" + "\n" + "University of Exeter" + "\n" + "Rennes Drive" + "\n" + "Exeter" + "\n" + "EX4 4RN";
+
+  req.session.data['building'] = "Innovation Centre";
+  req.session.data['street'] = "University of Exeter, Rennes Drive";
+  req.session.data['town'] = "Exeter";
+  req.session.data['postcode'] = "EX4 4RN";
+
+  req.session.data['venue-additional-notes'] = "Free onsite parking";
 
 
   req.session.data['sectors'] = "All sectors";
@@ -503,21 +512,15 @@ router.get('/scenario-2', function (req, res)
   req.session.data['benefit-input-2'] = "Create your own export growth action plan to take away "; 
   req.session.data['benefit-input-3'] = "Free lunch and refreshments provided";
 
-  req.session.data['event-description'] = `Take your first practical steps towards exporting your products or services with this interactive workshop.
-
-Expert speaker Guy Desiato, CEO of Nociar Ltd, will explain the steps you can take right away to begin selling internationally - including plenty of practical examples and inspiring success stories.
-<a href="#">View speaker's Linkedin profile</a>
-
-Our expert International Trade Advisers will then facilitate a roundtable discussion and interactive workshop, designed to help you produce an outline 6 to 12-month action plan for international export.
-
-Here’s what attendees have said about past ‘Introduction to export’ events…
-
-‘Such an incredible wealth of knowledge and resources tailored to our requirements.' 
-- Angela Hall, Barefaced Bee
-
-'Even as an experienced business person, I learned loads and everything was explained clearly. Very motivational!' 
-- Barbara Cox, Mr. Lee's Noodles
-`;
+  req.session.data['event-description'] = "Take your first practical steps towards exporting your products or services with this interactive workshop."
+                                          + "\n" + "\n" + "Expert speaker Guy Desiato, CEO of Nociar Ltd, will explain the steps you can take right away to begin selling internationally - including plenty of practical examples and inspiring success stories."
+                                          + "\n" +  "View speaker's Linkedin profile"
+                                          + "\n" + "\n" + "Our expert International Trade Advisers will then facilitate a roundtable discussion and interactive workshop, designed to help you produce an outline 6 to 12-month action plan for international export."
+                                          + "\n" + "\n" + "Here’s what attendees have said about past ‘Introduction to export’ events…"
+                                          + "\n" + "\n" + "‘Such an incredible wealth of knowledge and resources tailored to our requirements.'"
+                                          + "\n" +  "- Angela Hall, Barefaced Bee"
+                                          + "\n" + "\n" + "'Even as an experienced business person, I learned loads and everything was explained clearly. Very motivational!'"
+                                          + "\n" +  "- Barbara Cox, Mr. Lee's Noodles";
 
 req.session.data['agenda'] = `10am to 10.30am
 Welcome and refreshments

@@ -22,97 +22,182 @@
   }
   body {background-color: white}
   .list-item {margin-bottom: 10px !important}
-  a {text-decoration: underline};
+  a {text-decoration: underline}
 </style>
-  <div class="grid-row" style="margin: 0px 150px;padding-top:30px">
 
 
-    <div class="grid-row">
+  <div class="grid-row" style="max-width: 1200px; margin-left: auto; margin-right: auto; padding-top:30px">
 
-    <div class="column-two-thirds">
+    <div class="column-two-thirds" style="width:60%; margin-right:70px; padding:0;">
           <!-- EVENT title  -->
-          <div class="grey" style="margin:10px 0;font-size:16px;color:#666666">{{ data['organiser-name'] }}</div>
+          <!-- <div class="grey" style="margin:10px 0;font-size:16px;color:#666666">{{ data['organiser-name'] }}</div>  -->
           <h1 class="bold-large">{{ data['event-title'] }}</h1>
-          <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</h2>
-          <br />
+          <h2 class="font-lead"></h2>
+          <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }} in {{ data['town'] }} </h2>
 
-              <h4 class="bold" style="font-size:16px">Sectors</h4>
-              <p style="font-size:16px">{{ data['sectors'] }}</p>
-              <h4 class="bold" style="font-size:16px" class="boldl">Markets</h4>
-              <p style="font-size:16px">{{ data['markets'] }}</p>
-           
-              <h4 class="bold" style="font-size:16px" class="bold-">Export experience</h4>
-              <p style="font-size:16px">{{ data['audience-experience'] }}</p>
+        <br/>
+          <br/>
 
-          <br />  
-          <a href="/register" class="button button-blue" >Register</a>
+        <div style="display: flex; flex-direction: row; ">
 
-          <br />
-          <hr style="background-color:#DDD">
-          <h4 class="bold-small">Who should attend</h4> 
-          <p style="white-space: pre-line;" >{{ data['summary-target-audience'] }}</p>
-          <h4 class="bold-small">Why attend</h4> 
-          <ul class="list push--bottom">
-            {% for key,value in data %}
-            {% if 'benefit-input-' in key %}
-            <li class="list-item">{{ value }}</li>
-            {% endif %}
-            {% endfor %}
-          </ul>
-          <h4 class="bold-small">Further details and background</h4> 
-          <p style="white-space: pre-wrap;" id="event-description">{{ data['event-description'] }}</p>
+            <!--
+            <div style="width:22%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 15px 2px; margin-bottom:30px; margin-right:35px;">
+                <h4 style="font-size:16px; margin-bottom:5px;" align="center">Cost</h4>
+                <p class="bold" style="font-size:16px; margin: 0px;" align="center">Free</p>
+            </div>
+            -->
 
-          <a href="/register" class="button button-blue" style="margin:10px 0 0 0">Register</a>
+            <div style="width:32%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:45px; ">
+                <h4 style="font-size:16px; margin-bottom:3px;" align="center">Sectors</h4>
+                <p class="bold" style="font-size:16px; margin: 0px;" align="center">{{ data['sectors'] }}</p>
+            </div>
 
-          <h4 class="bold-xsmall" style="margin-top:60px">Partners</h4>
-          <div style="display: flex;" class="partner-logos">
-          {% if data['eu-logo-selected'] %}
-          <img src="/public/images/partner11.jpg">
-          {% endif %}
-          {% if data['dit-logo-selected'] %}
-          <img src="/public/images/partner12.jpg" >
-          {% endif %}
-          {% if data['growth-logo-selected'] %}
-          <img src="/public/images/partner13.jpg">
-          {% endif %}
-          {% if data['bw-logo-selected'] %}
-          <img src="/public/images/partner14.jpg">
-          {% endif %}
+            <div style="width:32%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:45px;">
+                <h4 style="font-size:16px; margin-bottom:5px;" align="center">Markets</h4>
+                <p class="bold" style="font-size:16px; margin: 0px;" align="center">{{ data['markets'] }}</p>
+            </div>
+
+
+            <div style="width:32%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:0px;">
+                <h4 style="font-size:16px; margin-bottom:3px;" align="center">Export experience</h4>
+                <p class="bold" style="font-size:16px; margin: 0px;" align="center">{{ data['audience-experience'] }}</p>
+            </div>
+
         </div>
+
+
+
+          <br/>
+          <div style="display: flex; flex-direction: row;" >
+              <a href="/register" class="button button-blue">Register</a>
+              <p style="padding-top:15px; margin-left: 25px; margin-bottom:0px; font-family: arial, helvetica, sans-serif; font-weight: 500; font-size: 18px;">Cost: free</p>
+          </div>
+
+
+          <br/>
+          <hr style="background-color:#DDD">
+
+            <div style="margin-bottom:35px;">
+                <h4 class="bold-small">Event outcomes</h4>
+                <ul class="list push--bottom">
+                    {% for key,value in data %}
+                    {% if 'benefit-input-' in key %}
+                    <li class="list-item">{{ value }}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+          <div style="margin-bottom:30px;">
+              <h4 class="bold-small">Eligibility</h4>
+              <p style="white-space: pre-line;" >{{ data['summary-target-audience'] }}</p>
+          </div>
+
+
+
+
+
+          <div style="margin-bottom:50px;">
+              <h4 class="bold-small">Further details and background</h4>
+              <p style="white-space: pre-wrap;" id="event-description">{{ data['event-description'] }}</p>
+
+              <a href="/register" class="button button-blue" style="margin:10px 0 0 0">Register</a>
+
+              <br/>
+              <br/>
+              <hr style="background-color:#DDD">
+          </div>
+
+
+
+
+
+          <h4 class="bold-small" style="margin-top:50px">Partners</h4>
+          <div style="display: flex;  flex-direction: row; margin-bottom:50px;">
+              {% if data['eu-logo-selected'] %}
+                  <div style="width:23%; margin-right:20px;">
+                      <img src="/public/images/partner11.jpg">
+                  </div>
+              {% endif %}
+              {% if data['dit-logo-selected'] %}
+                  <div style="width:23%; margin-right:20px;">
+                      <img src="/public/images/partner12.jpg" >
+                  </div>
+              {% endif %}
+              {% if data['growth-logo-selected'] %}
+                  <div style="width:23%; margin-right:20px;">
+                    <img src="/public/images/partner13.jpg">
+                  </div>
+              {% endif %}
+              {% if data['bw-logo-selected'] %}
+                  <div style="width:23%; margin-right:0px;">
+                    <img src="/public/images/partner14.jpg">
+                  </div>
+              {% endif %}
+           </div>
 
     </div>
 
-    <div class="column-one-third">
+
+
+
+
+
+    <div class="column-one-third" style="width:34%; margin:0px; padding:0px">
+
       {% if data['hero-image'] %}
       <div style="background-image:url('/public/images/{{data['hero-image']}}');height:200px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
       {% else %}
-      <div style="background-image:url('/public/images/coal-mongolia.jpg');height:350px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
+      <div style="background-image:url('/public/images/coal-mongolia.jpg');height:260px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
       {% endif %}
       </div>
 
-      <div class="panel">
-        <ul>
-        <div class="bold-xsmall">Date and time</div>
-        <li>{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</li>
-        <li>{{ data['event-start-time'] }} to {{ data['event-finish-time'] }}<br /></li>
-        <p><a href="#">Add to calendar</a></p>
-        <div class="bold-xsmall">Location</div>
-        <li style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</li>
-        <p class="link-style"><a href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View on a map</a></p>
-        <div class="bold-xsmall">Organiser</div>
-        <li style="white-space: pre-wrap;">{{ data['organiser-name'] }}
-Phone: 01275 373 373
-Email: events@businesswest.co.uk
-        </li>
+      <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
+
+        <ul style="margin-bottom:25px">
+            <!-- <div class="bold-xsmall">Date and time</div>  -->
+            <li>{{ data['event-day-of-the-week'] }} {{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</li>
+            <li>{{ data['event-start-time'] }} to {{ data['event-finish-time'] }}<br /></li>
+            <p><a href="#">Add to calendar</a></p>
         </ul>
+
+            <div class="bold-xsmall" >Venue</div>
+
+            <p style="white-space: pre-wrap; margin-bottom:0px;">{{ data['building'] }} <br>{{ data['town'] }}</p>
+
+            <details role="group" style="">
+                <summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:5px;">
+                    <span class="summary">More details</span></summary>
+
+                <div class="" id="details-content-0" aria-hidden="true"
+                     style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
+
+                    <p style="white-space: pre-wrap; margin-bottom:5px">{{ data['full-address-holder'] }}</p>
+                    <p class="link-style"><a href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View on a map</a></p>
+                    <p>{{ data['venue-additional-notes'] }}</p>
+                </div>
+
+
       </div>
 
-      <div class="panel panel--info">
-        <ul>
-        <div class="bold-xsmall">Agenda</div>
-        <li style="white-space: pre-wrap;">{{ data['agenda'] }}</li>
-        </ul>
+      <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
+          <ul>
+              <div class="bold-xsmall">Agenda</div>
+              <li style="white-space: pre-wrap;">{{ data['agenda'] }}</li>
+          </ul>
       </div>
+
+      <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
+          <ul>
+              <div class="bold-xsmall">Organiser</div>
+              <li style="white-space: pre-wrap; margin-bottom:5px;">{{ data['organiser-name'] }}</li>
+              <li>Phone: 01275 373 373</li>
+              <li>Email: events@businesswest.co.uk</li>
+          </ul>
+      </div>
+
+
+
 
     </div>
 
@@ -120,9 +205,6 @@ Email: events@businesswest.co.uk
     </div>
 
 
-      
-
-    </div>
 
   </div>
 
