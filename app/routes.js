@@ -512,26 +512,38 @@ router.get('/scenario-2', function (req, res)
   req.session.data['benefit-input-2'] = "Create your own export growth action plan to take away "; 
   req.session.data['benefit-input-3'] = "Free lunch and refreshments provided";
 
-  req.session.data['event-description'] = "Take your first practical steps towards exporting your products or services with this interactive workshop."
-                                          + "\n" + "\n" + "Expert speaker Guy Desiato, CEO of Nociar Ltd, will explain the steps you can take right away to begin selling internationally - including plenty of practical examples and inspiring success stories."
-                                          + "\n" +  "View speaker's Linkedin profile"
-                                          + "\n" + "\n" + "Our expert International Trade Advisers will then facilitate a roundtable discussion and interactive workshop, designed to help you produce an outline 6 to 12-month action plan for international export."
-                                          + "\n" + "\n" + "Here’s what attendees have said about past ‘Introduction to export’ events…"
-                                          + "\n" + "\n" + "‘Such an incredible wealth of knowledge and resources tailored to our requirements.'"
-                                          + "\n" +  "- Angela Hall, Barefaced Bee"
-                                          + "\n" + "\n" + "'Even as an experienced business person, I learned loads and everything was explained clearly. Very motivational!'"
-                                          + "\n" +  "- Barbara Cox, Mr. Lee's Noodles";
 
-req.session.data['agenda'] = `10am to 10.30am
+
+  req.session.data['event-description'] = `Take your first practical steps towards exporting your products or services with this interactive workshop.
+
+<span style="font-weight:700;">About the speaker: Guy Desiato</span>
+Expert speaker Guy Desiato, CEO of Nociar Ltd, has a wealth of exporting experience across a range of sectors and international markets. He'll present some practical first steps that anyone new to or thinking about exporting can take right away to start selling products or services internationally.' +
+<a href="#">View speaker's Linkedin profile</a>
+
+Following our expert International Trade Advisers will facilitate a roundtable discussion and interactive workshop, designed to help you produce an outline 6 to 12 month action plan for international export.
+
+<span style="font-weight:700;">What past attendees have said</span>
+
+‘Such an incredible wealth of knowledge and resources tailored to our requirements.‘
+- Angela Hall, Barefaced Bee
+
+‘Even as an experienced business person, I learned loads and everything was explained clearly. Very motivational!‘
+- Barbara Cox, Mr. Lee's Noodles
+`;
+
+
+
+
+  req.session.data['agenda'] = `10am to 10:30am
 Welcome and refreshments
 
-10.30am to 11.30am
+10:30am to 11:30am
 Expert talk and Q&A with Guy Desiato
 
-11.30am to 1.00pm
+11:30am to 1pm
 Roundtable discussion and workshop: creating an export growth action plan
 
-1.00pm to finish
+1pm to 3pm
 Lunch and networking`;
 
 
@@ -548,8 +560,10 @@ Lunch and networking`;
 
 router.get('/scenario-3', function (req, res)
 {
-  req.session.data['organiser-name'] = "Business West";
+  req.session.data['organiser-name'] = "Department for International Trade South West";
   req.session.data['event-title'] = "Sweden food and drink seminar";
+
+  req.session.data['event-day-of-the-week'] = "Wednesday";
   req.session.data['event-day'] = "1"
   req.session.data['event-month-name'] = "November";
   req.session.data['event-year'] = "2017"
@@ -559,34 +573,40 @@ router.get('/scenario-3', function (req, res)
 
   req.session.data['full-address-holder'] = "Innovation Centre" + "\n" + "University of Exeter" + "\n" + "Rennes Drive" + "\n" + "Exeter" + "\n" + "EX4 4RN";
 
+  req.session.data['building'] = "Innovation Centre";
+  req.session.data['street'] = "University of Exeter, Rennes Drive";
+  req.session.data['town'] = "Exeter";
+  req.session.data['postcode'] = "EX4 4RN";
 
   req.session.data['sectors'] = "Food and drink";
   req.session.data['markets'] = "Sweden";
   req.session.data['audience-experience'] = "Open to all";
 
-  req.session.data['summary-target-audience'] = `Anyone working in the food and drink industry who is interested in exporting products or services to Sweden. 
+  req.session.data['summary-target-audience'] = `Anyone working in the food and drink industry who is interested in exporting products or services to Sweden.
 
 Businesses need to be based in the South West region to register.`;
   req.session.data['benefit-input-0'] = "Hear from DIT speaker Sandra Ideskär, trade expert at the British Embassy in Stockholm"; 
   req.session.data['benefit-input-1'] = "Learn about latest export trends and opportunities in the Swedish food and drink market";
   req.session.data['benefit-input-2'] = "Understand key principles and considerations for exporting to Sweden"; 
 
-  req.session.data['event-description'] = `Sweden is an excellent target market choice for UK food and drink companies. It has a long tradition of importing food products and a reputation for choosing high quality products and services. 
+  req.session.data['event-description'] = `With its rich cultural heritage and reputation for high quality products and services, Sweden is an excellent target market for UK food and drink companies.
 
 According to the 2017 World Banking Report in 2017, Sweden is the ninth easiest country to do business in and is often cited as one of the most receptive markets to new products and concepts.
 
-Our expert speaker Sandra Ideskär (<a href="#">view LinkedIn profile</a>), works for Department for International Trade at the British Embassy in Stockholm, assisting UK companies to start exporting to Sweden. Prior to that, Sandra worked for the Swedish government in education and international development.`;
+<span style="font-weight:700;">About the speaker: Sandra Ideskär</span>
+Our expert speaker Sandra Ideskär works for Department for International Trade at the British Embassy in Stockholm, assisting UK companies to export to Sweden. Sandra has a wealth of experience, including posts with the Swedish government in education and international development - as well as time spent working at the charity ActionAid Sweden.
+<a href="#">View speaker's Linkedin profile</a>`;
 
-req.session.data['agenda'] = `10am to 10.15am
+req.session.data['agenda'] = `10am to 10:15am
 Welcome and refreshments
 
-10.15am to 11.00am
+10:15am to 11am
 Expert talk and Q&A with Sandra Ideskär
 
-11am to 11.30am
+11am to 11:30am
 Q&A with International Trade Advisers
 
-11.30am to finish
+11:30am to 1pm
 Refreshments and networking`;
 
 
@@ -598,6 +618,77 @@ Refreshments and networking`;
   res.redirect('/create-event/preview');
  
 })
+
+
+
+
+router.get('/scenario-4', function (req, res)
+{
+  req.session.data['organiser-name'] = "Department for International Trade South West";
+  req.session.data['event-title'] = "Doing business in Germany - retail";
+
+  req.session.data['event-day-of-the-week'] = "Friday";
+  req.session.data['event-day'] = "20"
+  req.session.data['event-month-name'] = "October ";
+  req.session.data['event-year'] = "2017"
+  req.session.data['hero-image'] = "food-drink.png"
+  req.session.data['event-start-time'] = "10am";
+  req.session.data['event-finish-time'] = "12 noon";
+
+  req.session.data['full-address-holder'] = "Innovation Centre" + "\n" + "University of Exeter" + "\n" + "Rennes Drive" + "\n" + "Exeter" + "\n" + "EX4 4RN";
+
+  req.session.data['building'] = "Northern Design Centre";
+  req.session.data['street'] = "Hawks Road";
+  req.session.data['town'] = "Gateshead";
+  req.session.data['postcode'] = "NE8 3DF";
+
+  req.session.data['sectors'] = "Giftware, jewellery and tableware"
+  + "\n" + "Retail and luxury"
+  + "\n" + "Clothing, footwear and fashion"
+  + "\n" + "Textiles, interior textiles, and carpets";
+
+  req.session.data['markets'] = "Germany";
+  req.session.data['audience-experience'] = "Open to all";
+
+  req.session.data['summary-target-audience'] = `This event is for retail related small businesses based in the North East with an interest in doing business in Germany.`;
+
+
+  req.session.data['benefit-input-0'] = "Hear from Miriam Ducke, Senior DIT Trade Adviser for Retail, Fashion and Luxury";
+  req.session.data['benefit-input-1'] = "Understand how to take first steps into the German retail market";
+  req.session.data['benefit-input-2'] = "Learn about key retail opportunities currently open to UK businesses";
+  req.session.data['benefit-input-3'] = "Networking and one-to-one sessions with market representatives";
+
+  req.session.data['event-description'] = `A seminar about doing business in Germany for UK retail companies.`;
+
+  req.session.data['agenda'] = `10am
+  Registration
+
+  10:25am
+  Welcome from Sue Beverley, e-Commerce Adviser at Department for International Trade North East
+
+  10:30am
+  Presentation from Miriam Ducke, Senior Trade Adviser for Retail, Fashion and Luxury, DIT Berlin
+
+  11:30am
+  Networking and close`;
+
+
+  req.session.data['eu-logo-selected'] = true;
+  req.session.data['dit-logo-selected'] = true;
+  req.session.data['growth-logo-selected'] = true;
+  req.session.data['bw-logo-selected'] = false;
+
+  res.redirect('/create-event/preview');
+
+})
+
+
+
+
+
+
+
+
 
 
 router.get('/scenario-previous-questions', function (req, res)
