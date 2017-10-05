@@ -18,9 +18,14 @@
   <div class="grid-row">
   
     <div class="column-two-thirds">
+
+		<!--  we will tackl this later
     <h2 class="bold-medium" style="margin-bottom:15px">
 		  Attendee 1 
     </h2>
+    -->
+
+
 	  <!--  BREADCRUMB  -->
 	  <div class="breadcrumbs">
 		
@@ -156,7 +161,15 @@
 					  </div>
 				  </div>
 
+
+
+
 				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+
+					  <div style="border-left:5px solid #bfc1c3; padding:15px; margin-bottom:15px">
+						  You'll receive registration confirmation and event updates on the email address you provided.
+					  </div>
+
 					  <label class="form-label" for="question">
 						  Email address
 						  {% if errorQuestionEmpty %}
@@ -183,14 +196,44 @@
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="phone-number" name="phone-number" value="" style="width:50%;">
+								 id="phone-number" name="phone-number" value="" style="width:200px;">
 					  </div>
+
+					  <!--
 					  <div class="multiple-choice" style="margin-top:15px">
   						<input id="checkbox-text-reminders" name="checkbox-text-reminders" type="checkbox" value="true">
  						<label for="checkbox-telephone-number">I'd like to receive free text reminders on this number</label>
-					</div>
+					  </div>
+					  -->
+
 				  </div>
-				  
+
+
+
+				  <div class="form-group form-control-2-3" style="margin-bottom:15px; ">
+					  <label class="form-label" for="questio">
+						  Would you also like to get text updates about this event on your mobile phone?
+					  </label>
+					  <fieldset class="inline">
+						  <div class="multiple-choice" data-target="enter-phone">
+							  <input id="radio-inline-1" type="radio" name="question--{{id}}" value="Yes">
+							  <label for="radio-inline-1">Yes</label>
+						  </div>
+						  <div class="multiple-choice">
+							  <input id="radio-inline-2" type="radio" name="question--{{id}}" value="No">
+							  <label for="radio-inline-2">No</label>
+						  </div>
+					  </fieldset>
+				  </div>
+
+				  <div class="form-group form-control-2-3">
+					  <div class="js-hidden" id="enter-phone" style="border-left:5px solid #bfc1c3; padding:15px; margin-bottom:15px">
+						  <label class="form-label" for="mobile-phone">Mobile phone number</label>
+						  <input class="form-control" type="text" id="mobile-phone" name="mobile-phone" style="width:200px;">
+					  </div>
+				  </div>
+
+
 
 		  </fieldset>
 

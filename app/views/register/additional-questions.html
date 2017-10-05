@@ -16,6 +16,7 @@
 <input type="hidden" name="question--{{id}}" value="{{type}}">
 {% if (type === "yes-or-no") %}
 <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
+
   <label class="form-label" for="question--{{id}}">
 	  {{question}}
 	  {% if errorQuestionEmpty %}
@@ -37,6 +38,7 @@
   </fieldset>
 </div>
 
+
 {% elif (type == "long") %}
 <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
 					  <label class="form-label" for="question--{{id}}">
@@ -52,6 +54,7 @@
 								 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" ></textarea>
 					  </div>
 				  </div>
+
 
 {% elif (type == "short") %}
 <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
@@ -92,8 +95,23 @@
 <h1 class="heading-large">
 		  Registration questions
       </h1>
-  <div class="grid-row">
+
+
+
+	<div class="grid-row">
     <div class="column-two-thirds">
+
+		<details role="group" style="margin-bottom:20px;">
+			<summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:5px;">
+				<span class="summary">Why are we asking this?</span></summary>
+
+			<div class="" id="details-content-0" aria-hidden="true"
+				 style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
+
+				<p style="white-space: pre-wrap; margin-bottom:5px">This information helps us to better understand who will be attending this event. We may use it to tailor event content around your needs, to check that this event is a good match for you, or to cater for any special requirements you have.</p>
+			</div>
+		</details>
+
 
 	  <!--  BREADCRUMB  -->
 	  <div class="breadcrumbs">

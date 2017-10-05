@@ -25,89 +25,100 @@
 <main id="content" role="main">
 	{% if errorMissingTitle %}
 		<div class="grid-row">
-		<div class="error-summary column-two-thirds" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="border:6px solid #e41f13">
+			<div class="error-summary column-two-thirds" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="border:6px solid #e41f13">
 
-			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Missing sector
-			</h2>
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					Missing sector
+				</h2>
 
-			<ul class="error-summary-list">
+				<ul class="error-summary-list">
 					<li><a href="#sector-section" style="color:#e41f13">You need to select a sector</a></li>
-			</ul>
+				</ul>
 
+			</div>
 		</div>
-		</div>
-		{% endif %}
-	  <h1 class="heading-large" >
-		  Which sector does your business operate in?
-      </h1>
-  <div class="grid-row">
-    <div class="column-two-thirds">
+	{% endif %}
 
-	  <!--  BREADCRUMB  -->
-	  <div class="breadcrumbs">
-		
-	  </div>
+	<h1 class="heading-large" >
+	    Which sector does your business operate in?
+    </h1>
+
+	<div class="grid-row">
+    	<div class="column-two-thirds">
+
+		   <!--  BREADCRUMB  -->
+		   <div class="breadcrumbs"></div>
 
 
-	  <form action="" method="post" class="form">
+		   <form action="" method="post" class="form">
 
 			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
-			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
-			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
-			  									(errorAnswersError == undefined or errorAnswersError == false) %}
-			  								 js-hidden
-			  							  {% endif %}"
+												(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
+												(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
+												(errorAnswersError == undefined or errorAnswersError == false) %}
+											 js-hidden
+										  {% endif %}"
 						id="show-answer-type">
 
-<style type="text/css">
-.column-one-half {margin-left:auto; width: 50%}
-h2.heading-large{margin-top: 15px}
-ul#sectors {margin-top: 30px; width: 75%}
-ul#sectors li {border-top:1px solid #bfc1c3;padding:15px 30px 43px 10px;}
-</style>
 
-{% set items = ["Aerospace","Agriculture, Horticulture and fisheries","Airports","Automotive","Biotechnology and pharmaceuticals","Business Consumer Services","Chemicals","Clothing, Footwear Fashion","Communications","Construction","Creative and Media","Education and Training","Electronics and IT Hardware","Environment","Financial and Professional Services","Food and Drink","Giftware, Jewellery Tableware","Global Sports Infrastructure","Healthcare Medical","Household Goods, Furniture Furnishings","Leisure Tourism","Marine","Mechanical Electrical Process Engineering","Metallurgical Process Plant","Metals, Minerals and Materials","Mining","Oil and Gas","Ports Logistics","Power","Railways","Renewable Energy","Retail and Luxury","Security","Software and computer Services","Textiles, Interior Textiles and Carpets","Water"] %}
+				<style type="text/css">
+					.column-one-half {margin-left:auto; width: 50%}
+					h2.heading-large{margin-top: 15px}
+					ul#sectors {margin-top: 30px; width: 75%}
+					ul#sectors li {border-top:1px solid #bfc1c3;padding:15px 30px 43px 10px;}
+				</style>
 
-<div class="form-group" id="sector-section">
-	{% if errorMissingTitle %}
-				  	<div class="form-group-error">
-				  {% endif %}
-				  {% if errorMissingTitle %}
-						  <span class="error-message">
-							  Select one sector
-						  </span>
-					  {% endif %}
-						<label class="form-label" for="question"> Type a keyword or select a sector from the list
-						</label>
-					  
 
-<input class="form-control " id="myInput" type="text" onkeyup="myFunction()" style="width:75%" value="" autocomplete="off" />
+				{% set items = ["Aerospace","Agriculture, Horticulture and fisheries","Airports","Automotive","Biotechnology and pharmaceuticals","Business Consumer Services","Chemicals","Clothing, Footwear Fashion","Communications","Construction","Creative and Media","Education and Training","Electronics and IT Hardware","Environment","Financial and Professional Services","Food and Drink","Giftware, Jewellery Tableware","Global Sports Infrastructure","Healthcare Medical","Household Goods, Furniture Furnishings","Leisure Tourism","Marine","Mechanical Electrical Process Engineering","Metallurgical Process Plant","Metals, Minerals and Materials","Mining","Oil and Gas","Ports Logistics","Power","Railways","Renewable Energy","Retail and Luxury","Security","Software and computer Services","Textiles, Interior Textiles and Carpets","Water"] %}
 
-<ul id="sectors">
-{% for i in items %}
- {{ createSectorList(i) }}
- {% endfor %}
-</ul>
- <span id="empty">No sectors matching these keywords. <br />Please try changing your keyword or <a class="link" href="#" onclick="resetInput()">show the full list of sectors</a></span>
- {% if errorMissingTitle %}
-			  		</div>
-				  {% endif %}
-</div>
-			</fieldset>
-		  <div class="form-group">
-			  <input type="submit" class="button button-blue"  value="Continue">
-		  </div>
+
+				<div class="form-group {% if errorMissingTitle %} form-group-error	{% endif %}" id="sector-section">
+
+
+					{% if errorMissingTitle %}
+					  <span class="error-message">
+						  Select one sector
+					  </span>
+					{% endif %}
 
 
 
-	  </form>
+					<label class="form-label" for="question">Select from the list or type to filter</label>
 
-    </div>
 
-<div class="column-one-third">
-	{% include "includes/basket.html" %} 
-</div>
+					<input class="form-control " id="myInput" type="text" onkeyup="myFunction()" style="width:75%" value="" autocomplete="off" />
+
+
+					<ul id="sectors">
+						{% for i in items %}
+							{{ createSectorList(i) }}
+						{% endfor %}
+					</ul>
+
+					<span id="empty">No sectors matching these keywords. <br />Please try changing your keyword or
+									<a class="link" href="#" onclick="resetInput()">show the full list of sectors</a></span>
+
+				</div>
+
+			  </fieldset>
+
+
+
+			  <div class="form-group">
+				  <input type="submit" class="button button-blue"  value="Continue">
+			  </div>
+
+
+
+	  	   </form>
+
+
+    	</div>
+
+
+		<div class="column-one-third">
+			{% include "includes/basket.html" %}
+		</div>
 
   </div>
 

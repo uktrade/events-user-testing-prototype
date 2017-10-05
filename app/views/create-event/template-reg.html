@@ -68,10 +68,13 @@
 			  <p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
 		  {% endif %}
 
-					<textarea class="form-control" name="event-reg-body" id="event-reg-body" rows="20" style="width: 80%;"
-					>We really hope that you enjoy the experience and that it will be a valuable part of your business export journey with us.
+		  <p>{{ data['organiser-name'] }}
+			 <br> {{ data['contact-email'] }}
+			 <br> {{ data['contact-phone'] }}
+		  </p>
 
-Remember to regularly check the event web page for latest additions to the agenda, confirmed speakers and experts.
+					<textarea class="form-control" name="event-reg-body" id="event-reg-body" rows="20" style="width: 80%;"
+					>Remember to regularly check the event web page for latest additions to the agenda, confirmed speakers and experts.
 [EVENT PAGE LINK]
 
 If you have any questions or special requests that will help you to get the most out of the day, please don't hesitate to get in touch. We'd be happy to assist.
@@ -80,11 +83,8 @@ We look forward to seeing you on the day.
 
 Best wishes,
 
-Department for International Trade
 {{ data['organiser-name'] }}
-
-{{ data['contact-email'] }}
-{{ data['contact-phone'] }}</textarea>
+</textarea>
 
 
 		  </div>
