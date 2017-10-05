@@ -14,29 +14,30 @@
 {% macro createYesOrNoQuestion(id, question, type, values) %}
 <input type="hidden" name="question--{{id}}" value="{{question}}">
 <input type="hidden" name="question--{{id}}" value="{{type}}">
+
 {% if (type === "yes-or-no") %}
-<div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
+	<div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
 
-  <label class="form-label" for="question--{{id}}">
-	  {{question}}
-	  {% if errorQuestionEmpty %}
-				<span class="error-message">
-					Attendee question missing
-				</span>
-	  {% endif %}
-  </label>
+	  <label class="form-label" for="question--{{id}}">
+		  {{question}}
+		  {% if errorQuestionEmpty %}
+					<span class="error-message">
+						Attendee question missing
+					</span>
+		  {% endif %}
+	  </label>
 
-  <fieldset class="inline">
-    <div class="multiple-choice">
-      <input id="radio-inline-1" type="radio" name="question--{{id}}" value="Yes">
-      <label for="radio-inline-1">Yes</label>
-    </div>
-    <div class="multiple-choice">
-      <input id="radio-inline-2" type="radio" name="question--{{id}}" value="No">
-      <label for="radio-inline-2">No</label>
-    </div>
-  </fieldset>
-</div>
+	  <fieldset class="inline">
+		<div class="multiple-choice">
+		  <input id="radio-inline-1" type="radio" name="question--{{id}}" value="Yes">
+		  <label for="radio-inline-1">Yes</label>
+		</div>
+		<div class="multiple-choice">
+		  <input id="radio-inline-2" type="radio" name="question--{{id}}" value="No">
+		  <label for="radio-inline-2">No</label>
+		</div>
+	  </fieldset>
+	</div>
 
 
 {% elif (type == "long") %}
@@ -72,31 +73,49 @@
 					  </div>
 				  </div>
 
+
 {% elif (type == "multiple") %}
 <div class="form-group">
 			 
 				  <label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
 				  <fieldset>
-				  	{% for value in values %}		  	
-			      <div class="multiple-choice">
-			        <input id="answer{{id}}" name="question--{{id}}" type="checkbox" value="{{value}}">
-			        <label for="{{ value }}">{{ value }}</label>
-			      </div>
+				  {% for value in values %}
+					  <div class="multiple-choice">
+						<input id="answer{{id}}" name="question--{{id}}" type="checkbox" value="{{value}}">
+						<label for="{{ value }}">{{ value }}</label>
+					  </div>
 			      {% endfor %}
 			    </fieldset>
 
 			 
 				</div>
 
+
+{% elif (type == "multiple-radio") %}
+<div class="form-group">
+
+	<label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
+	<fieldset>
+		{% for value in values %}
+		<div class="multiple-choice">
+			<input id="answer{{id}}" name="question--{{id}}" type="radio" value="{{value}}">
+			<label for="{{ value }}">{{ value }}</label>
+		</div>
+		{% endfor %}
+	</fieldset>
+
+
+</div>
+
 {% endif %}
+
+
 {% endmacro %}
 
 <main id="content" role="main">
 <h1 class="heading-large">
 		  Registration questions
       </h1>
-
-
 
 	<div class="grid-row">
     <div class="column-two-thirds">
@@ -131,7 +150,6 @@
 			<p>
 				Please check the following errors and try again
 			</p>
-
 
 			{% if errorNewQuestionEmpty %}
 				<ul class="error-summary-list">
@@ -185,7 +203,7 @@
  				{{ createYesOrNoQuestion(4, "Multiple title ", "multiple", ["value1", "value2"]) }}
 		  -->
 				{{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}
-				{{ createYesOrNoQuestion(2, "What is your latest annual turnover? (£)", "short") }}
+				{{ createYesOrNoQuestion(2, "What is your latest annual turnover?", "multiple-radio", ["£0 to £100,000", "£100,000 to £500,000", "£500,000 to £1,000,000", "Above £1,000,000"])  }}
 				{{ createYesOrNoQuestion(3, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
 
 	
