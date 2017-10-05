@@ -483,6 +483,8 @@ router.get('/scenario-2', function (req, res)
 {
   req.session.data['event-title'] = "Introduction to exporting workshop";
 
+  req.session.data['hero-image'] = "exporting-generic.jpg"
+
   req.session.data['event-day-of-the-week'] = "Wednesday";
   req.session.data['event-day'] = "1"
   req.session.data['event-month-name'] = "November";
@@ -631,11 +633,13 @@ router.get('/scenario-4', function (req, res)
 {
   req.session.data['event-title'] = "Doing business in Germany - retail";
 
+  req.session.data['hero-image'] = "berlin-bridge.jpg"
+
   req.session.data['event-day-of-the-week'] = "Friday";
   req.session.data['event-day'] = "20"
   req.session.data['event-month-name'] = "October ";
   req.session.data['event-year'] = "2017"
-  req.session.data['hero-image'] = "food-drink.png"
+
   req.session.data['event-start-time'] = "10am";
   req.session.data['event-finish-time'] = "12 noon";
 

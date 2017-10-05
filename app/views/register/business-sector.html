@@ -40,11 +40,28 @@
 	{% endif %}
 
 	<h1 class="heading-large" >
-	    Which sector does your business operate in?
+		Which one of the following list items best describes the work you do?
     </h1>
 
+
+
+
 	<div class="grid-row">
+
     	<div class="column-two-thirds">
+
+			<details role="group" style="margin-bottom:20px;">
+				<summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:5px;">
+					<span class="summary">Why are we asking this?</span></summary>
+
+				<div class="" id="details-content-0" aria-hidden="true"
+					 style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
+
+					<p style="white-space: pre-wrap; margin-bottom:5px">This information will never be shared without your consent.
+						<br>Understanding key details about attendees helps us to make our events as relevant as possible.
+						<br>If you wanted to connect with a trade adviser or expert in your field during or following an event, this information can also help us to do that for you.</p>
+				</div>
+			</details>
 
 		   <!--  BREADCRUMB  -->
 		   <div class="breadcrumbs"></div>
@@ -83,7 +100,7 @@
 
 
 
-					<label class="form-label" for="question">Select from the list or type to filter</label>
+					<label class="form-label" for="question">Either manually browse the list - or filter items using the search box</label>
 
 
 					<input class="form-control " id="myInput" type="text" onkeyup="myFunction()" style="width:75%" value="" autocomplete="off" />
@@ -95,8 +112,8 @@
 						{% endfor %}
 					</ul>
 
-					<span id="empty">No sectors matching these keywords. <br />Please try changing your keyword or
-									<a class="link" href="#" onclick="resetInput()">show the full list of sectors</a></span>
+					<span id="empty">No matching list items. <br />Try again or browse the list for an item that best describes what you do
+									<br/><br/><a class="link" href="#" onclick="resetInput()">Show the full list of sectors</a></span>
 
 				</div>
 
