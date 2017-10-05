@@ -38,22 +38,22 @@
         <br/>
           <br/>
 
-        <div style="display: flex; flex-direction: row; ">
+        <div style="display: flex; align-items:flex-start; flex-direction: row; ">
 
             <div style="width:32%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:45px; ">
                 <h4 style="font-size:16px; margin-bottom:3px;" align="center">Sectors</h4>
-                <p class="bold" style="font-size:16px; margin: 0px;" align="center">{{ data['sectors'] }}</p>
+                <p class="bold" style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="center">{{ data['sectors'] }}</p>
             </div>
 
             <div style="width:32%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:45px;">
                 <h4 style="font-size:16px; margin-bottom:5px;" align="center">Markets</h4>
-                <p class="bold" style="font-size:16px; margin: 0px;" align="center">{{ data['markets'] }}</p>
+                <p class="bold" style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="center">{{ data['markets'] }}</p>
             </div>
 
 
             <div style="width:32%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:0px;">
                 <h4 style="font-size:16px; margin-bottom:3px;" align="center">Export experience</h4>
-                <p class="bold" style="font-size:16px; margin: 0px;" align="center">{{ data['audience-experience'] }}</p>
+                <p class="bold" style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="center">{{ data['audience-experience'] }}</p>
             </div>
 
         </div>
@@ -183,7 +183,7 @@
               <div class="bold-xsmall">Organiser</div>
               <li style="white-space: pre-wrap; margin-bottom:5px;">{{ data['organiser-name'] }}</li>
               <li>Phone: 01275 373 373</li>
-              <li>Email: events@businesswest.co.uk</li>
+              <li>Email: {{ data['contact-email'] }}</li>
           </ul>
       </div>
 

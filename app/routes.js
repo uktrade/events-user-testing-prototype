@@ -481,7 +481,6 @@ router.get('/scenario-1', function (req, res)
 
 router.get('/scenario-2', function (req, res)
 {
-  req.session.data['organiser-name'] = "Department for International Trade South West";
   req.session.data['event-title'] = "Introduction to exporting workshop";
 
   req.session.data['event-day-of-the-week'] = "Wednesday";
@@ -547,6 +546,9 @@ Roundtable discussion and workshop: creating an export growth action plan
 Lunch and networking`;
 
 
+  req.session.data['organiser-name'] = "Department for International Trade South West";
+  req.session.data['contact-email'] = "events@businesswest.co.uk";
+
   req.session.data['eu-logo-selected'] = true;
   req.session.data['dit-logo-selected'] = true; 
   req.session.data['growth-logo-selected'] = true;
@@ -560,7 +562,6 @@ Lunch and networking`;
 
 router.get('/scenario-3', function (req, res)
 {
-  req.session.data['organiser-name'] = "Department for International Trade South West";
   req.session.data['event-title'] = "Sweden food and drink seminar";
 
   req.session.data['event-day-of-the-week'] = "Wednesday";
@@ -610,6 +611,10 @@ Q&A with International Trade Advisers
 Refreshments and networking`;
 
 
+  req.session.data['organiser-name'] = "Department for International Trade South West";
+  req.session.data['contact-email'] = "events@businesswest.co.uk";
+
+
   req.session.data['eu-logo-selected'] = true;
   req.session.data['dit-logo-selected'] = true; 
   req.session.data['growth-logo-selected'] = true;
@@ -624,7 +629,6 @@ Refreshments and networking`;
 
 router.get('/scenario-4', function (req, res)
 {
-  req.session.data['organiser-name'] = "Department for International Trade South West";
   req.session.data['event-title'] = "Doing business in Germany - retail";
 
   req.session.data['event-day-of-the-week'] = "Friday";
@@ -643,9 +647,9 @@ router.get('/scenario-4', function (req, res)
   req.session.data['postcode'] = "NE8 3DF";
 
   req.session.data['sectors'] = "Giftware, jewellery and tableware"
-  + "\n" + "Retail and luxury"
-  + "\n" + "Clothing, footwear and fashion"
-  + "\n" + "Textiles, interior textiles, and carpets";
+  + "\n" + "\n" + "Retail and luxury"
+  + "\n" + "\n" + "Clothing, footwear and fashion"
+  + "\n" + "\n" + "Textiles, interior textiles, and carpets";
 
   req.session.data['markets'] = "Germany";
   req.session.data['audience-experience'] = "Open to all";
@@ -661,17 +665,20 @@ router.get('/scenario-4', function (req, res)
   req.session.data['event-description'] = `A seminar about doing business in Germany for UK retail companies.`;
 
   req.session.data['agenda'] = `10am
-  Registration
+Registration
 
-  10:25am
-  Welcome from Sue Beverley, e-Commerce Adviser at Department for International Trade North East
+10:25am
+Welcome from Sue Beverley, e-Commerce Adviser at Department for International Trade North East
 
-  10:30am
-  Presentation from Miriam Ducke, Senior Trade Adviser for Retail, Fashion and Luxury, DIT Berlin
+10:30am
+Presentation from Miriam Ducke, Senior Trade Adviser for Retail, Fashion and Luxury, DIT Berlin
 
-  11:30am
-  Networking and close`;
+11:30am
+Networking and close`;
 
+
+  req.session.data['organiser-name'] = "Department for International Trade North East";
+  req.session.data['contact-email'] = "northeast@mobile.trade.gov.uk";
 
   req.session.data['eu-logo-selected'] = true;
   req.session.data['dit-logo-selected'] = true;
