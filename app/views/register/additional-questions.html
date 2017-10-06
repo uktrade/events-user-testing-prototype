@@ -41,76 +41,80 @@
 
 
 {% elif (type == "long") %}
-<div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="question--{{id}}">
-						  {{question}}
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
-						  {% endif %}
-					  </label>
-					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <textarea class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" ></textarea>
-					  </div>
-				  </div>
+	  <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
+		  <label class="form-label" for="question--{{id}}">
+			  {{question}}
+			  {% if errorQuestionEmpty %}
+						<span class="error-message">
+							Attendee question missing
+						</span>
+			  {% endif %}
+		  </label>
+		  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+			  <textarea class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+					 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" ></textarea>
+		  </div>
+	  </div>
 
 
 {% elif (type == "short") %}
-<div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="question--{{id}}">
-						  {{question}}
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
-						  {% endif %}
-					  </label>
-					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" style="width:30%;">
-					  </div>
-				  </div>
+	<div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+		  <label class="form-label" for="question--{{id}}">
+			  {{question}}
+			  {% if errorQuestionEmpty %}
+						<span class="error-message">
+							Attendee question missing
+						</span>
+			  {% endif %}
+		  </label>
+		  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+			  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+					 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" style="width:30%;">
+		  </div>
+	  </div>
 
 
 {% elif (type == "multiple") %}
-<div class="form-group">
+	<div class="form-group">
 			 
-				  <label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
-				  <fieldset>
-				  {% for value in values %}
-					  <div class="multiple-choice">
-						<input id="answer{{id}}" name="question--{{id}}" type="checkbox" value="{{value}}">
-						<label for="{{ value }}">{{ value }}</label>
-					  </div>
-			      {% endfor %}
-			    </fieldset>
+		  <label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
+		  <fieldset>
+		  {% for value in values %}
+			  <div class="multiple-choice">
+				<input id="answer{{id}}" name="question--{{id}}" type="checkbox" value="{{value}}">
+				<label for="{{ value }}">{{ value }}</label>
+			  </div>
+		  {% endfor %}
+		</fieldset>
 
-			 
-				</div>
+	</div>
 
 
 {% elif (type == "multiple-radio") %}
-<div class="form-group">
+	<div class="form-group">
 
-	<label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
-	<fieldset>
-		{% for value in values %}
-		<div class="multiple-choice">
-			<input id="answer{{id}}" name="question--{{id}}" type="radio" value="{{value}}">
-			<label for="{{ value }}">{{ value }}</label>
-		</div>
-		{% endfor %}
-	</fieldset>
+		<label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
+		<fieldset>
+			{% for value in values %}
+			<div class="multiple-choice">
+				<input id="answer{{id}}" name="question--{{id}}" type="radio" value="{{value}}">
+				<label for="{{ value }}">{{ value }}</label>
+			</div>
+			{% endfor %}
+		</fieldset>
 
-
-</div>
+	</div>
 
 {% endif %}
 
 
 {% endmacro %}
+
+
+
+
+
+
 
 <main id="content" role="main">
 <h1 class="heading-large">
@@ -193,26 +197,26 @@
 			  							  {% endif %}"
 						id="show-answer-type">
 
-				<!--  
- 				{{ createYesOrNoQuestion(1, "Long title", "long") }}
+						<!--
+						{{ createYesOrNoQuestion(1, "Long title", "long") }}
 
- 				{{ createYesOrNoQuestion(2, "Short title", "short") }}
+						{{ createYesOrNoQuestion(2, "Short title", "short") }}
 
- 				{{ createYesOrNoQuestion(3, "Yes or no title", "yes-or-no") }}
+						{{ createYesOrNoQuestion(3, "Yes or no title", "yes-or-no") }}
 
- 				{{ createYesOrNoQuestion(4, "Multiple title ", "multiple", ["value1", "value2"]) }}
-		  -->
-				{{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}
-				{{ createYesOrNoQuestion(2, "What is your latest annual turnover?", "multiple-radio", ["£0 to £100,000", "£100,000 to £500,000", "£500,000 to £1,000,000", "Above £1,000,000"])  }}
-				{{ createYesOrNoQuestion(3, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
+						{{ createYesOrNoQuestion(4, "Multiple title ", "multiple", ["value1", "value2"]) }}
+				  -->
+						{{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}
+						{{ createYesOrNoQuestion(2, "What is your latest annual turnover?", "multiple-radio", ["£0 to £100,000", "£100,000 to £500,000", "£500,000 to £1,000,000", "Above £1,000,000"])  }}
+						{{ createYesOrNoQuestion(3, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
 
-	
+			  </fieldset>
 
-</fieldset>
-		  <div class="form-group">
 
-			  <input type="submit" class="button button-blue" formaction="/register/check-your-answers" value="Continue">
-		  </div>
+	  <div class="form-group">
+
+		  <input type="submit" class="button button-blue" formaction="/register/check-your-answers" value="Continue">
+	  </div>
 
 
 
