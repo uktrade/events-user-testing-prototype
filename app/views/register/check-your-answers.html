@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
-{% set loggedIn = true %}
+{% if loggedIn == undefined %}
+{% set loggedIn = false %}
+{% endif %}
 {% set external_journey = true %}
 
 {% block page_title %}

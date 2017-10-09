@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
-{% set loggedIn = true %}
+{% if loggedIn == undefined %}
+{% set loggedIn = false %}
+{% endif %}
 {% set external_journey = true %}
 
 {% block page_title %}
@@ -165,25 +167,40 @@
 
 
 				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
-
-
-
 					  <label class="form-label" for="question">
 						  Email address
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
-						  {% endif %}
+						<div class="form-hint">
+						  We’ll create an account and send confirmations to this email
+					  	</div>
 					  </label>
 					 <!-- <div class="form-hint">We’ll send a confirmation to this email address</div> -->
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
 								 id="email-address" name="email-address" value="" style="width:80%;">
-					  </div>
-					  <div style="border-left:5px solid #bfc1c3; padding:15px; margin-top:5px">
-						  Used for registration confirmation and event updates.
-					  </div>
+					  </div> 
+				  </div>
+
+				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question">
+						  Password 
+						<div class="form-hint">
+						  At least 10 characters
+					  	</div>
+					  </label>
+					  <div id="show-new-question" style="width:80%;  margin-bottom:0px;">
+						  <input type="Password" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+								 id="email-address" name="email-address" value="" style="width:80%;">
+					  </div> 
+				  </div>
+
+				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question">
+						  Confirm password 
+					  </label>
+					  <div id="show-new-question" style="width:80%;  margin-bottom:0px;">
+						  <input type="Password" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+								 id="email-address" name="email-address" value="" style="width:80%;">
+					  </div> 
 				  </div>
 
 				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
