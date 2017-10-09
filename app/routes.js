@@ -746,7 +746,7 @@ router.get('/scenario-5', function (req, res)
   req.session.data['town'] = "London";
   req.session.data['postcode'] = "E9 5NY";
 
-  req.session.data['venue-additional-notes'] = "Plexal is a sports tech innovation hub near the Queen Elizabeth Olympic Park. For those who are interested, there will be an opportunity to visit the Olympic park for those who are interested.";
+  req.session.data['venue-additional-notes'] = "Plexal is a sports tech innovation hub near the Queen Elizabeth Olympic Park. There will be an opportunity to visit the Olympic park for those who are interested.";
   req.session.data['venue-additional-notes-entered'] = true;
 
 
