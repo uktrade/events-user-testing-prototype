@@ -643,20 +643,20 @@ router.get('/scenario-4', function (req, res)
   req.session.data['event-start-time'] = "10am";
   req.session.data['event-finish-time'] = "12 noon";
 
-  req.session.data['full-address-holder'] = "Innovation Centre" + "\n" + "University of Exeter" + "\n" + "Rennes Drive" + "\n" + "Exeter" + "\n" + "EX4 4RN";
+  req.session.data['full-address-holder'] = "Abbott's Hill" + "\n" + "Gateshead" + "\n" + "NE8 3DF";
 
   req.session.data['building'] = "Northern Design Centre";
-  req.session.data['street'] = "Hawks Road";
+  req.session.data['street'] = "Abbott's Hill";
   req.session.data['town'] = "Gateshead";
   req.session.data['postcode'] = "NE8 3DF";
 
-  req.session.data['sectors'] = "Giftware, jewellery and tableware"
+  req.session.data['sectors'] = "Clothing, footwear and fashion"
+  + "\n" + "\n" + "Giftware, jewellery and tableware"
   + "\n" + "\n" + "Retail and luxury"
-  + "\n" + "\n" + "Clothing, footwear and fashion"
   + "\n" + "\n" + "Textiles, interior textiles, and carpets";
 
   req.session.data['markets'] = "Germany";
-  req.session.data['audience-experience'] = "Open to all";
+  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
 
   req.session.data['summary-target-audience'] = `This event is for retail related small businesses based in the North East with an interest in doing business in Germany.`;
 
@@ -709,6 +709,22 @@ router.get('/scenario-previous-questions', function (req, res)
   req.session.previousQuestionsPage = true;
   res.redirect('/scenario-1');
 })
+
+
+
+
+
+
+
+///////////////////   EXTERNAL USER  /////////////////////////////////////////
+
+  router.get('/register-for-event', function (req, res)
+  {
+    res.redirect('/register/sign-in');
+  })
+
+
+
 
 
 

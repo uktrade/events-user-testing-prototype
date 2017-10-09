@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+<main id="content" role="main">
+	  <h1 class="heading-large" style="font-weight:400;" >
+		  Sign in
+      </h1>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+
+	  <form action="/register/business-name" method="get" class="form">
+
+		  <p style="">If you have not created an account yet, then please <a href="/register/business-name">register</a> first. </p>
+
+			  <fieldset class="form-group id="email">
+
+				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="email-area">Email address</label>
+					  <div id="email-area" style="width:100%;  margin-bottom:0px;">
+						  <input type="text" class="form-control"
+								 id="business-name" name="business-name" value="" style="width:100%;">
+					  </div>
+				  </div>
+		
+
+		          <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					  <label class="form-label" for="question">
+						  Password
+					  </label>
+					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+						  <input type="text" class="form-control" id="website" name="website" value="" style="width: 170px;">
+					  </div>
+				  </div>
+
+		  		  <!-- REMEBER ME -->
+				  <div class="multiple-choice" style="padding-top: 5px; padding-left: 40px;">
+					  <input id="remember" name="remember" type="checkbox" value="">
+					  <label for="remember">Remember me</label>
+				  </div>
+
+			  </fieldset>
+
+
+
+
+
+			  <div class="form-group">
+				  <input type="submit" class="button button-blue" formaction="/register/business-name" value="Sign in">
+			  </div>
+
+	  </form>
+
+    </div>
+
+<div class="column-one-third">
+	{% include "includes/basket.html" %} 
+</div>
+
+  </div>
+
+
+</main>
+
+
+{% include "includes/great-footer.html" %} 
+
+
+{% endblock %}
+
+

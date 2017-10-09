@@ -11,7 +11,7 @@
 {% include "includes/great-header.html" %} 
 
 <main id="content" role="main">
-	  <h1 class="heading-large" >
+	  <h1 class="heading-large" style="font-weight:400;">
 		  Your business
       </h1>
   <div class="grid-row">
@@ -140,7 +140,7 @@
 
 
 
-			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
+			<fieldset class=" {% if 0 < session.previousQuestions.length  and
 			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
 			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
 			  									(errorAnswersError == undefined or errorAnswersError == false) %}
@@ -166,7 +166,7 @@
 				  </div>
 		
 
-		  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
+				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
 						  Business website (optional)
 						  {% if errorQuestionEmpty %}
@@ -181,7 +181,120 @@
 					  </div>
 				  </div>
 
-</fieldset>
+		  </fieldset>
+
+
+		  <fieldset>
+
+			  <div class="form-group" id="revenue">
+
+				  <label class="form-label">
+					  What is your latest annual turnover?
+
+					  {% if errorMissingSector %}
+							  <span class="error-message">
+								  Select no or yes
+							  </span>
+					  {% endif %}
+				  </label>
+
+				  <div style="margin-top:5px;">
+
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="revenue-1" type="radio" name="radio-revenue" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
+						  <label for="revenue-1">£0 to £100,000</label>
+					  </div>
+
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="revenue-2" type="radio" name="radio-revenue" value="yes"
+								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+						  <label for="revenue-2">£100,000 to £500,000</label>
+					  </div>
+
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="revenue-3" type="radio" name="radio-revenue" value="yes"
+								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+						  <label for="revenue-3">£500,000 to £1,000,000</label>
+					  </div>
+
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="revenue-4" type="radio" name="radio-revenue" value="yes"
+								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+						  <label for="revenue-4">Above £1,000,000</label>
+					  </div>
+
+				  </div>
+
+			  </fieldset>
+
+
+
+			  <fieldset class="form-group" id="export-ready">
+
+			  <div class="form-group" id="sector-area"  >
+
+				  <label class="form-label" >
+					  Have you exported before?
+
+					  {% if errorMissingSector %}
+						  <span class="error-message">
+							  Select no or yes
+						  </span>
+					  {% endif %}
+				  </label>
+
+				  <div style="margin-top:5px;">
+
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="radio-inline-2" type="radio" name="radio-sector" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
+						  <label for="radio-inline-2">No</label>
+					  </div>
+
+					  <div class="multiple-choice" style="margin-bottom:10px" data-target="export-frequency-section">
+						  <input id="radio-inline-1" type="radio" name="radio-sector" value="yes"
+								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+						  <label for="radio-inline-1">Yes</label>
+					  </div>
+
+				  </div>
+
+
+				  <div class="form-group js-hidden" id="export-frequency-section"  style="border-left:5px solid #bfc1c3; padding:15px; margin-top:5px" >
+
+					  <label class="form-label">
+						  Do you export regularly?
+
+						  {% if errorMissingSector %}
+						  <span class="error-message">
+							  Select no or yes
+						  </span>
+						  {% endif %}
+					  </label>
+
+					  <div style="margin-top:5px;">
+
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-frequency-1" type="radio" name="radio-sector-frequency" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
+							  <label for="radio-frequency-1">No</label>
+						  </div>
+
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-frequency-2" type="radio" name="radio-sector-frequency" value="yes"
+									 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+							  <label for="radio-frequency-2">Yes</label>
+						  </div>
+
+					  </div>
+
+				  </div>
+
+
+			  </div>
+
+		  </fieldset>
+
+
+
 		  <div class="form-group">
 
 			  <input type="submit" class="button button-blue" formaction="/register/business-address" value="Continue">

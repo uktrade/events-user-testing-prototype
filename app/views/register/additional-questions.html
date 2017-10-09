@@ -117,7 +117,7 @@
 
 
 <main id="content" role="main">
-<h1 class="heading-large">
+<h1 class="heading-large" style="font-weight:400;">
 		  Registration questions
       </h1>
 
@@ -185,6 +185,7 @@
       {% endif %}
 
 
+
 	 
 	  <form action="/create-event/question-onwards" method="get" class="form">
 
@@ -206,15 +207,14 @@
 
 						{{ createYesOrNoQuestion(4, "Multiple title ", "multiple", ["value1", "value2"]) }}
 				  -->
-						{{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}
-						{{ createYesOrNoQuestion(2, "What is your latest annual turnover?", "multiple-radio", ["£0 to £100,000", "£100,000 to £500,000", "£500,000 to £1,000,000", "Above £1,000,000"])  }}
+				  <!-- {{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}  -->
+                  <!-- {{ createYesOrNoQuestion(2, "What is your latest annual turnover?", "multiple-radio", ["£0 to £100,000", "£100,000 to £500,000", "£500,000 to £1,000,000", "Above £1,000,000"])  }}  -->
 						{{ createYesOrNoQuestion(3, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
 
 			  </fieldset>
 
 
 	  <div class="form-group">
-
 		  <input type="submit" class="button button-blue" formaction="/register/check-your-answers" value="Continue">
 	  </div>
 
@@ -224,9 +224,11 @@
 
     </div>
 
-<div class="column-one-third">
-	{% include "includes/basket.html" %} 
-</div>
+
+	<div class="column-one-third">
+		{% include "includes/basket.html" %}
+	</div>
+
 
   </div>
 
