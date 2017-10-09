@@ -782,7 +782,7 @@ Drawing on his own experience and inspiring success story, Philipe will offer up
   req.session.data['agenda'] = `Tbc`;
 
 
-  req.session.data['organiser-name'] = "Department for International Trade North East";
+  req.session.data['organiser-name'] = "Department for International Trade London";
   req.session.data['contact-email'] = "events@tradelondon.org.uk";
 
   req.session.data['eu-logo-selected'] = true;
@@ -3262,7 +3262,7 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
 
 
 
-router.post('/register/sign-in-or-create-account', function (req, res) {
+router.post('/register/sign-in', function (req, res) {
   req.session.data['first-name'] = "Leslie";
   req.session.data['last-name'] = "Smith";
   req.session.data['job-title'] = "Director";
