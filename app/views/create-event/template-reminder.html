@@ -100,9 +100,14 @@ GOV.UK prototype kit
 					<p style="margin-left:5px; margin-top:5px;"><a href="#">Map of venue</a></p>
 
 					{% if data['venue-additional-notes-entered'] == true %}
-						<p class="heading-small" style="margin-left:5px; ">Additional venue details</p>
-						<p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
+					<p class="heading-small" style="margin-left:5px; ">Additional venue details</p>
+					<p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
 					{% endif %}
+
+					<p style="margin-left:5px;" >{{ data['organiser-name'] }}
+						<br> {{ data['contact-email'] }}
+						<br> {{ data['contact-phone'] }}
+					</p>
 
 
 
@@ -113,11 +118,12 @@ We look forward to seeing you on the day.
 
 Best wishes,
 
-Department for International Trade
 {{ data['organiser-name'] }}
 
-{{ data['contact-email'] }}
-{{ data['contact-phone'] }}</textarea>
+
+
+
+					</textarea>
 
 
 				</div>

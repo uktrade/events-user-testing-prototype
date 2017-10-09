@@ -501,6 +501,7 @@ router.get('/scenario-2', function (req, res)
   req.session.data['postcode'] = "EX4 4RN";
 
   req.session.data['venue-additional-notes'] = "Free onsite parking";
+  req.session.data['venue-additional-notes-entered'] == true;
 
 
   req.session.data['sectors'] = "All sectors";
@@ -585,6 +586,9 @@ router.get('/scenario-3', function (req, res)
   req.session.data['town'] = "Exeter";
   req.session.data['postcode'] = "EX4 4RN";
 
+  req.session.data['venue-additional-notes'] = "";
+  req.session.data['venue-additional-notes-entered'] = false;
+
   req.session.data['sectors'] = "Food and drink";
   req.session.data['markets'] = "Sweden";
   req.session.data['audience-experience'] = "Open to all";
@@ -663,7 +667,7 @@ router.get('/scenario-4', function (req, res)
   + "\n" + "\n" + "Textiles, interior textiles, and carpets";
 
   req.session.data['venue-additional-notes'] = "Free onsite parking";
-
+  req.session.data['venue-additional-notes-entered'] = true;
 
   req.session.data['markets'] = "Germany";
   req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
@@ -743,6 +747,8 @@ router.get('/scenario-5', function (req, res)
   req.session.data['postcode'] = "E9 5NY";
 
   req.session.data['venue-additional-notes'] = "Plexal is a sports tech innovation hub near the Queen Elizabeth Olympic Park. For those who are interested, there will be an opportunity to visit the Olympic park for those who are interested.";
+  req.session.data['venue-additional-notes-entered'] = true;
+
 
   req.session.data['sectors'] = "Global sports infrastructure"
       + "\n" + "\n" + "Software and computer services";
@@ -815,7 +821,8 @@ router.get('/scenario-6', function (req, res)
   req.session.data['town'] = "Manchester";
   req.session.data['postcode'] = "M3 3AQ";
 
-  req.session.data['venue-additional-notes'] = "Plexal is a sports tech innovation hub near the Queen Elizabeth Olympic Park. For those who are interested, there will be an opportunity to visit the Olympic park for those who are interested.";
+  req.session.data['venue-additional-notes'] = "";
+  req.session.data['venue-additional-notes-entered'] = false;
 
   req.session.data['sectors'] = "All sectors";
 
