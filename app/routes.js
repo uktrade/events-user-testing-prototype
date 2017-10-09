@@ -799,7 +799,6 @@ Drawing on his own experience and inspiring success story, Philipe will offer up
 
 
 /////////////   Sell your products and services overseas
-/////////// Sports technology in France
 router.get('/scenario-6', function (req, res)
 {
   req.session.data['event-title'] = "Sell your products and services overseas";
@@ -863,6 +862,100 @@ Networking and refreshments
 
 
   req.session.data['organiser-name'] = "Department for International Trade North West";
+  req.session.data['contact-email'] = "events@tradenw.org";
+
+  req.session.data['eu-logo-selected'] = true;
+  req.session.data['dit-logo-selected'] = true;
+  req.session.data['growth-logo-selected'] = true;
+  req.session.data['bw-logo-selected'] = false;
+
+  res.redirect('/create-event/preview');
+
+})
+
+
+
+
+
+/////////// Engineering
+router.get('/scenario-7', function (req, res)
+{
+  req.session.data['event-title'] = "Seminar series: selling manufacturing and engineering overseas";
+
+  req.session.data['hero-image'] = "manufacturing-photo.jpg"
+
+  req.session.data['event-day-of-the-week'] = "Thursday ";
+  req.session.data['event-day'] = "16"
+  req.session.data['event-month-name'] = "November";
+  req.session.data['event-year'] = "2017"
+
+  req.session.data['event-start-time'] = "9am ";
+  req.session.data['event-finish-time'] = "3pm";
+
+  req.session.data['full-address-holder'] = "Plexal" + "\n" + "14 East Bay Lane" + "\n" + "London" + "\n" + "E9 5NY";
+
+  req.session.data['building'] = "DIT East Midlands";
+  req.session.data['street'] = "The International Trade Centre" + "\n" + "5 Merus Court ";
+  req.session.data['town'] = "Leicester";
+  req.session.data['postcode'] = "LE19 1RJ";
+
+  req.session.data['venue-additional-notes'] = "";
+  req.session.data['venue-additional-notes-entered'] = false;
+
+  req.session.data['sectors'] = "Mechanical electrical process engineering"
+   + "\n" + "\n" + "Metallurgical process plant";
+
+  req.session.data['markets'] = "All markets";
+  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+
+  req.session.data['summary-target-audience'] = `This event is for manufacturing and engineering companies based in the East Midlands that have an interest in doing business overseas.`;
+
+
+  req.session.data['benefit-input-0'] = "Get expert advice, direct from some of the most successful manufacturing and engineering firms in the East Midlands";
+  req.session.data['benefit-input-1'] = "Discuss latest manufacturing trends and hear companies explain exactly how they successfully sell to attractive markets such as South America, China and Middle East.";
+  req.session.data['benefit-input-2'] = "Attend roundtable discussions dedicated to technical aspects of selling overseas - led by representatives from Intellectual Property Office and DIT’s Trade Policy team";
+  req.session.data['benefit-input-3'] = "Free lunch and refreshments provided";
+
+
+  req.session.data['event-description'] = `This event is a perfect chance for any East Midlands based manufacturing and engineering companies to learn about how to approach doing business internationally, receive practical advice and hear some inspiring talks from experts in their field.
+
+<span style="font-weight:700;">Event speakers and experts:</span>
+
+Scott Knowles, Chief Executive, East Midlands Chamber
+<a href="#">LinkedIn profile</a>
+
+Steve Halliday, Manufacturing Engineering Partnerships Manager (AFRC), Rolls-Royce plc
+<a href="#">LinkedIn profile</a>
+
+Michael Mychajluk, Supply Chain & External Engagement Manager, Government Programmes Jaguar Land Rover Limited
+<a href="#">LinkedIn profile</a>
+
+Philip Skipper, Head of Business Development, Vodafone Internet of Things (IoT)
+<a href="#">LinkedIn profile</a>`;
+
+
+
+  req.session.data['agenda'] = `9am
+Welcome, Scott Knowles, Chief Executive, East Midlands Chamber
+
+9:15am
+How to deliver value and grow your business internationally - Steve Halliday, Manufacturing Engineering Partnerships Manager (AFRC) - Rolls-Royce plc
+
+11:00am
+Creating competitive supply chains for international markets - Michael Mychajluk, Supply Chain & External Engagement Manager, Government Programmes Jaguar Land Rover Limited
+
+12:30pm
+Lunch and networking
+
+1:30pm
+Roundtables: technical and legal considerations for selling overseas with DIT experts
+
+2:15pm
+Global trend-shaping technologies - Philip Skipper, Head of Business Development, Vodafone Internet of Things (IoT)
+`;
+
+
+  req.session.data['organiser-name'] = "Department for International Trade East Midlands";
   req.session.data['contact-email'] = "events@tradenw.org";
 
   req.session.data['eu-logo-selected'] = true;
