@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
-{% set loggedIn = true %}
+{% if loggedIn == undefined %}
+{% set loggedIn = false %}
+{% endif %}
 {% set external_journey = true %}
 
 {% block page_title %}
@@ -20,16 +22,16 @@
 
 
 
-	  <form action="/register/summary" method="get" class="form">
+	  <form action="" method="post" class="form">
 
 		  <div class="form-group">
-			  <input type="submit" class="button button-blue" formaction="/register/summary" value="Sign in">
+			  <input type="submit" class="button button-blue" value="Sign in">
 		  </div>
 
 
 		  <p class="bold">Don't have an account yet?</p>
 
-		  <p  style="text-decoration: underline;"><a href="/register/sign-in">Create an account</a></p>
+		  <p  style="text-decoration: underline;"><a href="/register/business-name">Create an account</a></p>
 
 		  <p style="margin-bottom:15px;">By creating an account, you'll be able to:</p>
 

@@ -3262,6 +3262,28 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
 
 
 
+router.post('/register/sign-in-or-create-account', function (req, res) {
+  req.session.data['first-name'] = "Leslie";
+  req.session.data['last-name'] = "Smith";
+  req.session.data['job-title'] = "Director";
+  req.session.data['phone-number'] = "020 1234567890";
+  req.session.data['mobile-number'] = "070 00000000";
+  req.session.data['business-name'] = "Advanced Manufacturing Ltd";
+  req.session.data['sectors'] = "Automotive";
+  req.session.data['website'] = "www.advancedmanufacturing.co.uk";
+  
+  req.session.data['building'] = "Building name";
+  req.session.data['street'] = "Street name";
+  req.session.data['town'] = "Town name";
+  req.session.data['postcode'] = "Postcode";
+
+  req.session.data['email-address'] = "leslie.smith@advancedmanufacturing.co.uk";
+  req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "No"];
+
+
+  res.redirect('/register/check-your-answers');
+});
+
 router.get('/register/business-sector', function (req, res) {
   res.render('register/business-sector',
         {
