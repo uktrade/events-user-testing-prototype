@@ -833,7 +833,7 @@ router.get('/scenario-6', function (req, res)
 
   req.session.data['benefit-input-0'] = "Find out how to develop your international sales, access overseas opportunities and get funding with the support of DIT North West";
   req.session.data['benefit-input-1'] = "Get guidance from expert industry professionals on things like international IP protection, banking, tax and legal issues";
-  req.session.data['benefit-input-2'] = "Hear from local success stories of businesses that have successfully sold services of products overseas";
+  req.session.data['benefit-input-2'] = "Hear from local success stories of businesses that have successfully sold services or products overseas";
   req.session.data['benefit-input-3'] = "";
 
 
