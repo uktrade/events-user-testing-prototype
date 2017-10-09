@@ -892,10 +892,10 @@ router.get('/scenario-7', function (req, res)
   req.session.data['event-start-time'] = "9am ";
   req.session.data['event-finish-time'] = "3pm";
 
-  req.session.data['full-address-holder'] = "Plexal" + "\n" + "14 East Bay Lane" + "\n" + "London" + "\n" + "E9 5NY";
+  req.session.data['full-address-holder'] = "DIT East Midlands" + "\n" + "The International Trade Centre" + "\n" + "5 Merus Court" + "\n" + "Leicester" + "\n" + "LE19 1RJ";
 
   req.session.data['building'] = "DIT East Midlands";
-  req.session.data['street'] = "The International Trade Centre" + "\n" + "5 Merus Court ";
+  req.session.data['street'] = "The International Trade Centre" + "\n" + "5 Merus Court";
   req.session.data['town'] = "Leicester";
   req.session.data['postcode'] = "LE19 1RJ";
 
