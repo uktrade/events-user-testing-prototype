@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
-{% set loggedIn = true %}
+{% if loggedIn == undefined %}
+{% set loggedIn = false %}
+{% endif %}
 {% set external_journey = true %}
 
 {% block page_title %}
@@ -209,7 +211,7 @@
 				  -->
 				  <!-- {{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}  -->
                   <!-- {{ createYesOrNoQuestion(2, "What is your latest annual turnover?", "multiple-radio", ["£0 to £100,000", "£100,000 to £500,000", "£500,000 to £1,000,000", "Above £1,000,000"])  }}  -->
-						{{ createYesOrNoQuestion(3, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
+						{{ createYesOrNoQuestion(1, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
 
 			  </fieldset>
 
