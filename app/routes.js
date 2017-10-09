@@ -725,7 +725,7 @@ router.get('/scenario-5', function (req, res)
 {
   req.session.data['event-title'] = "Sports technology in France";
 
-  req.session.data['hero-image'] = "berlin-bridge.jpg"
+  req.session.data['hero-image'] = "france-sport.jpg"
 
   req.session.data['event-day-of-the-week'] = "Thursday";
   req.session.data['event-day'] = "16"
@@ -789,6 +789,83 @@ Drawing on his own experience and inspiring success story, Philipe will offer up
 })
 
 
+
+
+
+/////////////   Sell your products and services overseas
+/////////// Sports technology in France
+router.get('/scenario-6', function (req, res)
+{
+  req.session.data['event-title'] = "Sell your products and services overseas";
+
+  req.session.data['hero-image'] = "city-photo.jpg"
+
+  req.session.data['event-day-of-the-week'] = "Tuesday";
+  req.session.data['event-day'] = "14"
+  req.session.data['event-month-name'] = "November";
+  req.session.data['event-year'] = "2017"
+
+  req.session.data['event-start-time'] = "2pm";
+  req.session.data['event-finish-time'] = "3:30pm";
+
+  req.session.data['full-address-holder'] = "Plexal" + "\n" + "14 East Bay Lane" + "\n" + "London" + "\n" + "E9 5NY";
+
+  req.session.data['building'] = "Entrepreneurial Spark Manchester";
+  req.session.data['street'] = "1st Floor" + "\n" + "RBS Building, 1 Hardman Boulevard";
+  req.session.data['town'] = "Manchester";
+  req.session.data['postcode'] = "M3 3AQ";
+
+  req.session.data['venue-additional-notes'] = "Plexal is a sports tech innovation hub near the Queen Elizabeth Olympic Park. For those who are interested, there will be an opportunity to visit the Olympic park for those who are interested.";
+
+  req.session.data['sectors'] = "All sectors";
+
+  req.session.data['markets'] = "France";
+  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+
+  req.session.data['summary-target-audience'] = `This event is open to any companies in the North West that are interested in selling their services or products internationally.`;
+
+
+  req.session.data['benefit-input-0'] = "Find out how to develop your international sales, access overseas opportunities and get funding with the support of DIT North West";
+  req.session.data['benefit-input-1'] = "Get guidance from expert industry professionals on things like international IP protection, banking, tax and legal issues";
+  req.session.data['benefit-input-2'] = "Hear from local success stories of businesses that have successfully sold services of products overseas";
+  req.session.data['benefit-input-3'] = "";
+
+
+  req.session.data['event-description'] = `As part of global Entrepreneurship Week, join us for this educational talk and networking session, to help local businesses to take their first steps towards trading internationally.
+
+Find out how the North West international trade team, with the support of the European Regional Development Fund, could help you develop your international sales, access overseas opportunities and apply for funding.
+
+<span style="font-weight:700;">About the host: Jenny Mooney</span>
+
+Jenny Mooney works for the DIT North West team as an International Trade Advisor, providing export support to UK companies to grow their international sales.
+
+She’s previously worked for the Department for International Trade London and has a range of experience in business advice and consultancy for ACC10 Catalan Trade, Business Monitor International, and AstraZeneca.
+
+<a href="#">Read Jenny’s LinkedIn profile</a>.`;
+  ;
+
+  req.session.data['agenda'] = `2pm
+Welcome
+
+2:15pm
+Overview of DIT North West services and Q&A with Jenny Mooney
+
+3pm
+Networking and refreshments
+`;
+
+
+  req.session.data['organiser-name'] = "Department for International Trade North West";
+  req.session.data['contact-email'] = "events@tradenw.org";
+
+  req.session.data['eu-logo-selected'] = true;
+  req.session.data['dit-logo-selected'] = true;
+  req.session.data['growth-logo-selected'] = true;
+  req.session.data['bw-logo-selected'] = false;
+
+  res.redirect('/create-event/preview');
+
+})
 
 
 
