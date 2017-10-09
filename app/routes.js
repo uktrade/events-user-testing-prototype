@@ -993,7 +993,7 @@ router.get('/scenario-previous-questions', function (req, res)
 
   router.get('/register-for-event', function (req, res)
   {
-    res.redirect('/register/sign-in');
+    res.redirect('/register/sign-in-or-create-account');
   })
 
 
