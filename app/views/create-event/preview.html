@@ -38,45 +38,24 @@
         <br/>
           <br/>
 
-        <div style="display: flex; align-items:flex-start; flex-direction: row; flex-flow: row wrap;">
+        <div>
 
-            {% if data['event-title'] == "Doing business in Germany - retail" or  data['event-title'] == "Sports technology in France" %}
+           
 
-                <div style="min-height:230px; flex: 1;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:45px; ">
-                    <h4 class="bold" style="font-size:16px; margin-bottom:10px;" align="">Sectors</h4>
-                    <p  style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="">{{ data['sectors'] }}</p>
+                <div>
+                    <h4 class="bold" style="font-size:16px;" align="">Sectors</h4>
+                    <p style="white-space: pre-line;">{{ data['sectors'] }}</p>
                 </div>
 
-                <div style="flex: 1;">
-                    <div style="padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:0px;">
-                        <h4 class="bold" style="font-size:16px; margin-bottom:5px;" align="">Markets</h4>
-                        <p  style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="">{{ data['markets'] }}</p>
+                    <div >
+                        <h4 class="bold" style="font-size:16px;" align="">Markets</h4>
+                        <p style="white-space: pre-line;">{{ data['markets'] }}</p>
                     </div>
 
-                    <div style="  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:0px;">
-                        <h4 class="bold" style="font-size:16px; margin-bottom:5px;" align="">Export experience</h4>
-                        <p  style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="">{{ data['audience-experience'] }}</p>
+                    <div >
+                        <h4 class="bold" style="font-size:16px;" align="">Export experience</h4>
+                        <p style="white-space: pre-line;">{{ data['audience-experience'] }}</p>
                     </div>
-                </div>
-
-
-            {% else %}
-                <div style="width:29%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:45px; ">
-                    <h4 style="font-size:16px; margin-bottom:5px;" align="center">Sectors</h4>
-                    <p class="bold" style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="center">{{ data['sectors'] }}</p>
-                </div>
-
-                <div style="width:29%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:45px;">
-                    <h4 style="font-size:16px; margin-bottom:5px;" align="center">Markets</h4>
-                    <p class="bold" style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="center">{{ data['markets'] }}</p>
-                </div>
-
-                <div style="width:29%; background-color: #F5F2ED; border: 1px solid #DFD5C5;  padding: 12px 5px 12px 5px; margin-bottom:30px; margin-right:0px;">
-                    <h4 style="font-size:16px; margin-bottom:5px;" align="center">Export experience</h4>
-                    <p class="bold" style="white-space: pre-wrap; font-size:16px; margin: 0px;" align="center">{{ data['audience-experience'] }}</p>
-                </div>
-
-            {% endif %}
 
         </div>
 

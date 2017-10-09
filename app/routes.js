@@ -661,10 +661,10 @@ router.get('/scenario-4', function (req, res)
   req.session.data['town'] = "Gateshead";
   req.session.data['postcode'] = "NE8 3DF";
 
-  req.session.data['sectors'] = "Clothing, footwear and fashion"
-  + "\n" + "\n" + "Giftware, jewellery and tableware"
-  + "\n" + "\n" + "Retail and luxury"
-  + "\n" + "\n" + "Textiles, interior textiles, and carpets";
+  req.session.data['sectors'] = `Clothing, footwear and fashion
+  Giftware, jewellery and tableware
+  Retail and luxury
+  Textiles, interior textiles, and carpets`;
 
   req.session.data['venue-additional-notes'] = "Free onsite parking";
   req.session.data['venue-additional-notes-entered'] = true;
@@ -750,8 +750,8 @@ router.get('/scenario-5', function (req, res)
   req.session.data['venue-additional-notes-entered'] = true;
 
 
-  req.session.data['sectors'] = "Global sports infrastructure"
-      + "\n" + "\n" + "Software and computer services";
+  req.session.data['sectors'] = `Global sports infrastructure
+Software and computer services`;
 
   req.session.data['markets'] = "France";
   req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
@@ -902,8 +902,8 @@ router.get('/scenario-7', function (req, res)
   req.session.data['venue-additional-notes'] = "";
   req.session.data['venue-additional-notes-entered'] = false;
 
-  req.session.data['sectors'] = "Mechanical electrical process engineering"
-   + "\n" + "\n" + "Metallurgical process plant";
+  req.session.data['sectors'] = `Mechanical electrical process engineering
+  Metallurgical process plant`;
 
   req.session.data['markets'] = "All markets";
   req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
