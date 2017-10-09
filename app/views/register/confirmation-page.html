@@ -61,7 +61,10 @@
 
       <p>You can print this confirmation or <a class="link" href="#">download a PDF</a>.</p>
 
+      {% if loggedIn == false %}
       <div style="border-left:6px solid #CCC; padding:14px 10px">We’ve also created a new account and sent the details via email. <br />Please verify your email to access your account.</div>
+      {% endif %}
+
       <h2 class="heading-medium">What happens next</h2>
       <p>Updates and reminders containing further details and instructions will be sent out closer to the day of your event, so do keep an eye on your inbox.</p>
       <p>On the day of the event, you'll just need to provide your confirmation number in order to check-in.</p>
