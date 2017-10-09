@@ -562,6 +562,10 @@ Lunch and networking`;
 
 
 
+
+
+
+
 router.get('/scenario-3', function (req, res)
 {
   req.session.data['event-title'] = "Sweden food and drink seminar";
@@ -629,6 +633,9 @@ Refreshments and networking`;
 
 
 
+
+
+// GERMANY
 router.get('/scenario-4', function (req, res)
 {
   req.session.data['event-title'] = "Doing business in Germany - retail";
@@ -643,7 +650,7 @@ router.get('/scenario-4', function (req, res)
   req.session.data['event-start-time'] = "10am";
   req.session.data['event-finish-time'] = "12 noon";
 
-  req.session.data['full-address-holder'] = "Abbott's Hill" + "\n" + "Gateshead" + "\n" + "NE8 3DF";
+  req.session.data['full-address-holder'] = "Northern Design Centre" + "\n" + "Abbott's Hill" + "\n" + "Gateshead" + "\n" + "NE8 3DF";
 
   req.session.data['building'] = "Northern Design Centre";
   req.session.data['street'] = "Abbott's Hill";
@@ -655,6 +662,9 @@ router.get('/scenario-4', function (req, res)
   + "\n" + "\n" + "Retail and luxury"
   + "\n" + "\n" + "Textiles, interior textiles, and carpets";
 
+  req.session.data['venue-additional-notes'] = "Free onsite parking";
+
+
   req.session.data['markets'] = "Germany";
   req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
 
@@ -664,9 +674,20 @@ router.get('/scenario-4', function (req, res)
   req.session.data['benefit-input-0'] = "Hear from Miriam Ducke, Senior DIT Trade Adviser for Retail, Fashion and Luxury";
   req.session.data['benefit-input-1'] = "Understand how to take first steps into the German retail market";
   req.session.data['benefit-input-2'] = "Learn about key retail opportunities currently open to UK businesses";
-  req.session.data['benefit-input-3'] = "Networking and one-to-one sessions with market representatives";
+  req.session.data['benefit-input-3'] = "Networking sessions with market representatives and experts";
 
-  req.session.data['event-description'] = `A seminar about doing business in Germany for UK retail companies.`;
+  req.session.data['event-description'] = `A seminar about doing business in Germany for UK retail companies.
+Germany’s strong economy and central position in the continent, make it one of Europe’s most attractive business hubs.
+
+Join us for an informative seminar that can help you to take your first steps into the German retail market.
+
+<span style="font-weight:700;">About the speaker: Miriam Ducke</span>
+
+Miriam Ducke is Senior Trade Adviser for DIT Berlin, specialising in Retail and Consumer Goods.
+
+Miriam brings a wealth of experience and expertise across the fields of digital media, TV, and research, spanning multiple international markets.
+<a href="#">Visit Miriam’s LinkedIn profile</a>.`;
+;
 
   req.session.data['agenda'] = `10am
 Registration
@@ -692,6 +713,81 @@ Networking and close`;
   res.redirect('/create-event/preview');
 
 })
+
+
+
+
+
+
+
+/////////// Sports technology in France
+router.get('/scenario-5', function (req, res)
+{
+  req.session.data['event-title'] = "Sports technology in France";
+
+  req.session.data['hero-image'] = "berlin-bridge.jpg"
+
+  req.session.data['event-day-of-the-week'] = "Thursday";
+  req.session.data['event-day'] = "16"
+  req.session.data['event-month-name'] = "November";
+  req.session.data['event-year'] = "2017"
+
+  req.session.data['event-start-time'] = "9am";
+  req.session.data['event-finish-time'] = "5:30pm";
+
+  req.session.data['full-address-holder'] = "Plexal" + "\n" + "14 East Bay Lane" + "\n" + "London" + "\n" + "E9 5NY";
+
+  req.session.data['building'] = "Plexal";
+  req.session.data['street'] = "14 East Bay Lane";
+  req.session.data['town'] = "London";
+  req.session.data['postcode'] = "E9 5NY";
+
+  req.session.data['venue-additional-notes'] = "Plexal is a sports tech innovation hub near the Queen Elizabeth Olympic Park. For those who are interested, there will be an opportunity to visit the Olympic park for those who are interested.";
+
+  req.session.data['sectors'] = "Global sports infrastructure"
+      + "\n" + "\n" + "Software and computer services";
+
+  req.session.data['markets'] = "France";
+  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+
+  req.session.data['summary-target-audience'] = `This event is open to London-based companies that are “new to export” (who have not traded internationally in last 12 months). You must also fit into the category of a  small and medium enterprise.`;
+
+
+  req.session.data['benefit-input-0'] = "Philipe Baudin, CEO of Sport-Tech France, explains how to pitch to French sports tech companies";
+  req.session.data['benefit-input-1'] = "Opportunity to network and hear from specially selected French sports tech companies";
+  req.session.data['benefit-input-2'] = "Get practical export advice from DIT sports business experts and partners ";
+  req.session.data['benefit-input-3'] = "";
+
+
+  req.session.data['event-description'] = `Sports technology is a growing area of business in France.
+
+Join us for a full day of presentations and networking opportunities with a carefully selected group of French sports technology companies.
+
+<span style="font-weight:700;">About the speaker: Philipe Baudin</span>
+
+Philipe founded Sport-Tech in 2006, with a mission to take data-led competitive sports analysis to the next level.
+
+Sport-Tech’s unique SportVU cameras have been used to record, track and analyse competitive sport by global sports giants such as the NBA and UEFA.
+
+Drawing on his own experience and inspiring success story, Philipe will offer up key tips on how to successfully do business in the world of sport tech in France.
+<a href="#">Visit Philipe’s LinkedIn profile</a>.`;
+  ;
+
+  req.session.data['agenda'] = `Tbc`;
+
+
+  req.session.data['organiser-name'] = "Department for International Trade North East";
+  req.session.data['contact-email'] = "events@tradelondon.org.uk";
+
+  req.session.data['eu-logo-selected'] = true;
+  req.session.data['dit-logo-selected'] = true;
+  req.session.data['growth-logo-selected'] = true;
+  req.session.data['bw-logo-selected'] = false;
+
+  res.redirect('/create-event/preview');
+
+})
+
 
 
 
