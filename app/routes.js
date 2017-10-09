@@ -813,7 +813,7 @@ router.get('/scenario-6', function (req, res)
   req.session.data['event-start-time'] = "2pm";
   req.session.data['event-finish-time'] = "3:30pm";
 
-  req.session.data['full-address-holder'] = "Plexal" + "\n" + "14 East Bay Lane" + "\n" + "London" + "\n" + "E9 5NY";
+  req.session.data['full-address-holder'] = "Entrepreneurial Spark Manchester" + "\n" + "1st Floor" + "\n" + "RBS Building, 1 Hardman Boulevard" + "\n" + "Manchester" + "\n" + "M3 3AQ";
 
   req.session.data['building'] = "Entrepreneurial Spark Manchester";
   req.session.data['street'] = "1st Floor" + "\n" + "RBS Building, 1 Hardman Boulevard";
