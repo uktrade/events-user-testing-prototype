@@ -903,12 +903,12 @@ router.get('/scenario-7', function (req, res)
   req.session.data['venue-additional-notes-entered'] = true;
 
   req.session.data['sectors'] = `Mechanical electrical process engineering
-  Metallurgical process plant`;
+Metallurgical process plant`;
 
-  req.session.data['markets'] = "All markets";
+  req.session.data['markets'] = "Brazil" + "\n" + "Dubai" + "\n" + "Mexico"  + "\n" + "United Arab Emirates";
   req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
 
-  req.session.data['summary-target-audience'] = `This event is for manufacturing and engineering companies based in the East Midlands that have an interest in doing business overseas.`;
+  req.session.data['summary-target-audience'] = `This event is for manufacturing and engineering companies based in the East Midlands that have an interest in doing business overseas - particularly in Central and South America, and the Middle East.`;
 
 
   req.session.data['benefit-input-0'] = "Get expert advice, direct from some of the most successful manufacturing and engineering firms in the East Midlands";
@@ -939,10 +939,10 @@ Philip Skipper, Head of Business Development, Vodafone Internet of Things (IoT)
 Welcome, Scott Knowles, Chief Executive, East Midlands Chamber
 
 9:15am
-How to deliver value and grow your business internationally - Steve Halliday, Manufacturing Engineering Partnerships Manager (AFRC) - Rolls-Royce plc
+How to deliver value and grow your business in Mexico and Brazil
 
 11:00am
-Creating competitive supply chains for international markets - Michael Mychajluk, Supply Chain & External Engagement Manager, Government Programmes Jaguar Land Rover Limited
+Creating competitive supply chains for Middle East markets
 
 12:30pm
 Lunch and networking
