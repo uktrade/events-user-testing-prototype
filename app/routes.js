@@ -905,7 +905,7 @@ router.get('/scenario-7', function (req, res)
   req.session.data['sectors'] = `Mechanical electrical process engineering
 Metallurgical process plant`;
 
-  req.session.data['markets'] = "Brazil" + "\n" + "Dubai" + "\n" + "Mexico"  + "\n" + "United Arab Emirates";
+  req.session.data['markets'] = "Brazil" + "\n" + "China" + "\n" + "Dubai" + "\n" + "Mexico"  + "\n" + "United Arab Emirates";
   req.session.data['audience-experience'] = "Never exported" + "\n" + "Occasional" + "\n" + "Experienced";
 
   req.session.data['summary-target-audience'] = `This event is for manufacturing and engineering companies based in the East Midlands that have an interest in doing business overseas - particularly in Central and South America, and the Middle East.`;
@@ -951,7 +951,7 @@ Lunch and networking
 Roundtables: technical and legal considerations for selling overseas with DIT experts
 
 2:15pm
-Global trend-shaping technologies - Philip Skipper, Head of Business Development, Vodafone Internet of Things (IoT)
+China's trend-shaping technologies - Philip Skipper, Head of Business Development, Vodafone Internet of Things (IoT)
 `;
 
 
