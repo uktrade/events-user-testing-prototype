@@ -899,8 +899,8 @@ router.get('/scenario-7', function (req, res)
   req.session.data['town'] = "Leicester";
   req.session.data['postcode'] = "LE19 1RJ";
 
-  req.session.data['venue-additional-notes'] = "";
-  req.session.data['venue-additional-notes-entered'] = false;
+  req.session.data['venue-additional-notes'] = "Limited visitor parking is available at Merus Court. If full, a large pay and display car park is located around the corner, on Meridian Way.";
+  req.session.data['venue-additional-notes-entered'] = true;
 
   req.session.data['sectors'] = `Mechanical electrical process engineering
   Metallurgical process plant`;

@@ -156,20 +156,22 @@
 
             <div class="bold-xsmall" >Venue</div>
 
-            <p style="white-space: pre-wrap; margin-bottom:0px;">{{ data['building'] }} <br>{{ data['town'] }}</p>
+            <p style="white-space: pre-wrap; margin-bottom:5px">{{ data['full-address-holder'] }}</p>
+            <p class="link-style"><a href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View on a map</a></p>
 
-            <details role="group" style="">
-                <summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:5px;">
-                    <span class="summary">More details</span></summary>
 
-                <div class="" id="details-content-0" aria-hidden="true"
-                     style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
+            {% if session.data['venue-additional-notes-entered'] == true %}
+                <details role="group" style="">
+                    <summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:0px;">
+                        <span class="summary">More venue details</span></summary>
 
-                    <p style="white-space: pre-wrap; margin-bottom:5px">{{ data['full-address-holder'] }}</p>
-                    <p class="link-style"><a href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View on a map</a></p>
-                    <p>{{ data['venue-additional-notes'] }}</p>
-                </div>
-            </details>
+                    <div class="" id="details-content-0" aria-hidden="true"
+                         style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
+
+                        <p>{{ data['venue-additional-notes'] }}</p>
+                    </div>
+                </details>
+            {% endif %}
       </div>
 
 
