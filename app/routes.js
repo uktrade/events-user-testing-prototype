@@ -906,7 +906,7 @@ router.get('/scenario-7', function (req, res)
 Metallurgical process plant`;
 
   req.session.data['markets'] = "Brazil" + "\n" + "Dubai" + "\n" + "Mexico"  + "\n" + "United Arab Emirates";
-  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Never exported" + "\n" + "Occasional" + "\n" + "Experienced";
 
   req.session.data['summary-target-audience'] = `This event is for manufacturing and engineering companies based in the East Midlands that have an interest in doing business overseas - particularly in Central and South America, and the Middle East.`;
 
