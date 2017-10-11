@@ -506,7 +506,7 @@ router.get('/scenario-2', function (req, res)
 
   req.session.data['sectors'] = "All sectors";
   req.session.data['markets'] = "All markets";
-  req.session.data['audience-experience'] = "New to export";
+  req.session.data['audience-experience'] = "Not yet exporting";
 
   req.session.data['summary-target-audience'] = "Anyone with a registered business in the South West region who is new to exporting or thinking about it. Open to all industries, and levels of experience - no previous knowledge of exporting is assumed.";
   req.session.data['benefit-input-0'] = "Hear from expert speaker Guy Desiato on what it takes to win new business overseas"; 
@@ -673,7 +673,7 @@ router.get('/scenario-4', function (req, res)
   req.session.data['venue-additional-notes-entered'] = true;
 
   req.session.data['markets'] = "Germany";
-  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Not yet exporting" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is for retail related small businesses based in the North East with an interest in doing business in Germany.`;
 
@@ -756,7 +756,7 @@ router.get('/scenario-5', function (req, res)
 Software and computer services`;
 
   req.session.data['markets'] = "France";
-  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Not yet exporting" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is open to London-based companies that are “new to export” (who have not traded internationally in last 12 months). You must also fit into the category of a  small and medium enterprise.`;
 
@@ -822,7 +822,7 @@ router.get('/scenario-6', function (req, res)
   req.session.data['sectors'] = "All sectors";
 
   req.session.data['markets'] = "France";
-  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Not yet exporting" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is open to any companies in the North West that are interested in selling their services or products internationally.`;
 
@@ -897,7 +897,7 @@ router.get('/scenario-7', function (req, res)
 Metallurgical process plant`;
 
   req.session.data['markets'] = "Brazil" + "\n" + "China" + "\n" + "Dubai" + "\n" + "Mexico"  + "\n" + "United Arab Emirates";
-  req.session.data['audience-experience'] = "Never exported" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Never exported" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is for manufacturing and engineering companies based in the East Midlands that have an interest in doing business overseas - particularly in Central and South America, and the Middle East.`;
 
@@ -1211,12 +1211,12 @@ router.get('/create-event/title-onwards', function (req, res)
     errorMissingExperience = true;
     console.log("there is no experience selected");
   }
-  else if(req.session.data['radio-audience-experience'] == "new")
+  else if(req.session.data['radio-audience-experience'] == "Not yet exporting")
   {
-    req.session.data['audience-experience'] = "New to export";
+    req.session.data['audience-experience'] = "Not yet exporting";
     experienceNewSelected = true;
   }
-  else if(req.session.data['radio-audience-experience'] == "experienced")
+  else if(req.session.data['radio-audience-experience'] == "Regularly exporting")
   {
     req.session.data['audience-experience'] = "Experienced exporters";
     experienceOldSelected = true;
