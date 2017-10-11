@@ -3263,8 +3263,7 @@ router.post('/register/sign-in', function (req, res) {
 
   req.session.data['email-address'] = "leslie.smith@advancedmanufacturing.co.uk";
   req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "No"];
-
-
+  req.session.loggedIn = true;
   res.redirect('/register/check-your-answers');
 });
 
@@ -3295,7 +3294,12 @@ router.post('/register/business-sector', function (req, res) {
   }
 });
 
+router.post('/register/business-name', function (req, res) {
 
+  req.session.loggedIn = false;
+  res.redirect('/register/business-address');
+  
+});
 
 
 

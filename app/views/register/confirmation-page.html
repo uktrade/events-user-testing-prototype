@@ -29,7 +29,7 @@
 
 <p>You may also want to print or take a screenshot of this page, for reference on the day of your event. Alternatively, you can download a <a class="link" href="#">PDF</a> version.</p>
 
-      {% if loggedIn == false %}
+      {% if  session.loggedIn == false %}
       <div style="border-left:6px solid #CCC; padding:14px 10px;margin-bottom:15px">We’ve created a new account and sent the details via email. <br />Please verify your email to access your account.</div>
       {% endif %}
 
@@ -56,7 +56,10 @@
     <tr>
       <td>Venue</td>
       <td style="white-space: pre-wrap;">{{ data['full-address-holder'] }}<br />
-<a class="link" href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View map</a></td>
+<a class="link" href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View map</a>
+{% if data['venue-additional-notes-entered'] == true %}
+{{ data['venue-additional-notes'] }}
+{% endif %}</td>
     </tr>
     <tr>
       <td>Company</td>
@@ -87,6 +90,9 @@
 <ul>
       <li>
         <a href="/register/confirmation-email">View confirmation email</a>
+      </li>
+      <li>
+        <a href="/register/reminder-email">View reminder email</a>
       </li>
     </ul>
 {% endblock %}
