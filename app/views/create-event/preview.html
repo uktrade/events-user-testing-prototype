@@ -161,16 +161,8 @@
 
 
             {% if session.data['venue-additional-notes-entered'] == true %}
-                <details role="group" style="">
-                    <summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:0px;">
-                        <span class="summary">More venue details</span></summary>
-
-                    <div class="" id="details-content-0" aria-hidden="true"
-                         style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
-
-                        <p>{{ data['venue-additional-notes'] }}</p>
-                    </div>
-                </details>
+            <div class="bold-xsmall" >Additional details</div>
+            <p>{{ data['venue-additional-notes'] }}</p>
             {% endif %}
       </div>
 

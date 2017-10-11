@@ -18,18 +18,31 @@
     <div class="column-two-thirds">
 
       <div class="govuk-box-highlight background--aqua">
-        <h1 class="bold-large">Ticket confirmation</h1>
-        <p>
+        <h1 class="bold-large">Booking successful</h1>
+      <!--  <p>
           Your reference number is <br>
           <strong class="heading-medium">HDJ2123F</strong>
         </p>
+      -->
       </div>
+<p>An email confirmation containing further details and instructions has been sent to {{ data['email-address'] }}</p>
+
+<p>You may also want to print or take a screenshot of this page, for reference on the day of your event. Alternatively, you can download a <a class="link" href="#">PDF</a> version.</p>
+
+      {% if loggedIn == false %}
+      <div style="border-left:6px solid #CCC; padding:14px 10px;margin-bottom:15px">We’ve created a new account and sent the details via email. <br />Please verify your email to access your account.</div>
+      {% endif %}
+
+<p>As the event date approaches, you may receive further email updates and reminders, so do keep an eye on your inbox.</p>
+
+<p>We look forward to seeing you on the day.</p>
+
 
       <table>
   
   <tbody>
     <tr>
-      <td class="bold">Event details</td>
+      <td class="bold">Event title</td>
       <td>{{ data['event-title'] }}</td>
     </tr>
     <tr>
@@ -56,19 +69,9 @@
     
   </tbody>
 </table>
-<br /><br />
-      <p>We have sent you a confirmation email to {{ data['email-address'] }}</p>
-
-      <p>You can print this confirmation or <a class="link" href="#">download a PDF</a>.</p>
-
-      {% if loggedIn == false %}
-      <div style="border-left:6px solid #CCC; padding:14px 10px">We’ve also created a new account and sent the details via email. <br />Please verify your email to access your account.</div>
-      {% endif %}
-
-      <h2 class="heading-medium">What happens next</h2>
-      <p>Updates and reminders containing further details and instructions will be sent out closer to the day of your event, so do keep an eye on your inbox.</p>
-      <p>On the day of the event, you'll just need to provide your confirmation number in order to check-in.</p>
-      <p>We really hope that you enjoy the event and that it will be a valuable part of your export journey with us.</p>
+<br />
+     
+      
       <h2 class="heading-medium">What did you think of this service?</h2>
       <p><a class="link" href="#">Our feedback survey</a> only takes about 30 seconds to complete and helps us to understand how we can improve our events experience.</p>
 
@@ -78,4 +81,11 @@
 
 </main>
 
+{% endblock %}
+{% block footer_support_links %} 
+<ul>
+      <li>
+        <a href="/register/confirmation-email">View confirmation email</a>
+      </li>
+    </ul>
 {% endblock %}
