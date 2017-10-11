@@ -11,7 +11,7 @@ font-size: 24px
 	}
 	.text-content {
 		font-family: sans-serif;
-		font-size: 19px;
+		font-size: 18px;
 		padding: 20px;
 		margin: 20px 50px;
 		text-align: left;
@@ -94,9 +94,9 @@ font-size: 24px
 									<!-- CONTENT -->
 
 <div class="box">Your confirmation</div>
-<p class="text-content">Dear Jane,
+<p class="text-content">Dear {{ data['first-name'] }},
 
-Thank you for deciding to join us for the following event 
+Thank you for deciding to join us for the following event:
 
 <strong style="font-size:20px">{{data['event-title']}}</strong>
 
@@ -108,12 +108,12 @@ Thank you for deciding to join us for the following event
 <strong>Venue</strong>
 {{ data['full-address-holder'] }}
 <a href="#">Map of venue</a>
-
 {% if data['venue-additional-notes-entered'] == true %}
+
 <strong>Additional venue details</strong>
 {{ data['venue-additional-notes'] }}
-		  {% endif %}
 
+{% endif %}
 {{ data['organiser-name'] }}
 {{ data['contact-email'] }}
 {{ data['contact-phone'] }}
