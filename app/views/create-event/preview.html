@@ -32,12 +32,13 @@
           <!-- EVENT title  -->
           <!-- <div class="grey" style="margin:10px 0;font-size:16px;color:#666666">{{ data['organiser-name'] }}</div>  -->
           <h1 class="bold-large">{{ data['event-title'] }}</h1>
-          <h2 class="font-lead"></h2>
           <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }} in {{ data['town'] }} </h2>
 
-        <br/>
+       
           <br/>
 
+          <h3 style="font-size:18px;font-weight:normal">{{ data['event-summary'] }}</h3>
+          <br />
         <div>
 
            
@@ -161,7 +162,7 @@
 
 
             {% if session.data['venue-additional-notes-entered'] == true %}
-            <div class="bold-xsmall" >Additional details</div>
+            <div class="bold-xsmall" >Parking and directions</div>
             <p>{{ data['venue-additional-notes'] }}</p>
             {% endif %}
       </div>
