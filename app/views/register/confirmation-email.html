@@ -98,7 +98,7 @@ font-size: 24px
 
 Thank you for deciding to join us for the following event:
 
-<strong style="font-size:20px">{{data['event-title']}}</strong>
+<a href="#"><strong style="font-size:19px">{{data['event-title']}}</strong></a>
 
 {{ data['event-day-of-the-week'] }}
 {{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
@@ -109,11 +109,10 @@ Thank you for deciding to join us for the following event:
 {{ data['full-address-holder'] }}
 <a href="#">Map of venue</a>
 {% if data['venue-additional-notes-entered'] == true %}
-
 <strong>Additional venue details</strong>
 {{ data['venue-additional-notes'] }}
-
 {% endif %}
+<strong>Organiser contact details</strong>
 {{ data['organiser-name'] }}
 {{ data['contact-email'] }}
 {{ data['contact-phone'] }}
@@ -128,7 +127,7 @@ We look forward to seeing you on the day.
 
 Best wishes,
 
-Department for International Trade North East
+{{ data['organiser-name'] }}
 
 
 

@@ -71,7 +71,7 @@
           <hr style="background-color:#DDD">
 
             <div style="margin-bottom:35px; margin-top:40px;">
-                <h4 class="bold-small">Event outcomes</h4>
+                <h4 class="bold-small">Benefits of attending</h4>
                 <ul class="list push--bottom">
                     {% for key,value in data %}
                         {% if 'benefit-input-' in key %}
@@ -162,8 +162,11 @@
 
 
             {% if session.data['venue-additional-notes-entered'] == true %}
-            <div class="bold-xsmall" >Parking and directions</div>
-            <p>{{ data['venue-additional-notes'] }}</p>
+            <details>
+            <summary>Parking and directions</summary>
+            
+            <div>{{ data['venue-additional-notes'] }}</div>
+            </details>
             {% endif %}
       </div>
 

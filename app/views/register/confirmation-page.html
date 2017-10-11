@@ -18,14 +18,14 @@
     <div class="column-two-thirds">
 
       <div class="govuk-box-highlight background--aqua">
-        <h1 class="bold-large">Booking successful</h1>
+        <h1 class="bold-large" style="margin-bottom:10px">Booking successful</h1>
       <!--  <p>
           Your reference number is <br>
           <strong class="heading-medium">HDJ2123F</strong>
         </p>
       -->
+      <p>An email confirmation containing further details and instructions has been sent to {{ data['email-address'] }}</p>
       </div>
-<p>An email confirmation containing further details and instructions has been sent to {{ data['email-address'] }}</p>
 
 <p>You may also want to print or take a screenshot of this page, for reference on the day of your event. Alternatively, you can download a <a class="link" href="#">PDF</a> version.</p>
 
@@ -39,30 +39,31 @@
 
 
       <table>
-  
+    <caption class="heading-small" style="text-align:left">Your booking details</caption>
+
   <tbody>
     <tr>
-      <td class="bold">Event title</td>
+      <td>Event title</td>
       <td>{{ data['event-title'] }}</td>
     </tr>
     <tr>
-      <td class="bold">Date and time</td>
+      <td>Date and time</td>
       <td>{{ session.data['event-day'] }} {{ session.data['event-month-name'] }} {{ session.data['event-year'] }} <br />
             {{ session.data['event-start-time'] }} to {{ session.data['event-finish-time'] }}<br /><br />
             <a class="link" href="#">Add to calendar</a>
       </td>
     </tr>
     <tr>
-      <td class="bold">Venue</td>
+      <td>Venue</td>
       <td style="white-space: pre-wrap;">{{ data['full-address-holder'] }}<br />
 <a class="link" href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View map</a></td>
     </tr>
     <tr>
-      <td class="bold">Company</td>
+      <td>Company</td>
       <td>{{ data['business-name'] }}</td>
     </tr>
     <tr>
-      <td class="bold">Attendee</td>
+      <td>Attendee</td>
       <td>{{ data['first-name'] }} {{ data['last-name'] }}</td>
     </tr>
     
