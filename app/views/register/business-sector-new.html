@@ -1,0 +1,286 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+{% macro createSectorList(name) %}
+<li style="height:90px">
+	<div class="multiple-choice">
+		<input id="sector{{name}}" name="sectors" type="radio" value="{{ name }}">
+		<label for="sector{{name}}" style="white-space:pre-wrap">{{ name | capitalize | safe}}</label>
+	</div>
+
+</li>
+{% endmacro %}
+
+		
+
+<main id="content" role="main">
+	{% if errorMissingTitle %}
+		<div class="grid-row">
+			<div class="error-summary column-two-thirds" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="border:6px solid #e41f13">
+
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					Missing sector
+				</h2>
+
+				<ul class="error-summary-list">
+					<li><a href="#sector-section" style="color:#e41f13">You need to select a sector</a></li>
+				</ul>
+
+			</div>
+		</div>
+	{% endif %}
+
+	<h1 class="heading-large"  style="font-weight:400;">
+		Which sector do you work in?
+    </h1>
+
+
+
+
+	<div class="grid-row">
+
+    	<div class="column-two-thirds">
+
+			<details role="group" style="margin-bottom:20px;">
+				<summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:5px;">
+					<span class="summary">Why are we asking this?</span></summary>
+
+				<div class="" id="details-content-0" aria-hidden="true"
+					 style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
+
+					<p style="white-space: pre-wrap; margin-bottom:5px">This information will never be shared without your consent.
+						<br>Understanding key details about attendees helps us to make our events as relevant as possible.
+						<br>If you wanted to connect with a trade adviser or expert in your field during or following an event, this information can also help us to do that for you.</p>
+				</div>
+			</details>
+
+		   <!--  BREADCRUMB  -->
+		   <div class="breadcrumbs"></div>
+
+
+		   <form action="" method="post" class="form">
+
+			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
+												(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
+												(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
+												(errorAnswersError == undefined or errorAnswersError == false) %}
+											 js-hidden
+										  {% endif %}"
+						id="show-answer-type">
+
+
+				<style type="text/css">
+					.column-one-half {margin-left:auto; width: 50%}
+					h2.heading-large{margin-top: 15px}
+					ul#sectors {margin-top: 30px; width: 85%}
+					ul#sectors li {border-top:1px solid #bfc1c3;padding:15px 30px 43px 10px;}
+					strong {font-weight: bold;text-transform: capitalize}
+				</style>
+
+
+				{% set items = ["<strong>Aircraft, spacecraft, and parts thereof</strong></strong>
+For example Aircraft, spacecraft, and parts thereof.","<strong>Albuminoids, modified starches, glues, enzymes</strong>
+For example Albuminoidal subs; modified starches; glues; enzymes.","<strong>Aluminium and articles thereof</strong>
+For example Aluminium and articles thereof.","<strong>Animal,vegetable fats and oils, cleavage products, etc</strong>
+For example Animal/veg fats & oils & their cleavage products; etc","<strong>Arms and ammunition, parts and accessories thereof</strong>
+For example Arms and ammunition; parts and accessories thereof.","<strong>Articles of apparel, accessories, knit or crochet</strong>
+For example Art of apparel & clothing access, knitted or crocheted.","<strong>Articles of apparel, accessories, not knit or crochet</strong>
+For example Art of apparel & clothing access, not knitted/crocheted","<strong>Articles of iron or steel</strong>
+For example Articles of iron or steel.","<strong>Articles of leather, animal gut, harness, travel goods</strong>
+For example Articles of leather; saddlery/harness; travel goods etc","<strong>Beverages, spirits and vinegar</strong>
+For example Beverages, spirits and vinegar.","<strong>Bird skin, feathers, artificial flowers, human hair</strong>
+For example Prepr feathers & down; arti flower; articles human hair","<strong>Carpets and other textile floor coverings</strong>
+For example Carpets and other textile floor coverings.","<strong>Ceramic products</strong>
+For example Ceramic products.","<strong>Cereal, flour, starch, milk preparations and products</strong>
+For example Prep.of cereal, flour, starch/milk; pastrycooks' prod","<strong>Cereals</strong>
+For example Cereals","<strong>Clocks and watches and parts thereof</strong>
+For example Clocks and watches and parts thereof.","<strong>Cocoa and cocoa preparations</strong>
+For example Cocoa and cocoa preparations.","<strong>Coffee, tea, mate and spices</strong>
+For example Coffee, tea, matï and spices.","<strong>Commodities not elsewhere specified</strong>
+For example Commodities not elsewhere specified","<strong>Copper and articles thereof</strong>
+For example Copper and articles thereof.","<strong>Cork and articles of cork</strong>
+For example Cork and articles of cork.","<strong>Cotton</strong>
+For example Cotton.","<strong>Dairy products, eggs, honey, edible animal product nes</strong>
+For example Dairy prod; birds' eggs; natural honey; edible prod nes","<strong>Edible fruit, nuts, peel of citrus fruit, melons</strong>
+For example Edible fruit and nuts; peel of citrus fruit or melons.","<strong>Edible vegetables and certain roots and tubers</strong>
+For example Edible vegetables and certain roots and tubers.","<strong>Electrical, electronic equipment</strong>
+For example Electrical mchy equip parts thereof; sound recorder etc","<strong>Essential oils, perfumes, cosmetics, toileteries</strong>
+For example Essential oils & resinoids; perf, cosmetic/toilet prep","<strong>Explosives, pyrotechnics, matches, pyrophorics, etc</strong>
+For example Explosives; pyrotechnic prod; matches; pyrop alloy; etc","<strong>Fertilizers</strong>
+For example Fertilisers.","<strong>Fish, crustaceans, molluscs, aquatic invertebrates nes</strong>
+For example Fish & crustacean, mollusc & other aquatic invertebrate","<strong>Footwear, gaiters and the like, parts thereof</strong>
+For example Footwear, gaiters and the like; parts of such articles.","<strong>Furniture, lighting, signs, prefabricated buildings</strong>
+For example Furniture; bedding, mattress, matt support, cushion etc","<strong>Furskins and artificial fur, manufactures thereof</strong>
+For example Furskins and artificial fur; manufactures thereof.","<strong>Glass and glassware</strong>
+For example Glass and glassware.","<strong>Headgear and parts thereof</strong>
+For example Headgear and parts thereof.","<strong>Impregnated, coated or laminated textile fabric</strong>
+For example Impregnated, coated, cover/laminated textile fabric etc","<strong>Inorganic chemicals, precious metal compound, isotopes</strong>
+For example Inorgn chem; compds of prec mtl, radioact elements etc","<strong>Iron and steel</strong>
+For example Iron and steel.","<strong>Knitted or crocheted fabric</strong>
+For example Knitted or crocheted fabrics.","<strong>Lac, gums, resins, vegetable saps and extracts nes</strong>
+For example Lac; gums, resins & other vegetable saps & extracts.","<strong>Lead and articles thereof</strong>
+For example Lead and articles thereof.","<strong>Live animals</strong>
+For example Live animals","<strong>Live trees, plants, bulbs, roots, cut flowers etc</strong>
+For example Live tree & other plant; bulb, root; cut flowers etc","<strong>Manmade filaments</strong>
+For example Man-made filaments.","<strong>Manmade staple fibres</strong>
+For example Man-made staple fibres.","<strong>Manufactures of plaiting material, basketwork, etc.</strong>
+For example Manufactures of straw, esparto/other plaiting mat; etc","<strong>Meat and edible meat offal</strong>
+For example Meat and edible meat offal","<strong>Meat, fish and seafood food preparations nes</strong>
+For example Prep of meat, fish or crustaceans, molluscs etc","<strong>Milling products, malt, starches, inulin, wheat gluten</strong>
+For example Prod.mill.indust; malt; starches; inulin; wheat gluten","<strong>Mineral fuels, oils, distillation products, etc</strong>
+For example Mineral fuels, oils & product of their distillation;etc","<strong>Miscellaneous articles of base metal</strong>
+For example Miscellaneous articles of base metal.","<strong>Miscellaneous chemical products</strong>
+For example Miscellaneous chemical products.","<strong>Miscellaneous edible preparations</strong>
+For example Miscellaneous edible preparations.","<strong>Miscellaneous manufactured articles</strong>
+For example Miscellaneous manufactured articles.","<strong>Musical instruments, parts and accessories</strong>
+For example Musical instruments; parts and access of such articles","<strong>Nickel and articles thereof</strong>
+For example Nickel and articles thereof.","<strong>Nuclear reactors, boilers, machinery, etc</strong>
+For example Nuclear reactors, boilers, mchy & mech appliance; parts","<strong>Oil seed, oleagic fruits, grain, seed, fruit, etc, nes</strong>
+For example Oil seed, oleagi fruits; miscell grain, seed, fruit etc","<strong>Optical, photo, technical, medical, etc apparatus</strong>
+For example Optical, photo, cine, meas, checking, precision, etc","<strong>Ores, slag and ash</strong>
+For example Ores, slag and ash.","<strong>Organic chemicals</strong>
+For example Organic chemicals.","<strong>Other base metals, cermets, articles thereof</strong>
+For example Other base metals; cermets; articles thereof.","<strong>Other made textile articles, sets, worn clothing etc</strong>
+For example Other made up textile articles; sets; worn clothing etc","<strong>Paper & paperboard, articles of pulp, paper and board</strong>
+For example Paper & paperboard; art of paper pulp, paper/paperboard","<strong>Pearls, precious stones, metals, coins, etc</strong>
+For example Natural/cultured pearls, prec stones & metals, coin etc","<strong>Pharmaceutical products</strong>
+For example Pharmaceutical products.","<strong>Photographic or cinematographic goods</strong>
+For example Photographic or cinematographic goods.","<strong>Plastics and articles thereof</strong>
+For example Plastics and articles thereof.","<strong>Printed books, newspapers, pictures etc</strong>
+For example Printed books, newspapers, pictures & other product etc","<strong>Products of animal origin, nes</strong>
+For example Products of animal origin, nes or included.","<strong>Pulp of wood, fibrous cellulosic material, waste etc</strong>
+For example Pulp of wood/of other fibrous cellulosic mat; waste etc","<strong>Railway, tramway locomotives, rolling stock, equipment</strong>
+For example Railw/tramw locom, rolling-stock & parts thereof; etc","<strong>Raw hides and skins (other than furskins) and leather</strong>
+For example Raw hides and skins (other than furskins) and leather.","<strong>Residues, wastes of food industry, animal fodder</strong>
+For example Residues & waste from the food indust; prepr ani fodder","<strong>Rubber and articles thereof</strong>
+For example Rubber and articles thereof.","<strong>Salt, sulphur, earth, stone, plaster, lime and cement</strong>
+For example Salt; sulphur; earth & ston; plastering mat; lime & cem","<strong>Ships, boats and other floating structures</strong>
+For example Ships, boats and floating structures.","<strong>Silk</strong>
+For example Silk.","<strong>Soaps, lubricants, waxes, candles, modelling pastes</strong>
+For example Soap, organic surface-active agents, washing prep, etc","<strong>Special woven or tufted fabric, lace, tapestry etc</strong>
+For example Special woven fab; tufted tex fab; lace; tapestries etc","<strong>Stone, plaster, cement, asbestos, mica, etc articles</strong>
+For example Art of stone, plaster, cement, asbestos, mica/sim mat","<strong>Sugars and sugar confectionery</strong>
+For example Sugars and sugar confectionery.","<strong>Tanning, dyeing extracts, tannins, derivs,pigments etc</strong>
+For example Tanning/dyeing extract; tannins & derivs; pigm etc","<strong>Tin and articles thereof</strong>
+For example Tin and articles thereof.","<strong>Tobacco and manufactured tobacco substitutes</strong>
+For example Tobacco and manufactured tobacco substitutes","<strong>Tools, implements, cutlery, etc of base metal</strong>
+For example Tool, implement, cutlery, spoon & fork, of base mtl etc","<strong>Toys, games, sports requisites</strong>
+For example Toys, games & sports requisites; parts & access thereof","<strong>Umbrellas, walking-sticks, seat-sticks, whips, etc</strong>
+For example Umbrellas, walking-sticks, seat-sticks, whips, etc","<strong>Vegetable plaiting materials, vegetable products nes</strong>
+For example Vegetable plaiting materials; vegetable products nes","<strong>Vegetable textile fibres nes, paper yarn, woven fabric</strong>
+For example Other vegetable textile fibres; paper yarn & woven fab","<strong>Vegetable, fruit, nut, etc food preparations</strong>
+For example Prep of vegetable, fruit, nuts or other parts of plants","<strong>Vehicles other than railway, tramway</strong>
+For example Vehicles o/t railw/tramw roll-stock, pts & accessories","<strong>Wadding, felt, nonwovens, yarns, twine, cordage, etc</strong>
+For example Wadding, felt & nonwoven; yarns; twine, cordage, etc","<strong>Wood and articles of wood, wood charcoal</strong>
+For example Wood and articles of wood; wood charcoal.","<strong>Wool, animal hair, horsehair yarn and fabric thereof</strong>
+For example Wool, fine/coarse animal hair, horsehair yarn & fabric","<strong>Works of art, collectors pieces and antiques</strong>
+For example Works of art, collectors' pieces and antiques.","<strong>Zinc and articles thereof</strong>
+For example Zinc and articles thereof."] %}
+
+
+				<div class="form-group {% if errorMissingTitle %} form-group-error	{% endif %}" id="sector-section">
+
+
+					{% if errorMissingTitle %}
+					  <span class="error-message">
+						  Select one sector
+					  </span>
+					{% endif %}
+
+
+
+					<label class="form-label" for="question">Either manually browse the list - or filter items using the search box</label>
+
+
+					<input class="form-control " id="myInput" type="text" onkeyup="myFunction()" style="width:75%" value="" autocomplete="off" />
+
+
+					<ul id="sectors">
+						{% for i in items %}
+							{{ createSectorList(i) }}
+						{% endfor %}
+					</ul>
+
+					<span id="empty">No matching list items. <br />Try again or browse the list for an item that best describes what you do
+									<br/><br/><a class="link" href="#" onclick="resetInput()">Show the full list of sectors</a></span>
+
+				</div>
+
+			  </fieldset>
+
+
+
+			  <div class="form-group">
+				  <input type="submit" class="button button-blue"  value="Continue">
+			  </div>
+
+
+
+	  	   </form>
+
+
+    	</div>
+
+
+		<div class="column-one-third">
+			{% include "includes/basket.html" %}
+		</div>
+
+  </div>
+
+
+</main>
+
+<script>
+function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i;
+
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("sectors");
+    li = ul.getElementsByTagName('li');
+    emptyMessage = document.getElementById("empty");
+    emptyMessage.style.display = "block";
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        label = li[i].getElementsByTagName("label")[0];
+        if (label.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            emptyMessage.style.display = "none";
+            
+
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+
+}
+
+function resetInput () {
+	var input;
+    input = document.getElementById('myInput');
+    input.value = "";
+    myFunction();
+}
+
+window.onload = myFunction(); 
+
+</script>
+
+
+{% include "includes/great-footer.html" %} 
+
+
+{% endblock %}
+
+
