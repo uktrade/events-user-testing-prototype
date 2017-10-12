@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+{% macro createSectorList(name) %}
+<li>
+	<div class="multiple-choice">
+		<input id="sector{{name}}" name="sectors" type="radio" value="{{ name }}">
+		<label for="sector{{name}}">{{ name | capitalize}}</label>
+	</div>
+
+</li>
+{% endmacro %}
+
+		
+
+<main id="content" role="main">
+	{% if errorMissingTitle %}
+		<div class="grid-row">
+			<div class="error-summary column-two-thirds" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="border:6px solid #e41f13">
+
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					Missing sector
+				</h2>
+
+				<ul class="error-summary-list">
+					<li><a href="#sector-section" style="color:#e41f13">You need to select a sector</a></li>
+				</ul>
+
+			</div>
+		</div>
+	{% endif %}
+
+	<h1 class="heading-large"  style="font-weight:400;">
+		Which sector do you work in?
+    </h1>
+
+
+
+
+	<div class="grid-row">
+
+    	<div class="column-two-thirds">
+
+			<details role="group" style="margin-bottom:20px;">
+				<summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:5px;">
+					<span class="summary">Why are we asking this?</span></summary>
+
+				<div class="" id="details-content-0" aria-hidden="true"
+					 style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
+
+					<p style="white-space: pre-wrap; margin-bottom:5px">This information will never be shared without your consent.
+						<br>Understanding key details about attendees helps us to make our events as relevant as possible.
+						<br>If you wanted to connect with a trade adviser or expert in your field during or following an event, this information can also help us to do that for you.</p>
+				</div>
+			</details>
+
+		   <!--  BREADCRUMB  -->
+		   <div class="breadcrumbs"></div>
+
+
+		   <form action="" method="post" class="form">
+
+			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
+												(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
+												(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
+												(errorAnswersError == undefined or errorAnswersError == false) %}
+											 js-hidden
+										  {% endif %}"
+						id="show-answer-type">
+
+
+				<style type="text/css">
+					.column-one-half {margin-left:auto; width: 50%}
+					h2.heading-large{margin-top: 15px}
+					ul#sectors {margin-top: 30px; width: 75%}
+					ul#sectors li {border-top:1px solid #bfc1c3;padding:15px 30px 43px 10px;}
+				</style>
+
+
+				{% set items = ["Aerospace","Agriculture, Horticulture and fisheries","Airports","Automotive","Biotechnology and pharmaceuticals","Business Consumer Services","Chemicals","Clothing, Footwear Fashion","Communications","Construction","Creative and Media","Education and Training","Electronics and IT Hardware","Environment","Financial and Professional Services","Food and Drink","Giftware, Jewellery Tableware","Global Sports Infrastructure","Healthcare Medical","Household Goods, Furniture Furnishings","Leisure Tourism","Marine","Mechanical Electrical Process Engineering","Metallurgical Process Plant","Metals, Minerals and Materials","Mining","Oil and Gas","Ports Logistics","Power","Railways","Renewable Energy","Retail and Luxury","Security","Software and computer Services","Textiles, Interior Textiles and Carpets","Water"] %}
+
+
+				<div class="form-group {% if errorMissingTitle %} form-group-error	{% endif %}" id="sector-section">
+
+
+					{% if errorMissingTitle %}
+					  <span class="error-message">
+						  Select one sector
+					  </span>
+					{% endif %}
+
+
+
+					<label class="form-label" for="question">Either manually browse the list - or filter items using the search box</label>
+
+
+					<input class="form-control " id="myInput" type="text" onkeyup="myFunction()" style="width:75%" value="" autocomplete="off" />
+
+
+					<ul id="sectors">
+						{% for i in items %}
+							{{ createSectorList(i) }}
+						{% endfor %}
+					</ul>
+
+					<span id="empty">No matching list items. <br />Try again or browse the list for an item that best describes what you do
+									<br/><br/><a class="link" href="#" onclick="resetInput()">Show the full list of sectors</a></span>
+
+				</div>
+
+			  </fieldset>
+
+
+
+			  <div class="form-group">
+				  <input type="submit" class="button button-blue"  value="Continue">
+			  </div>
+
+
+
+	  	   </form>
+
+
+    	</div>
+
+
+		<div class="column-one-third">
+			{% include "includes/basket.html" %}
+		</div>
+
+  </div>
+
+
+</main>
+
+<script>
+function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i;
+
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("sectors");
+    li = ul.getElementsByTagName('li');
+    emptyMessage = document.getElementById("empty");
+    emptyMessage.style.display = "block";
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        label = li[i].getElementsByTagName("label")[0];
+        if (label.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            emptyMessage.style.display = "none";
+            
+
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+
+}
+
+function resetInput () {
+	var input;
+    input = document.getElementById('myInput');
+    input.value = "";
+    myFunction();
+}
+
+window.onload = myFunction(); 
+
+</script>
+
+
+{% include "includes/great-footer.html" %} 
+
+
+{% endblock %}
+
+
