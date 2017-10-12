@@ -3249,20 +3249,20 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
 router.post('/register/sign-in', function (req, res) {
   req.session.data['first-name'] = "Leslie";
   req.session.data['last-name'] = "Smith";
-  req.session.data['job-title'] = "Director";
+  req.session.data['job-title'] = "Director of International Sales";
   req.session.data['phone-number'] = "020 1234567890";
-  req.session.data['mobile-number'] = "070 00000000";
-  req.session.data['business-name'] = "Advanced Manufacturing Ltd";
-  req.session.data['sectors'] = "Automotive";
-  req.session.data['website'] = "www.advancedmanufacturing.co.uk";
+  req.session.data['mobile-number'] = "07965491256";
+  req.session.data['business-name'] = "Fashion Retail Ltd";
+  req.session.data['sectors'] = "Clothing, footwear fashion";
+  req.session.data['website'] = "www.fashion.co.uk ";
   
-  req.session.data['building'] = "Building name";
-  req.session.data['street'] = "Street name";
-  req.session.data['town'] = "Town name";
-  req.session.data['postcode'] = "Postcode";
+  req.session.data['building'] = "Unit 10";
+  req.session.data['street'] = "Westworld Industrial Park";
+  req.session.data['town'] = "Bristol";
+  req.session.data['postcode'] = "BS4 6JY";
 
-  req.session.data['email-address'] = "leslie.smith@advancedmanufacturing.co.uk";
-  req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "No"];
+  req.session.data['email-address'] = "leslie.smith@fashion.co.uk";
+  req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "Yes"];
   req.session.loggedIn = true;
   res.redirect('/register/check-your-answers');
 });
