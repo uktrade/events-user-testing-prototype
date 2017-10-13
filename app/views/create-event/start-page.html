@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="full-grid-mode" style="margin-left:15px">
+
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		<ol>
+			<li><a href="/account">Account home</a></li>
+		</ol>
+	  </div>
+
+
+		<h1 class="heading-large" style="margin-top:15px;">
+			Create an event
+		</h1>
+
+
+		<form action="/create-event/" method="get" class="form">
+
+
+		<div style="display: flex; margin-right:0px;">
+
+			<div style="flex:1">
+				<p>This tool will allow you to publish a new event online, including: </p>
+
+				<ul class="list list-bullet">
+					<li>creation of your event webpage</li>
+					<li>design of your event registration form</li>
+					<li>setup and scheduling of your event emails</li>
+				</ul>
+
+				<p>Before you begin, it might be useful to familiarise yourself with the structure of the event webpage template. It’s been designed to help visitors quickly scan key details and decide if the event is relevant.</p>
+
+				<p>The creator tool will guide you through the steps to populate each section of the page. </p>
+
+				<p>If you don’t yet have content to populate a particular section, that’s fine. You can come back to it later. Just select the ‘I’ll complete this later’ link at the bottom of each page.</p>
+
+				<p>All your event drafts will be saved under the ‘Draft’ tab on your account homepage - allowing you to keep your page as a work in progress, until you’re ready to publish.
+				</p>
+
+				<div class="form-group" style="margin-top:20px">
+					<input type="submit" class="button" value="Continue">
+				</div>
+			</div>
+
+
+			<div style="flex:1; margin-left:40px;">
+				<p class="bold" align="center" >Event webpage template</p>
+
+				<img src="/public/images/event-template-image.png" style="width:455px;height:728px;">
+			</div>
+
+
+		</div>
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

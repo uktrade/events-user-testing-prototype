@@ -50,35 +50,44 @@ main#content {max-width: 1200px}
 {% if session.liveOrNot == "false" %}
 
 
-      <div style="background-color: #FFFFFF; border-bottom: 10px solid #000000; height:300px; padding-top:10px; padding-bottom:10px; " >
-
-        <div style="margin-right:0px; margin-left:20px; margin-top:0px; float: left;">
-          <p style="margin-top:40px;  margin-right:40px; font-size:36px; font-weight:700; font-family: Arial,sans-serif;">Saved as draft</p>
-
-          <p class="form-label-bold" style="font-size:18px; font-family: Arial,sans-serif; margin-top:30px;" align="left">
-                Share draft<br>
-                <span style="font-weight:400">www.great.gov.uk/event/mh43dz</span>
-          </p>
+      <div style="background-color: #FFFFFF; border-bottom: 10px solid #000000; height:380px; padding-top:0px; padding-bottom:10px; display: flex; " >
 
 
-          <p style="font-size:16px; margin-top:10px;" align="left"><a style="font-family: Arial,sans-serif;" href="/account#draft-events">Account home</a></p>
+        <div style="flex-grow:1"> </div>
 
-          <p>
-              <a class="button-secondary" style="font-family: Arial,sans-serif; padding: .526315em .789473em .263157em;  font-size: 1.2em;   line-height: 1.25;
+
+        <div style=" margin:20px; margin-top:0px;  width:600px;"  >
+
+            <div class="govuk-box-highlight background--aqua" style="padding-top:60px; padding-bottom:40px;">
+                <h1 class="bold-large" style="margin-bottom:10px" align="center">Event saved as draft<br> </h1>
+
+            </div>
+
+            <div>
+
+                <!--<h2 class="heading-medium" style="margin-bottom:10px; margin-top:20px;">Actions</h2>  -->
+
+                <p class="form-label-bold" style="font-size:18px; font-family: Arial,sans-serif; margin-top:30px;  margin-bottom:15px;" align="left">
+                    Share draft: <span style="font-weight:400">www.great.gov.uk/event/mh43dz</span>
+                </p>
+
+
+                <p style="font-size:16px;" align="left"><a style="font-family: Arial,sans-serif;" href="/account#draft-events">Account home</a></p>
+
+                <p>
+                    <a class="button-secondary" style="font-family: Arial,sans-serif; padding: .526315em .789473em .263157em;  font-size: 1.2em;   line-height: 1.25;
               " href="/create-event/go-live-now">Make event live</a>
-          </p>
+                </p>
+
+            </div>
 
         </div>
 
-
-
-        <form action="/create-event/go-live-now" method="get" class="form">
-
-
-
-        </form>
+          <div style="flex-grow:1"> </div>
 
       </div>
+
+
     {% endif %}
 <div class="navigation">
       <div class="navigation-strip background--dark-navy">

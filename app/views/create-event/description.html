@@ -78,7 +78,7 @@
 
 	  <form action="/create-event/description-onwards" method="get" class="form">
 
-		  <p style="margin-bottom:30px" >Use these fields to create event summary content for your webpage.</p>
+		  <p style="margin-bottom:30px" >Use these fields to add more detail to the event webpage.</p>
 
 		  <!--  MARKETS  -->
 		  <div class="form-group {% if errorMissingMarketSelection %} form-group-error {% endif %}" id="markets-section">
@@ -545,7 +545,8 @@
 					  Further details and background
 
 					  <span class="form-hint" >
-						  Any wider information relevant to this event. For example, speaker profiles or market statistics and insights.</span>
+						  For example, speaker profiles, market statistics or insights.
+					  </span>
 
 
 					  {% if errorMissingEventDescription %}
@@ -555,7 +556,7 @@
 					  {% endif %}
 
 				  </label>
-				  <img  src="/public/images/editicons.png" style="width:111px;height:36px; float: right; margin-bottom:5px; margin-right:170px;">
+				  <img  src="/public/images/editicons.png" style="width:111px;height:36px; float: right; margin-top:15px; margin-right:170px;">
 			  </div>
 
 			  <textarea class="form-control {% if errorMissingEventDescription %} form-control-error {% endif %}" name="event-description" id="event-description" rows="12" style="width: 80%;">{{ data['event-description'] }}</textarea>

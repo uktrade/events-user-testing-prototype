@@ -81,30 +81,44 @@
 
 		  -->
 
-			  <div id="title-section" class="form-group" style="margin-top:10px; margin-bottom:35px;  width:630px;">
+		  <div id="title-section" class="form-group" style="margin-top:10px; margin-bottom:35px;  width:630px;">
 
+			  {% if errorMissingTitle %}
+				<div class="form-group-error">
+			  {% endif %}
+
+
+				  <label class="form-label-bold" for="event-title">
+				  Event title
 				  {% if errorMissingTitle %}
-				  	<div class="form-group-error">
+					  <span class="error-message">
+						  Enter a clear and descriptive title for your event
+					  </span>
 				  {% endif %}
+				  </label>
+
+				  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+						 id="event-title" name="event-title" value="{{ data['event-title'] }}" style="width: 90%">
+
+			  {% if errorMissingTitle %}
+				</div>
+			  {% endif %}
+
+		  </div>
 
 
-					  <label class="form-label-bold" for="event-title">
-					  Event title
-					  {% if errorMissingTitle %}
-						  <span class="error-message">
-							  Enter a clear and descriptive title for your event
-						  </span>
-					  {% endif %}
-					  </label>
 
-					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-							 id="event-title" name="event-title" value="{{ data['event-title'] }}" style="width: 90%">
+		  <div id="summary-section" class="form-group" style="margin-top:10px; margin-bottom:35px;  width:750px;">
 
-				  {% if errorMissingTitle %}
-			  		</div>
-				  {% endif %}
+			  <label class="form-label-bold" for="event-title">
+				  Event summary (optional)
+				  <span class="form-hint" style="margin-bottom: 5px; margin-top:3px;">For example: For North west-based SMEs interested in exporting to Germany.</span>
+			  </label>
 
-			  </div>
+			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+					 id="summary-title" name="event-title" value="{{ data['event-title'] }}" style="width: 90%">
+
+		  </div>
 
 
 

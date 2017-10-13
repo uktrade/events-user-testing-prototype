@@ -274,14 +274,13 @@ router.get('/scenario-1', function (req, res)
   req.session.eventsLive[4][6] = "2017";
 
   // Capacity
-  req.session.eventsLive[0][8] = 12;
-  req.session.eventsLive[1][8] = 14;
+  req.session.eventsLive[0][8] = 20;
   req.session.eventsLive[2][8] = 14;
   req.session.eventsLive[3][8] = 18;
   req.session.eventsLive[4][8] = 16;
 
   // Registered people count
-  req.session.eventsLive[0][20] = 10;
+  req.session.eventsLive[0][20] = 17;
   req.session.eventsLive[1][20] = 7;
   req.session.eventsLive[2][20] = 4;
   req.session.eventsLive[3][20] = 3;
@@ -297,7 +296,7 @@ router.get('/scenario-1', function (req, res)
 
   // Page views for each link
   var rawCountsViews = [];
-  rawCountsViews[0] = [32, 18, 8, 4, 2];
+  rawCountsViews[0] = [49, 18, 17, 11, 3];
   rawCountsViews[1] = [56, 40, 10, 3, 3];
   rawCountsViews[2] = [46, 22, 24];
   rawCountsViews[3] = [35, 19, 16];
@@ -320,7 +319,7 @@ router.get('/scenario-1', function (req, res)
 
   // REgistration counts for each link
   var rawCountsRegistrations = [];
-  rawCountsRegistrations[0] = [req.session.eventsLive[0][20], 6, 0, 2, 2];
+  rawCountsRegistrations[0] = [req.session.eventsLive[0][20], 8, 3, 4, 2];
   rawCountsRegistrations[1] = [req.session.eventsLive[1][20], 4, 1, 1, 1];
   rawCountsRegistrations[2] = [req.session.eventsLive[2][20], 2, 2];
   rawCountsRegistrations[3] = [req.session.eventsLive[3][20], 2, 1];
@@ -454,6 +453,26 @@ router.get('/scenario-1', function (req, res)
   req.session.registeredPeopleData1[9] =
   ["31 August 2017","12:31","Nadia", "Panucci","Jet Pumps UK Ltd","Sales Executive","07933465544","nadia@jetpumps.com","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Environment & Water","www.jetpumps.co.uk","Yes","£5,000,000","No","DIT record"];
 
+  req.session.registeredPeopleData1[10] =
+      ["28 August 2017","12:31","Jane", "Smith","JS Consulting","Sales Executive","07935565544","jane@js.co.uk","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Legal services","www.js.co.uk","Yes","£5,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[11] =
+      ["10 September 2017","14:31","Philip", "Agassi","Nanotech computing","Sales Executive","07935565544","philip@nanotech.com","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Electronics & IT hardware","www.nanotech.com","Yes","£5,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[12] =
+      ["12 September 2017","15:31","Robert", "Johnson","Desiato International","Sales Executive","07935565544","robert@desiato.co.uk","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Oil & Gas","www.desiato.co.uk","Yes","£5,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[13] =
+      ["15 September 2017","09:31","Pietro", "Beardsley","Eagle Ltd.","Sales Executive","07935565544","pietro@eagle.com","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Power","www.eagle.com","Yes","£5,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[14] =
+      ["18 September 2017","14:31","Guy", "Berlin","Sound Investments Ltd.","Sales Executive","07935565544","guy@sound.com","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Financial & professional services","www.sound.com","Yes","£5,000,000","No","DIT record"];
+
+  req.session.registeredPeopleData1[15] =
+      ["18 September 2017","14:51","Joseph", "Parrot","Harlequin Products","Sales Executive","07935565544","joseph@harlequin.com","Yes","14 Bloomsbury Street","Birmingham","B12 8NP","Metals, minerals and materials","www.harlequin.com","Yes","£5,000,000","lactose intolerant","DIT record"];
+
+  req.session.registeredPeopleData1[16] =
+      ["15 September 2017","10:51","Vanessa", "Healy","Whirlwind Industries","CEO","07935565544","vanessa@whirlwind.com","Yes","14 Bloomsbury Street","Birmingham","B12 8NP","Power","www.whirlwind.com","Yes","£5,000,000","Seafood","DIT record"];
 
 
 
@@ -1097,11 +1116,9 @@ router.get('/create-event/new', function (req, res)
     req.session.data['answer-'+x] = "";
   }
 
-
-
-
-  res.redirect('/create-event/');
+  res.redirect('/create-event/start-page');
 })
+
 
 router.get('/create-event/', function (req, res)
 {
