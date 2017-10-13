@@ -1,0 +1,221 @@
+<style>
+	.box{
+		background-color: #00549F;
+height: 100px;
+width: auto;
+margin: 20px 50px;
+padding: 20px;
+color: white;
+font-family: 'Roboto', sans-serif;
+font-size: 24px
+	}
+	.text-content {
+		font-family: sans-serif;
+		font-size: 18px;
+		padding: 20px;
+		margin: 20px 50px;
+		text-align: left;
+		white-space: pre-wrap;
+	}
+</style>
+<div style="background-color:#dedede;margin-left:0;margin-top:0">
+
+		
+		
+		<center style="background-color:#dedede">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" id="m_3001906267033651500m_-5323909592808409202bodyTable" style="table-layout:fixed;max-width:100%!important;width:100%!important;min-width:100%!important;height:100%">
+				<tbody><tr>
+					<td align="center" valign="top" id="m_3001906267033651500m_-5323909592808409202bodyCell">
+
+						
+						
+						<table bgcolor="#DEDEDE" border="0" cellpadding="0" cellspacing="0" width="500" id="m_3001906267033651500m_-5323909592808409202emailHeader">
+
+							
+							<tbody><tr>
+								<td align="center" valign="top">
+									
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody><tr>
+											<td align="center" valign="top">
+												
+												<table border="0" cellpadding="10" cellspacing="0" width="500" class="m_3001906267033651500m_-5323909592808409202flexibleContainer">
+													<tbody><tr>
+														<td valign="top" width="500" class="m_3001906267033651500m_-5323909592808409202flexibleContainerCell">
+														</td>
+													</tr>
+												</tbody></table>
+												
+											</td>
+										</tr>
+									</tbody></table>
+									
+								</td>
+							</tr>
+							
+
+						</tbody></table>
+						
+
+						
+						
+						<table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="800" id="m_3001906267033651500m_-5323909592808409202emailBody">
+
+							
+							
+							<tbody><tr>
+								<td align="center" valign="top">
+									
+									
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" style="color:#ffffff" bgcolor="#1E1348">
+										<tbody><tr>
+											<td align="center" valign="top">
+												
+												
+												<table border="0" cellpadding="0" cellspacing="0" width="500" class="m_3001906267033651500m_-5323909592808409202flexibleContainer">
+													<tbody><tr>
+														<td align="center" valign="top" width="500" class="m_3001906267033651500m_-5323909592808409202flexibleContainerCell">
+															<img src="https://ci6.googleusercontent.com/proxy/Niq7r0-shjpL9is6ahZ1-DhUQZuo9VY60PTJtCSLsFdNwku0wKfq9nAb4Z8Qxjk1dGcgjqJgilzfTMJlxw0Oja0fmcv8aDZ8BEjcBipfapmTQRNs7bfbofFT0yyjKFLS6ca3YA=s0-d-e1-ft#https://s3-eu-west-1.amazonaws.com/directory-email-static/eig-logo-stacked.png" style="height:100px;margin:20px" alt="" class="CToWUd a6T" tabindex="0"><div class="a6S" dir="ltr" style="opacity: 0.01; left: 413.5px; top: 211px;"><div id=":222" class="T-I J-J5-Ji aQv T-I-ax7 L3 a5q" role="button" tabindex="0" aria-label="Download attachment " data-tooltip-class="a1V" data-tooltip="Download"><div class="aSK J-J5-Ji aYr"></div></div></div>
+														</td>
+													</tr>
+												</tbody></table>
+												
+											</td>
+										</tr>
+									</tbody></table>
+									
+								</td>
+							</tr>
+							
+
+							<tr>
+								<td align="center" valign="top">
+									
+									<!-- CONTENT -->
+
+<h1 style="font-family:sans-serif;margin:30px 0;">Your event confirmation</h1>
+<p class="text-content">Dear {{ data['first-name'] }},
+
+Thank you for deciding to join us for the following event:
+
+<a href="#"><strong style="font-size:19px">{{data['event-title']}}</strong></a>
+
+{{ data['event-day-of-the-week'] }}
+{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
+{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
+<a href="#">Add to calendar</a>
+
+<strong>Venue</strong>
+{{ data['full-address-holder'] }}
+<a href="#">Map of venue</a>
+{% if data['venue-additional-notes-entered'] == true %}
+<strong>Parking and directions</strong>
+{{ data['venue-additional-notes'] }}
+{% endif %}
+<strong>Organiser contact details</strong>
+{{ data['organiser-name'] }}
+{{ data['contact-email'] }}
+{{ data['contact-phone'] }}
+
+
+Remember to regularly check the event web page for latest additions to the agenda, confirmed speakers and experts.
+<a href="#">http://www.trade.gov.uk/eventname</a>
+
+If you have any questions or special requests that will help you to get the most out of the day, please don't hesitate to get in touch. We'd be happy to assist.
+
+We look forward to seeing you on the day.
+
+Best wishes,
+
+{{ data['organiser-name'] }}
+
+
+
+
+<!-- END CONTENT -->
+									
+								</td>
+							</tr>
+							
+
+
+							
+							<tr>
+								<td align="center" valign="top">
+									
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody><tr style="padding-top:0">
+											<td align="center" valign="top">
+												
+												<table border="0" cellpadding="30" cellspacing="0" width="500" class="m_3001906267033651500m_-5323909592808409202flexibleContainer">
+													<tbody><tr>
+														<td style="padding-top:0" align="center" valign="top" width="500" class="m_3001906267033651500m_-5323909592808409202flexibleContainerCell">
+
+															
+															
+															
+
+														</td>
+													</tr>
+												</tbody></table>
+												
+											</td>
+										</tr>
+									</tbody></table>
+									
+								</td>
+							</tr>
+							
+
+						</tbody></table>
+						
+
+						
+						
+						<table bgcolor="#DEDEDE" border="0" cellpadding="0" cellspacing="0" width="500" id="m_3001906267033651500m_-5323909592808409202emailFooter">
+
+							
+							
+							<tbody><tr>
+								<td align="center" valign="top">
+									
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody><tr>
+											<td align="center" valign="top">
+												
+												<table border="0" cellpadding="0" cellspacing="0" width="500" class="m_3001906267033651500m_-5323909592808409202flexibleContainer">
+													<tbody><tr>
+														<td align="center" valign="top" width="500" class="m_3001906267033651500m_-5323909592808409202flexibleContainerCell">
+															<table border="0" cellpadding="30" cellspacing="0" width="100%">
+																<tbody><tr>
+																	<td valign="top" bgcolor="#DEDEDE">
+
+																		<div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%">
+																			<div>You received this email because you set up an account on <a href="http://great.gov.uk" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=en-GB&amp;q=http://great.gov.uk&amp;source=gmail&amp;ust=1507812663352000&amp;usg=AFQjCNHrGURdRwvlOVXCjYizqjouGJbfWw">great.gov.uk</a></div>
+																			<div><a href="https://www.exportingisgreat.gov.uk/privacy-and-cookies/" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=en-GB&amp;q=https://www.exportingisgreat.gov.uk/privacy-and-cookies/&amp;source=gmail&amp;ust=1507812663352000&amp;usg=AFQjCNFYvYO4UnRrzUp0tTD3StG0AKUFhQ">See the privacy statement to see how we keep your data and privacy safe.</a></div>
+																			<div><a href="https://contact-us.export.great.gov.uk/feedback/single_sign_on/" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=en-GB&amp;q=https://contact-us.export.great.gov.uk/feedback/single_sign_on/&amp;source=gmail&amp;ust=1507812663352000&amp;usg=AFQjCNGcgr8Q9YhHfrfZn4LyzdvfAzflLw">Give feedback on this service</a></div>
+																			<div>Department for International Trade, <a href="https://maps.google.com/?q=3+Whitehall+Place,+London,+SW1A+2AW&amp;entry=gmail&amp;source=g" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=en-GB&amp;q=https://maps.google.com/?q%3D3%2BWhitehall%2BPlace,%2BLondon,%2BSW1A%2B2AW%26entry%3Dgmail%26source%3Dg&amp;source=gmail&amp;ust=1507812663352000&amp;usg=AFQjCNFpqPvPVv1KFvWcGLT1HXNYM_1f7g">3 Whitehall Place, London, SW1A 2AW</a></div>
+																		</div>
+
+																	</td>
+																</tr>
+															</tbody></table>
+														</td>
+													</tr>
+												</tbody></table>
+												
+											</td>
+										</tr>
+									</tbody></table>
+									
+								</td>
+							</tr>
+
+						</tbody></table>
+						
+
+					</td>
+				</tr>
+			</tbody></table>
+		</center><div class="yj6qo"></div><div class="adL">
+	</div></div>

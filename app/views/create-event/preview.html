@@ -32,12 +32,13 @@
           <!-- EVENT title  -->
           <!-- <div class="grey" style="margin:10px 0;font-size:16px;color:#666666">{{ data['organiser-name'] }}</div>  -->
           <h1 class="bold-large">{{ data['event-title'] }}</h1>
-          <h2 class="font-lead"></h2>
           <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }} in {{ data['town'] }} </h2>
 
-        <br/>
+       
           <br/>
 
+          <h3 style="font-size:18px;font-weight:normal">{{ data['event-summary'] }}</h3>
+          <br />
         <div>
 
            
@@ -70,7 +71,7 @@
           <hr style="background-color:#DDD">
 
             <div style="margin-bottom:35px; margin-top:40px;">
-                <h4 class="bold-small">Event outcomes</h4>
+                <h4 class="bold-small">Benefits of attending</h4>
                 <ul class="list push--bottom">
                     {% for key,value in data %}
                         {% if 'benefit-input-' in key %}
@@ -161,16 +162,11 @@
 
 
             {% if session.data['venue-additional-notes-entered'] == true %}
-                <details role="group" style="">
-                    <summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:0px;">
-                        <span class="summary">More venue details</span></summary>
-
-                    <div class="" id="details-content-0" aria-hidden="true"
-                         style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
-
-                        <p>{{ data['venue-additional-notes'] }}</p>
-                    </div>
-                </details>
+            <details>
+            <summary>Parking and directions</summary>
+            
+            <div>{{ data['venue-additional-notes'] }}</div>
+            </details>
             {% endif %}
       </div>
 

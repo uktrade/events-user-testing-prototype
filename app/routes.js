@@ -542,7 +542,7 @@ router.get('/scenario-2', function (req, res)
 
   req.session.data['sectors'] = "All sectors";
   req.session.data['markets'] = "All markets";
-  req.session.data['audience-experience'] = "New to export";
+  req.session.data['audience-experience'] = "Not yet exporting";
 
   req.session.data['summary-target-audience'] = "Anyone with a registered business in the South West region who is new to exporting or thinking about it. Open to all industries, and levels of experience - no previous knowledge of exporting is assumed.";
   req.session.data['benefit-input-0'] = "Hear from expert speaker Guy Desiato on what it takes to win new business overseas"; 
@@ -608,6 +608,7 @@ router.get('/scenario-3', function (req, res)
   req.session.data['event-title'] = "Sweden food and drink seminar";
 
   req.session.data['event-day-of-the-week'] = "Wednesday";
+  req.session.data['event-summary'] = "  An excellent opportunity for UK businesses to learn how to take their first steps into one of Europe's most attractive markets.";
   req.session.data['event-day'] = "1"
   req.session.data['event-month-name'] = "November";
   req.session.data['event-year'] = "2017"
@@ -679,6 +680,8 @@ Refreshments and networking`;
 router.get('/scenario-4', function (req, res)
 {
   req.session.data['event-title'] = "Doing business in Germany - retail";
+  req.session.data['event-summary'] = "Join us for this informative seminar, perfect for UK companies looking to take first steps into the German retail market.";
+
 
   req.session.data['hero-image'] = "berlin-bridge.jpg"
 
@@ -706,7 +709,7 @@ router.get('/scenario-4', function (req, res)
   req.session.data['venue-additional-notes-entered'] = true;
 
   req.session.data['markets'] = "Germany";
-  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Not yet exporting" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is for retail related small businesses based in the North East with an interest in doing business in Germany.`;
 
@@ -716,10 +719,9 @@ router.get('/scenario-4', function (req, res)
   req.session.data['benefit-input-2'] = "Learn about key retail opportunities currently open to UK businesses";
   req.session.data['benefit-input-3'] = "Networking sessions with market representatives and experts";
 
-  req.session.data['event-description'] = `A seminar about doing business in Germany for UK retail companies.
-Germany’s strong economy and central position in the continent, make it one of Europe’s most attractive business hubs.
+  req.session.data['event-description'] = `Germany’s resilient economy and central position in the continent has seen it continue to be one of Europe’s most attractive business hubs.
 
-Join us for an informative seminar that can help you to take your first steps into the German retail market.
+UK businesses are taking full advantage of higher than average consumer confidence, fuelled by consistently low German unemployment and interest rates. With healthy price competition, a variety of purchasing platforms and a wide range of products on offer, Germany represents an ideal business opportunity for UK retailers.
 
 <span style="font-weight:700;">About the speaker: Miriam Ducke</span>
 
@@ -764,8 +766,8 @@ Networking and close`;
 router.get('/scenario-5', function (req, res)
 {
   req.session.data['event-title'] = "Sports technology in France";
-
-  req.session.data['hero-image'] = "france-sport.jpg"
+  req.session.data['event-summary'] = "Join us for a full day of presentations and networking opportunities with a carefully selected group of French sports technology companies.";
+  req.session.data['hero-image'] = "france-sport.jpg";
 
   req.session.data['event-day-of-the-week'] = "Thursday";
   req.session.data['event-day'] = "16"
@@ -790,7 +792,7 @@ router.get('/scenario-5', function (req, res)
 Software and computer services`;
 
   req.session.data['markets'] = "France";
-  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Not yet exporting" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is open to London-based companies that are “new to export” (who have not traded internationally in last 12 months). You must also fit into the category of a  small and medium enterprise.`;
 
@@ -801,18 +803,11 @@ Software and computer services`;
   req.session.data['benefit-input-3'] = "";
 
 
-  req.session.data['event-description'] = `Sports technology is a growing area of business in France.
+  req.session.data['event-description'] = `Sport is big business in France. Revenue in the French "Sports & Outdoor" segment has totalled £1bn in 2017 alone - and is expected to grow by 8.5 % to a market volume of £1.5bn by 2022.
 
-Join us for a full day of presentations and networking opportunities with a carefully selected group of French sports technology companies.
+Technology has impacted every corner of society and every industry - not least, the world of sport. The use of technology in sports has grown rapidly in recent years. From athlete performance enhancement, injury prevention and recovery, to tech that can accurately gather data about every second of competitive team sports. 
 
-<span style="font-weight:700;">About the speaker: Philipe Baudin</span>
-
-Philipe founded Sport-Tech in 2006, with a mission to take data-led competitive sports analysis to the next level.
-
-Sport-Tech’s unique SportVU cameras have been used to record, track and analyse competitive sport by global sports giants such as the NBA and UEFA.
-
-Drawing on his own experience and inspiring success story, Philipe will offer up key tips on how to successfully do business in the world of sport tech in France.
-<a href="#">Visit Philipe’s LinkedIn profile</a>.`;
+Over the past five years, the business of sport has become a £20bn-a-year industry in the UK, supporting some 450,000 jobs. There's never been a better time to invest in this thriving global industry, with one of its key players: France.`;
   ;
 
   req.session.data['agenda'] = `Tbc`;
@@ -838,6 +833,7 @@ Drawing on his own experience and inspiring success story, Philipe will offer up
 router.get('/scenario-6', function (req, res)
 {
   req.session.data['event-title'] = "Sell your products and services overseas";
+  req.session.data['event-summary'] = "In support of Global Entrepreneurship Week, an afternoon of educational talks designed to help UK small businesses to begin exporting overseas.";
 
   req.session.data['hero-image'] = "city-photo.jpg"
 
@@ -862,7 +858,7 @@ router.get('/scenario-6', function (req, res)
   req.session.data['sectors'] = "All sectors";
 
   req.session.data['markets'] = "France";
-  req.session.data['audience-experience'] = "New" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Not yet exporting" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is open to any companies in the North West that are interested in selling their services or products internationally.`;
 
@@ -873,17 +869,11 @@ router.get('/scenario-6', function (req, res)
   req.session.data['benefit-input-3'] = "";
 
 
-  req.session.data['event-description'] = `As part of global Entrepreneurship Week, join us for this educational talk and networking session, to help local businesses to take their first steps towards trading internationally.
+  req.session.data['event-description'] = `With industry experts claiming that exporting goods abroad makes small businesses more competitive, innovative and raises productivity, winning trade overseas is a key way for companies to kickstart growth and prosper.
 
-Find out how the North West international trade team, with the support of the European Regional Development Fund, could help you develop your international sales, access overseas opportunities and apply for funding.
+But how can small businesses crack international markets? Given the various demands companies need to satisfy to ship their products abroad, expansion can often be a complex and time-consuming process.
 
-<span style="font-weight:700;">About the host: Jenny Mooney</span>
-
-Jenny Mooney works for the DIT North West team as an International Trade Advisor, providing export support to UK companies to grow their international sales.
-
-She’s previously worked for the Department for International Trade London and has a range of experience in business advice and consultancy for ACC10 Catalan Trade, Business Monitor International, and AstraZeneca.
-
-<a href="#">Read Jenny’s LinkedIn profile</a>.`;
+This event could provide the initial knowledge and inspiration you need to kick-start your business exporting journey.`;
   ;
 
   req.session.data['agenda'] = `2pm
@@ -916,7 +906,8 @@ Networking and refreshments
 /////////// Engineering
 router.get('/scenario-7', function (req, res)
 {
-  req.session.data['event-title'] = "Seminar series: selling manufacturing and engineering overseas";
+  req.session.data['event-title'] = "Seminar series: exporting trends and opportunities for manufacturing and engineering companies";
+  req.session.data['event-summary'] = "A day of inspiring talks and discussions for manufacturing and engineering companies in the East Midlands interested in exporting their products and services";
 
   req.session.data['hero-image'] = "manufacturing-photo.jpg"
 
@@ -942,7 +933,7 @@ router.get('/scenario-7', function (req, res)
 Metallurgical process plant`;
 
   req.session.data['markets'] = "Brazil" + "\n" + "China" + "\n" + "Dubai" + "\n" + "Mexico"  + "\n" + "United Arab Emirates";
-  req.session.data['audience-experience'] = "Never exported" + "\n" + "Occasional" + "\n" + "Experienced";
+  req.session.data['audience-experience'] = "Never exported" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is for manufacturing and engineering companies based in the East Midlands that have an interest in doing business overseas - particularly in Central and South America, and the Middle East.`;
 
@@ -953,21 +944,14 @@ Metallurgical process plant`;
   req.session.data['benefit-input-3'] = "Free lunch and refreshments provided";
 
 
-  req.session.data['event-description'] = `This event is a perfect chance for any East Midlands based manufacturing and engineering companies to learn about how to approach doing business internationally, receive practical advice and hear some inspiring talks from experts in their field.
+  req.session.data['event-description'] = `The UK is the 10th largest goods exporter in the world and the vast majority of engineers surveyed (78%) believe that it is the quality of UK products that holds the most value for overseas customers.
 
-<span style="font-weight:700;">Event speakers and experts:</span>
+For UK manufacturing and engineering firms, capitalising on global export opportunities, particularly in South America and China, is more important than ever.
 
-Scott Knowles, Chief Executive, East Midlands Chamber
-<a href="#">LinkedIn profile</a>
+UK based engineering companies that export are becoming increasingly dependent on overseas trade for their continued survival - with more than a third generating more than 80% of their turnover from these foreign markets.
 
-Steve Halliday, Manufacturing Engineering Partnerships Manager (AFRC), Rolls-Royce plc
-<a href="#">LinkedIn profile</a>
-
-Michael Mychajluk, Supply Chain & External Engagement Manager, Government Programmes Jaguar Land Rover Limited
-<a href="#">LinkedIn profile</a>
-
-Philip Skipper, Head of Business Development, Vodafone Internet of Things (IoT)
-<a href="#">LinkedIn profile</a>`;
+This series of seminars are designed to guide and inspire East Midlands-based companies to take steps towards exporting their products overseas.
+`;
 
 
 
@@ -1263,12 +1247,12 @@ router.get('/create-event/title-onwards', function (req, res)
     errorMissingExperience = true;
     console.log("there is no experience selected");
   }
-  else if(req.session.data['radio-audience-experience'] == "new")
+  else if(req.session.data['radio-audience-experience'] == "Not yet exporting")
   {
-    req.session.data['audience-experience'] = "New to export";
+    req.session.data['audience-experience'] = "Not yet exporting";
     experienceNewSelected = true;
   }
-  else if(req.session.data['radio-audience-experience'] == "experienced")
+  else if(req.session.data['radio-audience-experience'] == "Regularly exporting")
   {
     req.session.data['audience-experience'] = "Experienced exporters";
     experienceOldSelected = true;
@@ -3382,22 +3366,21 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
 router.post('/register/sign-in', function (req, res) {
   req.session.data['first-name'] = "Leslie";
   req.session.data['last-name'] = "Smith";
-  req.session.data['job-title'] = "Director";
+  req.session.data['job-title'] = "Director of International Sales";
   req.session.data['phone-number'] = "020 1234567890";
-  req.session.data['mobile-number'] = "070 00000000";
-  req.session.data['business-name'] = "Advanced Manufacturing Ltd";
-  req.session.data['sectors'] = "Automotive";
-  req.session.data['website'] = "www.advancedmanufacturing.co.uk";
+  req.session.data['mobile-number'] = "07965491256";
+  req.session.data['business-name'] = "Fashion Retail Ltd";
+  req.session.data['sectors'] = "Clothing, footwear fashion";
+  req.session.data['website'] = "www.fashion.co.uk ";
   
-  req.session.data['building'] = "Building name";
-  req.session.data['street'] = "Street name";
-  req.session.data['town'] = "Town name";
-  req.session.data['postcode'] = "Postcode";
+  req.session.data['building'] = "Unit 10";
+  req.session.data['street'] = "Westworld Industrial Park";
+  req.session.data['town'] = "Bristol";
+  req.session.data['postcode'] = "BS4 6JY";
 
-  req.session.data['email-address'] = "leslie.smith@advancedmanufacturing.co.uk";
-  req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "No"];
-
-
+  req.session.data['email-address'] = "leslie.smith@fashion.co.uk";
+  req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "Yes"];
+  req.session.loggedIn = true;
   res.redirect('/register/check-your-answers');
 });
 
@@ -3428,7 +3411,12 @@ router.post('/register/business-sector', function (req, res) {
   }
 });
 
+router.post('/register/business-name', function (req, res) {
 
+  req.session.loggedIn = false;
+  res.redirect('/register/business-address');
+  
+});
 
 
 
