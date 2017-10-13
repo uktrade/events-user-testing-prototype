@@ -61,7 +61,6 @@
         {% endif %}
       </label>
 
-
       <input type="text" class="form-control  {% if errorTrackingName %} form-control-error {% endif %}"
              id="new-link-name" name="new-link-name" value="" style="width:90%;">
     </td>
@@ -87,8 +86,12 @@
     </td>
 
     <td style="width:10%; padding-top:15px; padding-bottom:15px;" >
-      <input style="width:100%; display:none;" id="save-button" type="submit" class="button" formaction="/add-tracking-link-go-live" value="Save">
+      <div  id="divsave" style="display:none;" >
+        <input style="width:100%;"  type="submit" class="button" formaction="/add-tracking-link-go-live" value="Save">
+      </div>
+
     </td>
+
   </tr>
 
 </table>
@@ -115,10 +118,11 @@
     // aDD TO THE LINK BOX
     document.getElementById('new-url').value = (document.getElementById('new-url').value + "-" + urlOfName);
 
+    document.getElementById('divsave').style.display = 'block';
 
     document.getElementById('link-generator').style.display = 'none';
     document.getElementById('new-url').style.display = 'block';
-    document.getElementById('save-button').style.display = 'block';
+
 
   }
 
