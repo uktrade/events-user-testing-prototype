@@ -35,7 +35,8 @@
 		  <p class="heading-small">Email subject</p>
 
 		  <div id="email-reg-subject-section" class="form-group panel panel-border-narrow" >
-			  <p style="margin-left:5px; ">Your event booking - {{data['event-title']}}</p>
+			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+					 id="event-title" name="event-title" value="Your event booking - {{data['event-title']}}" style="width: 80%">
 		  </div>
 
 
@@ -64,10 +65,11 @@
 		  <p style="margin-left:5px; margin-top:5px;"><a href="#">Map of venue</a></p>
 
 		  {% if data['venue-additional-notes-entered'] == true %}
-			  <p class="heading-small" style="margin-left:5px; ">Additional venue details</p>
+			  <p class="heading-small" style="margin-left:5px; ">Parking and directions</p>
 			  <p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
 		  {% endif %}
 
+		  <p class="heading-small" style="margin-left:5px; ">Organiser contact details</p>
 		  <p style="margin-left:5px;" >{{ data['organiser-name'] }}
 			 <br> {{ data['contact-email'] }}
 			 <br> {{ data['contact-phone'] }}

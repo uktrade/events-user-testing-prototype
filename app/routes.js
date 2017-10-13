@@ -199,6 +199,12 @@ router.get('/homepage-prelude', function (req, res)
 
 
 
+router.get('/scenario-empty', function (req, res)
+{
+  req.session.destroy();
+  res.redirect('/signin');
+})
+
 
 
 router.get('/scenario-1', function (req, res)
@@ -254,11 +260,11 @@ router.get('/scenario-1', function (req, res)
   req.session.eventsLive[4][3] = "11";
 
   // month
-  req.session.eventsLive[0][5] = "September";
-  req.session.eventsLive[1][5] = "October";
-  req.session.eventsLive[2][5] = "October";
-  req.session.eventsLive[3][5] = "October";
-  req.session.eventsLive[4][5] = "October";
+  req.session.eventsLive[0][5] = "October";
+  req.session.eventsLive[1][5] = "November";
+  req.session.eventsLive[2][5] = "November";
+  req.session.eventsLive[3][5] = "November";
+  req.session.eventsLive[4][5] = "November";
 
   // year
   req.session.eventsLive[0][6] = "2017";
@@ -2142,6 +2148,11 @@ router.get('/create-event/tickets-onwards', function (req, res)
     {
         res.redirect('/create-event/summary-prelude');
     }
+    else if(req.session.changingFromMonitoring == true)
+    {
+        req.session.changingFromMonitoring = false;
+        res.redirect('/monitor/live-present');
+    }
     else
     {
         res.redirect('/create-event/attendees');
@@ -3072,7 +3083,14 @@ router.get('/create-event/change-organiser', function (req, res)
 })
 
 
+// MONITORING
 
+router.get('/create-event/change-attendees-monitoring', function (req, res)
+{
+  req.session.changingFromMonitoring = true;
+
+  res.redirect('/create-event/tickets');
+})
 
 
 

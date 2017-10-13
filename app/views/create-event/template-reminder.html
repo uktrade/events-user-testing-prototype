@@ -75,7 +75,8 @@ GOV.UK prototype kit
 				<p class="heading-small" style="margin-top:50px;" >Email subject</p>
 
 				<div id="email-reg-subject-section" class="form-group panel panel-border-narrow" >
-					<p style="margin-left:5px; ">Reminder of your upcoming event</p>
+					<input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+						   id="event-title" name="event-title" value="Reminder of your upcoming event" style="width: 80%">
 				</div>
 
 
@@ -100,10 +101,11 @@ GOV.UK prototype kit
 					<p style="margin-left:5px; margin-top:5px;"><a href="#">Map of venue</a></p>
 
 					{% if data['venue-additional-notes-entered'] == true %}
-					<p class="heading-small" style="margin-left:5px; ">Additional venue details</p>
+					<p class="heading-small" style="margin-left:5px; ">Parking and directions</p>
 					<p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
 					{% endif %}
 
+					<p class="heading-small" style="margin-left:5px; ">Organiser contact details</p>
 					<p style="margin-left:5px;" >{{ data['organiser-name'] }}
 						<br> {{ data['contact-email'] }}
 						<br> {{ data['contact-phone'] }}
