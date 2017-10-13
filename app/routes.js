@@ -231,12 +231,14 @@ router.get('/scenario-1', function (req, res)
     req.session.eventsLiveBoolean[x] = true;
   }
 
+  // name
   req.session.eventsLive[0][0] = "Low Carbon Vehicles 2017";
   req.session.eventsLive[1][0] = "Coal Mongolia 2017";
   req.session.eventsLive[2][0] = "Researching Overseas Markets Masterclass";
   req.session.eventsLive[3][0] = "International Market Research";
   req.session.eventsLive[4][0] = "Grow your Business with Social Media";
 
+  // time
   req.session.eventsLive[1][1] = "11:00";
   req.session.eventsLive[1][2] = "12:00";
   req.session.eventsLive[1][28] = "11:00";
@@ -244,36 +246,42 @@ router.get('/scenario-1', function (req, res)
   req.session.eventsLive[1][30] = "11:00";
   req.session.eventsLive[1][31] = "12:00";
 
+  // date
   req.session.eventsLive[0][3] = "29";
   req.session.eventsLive[1][3] = "2";
   req.session.eventsLive[2][3] = "7";
   req.session.eventsLive[3][3] = "10";
   req.session.eventsLive[4][3] = "11";
 
+  // month
   req.session.eventsLive[0][5] = "September";
   req.session.eventsLive[1][5] = "October";
   req.session.eventsLive[2][5] = "October";
   req.session.eventsLive[3][5] = "October";
   req.session.eventsLive[4][5] = "October";
 
+  // year
   req.session.eventsLive[0][6] = "2017";
   req.session.eventsLive[1][6] = "2017";
   req.session.eventsLive[2][6] = "2017";
   req.session.eventsLive[3][6] = "2017";
   req.session.eventsLive[4][6] = "2017";
 
+  // Capacity
   req.session.eventsLive[0][8] = 12;
   req.session.eventsLive[1][8] = 14;
   req.session.eventsLive[2][8] = 14;
   req.session.eventsLive[3][8] = 18;
   req.session.eventsLive[4][8] = 16;
 
+  // Registered people count
   req.session.eventsLive[0][20] = 10;
   req.session.eventsLive[1][20] = 7;
   req.session.eventsLive[2][20] = 4;
   req.session.eventsLive[3][20] = 3;
   req.session.eventsLive[4][20] = 3;
 
+  // Registration closed
   req.session.eventsLive[0][19] = false;
   req.session.eventsLive[1][19] = false;
   req.session.eventsLive[2][19] = false;
@@ -281,6 +289,7 @@ router.get('/scenario-1', function (req, res)
   req.session.eventsLive[4][19] = false;
 
 
+  // Page views for each link
   var rawCountsViews = [];
   rawCountsViews[0] = [32, 18, 8, 4, 2];
   rawCountsViews[1] = [56, 40, 10, 3, 3];
@@ -303,11 +312,11 @@ router.get('/scenario-1', function (req, res)
     console.log("\n\n each percentage is " + rawPercentageViews[z]);
   }
 
-
+  // REgistration counts for each link
   var rawCountsRegistrations = [];
   rawCountsRegistrations[0] = [req.session.eventsLive[0][20], 6, 0, 2, 2];
   rawCountsRegistrations[1] = [req.session.eventsLive[1][20], 4, 1, 1, 1];
-  rawCountsRegistrations[2] = [req.session.eventsLive[2][20], 5, 2];
+  rawCountsRegistrations[2] = [req.session.eventsLive[2][20], 2, 2];
   rawCountsRegistrations[3] = [req.session.eventsLive[3][20], 2, 1];
   rawCountsRegistrations[4] = [req.session.eventsLive[4][20], 3, 0];
 
@@ -321,7 +330,8 @@ router.get('/scenario-1', function (req, res)
 
     for(var w=1; w<rawCountsRegistrations[z].length; w++ )
     {
-      rawPercentageRegistrations[z][w] = ((rawCountsRegistrations[z][w])/(rawCountsRegistrations[z][0])) *100;
+      // using the total count from the view, not reg, so coloured bars are proportional in length
+      rawPercentageRegistrations[z][w] = ((rawCountsRegistrations[z][w])/(rawCountsViews[z][0])) *100;
     }
 
     console.log("\n\n each percentage REG is " + rawPercentageRegistrations[z]);
@@ -352,18 +362,38 @@ router.get('/scenario-1', function (req, res)
     var eachURLarray = [];
 
     // Save the name of each link
-    eachURLarrayName[0] = "BLANK NULL";
-    eachURLarrayName[1] = "Email Marketing";
-    eachURLarrayName[2] = "Twitter";
-    eachURLarrayName[3] = "Export for Growth";
-    eachURLarrayName[4] = "Enterprise M3";
-
     // Save the urls of each link being tracked
-    eachURLarray[0] = baseURL;
-    eachURLarray[1] = baseURL + "-email-marketing";
-    eachURLarray[2] = baseURL + "-twitter";
-    eachURLarray[3] = baseURL + "-export-for-Growth";
-    eachURLarray[4] = baseURL + "-enterprise-m3";
+    if(0 < rawCountsViews[x].length)
+    {
+      eachURLarrayName[0] = "NULL NAME - YOU SHOULD'T SEE THIS";
+      eachURLarray[0] = "NUL URLL - YOU SHOULD'T SEE THIS";
+    }
+    if(1 < rawCountsViews[x].length)
+    {
+      eachURLarrayName[1] = "Default event link";
+      eachURLarray[1] = baseURL;
+    }
+    if(2 < rawCountsViews[x].length)
+    {
+      eachURLarrayName[2] = "Email Marketing";
+      eachURLarray[2] = baseURL + "-email-marketing";
+    }
+    if(3 < rawCountsViews[x].length)
+    {
+      eachURLarrayName[3] = "Twitter";
+      eachURLarray[3] = baseURL + "-twitter";
+    }
+    if(4 < rawCountsViews[x].length)
+    {
+      eachURLarrayName[4] = "Export for Growth";
+      eachURLarray[4] = baseURL + "-export-for-Growth";
+    }
+    if(5 < rawCountsViews[x].length)
+    {
+      eachURLarrayName[5] = "Enterprise M3";
+      eachURLarray[5] = baseURL + "-enterprise-m3";
+    }
+
 
     var arrayOfNameAndUrls = [];
     arrayOfNameAndUrls[0] = eachURLarrayName;
@@ -389,37 +419,34 @@ router.get('/scenario-1', function (req, res)
   req.session.registeredPeopleData1 = [];
 
   req.session.registeredPeopleData1[0] =
-  ["25 September 2017","16.47","Henry Brown","Crane Electronics Ltd.","CEO","07933465544","henry@crane.co.uk","Yes","3 Waterhouse Square","Bristol","BS8 4JY","Electronics & IT hardware","www.crane.co.uk","Yes","£500,000","No","DIT record"];
+  ["25 September 2017","16:47","Henry", "Brown","Crane Electronics Ltd.","CEO","07933465544","henry@crane.co.uk","Yes","3 Waterhouse Square","Bristol","BS8 4JY","Electronics & IT hardware","www.crane.co.uk","Yes","£500,000","No","DIT record"];
 
   req.session.registeredPeopleData1[1] =
-  ["25 September 2017","15.25","Geoff Clooney","Crystalclear Aspects Ltd","International Sales Director","07986366723","geoff@crystalclear.co.uk","Yes","5 Innovation House, Exeter Business Park","Exeter","EX4 7PJ","Chemicals","www.crystalclear.co.uk","Yes","£1,500,000","No","DIT record"];
+  ["25 September 2017","15:25","Geoff", "Clooney","Crystalclear Aspects Ltd","International Sales Director","07986366723","geoff@crystalclear.co.uk","Yes","5 Innovation House, Exeter Business Park","Exeter","EX4 7PJ","Chemicals","www.crystalclear.co.uk","Yes","£1,500,000","No","DIT record"];
 
   req.session.registeredPeopleData1[2] =
-  ["22 September 2017","20.45","Katie Howard","CWSEC Ltd","Finance Manager","07974652277","katie@cwsec.com","Yes","3 Stamford Street","Bristol","BS3 6QD","Automotive","www.cwsec.com","No","£2,000,000","No","DIT record"];
+  ["22 September 2017","20:45","Katie", "Howard","CWSEC Ltd","Finance Manager","07974652277","katie@cwsec.com","Yes","3 Stamford Street","Bristol","BS3 6QD","Automotive","www.cwsec.com","No","£2,000,000","No","DIT record"];
 
   req.session.registeredPeopleData1[3] =
-  ["19 September 2017","18.08","Robert McKinley","David Jerome Ltd","Sales Executive","07933465544","robert@jerome.co.uk","No","58 Bloomsbury Street","Bristol","BS3 8NP","Automotive","www.jerome.co.uk","No","£1,000,000","No","DIT record"];
+  ["19 September 2017","18:08","Robert", "McKinley","David Jerome Ltd","Sales Executive","07933465544","robert@jerome.co.uk","No","58 Bloomsbury Street","Bristol","BS3 8NP","Automotive","www.jerome.co.uk","No","£1,000,000","No","DIT record"];
 
   req.session.registeredPeopleData1[4] =
-  ["15 September 2017","09.23","Charlotte Walsh","Dianne Illsley","Sales Executive","07986366723","charlotte@diannecreative.com","No","3 Stamford Street","Bristol","BS14 9WG","Automotive","We do not currently have a website","No","£100,000","Yes","New to DIT"];
+  ["15 September 2017","09:23","Charlotte", "Walsh","Dianne Illsley","Sales Executive","07986366723","charlotte@diannecreative.com","No","3 Stamford Street","Bristol","BS14 9WG","Automotive","We do not currently have a website","No","£100,000","Yes","New to DIT"];
 
   req.session.registeredPeopleData1[5] =
-  ["15 September 2017","08.56","Gavin Bell","Direct Trade Bags Company Ltd","Sales Manager","07974652277","gavin@tradebags.co.uk","Yes","45 Pierrepoint Road","Cardiff","CF15 4BP","Technology","www.tradebags.co.uk","Yes","£500,000","No","New to DIT"];
+  ["15 September 2017","08:56","Gavin", "Bell","Direct Trade Bags Company Ltd","Sales Manager","07974652277","gavin@tradebags.co.uk","Yes","45 Pierrepoint Road","Cardiff","CF15 4BP","Technology","www.tradebags.co.uk","Yes","£500,000","No","New to DIT"];
 
   req.session.registeredPeopleData1[6] =
-  ["9 September 2017","14.37","Deepak Patel","Dy-Pack UK Ltd","Head of Engineering","07933465544","deepak@dypack.com","Yes","4 Wayferry Street","Poole","BH13 5LD","Mining","www.dypack.com","No","£1,500,000","No","DIT record"];
+  ["9 September 2017","14:37","Deepak", "Patel","Dy-Pack UK Ltd","Head of Engineering","07933465544","deepak@dypack.com","Yes","4 Wayferry Street","Poole","BH13 5LD","Mining","www.dypack.com","No","£1,500,000","No","DIT record"];
 
   req.session.registeredPeopleData1[7] =
-  ["2 September 2017","22.55","Mohammed Akram","Elat3d Ltd","International Sales Manager","07986366723","moh@elat3d.com	","Yes","6 Cavendish Tower","Portcullis Street, Newport","NP20 2ED","Mining","www.elat3d.com","Yes","£2,000,000","Yes","New to DIT"];
+  ["2 September 2017","22:55","Mohammed", "Akram","Elat3d Ltd","International Sales Manager","07986366723","moh@elat3d.com	","Yes","6 Cavendish Tower, Portcullis Street","Newport","NP20 2ED","Mining","www.elat3d.com","Yes","£2,000,000","Yes","New to DIT"];
 
   req.session.registeredPeopleData1[8] =
-  ["1 September 2017","19.04","Jane Green","Empirical Science Education CIC","Director","07974652277","jane@science.co.uk","No","7 Stamford Street","Bristol","BS3 6QD","Technology","www.science.co.uk","Yes","£1,000,000","No","DIT record"];
+  ["1 September 2017","19:04","Jane", "Green","Empirical Science Education CIC","Director","07974652277","jane@science.co.uk","No","7 Stamford Street","Bristol","BS3 6QD","Technology","www.science.co.uk","Yes","£1,000,000","No","DIT record"];
 
   req.session.registeredPeopleData1[9] =
-  ["31 August 2017","12.31","Nadia Panucci","Jet Pumps UK Ltd","Sales Executive","07933465544","nadia@jetpumps.com","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Environment & Water","www.jetpumps.co.uk","Yes","£5,000,000","No","DIT record"];
-
-
-
+  ["31 August 2017","12:31","Nadia", "Panucci","Jet Pumps UK Ltd","Sales Executive","07933465544","nadia@jetpumps.com","Yes","14 Bloomsbury Street","Bristol","BS3 8NP","Environment & Water","www.jetpumps.co.uk","Yes","£5,000,000","No","DIT record"];
 
 
 
@@ -429,11 +456,21 @@ router.get('/scenario-1', function (req, res)
 
   for(var j=0; j<req.session.registeredPeopleData1.length; j++)
   {
-    req.session.registeredPeopleCheckinNames1[j] = req.session.registeredPeopleData1[j][2];
+    req.session.registeredPeopleCheckinNames1[j] = [ req.session.registeredPeopleData1[j][2] , req.session.registeredPeopleData1[j][3] ];
+
+    console.log("asefccnlsruhnicgnksd3lpuvhklu   " + req.session.registeredPeopleCheckinNames1[j]);
   }
-  req.session.registeredPeopleCheckinNames1.sort();
 
+  req.session.registeredPeopleCheckinNames1.sort(sortByLastName);
 
+  function sortByLastName(a, b) {
+    if (a[1] === b[1]) {
+      return 0;
+    }
+    else {
+      return (a[1] < b[1]) ? -1 : 1;
+    }
+  }
 
 
   // SECOND LIST OF REGISTERED PEOPLE
@@ -441,25 +478,25 @@ router.get('/scenario-1', function (req, res)
   req.session.registeredPeopleData2 = [];
 
   req.session.registeredPeopleData2[0] =
-      ["25 September 2017","16:47","Connor Shaw","Equiture Limited","CEO","07986366723","connor@equiture.co.uk","Yes","3 Stamford Street","Bristol","BS3 6QD","Manufacturing","Don't have website","No","£500,000","No","New to DIT"];
+      ["25 September 2017","16:47","Connor", "Shaw","Equiture Limited","CEO","07986366723","connor@equiture.co.uk","Yes","3 Stamford Street","Bristol","BS3 6QD","Manufacturing","Don't have website","No","£500,000","No","New to DIT"];
 
   req.session.registeredPeopleData2[1] =
-      ["25 September 2017","15:25","Victoria O' Leary","Fi Burke Contemporary Art","International","Sales Director","07974652277","victoria@burke.com","No	58 Bloomsbury Street","Bristol","BS3 8NP","Mining","www.burke.com","No","£1,500,000","No","DIT record"];
+      ["25 September 2017","15:25","Victoria", "O' Leary","Fi Burke Contemporary Art","International Sales Director","07974652277","victoria@burke.com","No","58 Bloomsbury Street","Bristol","BS3 8NP","Mining","www.burke.com","No","£1,500,000","No","DIT record"];
 
   req.session.registeredPeopleData2[2] =
-      ["22 September 2017","20:45","Solomon Yakubu","Illuminow Ltd","Finance Manager","07933465544","solomon@illuminow.co.uk","Yes","3 Stamford Street","Bristol","BS14 9WG","Manufacturing","Don't have website","Yes","£2,000,000","No","DIT record"];
+      ["22 September 2017","20:45","Solomon", "Yakubu","Illuminow Ltd","Finance Manager","07933465544","solomon@illuminow.co.uk","Yes","3 Stamford Street","Bristol","BS14 9WG","Manufacturing","Don't have website","Yes","£2,000,000","No","DIT record"];
 
   req.session.registeredPeopleData2[3] =
-      ["19 September 2017","18:08","Joseph Goldberg","IMS Risk Solutions Ltd","Sales Executive","07986366723","joseph@ims.co.uk","No","5 Strategy House, Kings Innovation Park","Leicester","LE1 1AD","Transport","www.ims.co.uk","Yes","£1,000,000","No","DIT record"];
+      ["19 September 2017","18:08","Joseph", "Goldberg","IMS Risk Solutions Ltd","Sales Executive","07986366723","joseph@ims.co.uk","No","5 Strategy House, Kings Innovation Park","Leicester","LE1 1AD","Transport","www.ims.co.uk","Yes","£1,000,000","No","DIT record"];
 
   req.session.registeredPeopleData2[4] =
-      ["15 September 2017","09:23","Magda Michalenko","India Impex (UK) Ltd","Director","07974652277","magda@impex.com","No","5 Innovation House, Exeter Business Park","Exeter","EX4 7PJ","Technology","www.impex.com","Yes","£100,000","Yes","DIT record"];
+      ["15 September 2017","09:23","Magda", "Michalenko","India Impex (UK) Ltd","Director","07974652277","magda@impex.com","No","5 Innovation House, Exeter Business Park","Exeter","EX4 7PJ","Technology","www.impex.com","Yes","£100,000","Yes","DIT record"];
 
   req.session.registeredPeopleData2[5] =
-      ["15 September 2017","08:56","Gavin Bell","Direct Trade Bags Company Ltd","Sales Manager","07974652277","gavin@tradebags.co.uk","Yes","45 Pierrepoint Road","Cardiff","CF15 4BP","Technology","www.tradebags.co.uk","Yes","£500,000","No","New to DIT"];
+      ["15 September 2017","08:56","Gavin", "Bell","Direct Trade Bags Company Ltd","Sales Manager","07974652277","gavin@tradebags.co.uk","Yes","45 Pierrepoint Road","Cardiff","CF15 4BP","Technology","www.tradebags.co.uk","Yes","£500,000","No","New to DIT"];
 
   req.session.registeredPeopleData2[6] =
-      ["09 September 2017","14:37","Deepak Patel","Dy-Pack UK Ltd","Head of Engineering","07933465544","deepak@dypack.com","Yes","4 Wayferry Street","Poole","BH13","Mining","www.dypack.com","No","£1,500,000","No","New to DIT"];
+      ["09 September 2017","14:37","Deepak", "Patel","Dy-Pack UK Ltd","Head of Engineering","07933465544","deepak@dypack.com","Yes","4 Wayferry Street","Poole","BH13","Mining","www.dypack.com","No","£1,500,000","No","New to DIT"];
 
 
 
@@ -468,10 +505,9 @@ router.get('/scenario-1', function (req, res)
 
   for(var k=0; k<req.session.registeredPeopleData2.length; k++)
   {
-    req.session.registeredPeopleCheckinNames2[k] = req.session.registeredPeopleData2[k][2];
+    req.session.registeredPeopleCheckinNames2[k] = [ req.session.registeredPeopleData2[k][2] , req.session.registeredPeopleData2[k][3] ];
   }
-  req.session.registeredPeopleCheckinNames2.sort();
-
+  req.session.registeredPeopleCheckinNames2.sort(sortByLastName);
 
 
   res.redirect('/signin');
@@ -2604,18 +2640,23 @@ router.get('/create-event/go-live-now', function (req, res)
   var eachURLarray = [];
 
   // Save the name of each link
-  eachURLarrayName[0] = "BLANK NULL";
-  eachURLarrayName[1] = "Email Marketing";
-  eachURLarrayName[2] = "Twitter";
+  eachURLarrayName[0] = "NULL NAME - YOU SHOULD'T SEE THIS";
+  eachURLarrayName[1] = "Default event link";
+  //eachURLarrayName[2] = "Twitter";
 
   // Save the urls of each link being tracked
-  eachURLarray[0] = baseURL;
-  eachURLarray[1] = baseURL + "-email-marketing";
-  eachURLarray[2] = baseURL + "-twitter";
+  eachURLarray[0] = "NUL URLL - YOU SHOULD'T SEE THIS";;
+  eachURLarray[1] = baseURL;
+  //eachURLarray[2] = baseURL + "-twitter";
 
   var arrayOfNameAndUrls = [];
   arrayOfNameAndUrls[0] = eachURLarrayName;
   arrayOfNameAndUrls[1] = eachURLarray;
+  // add empty percentages
+  arrayOfNameAndUrls[2] = [0,0];
+  arrayOfNameAndUrls[3] = [100,0];
+  arrayOfNameAndUrls[4] = [0,0];
+  arrayOfNameAndUrls[5] = [100,0];
 
 
   req.session.eventsLiveURLS[x] = arrayOfNameAndUrls;
@@ -3118,12 +3159,14 @@ router.get('/monitor/add-tracking-link', function (req, res)
     res.render('/monitor/live-present',
         {
           tab: 2,
-         'errorTrackingName': errorTrackingNameIs,
+          'errorTrackingName': errorTrackingNameIs,
         }
     );
   }
   else
   {
+    console.log("  number of names  " + req.session.eventsLiveURLS[req.session.currentEventShowing][0].length );
+
     // Add the new tracking name to the end of the list of tracking link names
     req.session.eventsLiveURLS[req.session.currentEventShowing][0][req.session.eventsLiveURLS[req.session.currentEventShowing][0].length] = req.session.data['new-link-name'];
 
@@ -3132,6 +3175,29 @@ router.get('/monitor/add-tracking-link', function (req, res)
 
     req.session.eventsLiveURLS[req.session.currentEventShowing][1][req.session.eventsLiveURLS[req.session.currentEventShowing][1].length]
         = req.session.data['new-url'];
+
+
+    // Save 0 numbers for the useaue of the links
+    //  Percentage of page views
+    req.session.eventsLiveURLS[req.session.currentEventShowing][2]
+        [req.session.eventsLiveURLS[req.session.currentEventShowing][2].length]= 0;
+
+    // qunatity of page views
+    req.session.eventsLiveURLS[req.session.currentEventShowing][3]
+        [req.session.eventsLiveURLS[req.session.currentEventShowing][3].length]= 0;
+
+    console.log("  --- THE REG PERCENATGES SHOULD BE BEFORE    " + req.session.eventsLiveURLS[req.session.currentEventShowing][4] +"\n");
+
+    //  Percentage of regs
+    req.session.eventsLiveURLS[req.session.currentEventShowing][4]
+        [req.session.eventsLiveURLS[req.session.currentEventShowing][4].length] = 0;
+
+
+    console.log("  --- THE REG PERCENATGES SHOULD BE   " + req.session.eventsLiveURLS[req.session.currentEventShowing][4] +"\n");
+
+    //  Quanity of regs
+    req.session.eventsLiveURLS[req.session.currentEventShowing][5]
+        [req.session.eventsLiveURLS[req.session.currentEventShowing][5].length]= 0;
 
 
     console.log("the  name added is  " +   req.session.trackingLinksNames[req.session.trackingLinksNames.length-1]);
@@ -3162,13 +3228,36 @@ router.get('/add-tracking-link-go-live', function (req, res)
   else
   {
     // Add the new tracking name to the end of the list of tracking link names
-    req.session.eventsLiveURLS[req.session.eventsLiveURLS.length -1][0][req.session.eventsLiveURLS[req.session.eventsLiveURLS.length -1][0].length] = req.session.data['new-link-name'];
+    req.session.eventsLiveURLS[req.session.currentEventShowing][0][req.session.eventsLiveURLS[req.session.currentEventShowing][0].length] = req.session.data['new-link-name'];
 
 
     // Make and save new URL for this new tracking link name
 
-    req.session.eventsLiveURLS[req.session.eventsLiveURLS.length -1][1][req.session.eventsLiveURLS[req.session.eventsLiveURLS.length -1][1].length]
+    req.session.eventsLiveURLS[req.session.currentEventShowing][1][req.session.eventsLiveURLS[req.session.currentEventShowing][1].length]
         = req.session.data['new-url'];
+
+
+    // Save 0 numbers for the useaue of the links
+    //  Percentage of page views
+    req.session.eventsLiveURLS[req.session.currentEventShowing][2]
+        [req.session.eventsLiveURLS[req.session.currentEventShowing][2].length]= 0;
+
+    // qunatity of page views
+    req.session.eventsLiveURLS[req.session.currentEventShowing][3]
+        [req.session.eventsLiveURLS[req.session.currentEventShowing][3].length]= 0;
+
+    console.log("  --- THE REG PERCENATGES SHOULD BE BEFORE    " + req.session.eventsLiveURLS[req.session.currentEventShowing][4] +"\n");
+
+    //  Percentage of regs
+    req.session.eventsLiveURLS[req.session.currentEventShowing][4]
+        [req.session.eventsLiveURLS[req.session.currentEventShowing][4].length] = 0;
+
+
+    console.log("  --- THE REG PERCENATGES SHOULD BE   " + req.session.eventsLiveURLS[req.session.currentEventShowing][4] +"\n");
+
+    //  Quanity of regs
+    req.session.eventsLiveURLS[req.session.currentEventShowing][5]
+        [req.session.eventsLiveURLS[req.session.currentEventShowing][5].length]= 0;
 
 
     console.log("the  name added is " +   req.session.trackingLinksNames[req.session.trackingLinksNames.length-1]);
@@ -3178,6 +3267,34 @@ router.get('/add-tracking-link-go-live', function (req, res)
     res.redirect('/create-event/go-live');
   }
 })
+
+
+
+
+router.get('/update-main-event-link-go-live', function (req, res)
+{
+  if(req.session.data['new-main-url'] === "")
+  {
+    console.log("the new link name is empty");
+
+    errorEmptyEventUrl = true;
+
+    res.render('/create-event/go-live',
+        {
+          'errorMainLinkEmpty': errorEmptyEventUrl
+        }
+    );
+  }
+  else
+  {
+    // Add the new tracking name to the end of the list of tracking link names
+    req.session.eventsLiveURLS[req.session.currentEventShowing][1][1] = req.session.data['new-main-url'];
+
+    res.redirect('/create-event/go-live');
+  }
+})
+
+
 
 
 
