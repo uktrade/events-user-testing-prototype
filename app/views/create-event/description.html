@@ -371,11 +371,17 @@
 										 {% if agendaNoSelected %} checked="checked" {% endif %} >
 								  <label for="agenda-no">No</label>
 							  </div>
+							  <div class="multiple-choice">
+								  <input id="agenda-later" type="radio" name="radio-agenda" value="yes"
+										 {% if agendaLaterSelected %} checked="checked" {% endif %} >
+								  <label for="agenda-yes">Not yet - I'll add one later</label>
+							  </div>
 							  <div class="multiple-choice" data-target="show-answers">
 								  <input id="agenda-yes" type="radio" name="radio-agenda" value="yes"
 										 {% if agendaSelected %} checked="checked" {% endif %} >
 								  <label for="agenda-yes">Yes</label>
 							  </div>
+
 						  </div>
 
 					  {% if agendaMissingYesNo %}

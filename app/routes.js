@@ -1374,6 +1374,7 @@ router.get('/create-event/description-onwards', function (req, res)
   var agendYesNoMissing = false;
   var agendaShowIs = false;
   var agendaShowNo = false;
+  var agendaShowLater = false;
   var showAgenda3 = false;
   var showAgenda4 = false;
   var showAgenda5 = false;
@@ -1608,6 +1609,7 @@ router.get('/create-event/description-onwards', function (req, res)
           'agendaMissingYesNo': agendYesNoMissing,
           'agendaNoSelected': agendaShowNo,
           'agendaSelected': agendaShowIs,
+          'agendaLaterSelected': agendaShowLater,
 
           'agendaMisssing1': errorMissingAgenda1,
           'agendaShow3':  showAgenda3,
