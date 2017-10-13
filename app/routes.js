@@ -1166,8 +1166,8 @@ router.get('/create-event/title-onwards', function (req, res)
 
   var errorMissingExperience = false;
   var experienceNewSelected = false;
-  var experienceOldSelected = false;
-  var experienceAllSelected = false;
+  var experienceOccasionalSelected = false;
+  var experienceRegularSelected = false;
 
   var errorTargetAudienceTextEmpty = false;
 
@@ -1236,31 +1236,31 @@ router.get('/create-event/title-onwards', function (req, res)
 
 
 
-
-
-
-
   // EXPERIENCE
   req.session.data['audience-experience'] = "";
-  if(req.session.data['radio-audience-experience'] == undefined)
+  if(req.session.data['checkbox-never'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-never'] + "\n";
+    experienceNewSelected = true;
+  }
+
+  if(req.session.data['checkbox-occasional'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-occasional'] + "\n";
+    experienceOccasionalSelected = true;
+  }
+
+  if(req.session.data['checkbox-regular'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-regular'];
+    experienceRegularSelected = true;
+  }
+
+  // Check if no experience levels were selected
+  if(req.session.data['audience-experience'] == "")
   {
     errorMissingExperience = true;
     console.log("there is no experience selected");
-  }
-  else if(req.session.data['radio-audience-experience'] == "Not yet exporting")
-  {
-    req.session.data['audience-experience'] = "Not yet exporting";
-    experienceNewSelected = true;
-  }
-  else if(req.session.data['radio-audience-experience'] == "Regularly exporting")
-  {
-    req.session.data['audience-experience'] = "Experienced exporters";
-    experienceOldSelected = true;
-  }
-  else if(req.session.data['radio-audience-experience'] == "open")
-  {
-    req.session.data['audience-experience'] = "Open to all";
-    experienceAllSelected = true;
   }
 
 
@@ -1336,8 +1336,8 @@ router.get('/create-event/title-onwards', function (req, res)
 
           'experienceEmpty': errorMissingExperience,
           'experienceNew': experienceNewSelected,
-          'experienceOld': experienceOldSelected,
-          'experienceAll': experienceAllSelected,
+          'experienceOld': experienceOccasionalSelected,
+          'experienceAll': experienceRegularSelected,
 
           'emptyTargetAudienceText': errorTargetAudienceTextEmpty
 

@@ -78,6 +78,8 @@
 
 	  <form action="/create-event/description-onwards" method="get" class="form">
 
+		  <p style="margin-bottom:30px" >Use these fields to create event summary content for your webpage.</p>
+
 		  <!--  MARKETS  -->
 		  <div class="form-group {% if errorMissingMarketSelection %} form-group-error {% endif %}" id="markets-section">
 			  <fieldset>
@@ -298,30 +300,6 @@
 			  </div>
 
 
-
-
-			  <!--   errorMissingEventBenefit
-			  <fieldset>
-				  <div class="multiple-choice">
-					  <input id="buyers" name="benefits" type="checkbox" value="Meet with buyers">
-					  <label for="buyers">Meet with buyers</label>
-				  </div>
-				  <div class="multiple-choice">
-					  <input id="expert" name="benefits" type="checkbox" value="Hear from industry experts">
-					  <label for="expert">Hear from industry experts</label>
-				  </div>
-				  <div class="multiple-choice">
-					  <input id="skills" name="benefits" type="checkbox" value="Learn new skills">
-					  <label for="skills">Learn new skills</label>
-				  </div>
-				  <div class="multiple-choice">
-					  <input id="network" name="benefits" type="checkbox" value="Network with other businessses">
-					  <label for="network">Network with other businessses</label>
-				  </div>
-			  </fieldset>
-			  -->
-
-
 			  <div id="benefit-section-4" style="margin-top:0px;" >
 				  {% if errorMissingEventBenefit %}
 					  <span class="error-message">
@@ -329,27 +307,18 @@
 					  </span>
 				  {% endif %}
 
-				  <input type="text" class="form-control {% if errorMissingEventBenefit %} form-control-error {% endif %}" id="benefit-input-0" name="benefit-input-0" value="{{ data['benefit-input-0'] }}" style="width: 50%; display:inline;">
+				  <input type="text" class="form-control {% if errorMissingEventBenefit %} form-control-error {% endif %}"
+						 id="benefit-input-0" name="benefit-input-0" value="{{ data['benefit-input-0'] }}" style="width: 70%; display:inline;">
 			  </div>
 
-			  <!--
-			  <p id="add-benefit-link-5"
-				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px;"
-				 onclick="showbenefit5()">Add a benefit</p>
-				 -->
 
 			  <div id="benefit-section-5" style="margin-top:10px;">
-				  <input type="text" class="form-control" id="benefit-input-1" name="benefit-input-1" value="{{ data['benefit-input-1'] }}" style="width: 50%; display:inline;">
+				  <input type="text" class="form-control" id="benefit-input-1" name="benefit-input-1" value="{{ data['benefit-input-1'] }}" style="width: 70%; display:inline;">
 			  </div>
 
-			  <!--
-			  <p id="add-benefit-link-6"
-				 style="color: #006ea5; text-decoration: underline; cursor: pointer; margin-top:15px; margin-left:0px; display: block;"
-				 onclick="showbenefit6()">Add a benefit</p>
-				 -->
 
 			  <div id="benefit-section-6" style="margin-top:10px;">
-				  <input type="text" class="form-control" id="benefit-input-2" name="benefit-input-2" value="{{ data['benefit-input-2'] }}" style="width: 50%; display:inline;">
+				  <input type="text" class="form-control" id="benefit-input-2" name="benefit-input-2" value="{{ data['benefit-input-2'] }}" style="width: 70%; display:inline;">
 			  </div>
 
 			  <p id="add-benefit-link-7"
@@ -358,7 +327,7 @@
 				 onclick="showbenefit7()">Add a benefit</p>
 
 			  <div id="benefit-section-7"  {% if showBenefitFour == true %} style="margin-top:10px;" {% else %} style="margin-top:10px; display: none" {% endif %}>
-				  <input type="text" class="form-control" id="benefit-input-3" name="benefit-input-3" value="{{ data['benefit-input-3'] }}" style="width: 50%; display:inline;">
+				  <input type="text" class="form-control" id="benefit-input-3" name="benefit-input-3" value="{{ data['benefit-input-3'] }}" style="width: 70%; display:inline;">
 			  </div>
 
 			  <p id="add-benefit-link-8"
@@ -367,7 +336,7 @@
 				 onclick="showbenefit8()">Add a benefit</p>
 
 			  <div id="benefit-section-8"  {% if showBenefitFive == true %}  style="margin-top:10px; margin-bottom:10px;"  {% else %} style="margin-top:10px; margin-bottom:10px;  display: none"  {% endif %}>
-				  <input type="text" class="form-control" id="benefit-input-4" name="benefit-input-4" value="{{ data['benefit-input-4'] }}" style="width: 50%; display:inline;">
+				  <input type="text" class="form-control" id="benefit-input-4" name="benefit-input-4" value="{{ data['benefit-input-4'] }}" style="width: 70%; display:inline;">
 			  </div>
 
 
@@ -450,7 +419,7 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-1" name="agenda-minutes-1" type="number"  value="{{ data['agenda-minutes-1'] }}">
 
-								  <input class="form-control  {% if agendaMisssing1 %} form-control-error {% endif %}" style="width:462px"
+								  <input class="form-control  {% if agendaMisssing1 %} form-control-error {% endif %}" style="width:52%;"
 										 id="agenda-1" name="agenda-1" type="text"  value="{{ data['agenda-1'] }}">
 							  </div>
 							  <!-- Row two -->
@@ -461,7 +430,7 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-2" name="agenda-minutes-2" type="number"  value="{{ data['agenda-minutes-2'] }}">
 
-								  <input class="form-control" style="width:462px"
+								  <input class="form-control" style="width:52%;"
 										 id="agenda-2" name="agenda-2" type="text"  value="{{ data['agenda-2'] }}">
 							  </div>
 
@@ -481,7 +450,7 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-3" name="agenda-minutes-3" type="number"  value="{{ data['agenda-minutes-3'] }}">
 
-								  <input class="form-control " style="width:462px"
+								  <input class="form-control " style="width:52%;"
 										 id="agenda-3" name="agenda-3" type="text"  value="{{ data['agenda-3'] }}">
 							  </div>
 
@@ -501,7 +470,7 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-4" name="agenda-minutes-4" type="number"  value="{{ data['agenda-minutes-4'] }}">
 
-								  <input class="form-control" style="width:462px"
+								  <input class="form-control" style="width:52%;"
 										 id="agenda-4" name="agenda-4" type="text"  value="{{ data['agenda-4'] }}">
 							  </div>
 
@@ -521,7 +490,7 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-5" name="agenda-minutes-5" type="number"  value="{{ data['agenda-minutes-5'] }}">
 
-								  <input class="form-control" style="width:462px"
+								  <input class="form-control" style="width:52%;"
 										 id="agenda-5" name="agenda-5" type="text"  value="{{ data['agenda-5'] }}">
 							  </div>
 
@@ -541,7 +510,7 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-6" name="agenda-minutes-6" type="number"  value="{{ data['agenda-minutes-6'] }}">
 
-								  <input class="form-control" style="width:462px"
+								  <input class="form-control" style="width:52%;"
 										 id="agenda-6" name="agenda-6" type="text"  value="{{ data['agenda-6'] }}">
 							  </div>
 
@@ -564,7 +533,7 @@
 
 
 		  <!--  Detailed event description  -->
-		  <div class="form-group {% if errorMissingEventDescription %} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:0px; width:800px;" id="description-section">
+		  <div class="form-group {% if errorMissingEventDescription %} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:0px; width:87%" id="description-section">
 			  <div>
 				  <label class="form-label-bold" for="event-description" style="float:left; margin-top:4px;">
 					  Further details and background
@@ -576,17 +545,17 @@
 					  {% endif %}
 
 				  </label>
-
+				  <img  src="/public/images/editicons.png" style="width:111px;height:36px; float: right; margin-bottom:5px; margin-right:170px;">
 			  </div>
 
 			  <textarea class="form-control {% if errorMissingEventDescription %} form-control-error {% endif %}" name="event-description" id="event-description" rows="12" style="width: 80%;">{{ data['event-description'] }}</textarea>
-			  <img  src="/public/images/editicons.png" style="width:111px;height:36px; float: right; margin-top:5px; margin-right:160px;">
+
 		  </div>
 
 
 
 
-		  <div class="form-group" style="margin-top:20px">
+		  <div class="form-group" style="margin-top:50px">
 			  <input type="submit" class="button" value="Save and continue">
 			  <p style="margin-top:25px"><a href="/create-event/date">I'll complete this later - I don't have this information yet</a></p>
 		  </div>

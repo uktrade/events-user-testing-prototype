@@ -67,7 +67,7 @@
 
 	  <form action="/create-event/title-onwards" method="get" class="form">
 
-		  <p>These fields will be displayed at the top of your event webpage.</p>
+		  <p>Use these fields to create event summary content for your webpage.</p>
 
 		  <!--
 		  <details role="group" open="">
@@ -322,7 +322,7 @@
 
 
 
-		  <!--  EXORT EXPERINCE    -->
+		  <!--  EXPORT EXPERINCE    -->
 		  <div class="form-group {% if experienceEmpty %} form-group-error {% endif %}" style="margin-top:20px" id="export-experience">
 			  <label class="form-label-bold" >
 				  Is this event aimed at a specific level of export experience?
@@ -334,16 +334,16 @@
 			  </label>
 			  <div class="form-date" style="margin-top:5px">
 				  <div class="multiple-choice" style="margin-bottom:10px">
-					  <input id="radio-inline-audience-1" type="radio" name="radio-audience-experience" value="new" {% if experienceNew %} checked="checked" {% endif %}>
-					  <label for="radio-inline-audience-1">New to export</label>
+					  <input id="checkbox-never" type="checkbox" name="checkbox-never" value="new" {% if experienceNew %} checked="checked" {% endif %}>
+					  <label for="checkbox-never">Not yet exporting</label>
 				  </div>
 				  <div class="multiple-choice" style="margin-bottom:10px">
-					  <input id="radio-inline-audience-2" type="radio" name="radio-audience-experience" value="experienced" {% if experienceOld %} checked="checked" {% endif %}>
-					  <label for="radio-inline-audience-2">Experienced exporters</label>
+					  <input id="checkbox-occasional" type="checkbox" name="checkbox-occasional" value="experienced" {% if experienceOld %} checked="checked" {% endif %}>
+					  <label for="checkbox-occasional">Occasionally exporting</label>
 				  </div>
 				  <div class="multiple-choice" style="margin-bottom:10px">
-					  <input id="radio-inline-audience-3" type="radio" name="radio-audience-experience" value="open" {% if experienceAll %} checked="checked" {% endif %}>
-					  <label for="radio-inline-audience-3">Open to all</label>
+					  <input id="checkbox-regular" type="checkbox" name="checkbox-regular" value="open" {% if experienceAll %} checked="checked" {% endif %}>
+					  <label for="checkbox-regular">Regularly exporting</label>
 				  </div>
 			  </div>
 		  </div>
@@ -355,9 +355,9 @@
 		  <!--  Summary of target audience  -->
 		  <div class="form-group  {% if emptyTargetAudienceText %} form-group-error {% endif %}" style="margin-top:0px; margin-bottom:20px;">
 			  <label class="form-label-bold" for="summary-target-audience" >
-				  Summarise who this event is for, including any eligibility criteria.
+				  Event eligibility criteria
 
-				  <span class="form-hint" style="margin-bottom: 5px; margin-top:3px;">For example, North West-based SMEs looking to do business with South East Asian buyers.</span>
+				  <span class="form-hint" style="margin-bottom: 5px; margin-top:3px;">For example, This event is for North west-based SMEs interested in exporting to Germany.</span>
 
 				  {% if emptyTargetAudienceText %}
 					  <span class="error-message">
