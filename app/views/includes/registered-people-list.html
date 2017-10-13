@@ -8,63 +8,136 @@
 
   <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData1[listItemNumber][2] }} </td>
   <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData1[listItemNumber][3] }}</td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> DIT South West</td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData1[listItemNumber][4] }}</td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;">South West<br>{{ session.registeredPeopleData1[listItemNumber][10] }}</td>
   <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;">
-    {% if session.registeredPeopleData1[listItemNumber][16] == "New to DIT"  %}
-    <span style="font-weight:700;">{{ session.registeredPeopleData1[listItemNumber][16] }}</span>
+    {% if session.registeredPeopleData1[listItemNumber][17] == "New to DIT"  %}
+      <span style="font-weight:700;">{{ session.registeredPeopleData1[listItemNumber][17] }}</span>
     {% else %}
-    {{ session.registeredPeopleData1[listItemNumber][16] }}
+      {{ session.registeredPeopleData1[listItemNumber][17] }}
     {% endif  %}
   </td>
 </tr>
 
 <tr>
 
-  <td colspan="4" style="padding-top:2px;">
+  <td colspan="5" style="padding-top:2px;">
     <div>
       <details>
         <summary><span class="summary">More details</span></summary>
         <div class="panel panel-border-narrow">
-          <p><span style="font-weight:700;">Registration Time</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][1] }}<br>{{ session.registeredPeopleData1[listItemNumber][0] }}
-          </p>
-          <p><span style="font-weight:700;">Job title</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][4] }}
-          </p>
-          <p><span style="font-weight:700;">Phone Number</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][5] }}
-          </p>
-          <p><span style="font-weight:700;">Email address</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][6] }}
-          </p>
-          <p><span style="font-weight:700;">Consent for marketing</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][7] }}
-          </p>
-          <p><span style="font-weight:700;">Address</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][8] }} <br>
-            {{ session.registeredPeopleData1[listItemNumber][9] }} <br>
-            {{ session.registeredPeopleData1[listItemNumber][10] }}
-          </p>
-          <p><span style="font-weight:700;">Sector</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][11] }} <br>
-          </p>
-          <p><span style="font-weight:700;">Website</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][12] }} <br>
-          </p>
-          <p><span style="font-weight:700;">Currently exporting</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][13] }} <br>
-          </p>
-          <p><span style="font-weight:700;">Company turnover</span><br>
-            {{ session.registeredPeopleData1[listItemNumber][14] }} <br>
-          </p>
-          <p>
 
-          </p><span style="font-weight:700;">Food allergies</span><br>
-          {{ session.registeredPeopleData1[listItemNumber][15] }} <br>
+          <p><span style="font-weight:700;">Registration time</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][1] }}<br>{{ session.registeredPeopleData1[listItemNumber][0] }}
+            <br><a href="#">Cancel registration</a>
           </p>
-          <p>
-            {% if cdms %}
-            <a href="#">See full customer record</a>
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:25px;  margin-top:50px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">First name</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][2] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Last name</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][3] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Job title</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][4] }}
+              </p>
+            </div>
+          </div>
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:50px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Phone Number</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][6] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Email address</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][7] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+            </div>
+          </div>
+
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:30px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Company</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][4] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Sector</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][12] }} <br>
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Website</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][13] }} <br>
+              </p>
+            </div>
+          </div>
+
+
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:50px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Currently exporting</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][14] }} <br>
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Company turnover</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][15] }} <br>
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Address</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][9] }} <br>
+                {{ session.registeredPeopleData1[listItemNumber][10] }} <br>
+                {{ session.registeredPeopleData1[listItemNumber][11] }}
+              </p>
+
+            </div>
+          </div>
+
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:50px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">ITA</span><br>
+                Abc Xyz
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">See company's DIT record</span><br>
+                Abc Xyz
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Consent for marketing</span><br>
+                {{ session.registeredPeopleData1[listItemNumber][8] }}
+              </p>
+            </div>
+          </div>
+
+
+          <p><span style="font-weight:700;">Food allergies</span><br>
+            {{ session.registeredPeopleData1[listItemNumber][16] }}
+          </p>
+
+            {% if false %}
+              <a href="#">See full customer record</a>
             {% endif %}
           </p>
         </div>
@@ -80,64 +153,137 @@
 
   <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData2[listItemNumber][2] }} </td>
   <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData2[listItemNumber][3] }}</td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> DIT South West</td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData2[listItemNumber][4] }}</td>
+  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;">South West<br>{{ session.registeredPeopleData2[listItemNumber][10] }}</td>
   <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;">
-    {% if session.registeredPeopleData2[listItemNumber][16] == "New to DIT"  %}
-    <span style="font-weight:700;">{{ session.registeredPeopleData2[listItemNumber][16] }}</span>
+    {% if session.registeredPeopleData2[listItemNumber][17] == "New to DIT"  %}
+    <span style="font-weight:700;">{{ session.registeredPeopleData2[listItemNumber][17] }}</span>
     {% else %}
-    {{ session.registeredPeopleData2[listItemNumber][16] }}
+    {{ session.registeredPeopleData2[listItemNumber][17] }}
     {% endif  %}
   </td>
 </tr>
 
 <tr>
 
-  <td colspan="4" style="padding-top:2px;">
+  <td colspan="5" style="padding-top:2px;">
     <div>
       <details>
         <summary><span class="summary">More details</span></summary>
         <div class="panel panel-border-narrow">
-          <p><span style="font-weight:700;">Registration Time</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][1] }}<br>{{ session.registeredPeopleData2[listItemNumber][0] }}
-          </p>
-          <p><span style="font-weight:700;">Job title</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][4] }}
-          </p>
-          <p><span style="font-weight:700;">Phone Number</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][5] }}
-          </p>
-          <p><span style="font-weight:700;">Email address</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][6] }}
-          </p>
-          <p><span style="font-weight:700;">Consent for marketing</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][7] }}
-          </p>
-          <p><span style="font-weight:700;">Address</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][8] }} <br>
-            {{ session.registeredPeopleData2[listItemNumber][9] }} <br>
-            {{ session.registeredPeopleData2[listItemNumber][10] }}
-          </p>
-          <p><span style="font-weight:700;">Sector</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][11] }} <br>
-          </p>
-          <p><span style="font-weight:700;">Website</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][12] }} <br>
-          </p>
-          <p><span style="font-weight:700;">Currently exporting</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][13] }} <br>
-          </p>
-          <p><span style="font-weight:700;">Company turnover</span><br>
-            {{ session.registeredPeopleData2[listItemNumber][14] }} <br>
-          </p>
-          <p>
 
-          </p><span style="font-weight:700;">Food allergies</span><br>
-          {{ session.registeredPeopleData2[listItemNumber][15] }} <br>
+          <p><span style="font-weight:700;">Registration time</span><br>
+            {{ session.registeredPeopleData2[listItemNumber][1] }}<br>{{ session.registeredPeopleData2[listItemNumber][0] }}
+            <br><a href="#">Cancel registration</a>
           </p>
-          <p>
-            {% if cdms %}
-            <a href="#">See full customer record</a>
-            {% endif %}
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:25px;  margin-top:50px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">First name</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][2] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Last name</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][3] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Job title</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][4] }}
+              </p>
+            </div>
+          </div>
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:50px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Phone Number</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][6] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Email address</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][7] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+            </div>
+          </div>
+
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:30px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Company</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][4] }}
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Sector</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][12] }} <br>
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Website</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][13] }} <br>
+              </p>
+            </div>
+          </div>
+
+
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:50px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Currently exporting</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][14] }} <br>
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Company turnover</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][15] }} <br>
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Address</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][9] }} <br>
+                {{ session.registeredPeopleData2[listItemNumber][10] }} <br>
+                {{ session.registeredPeopleData2[listItemNumber][11] }}
+              </p>
+
+            </div>
+          </div>
+
+
+
+          <div style="display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; margin-bottom:50px;">
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">ITA</span><br>
+                Abc Xyz
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">See company's DIT record</span><br>
+                Abc Xyz
+              </p>
+            </div>
+            <div style=" width: 33%; ">
+              <p><span style="font-weight:700;">Consent for marketing</span><br>
+                {{ session.registeredPeopleData2[listItemNumber][8] }}
+              </p>
+            </div>
+          </div>
+
+
+          <p><span style="font-weight:700;">Food allergies</span><br>
+            {{ session.registeredPeopleData2[listItemNumber][16] }}
+          </p>
+
+          {% if false %}
+          <a href="#">See full customer record</a>
+          {% endif %}
           </p>
         </div>
       </details>
@@ -145,6 +291,7 @@
   </td>
 
 </tr>
+
 {% endif  %}
 
 
@@ -162,10 +309,11 @@
     <table style="width:100%; margin-top:40px;">
       <thead>
         <tr  style="border-bottom: 1px solid #bfc1c3;">
-          <th scope="col" style="width:30%; padding-bottom:10px; padding-top: 0px;">Name</th>
-          <th class="col" style="width:35%; padding-bottom:10px; padding-top: 0px;">Company</th>
-          <th class="col" style="width:20%; padding-bottom:10px; padding-top: 0px;">Region</th>
-          <th scope="col" style="width:25%; padding-bottom:10px; padding-top: 0px;">DIT record</th>
+          <th scope="col" style="width:20%; padding-bottom:10px; padding-top: 0px;">First name</th>
+          <th scope="col" style="width:22%; padding-bottom:10px; padding-top: 0px;">Last name <span style="font-weight:400;">&nbsp;<a href="#">Sort</a></span></th>
+          <th class="col" style="width:30%; padding-bottom:10px; padding-top: 0px;">Company <span style="font-weight:400;">&nbsp;<a href="#">Sort</a></span></th>
+          <th class="col" style="width:16%; padding-bottom:10px; padding-top: 0px;">Region</th>
+          <th scope="col" style="width:12%; padding-bottom:10px; padding-top: 0px;">DIT record</th>
         </tr>
       </thead>
 

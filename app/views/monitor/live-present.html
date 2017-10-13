@@ -83,27 +83,32 @@ GOV.UK prototype kit
                     <div style="width:74%">
 
                       <p style="margin-bottom:5px">Visitors to event page</p>
-                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{session.eventsLiveURLS[session.currentEventShowing][2][0]}}</p>
+                      <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{ session.eventsLiveURLS[session.currentEventShowing][2][0]}}</p>
 
                       <!-- if the link exisits show it and its count -->
                       {% if 1 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
-                          <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
+                          <p class="heading-small" style="margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][1] }}</p>
                           {% include "includes/track-link-progress-one.html" %}
                       {% endif %}
 
-                      {% if 2 < session.eventsLiveURLS[session.currentEventShowing][1].length %}
-                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
+                      {% if 2 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][2] }}</p>
                           {% include "includes/track-link-progress-two.html" %}
                       {% endif %}
 
-                      {% if 3 < session.eventsLiveURLS[session.currentEventShowing][2].length %}
-                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
+                      {% if 3 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][3] }}</p>
                           {% include "includes/track-link-progress-three.html" %}
                       {% endif %}
 
-                      {% if 4 < session.eventsLiveURLS[session.currentEventShowing][3].length %}
-                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
+                      {% if 4 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                          <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][4] }}</p>
                           {% include "includes/track-link-progress-four.html" %}
+                      {% endif %}
+
+                      {% if 5 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                      <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][5] }}</p>
+                      {% include "includes/track-link-progress-five.html" %}
                       {% endif %}
 
                     </div>
@@ -117,23 +122,28 @@ GOV.UK prototype kit
                       <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{ data['attendee-reg-count'] }}</p>
 
                       {% if 1 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
-                          <p class="heading-small" style="margin-bottom:0px;">Email marketing</p>
+                          <p class="heading-small" style="margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][1] }}</p>
                           {% include "includes/track-link-progress-reg-one.html" %}
                       {% endif %}
 
-                      {% if 2 < session.eventsLiveURLS[session.currentEventShowing][1].length %}
-                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Twitter</p>
+                      {% if 2 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][2] }}</p>
                         {% include "includes/track-link-progress-reg-two.html" %}
                       {% endif %}
 
-                      {% if 3 < session.eventsLiveURLS[session.currentEventShowing][2].length %}
-                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Export for Growth</p>
+                      {% if 3 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][3] }}</p>
                         {% include "includes/track-link-progress-reg-three.html" %}
                       {% endif %}
 
-                      {% if 4 < session.eventsLiveURLS[session.currentEventShowing][3].length %}
-                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">Enterprise M3</p>
+                      {% if 4 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][4] }}</p>
                         {% include "includes/track-link-progress-reg-four.html" %}
+                      {% endif %}
+
+                      {% if 5 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
+                        <p class="heading-small"  style="margin-top:35px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][5] }}</p>
+                        {% include "includes/track-link-progress-reg-five.html" %}
                       {% endif %}
 
                       </div>
@@ -141,12 +151,14 @@ GOV.UK prototype kit
 
 
                   <!--  Registrations  -->
+                  <!--
                   <div style="float:right; width:28%;  margin-top:8px;">
                     <div style="margin-left:40px">
                       <p style="margin-bottom:5px">Checked-in attendees</p>
                       <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">0</p>
                     </div>
                   </div>
+                  -->
 
                 </div>
 
@@ -172,12 +184,16 @@ GOV.UK prototype kit
             <div class="tabs-panel" id="reg-people" >
               <div class="tabs-panel-inner">
 
-                <div style="margin-top: 30px; margin-bottom: 30px;">
-                  <input type="submit" class="button-secondary" formaction="#" value="Download this data">
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="margin-top: 30px; margin-bottom: 0px;">
+                      <input type="submit" class="button-secondary" formaction="#" value="Download this data">
+                    </div>
+                    <div style="margin-top: 30px; margin-bottom: 0px; margin-left: auto;">
+                      <p><a href="#">Email registrants</a></p>
+                      <p><a href="#">Register someone</a></p>
+                    </div>
                 </div>
-                <div style="margin-top: 30px; margin-bottom: 30px;">
-                  <input type="submit" class="button-secondary" formaction="#" value="Email all ">
-                </div>
+
 
                 {% include "includes/registered-people-list.html" %}
 
@@ -191,7 +207,20 @@ GOV.UK prototype kit
             <div class="tabs-panel" id="checkin" >
               <div class="tabs-panel-inner">
 
-                <p style="margin-top:50px;"><span class="heading-xlarge">0 / 17</span> checked in</p>
+
+                <div style="display: flex; justify-content: space-between;">
+
+                  <p style="margin-top:50px;"><span class="heading-xlarge">0 / {{ data['attendee-reg-count'] }}</span> checked in</p>
+
+                  <div style="margin-top: 30px; margin-bottom: 0px; margin-left: auto; width:235px;">
+                    <input type="submit" class="button-secondary" formaction="#" value="Download doorlist (PDF)">
+                    <br>
+                    <br>
+                    <input type="submit" class="button-secondary" formaction="#" value="Download badges (PDF)">
+                  </div>
+
+                </div>
+
 
                 {% include "includes/checkin-list.html" %}
 

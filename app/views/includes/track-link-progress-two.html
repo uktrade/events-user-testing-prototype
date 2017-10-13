@@ -3,8 +3,10 @@
 
 <div style="width:100%;" display="flex">
 
-    {% if linkNumberPercntage < 5 %}
+    {% if linkNumberPercntage == 0 %}
         <div style="float:left; width:0%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
+    {% elif linkNumberPercntage < 5 %}
+        <div style="float:left; width:1%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
     {% elif linkNumberPercntage < 10 %}
         <div style="float:left; width:5%; background-color:#006435; height:10px;  margin-top:6px;">&nbsp;</div>
     {% elif linkNumberPercntage < 15 %}
@@ -48,7 +50,11 @@
     {% endif %}
 
 
-    <div style="float:left; width:40px; height:10px;">&nbsp;&nbsp;{{linkQuantity}}</div>
+    {% if linkNumberPercntage == 0 %}
+        <div style="float:left; width:40px; height:10px;">{{linkQuantity}}</div>
+    {% else %}
+        <div style="float:left; width:40px; height:10px;">&nbsp;&nbsp;{{linkQuantity}}</div>
+    {% endif %}
 
 </div>
 

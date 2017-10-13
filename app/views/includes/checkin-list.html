@@ -5,9 +5,9 @@
 
   <td valign="top" style="border: 0px; padding-top: 32px; padding-bottom: 25px; width:55%;">
     {% if session.currentEventShowing == 0 %}
-      <p style="font-weight:700; margin:0;">{{ session.registeredPeopleCheckinNames1[nameNumber] }}</p>
+      <p style="font-weight:700; margin:0;">{{ session.registeredPeopleCheckinNames1[nameNumber][0] }} {{ session.registeredPeopleCheckinNames1[nameNumber][1] }}</p>
     {% elif  session.currentEventShowing == 1  %}
-      <p style="font-weight:700; margin:0;">{{ session.registeredPeopleCheckinNames2[nameNumber] }}</p>
+      <p style="font-weight:700; margin:0;">{{ session.registeredPeopleCheckinNames2[nameNumber][0] }} {{ session.registeredPeopleCheckinNames2[nameNumber][1] }}</p>
     {% endif %}
 
   </td>
@@ -15,16 +15,21 @@
   <td valign="top" style="border: 0px; padding-top: 18px; padding-bottom: 16px;">
 
     <div style="float:right">
-      <input type="submit" class="button" value="Check in"  formaction="#"  onclick="checkin(this)" style="margin-top:px;">
+      <!--<input type="submit" class="button" value="Check in"  formaction="#"  onclick="checkin(this)" style="margin-top:px;"> -->
+
+      <p class="button" onclick="checkin(this)" value="Check in" style="margin-top:0px; margin-bottom:12px;">Check in</p>
+
+
       <div class="js-hidden">
         <p style="margin-top:0px; margin-bottom:0px;">Checked in  <br><a href="#">Undo check-in</a></p>
       </div>
-
     </div>
 
   </td>
 
 </tr>
+
+
 
 
 <script>

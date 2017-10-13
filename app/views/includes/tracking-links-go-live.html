@@ -16,11 +16,11 @@
 
 <table style="width:100%;">
 
-
+  <!--
   {% if 1 < session.eventsLiveURLS[session.currentEventShowing][0].length  %}
     {{ trackingLinks(1) }}
   {% endif %}
-
+-->
 
   {% if 2 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
     {{ trackingLinks(2) }}
@@ -50,29 +50,33 @@
 
   <!-- Add new  tracking link -->
   <tr>
-    <td style="font-weight:700; width:30%; padding-top:25px; padding-bottom:20px;";>
+    <td style="width:30%; font-weight:700; padding-top:12px; padding-bottom:35px;";>
 
-      {% if errorTrackingName %}
-      <p class="error-message">
-        Enter tracking name
-      </p>
-      {% endif %}
+      <label class="form-label" >
+        Marketing channel name
+        {% if errorTrackingName %}
+          <p class="error-message">
+            Enter tracking name
+          </p>
+        {% endif %}
+      </label>
+
 
       <input type="text" class="form-control  {% if errorTrackingName %} form-control-error {% endif %}"
-             id="new-link-name" name="new-link-name" value="" style="width:80%">
+             id="new-link-name" name="new-link-name" value="" style="width:90%;">
     </td>
 
-    <td style="padding-top:16px; padding-bottom:20px;">
+    <td style="width:60%; margin-top:0px; padding-top:20px; padding-bottom:20px; ">
       {% if errorTrackingName %}
-        <div style=" margin-top: 20px; margin-bottom: 0px;">
+        <div style="width:95%;">
       {% else %}
-        <div>
+        <div style="width:95%;">
       {% endif %}
 
+          <textarea type="text" class="form-control" id="new-url" name="new-url" rows="2"
+                    style="width: 100%; display:none; margin-top:0px; margin-bottom:0px;">{{session.eventsLiveURLS[session.currentEventShowing][1][1]}}</textarea>
 
-          <textarea type="text" class="form-control" id="new-url" name="new-url" rows="2" style="width: 90%; display:none; margin-top:11px; margin-bottom:5px;">{{session.eventsLiveURLS[session.currentEventShowing][1][0]}}</textarea>
-
-          <p class="button-secondary" onclick="makeLink()" id="link-generator" style="margin-top:22px">Generate link</p>
+          <p class="button-secondary" onclick="makeLink()" id="link-generator" style="margin-top:0px">Generate link</p>
 
       {% if errorTrackingName %}
         </div>
@@ -82,8 +86,8 @@
 
     </td>
 
-    <td style="padding-top:15px; padding-bottom:15px;" >
-      <input type="submit" class="button" formaction="/add-tracking-link-go-live" value="Save">
+    <td style="width:10%; padding-top:15px; padding-bottom:15px;" >
+      <input style="width:100%; display:none;" id="save-button" type="submit" class="button" formaction="/add-tracking-link-go-live" value="Save">
     </td>
   </tr>
 
@@ -114,12 +118,9 @@
 
     document.getElementById('link-generator').style.display = 'none';
     document.getElementById('new-url').style.display = 'block';
+    document.getElementById('save-button').style.display = 'block';
 
   }
-
-
-
-
 
 </script>
 
