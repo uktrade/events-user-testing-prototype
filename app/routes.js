@@ -370,7 +370,7 @@ router.get('/scenario-1', function (req, res)
     }
     if(1 < rawCountsViews[x].length)
     {
-      eachURLarrayName[1] = "Default event link";
+      eachURLarrayName[1] = req.session.eventsLive[x][0];
       eachURLarray[1] = baseURL;
     }
     if(2 < rawCountsViews[x].length)
@@ -1129,7 +1129,7 @@ router.get('/create-event/organiser-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/title');
+      res.redirect('/create-event/date');
     }
   }
   else
@@ -1577,7 +1577,7 @@ router.get('/create-event/description-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/date');
+      res.redirect('/create-event/images');
     }
   }
   else
@@ -1853,7 +1853,6 @@ router.get('/create-event/date-onwards', function (req, res)
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/venue-onwards', function (req, res)
 {
-
   console.log(req.session.data['full-address-holder']);
 
   var errorOnBuilding = false;
@@ -1862,6 +1861,9 @@ router.get('/create-event/venue-onwards', function (req, res)
 
   req.session.data['full-address-holder'] = "";
 
+
+  req.session.data['full-address-holder'] = req.session.data['venue'];
+
   // If building is empty then throw error;
   if(req.session.data['building'] == "")
   {
@@ -1869,13 +1871,13 @@ router.get('/create-event/venue-onwards', function (req, res)
   }
   else
   {
-    req.session.data['full-address-holder'] = req.session.data['building'];
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['building'];
   }
 
   // Add street to output if the field is not empty
   if(req.session.data['street'] != "")
   {
-    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['street'];
+    req.session.data['full-address-holder'] = req.session.data['street'];
   }
 
 
@@ -1929,7 +1931,7 @@ router.get('/create-event/venue-onwards', function (req, res)
     }
     else
     {
-      res.redirect('/create-event/images');
+      res.redirect('/create-event/title');
     }
 
   }
@@ -3193,6 +3195,8 @@ router.get('/monitor/add-tracking-link', function (req, res)
     res.redirect('/monitor/live-present#track-links');
   }
 })
+
+
 
 
 // STORE NEW MONITOR LINK - FROM GO LIVE ONLY

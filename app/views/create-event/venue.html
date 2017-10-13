@@ -61,9 +61,21 @@
 			  <p style="margin-bottom:25px">Venue details will be displayed on the webpage, along with a link to a map.</p>
 
 
+			  <div class="form-group">
+				  <label class="form-label-bold" for="venue"  style="margin-bottom:5px;  ">Venue</label>
+				  {% if errorBuilding %}
+						  <span class="error-message">
+							  Enter venue name
+						  </span>
+				  {% endif %}
+				  <input class="form-control" id="venue" type="text" name="venue" style="width:75%"  value="{{ data['building'] }}" >
+			  </div>
+
+
+
 			  	<div class="form-group {% if errorBuilding %} form-group-error {% endif %}">
 
-				  <label class="form-label-bold" for="building"  style="margin-bottom:5px;  ">Venue and street</label>
+				  <label class="form-label-bold" for="building"  style="margin-bottom:5px;  ">Street</label>
 				  {% if errorBuilding %}
 					  <span class="error-message">
 						  Enter venue name
@@ -157,7 +169,7 @@
 
 		  <div class="form-group" style="margin-top:40px">
 			  <input type="submit" class="button" value="Save and continue">
-			  <p style="margin-top:25px"><a href="/create-event/images">I'll complete this later - I don't have this information yet</a></p>
+			  <p style="margin-top:25px"><a href="/create-event/title">I'll complete this later - I don't have this information yet</a></p>
 
 			  <p id="enter-new-address" style="display:none">
 
