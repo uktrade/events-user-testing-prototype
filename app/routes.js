@@ -1573,8 +1573,6 @@ router.get('/create-event/description-onwards', function (req, res)
       req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-6'] + ":" + req.session.data['agenda-minutes-6'] + "  " + " " + req.session.data['agenda-6'];
     }
 
-
-
   }
 
 
