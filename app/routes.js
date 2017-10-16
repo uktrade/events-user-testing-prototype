@@ -275,6 +275,7 @@ router.get('/scenario-1', function (req, res)
 
   // Capacity
   req.session.eventsLive[0][8] = 20;
+  req.session.eventsLive[1][8] = 30;
   req.session.eventsLive[2][8] = 14;
   req.session.eventsLive[3][8] = 18;
   req.session.eventsLive[4][8] = 16;
