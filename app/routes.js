@@ -176,6 +176,10 @@ router.use(function (req, res, next)
     req.session.data['days-before-4'] = "4 days before";
   }
 
+  if(req.session.eventsLiveURLS == undefined)
+  {
+    req.session.eventsLiveURLS = [];
+  }
 
 
   next();
@@ -202,6 +206,7 @@ router.get('/homepage-prelude', function (req, res)
 router.get('/scenario-empty', function (req, res)
 {
   req.session.destroy();
+
   res.redirect('/signin');
 })
 
