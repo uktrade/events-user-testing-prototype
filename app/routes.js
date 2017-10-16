@@ -282,7 +282,7 @@ router.get('/scenario-1', function (req, res)
 
   // Registered people count
   req.session.eventsLive[0][20] = 17;
-  req.session.eventsLive[1][20] = 7;
+  req.session.eventsLive[1][20] = 20;
   req.session.eventsLive[2][20] = 4;
   req.session.eventsLive[3][20] = 3;
   req.session.eventsLive[4][20] = 3;
