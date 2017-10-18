@@ -78,14 +78,18 @@
 
 			<!-- EDIT MODE -->
 			<div id="edit-mode" style="display:none; margin-bottom:10px">
-				<textarea type="text" class="form-control" id="new-main-url" name="new-main-url" rows="2"
-						  style="width: 70%;  margin-top:0px; margin-bottom:10px;">{{session.eventsLiveURLS[session.currentEventShowing][1][1]}}</textarea>
+
+				<div style="display:flex">
+					<p style="margin-top:10px;">www.events.great.gov.uk/</p>
+					<input type="text" class="form-control" id="new-main-url" name="new-main-url"
+							  style="width: 70%;  margin-top:0px; margin-bottom:10px;" value="{{session.eventsLiveURLS[session.currentEventShowing][1][1]}}">
 				<input style="width:10%;" id="save-button" type="submit" class="button" formaction="/update-main-event-link-go-live" value="Save">
+
 			</div>
 
 			<!-- VIEW MODE -->
 			<div id="view-mode">
-				<p>{{ session.eventsLiveURLS[session.currentEventShowing][1][1] }}
+				<p>www.events.great.gov.uk/{{ session.eventsLiveURLS[session.currentEventShowing][1][1] }}
 					<br><span style="text-decoration: underline;  color: #0000EE;" onclick="editMainLink()">Change link</span>
 				</p>
 			</div>

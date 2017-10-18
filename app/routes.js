@@ -366,7 +366,7 @@ router.get('/scenario-1', function (req, res)
     baseURL = baseURL.replace(/&/g, "");
 
     // Add on DIT prefix
-    baseURL = "www.events.great.gov.uk/" + baseURL;
+    baseURL = baseURL;
 
 
     var eachURLarrayName = [];
@@ -387,12 +387,12 @@ router.get('/scenario-1', function (req, res)
     if(2 < rawCountsViews[x].length)
     {
       eachURLarrayName[2] = "Email Marketing";
-      eachURLarray[2] = baseURL + "-email-marketing";
+      eachURLarray[2] = "-email-marketing";
     }
     if(3 < rawCountsViews[x].length)
     {
       eachURLarrayName[3] = "Twitter";
-      eachURLarray[3] = baseURL + "-twitter";
+      eachURLarray[3] = "-twitter";
     }
     if(4 < rawCountsViews[x].length)
     {
@@ -1122,7 +1122,7 @@ router.get('/create-event/new', function (req, res)
     req.session.data['answer-'+x] = "";
   }
 
-  res.redirect('/create-event/start-page');
+  res.redirect('/create-event/organiser');
 })
 
 
@@ -2654,7 +2654,7 @@ router.get('/create-event/go-live-now', function (req, res)
   baseURL = baseURL.replace(/&/g, "");
 
   // Add on DIT prefix
-  baseURL = "www.events.great.gov.uk/" + baseURL;
+  baseURL = baseURL;
 
   var eachURLarrayName = [];
   var eachURLarray = [];
@@ -3199,7 +3199,6 @@ router.get('/monitor/add-tracking-link', function (req, res)
 
 
     // Make and save new URL for this new tracking link name
-
     req.session.eventsLiveURLS[req.session.currentEventShowing][1][req.session.eventsLiveURLS[req.session.currentEventShowing][1].length]
         = req.session.data['new-url'];
 
@@ -3263,7 +3262,7 @@ router.get('/add-tracking-link-go-live', function (req, res)
     // Make and save new URL for this new tracking link name
 
     req.session.eventsLiveURLS[req.session.currentEventShowing][1][req.session.eventsLiveURLS[req.session.currentEventShowing][1].length]
-        = req.session.data['new-url'];
+        = req.session.data['new-url'].substring(25);
 
 
     // Save 0 numbers for the useaue of the links
