@@ -58,12 +58,11 @@
 
 	  <form action="/create-event/organiser-onwards" method="get" class="form">
 
-
-
 			  <div id="event-owner-section" class="form-group {% if errorMissingOwner %} form-group-error {% endif %}" style="margin-top:10px;">
 
 				  <label class="form-label-bold" for="organiser-name">
-					  Point of contact (internal use)<br>
+					  Who is the internal point of contact for this event?<br>
+					  <span class="form-hint" style="margin-bottom: 0px;">Not publicly displayed - for staff reference.</span>
 					  {% if errorMissingName %}
 						  <span class="error-message">
 							  Please enter an organiser
@@ -76,13 +75,15 @@
 			  </div>
 
 
-		 	  <p class="panel panel-border-narrow" style="margin-bottom:0px;">The following information will appear on your event webpage and emails.</p>
+		 	  <!-- <p class="panel panel-border-narrow" style="margin-bottom:0px;">The following information will appear on your event webpage and emails.</p> -->
 
 			  <div id="organiser-name-section" class="form-group {% if errorMissingName %} form-group-error {% endif %}" style="margin-top:10px;">
 
 				  <label class="form-label-bold" for="organiser-name">
-					  Event organiser <br>
-						  <span style="font-weight:400">Department for International Trade</span>
+					  Event organiser contact details<br>
+					  <span class="form-hint" style="margin-bottom: 0px;">Public facing - to be displayed on your webpage.</span>
+
+						  <span style="font-weight:400"></span>
 					  {% if errorMissingName %}
 						  <span class="error-message">
 							  Please enter an organiser
@@ -91,12 +92,42 @@
 				  </label>
 
 				  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-						 id="organiser-name" name="organiser-name" value="{{ data['organiser-name'] }}" style="width: 60%">
+						 id="organiser-name" name="organiser-name" value="Department for International Trade {{ data['organiser-name'] }}" style="width: 80%">
 			  </div>
 
 
 
-			  <div id="contact-email-section" class="form-group {% if errorInvalidEmail %} form-group-error {% endif %}" style="">
+
+
+		  <!--  EXPORT EXPERINCE    -->
+		  <div class="form-group {% if experienceEmpty %} form-group-error {% endif %}" style="margin-top:20px" id="export-experience">
+			  <label class="form-label-bold" >
+				  Ways of being contacted
+				  <span class="form-hint" style="margin-bottom: 0px;">Public facing - to be displayed on your webpage.</span>
+				  {% if experienceEmpty %}
+					  <span class="error-message">
+						  Indicate the level of export experience this event is relevant to.
+					  </span>
+				  {% endif %}
+			  </label>
+			  <div class="form-date" style="margin-top:5px">
+				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-email-section">
+					  <input id="checkbox-contact-email" type="checkbox" name="checkbox-contact-email" value="email" {% if experienceOld %} checked="checked" {% endif %}>
+					  <label for="checkbox-contact-email">Email</label>
+				  </div>
+				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-phone-section">
+					  <input id="checkbox-contact-phone" type="checkbox" name="checkbox-contact-phone" value="phone" {% if experienceAll %} checked="checked" {% endif %}>
+					  <label for="checkbox-contact-phone">Phone</label>
+				  </div>
+			  </div>
+		  </div>
+
+
+
+
+
+
+			  <div id="contact-email-section" class=" js-hidden form-group {% if errorInvalidEmail %} form-group-error {% endif %}" style="">
 
 					  <label class="form-label-bold" for="contact-email">
 						  Email address
@@ -113,7 +144,7 @@
 
 
 
-			  <div id="contact-phone-section" class="form-group {% if errorInvalidPhone %} form-group-error {% endif %}" style=" margin-bottom:35px">
+			  <div id="contact-phone-section" class=" js-hidden form-group {% if errorInvalidPhone %} form-group-error {% endif %}" style=" margin-bottom:35px">
 
 					  <label class="form-label-bold" for="contact-phone">
 						  Phone number
@@ -127,10 +158,6 @@
 					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
 							 id="contact-phone" name="contact-phone" value="{{ data['contact-phone'] }}" style="width: 25%">
 			  </div>
-
-
-
-
 
 
 

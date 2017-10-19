@@ -1663,12 +1663,17 @@ router.get('/create-event/date-onwards', function (req, res)
   var errorMonthFound = false;
   var errorYearFound = false;
   var dateInThePast = false;
+  var errorMissingDate = false;
 
   var errorStartHour = false;
   var errorStartMinutes = false;
+  var errorMissingStartTime = false;
 
   var errorFinishHour = false;
   var errorFinishMinutes = false;
+  var errorMissingFinishTime = false;
+
+  var errorFinishTimeBeforeStartTime = false;
 
 
   // DAY

@@ -37,18 +37,20 @@
 			<ul class="error-summary-list">
 
 				{% if errorDateInThePast %}
-					<li><a href="#date-area">Event date</a></li>
+					<li><a href="#date-area">Event date: missing information</a></li>
 				{% endif %}
 
-				{% if errorDayFound %}
+				{% if errorDateInThePast %}
+					<li><a href="#date-area">Event date: past date entered</a></li>
+				{% endif %}
+
+				{% if errorDayFound or errorMonthFound or errorYearFound%}
 					<li><a href="#date-area">Event date: day</a></li>
 				{% endif %}
-				{% if errorMonthFound %}
-					<li><a href="#date-area">Event date: month</a></li>
-				{% endif %}
-				{% if errorYearFound %}
-					<li><a href="#date-area">Event date: year</a></li>
-				{% endif %}
+
+				-->
+
+
 
 				{% if errorOnStartHour %}
 					<li><a href="#start-time-area">Start time: hour</a></li>
@@ -166,7 +168,7 @@
 			  </label>
 
 			  <div class="form-date">
-				  <p class="form-hint" style="margin-bottom: 0px;">For example, 14 00</p>
+				  <p class="form-hint" style="margin-bottom: 0px;">24-hour format. For example, 14 00</p>
 				  <div class="form-group form-group-day">
 					  <label for="start-hours">Hours</label>
 					  <input class="form-control  {% if errorOnStartHour %} form-control-error {% endif %}"

@@ -35,24 +35,28 @@
 
 			<ul class="error-summary-list">
 				{% if errorMissingTitle %}
-					<li><a href="#title-section">Missing title</a></li>
+					<li><a href="#title-section">Title: missing</a></li>
 				{% endif %}
+
 				{% if errorMissingSector %}
-					<li><a href="#sector-area">Missing sector answer</a></li>
+					<li><a href="#sector-area">Sector relevance: missing</a></li>
 				{% endif %}
+
 				{% if errorMissingSectorBox %}
-					<li><a href="#sector-section">Missing sector</a></li>
+					<li><a href="#sector-section">Sector relevance: no sectors selected</a></li>
 				{% endif %}
+
 				{% if experienceEmpty %}
-					<li><a href="#export-experience">Missing export experience</a></li>
+					<li><a href="#export-experience">Export experience level: missing</a></li>
 				{% endif %}
 
 				{% if emptyTargetAudienceText %}
-					<li><a href="#export-experience">Missing target audience summary</a></li>
+					<li><a href="#export-experience">Eligibility criteria: missing</a></li>
 				{% endif %}
 
-
-
+				{% if emptyTargetAudienceText %}
+					<li><a href="#export-experience">Eligibility criteria: missing</a></li>
+				{% endif %}
 			</ul>
 
 		</div>
@@ -92,7 +96,7 @@
 				  Event title
 				  {% if errorMissingTitle %}
 					  <span class="error-message">
-						  Enter a clear and descriptive title for your event
+						  Please enter a clear and descriptive title for your event
 					  </span>
 				  {% endif %}
 				  </label>
@@ -108,15 +112,24 @@
 
 
 
-		  <div id="summary-section" class="form-group" style="margin-top:10px; margin-bottom:35px;  width:750px;">
+
+		  <!-- SUMMARY  -->
+		  <div id="summary-section" class="form-group" style="margin-top:10px; margin-bottom:35px;  width:800px;">
 
 			  <label class="form-label-bold" for="event-title">
 				  Event summary (optional)
 				  <span class="form-hint" style="margin-bottom: 5px; margin-top:3px;">For example: An afternoon of educational talks designed to help small businesses export.</span>
+				  {% if errorSummaryExceeded %}
+					  <span class="error-message">
+						  Please revise summary length. Maximum limit is 140 characters.
+					  </span>
+				  {% endif %}
 			  </label>
 
-			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-					 id="summary-title" name="summary-title" value="{{ data['summary-title'] }}" style="width: 90%">
+				  <textarea class="form-control" name="summary-title" id="summary-title" rows="2" style="width:570px;%;">{{ data['summary-title'] }}</textarea>
+
+			  <p id="char-counter" style="margin-left:0px; font-size:16px; margin-top:5px;  color: #6f777b; ">Characters remaining: 140</p>
+
 
 		  </div>
 
@@ -131,7 +144,7 @@
 
 				  {% if errorMissingSector %}
 					  <span class="error-message">
-						  Select no or yes
+						  Please select a response
 					  </span>
 				  {% endif %}
 			  </label>
@@ -159,9 +172,9 @@
 				<label class="form-label-bold" >
 					Sectors
 					{% if errorMissingSectorBox %}
-				  <span class="error-message">
-					  If this event is sector-specific, select at least one sector.
-				  </span>
+					  <span class="error-message">
+						  If this event is sector-specific, select at least one option. If the event is applicable to all sectors, select 'No, this is relevant to all sectors'.
+					  </span>
 					{% endif %}
 				</label>
 
@@ -342,7 +355,7 @@
 				  Is this event aimed at a specific level of export experience?
 				  {% if experienceEmpty %}
 					  <span class="error-message">
-						  Indicate the level of export experience this event is relevant to.
+						  Please select a response. If the event applies to all levels of experience, select all three.
 					  </span>
 				  {% endif %}
 			  </label>
@@ -396,6 +409,26 @@
     </div>
   </div>
 </main>
+
+{% endblock %}
+
+
+
+{% block page_scripts %}
+<script>
+
+	var text_max = 140;
+	$('#char-counter').html('Characters remaining: ' + text_max);
+
+	$('#summary-title').keyup(function() {
+		var text_length = $('#summary-title').val().length;
+		var text_remaining = text_max - text_length;
+
+		$('#char-counter').html('Characters remaining: ' + text_remaining);
+	});
+
+
+</script>
 
 {% endblock %}
 
