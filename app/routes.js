@@ -1136,16 +1136,53 @@ router.get('/create-event/', function (req, res)
 
 router.get('/create-event/organiser-onwards', function (req, res)
 {
-  var errorMissingNameFound = false;
-  var errorInvalidEmailFound = false;
-  var errorInvalidPhoneFound = false;
-  var errorInvalidOrganiser = false;
+  var errorMissingOrganiser = false;
+  var errorMissingEmail = false;
+  var errorInvalidEmail = false;
+  var errorMissingPhone = false;
+  var errorInvalidPhone = false;
+  var errorMissingInternalContact = false;
 
 
   // EVENT TITLE
-  if(req.session.data['event-title'] === "")
+  if(req.session.data['organiser-name'] != undefined)
   {
-    errorMissingName = true;
+    if(req.session.data['organiser-name'] == "")
+    {
+      errorMissingOrganiser = true;
+    }
+  }
+
+  if(req.session.data['contact-email'] != undefined)
+  {
+    if(req.session.data['contact-email'] == "")
+    {
+      errorMissingEmail = true;
+    }
+    else // Check if the email has valid characters
+    {
+
+    }
+  }
+
+  if(req.session.data['contact-phone'] != undefined)
+  {
+    if(req.session.data['contact-phone'] == "")
+    {
+      errorMissingPhone = true;
+    }
+    else // Check if the phone number is invald
+    {
+
+    }
+  }
+
+  if(req.session.data['owner-name'] != undefined)
+  {
+    if(req.session.data['owner-name'] == "")
+    {
+      errorMissingInternalContact = true;
+    }
   }
 
 
@@ -1165,14 +1202,18 @@ router.get('/create-event/organiser-onwards', function (req, res)
   {
     res.render('create-event/organiser',
         {
-          'errorsExist': true,
-          'errorMissingName': errorMissingNameFound,
-          'errorInvalidEmail': errorInvalidEmailFound,
-          'errorInvalidPhone': errorInvalidPhoneFound
+          '': errorMissingOrganiser,
+          '': errorMissingEmail,
+          '': errorInvalidEmail,
+          '': errorMissingPhone,
+          '': errorInvalidPhone,
+          '': errorMissingInternalContact
         }
     );
   }
 })
+
+
 
 
 // DESCRIPTION PAGE ONWARDS BUTTON
