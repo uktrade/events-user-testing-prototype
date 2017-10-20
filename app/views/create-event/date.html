@@ -36,35 +36,37 @@
 
 			<ul class="error-summary-list">
 
-				{% if errorDateInThePast %}
+				<!--  DATE ERRORS  -->
+				{% if errorDateMissing and errorDateInvalid %}
+					<li><a href="#date-area">Event date: missing and invalid entries</a></li>
+				{% elif errorDateMissing %}
 					<li><a href="#date-area">Event date: missing information</a></li>
-				{% endif %}
-
-				{% if errorDateInThePast %}
+				{% elif errorDateInvalid %}
+					<li><a href="#date-area">Event date: invalid entry</a></li>
+				{% elif errorDateInPast %}
 					<li><a href="#date-area">Event date: past date entered</a></li>
 				{% endif %}
 
-				{% if errorDayFound or errorMonthFound or errorYearFound%}
-					<li><a href="#date-area">Event date: day</a></li>
+				<!--  START TIME -->
+				{% if errorStartTimeMissing and errorStartTimeInvalid %}
+					<li><a href="#start-time-area">Start time: missing and invalid entries</a></li>
+				{% elif errorStartTimeMissing %}
+					<li><a href="#start-time-area">Start time: hour missing</a></li>
+				{% elif errorStartTimeInvalid %}
+					<li><a href="#start-time-area">Start time: invalid entry</a></li>
 				{% endif %}
 
-				-->
-
-
-
-				{% if errorOnStartHour %}
-					<li><a href="#start-time-area">Start time: hour</a></li>
+				<!--  END TIME -->
+				{% if errorFinishTimeMissing and errorFinishTimeInvalid %}
+					<li><a href="#finish-time-area">Finish  time: missing and invalid entries</a></li>
+				{% elif errorFinishTimeMissing %}
+					<li><a href="#finish-time-area">Finish  time: hour missing</a></li>
+				{% elif errorFinishTimeInvalid %}
+					<li><a href="#finish-time-area">Finish  time: invalid entry</a></li>
+				{% elif errorStartTimeAfterFinishTime %}
+					<li><a href="#start-time-area">Event times: start time is later than finish time</a></li>
 				{% endif %}
-				{% if errorOnStartMinutes %}
-					<li><a href="#start-time-area">Start time: minutes</a></li>
-				{% endif %}
 
-				{% if errorOnFinishHour %}
-					<li><a href="#finish-time-area">Finish time: hour</a></li>
-				{% endif %}
-				{% if errorOnFinishMinutes %}
-					<li><a href="#finish-time-area">Finish time: minutes</a></li>
-				{% endif %}
 			</ul>
 
 		</div>
@@ -78,35 +80,32 @@
 
 	  <form action="/create-event/date-onwards" method="get" class="form">
 
-		  <fieldset id="date-area" class="form-group">
+		  <fieldset id="date-area"
+					class="form-group {% if errorDateMissing or  errorDateInvalid or errorDateInPast %} form-group-error {% endif %}">
 
-			  {% if errorOnDate or errorDateInThePast %}
-			  	<div class="form-group  form-group-error">
-			  {% endif %}
 
 				  <label class="form-label-bold">
 					  Event date
 
-					  {% if errorDayFound %}
+					  {% if errorDateMissing and errorDateInvalid %}
 						  <span class="error-message">
-							  Please enter a valid future date (from 2017 onwards)
+							Please enter a full date and check that values are valid. For example, months of the year run from 1 to 12.
 						  </span>
-
-					  {% elif errorMonthFound %}
-						  <span class="error-message">
-							  Please enter a valid future date (from 2017 onwards)
+					  {% elif errorDateMissing %}
+					  	  <span class="error-message">
+							Please enter a full date.
 						  </span>
-
-					  {% elif errorYearFound %}
+					  {% elif errorDateInvalid %}
 						  <span class="error-message">
-							  Please enter a valid future date (from 2017 onwards)
+							Check date values are valid. For example, months of the year run from 1 to 12.
 						  </span>
-
-					  {% elif errorDateInThePast %}
-						  <span class="error-message">
-							  Please enter a valid future date (from 2017 onwards)
+					  {% elif errorDateInPast %}
+					      <span class="error-message">
+							Event date cannot be in the past. Please enter a future date.
 						  </span>
 					  {% endif %}
+
+
 				  </label>
 
 				  <div class="form-date">
@@ -114,28 +113,23 @@
 					  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
 					  <div class="form-group form-group-day">
 						  <label for="event-day">Day</label>
-						  <input class="form-control  {% if errorDayFound %} form-control-error {% endif %}"
+						  <input class="form-control  {% if errorMissingDay or errorInvalidDay %} form-control-error {% endif %}"
 								 id="event-day" name="event-day" type="number" pattern="[0-9]*" value="{{ data['event-day'] }}">
 					  </div>
 
 					  <div class="form-group form-group-month">
 						  <label for="event-month">Month</label>
-						  <input class="form-control  {% if errorMonthFound %} form-control-error {% endif %}"
+						  <input class="form-control  {% if errorMissingMonth or errorInvalidMonth %} form-control-error {% endif %}"
 								 id="event-month" name="event-month" type="number"  value="{{ data['event-month'] }}">
 					  </div>
 
 					  <div class="form-group form-group-year">
 						  <label for="event-year">Year</label>
-						  <input class="form-control   {% if errorYearFound %} form-control-error {% endif %}"
+						  <input class="form-control   {% if errorMissingYear or errorInvalidYear %} form-control-error {% endif %}"
 						  		 id="event-year" name="event-year" type="number"  value="{{ data['event-year'] }}">
 					  </div>
 
 				  </div>
-
-			  {% if errorOnDate %}
-			  </div>
-			  {% endif %}
-
 
 		  </fieldset>
 
@@ -144,25 +138,29 @@
 
 
 		  <!--   START TIME  --->
-		  <fieldset id="start-time-area" class="form-group">
+		  <fieldset id="start-time-area"
+					class="form-group {% if errorStartTimeMissing or  errorStartTimeInvalid or errorStartTimeAfterFinishTime %} form-group-error {% endif %}">
 
-			{% if errorOnStartTime %}
-			  <div class="form-group form-group-error">
-			{% endif %}
 
 			  <label class="form-label-bold">
 				  Start time
 
-				  {% if errorOnStartHour %}
-					  <span class="error-message">
-						  Please enter a valid hour (0 to 23)
-					  </span>
-				  {% endif %}
-
-				  {% if errorOnStartMinutes %}
-					  <span class="error-message">
-						  Please enter a valid minute (0 to 59)
-					  </span>
+				  {% if errorStartTimeMissing and errorStartTimeInvalid %}
+				  	<span class="error-message">
+						  Hour missing and invalid values entered. Please enter a valid start time
+					</span>
+				  {% elif errorStartTimeMissing %}
+				  	<span class="error-message">
+						Please enter a valid hour for the start time.
+					</span>
+				  {% elif errorStartTimeInvalid %}
+				  	<span class="error-message">
+					  Check time values. Valid hours run from 00 to 23 and minutes from 00 to 59.
+					</span>
+				  {% elif errorStartTimeAfterFinishTime %}
+				    <span class="error-message">
+					    Start time is later than finish time
+					</span>
 				  {% endif %}
 
 			  </label>
@@ -171,31 +169,16 @@
 				  <p class="form-hint" style="margin-bottom: 0px;">24-hour format. For example, 14 00</p>
 				  <div class="form-group form-group-day">
 					  <label for="start-hours">Hours</label>
-					  <input class="form-control  {% if errorOnStartHour %} form-control-error {% endif %}"
+					  <input class="form-control  {% if errorMissingStartHour or errorInvalidStartHour %} form-control-error {% endif %}"
 							 id="start-hours" name="start-hours" type="tel" pattern="[0-9]*" value="{{ data['start-hours'] }}">
 				  </div>
 				  <div class="form-group form-group-month">
 					  <label for="start-minutes">Minutes</label>
-					  <input class="form-control  {% if errorOnStartMinutes %} form-control-error {% endif %}"
+					  <input class="form-control  {% if errorInvalidStartMins %} form-control-error {% endif %}"
 							 id="start-minutes" name="start-minutes" type="tel" pattern="[0-9]*" value="{{ data['start-minutes'] }}" >
 				  </div>
 
-				  <!--
-				  <div class="form-group form-group-month multiple-choice" style="margin-left:25px; margin-top:28px">
-					  <input id="radio-inline-1" type="radio" name="radio-inline-group" value="AM">
-					  <label for="radio-inline-1">AM</label>
-				  </div>
-				  <div class="form-group form-group-month multiple-choice" style="margin-left:25px; margin-top:28px">
-					  <input id="radio-inline-2" type="radio" name="radio-inline-group" value="PM">
-					  <label for="radio-inline-2">PM</label>
-				  </div>
-				  -->
-
 			  </div>
-
-			{% if errorOnStartTime %}
-			  </div>
-			{% endif %}
 
 		  </fieldset>
 
@@ -203,7 +186,8 @@
 
 
 		  <!--   FINISH TIME  --->
-		  <fieldset  id="finish-time-area" class="form-group">
+		  <fieldset  id="finish-time-area"
+					 class="form-group {% if errorFinishTimeMissing or  errorFinishTimeInvalid or errorStartTimeAfterFinishTime %} form-group-error {% endif %}">
 
 			{% if errorOnFinishTime %}
 			  <div class="form-group  form-group-error">
@@ -212,16 +196,23 @@
 			  <label class="form-label-bold">
 				  Finish time
 
-				  {% if errorOnFinishHour %}
-					  <span class="error-message">
-						  Please enter a valid hour (0 to 23)
-					  </span>
-				  {% endif %}
-
-				  {% if errorOnFinishMinutes %}
-					  <span class="error-message">
-						  Please enter a valid minute (0 to 59)
-					  </span>
+				  <!--  END TIME -->
+				  {% if errorFinishTimeMissing and errorFinishTimeInvalid %}
+				  	<span class="error-message">
+					    Hour missing and invalid time values entered. Please enter a valid finish time.
+					</span>
+				  {% elif errorFinishTimeMissing %}
+				    <span class="error-message">
+					    Please enter a valid hour for the finish time.
+					</span>
+				  {% elif errorFinishTimeInvalid %}
+				    <span class="error-message">
+					    Check time values. Valid hours range from 00 to 23 and minutes from 00 to 59.
+					</span>
+				  {% elif errorStartTimeAfterFinishTime %}
+				    <span class="error-message">
+					    Finish time is earlier than start time
+					</span>
 				  {% endif %}
 
 			  </label>
@@ -230,11 +221,11 @@
 				  <!-- <p class="form-hint">For example, 9 30</p>  -->
 				  <div class="form-group form-group-day">
 					  <label for="finish-hours">Hours</label>
-					  <input class="form-control  {% if errorOnFinishHour %} form-control-error {% endif %}" id="finish-hours" name="finish-hours" type="number" pattern="[0-9]*"  value="{{ data['finish-hours'] }}">
+					  <input class="form-control  {% if errorMissingFinishHour or errorInvalidFinishHour  %} form-control-error {% endif %}" id="finish-hours" name="finish-hours" type="number" pattern="[0-9]*"  value="{{ data['finish-hours'] }}">
 				  </div>
 				  <div class="form-group form-group-month">
 					  <label for="finish-minutes">Minutes</label>
-					  <input class="form-control  {% if errorOnFinishMinutes %} form-control-error {% endif %}" id="finish-minutes" name="finish-minutes" type="number" pattern="[0-9]*" value="{{ data['finish-minutes'] }}" >
+					  <input class="form-control  {% if errorInvalidFinishMins %} form-control-error {% endif %}" id="finish-minutes" name="finish-minutes" type="number" pattern="[0-9]*" value="{{ data['finish-minutes'] }}" >
 				  </div>
 
 			  </div>
