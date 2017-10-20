@@ -1731,7 +1731,7 @@ router.get('/create-event/date-onwards', function (req, res)
       errorMissingDate = true;
       //console.log("*************MISSING MONTH**************");
     }
-    if(1 <= req.session.data['event-month'] && req.session.data['event-month'] <= 12)
+    else if(1 <= req.session.data['event-month'] && req.session.data['event-month'] <= 12)
     {
       req.session.data['event-month-name'] =  monthNames[req.session.data['event-month']-1];
     }
@@ -1921,6 +1921,14 @@ router.get('/create-event/date-onwards', function (req, res)
       }
     }
   }
+
+
+  console.log("errorDayMissing " + errorDayMissing );
+  console.log("errorDayInvalid " + errorDayInvalid);
+  console.log("errorMonthMissing " + errorMonthMissing);
+  console.log("errorMonthInvalid " + errorMonthInvalid);
+  console.log("errorYearMissing " + errorYearMissing);
+  console.log("errorYearInvalid " + errorYearInvalid);
 
 
   // no errors
