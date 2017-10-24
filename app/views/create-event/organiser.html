@@ -95,14 +95,15 @@
 					  </span>
 				  {% endif %}
 			  </label>
+
 			  <div class="form-date" style="margin-top:5px">
 				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-email-section">
 					  <input id="checkbox-contact-email" type="checkbox" name="checkbox-contact-email" value="email" {% if experienceOld %} checked="checked" {% endif %}>
-					  <label for="checkbox-contact-email">Email</label>
+					  <label for="checkbox-contact-email">Email address</label>
 				  </div>
 				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-phone-section">
 					  <input id="checkbox-contact-phone" type="checkbox" name="checkbox-contact-phone" value="phone" {% if experienceAll %} checked="checked" {% endif %}>
-					  <label for="checkbox-contact-phone">Phone</label>
+					  <label for="checkbox-contact-phone">Phone number</label>
 				  </div>
 			  </div>
 		  </div>
@@ -148,7 +149,7 @@
 		  <div id="event-owner-section" class="form-group {% if errorMissingOwner %} form-group-error {% endif %}" style="margin-top:10px;">
 
 			  <label class="form-label-bold" for="organiser-name">
-				  Internal contact for this event<br>
+				  Who is the internal point of contact for this event?<br>
 				  <span class="form-hint" style="margin-bottom: 0px;">Not publicly displayed - for staff reference.</span>
 				  {% if errorMissingName %}
 						  <span class="error-message">
