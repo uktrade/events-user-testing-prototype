@@ -142,7 +142,7 @@ router.use(function (req, res, next)
 
   if(req.session.data['organiser-name'] == undefined)
   {
-    req.session.data['organiser-name'] = "South West ";
+    req.session.data['organiser-name'] = "Department for International Trade South West ";
   }
 
   if(req.session.data['sold-out-message'] == undefined)
@@ -181,10 +181,10 @@ router.use(function (req, res, next)
     req.session.eventsLiveURLS = [];
   }
 
-
   next();
 
 });
+
 
 
 // SIGNING PAGE
@@ -206,6 +206,8 @@ router.get('/homepage-prelude', function (req, res)
 router.get('/scenario-empty', function (req, res)
 {
   req.session.destroy();
+
+  //req.session.data['organiser-name'] = "Department for International Trade South West";
 
   res.redirect('/signin');
 })
@@ -1137,10 +1139,15 @@ router.get('/create-event/', function (req, res)
 router.get('/create-event/organiser-onwards', function (req, res)
 {
   var errorMissingOrganiser = false;
+
+  var errorCheckboxEmailSelected = false;
   var errorMissingEmail = false;
   var errorInvalidEmail = false;
+
+  var errorCheckboxPhoneSelected = false;
   var errorMissingPhone = false;
   var errorInvalidPhone = false;
+
   var errorMissingInternalContact = false;
 
 
@@ -1155,25 +1162,45 @@ router.get('/create-event/organiser-onwards', function (req, res)
 
   if(req.session.data['contact-email'] != undefined)
   {
-    if(req.session.data['contact-email'] == "")
+    // Check if the email checkbos is selected
+    if(req.session.data['checkbox-contact-email'] != undefined )
     {
-      errorMissingEmail = true;
-    }
-    else // Check if the email has valid characters
-    {
+      errorCheckboxEmailSelected = true;
 
+      // Check if the emil is empty
+      if(req.session.data['contact-email'] == "")
+      {
+        errorMissingEmail = true;
+      }
+      else // Check if the email has valid characters
+      {
+        if( (req.session.data['contact-email'].indexOf("@") == -1)  ||  (req.session.data['contact-email'].indexOf(".") == -1)  )
+        {
+          errorInvalidEmail = true;
+        }
+      }
     }
   }
 
   if(req.session.data['contact-phone'] != undefined)
   {
-    if(req.session.data['contact-phone'] == "")
+    // Check if the email checkbos is selected
+    if(req.session.data['checkbox-contact-phone'] != undefined )
     {
-      errorMissingPhone = true;
-    }
-    else // Check if the phone number is invald
-    {
+      errorCheckboxPhoneSelected = true;
 
+      // Check if phone field is empty
+      if (req.session.data['contact-phone'] == "") {
+        errorMissingPhone = true;
+      }
+      else // Check if the phone number is invalid
+      {
+        var tempString = req.session.data['contact-phone'].replace(/\s/g, '');
+        if ( isNaN(tempString) == true )
+        {
+          errorInvalidPhone = true;
+        }
+      }
     }
   }
 
@@ -1187,7 +1214,7 @@ router.get('/create-event/organiser-onwards', function (req, res)
 
 
   // ERRORS OR PROCEED
-  if((errorMissingNameFound || errorInvalidEmailFound || errorInvalidPhoneFound) == false)
+  if( (errorMissingOrganiser || errorMissingEmail || errorInvalidEmail  || errorMissingPhone || errorInvalidPhone || errorMissingInternalContact) == false)
   {
     if(req.session.changingFromSummary == true)
     {
@@ -1202,12 +1229,18 @@ router.get('/create-event/organiser-onwards', function (req, res)
   {
     res.render('create-event/organiser',
         {
-          '': errorMissingOrganiser,
-          '': errorMissingEmail,
-          '': errorInvalidEmail,
-          '': errorMissingPhone,
-          '': errorInvalidPhone,
-          '': errorMissingInternalContact
+          'errorsExist': true,
+          'errorOrganiserMissing': errorMissingOrganiser,
+
+          'errorEmailSelected': errorCheckboxEmailSelected,
+          'errorEmailMissing': errorMissingEmail,
+          'errorInvalidEmail': errorInvalidEmail,
+
+          'errorPhoneSelected': errorCheckboxPhoneSelected,
+          'errorPhoneMissing': errorMissingPhone,
+          'errorPhoneInvalid': errorInvalidPhone,
+
+          'errorInternalContactMissing': errorMissingInternalContact
         }
     );
   }

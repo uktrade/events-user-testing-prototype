@@ -23,29 +23,39 @@
 
 		<!-- CONDITIONAL ERROR  -->
 		{% if errorsExist %}
-		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+			<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
-			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Missing fields
-			</h2>
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					Missing fields
+				</h2>
 
-			<p>
-				Please check the following errors and try again.
-			</p>
+				<p>
+					Please check the following errors and try again.
+				</p>
 
-			<ul class="error-summary-list">
-				{% if errorMissingName %}
-					<li><a href="#title-section">Missing title</a></li>
-				{% endif %}
-				{% if errorInvalidEmail %}
-					<li><a href="#sector-area">Invalid email address</a></li>
-				{% endif %}
-				{% if errorInvalidPhone %}
-					<li><a href="#sector-area">Invalid sector</a></li>
-				{% endif %}
-			</ul>
+				<ul class="error-summary-list">
+					{% if errorOrganiserMissing %}
+						<li><a href="#organiser-name-area">Organiser name: missing</a></li>
+					{% endif %}
+					{% if errorEmailMissing %}
+						<li><a href="#contact-email-area">Organiser email contact: missing</a></li>
+					{% endif %}
+					{% if errorInvalidEmail %}
+						<li><a href="#contact-email-area">Organiser email contact: invalid</a></li>
+					{% endif %}
+					{% if errorPhoneMissing %}
+						<li><a href="#contact-phone-area">Organiser phone number contact: missing</a></li>
+					{% endif %}
+					{% if errorPhoneInvalid %}
+						<li><a href="#contact-phone-area">Organiser phone number contact: invalid</a></li>
+					{% endif %}
+					{% if errorInternalContactMissing %}
+						<li><a href="#contact-internal-area">Internal contact: missing</a></li>
+					{% endif %}
 
-		</div>
+				</ul>
+
+			</div>
 		{% endif %}
 
 
@@ -59,102 +69,101 @@
 	  <form action="/create-event/organiser-onwards" method="get" class="form">
 
 
+		  <!-- <p class="panel panel-border-narrow" style="margin-bottom:0px;">The following information will appear on your event webpage and emails.</p> -->
 
-		 	  <!-- <p class="panel panel-border-narrow" style="margin-bottom:0px;">The following information will appear on your event webpage and emails.</p> -->
+		  <div class="form-group {% if errorOrganiserMissing %} form-group-error {% endif %}" style="margin-top:10px;" id="organiser-name-area">
 
-			  <div id="organiser-name-section" class="form-group {% if errorMissingName %} form-group-error {% endif %}" style="margin-top:10px;">
+			  <label class="form-label-bold" for="organiser-name">
+				  Organiser name to display on webpage<br>
+				  <!-- <span class="form-hint" style="margin-bottom: 0px;">Public facing - to be displayed on your webpage.</span> -->
 
-				  <label class="form-label-bold" for="organiser-name">
-					  Organiser name to display on webpage<br>
-					  <!-- <span class="form-hint" style="margin-bottom: 0px;">Public facing - to be displayed on your webpage.</span> -->
+					  <span style="font-weight:400"></span>
+				  {% if errorOrganiserMissing %}
+					  <span class="error-message">
+						  Please enter event organiser name
+					  </span>
+				  {% endif %}
+			  </label>
 
-						  <span style="font-weight:400"></span>
-					  {% if errorMissingName %}
-						  <span class="error-message">
-							  Please enter an organiser
-						  </span>
-					  {% endif %}
-				  </label>
-
-				  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-						 id="organiser-name" name="organiser-name" value="Department for International Trade {{ data['organiser-name'] }}" style="width: 80%">
-			  </div>
-
+			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+					 id="organiser-name" name="organiser-name" value="{{ data['organiser-name'] }}" style="width: 80%">
+		  </div>
 
 
 
 
 		  <!--  contact from the public   -->
-		  <div class="form-group {% if experienceEmpty %} form-group-error {% endif %}" style="margin-top:10px" id="export-experience">
+		  <div class="form-group {% if experienceEmpty %} form-group-error {% endif %}" style="margin-top:10px" id="contact-details-area">
 			  <label class="form-label-bold" >
 				  Contact details to display on webpage
-				  <!-- <span class="form-hint" style="margin-bottom: 0px;">Select contact options to display on your page.</span>  -->
-				  {% if experienceEmpty %}
-					  <span class="error-message">
-						  Indicate the level of export experience this event is relevant to.
-					  </span>
-				  {% endif %}
 			  </label>
 
 			  <div class="form-date" style="margin-top:5px">
-				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-email-section">
-					  <input id="checkbox-contact-email" type="checkbox" name="checkbox-contact-email" value="email" {% if experienceOld %} checked="checked" {% endif %}>
+				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-email-area">
+					  <input id="checkbox-contact-email" type="checkbox" name="checkbox-contact-email" value="email" {% if errorEmailSelected %} checked="checked" {% endif %}>
 					  <label for="checkbox-contact-email">Email address</label>
 				  </div>
-				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-phone-section">
-					  <input id="checkbox-contact-phone" type="checkbox" name="checkbox-contact-phone" value="phone" {% if experienceAll %} checked="checked" {% endif %}>
+				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-phone-area">
+					  <input id="checkbox-contact-phone" type="checkbox" name="checkbox-contact-phone" value="phone" {% if errorPhoneSelected %} checked="checked" {% endif %}>
 					  <label for="checkbox-contact-phone">Phone number</label>
 				  </div>
 			  </div>
 		  </div>
 
 
+		  <!-- EMAIL  -->
+		  <div class=" js-hidden form-group {% if errorEmailMissing or errorInvalidEmail %} form-group-error {% endif %}" style=""  id="contact-email-area">
+
+			  <label class="form-label-bold" for="contact-email">
+				  Email address
+				  {% if errorEmailMissing %}
+					  <span class="error-message">
+						  Please enter organiser email contact
+					  </span>
+				  {% elif errorInvalidEmail %}
+					  <span class="error-message">
+						  Please enter a valid email address
+					  </span>
+				  {% endif %}
+			  </label>
+
+			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+					 id="contact-email" name="contact-email" value="{{ data['contact-email'] }}" style="width: 60%">
+		  </div>
+
+
+		  <!--  PHONE  -->
+		  <div id="contact-phone-area" class=" js-hidden form-group {% if errorPhoneMissing or errorPhoneInvalid %} form-group-error {% endif %}" style=" margin-bottom:35px"  >
+
+			  <label class="form-label-bold" for="contact-phone">
+				  Phone number
+				  {% if errorPhoneMissing %}
+					  <span class="error-message">
+						  Please enter organiser phone number contact
+					  </span>
+				  {% elif errorPhoneInvalid %}
+					  <span class="error-message">
+						  DAN DAN DAN
+					  </span>
+				  {% endif %}
+			  </label>
+
+			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+					 id="contact-phone" name="contact-phone" value="{{ data['contact-phone'] }}" style="width: 25%">
+		  </div>
 
 
 
-
-			  <div id="contact-email-section" class=" js-hidden form-group {% if errorInvalidEmail %} form-group-error {% endif %}" style="">
-
-					  <label class="form-label-bold" for="contact-email">
-						  Email address
-						  {% if errorInvalidEmail %}
-							  <span class="error-message">
-								  Please enter an email address
-							  </span>
-						  {% endif %}
-					  </label>
-
-					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-							 id="contact-email" name="contact-email" value="{{ data['contact-email'] }}" style="width: 60%">
-			  </div>
-
-
-
-			  <div id="contact-phone-section" class=" js-hidden form-group {% if errorInvalidPhone %} form-group-error {% endif %}" style=" margin-bottom:35px">
-
-					  <label class="form-label-bold" for="contact-phone">
-						  Phone number
-						  {% if errorInvalidPhone %}
-							  <span class="error-message">
-								  Please enter a clear and descriptive title for your event
-							  </span>
-						  {% endif %}
-					  </label>
-
-					  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-							 id="contact-phone" name="contact-phone" value="{{ data['contact-phone'] }}" style="width: 25%">
-			  </div>
-
-
-		  <div id="event-owner-section" class="form-group {% if errorMissingOwner %} form-group-error {% endif %}" style="margin-top:10px;">
+		  <!-- internal contact -->
+		  <div id="contact-internal-area" class="form-group {% if errorInternalContactMissing %} form-group-error {% endif %}" style="margin-top:10px;"  >
 
 			  <label class="form-label-bold" for="organiser-name">
 				  Name of internal contact for this event<br>
 				  <span class="form-hint" style="margin-bottom: 0px;">Not publicly displayed - for staff reference.</span>
-				  {% if errorMissingName %}
-						  <span class="error-message">
-							  Please enter an organiser
-						  </span>
+				  {% if errorInternalContactMissing %}
+					  <span class="error-message">
+						  Please enter an internal contact
+					  </span>
 				  {% endif %}
 			  </label>
 
