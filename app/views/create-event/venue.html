@@ -33,14 +33,24 @@
 			</p>
 
 			<ul class="error-summary-list">
+				{% if errorVenueName %}
+					<li><a href="#venue-name-area">Venue name: missing</a></li>
+				{% endif %}
+
 				{% if errorBuilding %}
-				<li><a href="#date-area">Address: Building</a></li>
+					<li><a href="#street-area">Street: missing</a></li>
 				{% endif %}
+
 				{% if errorTown %}
-				<li><a href="#date-area">Address: Town or city</a></li>
+					<li><a href="#town-area">Town or city: missing</a></li>
 				{% endif %}
+
+				{% if errorPostcodeMissing %}
+					<li><a href="#postcode-area">Postcode: missing</a></li>
+				{% endif %}
+
 				{% if errorPostcode %}
-				<li><a href="#date-area">Address: postcode</a></li>
+					<li><a href="#postcode-area">Postcode: invalid</a></li>
 				{% endif %}
 			</ul>
 
@@ -61,24 +71,24 @@
 			  <p style="margin-bottom:25px">Venue details will be displayed on the webpage, along with a link to a map.</p>
 
 
-			  <div class="form-group">
+			  <div id="venue-name-area" class="form-group {% if errorVenueName %} form-group-error {% endif %}">
 				  <label class="form-label-bold" for="venue"  style="margin-bottom:5px;  ">Venue name</label>
-				  {% if errorBuilding %}
+				  {% if errorVenueName %}
 						  <span class="error-message">
-							  Enter venue name
+							  Enter your event venue
 						  </span>
 				  {% endif %}
-				  <input class="form-control" id="venue" type="text" name="venue" style="width:75%"  value="{{ data['building'] }}" >
+				  <input class="form-control {% if errorVenueName %} form-control-error {% endif %}" id="venue" type="text" name="venue" style="width:75%"  value="{{ data['building'] }}" >
 			  </div>
 
 
 
-			  	<div class="form-group {% if errorBuilding %} form-group-error {% endif %}">
+			  	<div id="street-area" class="form-group {% if errorBuilding %} form-group-error {% endif %}">
 
 				  <label class="form-label-bold" for="building"  style="margin-bottom:5px;  ">Street</label>
 				  {% if errorBuilding %}
 					  <span class="error-message">
-						  Enter venue name
+						  Enter venue street number and name
 					  </span>
 				  {% endif %}
 				  <input class="form-control {% if errorBuilding %} form-control-error {% endif %}" id="building" type="text" name="building" style="width:75%"  value="{{ data['building'] }}" >
@@ -88,12 +98,12 @@
 
 
 
-			  	<div class="form-group {% if errorTown %} form-group-error {% endif %}">
+			  	<div id="town-area" class="form-group {% if errorTown %} form-group-error {% endif %}">
 
 				  <label class="form-label-bold" for="town" style="margin-bottom:5px; ">Town or city</label>
 				  {% if errorTown %}
 					  <span class="error-message">
-						  Enter a  town or city
+						  Enter valid town or city
 					  </span>
 				  {% endif %}
 				  <input class="form-control {% if errorTown %} form-control-error {% endif %}" id="town" type="text" name="town" style="width:40%"  value="{{ data['town'] }}">
@@ -102,23 +112,23 @@
 
 
 
-			  	<div class="form-group {% if errorPostcode %} form-group-error {% endif %}">
+			  	<div id="postcode-area" class="form-group {% if errorPostcode or errorPostcodeMissing%} form-group-error {% endif %}">
 
 
 				  <label class="form-label-bold" for="postcode" style="margin-bottom:5px;">Postcode</label>
-				  {% if errorPostcode %}
+				  {% if errorPostcode or errorPostcodeMissing%}
 					  <span class="error-message">
-						  Enter  valid postcode
+						  Enter valid postcode
 					  </span>
 				  {% endif %}
-				  <input class="form-control {% if errorPostcode %} form-control-error {% endif %}" id="postcode" type="text" name="postcode" style="width:25%"  value="{{ data['postcode'] }}">
+				  <input class="form-control {% if errorPostcode or errorPostcodeMissing%} form-control-error {% endif %}" id="postcode" type="text" name="postcode" style="width:25%"  value="{{ data['postcode'] }}">
 
 			  	</div>
 
 
 
 				  <!--  LOCATION NOTES-->
-				  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
+				  <div class="form-group">
 					  <label class="form-label-bold" for="venue-additional-notes">
 						  Additional venue details (optional)
 
@@ -128,50 +138,25 @@
 				  </div>
 
 
+				<!-- LINK URL TO MAP -->
+				  <div class="form-group">
+					  <label class="form-label-bold" for="map-url"  style="margin-bottom:5px;">Add link to map (optional)</label>
+					  <input class="form-control" id="map-url" type="text" name="map-url" style="width:100%"  value="{{ data['map-url'] }}" >
+				  </div>
 
 
 
-			  <!-- <input class="form-control" id="autocomplete" type="text" style="width:100%;" placeholder=""> </input>  -->
-
-			  <div style="padding-bottom:100px" id="initial-filler-sapce" class="js-hidden">
-					<p>&nbsp;</p>
-			  </div>
-
-			  <div id="edit-address" style="display: none;">
 
 
-				  <textarea class="form-control" name="full-address-holder" id="full-address-holder" rows="6" style="width: 50%; " ></textarea>
-
-
-				  <p style="white-space: pre-wrap; display:none">
-					  <span id="premise"></span>
-					  <span id="subpremise"></span>
-
-					  <span id="street_number"></span><span id="route"></span>
-					  <span id="postal_town"></span>
-					  <span id="postal_code"></span>
-
-					  <span id="administrative_area_level_3"></span>
-					  <span id="administrative_area_level_2"></span>
-					  <span id="administrative_area_level_1"></span>
-
-					  <span id="point_of_interest"></span>
-
-					  <span id="establishment"></span>
-					  <span id="street_address"></span>
-				  </p>
-
-				  <br>
-			  </div>
 		  </div>
 
 
 
-		  <div class="form-group" style="margin-top:40px">
+		  <div class="form-group" style="margin-top:20px">
 			  <input type="submit" class="button" value="Save and continue">
-			  <p style="margin-top:25px"><a href="/create-event/title">I'll complete this later - I don't have this information yet</a></p>
 
-			  <p id="enter-new-address" style="display:none">
+			  <input type="submit" formaction="/create-event/venue-skip" value="I'll complete this later - I don't have this information yet"
+					 style="margin-top:25px; border:0px; padding:0px; background-color: transparent; color: #005ea5; text-decoration: underline; cursor: pointer; ">
 
 			  </p>
 		  </div>

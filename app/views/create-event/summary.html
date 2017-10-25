@@ -137,9 +137,15 @@
 				  <dt class="cya-question">
 					  Date
 				  </dt>
-				  <dd class="cya-answer">
-					  {{ data['event-day-of-the-week'] }}<br>{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
-				  </dd>
+
+				  {% if session.data['date-error'] %}
+				  	  <dd class="cya-answer bold">Incomplete</dd>
+				  {% else %}
+					  <dd class="cya-answer">
+						  {{ data['event-day-of-the-week'] }}<br>{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
+					  </dd>
+				  {% endif %}
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-date">
 						  Change
@@ -152,9 +158,15 @@
 				  <dt class="cya-question">
 					  Time
 				  </dt>
-				  <dd class="cya-answer">
-					  {{ data['event-start-time'] }} to {{ data['event-finish-time'] }}
-				  </dd>
+
+				  {% if session.data['time-error'] %}
+				  	  <dd class="cya-answer bold">Incomplete</dd>
+				  {% else %}
+					  <dd class="cya-answer">
+						  {{ data['event-start-time'] }} to {{ data['event-finish-time'] }}
+					  </dd>
+				  {% endif %}
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-date">
 						  Change
@@ -167,7 +179,13 @@
 				  <dt class="cya-question">
 					  Venue
 				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</dd>
+
+				  {% if session.data['full-address-holder-error'] %}
+				  	<dd class="cya-answer bold">Incomplete</dd>
+				  {% else %}
+				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</dd>
+				  {% endif %}
+
 				  <dd class="cya-change ">
 					  <a href="/create-event/change-venue">
 						  Change
@@ -180,7 +198,32 @@
 				  <dt class="cya-question">
 					  Additional venue details
 				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['venue-additional-notes'] }}</dd>
+
+				  {% if session.data['venue-additional-notes'] == "" %}
+				  	<dd class="cya-answer">Optional field, left empty.</dd>
+				  {% else %}
+				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['venue-additional-notes'] }}</dd>
+				  {% endif %}
+
+				  <dd class="cya-change ">
+					  <a href="/create-event/change-venue">
+						  Change
+					  </a>
+				  </dd>
+			  </div>
+
+
+			  <div>
+				  <dt class="cya-question">
+					  Link to map
+				  </dt>
+
+				  {% if session.data['map-url'] == "" %}
+				  	<dd class="cya-answer">Optional field, left empty.</dd>
+				  {% else %}
+				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['map-url'] }}</dd>
+				  {% endif %}
+
 				  <dd class="cya-change ">
 					  <a href="/create-event/change-venue">
 						  Change

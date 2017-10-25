@@ -1223,6 +1223,12 @@ router.get('/create-event/organiser-onwards', function (req, res)
   // ERRORS OR PROCEED
   if( (errorMissingOrganiser || errorMissingEmail || errorInvalidEmail  || errorMissingPhone || errorInvalidPhone || errorMissingInternalContact) == false)
   {
+    req.session.data['organiser-name-error'] = false;
+    req.session.data['contact-email-error'] = false;
+    req.session.data['contact-phone-error'] = false;
+    req.session.data['owner-name-error'] = false;
+
+
     if(req.session.changingFromSummary == true)
     {
       res.redirect('/create-event/summary-prelude');
@@ -1254,8 +1260,6 @@ router.get('/create-event/organiser-onwards', function (req, res)
 })
 
 
-
-
 router.get('/create-event/organiser-skip', function (req, res)
 {
 
@@ -1264,6 +1268,10 @@ router.get('/create-event/organiser-skip', function (req, res)
     if(req.session.data['organiser-name'] == "")
     {
       req.session.data['organiser-name-error'] = true;
+    }
+    else
+    {
+      req.session.data['organiser-name-error'] = false;
     }
   }
 
@@ -1284,6 +1292,10 @@ router.get('/create-event/organiser-skip', function (req, res)
         if( (req.session.data['contact-email'].indexOf("@") == -1)  ||  (req.session.data['contact-email'].indexOf(".") == -1)  )
         {
           req.session.data['contact-email-error'] = true;
+        }
+        else
+        {
+          req.session.data['contact-email-error'] = false;
         }
       }
     }
@@ -1312,6 +1324,10 @@ router.get('/create-event/organiser-skip', function (req, res)
         {
           req.session.data['contact-phone-error']  = true;
         }
+        else
+        {
+          req.session.data['contact-phone-error'] = false;
+        }
       }
     }
     else // save that they didn't want a phone number recording
@@ -1325,6 +1341,10 @@ router.get('/create-event/organiser-skip', function (req, res)
     if(req.session.data['owner-name'] == "")
     {
       req.session.data['owner-name-error'] = true;
+    }
+    else
+    {
+      req.session.data['owner-name-error'] = false;
     }
   }
 
@@ -1539,6 +1559,7 @@ router.get('/create-event/title-onwards', function (req, res)
 
 
 // DESCRIPTION PAGE ONWARDS BUTTON
+
 router.get('/create-event/description-onwards', function (req, res)
 {
   var errorMissingmarketAnswer = false;
@@ -1813,7 +1834,9 @@ router.get('/create-event/description-onwards', function (req, res)
 })
 
 
-// CREATE EVENT ONWARDS TO NEXT PAGE
+
+
+// DATE
 router.get('/create-event/date-onwards', function (req, res)
 {
   // Save event date
@@ -2097,6 +2120,9 @@ router.get('/create-event/date-onwards', function (req, res)
   if( (errorMissingDate || errorInvalidDate || dateInThePast || errorMissingStartTime || errorInvalidStartTime ||
       errorMissingFinishTime || errorInvalidFinishTime || errorFinishTimeBeforeStartTime ) == false)
   {
+    req.session.data['date-error'] = false;
+    req.session.data['time-error'] = false;
+
     if(req.session.changingFromSummary == true)
     {
       res.redirect('/create-event/summary-prelude');
@@ -2154,19 +2180,339 @@ router.get('/create-event/date-onwards', function (req, res)
 })
 
 
+// CREATE EVENT ONWARDS TO NEXT PAGE
+router.get('/create-event/date-skip', function (req, res)
+{
+  // Save event date
+  req.session.data['event-day'];
+  req.session.data['event-month'];
+  req.session.data['event-year'];
+
+  //DATE ERRROR STATES
+  var errorDayMissing= false
+  var errorDayInvalid = false
+
+  var errorMonthMissing = false;
+  var errorMonthInvalid = false;
+
+  var errorYearMissing = false;
+  var errorYearInvalid = false;
+
+  var errorMissingDate = false;
+  var errorInvalidDate = false;
+
+  var dateInThePast = false;
+
+
+  // TIME RROR STATES
+  var errorStartHourMissing = false;
+  var errorStartHourInvalid = false;
+  var errorStartMinsInvalid = false;
+
+  var errorMissingStartTime = false;
+  var errorInvalidStartTime = false;
+
+
+  var errorFinishHourMissing = false;
+  var errorFinishHourInvalid = false;
+  var errorFinishMinsInvalid = false;
+
+  var errorMissingFinishTime = false;
+  var errorInvalidFinishTime = false;
+
+  var errorFinishTimeBeforeStartTime = false;
+
+
+
+  // DAY
+  var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  if (req.session.data['event-day'] != undefined)
+  {
+    if(req.session.data['event-day'] == "")
+    {
+      errorDayMissing = true;
+      errorMissingDate = true;
+    }
+    else if(1 <= req.session.data['event-day'] && req.session.data['event-day'] <= 31)
+    {}
+    else
+    {
+      errorDayInvalid = true;
+      errorInvalidDate = true;
+    }
+  }
+
+
+
+  //  MONTH
+  var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  //console.log("**************" + req.session.data['event-month'] + "*****************");
+
+  if (req.session.data['event-month'] != undefined)
+  {
+    if(req.session.data['event-month'] == "")
+    {
+      errorMonthMissing = true;
+      errorMissingDate = true;
+      //console.log("*************MISSING MONTH**************");
+    }
+    else if(1 <= req.session.data['event-month'] && req.session.data['event-month'] <= 12)
+    {
+      req.session.data['event-month-name'] =  monthNames[req.session.data['event-month']-1];
+    }
+    else
+    {
+      errorMonthInvalid = true;
+      errorInvalidDate = true;
+    }
+  }
+  else
+  {
+    console.log("*************UNEFINED**************");
+  }
+
+
+  // YEAR
+  if (req.session.data['event-year'] != undefined)
+  {
+    if(req.session.data['event-year'] == "")
+    {
+      errorYearMissing = true;
+      errorMissingDate = true;
+    }
+    if(0000 <= req.session.data['event-year']  &&  req.session.data['event-year'] <= 3000)
+    {}
+    else
+    {
+      errorYearInvalid = true;
+      errorInvalidDate = true;
+    }
+  }
+
+
+
+  // CHECK IF DATE IS IN THE PAST
+  if((errorMissingDate || errorInvalidDate) == false)
+  {
+    var currentDate = new Date();
+    var enteredDate = new Date();
+    enteredDate.setFullYear(req.session.data['event-year'], req.session.data['event-month']-1, req.session.data['event-day']);
+
+    req.session.data['event-day-of-the-week'] = days[enteredDate.getDay()];
+
+    //console.log("THE CURRENT DTE TIME IS " + currentDate);
+    //console.log("THE ENTERED DATE TIME IS " + enteredDate);
+
+    if(enteredDate < currentDate)
+    {
+      dateInThePast = true;
+    }
+    else
+    {
+      // SAVE THE DATEs FOR CLOSING REG TIME
+      var oneDayBefore = new Date(enteredDate.getTime());
+      oneDayBefore.setDate(enteredDate.getDate() - 1 );
+
+      var twoDaysBefore = new Date(enteredDate.getTime());
+      twoDaysBefore.setDate(enteredDate.getDate() - 2 );
+
+      var threeDaysBefore = new Date(enteredDate.getTime());
+      threeDaysBefore.setDate(enteredDate.getDate() - 3 );
+
+      var fourDaysBefore = new Date(enteredDate.getTime());
+      fourDaysBefore.setDate(enteredDate.getDate() - 4 );
+
+      req.session.data['days-before-1'] = "1 day before - " + days[oneDayBefore.getDay()] + "  " + oneDayBefore.getDate() + "  " +  monthNames[oneDayBefore.getMonth()] + "  " +  oneDayBefore.getFullYear();
+      req.session.data['days-before-2'] = "2 days before - " + days[twoDaysBefore.getDay()] + "  " + twoDaysBefore.getDate() + "  " +  monthNames[twoDaysBefore.getMonth()] + "  " +  twoDaysBefore.getFullYear();
+      req.session.data['days-before-3'] = "3 days before - " + days[threeDaysBefore.getDay()] + "  " + threeDaysBefore.getDate() + "  " +  monthNames[threeDaysBefore.getMonth()] + "  " +  threeDaysBefore.getFullYear();
+      req.session.data['days-before-4'] = "4 days before - " + days[fourDaysBefore.getDay()] + "  " + fourDaysBefore.getDate() + "  " +  monthNames[fourDaysBefore.getMonth()] + "  " +  fourDaysBefore.getFullYear();
+    }
+
+    //console.log("THE YEAR BEFORE IS +++++++++++ " + oneDayBefore.getFullYear());
+    //console.log("THE DAY BEFORE IS +++++++++++ " + days[oneDayBefore.getDay()] + "  " + oneDayBefore.getDate() + "  " +  monthNames[oneDayBefore.getMonth()] + "  " +  oneDayBefore.getFullYear());
+  }
+
+
+
+
+
+  //START TIME
+  if (req.session.data['start-hours'] != undefined)
+  {
+    if (req.session.data['start-hours']  == "")
+    {
+      errorStartHourMissing = true;
+      errorMissingStartTime = true;
+    }
+    // HOURS CHECK
+    else if (0 <= req.session.data['start-hours'] && req.session.data['start-hours'] <= 23)
+    {   }
+    else
+    {
+      errorStartHourInvalid = true;
+      errorInvalidStartTime = true;
+      //console.log("start code checker  run  and error");
+    }
+  }
+
+  if (req.session.data['start-minutes'] != undefined )
+  {
+    // Mins can be empty, assume 00
+    if (req.session.data['start-minutes']  == "")
+    {
+      if((errorStartHourMissing  || errorStartHourInvalid) == false)
+      {
+        req.session.data['start-minutes'] = "00";
+      }
+    }
+    if(0 <= req.session.data['start-minutes'] && req.session.data['start-minutes'] <= 59)
+    { }
+    else
+    {
+      errorStartMinsInvalid = true;
+      errorInvalidStartTime = true;
+    }
+  }
+
+  // IF NO ERRORS SAVE THE DATA
+  if(errorInvalidStartTime == false  &&  errorMissingStartTime == false)
+  {
+    req.session.data['event-start-time'] = req.session.data['start-hours'] + ":" + req.session.data['start-minutes'];
+  }
+
+
+
+
+  //FINISH TIME
+  if (req.session.data['finish-hours'] != undefined )
+  {
+    // HOURS CHECK
+    if (req.session.data['finish-hours'] == "")
+    {
+      errorFinishHourMissing = true;
+      errorMissingFinishTime = true;
+    }
+    if (0 <= req.session.data['finish-hours'] && req.session.data['finish-hours'] <= 23)
+    { }
+    else
+    {
+      errorFinishHourInvalid = true;
+      errorInvalidFinishTime = true;
+    }
+  }
+
+  if (req.session.data['finish-minutes'] != undefined)
+  {
+    // MINUTES CHECK
+    if (req.session.data['finish-minutes']  == "")
+    {
+      // min can be empty if the hours are valid, assume 00
+      if((errorStartHourMissing  || errorStartHourInvalid) == false)
+      {
+        req.session.data['finish-minutes'] = "00";
+      }
+    }
+    if(0 <= req.session.data['finish-minutes'] && req.session.data['finish-minutes'] <= 59)
+    { }
+    else
+    {
+      errorFinishMinsInvalid = true;
+      errorInvalidFinishTime = true;
+    }
+
+    // IF NO ERRORS SAVE THE DATA
+    if(errorFinishTimeBeforeStartTime == false)
+    {
+      req.session.data['event-finish-time'] =  req.session.data['finish-hours'] + ":" + req.session.data['finish-minutes'];
+    }
+  }
+
+
+  // CHECK if the finish time is before the start time.
+  if( (errorMissingStartTime || errorInvalidStartTime  || errorMissingFinishTime  || errorInvalidFinishTime ) == false)
+  {
+    console.log("the finish --" + req.session.data['finish-hours'] + "-- start --" + req.session.data['start-hours'] + "--");
+
+    if( parseInt(req.session.data['finish-hours']) < parseInt( req.session.data['start-hours']) )
+    {
+      errorFinishTimeBeforeStartTime = true;
+      console.log("the finish smaller than the start time");
+    }
+    else if( parseInt(req.session.data['finish-hours']) == parseInt(req.session.data['start-hours']))
+    {
+      if( parseInt(req.session.data['finish-minutes']) < parseInt(req.session.data['start-minutes']) )
+      {
+        errorFinishTimeBeforeStartTime = true;
+      }
+    }
+  }
+
+
+  console.log("errorDayMissing " + errorDayMissing );
+  console.log("errorDayInvalid " + errorDayInvalid);
+  console.log("errorMonthMissing " + errorMonthMissing);
+  console.log("errorMonthInvalid " + errorMonthInvalid);
+  console.log("errorYearMissing " + errorYearMissing);
+  console.log("errorYearInvalid " + errorYearInvalid);
+
+
+  // Save that filds were not completed
+  if( (errorMissingDate || errorInvalidDate || dateInThePast) == true)
+  {
+    req.session.data['date-error'] = true;
+  }
+  else
+  {
+    req.session.data['date-error'] = false;
+  }
+
+  if( (errorMissingStartTime || errorInvalidStartTime || errorMissingFinishTime || errorInvalidFinishTime || errorFinishTimeBeforeStartTime ) == true)
+  {
+    req.session.data['time-error'] = true;
+  }
+  else
+  {
+    req.session.data['time-error'] = false;
+  }
+
+  res.redirect('/create-event/venue');
+
+
+})
+
+
+
+
+
 // VENUE PAGE ONWARDS BUTTON
 router.get('/create-event/venue-onwards', function (req, res)
 {
   console.log(req.session.data['full-address-holder']);
 
+  var errorOnVenueName = false;
   var errorOnBuilding = false;
   var errorOnTown = false;
   var errorOnPostcode = false;
+  var errorOnPostcodeMissing = false;
 
   req.session.data['full-address-holder'] = "";
 
 
-  req.session.data['full-address-holder'] = req.session.data['venue'];
+
+  // Check the venue name isn't empty
+  if(req.session.data['venue'] == "")
+  {
+    errorOnVenueName = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['venue'];
+  }
+
 
   // If building is empty then throw error;
   if(req.session.data['building'] == "")
@@ -2199,20 +2545,16 @@ router.get('/create-event/venue-onwards', function (req, res)
   // If building is empty then throw error;
   if(req.session.data['postcode'] == "")
   {
+    errorOnPostcodeMissing = true;
+  }
+  else if(req.session.data['postcode'].length < 6)
+  {
     errorOnPostcode = true;
   }
   else
   {
     req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['postcode'];
   }
-
-
-
-  if( req.session.data['full-address-holder'] == "")
-  {
-    req.session.data['full-address-holder'] = "Not entered"
-  }
-
 
 
   if( req.session.data['venue-additional-notes'] == "")
@@ -2227,8 +2569,10 @@ router.get('/create-event/venue-onwards', function (req, res)
 
 
   // no errors
-  if((errorOnBuilding || errorOnTown || errorOnPostcode) == false)
+  if( (errorOnVenueName || errorOnBuilding || errorOnTown || errorOnPostcode || errorOnPostcodeMissing) == false)
   {
+    req.session.data['full-address-holder-error'] = false;
+
     if(req.session.changingFromSummary == true)
     {
       res.redirect('/create-event/summary-prelude');
@@ -2237,20 +2581,122 @@ router.get('/create-event/venue-onwards', function (req, res)
     {
       res.redirect('/create-event/title');
     }
-
   }
   else
   {
     res.render('create-event/venue',
         {
           'anError' : true,
+          'errorVenueName': errorOnVenueName,
           'errorBuilding': errorOnBuilding,
           'errorTown': errorOnTown,
+          'errorPostcodeMissing': errorOnPostcodeMissing,
           'errorPostcode': errorOnPostcode
         }
     );
   }
 })
+
+
+
+
+router.get('/create-event/venue-skip', function (req, res)
+{
+  var errorOnVenueName = false;
+  var errorOnBuilding = false;
+  var errorOnTown = false;
+  var errorOnPostcode = false;
+  var errorOnPostcodeMissing = false;
+
+
+
+  console.log(req.session.data['full-address-holder']);
+
+  req.session.data['full-address-holder'] = "";
+
+  // Check the venue name isn't empty
+  if(req.session.data['venue'] == "")
+  {
+    errorOnVenueName = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['venue'];
+  }
+
+
+  // If building is empty then throw error;
+  if(req.session.data['building'] == "")
+  {
+    errorOnBuilding = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['building'];
+  }
+
+  // Add street to output if the field is not empty
+  if(req.session.data['street'] != "")
+  {
+    req.session.data['full-address-holder'] = req.session.data['street'];
+  }
+
+
+  // If town is empty then throw error;
+  if(req.session.data['town'] == "")
+  {
+    errorOnTown = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['town'];
+  }
+
+
+  // If building is empty then throw error;
+  if(req.session.data['postcode'] == "")
+  {
+    errorOnPostcodeMissing = true;
+  }
+  else if(req.session.data['postcode'].length < 6)
+  {
+    errorOnPostcode = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['postcode'];
+  }
+
+
+  if( req.session.data['full-address-holder'] == "")
+  {
+    req.session.data['full-address-holder'] = "Not entered"
+  }
+
+  if( req.session.data['venue-additional-notes'] == "")
+  {
+    req.session.data['venue-additional-notes-entered'] = false;
+  }
+  else
+  {
+    req.session.data['venue-additional-notes-entered'] = true;
+  }
+
+
+  // Find out if address is completed
+  if( (errorOnVenueName || errorOnBuilding || errorOnTown || errorOnPostcode || errorOnPostcodeMissing) == true)
+  {
+    req.session.data['full-address-holder-error'] = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder-error'] = false;
+  }
+
+  res.redirect('/create-event/title');
+})
+
+
 
 
 
