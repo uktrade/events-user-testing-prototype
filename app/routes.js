@@ -1054,7 +1054,6 @@ router.get('/scenario-previous-questions', function (req, res)
 
 
 
-
 // CREATE EVENT SETUP
 // VENUE PAGE ONWARDS BUTTON
 
@@ -1151,7 +1150,7 @@ router.get('/create-event/organiser-onwards', function (req, res)
   var errorMissingInternalContact = false;
 
 
-  // EVENT TITLE
+
   if(req.session.data['organiser-name'] != undefined)
   {
     if(req.session.data['organiser-name'] == "")
@@ -1180,6 +1179,10 @@ router.get('/create-event/organiser-onwards', function (req, res)
         }
       }
     }
+    else // save that they didn't want an email recording
+    {
+      req.session.data['contact-email'] = "Not entered"
+    }
   }
 
   if(req.session.data['contact-phone'] != undefined)
@@ -1201,6 +1204,10 @@ router.get('/create-event/organiser-onwards', function (req, res)
           errorInvalidPhone = true;
         }
       }
+    }
+    else // save that they didn't want a phone number recording
+    {
+      req.session.data['contact-phone'] = "Not entered"
     }
   }
 
@@ -1245,6 +1252,87 @@ router.get('/create-event/organiser-onwards', function (req, res)
     );
   }
 })
+
+
+
+
+router.get('/create-event/organiser-skip', function (req, res)
+{
+
+  if(req.session.data['organiser-name'] != undefined)
+  {
+    if(req.session.data['organiser-name'] == "")
+    {
+      req.session.data['organiser-name-error'] = true;
+    }
+  }
+
+  if(req.session.data['contact-email'] != undefined)
+  {
+    // Check if the email checkbos is selected
+    if(req.session.data['checkbox-contact-email'] != undefined )
+    {
+      errorCheckboxEmailSelected = true;
+
+      // Check if the emil is empty
+      if(req.session.data['contact-email'] == "")
+      {
+        req.session.data['contact-email-error'] = true;
+      }
+      else // Check if the email has valid characters
+      {
+        if( (req.session.data['contact-email'].indexOf("@") == -1)  ||  (req.session.data['contact-email'].indexOf(".") == -1)  )
+        {
+          req.session.data['contact-email-error'] = true;
+        }
+      }
+    }
+    else // save that they didn't want an email recording
+    {
+      req.session.data['contact-email'] = "Not entered"
+    }
+  }
+
+  if(req.session.data['contact-phone'] != undefined)
+  {
+    // Check if the email checkbos is selected
+    if(req.session.data['checkbox-contact-phone'] != undefined )
+    {
+      errorCheckboxPhoneSelected = true;
+
+      // Check if phone field is empty
+      if (req.session.data['contact-phone'] == "")
+      {
+        req.session.data['contact-phone-error'] = true;
+      }
+      else // Check if the phone number is invalid
+      {
+        var tempString = req.session.data['contact-phone'].replace(/\s/g, '');
+        if ( isNaN(tempString) == true )
+        {
+          req.session.data['contact-phone-error']  = true;
+        }
+      }
+    }
+    else // save that they didn't want a phone number recording
+    {
+      req.session.data['contact-phone'] = "Not entered"
+    }
+  }
+
+  if(req.session.data['owner-name'] != undefined)
+  {
+    if(req.session.data['owner-name'] == "")
+    {
+      req.session.data['owner-name-error'] = true;
+    }
+  }
+
+  // Continue on regardless of errors
+  res.redirect('/create-event/date');
+
+})
+
 
 
 

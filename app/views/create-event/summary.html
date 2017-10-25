@@ -42,8 +42,13 @@
 
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Point of contact</dt>
-				  <dd class="cya-answer">{{ data['owner-name'] }}
-				  </dd>
+
+				  {% if session.data['owner-name-error']  %}
+				  	<dd class="cya-answer bold">Incomplete</dd>
+				  {% else %}
+				  	<dd class="cya-answer">{{ data['owner-name'] }}</dd>
+				  {% endif %}
+
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-organiser">
 						  Change
@@ -53,10 +58,13 @@
 
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Event organiser</dt>
-				  <dd class="cya-answer">
-					  Department for International Trade
-					  <br>{{ data['organiser-name'] }}
-				  </dd>
+
+				  {% if session.data['organiser-name-error'] %}
+				  	<dd class="cya-answer bold">Incomplete</dd>
+				  {% else %}
+				  	<dd class="cya-answer">{{ data['organiser-name'] }}</dd>
+				  {% endif %}
+
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-organiser">
 						  Change
@@ -66,9 +74,13 @@
 
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Contact email address</dt>
-				  <dd class="cya-answer">
-					  {{ data['contact-email'] }}
-				  </dd>
+
+				  {% if session.data['contact-email-error'] %}
+				  	<dd class="cya-answer bold">Incomplete</dd>
+				  {% else %}
+				  	<dd class="cya-answer">{{ data['contact-email'] }}</dd>
+				  {% endif %}
+
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-organiser">
 						  Change
@@ -78,9 +90,13 @@
 
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Contact phone number</dt>
-				  <dd class="cya-answer">
-					  {{ data['contact-phone'] }}
-				  </dd>
+
+				  {% if session.data['contact-phone-error'] %}
+				  	<dd class="cya-answer bold">Incomplete</dd>
+				  {% else %}
+				  	<dd class="cya-answer">{{ data['contact-phone'] }}</dd>
+				  {% endif %}
+
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-organiser">
 						  Change

@@ -143,7 +143,7 @@
 					  </span>
 				  {% elif errorPhoneInvalid %}
 					  <span class="error-message">
-						  DAN DAN DAN
+						  Please enter a valid phone number
 					  </span>
 				  {% endif %}
 			  </label>
@@ -176,7 +176,11 @@
 
 		  <div class="form-group" style="margin-top:10px">
 			  <input type="submit" class="button" value="Save and continue">
-			  <p style="margin-top:25px"><a href="/create-event/date">I'll complete this later - I don't have this information yet</a></p>
+
+			  <input type="submit" formaction="/create-event/organiser-skip" value="I'll complete this later - I don't have this information yet"
+				 style="margin-top:25px; border:0px; padding:0px; background-color: transparent; color: #005ea5; text-decoration: underline; cursor: pointer; ">
+
+			  <!--<p ><a href="/create-event/date">I'll complete this later - I don't have this information yet</a></p>-->
 		  </div>
 
 	  </form>
