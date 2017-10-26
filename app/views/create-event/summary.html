@@ -44,7 +44,7 @@
 				  <dt class="cya-question" style="vertical-align:top">Point of contact</dt>
 
 				  {% if session.data['owner-name-error']  %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer">{{ data['owner-name'] }}</dd>
 				  {% endif %}
@@ -60,7 +60,7 @@
 				  <dt class="cya-question" style="vertical-align:top">Event organiser</dt>
 
 				  {% if session.data['organiser-name-error'] %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer">{{ data['organiser-name'] }}</dd>
 				  {% endif %}
@@ -76,7 +76,7 @@
 				  <dt class="cya-question" style="vertical-align:top">Contact email address</dt>
 
 				  {% if session.data['contact-email-error'] %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer">{{ data['contact-email'] }}</dd>
 				  {% endif %}
@@ -92,7 +92,7 @@
 				  <dt class="cya-question" style="vertical-align:top">Contact phone number</dt>
 
 				  {% if session.data['contact-phone-error'] %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer">{{ data['contact-phone'] }}</dd>
 				  {% endif %}
@@ -127,7 +127,7 @@
 				  </dt>
 
 				  {% if session.data['event-title-error'] %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer">{{ data['event-title'] }}</dd>
 				  {% endif %}
@@ -165,7 +165,7 @@
 				  </dt>
 
 				  {% if session.data['date-error'] %}
-				  	  <dd class="cya-answer bold">Incomplete</dd>
+				  	  <dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 					  <dd class="cya-answer">
 						  {{ data['event-day-of-the-week'] }}<br>{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
@@ -186,7 +186,7 @@
 				  </dt>
 
 				  {% if session.data['time-error'] %}
-				  	  <dd class="cya-answer bold">Incomplete</dd>
+				  	  <dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 					  <dd class="cya-answer">
 						  {{ data['event-start-time'] }} to {{ data['event-finish-time'] }}
@@ -207,7 +207,7 @@
 				  </dt>
 
 				  {% if session.data['full-address-holder-error'] %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</dd>
 				  {% endif %}
@@ -264,7 +264,7 @@
 				  </dt>
 
 				  {% if session.data['sectors-error'] %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sectors'] }}</dd>
 				  {% endif %}
@@ -283,7 +283,7 @@
 				  </dt>
 
 				  {% if session.data['audience-experience-error'] %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['audience-experience'] }}</dd>
 				  {% endif %}
@@ -302,7 +302,7 @@
 				  </dt>
 
 				  {% if session.data['summary-target-audience-error'] %}
-				  	<dd class="cya-answer bold">Incomplete</dd>
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['summary-target-audience'] }}</dd>
 				  {% endif %}
@@ -319,7 +319,13 @@
 				  <dt class="cya-question">
 					  Event outcomes
 				  </dt>
-				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['benefits'] }}</dd>
+
+				  {% if session.data['benefits-error'] %}
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
+				  {% else %}
+				 	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['benefits-error'] }}</dd>
+				  {% endif %}
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-description">
 						  Change
@@ -332,7 +338,13 @@
 				  <dt class="cya-question">
 					  Target markets
 				  </dt>
-				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['markets'] }}</dd>
+
+				  {% if session.data['markets-error'] %}
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
+				  {% else %}
+				  	<dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['markets'] }}</dd>
+				  {% endif %}
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-description">
 						  Change
@@ -345,7 +357,15 @@
 				  <dt class="cya-question">
 					  Agenda
 				  </dt>
-				  <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['agenda'] }}</dd>
+
+				  {% if session.data['markets-error'] %}
+				  	<dd class="cya-answer bold">Optional field, left empty - but you said you wanted to add later.</dd>
+				  {% else %}
+				  	<dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['agenda'] }}</dd>
+				  {% endif %}
+
+
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-description">
 						  Change
@@ -358,7 +378,15 @@
 				  <dt class="cya-question">
 					  Further details and background
 				  </dt>
-				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
+
+
+				  {% if session.data['event-description-error'] %}
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
+				  {% else %}
+				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
+				  {% endif %}
+
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-description">
 						  Change

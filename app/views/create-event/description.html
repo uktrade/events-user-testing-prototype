@@ -40,27 +40,27 @@
 				<ul class="error-summary-list">
 
 					{% if errorMissingMarketSelection %}
-					<li><a href="#markets-section">Missing market selection</a></li>
+					<li><a href="#markets-section">Market relevance: missing</a></li>
 					{% endif %}
 
 					{% if marketNotEntered %}
-						<li><a href="#markets-section">Missing market</a></li>
+						<li><a href="#markets-section">Market relevance: no markets selected</a></li>
 					{% endif %}
 
 					{% if errorMissingEventBenefit %}
-						<li><a href="#benefits-section">Missing benefits</a></li>
+						<li><a href="#benefits-section">Event outcomes: missing</a></li>
 					{% endif %}
 
 					{% if agendaMissingYesNo %}
-						<li><a href="#agenda-section">Missing agenda answer</a></li>
+						<li><a href="#agenda-section">Agenda: no response</a></li>
 					{% endif %}
 
 					{% if agendaMisssing1 %}
-						<li><a href="#agenda-section">Missing agenda</a></li>
+						<li><a href="#agenda-section">Agenda: missing agenda item values</a></li>
 					{% endif %}
 
 					{% if errorMissingEventDescription %}
-						<li><a href="#description-section">Missing description</a></li>
+						<li><a href="#description-section">Further details and background: missing</a></li>
 					{% endif %}
 				</ul>
 
@@ -89,7 +89,7 @@
 
 						  {% if errorMissingMarketSelection %}
 							  <span class="error-message">
-								  Select no or yes
+								  Please select a response
 							  </span>
 						  {% endif %}
 
@@ -115,7 +115,7 @@
 
 						  {% if marketEntryMissing %}
 							  <span class="error-message">
-								  If this event is related to specific markets, indicate them here.
+								  If this event is market-specific, select at least one option. If the event is applicable to all markets, select 'No, this event is relevant to all markets'
 							  </span>
 						  {% endif %}
 					  </label>
@@ -360,7 +360,7 @@
 							  Does the event have an agenda?
 							  {% if agendaMissingYesNo %}
 								  <span class="error-message">
-									  Select type of answer
+									  Please select a response.
 								  </span>
 							  {% endif %}
 						  </label>
@@ -404,11 +404,13 @@
 
 						  <label class="form-label-bold">
 							  Agenda
+							  <!--
 							  {% if agendaMisssing1 %}
 								  <span class="error-message">
 									  Enter two or more activities
 								  </span>
 							  {% endif %}
+							  -->
 						  </label>
 
 						  <div style="width:100%; float:left; margin-top:5px">
@@ -417,18 +419,37 @@
 								  <p style="margin-bottom: 10px">Hours &nbsp;&nbsp;&nbsp;&nbsp; Minutes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity</p>
 							  </div>
 
+							  <!-- Missing -->
+							  {% if errorInvalidHouse %}
+								  <p><span class="error-message">Please enter a valid time for this agenda item. </span></p>
+							  {% endif %}
+							  {% if agendaMisssing1 %}
+							  	<p><span class="error-message">Please enter a description for this agenda item. </span></p>
+							  {% endif %}
+
+							  <!-- error values -->
+							  {% if errorInvalidHour %}
+							  	<p><span class="error-message">Check time values. Valid hours run from 00 to 23.</span></p>
+							  {% endif %}
+							  {% if errorInvalidMinutes %}
+							  	<p><span class="error-message">Check time values. Valid minutes from 00 to 59.</span></p>
+							  {% endif %}
+
+
+
 							  <!-- Row one -->
-							  <div style="  margin-bottom: 15px;">
-								  <input class="form-control" style="width:50px; margin-right:20px"
+							  <div style="margin-bottom: 15px;">
+								  <input class="form-control  {% if errorMissingHour or errorInvalidHour %} form-control-error {% endif %}" style="width:50px; margin-right:20px"
 										 id="agenda-hour-1" name="agenda-hour-1" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-1'] }}">
 
-								  <input class="form-control" style="width:50px; margin-right:40px;"
+								  <input class="form-control  {% if errorInvalidMinutes %} form-control-error {% endif %}" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-1" name="agenda-minutes-1" type="number"  value="{{ data['agenda-minutes-1'] }}">
 
 								  <input class="form-control  {% if agendaMisssing1 %} form-control-error {% endif %}" style="width:52%;"
 										 id="agenda-1" name="agenda-1" type="text"  value="{{ data['agenda-1'] }}">
 							  </div>
-							  <!-- Row two -->
+
+
 							  <div style="  margin-bottom: 15px;">
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-2" name="agenda-hour-2" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-2'] }}">
@@ -441,15 +462,7 @@
 							  </div>
 
 
-							  <p id="agenda-3-add"
-								 {% if agendaShow3 == true %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; display:none;"
-								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;" {% endif %}
-								 onclick="show3()">Add another activtiy</p>
-							  <!-- Row three -->
-							  <div id="agenda-3-area"
-								   {% if agendaShow3 == true %} style="margin-bottom: 15px;"
-								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
-								   >
+							  <div id="agenda-3-area" style="margin-bottom: 15px;" >
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-3" name="agenda-hour-3" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-3'] }}">
 
@@ -461,15 +474,8 @@
 							  </div>
 
 
-							  <p id="agenda-4-add"
-								 {% if agendaShow3 == true  and  agendaShow4 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;"
-								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
-								 onclick="show4()">Add another activtiy</p>
-							  <!-- Row three -->
-							  <div id="agenda-4-area"
-								   {% if agendaShow4 == true %} style="margin-bottom: 15px;"
-								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
-							  	   >
+
+							  <div id="agenda-4-area" style="margin-bottom: 15px;" >
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-4" name="agenda-hour-4" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-4'] }}">
 
@@ -481,15 +487,7 @@
 							  </div>
 
 
-							  <p id="agenda-5-add"
-								 {% if agendaShow4 == true  and  agendaShow5 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px;"
-								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
-								 onclick="show5()">Add another activtiy</p>
-							  <!-- Row three -->
-							  <div id="agenda-5-area"
-								   {% if agendaShow5 == true %} style="margin-bottom: 15px;"
-								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
-							  	   >
+							  <div id="agenda-5-area"  style="margin-bottom: 15px;" >
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-5" name="agenda-hour-5" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-5'] }}">
 
@@ -501,15 +499,7 @@
 							  </div>
 
 
-							  <p id="agenda-6-add"
-								 {% if agendaShow5 == true  and  agendaShow6 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
-								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
-								 onclick="show6()">Add another activtiy</p>
-							  <!-- Row three -->
-							  <div id="agenda-6-area"
-								   {% if agendaShow6 == true %} style="margin-bottom: 15px;"
-								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
-							  	   >
+							  <div id="agenda-6-area" style="margin-bottom: 15px;" >
 								  <input class="form-control" style="width:50px; margin-right:20px"
 										 id="agenda-hour-6" name="agenda-hour-6" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-6'] }}">
 
@@ -518,6 +508,194 @@
 
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-6" name="agenda-6" type="text"  value="{{ data['agenda-6'] }}">
+							  </div>
+
+
+
+
+
+							  <p id="agenda-7-add"
+								 {% if agendaShow7 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show7()">Add another activtiy</p>
+
+							  <div id="agenda-7-area"
+								   {% if agendaShow7 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %} >
+
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-7" name="agenda-hour-7" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-7'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-7" name="agenda-minutes-7" type="number"  value="{{ data['agenda-minutes-7'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-7" name="agenda-7" type="text"  value="{{ data['agenda-7'] }}">
+							  </div>
+
+
+
+							  <p id="agenda-8-add"
+								 {% if agendaShow7 == true  and  agendaShow8 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show8()">Add another activtiy</p>
+
+							  <div id="agenda-8-area"
+								   {% if agendaShow8 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}>
+
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-8" name="agenda-hour-8" type="number" pattern="[0-8]*" value="{{ data['agenda-hour-8'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-8" name="agenda-minutes-8" type="number"  value="{{ data['agenda-minutes-8'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-8" name="agenda-8" type="text"  value="{{ data['agenda-8'] }}">
+							  </div>
+
+							  
+							  <p id="agenda-9-add"
+								 {% if agendaShow8 == true  and  agendaShow9 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show9()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-9-area"
+								   {% if agendaShow9 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  >
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-9" name="agenda-hour-9" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-9'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-9" name="agenda-minutes-9" type="number"  value="{{ data['agenda-minutes-9'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-9" name="agenda-9" type="text"  value="{{ data['agenda-9'] }}">
+							  </div>
+
+
+							  <p id="agenda-10-add"
+								 {% if agendaShow5 == true  and  agendaShow6 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show10()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-10-area"
+								   {% if agendaShow6 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  >
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-10" name="agenda-hour-10" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-10'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-10" name="agenda-minutes-10" type="number"  value="{{ data['agenda-minutes-10'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-10" name="agenda-10" type="text"  value="{{ data['agenda-10'] }}">
+							  </div>
+
+
+
+							  <p id="agenda-11-add"
+								 {% if agendaShow10 == true  and  agendaShow11 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show11()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-11-area"
+								   {% if agendaShow11 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  >
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-11" name="agenda-hour-11" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-11'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-11" name="agenda-minutes-11" type="number"  value="{{ data['agenda-minutes-11'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-11" name="agenda-11" type="text"  value="{{ data['agenda-11'] }}">
+							  </div>
+
+
+							  <p id="agenda-12-add"
+								 {% if agendaShow11 == true  and  agendaShow12 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show12()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-12-area"
+								   {% if agendaShow12 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  >
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-12" name="agenda-hour-12" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-12'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-12" name="agenda-minutes-12" type="number"  value="{{ data['agenda-minutes-12'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-12" name="agenda-12" type="text"  value="{{ data['agenda-12'] }}">
+							  </div>
+
+
+
+							  <p id="agenda-13-add"
+								 {% if agendaShow12 == true  and  agendaShow13 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show13()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-13-area"
+								   {% if agendaShow13 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  >
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-13" name="agenda-hour-13" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-13'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-13" name="agenda-minutes-13" type="number"  value="{{ data['agenda-minutes-13'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-13" name="agenda-13" type="text"  value="{{ data['agenda-13'] }}">
+							  </div>
+
+
+
+							  <p id="agenda-14-add"
+								 {% if agendaShow13 == true  and  agendaShow14 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show14()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-14-area"
+								   {% if agendaShow14 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  >
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-14" name="agenda-hour-14" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-14'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-14" name="agenda-minutes-14" type="number"  value="{{ data['agenda-minutes-14'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-14" name="agenda-14" type="text"  value="{{ data['agenda-14'] }}">
+							  </div>
+
+
+
+							  <p id="agenda-15-add"
+								 {% if agendaShow14 == true  and  agendaShow15 == false  %} style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+								 {% else %}	style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px; display:none;" {% endif %}
+								 onclick="show15()">Add another activtiy</p>
+							  <!-- Row three -->
+							  <div id="agenda-15-area"
+								   {% if agendaShow15 == true %} style="margin-bottom: 15px;"
+								   {% else %} style="display:none; margin-bottom: 15px;" {% endif %}
+							  >
+								  <input class="form-control" style="width:50px; margin-right:20px"
+										 id="agenda-hour-15" name="agenda-hour-15" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-15'] }}">
+
+								  <input class="form-control" style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-15" name="agenda-minutes-15" type="number"  value="{{ data['agenda-minutes-15'] }}">
+
+								  <input class="form-control" style="width:52%;"
+										 id="agenda-15" name="agenda-15" type="text"  value="{{ data['agenda-15'] }}">
 							  </div>
 
 
@@ -551,7 +729,7 @@
 
 					  {% if errorMissingEventDescription %}
 						  <span class="error-message">
-							  Enter a description
+							  Please provide some relevant detail and background information.
 						  </span>
 					  {% endif %}
 
@@ -566,10 +744,16 @@
 
 
 
-		  <div class="form-group" style="margin-top:50px">
+		  <div class="form-group" style="margin-top:50px; width:50%;">
 			  <input type="submit" class="button" value="Save and continue">
-			  <p style="margin-top:25px"><a href="/create-event/images">I'll complete this later - I don't have this information yet</a></p>
+
+			  <input type="submit" formaction="/create-event/description-skip" value="I'll complete this later - I don't have this information yet"
+					 style="margin-top:25px; border:0px; padding:0px; background-color: transparent; color: #005ea5; text-decoration: underline; cursor: pointer; ">
+
+			  <!-- <p style="margin-top:25px"><a href="/create-event/images">I'll complete this later - I don't have this information yet</a></p>  -->
 		  </div>
+
+
 
 	  </form>
 
@@ -578,6 +762,11 @@
 </main>
 
 {% endblock %}
+
+
+
+
+
 
 
 {% block page_scripts %}
@@ -649,34 +838,68 @@
 
 
 
+	// AGENDA
 	// SHOW MORE ANSWER BOXES
-	function show3()
+	function show7()
 	{
-		document.getElementById('agenda-3-add').style.display = 'none';
-		document.getElementById('agenda-3-area').style.display = 'block';
-		document.getElementById('agenda-4-add').style.display = 'block';
+		document.getElementById('agenda-7-add').style.display = 'none';
+		document.getElementById('agenda-7-area').style.display = 'block';
+		document.getElementById('agenda-8-add').style.display = 'block';
 	}
-	function show4()
+	function show8()
 	{
-		document.getElementById('agenda-4-add').style.display = 'none';
-		document.getElementById('agenda-4-area').style.display = 'block';
-		document.getElementById('agenda-5-add').style.display = 'block';
+		document.getElementById('agenda-8-add').style.display = 'none';
+		document.getElementById('agenda-8-area').style.display = 'block';
+		document.getElementById('agenda-9-add').style.display = 'block';
 	}
-	function show5()
+	function show9()
 	{
-		document.getElementById('agenda-5-add').style.display = 'none';
-		document.getElementById('agenda-5-area').style.display = 'block';
-		document.getElementById('agenda-6-add').style.display = 'block';
+		document.getElementById('agenda-9-add').style.display = 'none';
+		document.getElementById('agenda-9-area').style.display = 'block';
+		document.getElementById('agenda-10-add').style.display = 'block';
 	}
-	function show6()
+	function show10()
 	{
-		document.getElementById('agenda-6-add').style.display = 'none';
-		document.getElementById('agenda-6-area').style.display = 'block';
+		document.getElementById('agenda-10-add').style.display = 'none';
+		document.getElementById('agenda-10-area').style.display = 'block';
+		document.getElementById('agenda-11-add').style.display = 'block';
+	}
+	function show11()
+	{
+		document.getElementById('agenda-11-add').style.display = 'none';
+		document.getElementById('agenda-11-area').style.display = 'block';
+		document.getElementById('agenda-12-add').style.display = 'block';
+	}
+	function show12()
+	{
+		document.getElementById('agenda-12-add').style.display = 'none';
+		document.getElementById('agenda-12-area').style.display = 'block';
+		document.getElementById('agenda-13-add').style.display = 'block';
+	}
+	function show13()
+	{
+		document.getElementById('agenda-13-add').style.display = 'none';
+		document.getElementById('agenda-13-area').style.display = 'block';
+		document.getElementById('agenda-14-add').style.display = 'block';
+	}
+	function show14()
+	{
+		document.getElementById('agenda-14-add').style.display = 'none';
+		document.getElementById('agenda-14-area').style.display = 'block';
+		document.getElementById('agenda-15-add').style.display = 'block';
+	}
+	function show15()
+	{
+		document.getElementById('agenda-15-add').style.display = 'none';
+		document.getElementById('agenda-15-area').style.display = 'block';
 	}
 
 
 
-	// SHw custom benefits
+
+
+
+	// Show custom benefits
 	function showbenefit5()
 	{
 		document.getElementById('add-benefit-link-5').style.display = 'none';
@@ -704,9 +927,9 @@
 		//document.getElementById('add-benefit-link-9').style.display = 'block';
 	}
 
-
-
 </script>
+
+
 
 <style>
 	.typeahead__menu--inline {
@@ -714,8 +937,12 @@
 		overflow-x: visible;
 	}
 </style>
+
 <script type="text/javascript" src="/public/javascripts/typeahead.bundle.js"></script>
 <script type="text/javascript" src="/public/javascripts/location-autocomplete.min.js"></script>
+
+
+
 <script>
 
 	addMarketBoxJs('market-box-1', {{ data['market-box-1'] | dump | safe }});
