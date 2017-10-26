@@ -53,10 +53,6 @@
 				{% if emptyTargetAudienceText %}
 					<li><a href="#export-experience">Eligibility criteria: missing</a></li>
 				{% endif %}
-
-				{% if emptyTargetAudienceText %}
-					<li><a href="#export-experience">Eligibility criteria: missing</a></li>
-				{% endif %}
 			</ul>
 
 		</div>
@@ -126,7 +122,7 @@
 				  {% endif %}
 			  </label>
 
-				  <textarea class="form-control" name="summary-title" id="summary-title" rows="2" style="width:570px;%;">{{ data['summary-title'] }}</textarea>
+			  <textarea class="form-control" name="summary-title" id="summary-title" rows="2" style="width:570px;%;">{{ data['summary-title'] }}</textarea>
 
 			  <p id="char-counter" style="margin-left:0px; font-size:16px; margin-top:5px;  color: #6f777b; ">Characters remaining: 140</p>
 
@@ -361,15 +357,15 @@
 			  </label>
 			  <div class="form-date" style="margin-top:5px">
 				  <div class="multiple-choice" style="margin-bottom:10px">
-					  <input id="checkbox-never" type="checkbox" name="checkbox-never" value="new" {% if experienceNew %} checked="checked" {% endif %}>
+					  <input id="checkbox-never" type="checkbox" name="checkbox-never" value="Not yet exporting" {% if experienceNew %} checked="checked" {% endif %}>
 					  <label for="checkbox-never">Not yet exporting</label>
 				  </div>
 				  <div class="multiple-choice" style="margin-bottom:10px">
-					  <input id="checkbox-occasional" type="checkbox" name="checkbox-occasional" value="experienced" {% if experienceOld %} checked="checked" {% endif %}>
+					  <input id="checkbox-occasional" type="checkbox" name="checkbox-occasional" value="Occasionally exporting" {% if experienceOld %} checked="checked" {% endif %}>
 					  <label for="checkbox-occasional">Occasionally exporting</label>
 				  </div>
 				  <div class="multiple-choice" style="margin-bottom:10px">
-					  <input id="checkbox-regular" type="checkbox" name="checkbox-regular" value="open" {% if experienceAll %} checked="checked" {% endif %}>
+					  <input id="checkbox-regular" type="checkbox" name="checkbox-regular" value="Regularly exporting" {% if experienceAll %} checked="checked" {% endif %}>
 					  <label for="checkbox-regular">Regularly exporting</label>
 				  </div>
 			  </div>
@@ -379,7 +375,7 @@
 
 
 
-		  <!--  Summary of target audience  -->
+		  <!--  Eligibility  -->
 		  <div class="form-group  {% if emptyTargetAudienceText %} form-group-error {% endif %}" style="margin-top:0px; margin-bottom:20px;">
 			  <label class="form-label-bold" for="summary-target-audience" >
 				  Event eligibility criteria
@@ -399,9 +395,12 @@
 
 
 
-		  <div class="form-group" style="margin-top:20px">
+		  <div class="form-group" style="margin-top:20px; width:50%;">
 			  <input type="submit" class="button" value="Save and continue">
-			  <p style="margin-top:25px"><a href="/create-event/description">I'll complete this later - I don't have this information yet</a></p>
+
+			  <input type="submit" formaction="/create-event/title-skip" value="I'll complete this later - I don't have this information yet"
+					 style="margin-top:25px; border:0px; padding:0px; background-color: transparent; color: #005ea5; text-decoration: underline; cursor: pointer; ">
+
 		  </div>
 
 	  </form>

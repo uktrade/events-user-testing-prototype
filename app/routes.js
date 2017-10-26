@@ -1358,207 +1358,6 @@ router.get('/create-event/organiser-skip', function (req, res)
 
 
 // DESCRIPTION PAGE ONWARDS BUTTON
-router.get('/create-event/title-onwards', function (req, res)
-{
-  var errorMissingTitle = false;
-  var errorMissingSector = false;
-  var errorMissingSectorEntry = false;
-
-  var sectorsSelected = [37];
-
-  for (var i=0; i<=37; i++)
-  {
-    sectorsSelected[i] = false;
-  }
-
-
-  var sectorNo = false;
-  var sectorYes = false;
-
-  var errorMissingExperience = false;
-  var experienceNewSelected = false;
-  var experienceOccasionalSelected = false;
-  var experienceRegularSelected = false;
-
-  var errorTargetAudienceTextEmpty = false;
-
-
-
-  // EVENT TITLE
-  if(req.session.data['event-title'] === "")
-  {
-    errorMissingTitle = true;
-  }
-
-  console.log("sector -------------- " + req.session.data['radio-sector']);
-  console.log("sector box -------------- " + req.session.data['sector-box']);
-
-
-
-
-  // RADIO SECTOR
-  if(req.session.data['radio-sector'] == undefined)
-  {
-    errorMissingSector = true;
-  }
-  else if(req.session.data['radio-sector'] == "yes")
-  {
-    // CHECKBOX SELECTOR
-
-    sectorYes = true;
-
-    req.session.data['sectors'] = "";
-
-    // go through all the sectors and record if they are checked
-    for (var i=1; i<=37; i++)
-    {
-      if(req.session.data['sectors' + i] != undefined)
-      {
-        sectorsSelected[i] = true;
-
-        //console.log("\n the value of the radio box is -- " + req.session.data['sectors' + i] + "\n");
-        req.session.data['sectors'] = req.session.data['sectors'] + req.session.data['sectors' + i] + "\n";
-      }
-    }
-
-    // Check if no sectors were selected
-    if(req.session.data['sectors'] == "")
-    {
-      errorMissingSectorEntry = true;
-    }
-
-    console.log("\n the SELECTED SECTORS ARE  -- " + req.session.data['sectors'] + "\n");
-
-  }
-  else if(req.session.data['radio-sector'] == "no")
-  {
-    req.session.data['sectors'] = "Relevant to all sectors";
-    sectorNo = true;
-  }
-
-
-
-  //  ELIGIBILITY CRITERIA
-  if(req.session.data['summary-target-audience'] === "")
-  {
-    errorTargetAudienceTextEmpty = true;
-  }
-
-
-
-
-  // EXPERIENCE
-  req.session.data['audience-experience'] = "";
-  if(req.session.data['checkbox-never'] != undefined)
-  {
-    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-never'] + "\n";
-    experienceNewSelected = true;
-  }
-
-  if(req.session.data['checkbox-occasional'] != undefined)
-  {
-    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-occasional'] + "\n";
-    experienceOccasionalSelected = true;
-  }
-
-  if(req.session.data['checkbox-regular'] != undefined)
-  {
-    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-regular'];
-    experienceRegularSelected = true;
-  }
-
-  // Check if no experience levels were selected
-  if(req.session.data['audience-experience'] == "")
-  {
-    errorMissingExperience = true;
-    console.log("there is no experience selected");
-  }
-
-
-
-
-
-  // ERRORS OR PROCEED
-  if((errorMissingTitle || errorMissingSector || errorMissingSectorEntry || errorMissingExperience || errorTargetAudienceTextEmpty) == false)
-  {
-    if(req.session.changingFromSummary == true)
-    {
-      res.redirect('/create-event/summary-prelude');
-    }
-    else
-    {
-      res.redirect('/create-event/description');
-    }
-  }
-  else
-  {
-    res.render('create-event/title',
-        {
-          'errorsExist': true,
-
-          'errorMissingTitle': errorMissingTitle,
-
-          'errorMissingSector': errorMissingSector,
-          'sectorIsNo': sectorNo,
-          'sectorIsYes': sectorYes,
-          'errorMissingSectorBox': errorMissingSectorEntry,
-
-          'sector1Selected': sectorsSelected[1],
-          'sector2Selected': sectorsSelected[2],
-          'sector3Selected': sectorsSelected[3],
-          'sector4Selected': sectorsSelected[4],
-          'sector5Selected': sectorsSelected[5],
-          'sector6Selected': sectorsSelected[6],
-          'sector7Selected': sectorsSelected[7],
-          'sector8Selected': sectorsSelected[8],
-          'sector9Selected': sectorsSelected[9],
-
-          'sector10Selected': sectorsSelected[10],
-          'sector11Selected': sectorsSelected[11],
-          'sector12Selected': sectorsSelected[12],
-          'sector13Selected': sectorsSelected[13],
-          'sector14Selected': sectorsSelected[14],
-          'sector15Selected': sectorsSelected[15],
-          'sector16Selected': sectorsSelected[16],
-          'sector17Selected': sectorsSelected[17],
-          'sector18Selected': sectorsSelected[18],
-          'sector19Selected': sectorsSelected[19],
-
-          'sector20Selected': sectorsSelected[20],
-          'sector21Selected': sectorsSelected[21],
-          'sector22Selected': sectorsSelected[22],
-          'sector23Selected': sectorsSelected[23],
-          'sector24Selected': sectorsSelected[24],
-          'sector25Selected': sectorsSelected[25],
-          'sector26Selected': sectorsSelected[26],
-          'sector27Selected': sectorsSelected[27],
-          'sector28Selected': sectorsSelected[28],
-          'sector29Selected': sectorsSelected[29],
-
-          'sector30Selected': sectorsSelected[30],
-          'sector31Selected': sectorsSelected[31],
-          'sector32Selected': sectorsSelected[32],
-          'sector33Selected': sectorsSelected[33],
-          'sector34Selected': sectorsSelected[34],
-          'sector35Selected': sectorsSelected[35],
-          'sector36Selected': sectorsSelected[36],
-          'sector37Selected': sectorsSelected[37],
-
-
-          'experienceEmpty': errorMissingExperience,
-          'experienceNew': experienceNewSelected,
-          'experienceOld': experienceOccasionalSelected,
-          'experienceAll': experienceRegularSelected,
-
-          'emptyTargetAudienceText': errorTargetAudienceTextEmpty
-
-        }
-    );
-  }
-})
-
-
-// DESCRIPTION PAGE ONWARDS BUTTON
 
 router.get('/create-event/description-onwards', function (req, res)
 {
@@ -2598,8 +2397,6 @@ router.get('/create-event/venue-onwards', function (req, res)
 })
 
 
-
-
 router.get('/create-event/venue-skip', function (req, res)
 {
   var errorOnVenueName = false;
@@ -2695,6 +2492,414 @@ router.get('/create-event/venue-skip', function (req, res)
 
   res.redirect('/create-event/title');
 })
+
+
+
+
+// DESCRIPTION PAGE ONWARDS BUTTON
+router.get('/create-event/title-onwards', function (req, res)
+{
+  var errorMissingTitle = false;
+  var errorMissingSector = false;
+  var errorMissingSectorEntry = false;
+
+  var sectorsSelected = [37];
+
+  for (var i=0; i<=37; i++)
+  {
+    sectorsSelected[i] = false;
+  }
+
+
+  var sectorNo = false;
+  var sectorYes = false;
+
+
+  var errorMissingExperience = false;
+  var experienceNewSelected = false;
+  var experienceOccasionalSelected = false;
+  var experienceRegularSelected = false;
+
+  var errorTargetAudienceTextEmpty = false;
+
+
+
+  // EVENT TITLE
+  if(req.session.data['event-title'] === "")
+  {
+    errorMissingTitle = true;
+  }
+
+  console.log("sector -------------- " + req.session.data['radio-sector']);
+  console.log("sector box -------------- " + req.session.data['sector-box']);
+
+
+
+
+  // SUMMARY
+  if(req.session.data['summary-title'] === "")
+  {
+    req.session.data['summary-title-empty'] = true;
+  }
+  else
+  {
+    req.session.data['summary-title-empty'] = false;
+    // Summary is saved as dada automatically
+  }
+
+
+
+
+  // SECTORS
+  if(req.session.data['radio-sector'] == undefined)
+  {
+    errorMissingSector = true;
+  }
+  else if(req.session.data['radio-sector'] == "yes")
+  {
+    // CHECKBOX SELECTOR
+
+    sectorYes = true;
+
+    req.session.data['sectors'] = "";
+
+    // go through all the sectors and record if they are checked
+    for (var i=1; i<=37; i++)
+    {
+      if(req.session.data['sectors' + i] != undefined)
+      {
+        sectorsSelected[i] = true;
+
+        //console.log("\n the value of the radio box is -- " + req.session.data['sectors' + i] + "\n");
+        req.session.data['sectors'] = req.session.data['sectors'] + req.session.data['sectors' + i] + "\n";
+      }
+    }
+
+    // Check if no sectors were selected
+    if(req.session.data['sectors'] == "")
+    {
+      errorMissingSectorEntry = true;
+    }
+
+    console.log("\n the SELECTED SECTORS ARE  -- " + req.session.data['sectors'] + "\n");
+
+  }
+  else if(req.session.data['radio-sector'] == "no")
+  {
+    req.session.data['sectors'] = "Relevant to all sectors";
+    sectorNo = true;
+  }
+
+
+
+
+
+  // EXPERIENCE
+  req.session.data['audience-experience'] = "";
+  if(req.session.data['checkbox-never'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-never'] + "\n";
+    experienceNewSelected = true;
+  }
+
+  if(req.session.data['checkbox-occasional'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-occasional'] + "\n";
+    experienceOccasionalSelected = true;
+  }
+
+  if(req.session.data['checkbox-regular'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-regular'];
+    experienceRegularSelected = true;
+  }
+
+  // Check if no experience levels were selected
+  if(req.session.data['audience-experience'] == "")
+  {
+    errorMissingExperience = true;
+    console.log("there is no experience selected");
+  }
+
+
+
+
+
+
+  //  ELIGIBILITY CRITERIA
+  if(req.session.data['summary-target-audience'] === "")
+  {
+    errorTargetAudienceTextEmpty = true;
+  }
+
+
+
+
+
+
+  // ERRORS OR PROCEED
+  if((errorMissingTitle || errorMissingSector || errorMissingSectorEntry || errorMissingExperience || errorTargetAudienceTextEmpty) == false)
+  {
+    req.session.data['event-title-error'] = false;
+    req.session.data['sectors-error'] = false;
+    req.session.data['audience-experience-error'] = false;
+    req.session.data['summary-target-audience-error'] = false;
+
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/description');
+    }
+  }
+  else
+  {
+    res.render('create-event/title',
+        {
+          'errorsExist': true,
+
+          'errorMissingTitle': errorMissingTitle,
+
+          'errorMissingSector': errorMissingSector,
+          'sectorIsNo': sectorNo,
+          'sectorIsYes': sectorYes,
+          'errorMissingSectorBox': errorMissingSectorEntry,
+
+          'sector1Selected': sectorsSelected[1],
+          'sector2Selected': sectorsSelected[2],
+          'sector3Selected': sectorsSelected[3],
+          'sector4Selected': sectorsSelected[4],
+          'sector5Selected': sectorsSelected[5],
+          'sector6Selected': sectorsSelected[6],
+          'sector7Selected': sectorsSelected[7],
+          'sector8Selected': sectorsSelected[8],
+          'sector9Selected': sectorsSelected[9],
+
+          'sector10Selected': sectorsSelected[10],
+          'sector11Selected': sectorsSelected[11],
+          'sector12Selected': sectorsSelected[12],
+          'sector13Selected': sectorsSelected[13],
+          'sector14Selected': sectorsSelected[14],
+          'sector15Selected': sectorsSelected[15],
+          'sector16Selected': sectorsSelected[16],
+          'sector17Selected': sectorsSelected[17],
+          'sector18Selected': sectorsSelected[18],
+          'sector19Selected': sectorsSelected[19],
+
+          'sector20Selected': sectorsSelected[20],
+          'sector21Selected': sectorsSelected[21],
+          'sector22Selected': sectorsSelected[22],
+          'sector23Selected': sectorsSelected[23],
+          'sector24Selected': sectorsSelected[24],
+          'sector25Selected': sectorsSelected[25],
+          'sector26Selected': sectorsSelected[26],
+          'sector27Selected': sectorsSelected[27],
+          'sector28Selected': sectorsSelected[28],
+          'sector29Selected': sectorsSelected[29],
+
+          'sector30Selected': sectorsSelected[30],
+          'sector31Selected': sectorsSelected[31],
+          'sector32Selected': sectorsSelected[32],
+          'sector33Selected': sectorsSelected[33],
+          'sector34Selected': sectorsSelected[34],
+          'sector35Selected': sectorsSelected[35],
+          'sector36Selected': sectorsSelected[36],
+          'sector37Selected': sectorsSelected[37],
+
+
+          'experienceEmpty': errorMissingExperience,
+          'experienceNew': experienceNewSelected,
+          'experienceOld': experienceOccasionalSelected,
+          'experienceAll': experienceRegularSelected,
+
+          'emptyTargetAudienceText': errorTargetAudienceTextEmpty
+
+        }
+    );
+  }
+})
+
+
+// DESCRIPTION PAGE ONWARDS BUTTON
+router.get('/create-event/title-skip', function (req, res)
+{
+  var errorMissingTitle = false;
+  var errorMissingSector = false;
+  var errorMissingSectorEntry = false;
+
+  var sectorsSelected = [37];
+
+  for (var i=0; i<=37; i++)
+  {
+    sectorsSelected[i] = false;
+  }
+
+  var sectorNo = false;
+  var sectorYes = false;
+
+  var errorMissingExperience = false;
+  var experienceNewSelected = false;
+  var experienceOccasionalSelected = false;
+  var experienceRegularSelected = false;
+
+  var errorTargetAudienceTextEmpty = false;
+
+  // EVENT TITLE
+  if(req.session.data['event-title'] === "")
+  {
+    errorMissingTitle = true;
+  }
+
+  console.log("sector -------------- " + req.session.data['radio-sector']);
+  console.log("sector box -------------- " + req.session.data['sector-box']);
+
+
+
+  // SUMMARY
+  if(req.session.data['summary-title'] === "")
+  {
+    req.session.data['summary-title-empty'] = true;
+  }
+  else
+  {
+    req.session.data['summary-title-empty'] = false;
+    // Summary is saved as dada automatically
+  }
+
+
+
+
+
+  // SECTORS
+  if(req.session.data['radio-sector'] == undefined)
+  {
+    errorMissingSector = true;
+  }
+  else if(req.session.data['radio-sector'] == "yes")
+  {
+    // CHECKBOX SELECTOR
+
+    sectorYes = true;
+
+    req.session.data['sectors'] = "";
+
+    // go through all the sectors and record if they are checked
+    for (var i=1; i<=37; i++)
+    {
+      if(req.session.data['sectors' + i] != undefined)
+      {
+        sectorsSelected[i] = true;
+
+        //console.log("\n the value of the radio box is -- " + req.session.data['sectors' + i] + "\n");
+        req.session.data['sectors'] = req.session.data['sectors'] + req.session.data['sectors' + i] + "\n";
+      }
+    }
+
+    // Check if no sectors were selected
+    if(req.session.data['sectors'] == "")
+    {
+      errorMissingSectorEntry = true;
+    }
+
+    console.log("\n the SELECTED SECTORS ARE  -- " + req.session.data['sectors'] + "\n");
+
+  }
+  else if(req.session.data['radio-sector'] == "no")
+  {
+    req.session.data['sectors'] = "Relevant to all sectors";
+    sectorNo = true;
+  }
+
+
+
+
+
+  // EXPERIENCE
+  req.session.data['audience-experience'] = "";
+  if(req.session.data['checkbox-never'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-never'] + "\n";
+    experienceNewSelected = true;
+  }
+
+  if(req.session.data['checkbox-occasional'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-occasional'] + "\n";
+    experienceOccasionalSelected = true;
+  }
+
+  if(req.session.data['checkbox-regular'] != undefined)
+  {
+    req.session.data['audience-experience'] =  req.session.data['audience-experience'] + req.session.data['checkbox-regular'];
+    experienceRegularSelected = true;
+  }
+
+  // Check if no experience levels were selected
+  if(req.session.data['audience-experience'] == "")
+  {
+    errorMissingExperience = true;
+    console.log("there is no experience selected");
+  }
+
+
+
+
+  //  ELIGIBILITY CRITERIA
+  if(req.session.data['summary-target-audience'] === "")
+  {
+    errorTargetAudienceTextEmpty = true;
+  }
+
+
+
+
+  // ERRORS OR PROCEED
+  if( errorMissingTitle == true)
+  {
+    req.session.data['event-title-error'] = true;
+  }
+  else
+  {
+    req.session.data['event-title-error'] = false;
+  }
+
+  if( (errorMissingSector || errorMissingSectorEntry ) == true)
+  {
+    req.session.data['sectors-error'] = true;
+  }
+  else
+  {
+    req.session.data['sectors-error'] = false;
+  }
+
+  if( errorMissingExperience == true)
+  {
+    req.session.data['audience-experience-error'] = true;
+  }
+  else
+  {
+    req.session.data['audience-experience-error'] = false;
+  }
+
+  if( errorTargetAudienceTextEmpty == true)
+  {
+    req.session.data['summary-target-audience-error'] = true;
+  }
+  else
+  {
+    req.session.data['summary-target-audience-error'] = false;
+  }
+
+  res.redirect('/create-event/description');
+})
+
+
+
+
+
+
 
 
 
