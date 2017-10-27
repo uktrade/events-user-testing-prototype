@@ -3325,10 +3325,30 @@ router.get('/create-event/description-skip', function (req, res)
 
 
 
+// IMAGES PAGE ONWARDS BUTTON
+router.get('/create-event/images-onwards', function (req, res)
+{
+  // Always an error in the prototype because the main
+    res.render('create-event/images',
+        {
+          'missingImage': true
+        }
+    );
+})
+
+// IMAGES PAGE ONWARDS BUTTON
+router.get('/create-event/images-skip', function (req, res)
+{
+  req.session.data['image-error'] = true;
+
+  res.redirect('/create-event/parter-logos');
+})
+
+
 
 
 // IMAGES PAGE ONWARDS BUTTON
-router.get('/create-event/images-onwards', function (req, res)
+router.get('/create-event/partner-logos-onwards', function (req, res)
 {
   //console.log("\nreq.session.data['eu-logo'] \n\n")
 
@@ -3392,6 +3412,73 @@ router.get('/create-event/images-onwards', function (req, res)
     );
   }
 })
+
+router.get('/create-event/partner-logos-skip', function (req, res)
+{
+  //console.log("\nreq.session.data['eu-logo'] \n\n")
+
+  if(req.session.data['eu-logo'] != undefined)
+  {
+    req.session.data['eu-logo-selected'] = true;
+    console.log("\n the logo for the eu worked \n\n")
+  }
+  else
+  {
+    req.session.data['eu-logo-selected'] = false;
+  }
+
+  if(req.session.data['dit-logo'] != undefined)
+  {
+    req.session.data['dit-logo-selected'] = true;
+  }
+  else
+  {
+    req.session.data['dit-logo-selected'] = false;
+  }
+
+  if(req.session.data['growth-logo'] != undefined)
+  {
+    req.session.data['growth-logo-selected'] = true;
+  }
+  else
+  {
+    req.session.data['growth-logo-selected'] = false;
+  }
+
+  if(req.session.data['bw-logo'] != undefined)
+  {
+    req.session.data['bw-logo-selected'] = true;
+  }
+  else
+  {
+    req.session.data['bw-logo-selected'] = false;
+  }
+
+
+  // check for errors- never any
+  if(true)
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      res.redirect('/create-event/tickets');
+    }
+  }
+  // No errors so carry on
+  else
+  {
+    res.render('create-event/images',
+        {
+          'errorAttendee': true
+        }
+    );
+  }
+})
+
+
 
 
 router.get('/create-event/tickets-onwards', function (req, res)

@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		<ol>
+			<li><a href="/account">Account home</a></li>
+		</ol>
+	  </div>
+
+		<!-- CONDITIONAL ERROR  -->
+		{% if errorMissingImage %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Message to alert the user to a problem goes here
+			</h2>
+
+			<p>
+				Optional description of the errors and how to correct them
+			</p>
+
+			<ul class="error-summary-list">
+				{% if errorMissingTitle %}
+				<li><a href="#example-personal-details">Descriptive link to MISSING IMAGE error</a></li>
+				{% endif %}
+			</ul>
+
+		</div>
+		{% endif %}
+
+
+
+	  <h1 class="heading-large" style="margin-top:15px">
+		 Choose a webpage image
+      </h1>
+
+
+
+		  <!-- MAIN IMAGE LOGO -->
+
+		  <!-- styles to adjust checkboxes positioning. To be fixed with a cleaner solution :D -->
+		  <style>
+		  	.multiple-choice input {
+		  		margin-top: 28px;
+		  	}
+
+		  	.multiple-choice label::before {
+		  		margin-top: 27px;
+		  	}
+
+		  	.multiple-choice label::after {
+		  		margin-top: 27px;
+		  	}
+		  </style>
+
+
+		<form action="/create-event/partner-logos" method="get" class="form">
+
+
+			<div style="margin-top:30px; margin-bottom:30px">
+				<input type="submit" class="button-secondary" formaction="/create-event/images" value="Choose a different image" id="main-button-image">
+			</div>
+
+
+
+			<p class="bold" style="margin-top:20px; margin-bottom:10px;">Image preview</p>
+
+			<img src="/public/images/exporting-generic.jpg" style="width:300px;height:200px;">
+
+			<div>
+				<p style="margin-bottom:0;">We've cropped your image.</p>
+
+				<details role="group" style="width:650px;  ">
+					<summary role="button" aria-controls="details-content-0" aria-expanded="false"
+							 style="margin-top:0px;"><span class="summary">More details</span></summary>
+					<div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
+						<p style="margin-bottom:10px;">
+							<span class="bold">We use a 3:2 image shape</span><br>
+							<img src="/public/images/3by2.jpg" style="width:150px;height:100px;">
+						</p>
+
+						<div style="margin-top:30px; display:flex; flex-direction: row;">
+							<div style="margin-right:80px;">
+								<p style="margin-bottom:10px;">
+									<span class="bold">Uploading wide images</span><br>
+									We hide the sides.
+								</p>
+								<img src="/public/images/skyline-wide.jpg" style="width:226px;height:100px;">
+							</div>
+							<div>
+								<p style="margin-bottom:10px;">
+									<span class="bold">Uploading tall images</span><br>
+									We hide the top and bottom.
+								</p>
+								<img src="/public/images/skyline-tall.jpg" style="width:100px;height:147px;">
+
+							</div>
+						</div>
+
+					</div>
+				</details>
+			</div>
+
+
+
+			  <div class="form-group" style="margin-top:30px">
+				  <input type="submit" class="button" value="Save and continue">
+				  <input type="submit" value="I'll complete this later - I don't have this information yet"
+						 style="margin-top:25px; border:0px; padding:0px; background-color: transparent; color: #005ea5; text-decoration: underline; cursor: pointer; ">
+			  </div>
+
+	  	</form>
+
+    </div>
+
+
+  </div>
+</main>
+
+
+
+
+<script>
+	// When pressing the get main image button it swap in an image
+
+	function hide()
+	{
+		document.getElementById('image-and-guidance').style.display = 'none';
+		document.getElementById('image-area').style.display = 'inline';
+	}
+
+</script>
+
+{% endblock %}
+
+
+
+

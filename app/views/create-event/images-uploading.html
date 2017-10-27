@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		<ol>
+			<li><a href="/account">Account home</a></li>
+		</ol>
+	  </div>
+
+		<!-- CONDITIONAL ERROR  -->
+		{% if errorMissingImage %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Message to alert the user to a problem goes here
+			</h2>
+
+			<p>
+				Optional description of the errors and how to correct them
+			</p>
+
+			<ul class="error-summary-list">
+				{% if errorMissingTitle %}
+				<li><a href="#example-personal-details">Descriptive link to MISSING IMAGE error</a></li>
+				{% endif %}
+			</ul>
+
+		</div>
+		{% endif %}
+
+
+
+	  <h1 class="heading-large" style="margin-top:15px">
+		 Choose a webpage image
+      </h1>
+
+
+
+		  <!-- MAIN IMAGE LOGO -->
+
+		  <!-- styles to adjust checkboxes positioning. To be fixed with a cleaner solution :D -->
+		  <style>
+		  	.multiple-choice input {
+		  		margin-top: 28px;
+		  	}
+
+		  	.multiple-choice label::before {
+		  		margin-top: 27px;
+		  	}
+
+		  	.multiple-choice label::after {
+		  		margin-top: 27px;
+		  	}
+		  </style>
+
+
+
+
+
+		  <div style="margin-top:5px; margin-bottom:251px">
+
+			<img src="/public/images/uploading.gif" style="width:217px;height:54px;">
+
+		  </div>
+
+
+
+		<form action="/create-event/images-onwards" method="get" class="form">
+
+			  <div class="form-group" style="margin-top:20px">
+				  <input type="submit" class="button" value="Save and continue">
+				  <p style="margin-top:25px"><a href="/create-event/tickets">I'll complete this later - I don't have this information yet</a></p>
+			  </div>
+
+	  	</form>
+
+    </div>
+
+
+  </div>
+</main>
+
+
+
+
+<script>
+	// When pressing the get main image button it swap in an image
+
+	function hide()
+	{
+		document.getElementById('image-and-guidance').style.display = 'none';
+		document.getElementById('image-area').style.display = 'inline';
+	}
+
+</script>
+
+
+<script>
+	var timer = setTimeout(function()
+	{
+		window.location='/create-event/images-preview'
+	}, 3000);
+</script>
+
+{% endblock %}
+
+
+
+

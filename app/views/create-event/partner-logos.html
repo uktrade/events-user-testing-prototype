@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		<ol>
+			<li><a href="/account">Account home</a></li>
+		</ol>
+	  </div>
+
+		<!-- CONDITIONAL ERROR  -->
+		{% if errorMissingImage %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Message to alert the user to a problem goes here
+			</h2>
+
+			<p>
+				Optional description of the errors and how to correct them
+			</p>
+
+			<ul class="error-summary-list">
+				{% if errorMissingTitle %}
+				<li><a href="#example-personal-details">Descriptive link to MISSING IMAGE error</a></li>
+				{% endif %}
+			</ul>
+
+		</div>
+		{% endif %}
+
+
+
+	  <h1 class="heading-large" style="margin-top:15px">
+        Images and logos
+      </h1>
+
+
+
+		  <!-- MAIN IMAGE LOGO -->
+
+		  <!-- styles to adjust checkboxes positioning. To be fixed with a cleaner solution :D -->
+		  <style>
+		  	.multiple-choice input {
+		  		margin-top: 28px;
+		  	}
+
+		  	.multiple-choice label::before {
+		  		margin-top: 27px;
+		  	}
+
+		  	.multiple-choice label::after {
+		  		margin-top: 27px;
+		  	}
+		  </style>
+
+
+
+
+
+
+			  <!--  THE PARTNER LOGOS  -->
+			  <div class="form-group"
+				   style="margin-top:10px; margin-bottom:20px">
+
+				  <p>Partner logos will be display on the footer of your webpage.</p>
+
+
+				  <div id="partner-1" style="margin-bottom:30px;">
+					  <label class="form-label-bold" style="margin-bottom:0px;">
+						  Partner logo 1
+					  </label>
+					  <div id="logo-1" style="margin-top:2px">
+						  <input type="submit" class="button-secondary" value="Choose an image" onclick="hidelogo1()">
+					  </div>
+					  <div id="image-area-1" style="margin-top:2px; display:none">
+						  <img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000">
+						  <p><a href="">Change image</a><br>
+							 <a href="">Remove image</a></p>
+					  </div>
+				  </div>
+
+
+				  <div id="partner-2" style="margin-bottom:30px; display:none;">
+					  <label class="form-label-bold" style="margin-bottom:0px;">
+						  Partner logo 2
+					  </label>
+					  <div id="image-area-2" style="margin-top:2px;">
+						  <img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000">
+						  <p><a href="">Change image</a><br>
+							  <a href="">Remove image</a></p>
+					  </div>
+				  </div>
+
+
+
+				  <div id="partner-another" style="margin-bottom:30px;">
+					  <label class="form-label-bold" style="margin-bottom:0px;">
+						  Add another logo
+					  </label>
+					  <div style="margin-top:2px">
+						  <input type="submit" class="button-secondary" value="Choose an image">
+					  </div>
+				  </div>
+
+
+
+
+
+<!--
+				  <div id="partner-3"  style="margin-bottom:30px;">
+					  <label class="form-label-bold" style="margin-bottom:0px;">
+						  Partner logo 3
+					  </label>
+					  <div style="margin-top:2px">
+						  <input type="submit" class="button-secondary" value="Choose an image">
+					  </div>
+				  </div>
+
+
+				  <div id="partner-4"  style="margin-bottom:30px;">
+					  <label class="form-label-bold" style="margin-bottom:0px;">
+						  Partner logo 4
+					  </label>
+					  <div style="margin-top:2px">
+						  <input type="submit" class="button-secondary" value="Choose an image">
+					  </div>
+				  </div>
+
+
+				  <div id="partner-5" style="margin-bottom:30px;">
+					  <label class="form-label-bold" style="margin-bottom:0px;">
+						  Partner logo 5
+					  </label>
+					  <div style="margin-top:2px">
+						  <input type="submit" class="button-secondary" value="Choose an image">
+					  </div>
+				  </div>
+
+
+				  <div id="partner-6" style="margin-bottom:30px;">
+					  <label class="form-label-bold" style="margin-bottom:0px;">
+						  Partner logo 6
+					  </label>
+					  <div style="margin-top:2px">
+						  <input type="submit" class="button-secondary" value="Choose an image">
+					  </div>
+				  </div>
+
+				  -->
+
+			  </div>
+
+
+		<form action="/create-event/images-onwards" method="get" class="form">
+
+		  <div class="form-group" style="margin-top:20px">
+			  <input type="submit" class="button" value="Save and continue">
+
+			  <input type="submit" formaction="/create-event/partner-logos-skip" value="I'll complete this later - I don't have this information yet"
+					 style="margin-top:25px; border:0px; padding:0px; background-color: transparent; color: #005ea5; text-decoration: underline; cursor: pointer; ">
+		  </div>
+
+	  	</form>
+
+    </div>
+
+
+  </div>
+</main>
+
+
+
+
+<script>
+	// When pressing the get main image button it swap in an image
+
+	function hidelogo1()
+	{
+		document.getElementById('logo-1').style.display = 'none';
+		document.getElementById('image-area-1').style.display = 'inline';
+	}
+
+	function shownextlogo()
+	{
+		if(document.getElementById('partner-2').style.display == none)
+		{
+			afsdffasdf
+		}
+		document.getElementById('logo-2').style.display = 'none';
+		document.getElementById('image-area-2').style.display = 'inline';
+	}
+
+
+</script>
+
+{% endblock %}
+
+
+
+

@@ -22,30 +22,30 @@
 	  </div>
 
 		<!-- CONDITIONAL ERROR  -->
-		{% if errorMissingImage %}
-		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+		{% if missingImage %}
+			<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
-			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Message to alert the user to a problem goes here
-			</h2>
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					Missing fields
+				</h2>
 
-			<p>
-				Optional description of the errors and how to correct them
-			</p>
+				<p>
+					Please check the following errors and try again.
+				</p>
 
-			<ul class="error-summary-list">
-				{% if errorMissingTitle %}
-				<li><a href="#example-personal-details">Descriptive link to MISSING IMAGE error</a></li>
-				{% endif %}
-			</ul>
+				<ul class="error-summary-list">
+					{% if missingImage %}
+					<li><a href="#image-and-guidance">Main event image: missing</a></li>
+					{% endif %}
+				</ul>
 
-		</div>
+			</div>
 		{% endif %}
 
 
 
 	  <h1 class="heading-large" style="margin-top:15px">
-        Images and logos
+		 Choose a webpage image
       </h1>
 
 
@@ -68,122 +68,118 @@
 		  </style>
 
 
+		<form action="/create-event/images-onwards" method="get" class="form">
 
 
 		  <div class="form-group {% if errorMissingImage %} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:10px;" id="new-image-area">
-			  <label class="form-label-bold">
+			  <label class="form-label-bold" style="display:none">
 				  Main event image
 			  </label>
 			  <div style="margin-top:5px">
 
-				  <div id="image-and-guidance">
-					  <input type="submit" class="button-secondary" value="Choose an image" id="main-button-image"
-						   onclick="hide()">
+
+				  <div id="image-and-guidance" class="{% if missingImage %} form-group-error {% endif %}">
+					  {% if missingImage %}
+						  <p class="error-message">
+							  Please upload a relevant image for this event
+						  </p>
+					  {% endif %}
+					  <input type="submit" class="button-secondary" formaction="/create-event/images-uploading" value="Choose an image" id="main-button-image">
 
 					  <div style="display:block; margin-bottom:70px;">
 						  <details role="group" style="width:650px;  ">
 							  <summary role="button" aria-controls="details-content-0" aria-expanded="false"
 									   style="margin-top:10px;"><span class="summary">Image guidance</span></summary>
 							  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
-								  <p>  <!-- note these are made up -->
-									  Recommended image resolution:<br>300px by 200px
+								  <p style="margin-bottom:10px;">  <!-- note these are made up -->
+									  Minimum resolution: 300px by 200px
 								  </p>
 
 								  <p>  <!-- note these are made up -->
-									  File types accepted:<br>JPEG and PNG
+									  File types accepted: JPEG and PNG
 								  </p>
 
-								  <p>
+								  <p style="margin-bottom:10px;">
+									  <span class="bold">GREAT brand library</span><br>
 									  You may find the <a href="#">GREAT brand website</a> useful. It includes:
 								  </p>
 
 								  <ul class="list list-bullet">
-									  <li>an image library containing fully licensed stock photography</li>
+									  <li>fully licensed and DIT-approved stock photography</li>
 									  <li>official DIT and GREAT brand assets, including logos</li>
 									  <li>full brand guidelines and supporting documentation</li>
 								  </ul>
 
-								  <p>
-									  If you decide to independently source your own webpage photography or assets, make sure that you have relevant permissions to use them and that they adhere to brand guidelines.
+
+
+								  <p><span class="bold">Copyright</span><br>
+									  Never use images you've found on the web, without verifying their copyright and usage rights.
+									  <br>Meet branding guidelines if you use royalty-free services. e.g. <a href="https://unsplash.com/" target="_blank">Unplash</a>
 								  </p>
 							  </div>
 						  </details>
 					  </div>
 				  </div>
 
-				  <div style="margin-bottom:25px; display:none "  id="image-area" >
-					<img src="/public/images/exportingheroimagesmall.jpg" style="width:240px;height:100px;">
-					<p style="margin-bottom:10px;">
-						<a href="#">Choose a different image</a>
-					</p>
-				  </div>
 
+
+
+				  <div style="margin-bottom:25px; display:none "  id="image-area" >
+					<input type="submit" class="button-secondary" value="Choose a different image" id="main-button-image"
+							 onclick="hide()">
+
+					<p class="bold" style="margin-top:40px; margin-bottom:10px;">Image preview</p>
+					<img src="/public/images/exportingheroimagesmall.jpg" style="width:240px;height:100px;">
+
+				  	<div>
+						<p style="margin-bottom:0;">We've cropped your image.</p>
+
+						<details role="group" style="width:650px;  ">
+							<summary role="button" aria-controls="details-content-0" aria-expanded="false"
+									 style="margin-top:0px;"><span class="summary">More details</span></summary>
+							<div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
+								<p style="margin-bottom:10px;">
+									<span class="bold">We use a 3:2 image shape</span><br>
+									<img src="/public/images/3by2.jpg" style="width:150px;height:100px;">
+								</p>
+
+								<div style="margin-top:30px; display:flex; flex-direction: row;">
+									<div style="margin-right:80px;">
+										<p style="margin-bottom:10px;">
+											<span class="bold">Uploading wide images</span><br>
+											We hide the sides
+										</p>
+										<img src="/public/images/skyline-wide.jpg" style="width:226px;height:100px;">
+									</div>
+									<div>
+										<p style="margin-bottom:10px;">
+											<span class="bold">Uploading tall images</span><br>
+											We hide the top and bottom
+										</p>
+										<img src="/public/images/skyline-tall.jpg" style="width:100px;height:147px;">
+
+									</div>
+								</div>
+
+							</div>
+						</details>
+
+				  	</div>
+
+				  </div>
 		  	  </div>
 		  </div>
 
 
-		<form action="/create-event/images-onwards" method="get" class="form">
+		  <div class="form-group" style="margin-top:160px">
+			  <input type="submit" class="button" value="Save and continue">
 
-			  <!--  THE PARTNER LOGOS  -->
-			  <div class="form-group"
-				   style="margin-top:10px; margin-bottom:20px">
-				  <label class="form-label-bold" style="margin-bottom:10px;">
-					  Select partner logos
-				  </label>
-				  <fieldset style="width:100%;;">
-
-					  <div style=" padding-top:0px; width:500px; display: flex; ">
-
-						  <div class="multiple-choice" style="margin-right:30px; padding-top:0px;">
-							  <input id="eu-logo" name="eu-logo" type="checkbox" value="" style="margin-top:5px">
-							  <label for="eu-logo"><img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
-						  </div>
-
-						  <div>
-							  &nbsp;
-						  </div>
-
-						  <div class="multiple-choice" style="float: left; padding-top:0px; ">
-							  <input id="dit-logo" name="dit-logo" type="checkbox" value="" style="margin-top:5px">
-							  <label for="dit-logo"><img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
-						  </div>
-					  </div>
-
-					  <div style=" padding-top:0px; width:500px;  display: flex;">
-
-						  <div class="multiple-choice" style="margin-right:30px;">
-							  <input id="growth-logo" name="growth-logo" type="checkbox" value="" style="margin-top:5px">
-							  <label for="growth-logo"><img src="/public/images/partner13.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
-						  </div>
-
-						  <div>
-							  &nbsp;
-						  </div>
-
-						  <div class="multiple-choice" style="float: left; padding-top:0px; ">
-							  <input id="bw-logo" name="bw-logo" type="checkbox" value="" style="margin-top:5px">
-							  <label for="bw-logo"><img src="/public/images/partner14.jpg" style="width:205px;height:89px; border:1px solid #000000"></label>
-						  </div>
-					  </div>
-
-				  </fieldset>
-
-				  <div style="margin-top:5px">
-					  <input type="submit" class="button-secondary" value="Choose an new image">
-				  </div>
-			  </div>
+			  <input type="submit" formaction="/create-event/images-skip" value="I'll complete this later - I don't have this information yet"
+					 style="margin-top:25px; border:0px; padding:0px; background-color: transparent; color: #005ea5; text-decoration: underline; cursor: pointer; ">
+		  </div>
 
 
-
-
-			  <div class="form-group" style="margin-top:20px">
-				  <input type="submit" class="button" value="Save and continue">
-				  <p style="margin-top:25px"><a href="/create-event/tickets">I'll complete this later - I don't have this information yet</a></p>
-			  </div>
-
-			</div>
-
-	  </form>
+	  	</form>
 
     </div>
 
