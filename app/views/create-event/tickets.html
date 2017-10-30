@@ -32,27 +32,49 @@
 			</p>
 
 			<ul class="error-summary-list">
-				<li><a href="#example-personal-details">Descriptive link to the question with an error</a></li>
+
+				{% if errorMissingCapacity %}
+					<li><a href="#capacity-section">Event capacity: missing</a></li>
+				{% elif errorInvalidCapacity %}
+					<li><a href="#capacity-section">Event capacity: invalid entry</a></li>
+				{% endif %}
+				{% if errorMissingCapacityMessage %}
+					<li><a href="#close-message-area">Event capacity message: missing</a></li>
+				{% endif %}
+				{% if errorMissingCloseDate %}
+					<li><a href="#closing-date-time">Closure date: missing</a></li>
+				{% endif %}
+				{% if errorMissingCloseTime %}
+					<li><a href="#closing-date-time">DAN DAN DAN</a></li>
+				{% endif %}
+				{% if errorInvalidCloseTime %}
+					<li><a href="#closing-date-time">DAN DAN DAN</a></li>
+				{% endif %}
+
 			</ul>
 
 		</div>
         {% endif %}
 
 	  <h1 class="heading-large" style="margin-top:15px">
-        Tickets
+		  Event capacity and closing date
       </h1>
 
 
 	  <form action="/create-event/tickets-onwards" method="get" class="form">
 
 		  <!--   PLACES  -->
-		  <fieldset class="form-group {% if errorAttendee %} form-group-error {% endif %}">
+		  <fieldset class="form-group {% if errorAttendee %} form-group-error {% endif %}" id="capacity-section">
 
 			  <label class="form-label-bold">
-				  The maximum number of registrations allowed for this event?
-				  {% if errorAttendee %}
+				  Set event capacity
+				  {% if errorMissingCapacity %}
 					  <span class="error-message">
-						  Error message about personal details goes here
+						  DAN DAN DAN
+					  </span>
+				  {% elif errorInvalidCapacity %}
+				  	  <span class="error-message">
+						  Only numbers are allowed here. Check the values entered and try again.
 					  </span>
 				  {% endif %}
 			  </label>
@@ -62,7 +84,7 @@
 					<!-- <p class="form-hint">For example, 31 3 1980</p>  -->
 				  <div class="form-group form-group-day">
 					   <input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
-							  id="attendee-quantity" name="attendee-quantity" type="number" pattern="[0-9]*"
+							  id="attendee-quantity" name="attendee-quantity" type="text"
 							  value="{{ data['attendee-quantity'] }}">
 				  </div>
 			  </div>
@@ -70,59 +92,109 @@
 
 			  <div style="">
 				  <details role="group" style="width:650px;  ">
-					  <summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:10px;"><span class="summary">How availability will be displayed</span></summary>
+					  <summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:10px;"><span class="summary">How capacity will be displayed</span></summary>
 					  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
 						  <p>
-							  Total number of tickets won't be displayed on your webpage. Once event capacity exceeds 80%, a limited availability message will appear.
+							  This number won't be displayed on your webpage. It can be edited at any time. The only thing visitors will see is a 'limited availability' message once registration exceeds 80% of this number.
 						  </p>
 					  </div>
 				  </details>
 			  </div>
-
 		  </fieldset>
 
 
-
-		  <fieldset class="form-group">
+		  <!-- WAITING LIST  -->
+		  <fieldset class="form-group" id="waiting-list">
 			  <!--  message user will see when all tickets are gone -->
 			  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
-				  <label class="form-label-bold" for="sold-out-message">
-					  Set a message to display once the registration limit has been reached
+				  <label class="form-label-bold">
+					  When capacity is reached
 				  </label>
-				  <textarea class="form-control" name="sold-out-message" id="sold-out-message" rows="3" style="width: 100%;">{{ data['sold-out-message'] }}</textarea>
+				  <div class="form-date" style="margin-top:5px">
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="waiting-list-no" type="radio" name="waiting-list" value="no" checked="checked">
+						  <label for="waiting-list-no">Close registrations only</label>
+					  </div>
+					  <div class="multiple-choice" style="margin-bottom:10px"  data-target="waiting-list-questions-area">
+						  <input id="waiting-list-yes" type="radio" name="waiting-list" value="yes" >
+						  <label for="waiting-list-yes">Open waiting list</label>
+					  </div>
+				  </div>
+
+				  <div class="form-group panel panel-border-narrow js-hidden" style="padding-bottom:12px;" id="waiting-list-questions-area">
+					  <label class="form-label-bold">
+						  When places become available
+					  </label>
+					  <div class="form-date" style="margin-top:5px">
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="waiting-list-auto" type="radio" name="waiting-list-free-up" value="no" checked="checked">
+							  <label for="waiting-list-no">Automatically offer places</label>
+						  </div>
+						  <div class="multiple-choice" style="margin-bottom:10px"  >
+							  <input id="waiting-list-manual" type="radio" name="waiting-list-free-up" value="yes" >
+							  <label for="waiting-list-yes">I will select who if offered a place</label>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+		  </fieldset>
+
+
+		  <!-- FULL MESSAGE -->
+		  <fieldset class="form-group {% if errorMissingCapacityMessage %} form-group-error {% endif %}" id="close-message-area">
+			  <!--  message user will see when all tickets are gone -->
+			  <div class="form-group " style="margin-top:0px; margin-bottom:0px">
+				  <label class="form-label-bold" for="sold-out-message">
+					  Customise event capacity message
+					  {% if errorMissingCapacityMessage %}
+						  <span class="error-message">
+							  Please provide a message to display to visitors once the event reaches capacity.
+						  </span>
+					  {% endif %}
+				  </label>
+				  <textarea class="form-control {% if errorMissingCapacityMessage %} form-control-error {% endif %}" name="sold-out-message" id="sold-out-message" rows="3" style="width: 100%;">{{ data['sold-out-message'] }}</textarea>
 			  </div>
 		  </fieldset>
 
 
 
-		  <fieldset class="form-group" style="margin-bottom:0px; margin-top:10px;">
+		  <!--   EDIT CLOSE DATE -->
+		  <fieldset class="form-group" style="margin-bottom:0px; margin-top:10px;" id="closing-date-time">
 
 			  <!-- Try without this as the page is getting way to busy -->
 			  <!--
-			  <p class="panel panel-border-narrow" style="padding-bottom:15px;">Registration will automatically close at 12:00 on the day of the event</p>
-			-->
+				  <p class="panel panel-border-narrow" style="padding-bottom:15px;">Registration will automatically close at 12:00 on the day of the event</p>
+				-->
 
 			  <label class="form-label-bold">
-				  Do you want to edit the closure date?
+				  Do you want to edit the closing date?
 			  </label>
 			  <div class="form-date" style="margin-top:5px">
 				  <div class="multiple-choice" style="margin-bottom:10px">
-					  <input id="radio-days-before-no" type="radio" name="radio-close-early-yes-no" value="no" checked="checked">
+					  <input id="radio-days-before-no" type="radio" name="radio-close-early-yes-no" value="no"
+							   {% if not errorMissingCloseDate %} checked="checked"{% endif %}>
 					  <label for="radio-days-before-no">No, leave registration open up until the event starts</label>
 				  </div>
 				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="date-selection-area">
-					  <input id="radio-days-before-yes" type="radio" name="radio-close-early-yes-no" value="yes" >
+					  <input id="radio-days-before-yes" type="radio" name="radio-close-early-yes-no" value="yes" {% if errorMissingCloseDate %} checked="checked"{% endif %}>
 					  <label for="radio-days-before-yes">Yes, close registration early</label>
 				  </div>
 			  </div>
 		  </fieldset>
 
 
-			  <div class="form-group panel panel-border-narrow js-hidden" id="date-selection-area">
+
+
+		  <div class="form-group panel panel-border-narrow js-hidden  {% if errorMissingCloseDate %} form-group-error {% endif %}" id="date-selection-area">
 
 				  <div style="width:100%">
 					  <label class="form-label-bold">
 						  Close date
+						  {% if errorMissingCloseDate %}
+							  <span class="error-message">
+								  Please select a custom closure date.
+							  </span>
+						  {% endif %}
 					  </label>
 
 		  			<fieldset>
@@ -249,25 +321,25 @@
 
     </div>
 
+				 <!--
+					  <div class="column-third add-title-margin" style="margin-top:50px;">
+						  <aside class="govuk-related-items" data-module="track-click" role="complementary">
+							  <p class="heading-small" style="margin-top:5px; margin-bottom:15px;">
+								  Waiting lists
+							  </p>
 
-	  <div class="column-third add-title-margin" style="margin-top:50px;">
-		  <aside class="govuk-related-items" data-module="track-click" role="complementary">
-			  <p class="heading-small" style="margin-top:5px; margin-bottom:15px;">
-				  Waiting lists
-			  </p>
+							  <p>
+								  A waiting list feature is being developed.
+							  </p>
 
-			  <p>  <!-- note these are made up -->
-				  A waiting list feature is being developed.
-			  </p>
+							  <p>
+								  In the meantime, you can use the message editor to communicate any waiting list instructions and details to visitors.
+							  </p>
 
-			  <p>
-				  In the meantime, you can use the message editor to communicate any waiting list instructions and details to visitors.
-			  </p>
+						  </aside>
 
-		  </aside>
-
-	  </div>
-
+					  </div>
+				-->
 
   </div>
 </main>

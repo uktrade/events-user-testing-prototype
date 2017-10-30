@@ -76,13 +76,19 @@
 							  <input id="radio-inline-2" type="radio" name="radio-additional-questions-boolean" value="no" checked="checked">
 							  <label for="radio-inline-2">No, I don't need to add any further registration questions</label>
 						  </div>
-						  <div class="multiple-choice" style="margin-bottom:10px">
+						  <div class="multiple-choice" style="margin-bottom:10px"  data-target="more-reg-questions">
 							  <input id="radio-inline-1" type="radio" name="radio-additional-questions-boolean" value="yes">
 							  <label for="radio-inline-1">Yes, I need to add further registration questions</label>
 						  </div>
 					  </div>
+
+					  <div class="form-group panel panel-border-narrow js-hidden" style="padding-bottom:12px;" id="more-reg-questions">
+					  	<p>You can enter questions on the next page.</p>
+					  </div>
+
 				  </div>
 		  </fieldset>
+
 
 
  		  <div class="form-group" style="margin-top:20px">

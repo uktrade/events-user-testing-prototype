@@ -3341,7 +3341,7 @@ router.get('/create-event/images-skip', function (req, res)
 {
   req.session.data['image-error'] = true;
 
-  res.redirect('/create-event/parter-logos');
+  res.redirect('/create-event/partner-logos');
 })
 
 
@@ -3352,139 +3352,194 @@ router.get('/create-event/partner-logos-onwards', function (req, res)
 {
   //console.log("\nreq.session.data['eu-logo'] \n\n")
 
-  if(req.session.data['eu-logo'] != undefined)
+  if(req.session.data['logo-1'] != undefined)
   {
-    req.session.data['eu-logo-selected'] = true;
+    req.session.data['logo-1-selected'] = true;
     console.log("\n the logo for the eu worked \n\n")
   }
   else
   {
-    req.session.data['eu-logo-selected'] = false;
+    req.session.data['logo-1-selected'] = false;
   }
 
-  if(req.session.data['dit-logo'] != undefined)
+
+  if(req.session.data['logo-2'] != undefined)
   {
-    req.session.data['dit-logo-selected'] = true;
+    req.session.data['logo-2-selected'] = true;
   }
   else
   {
     req.session.data['dit-logo-selected'] = false;
   }
 
-  if(req.session.data['growth-logo'] != undefined)
+
+  if(req.session.data['logo-3'] != undefined)
   {
-    req.session.data['growth-logo-selected'] = true;
+    req.session.data['logo-3-selected'] = true;
   }
   else
   {
-    req.session.data['growth-logo-selected'] = false;
+    req.session.data['logo-3-selected'] = false;
   }
 
-  if(req.session.data['bw-logo'] != undefined)
+
+  if(req.session.data['logo-4'] != undefined)
   {
-    req.session.data['bw-logo-selected'] = true;
+    req.session.data['logo-4-selected'] = true;
   }
   else
   {
-    req.session.data['bw-logo-selected'] = false;
+    req.session.data['logo-4-selected'] = false;
   }
+
+
+  if(req.session.data['logo-5'] != undefined)
+  {
+    req.session.data['logo-5-selected'] = true;
+  }
+  else
+  {
+    req.session.data['logo-5-selected'] = false;
+  }
+
+
+
+  if(req.session.data['logo-6'] != undefined)
+  {
+    req.session.data['logo-6-selected'] = true;
+  }
+  else
+  {
+    req.session.data['logo-6-selected'] = false;
+  }
+
+
 
 
   // check for errors- never any
-  if(true)
+  if(req.session.changingFromSummary == true)
   {
-    if(req.session.changingFromSummary == true)
-    {
-      res.redirect('/create-event/summary-prelude');
-    }
-    else
-    {
-      res.redirect('/create-event/tickets');
-    }
+    res.redirect('/create-event/summary-prelude');
   }
-  // No errors so carry on
   else
   {
-    res.render('create-event/images',
-        {
-          'errorAttendee': true
-        }
-    );
+    res.redirect('/create-event/tickets');
   }
+
 })
+
+
 
 router.get('/create-event/partner-logos-skip', function (req, res)
 {
   //console.log("\nreq.session.data['eu-logo'] \n\n")
 
-  if(req.session.data['eu-logo'] != undefined)
+  if(req.session.data['logo-1'] != undefined)
   {
-    req.session.data['eu-logo-selected'] = true;
+    req.session.data['logo-1-selected'] = true;
     console.log("\n the logo for the eu worked \n\n")
   }
   else
   {
-    req.session.data['eu-logo-selected'] = false;
+    req.session.data['logo-1-selected'] = false;
   }
 
-  if(req.session.data['dit-logo'] != undefined)
+
+  if(req.session.data['logo-2'] != undefined)
   {
-    req.session.data['dit-logo-selected'] = true;
+    req.session.data['logo-2-selected'] = true;
   }
   else
   {
     req.session.data['dit-logo-selected'] = false;
   }
 
-  if(req.session.data['growth-logo'] != undefined)
+
+  if(req.session.data['logo-3'] != undefined)
   {
-    req.session.data['growth-logo-selected'] = true;
+    req.session.data['logo-3-selected'] = true;
   }
   else
   {
-    req.session.data['growth-logo-selected'] = false;
+    req.session.data['logo-3-selected'] = false;
   }
 
-  if(req.session.data['bw-logo'] != undefined)
+
+  if(req.session.data['logo-4'] != undefined)
   {
-    req.session.data['bw-logo-selected'] = true;
+    req.session.data['logo-4-selected'] = true;
   }
   else
   {
-    req.session.data['bw-logo-selected'] = false;
+    req.session.data['logo-4-selected'] = false;
   }
 
 
-  // check for errors- never any
-  if(true)
+  if(req.session.data['logo-5'] != undefined)
   {
-    if(req.session.changingFromSummary == true)
-    {
-      res.redirect('/create-event/summary-prelude');
-    }
-    else
-    {
-      res.redirect('/create-event/tickets');
-    }
+    req.session.data['logo-5-selected'] = true;
   }
-  // No errors so carry on
   else
   {
-    res.render('create-event/images',
-        {
-          'errorAttendee': true
-        }
-    );
+    req.session.data['logo-5-selected'] = false;
+  }
+
+
+
+  if(req.session.data['logo-6'] != undefined)
+  {
+    req.session.data['logo-6-selected'] = true;
+  }
+  else
+  {
+    req.session.data['logo-6-selected'] = false;
+  }
+
+
+
+
+  if(req.session.changingFromSummary == true)
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+  else
+  {
+    res.redirect('/create-event/tickets');
   }
 })
+
 
 
 
 
 router.get('/create-event/tickets-onwards', function (req, res)
 {
+  var missingCapacity = false;
+  var invalidCapacity = false;
+  var missingCapacityMessage = false;
+  var missingCloseDate = false;
+  var missingCloseTime = false;
+  var invalidCloseTime = false;
 
-  req.session.data['attendee-quantity'];
+  console.log("the entry of the attendee stuff is " + req.session.data['attendee-quantity']);
+
+  if(req.session.data['attendee-quantity'] == "")
+  {
+    missingCapacity = true;
+  }
+  else if ( isNaN(req.session.data['attendee-quantity']) == true )
+  {
+    invalidCapacity = true;
+  }
+
+
+  if(req.session.data['sold-out-message'] == "")
+  {
+    missingCapacityMessage = true;
+  }
+
+
+
 
   //  message for when tickets are gone and nothing is entered in the box
 
@@ -3511,50 +3566,6 @@ router.get('/create-event/tickets-onwards', function (req, res)
     }
     else if(req.session.data['radio-days-before'] == "differentdate")
     {
-      /*
-      if (req.session.data['event-day-close'] != undefined)
-      {
-        if(1 <= req.session.data['event-day-close'] && req.session.data['event-day-close'] <= 31)
-        {    }
-        else
-        {
-          errorDayFound = true;
-        }
-      }
-
-      //  MONTH
-      var monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-
-
-      if (req.session.data['event-month-close'] != undefined)
-      {
-        if(1 <= req.session.data['event-month-close'] && req.session.data['event-month-close'] <= 12)
-        {
-
-          if(req.session.data['event-month-close'] <= 13)
-          { req.session.data['event-month-name'] =  monthNames[req.session.data['event-month-close']-1]; }
-        }
-        else
-        {
-          errorMonthFound = true;
-        }
-      }
-
-      // YEAR
-      if (req.session.data['event-year-close'] != undefined)
-      {
-        if(2017 <= req.session.data['event-year-close'] && req.session.data['event-year-close'] <= 2020)
-        {}
-        else
-        {
-          errorYearFound = true;
-        }
-      }
-      */
-
-
       // DAY
       var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
@@ -3581,26 +3592,17 @@ router.get('/create-event/tickets-onwards', function (req, res)
       console.log(" the year is - " + enteredCloseDate.getFullYear());
 
     }
+    else
+    {
+      missingCloseDate = true;
+    }
   }
 
 
 
-  // stuff for setting up a waiting list
-  /*
-   console.log(req.session.data['radio-group-ticket-gone']);
-
-   if(req.session.data['radio-group-ticket-gone'] == "close-registrations")
-   {
-   req.session.data['after-tickets-gone'] = "Close registrations";
-   }
-   else
-   {
-   req.session.data['after-tickets-gone'] = "Have a waiting list";
-   }
-   */
 
   // check for errors
-  if(0 < req.session.data['attendee-quantity'])
+  if( (missingCapacity || invalidCapacity || missingCapacityMessage || missingCloseDate || missingCloseTime || invalidCloseTime) == false )
   {
     if(req.session.changingFromSummary == true)
     {
@@ -3619,52 +3621,41 @@ router.get('/create-event/tickets-onwards', function (req, res)
   // Errors found so refresh page with errors
   else
   {
-    res.render('create-event/attendees',
+    res.render('create-event/tickets',
         {
-          'errorAttendee': true
+          'errorAttendee': true,
+          'errorMissingCapacity': missingCapacity,
+          'errorInvalidCapacity': invalidCapacity,
+          'errorMissingCapacityMessage': missingCapacityMessage,
+          'errorMissingCloseDate': missingCloseDate,
+          'errorMissingCloseTime': missingCloseTime,
+          'errorInvalidCloseTime': invalidCloseTime
         }
     );
   }
 })
 
 
+
+
 router.get('/create-event/attendee-onwards', function (req, res)
 {
-  req.session.data['attendee-quantity'];
-
-  //  message for when tickets are gone and nothing is entered in the box
-  if(req.session.data['sold-out-message'] == "")
-  {
-    req.session.data['sold-out-message'] = "No message will be shown";
-  }
-
-  // stuff for setting up a waiting list
-  /*
-   console.log(req.session.data['radio-group-ticket-gone']);
-
-   if(req.session.data['radio-group-ticket-gone'] == "close-registrations")
-   {
-   req.session.data['after-tickets-gone'] = "Close registrations";
-   }
-   else
-   {
-   req.session.data['after-tickets-gone'] = "Have a waiting list";
-   }
-  */
-
   // Add additional pages if there are additional questions
   console.log("questions out " + req.session.data['radio-additional-questions-boolean']);
 
   if(req.session.data['radio-additional-questions-boolean'] == "yes")
   {
     req.session.quantityOfQuestions = 1;
-    req.session.questionsExist[0] = true;
-    req.session.data['additional-questions-incrementer'] = 1
-    if (req.session.previousQuestionsPage == true) {
+    //req.session.questionsExist[0] = true;
+    req.session.data['additional-questions-incrementer'] = 1;
+    if
+    (req.session.previousQuestionsPage == true)
+    {
       res.redirect('/create-event/load-previous-additional-questions');
     } 
-    else {
-    res.redirect('/create-event/additional-questions');
+    else
+    {
+      res.redirect('/create-event/additional-questions');
     } 
   }
   else
@@ -3686,7 +3677,7 @@ router.get('/create-event/add-other-question-submit', function (req, res)
   req.session.addOneMoreQuestion = true;
 
   res.redirect('/create-event/question-onwards');
-  console.log("********************** the alternativ thing worked");
+  console.log("********************** the alternative thing worked");
 })
 
 
@@ -3694,11 +3685,11 @@ router.get('/create-event/final-question', function (req, res)
 {
   req.session.addOneMoreQuestion = false;
 
-
   console.log("********************** the normal save and continue worked worked");
 
   res.redirect('/create-event/question-onwards');
 })
+
 
 
 // IMAGES PAGE ONWARDS BUTTON
@@ -3813,6 +3804,7 @@ router.get('/create-event/question-onwards', function (req, res)
 
   //  MANDATORY OR NOT
   var menditoryMessage = ""
+  var manditorySelected = false;
   if(req.session.data['radio-additional-question-mandatory'] == "no")
   {
     menditoryMessage = "Not mandatory"
@@ -3820,6 +3812,7 @@ router.get('/create-event/question-onwards', function (req, res)
   else if(req.session.data['radio-additional-question-mandatory'] == "yes")
   {
     menditoryMessage = "Mandatory"
+    manditorySelected = true;
   }
 
   console.log("the manditory message is *+*+*  -  " + menditoryMessage);
@@ -3843,7 +3836,7 @@ router.get('/create-event/question-onwards', function (req, res)
       if(req.session.data['radio-additional-questions-answers-type'] == "enter-text")
       {
         thisNewQuestionData[1] = "Free text";
-        answersString="Free text";
+        answersString="Free text"  + "\n";
       }
       else if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
       {
@@ -3905,6 +3898,8 @@ router.get('/create-event/question-onwards', function (req, res)
     }
     console.log("444444444444444444444444444the answers STRING IS for the questions before the end " + req.session.questionsData + "\n");
 
+
+
     //  WIPE THE FORM DATA FOR THE NEXT QUESTION OR END OF QUSTIONS
     req.session.data['question'] = "";
     req.session.data['radio-additional-questions-answers-type'] = undefined;
@@ -3914,6 +3909,8 @@ router.get('/create-event/question-onwards', function (req, res)
     }
 
     console.log("the answers STRING IS for the questions before the end " + req.session.questionsData + "\n");
+
+
 
     // Check if ths is not the final question
     if(req.session.addOneMoreQuestion)
@@ -3953,7 +3950,7 @@ router.get('/create-event/question-onwards', function (req, res)
     res.render('create-event/additional-questions',
         {
           'errorQuestions': true,
-          'errorNewQuestionEmpty': errorNewOrOldQuestionMissing,
+
           'errorQuestionEmpty' : errorQuestionMissing,
           'errorAnswersError' : answerError,
           'errorAnswerTypeEmpty' : answerTypeEmpty,
@@ -3962,6 +3959,10 @@ router.get('/create-event/question-onwards', function (req, res)
           'errorOneSelected' : answerTypeOneSelected,
           'errorMultipleSelected' : answerTypeMultipleSelected,
           'errorNewQuestionSelected' : newQuestionSelected,
+          'errorManditorySelected' : manditorySelected,
+
+          // not used any more
+          'errorNewQuestionEmpty': errorNewOrOldQuestionMissing,
           'errorOldQuestionOneSelected' : oldQuestionOneSelected,
           'errorOldQuestionTwoSelected' : oldQuestionTwoSelected,
           'errorOldQuestionThreeSelected' : oldQuestionThreeSelected,
@@ -3971,6 +3972,60 @@ router.get('/create-event/question-onwards', function (req, res)
     );
   }
 })
+
+
+
+router.get('/create-event/change-question/:number?', function (req, res)
+{
+
+  // Set question number
+  req.session.data['additional-questions-incrementer'] = parseInt(req.params.number) + 1;
+
+
+  // Set question
+  req.session.data['question'] = req.session.questionsData[req.params.number][0];
+
+  // Set answer type
+
+  var answerFree = false;
+  var answerSingle = false;
+  var answerMultiple = false;
+  if(req.session.questionsData[req.params.number][1] == "Free text")
+  {
+    answerFree = true;
+  }
+  else if(req.session.questionsData[req.params.number][1] == "Select one answer")
+  {
+    answerSingle = true;
+  }
+  else if(req.session.questionsData[req.params.number][1] == "Select multiple answers")
+  {
+    answerMultiple = true;
+  }
+
+
+  // SET MANDIROTY
+  var manditorySelected = false;
+  if(req.session.questionsData[req.params.number][3] == "Mandatory")
+  {
+    manditorySelected = true;
+  }
+
+  //res.redirect('/create-event/additional-questions');
+
+  console.log("-----------" + req.session.data['question']);
+
+  res.render('create-event/additional-questions',
+      {
+        'errorFreeTextSelected' : answerFree,
+        'errorOneSelected' : answerSingle,
+        'errorMultipleSelected' : answerMultiple,
+        'errorManditorySelected' : manditorySelected
+      }
+  );
+})
+
+
 
 
 router.get('/create-event/template-reg-onwards', function (req, res)

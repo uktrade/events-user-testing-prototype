@@ -31,27 +31,29 @@
 				Please check the following errors and try again
 			</p>
 
+			<!--
 			{% if errorNewQuestionEmpty %}
 				<ul class="error-summary-list">
 					<li><a href="#previous-questions">Need select a new question or a previous question</a></li>
 				</ul>
 			{% endif %}
+			-->
 
 			{% if errorQuestionEmpty %}
 				<ul class="error-summary-list">
-					<li><a href="#show-answer-type">Need to enter the question</a></li>
+					<li><a href="#question-area">Question for attendee: text missing</a></li>
 				</ul>
 			{% endif %}
 
 			{% if errorAnswerTypeEmpty %}
 				<ul class="error-summary-list">
-					<li><a href="#answer-types">Need to select the type of answers for their question</a></li>
+					<li><a href="#answer-types">DAN DAN DAN Need to select the type of answers for their question</a></li>
 				</ul>
 			{% endif %}
 
 			{% if errorAnswersError %}
 			<ul class="error-summary-list">
-				<li><a href="#show-answers">You need to enter at least 2 answers</a></li>
+				<li><a href="#show-answers">Multiple choice question: text missing</a></li>
 			</ul>
 			{% endif %}
 
@@ -67,8 +69,10 @@
 
 	  <form action="/create-event/question-onwards" method="get" class="form">
 
-		  	<fieldset class="form-group {% if session.previousQuestions.length == 0 %} js-hidden {% endif %}" style="margin-bottom:0; padding-bottom:30px" id="previous-questions">
-			  <!--  Additional questions that the registering user need to answer  -->
+
+		    <!--
+                        <fieldset class="form-group {% if session.previousQuestions.length == 0 %} js-hidden {% endif %}" style="margin-bottom:0; padding-bottom:30px" id="previous-questions">
+                          Additional questions that the registering user need to answer
 
 				<div class="form-group " style="margin-top:10px; margin-bottom:0px">
 
@@ -137,6 +141,7 @@
 
 
 
+
 			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
 			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
 			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
@@ -145,15 +150,18 @@
 			  							  {% endif %}"
 						id="show-answer-type">
 
+			-->
 
 
-				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:0px;">
+
+				  <!--  QUESTION -->
+				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:0px;" id="question-area">
 					  <label class="form-label-bold" for="question">
 						  Question for attendee
 						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
+							<span class="error-message">
+								Attendee question missing
+							</span>
 						  {% endif %}
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
@@ -176,13 +184,14 @@
 							  Set response format
 							  {% if errorAnswerTypeEmpty %}
 								  <span class="error-message">
-									  Select type of answer
+									  DAN DAN DAN Select type of answer
 								  </span>
 							  {% endif %}
 						  </label>
 						  <div class="form-date" style="margin-top:5px">
 							  <div class="multiple-choice">
-								  <input id="enter-text" type="radio" name="radio-additional-questions-answers-type" value="enter-text">
+								  <input id="enter-text" type="radio" name="radio-additional-questions-answers-type" value="enter-text"
+										 {% if errorFreeTextSelected %} checked="checked" {% endif %} >
 								  <label for="enter-text">Free text</label>
 							  </div>
 							  <div class="multiple-choice" data-target="show-answers">
@@ -211,45 +220,39 @@
 		  <fieldset class="form-group js-hidden" id="show-answers" style="margin-bottom:10px;">
 
 			  <!--   THE ANSWERS -->
-			  <div class="form-group  " style="margin-bottom:0px; margin-top:0px;" >
+			  <div class="form-group panel panel-border-narrow {% if errorAnswersError %} form-group-error" {% endif %}" style="margin-bottom:0px; margin-top:10px;" >
 
-				  {% if errorAnswersError %}
-				  	<div class="form-group  form-group-error">
-				  {% endif %}
 
-					  <label class="form-label-bold">
-						  Answers
-						  {% if errorAnswersError %}
-							  <span class="error-message">
-								  Error message about not providing enough (2 or more) answers go here.
-							  </span>
-						  {% endif %}
-					  </label>
 
-					  <div style="width:50%; float:left; margin-top:5px">
-						  <input type="text" class="form-control  {% if errorAnswersEmpty %} form-control-error {% endif %}"
-								 id="answer-1" name="answer-1" value="{{ data['answer-1'] }}" style="width:90%; margin-bottom: 15px;">
+				  <label class="form-label-bold">
+					  Answers
+					  {% if errorAnswersError %}
+						  <span class="error-message">
+							  Please insert at least two answer options.
+						  </span>
+					  {% endif %}
+				  </label>
 
-						  <input type="text" class="form-control  {% if errorAnswersEmpty %} form-control-error {% endif %}
-								  								   {% if errorAnswersOnlyOneEntered %}  form-control-error {% endif %}"
-								 id="answer-2" name="answer-2" value="{{ data['answer-2'] }}" style="width:90%; margin-bottom: 15px;">
+				  <div style="width:50%; float:left; margin-top:5px">
+					  <input type="text" class="form-control  {% if errorAnswersEmpty %} form-control-error {% endif %}"
+							 id="answer-1" name="answer-1" value="{{ data['answer-1'] }}" style="width:90%; margin-bottom: 15px;">
 
-						  <p id="answer-3-add" style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="show3()">Add another answer</p>
-						  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
-								 id="answer-3-box" name="answer-3" value="{{ data['answer-3'] }}">
+					  <input type="text" class="form-control  {% if errorAnswersEmpty %} form-control-error {% endif %}
+															   {% if errorAnswersOnlyOneEntered %}  form-control-error {% endif %}"
+							 id="answer-2" name="answer-2" value="{{ data['answer-2'] }}" style="width:90%; margin-bottom: 15px;">
 
-						  <p id="answer-4-add" style="color: #005ea5; text-decoration: underline; display:none; cursor: pointer" onclick="show4()">Add another answer</p>
-						  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
-								 id="answer-4-box" name="answer-4" value="{{ data['answer-4'] }}">
+					  <p id="answer-3-add" style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="show3()">Add another answer</p>
+					  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
+							 id="answer-3-box" name="answer-3" value="{{ data['answer-3'] }}">
 
-						  <p id="answer-5-add" style="color: #005ea5; text-decoration: underline; display:none; cursor: pointer" onclick="show5()">Add another answer</p>
-						  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
-								 id="answer-5-box" name="answer-5" value="{{ data['answer-5'] }}" style="width:90%; margin-bottom: 0px;">
-					  </div>
+					  <p id="answer-4-add" style="color: #005ea5; text-decoration: underline; display:none; cursor: pointer" onclick="show4()">Add another answer</p>
+					  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
+							 id="answer-4-box" name="answer-4" value="{{ data['answer-4'] }}">
 
-				  {% if errorAnswersError %}
-					  </div>
-				  {% endif %}
+					  <p id="answer-5-add" style="color: #005ea5; text-decoration: underline; display:none; cursor: pointer" onclick="show5()">Add another answer</p>
+					  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
+							 id="answer-5-box" name="answer-5" value="{{ data['answer-5'] }}" style="width:90%; margin-bottom: 0px;">
+				  </div>
 
 			  </div>
 
@@ -258,22 +261,24 @@
 
 
 
-
-		  <fieldset class="form-group inline" style="margin-bottom:15px">
-			  <!--  Addtional questions that the registering user need to answer  -->
+		<!-- MANDITORY -->
+		  <fieldset class="form-group inline" style="margin-top:30px; margin-bottom:15px">
+			  <!--  Additional questions that the registering user need to answer  -->
 			  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
 				  <label class="form-label-bold" style="margin-bottom:10px">
 					  Is this question mandatory?
 				  </label>
 				  <div class="" style="margin-top:5px">
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-mandatory-no" type="radio" name="radio-additional-question-mandatory" value="no" checked="checked">
+						  <input id="radio-mandatory-no" type="radio" name="radio-additional-question-mandatory" value="no"
+								 {% if not errorManditorySelected %} checked="checked" {% endif %}>
 						  <label for="radio-mandatory-no">No</label>
 					  </div>
 					  <br>
 					  <br>
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-mandatory-yes" type="radio" name="radio-additional-question-mandatory" value="yes">
+						  <input id="radio-mandatory-yes" type="radio" name="radio-additional-question-mandatory" value="yes"
+								 {% if errorManditorySelected %} checked="checked" {% endif %}>
 						  <label for="radio-mandatory-yes">Yes - mandatory</label>
 					  </div>
 				  </div>
