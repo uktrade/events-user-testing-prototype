@@ -41,14 +41,20 @@
 				{% if errorMissingCapacityMessage %}
 					<li><a href="#close-message-area">Event capacity message: missing</a></li>
 				{% endif %}
+
 				{% if errorMissingCloseDate %}
-					<li><a href="#closing-date-time">Closure date: missing</a></li>
+					<li><a href="#closing-date-time">Custom closing date: missing</a></li>
+				{% elif errorMissingCustomCloseDate %}
+					<li><a href="#closing-date-time">Custom closing date: date missing</a></li>
+				{% elif errorInvalidCustomCloseDate %}
+					<li><a href="#closing-date-time">Customer closing date: time missing or invalid</a></li>
 				{% endif %}
+
 				{% if errorMissingCloseTime %}
-					<li><a href="#closing-date-time">DAN DAN DAN</a></li>
+					<li><a href="#closing-date-time">Custom closing date: date missing</a></li>
 				{% endif %}
 				{% if errorInvalidCloseTime %}
-					<li><a href="#closing-date-time">DAN DAN DAN</a></li>
+					<li><a href="#closing-date-time">Customer closing date: time missing or invalid</a></li>
 				{% endif %}
 
 			</ul>
@@ -70,7 +76,7 @@
 				  Set event capacity
 				  {% if errorMissingCapacity %}
 					  <span class="error-message">
-						  DAN DAN DAN
+						  Please set maximum capacity for this event.
 					  </span>
 				  {% elif errorInvalidCapacity %}
 				  	  <span class="error-message">
@@ -176,7 +182,8 @@
 					  <label for="radio-days-before-no">No, leave registration open up until the event starts</label>
 				  </div>
 				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="date-selection-area">
-					  <input id="radio-days-before-yes" type="radio" name="radio-close-early-yes-no" value="yes" {% if errorMissingCloseDate %} checked="checked"{% endif %}>
+					  <input id="radio-days-before-yes" type="radio" name="radio-close-early-yes-no" value="yes"
+							 {% if errorMissingCloseDate or errorMissingCustomCloseDate or errorInvalidCustomCloseDate  or errorCustomCloseSelected %} checked="checked"{% endif %}>
 					  <label for="radio-days-before-yes">Yes, close registration early</label>
 				  </div>
 			  </div>
@@ -192,7 +199,7 @@
 						  Close date
 						  {% if errorMissingCloseDate %}
 							  <span class="error-message">
-								  Please select a custom closure date.
+								  Please select a response.
 							  </span>
 						  {% endif %}
 					  </label>
@@ -217,18 +224,28 @@
 						  </div>
 						  -->
 						  <div class="multiple-choice" style="margin-bottom:10px; width:100%;" data-target="specific-date">
-							  <input id="radio-days-before-other" type="radio" name="radio-days-before" value="differentdate" >
+							  <input id="radio-days-before-other" type="radio" name="radio-days-before" value="differentdate"
+									 {% if errorMissingCustomCloseDate or errorInvalidCustomCloseDate or errorCustomCloseDateSelected %}  checked="checked" {% endif %}>
 							  <label for="radio-days-before-other">Another date</label>
 						  </div>
 					  </div>
 				  </fieldset>
 
 
-				  <fieldset>
+				  <fieldset class="{% if errorMissingCustomCloseDate or errorInvalidCustomCloseDate %} form-group-error {% endif %}">
 					  <div class="js-hidden" id="specific-date"  style="width:100%;">
 
 						  <label class="form-label-bold" for="dates" style="width:100%;">
 							  Enter close date
+							  {% if errorMissingCustomCloseDate %}
+								  <span class="error-message">
+									  Please specify your custom closing date
+								  </span>
+							  {% elif errorInvalidCustomCloseDate %}
+								  <span class="error-message">
+									  Please enter a full and valid time to close this event.
+								  </span>
+							  {% endif %}
 						  </label>
 
 						  <div class="form-date" id="dates" style="width:100%;">
@@ -236,19 +253,19 @@
 							  <!-- <p class="form-hint">For example, 31 3 1980</p>  -->
 							  <div class="form-group form-group-day">
 								  <label for="event-day-close">Day</label>
-								  <input class="form-control  {% if errorDayFound %} form-control-error {% endif %}"
+								  <input class="form-control  {% if errorInvalidDay or errorMissingDay %} form-control-error {% endif %}"
 										 id="event-day-close" name="event-day-close" type="number" pattern="[0-9]*" value="{{ data['event-day-close'] }}">
 							  </div>
 
 							  <div class="form-group form-group-month">
 								  <label for="event-month-close">Month</label>
-								  <input class="form-control  {% if errorMonthFound %} form-control-error {% endif %}"
+								  <input class="form-control  {% if errorInvalidMonth or errorMissingMonth %} form-control-error {% endif %}"
 										 id="event-month-close" name="event-month-close" type="number"  value="{{ data['event-month-close'] }}">
 							  </div>
 
 							  <div class="form-group form-group-year">
 								  <label for="event-year-close">Year</label>
-								  <input class="form-control   {% if errorYearFound %} form-control-error {% endif %}"
+								  <input class="form-control   {% if errorInvalidYear or errorMissingYear %} form-control-error {% endif %}"
 										 id="event-year-close" name="event-year-close" type="number"  value="{{ data['event-year-close'] }}">
 							  </div>
 
@@ -268,7 +285,7 @@
 
 		  		<fieldset>
 				  <!-- time -->
-				  <div style="width:100%; display:block;">
+				  <div style="width:100%; display:block;" >
 
 					  <label class="form-label-bold" style="margin-top:0px";>
 						  Close time

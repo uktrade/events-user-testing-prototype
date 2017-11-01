@@ -637,10 +637,6 @@ Lunch and networking`;
 
 
 
-
-
-
-
 router.get('/scenario-3', function (req, res)
 {
   req.session.data['event-title'] = "Sweden food and drink seminar";
@@ -708,9 +704,6 @@ Refreshments and networking`;
   res.redirect('/create-event/preview');
  
 })
-
-
-
 
 
 
@@ -796,10 +789,6 @@ Networking and close`;
 
 
 
-
-
-
-
 /////////// Sports technology in France
 router.get('/scenario-5', function (req, res)
 {
@@ -862,8 +851,6 @@ Over the past five years, the business of sport has become a £20bn-a-year indus
   res.redirect('/create-event/preview');
 
 })
-
-
 
 
 
@@ -936,8 +923,6 @@ Networking and refreshments
   res.redirect('/create-event/preview');
 
 })
-
-
 
 
 
@@ -1027,12 +1012,6 @@ China's trend-shaping technologies - Philip Skipper, Head of Business Developmen
 
 
 
-
-
-
-
-
-
 router.get('/scenario-previous-questions', function (req, res)
 {
   //req.session.previousQuestions = [['Do you have an ITA?', 'select-one', 'yes', 'no']];
@@ -1049,10 +1028,10 @@ router.get('/scenario-previous-questions', function (req, res)
 
 ///////////////////   EXTERNAL USER  /////////////////////////////////////////
 
-  router.get('/register-for-event', function (req, res)
-  {
-    res.redirect('/register/sign-in-or-create-account');
-  })
+router.get('/register-for-event', function (req, res)
+{
+  res.redirect('/register/sign-in-or-create-account');
+})
 
 
 
@@ -1061,7 +1040,6 @@ router.get('/scenario-previous-questions', function (req, res)
 
 // CREATE EVENT SETUP
 // VENUE PAGE ONWARDS BUTTON
-
 
 // Clear current event data
 router.get('/clear-current-event-data', function (req, res)
@@ -1096,8 +1074,6 @@ router.get('/clear-current-event-data', function (req, res)
   res.redirect('/create-event/summary');
 
 })
-
-
 
 
 
@@ -1479,7 +1455,7 @@ router.get('/create-event/date-onwards', function (req, res)
       errorYearMissing = true;
       errorMissingDate = true;
     }
-    if(0000 <= req.session.data['event-year']  &&  req.session.data['event-year'] <= 3000)
+    if(2017 <= req.session.data['event-year']  &&  req.session.data['event-year'] <= 2025)
     {}
     else
     {
@@ -3522,7 +3498,22 @@ router.get('/create-event/tickets-onwards', function (req, res)
   var missingCapacity = false;
   var invalidCapacity = false;
   var missingCapacityMessage = false;
+
+  var customCloseSelected = false;
   var missingCloseDate = false;
+
+  var invalidDay = false
+  var missingDay = false;
+  var invalidMonth = false
+  var missingMonth = false;
+  var invalidYear = false
+  var missingYear = false;
+
+  var customCloseDateSelected = false;
+  var missingCustomCloseDate = false;
+  var invalidCustomCloseDate = false;
+
+  // TIME
   var missingCloseTime = false;
   var invalidCloseTime = false;
 
@@ -3557,6 +3548,14 @@ router.get('/create-event/tickets-onwards', function (req, res)
   }
   else if(req.session.data['radio-close-early-yes-no'] == "yes")
   {
+    // SAVE THAT EARLY REG WAS SELECTED
+    customCloseSelected = true;
+
+
+    if(req.session.data['radio-days-before'] == undefined)
+    {
+      missingCloseDate = true;
+    }
     if(req.session.data['radio-days-before'] == "oneday")
     {
       req.session.data['reg-close-time'] = " 1 day before - " + req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + " " + req.session.data['days-before-1'].substr(14);
@@ -3571,9 +3570,11 @@ router.get('/create-event/tickets-onwards', function (req, res)
     }
     else if(req.session.data['radio-days-before'] == "differentdate")
     {
+      // SAVE THAT DIFFERENT DATE WAS SELECTED
+      customCloseDateSelected = true;
+
       // DAY
       var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
 
       //  MONTH
       var monthNames = ["January", "February", "March", "April", "May", "June",
@@ -3581,20 +3582,90 @@ router.get('/create-event/tickets-onwards', function (req, res)
       ];
 
 
-      console.log(" the day in  " + req.session.data['event-day-close']);
+      console.log(" the day in   " + req.session.data['event-day-close']);
       console.log(" the month in " + req.session.data['event-month-close']);
-      console.log(" the year in   " + req.session.data['event-year-close']);
-
-      var enteredCloseDate = new Date();
-      enteredCloseDate.setFullYear(req.session.data['event-year-close'], req.session.data['event-month-close']-1, req.session.data['event-day-close']);
-
-      req.session.data['reg-close-time'] = req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + "  " + days[enteredCloseDate.getDay()] + "  " + enteredCloseDate.getDate() + "  " +  monthNames[enteredCloseDate.getMonth()] + "  " +  enteredCloseDate.getFullYear();
+      console.log(" the year in  " + req.session.data['event-year-close']);
 
 
-      console.log(" the day is - " + enteredCloseDate.getDay());
-      console.log(" the date is - " + enteredCloseDate.getDate());
-      console.log(" the month is - " + enteredCloseDate.getMonth());
-      console.log(" the year is - " + enteredCloseDate.getFullYear());
+      // DAY - ANOTHER DATE
+      if (req.session.data['event-day-close'] != undefined)
+      {
+        if(req.session.data['event-day-close'] == "")
+        {
+          missingDay = true;
+          missingCustomCloseDate = true;
+          console.log("The day is missing!!!!!!!!!!!!!!!!!!!!!!");
+        }
+        else if(1 <= req.session.data['event-day-close'] && req.session.data['event-day-close'] <= 31)
+        {}
+        else
+        {
+          invalidDay = true;
+          invalidCustomCloseDate = true;
+        }
+      }
+
+
+      // MONTH - ANOTHER DATE
+      if (req.session.data['event-month-close'] != undefined)
+      {
+        if(req.session.data['event-month-close'] == "")
+        {
+          missingMonth = true;
+          missingCustomCloseDate = true;
+          //console.log("*************MISSING MONTH**************");
+        }
+        else if(1 <= req.session.data['event-month-close'] && req.session.data['event-month-close'] <= 12)
+        {
+        }
+        else
+        {
+          invalidMonth = true;
+          invalidCustomCloseDate = true;
+        }
+      }
+      else
+      {
+        console.log("*************UNEFINED**************");
+      }
+
+
+      // YEAR - ANOTHER DATE
+      if (req.session.data['event-year-close'] != undefined)
+      {
+        if(req.session.data['event-year-close'] == "")
+        {
+          missingYear = true;
+          missingCustomCloseDate = true;
+        }
+        else if(2017 <= req.session.data['event-year-close']  &&  req.session.data['event-year-close'] <= 2025)
+        {}
+        else
+        {
+          invalidYear = true;
+          invalidCustomCloseDate = true;
+        }
+      }
+
+
+      if( ( missingCustomCloseDate  ||  invalidCustomCloseDate ) == false )
+      {
+        var enteredCloseDate = new Date();
+        enteredCloseDate.setFullYear(req.session.data['event-year-close'], req.session.data['event-month-close']-1, req.session.data['event-day-close']);
+      }
+
+
+
+      // TIME
+      if( (invalidCustomCloseDate || missingCustomCloseDate || missingCloseTime || invalidCloseTime) == false)
+      {
+        req.session.data['reg-close-time'] = req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + "  " + days[enteredCloseDate.getDay()] + "  " + enteredCloseDate.getDate() + "  " +  monthNames[enteredCloseDate.getMonth()] + "  " +  enteredCloseDate.getFullYear();
+
+        console.log(" the day is - " + enteredCloseDate.getDay());
+        console.log(" the date is - " + enteredCloseDate.getDate());
+        console.log(" the month is - " + enteredCloseDate.getMonth());
+        console.log(" the year is - " + enteredCloseDate.getFullYear());
+      }
 
     }
     else
@@ -3603,12 +3674,14 @@ router.get('/create-event/tickets-onwards', function (req, res)
     }
   }
 
-
+  console.log(" the missing close date variable is " + missingCustomCloseDate);
 
 
   // check for errors
-  if( (missingCapacity || invalidCapacity || missingCapacityMessage || missingCloseDate || missingCloseTime || invalidCloseTime) == false )
+  if( (missingCapacity || invalidCapacity || missingCapacityMessage || missingCloseDate || invalidCustomCloseDate || missingCustomCloseDate || missingCloseTime || invalidCloseTime) == false )
   {
+
+
     if(req.session.changingFromSummary == true)
     {
         res.redirect('/create-event/summary-prelude');
@@ -3633,8 +3706,23 @@ router.get('/create-event/tickets-onwards', function (req, res)
           'errorInvalidCapacity': invalidCapacity,
           'errorMissingCapacityMessage': missingCapacityMessage,
           'errorMissingCloseDate': missingCloseDate,
+
+          'errorCustomCloseSelected': customCloseSelected,
+          'errorCustomCloseDateSelected': customCloseDateSelected,
+
+          'errorInvalidDay': invalidDay,
+          'errorMissingDay': missingDay,
+          'errorInvalidMonth': invalidMonth,
+          'errorMissingMonth': missingMonth,
+          'errorInvalidYear': invalidYear,
+          'errorMissingYear': missingYear,
+          'errorMissingCustomCloseDate': missingCustomCloseDate,
+          'errorInvalidCustomCloseDate': invalidCustomCloseDate,
+
           'errorMissingCloseTime': missingCloseTime,
           'errorInvalidCloseTime': invalidCloseTime
+
+
         }
     );
   }
