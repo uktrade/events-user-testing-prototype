@@ -64,6 +64,11 @@ router.use(function (req, res, next)
     req.session.previousQuestionsTEMP = [];
   }
 
+  if( req.session.addNewQuestionFromSummary == undefined )
+  {
+    req.session.addNewQuestionFromSummary = false;
+  }
+
 }
 
 
@@ -3715,90 +3720,55 @@ router.get('/create-event/question-onwards', function (req, res)
   var oldQuestionFiveSelected = false;
 
 
-  //  IF THERE ARE PREVIOUSE QUESTIONS AND NO SELECTION - SAVE THE ERROR
-  if( 0 < req.session.previousQuestions.length && req.session.data['radio-additional-new-old-questions'] == undefined)
+
+  // Check if the question is empty
+  if(req.session.data['question'] == "")
   {
-    errorNewOrOldQuestionMissing = true;
+    errorQuestionMissing = true;
+  }
+
+
+  // Check if the type of answer has been selected and throw answer if not
+  if(req.session.data['radio-additional-questions-answers-type'] === undefined)
+  {
+    console.log("output of radio selection is TOTALLY UNDEFINED");
+    answerTypeEmpty = true;
   }
   else
   {
-      // IF SELECTION FROM EXISTING QUESTIONS THEN SAVE WHICH ONE WAS SELECTED, FOR RELOADING ERROR STATES
-      if(req.session.data['radio-additional-new-old-questions'] == "new-question")
+    // Check that answers have been added if not a free text answer
+    if(req.session.data['radio-additional-questions-answers-type'] != "enter-text")
+    {
+      var numberOfAnswrs = 0;
+      for(x=1; x<=2; x++)
       {
-        newQuestionSelected = true;
-      }
-      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-one")
-      {
-        oldQuestionOneSelected = true;
-      }
-      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-two")
-      {
-        oldQuestionTwoSelected = true;
-      }
-      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-three")
-      {
-        oldQuestionThreeSelected = true;
-      }
-      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-four")
-      {
-        oldQuestionFourSelected = true;
-      }
-      else if(req.session.data['radio-additional-new-old-questions'] == "previous-question-five")
-      {
-        oldQuestionFiveSelected = true;
-      }
-
-
-
-      // Check if the question is empty
-      if(req.session.data['question'] == "")
-      {
-        errorQuestionMissing = true;
-      }
-
-
-      // Check if the type of answer has been selected and throw answer if not
-      if(req.session.data['radio-additional-questions-answers-type'] === undefined)
-      {
-        console.log("output of radio selection is TOTALLY UNDEFINED");
-        answerTypeEmpty = true;
-      }
-      else
-      {
-        // Check that answers have been added if not a free text answer
-        if(req.session.data['radio-additional-questions-answers-type'] != "enter-text")
+        if(req.session.data['answer-'+x] != "")
         {
-          var numberOfAnswrs = 0;
-          for(x=1; x<=2; x++)
-          {
-            if(req.session.data['answer-'+x] != "")
-            {
-              numberOfAnswrs = numberOfAnswrs + 1;
-            }
-          }
-          if(numberOfAnswrs == 0)
-          {
-            answersTotallyMissing = true;
-            answerError = true;
-          }
-          else if(numberOfAnswrs == 1)
-          {
-            answersMissingOneEntered = true;
-            answerError = true;
-          }
-          console.log("The answer are empty  " + answerError);
-
-          // Save which radio button was selected, Since page is refreshed istead of rerendered
-          if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
-          {
-            answerTypeOneSelected = true;
-          }
-          else if(req.session.data['radio-additional-questions-answers-type'] == "select-multiple")
-          {
-            answerTypeMultipleSelected = true;
-          }
+          numberOfAnswrs = numberOfAnswrs + 1;
         }
       }
+      if(numberOfAnswrs == 0)
+      {
+        answersTotallyMissing = true;
+        answerError = true;
+      }
+      else if(numberOfAnswrs == 1)
+      {
+        answersMissingOneEntered = true;
+        answerError = true;
+      }
+      console.log("The answer are empty  " + answerError);
+
+      // Save which radio button was selected, Since page is refreshed instead of rerendered
+      if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
+      {
+        answerTypeOneSelected = true;
+      }
+      else if(req.session.data['radio-additional-questions-answers-type'] == "select-multiple")
+      {
+        answerTypeMultipleSelected = true;
+      }
+    }
   }
 
 
@@ -3849,16 +3819,22 @@ router.get('/create-event/question-onwards', function (req, res)
       console.log(thisNewQuestionData[1]);
 
 
+
+      var tempAnswers = [];
       //  ANSWERS AT ONE STRING OF TEXT  -  INDEX 2
       if((req.session.data['radio-additional-questions-answers-type'] == "select-one") ||
          (req.session.data['radio-additional-questions-answers-type'] == "select-multiple"))
       {
+
         // Check through answer boxes ad make a text string of them all
         for(answersIncrementer=1; answersIncrementer<11; answersIncrementer++)
         {
           if(req.session.data['answer-'+answersIncrementer] != "" && req.session.data['answer-'+answersIncrementer] != undefined  )
           {
             answersString = answersString + (req.session.data['answer-'+answersIncrementer]) + "\n";
+
+            tempAnswers[tempAnswers.length] = req.session.data['answer-'+answersIncrementer];
+
             console.log("the answers being added - " + req.session.data['answer-'+answersIncrementer]);
           }
         }
@@ -3866,80 +3842,80 @@ router.get('/create-event/question-onwards', function (req, res)
       console.log("the answers STRING IS - " + thisNewQuestionData[2]  + "\n");
 
 
-      // MANDATORY OR NOT
-      //thisNewQuestionData[3] = menditoryMessage;
 
 
-
-    // SAVE THE DATA TO THE ARRAY   --  FOR SUMMARY PAGE ONLY
-    req.session.questionsData[req.session.questionsData.length] = [thisNewQuestionData[0],thisNewQuestionData[1],answersString,menditoryMessage];
-
-
-
-    console.log("the answers STRING IS -" + req.session.questionsData[req.session.questionsData.length-1]  + "------\n");
-
-
-    console.log("3333333333333333333333the answers STRING IS for the questions before the end " + req.session.questionsData + "\n");
-
-    // If the question is new then save it to a temp list of new questions questions array
-    if(true)
-    {
-      req.session.previousQuestionsTEMP[req.session.previousQuestionsTEMP.length] = thisNewQuestionData
-
-      // Check through answer boxes ad make a text string of them all
-      for(z=1; z<11; z++)
+      // SAVE TO QUESTION LIST AND 'PREVIOUS QUESTION'
+      if( req.session.changingFromSummary == true )
       {
-        if(req.session.data['answer-'+z] != "")
-        {
-          req.session.previousQuestionsTEMP[req.session.previousQuestionsTEMP.length-1][1+z] = req.session.data['answer-'+z];
-          //console.log(req.session.data['answer-'+z]);
-        }
+          if(req.session.addNewQuestionFromSummary == true)
+          {
+            // NEW QUESTION ADDED FRO SUMMARY
+            req.session.questionsData[req.session.questionsData.length] = [thisNewQuestionData[0],thisNewQuestionData[1],answersString,menditoryMessage];
+            // Save the new questions to a more permanent list of saved questions
+            req.session.previousQuestions[req.session.previousQuestions.length] = [thisNewQuestionData[0],thisNewQuestionData[1],tempAnswers,menditoryMessage];
+          }
+          else  // CHANGE TO QUESTION
+          {
+            console.log("the question index being chnaged is " + req.session.changeQuestionNumber);
+            req.session.questionsData[req.session.changeQuestionNumber] = [thisNewQuestionData[0], thisNewQuestionData[1], answersString, menditoryMessage];
+            // SHOULD BE UPDATING THE PREVIOUS QUESTIONS BUT HAVE'T IMPLMENTED IT
+          }
       }
-    }
-    console.log("444444444444444444444444444the answers STRING IS for the questions before the end " + req.session.questionsData + "\n");
-
-
-
-    //  WIPE THE FORM DATA FOR THE NEXT QUESTION OR END OF QUSTIONS
-    req.session.data['question'] = "";
-    req.session.data['radio-additional-questions-answers-type'] = undefined;
-    for(x=1; x<11; x++)
-    {
-      req.session.data['answer-'+x] = "";
-    }
-
-    console.log("the answers STRING IS for the questions before the end " + req.session.questionsData + "\n");
-
-
-
-    // Check if ths is not the final question
-    if(req.session.addOneMoreQuestion)
-    {
-      // increase question number
-      req.session.questionsExist[req.session.quantityOfQuestions] = true;
-      req.session.quantityOfQuestions = req.session.quantityOfQuestions + 1;
-      req.session.data['additional-questions-incrementer'] = req.session.data['additional-questions-incrementer'] + 1;
-
-      console.log(" the question we are on now  " + req.session.data['additional-questions-incrementer']);
-      console.log(" the total number of questions " + req.session.data['radio-additional-questions-quantity']);
-
-      res.redirect('/create-event/additional-questions');
-      //res.render('create-event/additional-questions',{});
-    }
-    else
-    {
-      // Save the n w questions to a more perminant list of saved questions
-      if(true)
+      else
       {
-        req.session.previousQuestions = req.session.previousQuestions.concat(req.session.previousQuestionsTEMP);
-        req.session.previousQuestionsTEMP = [];
+          // SAVE NEW QUESTION DURING CREATE JOURNEY
+          req.session.questionsData[req.session.questionsData.length] = [thisNewQuestionData[0],thisNewQuestionData[1],answersString,menditoryMessage];
+          // Save the new questions to a more permanent list of saved questions
+          req.session.previousQuestions[req.session.previousQuestions.length] = [thisNewQuestionData[0],thisNewQuestionData[1],tempAnswers,menditoryMessage];
       }
 
-      console.log("the answers STRING IS for the questions at the end of questions pages" + req.session.questionsData + "\n");
 
-      // Final question move on to summary
-      res.redirect('/create-event/template-reg');
-    }
+
+
+
+
+
+      //  WIPE THE FORM DATA FOR THE NEXT QUESTION OR END OF QUSTIONS
+      req.session.data['question'] = "";
+      req.session.data['radio-additional-questions-answers-type'] = undefined;
+      for(x=1; x<11; x++)
+      {
+        req.session.data['answer-'+x] = "";
+      }
+      console.log("the answers STRING IS for the questions before the end " + req.session.questionsData + "\n");
+
+
+
+
+      // Check if ths is not the final question
+      if(req.session.addOneMoreQuestion)
+      {
+        // increase question number
+        req.session.questionsExist[req.session.quantityOfQuestions] = true;
+        req.session.quantityOfQuestions = req.session.quantityOfQuestions + 1;
+        req.session.data['additional-questions-incrementer'] = req.session.data['additional-questions-incrementer'] + 1;
+
+        console.log(" the question we are on now  " + req.session.data['additional-questions-incrementer']);
+        console.log(" the total number of questions " + req.session.data['radio-additional-questions-quantity']);
+
+        res.redirect('/create-event/additional-questions');
+        //res.render('create-event/additional-questions',{});
+      }
+      else if(req.session.changingFromSummary == true)
+      {
+        req.session.changingFromSummary = false;
+        req.session.addNewQuestionFromSummary = false;
+        // Go back to summary
+        res.redirect('/create-event/summary');
+      }
+      else
+      {
+
+        console.log("the answers STRING IS for the questions at the end of questions pages" + req.session.questionsData + "\n");
+
+        // Final question move on to email registration confirmation
+        res.redirect('/create-event/template-reg');
+      }
   }
 
 
@@ -3977,6 +3953,8 @@ router.get('/create-event/question-onwards', function (req, res)
 
 router.get('/create-event/change-question/:number?', function (req, res)
 {
+  req.session.changingFromSummary = true;
+  req.session.changeQuestionNumber = req.params.number;
 
   // Set question number
   req.session.data['additional-questions-incrementer'] = parseInt(req.params.number) + 1;
@@ -3986,7 +3964,6 @@ router.get('/create-event/change-question/:number?', function (req, res)
   req.session.data['question'] = req.session.questionsData[req.params.number][0];
 
   // Set answer type
-
   var answerFree = false;
   var answerSingle = false;
   var answerMultiple = false;
@@ -3997,10 +3974,45 @@ router.get('/create-event/change-question/:number?', function (req, res)
   else if(req.session.questionsData[req.params.number][1] == "Select one answer")
   {
     answerSingle = true;
+
+    console.log("saved previous questions length is " + req.session.previousQuestions.length);
+
+
+    // DISPLAY THE PREVIOUSELY SAVED ANSWERS
+    for(var x=0; x<req.session.previousQuestions.length; x++)
+    {
+      console.log("checking through saved questions " + x);
+
+      console.log("saved value is " + req.session.previousQuestions[x][0] + "and the question value is" + req.session.questionsData[req.params.number][0]);
+
+      if(req.session.previousQuestions[x][0] === req.session.questionsData[req.params.number][0])
+      {
+        for(var z=0; z<req.session.previousQuestions[x][2].length; z++)
+        {
+          req.session.data['answer-' + (z+1)] = req.session.previousQuestions[x][2][z];
+        }
+      }
+    }
   }
   else if(req.session.questionsData[req.params.number][1] == "Select multiple answers")
   {
     answerMultiple = true;
+
+    // DISPLAY THE PREVIOUSELY SAVED ANSWERS
+    for(var x=0; x<req.session.previousQuestions.length; x++)
+    {
+      console.log("checking through saved questions " + x);
+
+      console.log("saved value is " + req.session.previousQuestions[x][0] + "and the question value is" + req.session.questionsData[req.params.number][0]);
+
+      if(req.session.previousQuestions[x][0] === req.session.questionsData[req.params.number][0])
+      {
+        for(var z=0; z<req.session.previousQuestions[x][2].length; z++)
+        {
+          req.session.data['answer-' + (z+1)] = req.session.previousQuestions[x][2][z];
+        }
+      }
+    }
   }
 
 
@@ -4025,6 +4037,58 @@ router.get('/create-event/change-question/:number?', function (req, res)
   );
 })
 
+router.get('/create-event/add-another-question', function (req, res)
+{
+  req.session.changingFromSummary = true;
+  req.session.addNewQuestionFromSummary = true;
+
+  req.session.data['additional-questions-incrementer'] = req.session.questionsData.length + 1;
+
+  res.redirect('/create-event/additional-questions');
+})
+
+router.get('/create-event/cancel-current-question', function (req, res)
+{
+  //  IF CHANGING THEN REMOVE SAVED QUESTION
+  if(req.session.changingFromSummary)
+  {
+    req.session.data['question'] = "";
+    req.session.data['radio-additional-questions-answers-type'] = undefined;
+    for(x=1; x<11; x++)
+    {
+      req.session.data['answer-'+x] = "";
+    }
+    console.log("the answers STRING IS for the questions before the end " + req.session.questionsData + "\n");
+
+    // NEW QUESTION BEING ADDED SO NOTHING TO REMOVE
+    if(req.session.addNewQuestionFromSummary == true)
+    {
+      req.session.changingFromSummary = false;
+      req.session.addNewQuestionFromSummary = false;
+      res.redirect('/create-event/summary');
+    }
+    else // SAVED QUESTION SO REMOVE FROM SAVED DATA
+    {
+      req.session.changeQuestionNumber =
+
+      req.session.questionsData.splice(req.session.changeQuestionNumber, 1);
+      req.session.previousQuestions.splice(req.session.changeQuestionNumber, 1);
+
+      req.session.changingFromSummary = false;
+      req.session.addNewQuestionFromSummary = false;
+      res.redirect('/create-event/summary');
+    }
+  }
+  else
+  {
+    req.session.changingFromSummary = false;
+    req.session.addNewQuestionFromSummary = false;
+    res.redirect('/create-event/template-reg');
+  }
+
+
+
+});
 
 
 
@@ -4524,7 +4588,6 @@ router.get('/clone-event/:listitem?/:liveevent?', function (req, res)
 
 
 // CHANGE DETAILS LINKS
-
 router.get('/create-event/change-title', function (req, res)
 {
   req.session.changingFromSummary = true;
@@ -4597,7 +4660,6 @@ router.get('/create-event/change-organiser', function (req, res)
 
 
 // MONITORING
-
 router.get('/create-event/change-attendees-monitoring', function (req, res)
 {
   req.session.changingFromMonitoring = true;

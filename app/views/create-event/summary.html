@@ -581,7 +581,7 @@
 				  </dt>
 				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[2][0] }}<br><br>{{ session.questionsData[2][2] }}<br>{{ session.questionsData[2][3] }}</dd>
 				  <dd class="cya-change">
-					  <a href="#">
+					  <a href="/create-event/change-question/2">
 						  Change<span class="visually-hidden"> contact details</span>
 					  </a>
 				  </dd>
@@ -597,7 +597,7 @@
 				  </dt>
 				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[3][0] }}<br><br>{{ session.questionsData[3][2] }}<br>{{ session.questionsData[3][3] }}</dd>
 				  <dd class="cya-change">
-					  <a href="#">
+					  <a href="/create-event/change-question/3">
 						  Change<span class="visually-hidden"> contact details</span>
 					  </a>
 				  </dd>
@@ -613,9 +613,23 @@
 				  </dt>
 				  <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[4][0] }}<br><br>{{ session.questionsData[4][2] }}<br>{{ session.questionsData[4][3] }}</dd>
 				  <dd class="cya-change">
-					  <a href="#">
+					  <a href="/create-event/change-question/6">
 						  Change<span class="visually-hidden"> contact details</span>
 					  </a>
+				  </dd>
+			  </div>
+			  {% endif %}
+
+			  {% if session.questionsData.length != 0  %}
+			  <div>
+				  <dt class="cya-question" style="font-weight:400">
+					  <a href="/create-event/add-another-question">
+						  Add question<span class="visually-hidden">Add question</span>
+					  </a>
+				  </dt>
+				  <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top"></dd>
+				  <dd class="cya-change">
+
 				  </dd>
 			  </div>
 			  {% endif %}

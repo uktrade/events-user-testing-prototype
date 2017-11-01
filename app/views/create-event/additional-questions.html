@@ -166,7 +166,7 @@
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="question" name="question" value="{{ data['question'] }}" style="width:100%;">
+								 id="question" name="question" value="{{ session.data['question'] }}" style="width:100%;">
 					  </div>
 				  </div>
 
@@ -235,23 +235,23 @@
 
 				  <div style="width:50%; float:left; margin-top:5px">
 					  <input type="text" class="form-control  {% if errorAnswersEmpty %} form-control-error {% endif %}"
-							 id="answer-1" name="answer-1" value="{{ data['answer-1'] }}" style="width:90%; margin-bottom: 15px;">
+							 id="answer-1" name="answer-1" value="{{ session.data['answer-1'] }}" style="width:90%; margin-bottom: 15px;">
 
 					  <input type="text" class="form-control  {% if errorAnswersEmpty %} form-control-error {% endif %}
 															   {% if errorAnswersOnlyOneEntered %}  form-control-error {% endif %}"
-							 id="answer-2" name="answer-2" value="{{ data['answer-2'] }}" style="width:90%; margin-bottom: 15px;">
+							 id="answer-2" name="answer-2" value="{{ session.data['answer-2'] }}" style="width:90%; margin-bottom: 15px;">
 
 					  <p id="answer-3-add" style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="show3()">Add another answer</p>
 					  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
-							 id="answer-3-box" name="answer-3" value="{{ data['answer-3'] }}">
+							 id="answer-3-box" name="answer-3" value="{{ session.data['answer-3'] }}">
 
 					  <p id="answer-4-add" style="color: #005ea5; text-decoration: underline; display:none; cursor: pointer" onclick="show4()">Add another answer</p>
 					  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
-							 id="answer-4-box" name="answer-4" value="{{ data['answer-4'] }}">
+							 id="answer-4-box" name="answer-4" value="{{ session.data['answer-4'] }}">
 
 					  <p id="answer-5-add" style="color: #005ea5; text-decoration: underline; display:none; cursor: pointer" onclick="show5()">Add another answer</p>
 					  <input type="text" class="form-control"  style="width:90%; margin-bottom: 15px; display:none;"
-							 id="answer-5-box" name="answer-5" value="{{ data['answer-5'] }}" style="width:90%; margin-bottom: 0px;">
+							 id="answer-5-box" name="answer-5" value="{{ session.data['answer-5'] }}" style="width:90%; margin-bottom: 0px;">
 				  </div>
 
 			  </div>
@@ -300,7 +300,7 @@
 			  </div>
 
 			  <input type="submit" class="button" formaction="/create-event/final-question" value="Questions done - save this one and continue">
-			  <p style="margin-top:30px"><a href="/create-event/summary-prelude">Cancel this question and continue</a></p>
+			  <p style="margin-top:30px"><a href="/create-event/cancel-current-question">Cancel this question and continue</a></p>
 		  </div>
 
 
