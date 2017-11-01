@@ -139,10 +139,20 @@
 				  </div>
 
 
+
+
 				<!-- LINK URL TO MAP -->
 				  <div class="form-group">
-					  <label class="form-label-bold" for="map-url"  style="margin-bottom:5px;">Add link to map (optional)</label>
-					  <input class="form-control" id="map-url" type="text" name="map-url" style="width:100%"  value="{{ data['map-url'] }}" >
+					  <label class="form-label-bold" for="map-url"  style="margin-bottom:5px;">Link to map</label>
+					  <p id="default-map-link">Check <a target="_blank" href="https://www.google.co.uk/maps/search/olympia/">map location</a>.
+						  You can <span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="showManualUrlEntry()">enter your own link</span> if you wish.</p>
+
+					  <div id="manual-map-entry" style="display:none;">
+						  <p style="margin-bottom:0;">Paste link to map</p>
+						  <input class="form-control" id="map-url" type="text" name="map-url" style="width:100%"  value="{{ data['map-url'] }}" >
+						  <p>Alternatively, <span span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="hideManualUrlEntry()">revert to automatic map link</span></p>
+					  </div>
+
 				  </div>
 
 
@@ -150,7 +160,7 @@
 
 
 
-		  <div class="form-group" style="margin-top:20px">
+		  <div class="form-group" style="margin-top:0px">
 			  <input type="submit" class="button" value="Save and continue">
 
 			  <input type="submit" formaction="/create-event/venue-skip" value="I'll complete this later - I don't have this information yet"
@@ -165,6 +175,21 @@
 
 
 
+
+	<script>
+		// SHOWING URL ENTRY
+		function showManualUrlEntry()
+		{
+			document.getElementById('default-map-link').style.display = 'none';
+			document.getElementById('manual-map-entry').style.display = 'block';
+		}
+
+		function hideManualUrlEntry()
+		{
+			document.getElementById('default-map-link').style.display = 'block';
+			document.getElementById('manual-map-entry').style.display = 'none';
+		}
+	</script>
 
 
 
