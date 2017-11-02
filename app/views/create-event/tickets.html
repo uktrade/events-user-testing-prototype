@@ -116,12 +116,12 @@
 				  <label class="form-label-bold">
 					  When capacity is reached, would you like to open a waiting list?
 				  </label>
-				  <div class="form-date" style="margin-top:5px">
-					  <div class="multiple-choice" style="margin-bottom:10px">
+				  <div class="form-date" style="margin-top:5px" >
+					  <div class="multiple-choice" style="margin-bottom:10px" onclick="showSoldOutMessageCloseReg()">
 						  <input id="waiting-list-no" type="radio" name="waiting-list" value="no" checked="checked">
 						  <label for="waiting-list-no">No, just close registrations</label>
 					  </div>
-					  <div class="multiple-choice" style="margin-bottom:10px"  data-target="waiting-list-questions-area">
+					  <div class="multiple-choice" style="margin-bottom:10px"  data-target="waiting-list-questions-area" onclick="showSoldOutMessageWaitingList()">
 						  <input id="waiting-list-yes" type="radio" name="waiting-list" value="yes" >
 						  <label for="waiting-list-yes">Yes, open a waiting list</label>
 					  </div>
@@ -133,11 +133,11 @@
 					  </label>
 					  <div class="form-date" style="margin-top:5px">
 						  <div class="multiple-choice" style="margin-bottom:10px">
-							  <input id="waiting-list-auto" type="radio" name="waiting-list-free-up" value="no" checked="checked">
+							  <input id="waiting-list-auto" type="radio" name="waiting-list-free-up" value="automatic" checked="checked">
 							  <label for="waiting-list-auto">Automatically offer it to whoever is at the top of waiting list</label>
 						  </div>
 						  <div class="multiple-choice" style="margin-bottom:10px"  >
-							  <input id="waiting-list-manual" type="radio" name="waiting-list-free-up" value="yes" >
+							  <input id="waiting-list-manual" type="radio" name="waiting-list-free-up" value="manual" >
 							  <label for="waiting-list-manual">Manually select who you want to offer the place to</label>
 						  </div>
 					  </div>
@@ -146,19 +146,21 @@
 		  </fieldset>
 
 
+
 		  <!-- FULL MESSAGE -->
-		  <fieldset class="form-group {% if errorMissingCapacityMessage %} form-group-error {% endif %}" id="close-message-area">
+		  <fieldset class="form-group {% if errorMissingCapacityMessage %} form-group-error {% endif %}" id="close-message-area" style="">
 			  <!--  message user will see when all tickets are gone -->
 			  <div class="form-group " style="margin-top:0px; margin-bottom:0px">
 				  <label class="form-label-bold" for="sold-out-message">
-					  Customise event capacity message
+					  Customise registration closure message
 					  {% if errorMissingCapacityMessage %}
 						  <span class="error-message">
 							  Please provide a message to display to visitors once the event reaches capacity.
 						  </span>
 					  {% endif %}
 				  </label>
-				  <textarea class="form-control {% if errorMissingCapacityMessage %} form-control-error {% endif %}" name="sold-out-message" id="sold-out-message" rows="3" style="width: 100%;">{{ data['sold-out-message'] }}</textarea>
+				  <textarea class="form-control {% if errorMissingCapacityMessage %} form-control-error {% endif %}"
+							name="sold-out-message" id="sold-out-message" rows="3" style="width: 100%;">{{ data['sold-out-message'] }}</textarea>
 			  </div>
 		  </fieldset>
 
@@ -233,7 +235,7 @@
 
 
 				  <fieldset class="{% if errorMissingCustomCloseDate or errorInvalidCustomCloseDate %} form-group-error {% endif %}">
-					  <div class="js-hidden" id="specific-date"  style="width:100%;">
+					  <div class="js-hidden" id="specific-date" style="width:100%;">
 
 						  <label class="form-label-bold" for="dates" style="width:100%;">
 							  Enter close date
@@ -338,61 +340,33 @@
 
     </div>
 
-				 <!--
-					  <div class="column-third add-title-margin" style="margin-top:50px;">
-						  <aside class="govuk-related-items" data-module="track-click" role="complementary">
-							  <p class="heading-small" style="margin-top:5px; margin-bottom:15px;">
-								  Waiting lists
-							  </p>
-
-							  <p>
-								  A waiting list feature is being developed.
-							  </p>
-
-							  <p>
-								  In the meantime, you can use the message editor to communicate any waiting list instructions and details to visitors.
-							  </p>
-
-						  </aside>
-
-					  </div>
-				-->
-
   </div>
 </main>
 
 
+{% endblock %}
+
+
+
+
+
+
+
+{% block page_scripts %}
 
 <script>
-
-	function showAnotherQuestion()
+	function showSoldOutMessageCloseReg()
 	{
-		if(document.getElementById('q-1-section').style.display == 'none')
-		{
-			document.getElementById('q-1-section').style.display = 'inline';
-		}
-		else if (document.getElementById('q-2-section').style.display == 'none')
-		{
-			document.getElementById('q-2-section').style.display = 'inline';
-		}
-		else if (document.getElementById('q-3-section').style.display == 'none')
-		{
-			document.getElementById('q-3-section').style.display = 'inline';
-		}
-		else if (document.getElementById('q-4-section').style.display == 'none')
-		{
-			document.getElementById('q-4-section').style.display = 'inline';
-		}
-		else if (document.getElementById('q-5-section').style.display == 'none')
-		{
-			document.getElementById('q-5-section').style.display = 'inline';
-			document.getElementById('add-question-button').style.display = 'none';
-		}
+		//document.getElementById("waiting-list-questions-area").style.backgroundColor = "red";
+		//alert("Hello! I am an alert box!!");
+		document.getElementById("sold-out-message").value = "This event is now full. Places may be freed up subject to cancellations - check back here for availability.";
+	}
 
-
+	function showSoldOutMessageWaitingList()
+	{
+		document.getElementById("sold-out-message").value = "This event is now full. If you'd like to add your name to the waiting list, we'll get in touch with you if any places are freed up due to cancellation.";
 	}
 </script>
-
 
 {% endblock %}
 

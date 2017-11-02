@@ -19,44 +19,6 @@
 	  </div>
 
 
-	  <!-- CONDITIONAL ERROR  -->
-		{% if errorQuestions %}
-		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
-
-			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Missing fields
-			</h2>
-
-			<p>
-				Please check the following errors and try again
-			</p>
-
-			{% if errorNewQuestionEmpty %}
-				<ul class="error-summary-list">
-					<li><a href="#previous-questions">Need select a new question or a previous question</a></li>
-				</ul>
-			{% endif %}
-
-			{% if errorQuestionEmpty %}
-				<ul class="error-summary-list">
-					<li><a href="#show-answer-type">Need to enter the question</a></li>
-				</ul>
-			{% endif %}
-
-			{% if errorAnswerTypeEmpty %}
-				<ul class="error-summary-list">
-					<li><a href="#answer-types">Need to select the type of answers for their question</a></li>
-				</ul>
-			{% endif %}
-
-			{% if errorAnswersError %}
-			<ul class="error-summary-list">
-				<li><a href="#show-answers">You need to enter at least 2 answers</a></li>
-			</ul>
-			{% endif %}
-
-		</div>
-      {% endif %}
 
 
 	  <h1 class="heading-large" style="margin-top:15px">
@@ -69,28 +31,42 @@
 
 		  	
 
-
-
-
 		  <fieldset class="form-group" style="margin-bottom:15px">
 			  <!--  Addtional questions that the registering user need to answer  -->
 			  <div class="form-group" style="margin-top:0px; margin-bottom:0px">
-				  <label class="form-label-bold" style="margin-bottom:10px">
-					  You've used these questions in previous events.
-				  </label>
+				  <p class="form-label">You've used these questions in previous events. </p>
+
 				  <div class="" style="margin-top:5px">
-					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-mandatory-no" type="checkbox" name="radio-additional-question-mandatory" value="no" >
-						  <label for="radio-mandatory-no">Are you currently exporting?</label>
-					  </div>
-					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-mandatory-yes" type="checkbox" name="radio-additional-question-mandatory" value="yes">
-						  <label for="radio-mandatory-yes">What is the annual turnover for your business?</label>
-					  </div>
-					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-mandatory-yes" type="checkbox" name="radio-additional-question-mandatory" value="yes">
-						  <label for="radio-mandatory-yes">Do you have any food allergies?</label>
-					  </div>
+
+					  {% if 0 < session.previousQuestions.length %}
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-saved-question-1" type="checkbox" name="radio-saved-question-1" value="no" >
+							  <label for="radio-saved-question-1">{{ session.previousQuestions[0][0] }}</label>
+					  	  </div>
+					  {% endif %}
+
+					  {% if 1 < session.previousQuestions.length %}
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-saved-question-2" type="checkbox" name="radio-saved-question-2" value="no" >
+							  <label for="radio-saved-question-2">{{ session.previousQuestions[1][0] }}</label>
+						  </div>
+					  {% endif %}
+
+					  {% if 2 < session.previousQuestions.length %}
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-saved-question-3" type="checkbox" name="radio-saved-question-3" value="no" >
+							  <label for="radio-saved-question-3">{{ session.previousQuestions[2][0] }}</label>
+						  </div>
+					  {% endif %}
+
+					  {% if 3 < session.previousQuestions.length %}
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-saved-question-4" type="checkbox" name="radio-saved-question-4" value="no" >
+							  <label for="radio-saved-question-4">{{ session.previousQuestions[3][0] }}</label>
+						  </div>
+					  {% endif %}
+
+
 				  </div>
 			  </div>
 
@@ -101,10 +77,17 @@
 
 		  <div class="form-group" style="margin-top:30px">
 
-			  <input type="submit" class="button" formaction="/create-event/additional-questions" value="Save and continue">
+			  <div class=" {% if data['additional-questions-incrementer'] == 5 %}  js-hidden {% endif %} ">
+				  <input type="submit" class="button-secondary" formaction="/create-event/load-saved-questions-onwards-enter-questions" value="Save and enter a new question">
 
+				  <br>
+				  <br>
+				  <br>
+			  </div>
+
+			  <input type="submit" class="button" formaction="/create-event/load-saved-questions-onwards-all-done" value="Questions done - save these and continue">
+			  <p style="margin-top:30px"><a href="/create-event/load-saved-questions-onwards">Don't add any questions and continue</a></p>
 		  </div>
-
 
 
 	  </form>

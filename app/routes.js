@@ -1014,9 +1014,11 @@ China's trend-shaping technologies - Philip Skipper, Head of Business Developmen
 
 router.get('/scenario-previous-questions', function (req, res)
 {
-  //req.session.previousQuestions = [['Do you have an ITA?', 'select-one', 'yes', 'no']];
-  // empty account
-  req.session.previousQuestionsPage = true;
+  if(req.session.previousQuestions.length == 0)
+  {
+    req.session.previousQuestions[0] = ["Do you have any food allergies?", "Select one answer", "Yes \nNo", "\nNot mandatory"];
+  }
+
   res.redirect('/scenario-1');
 })
 
@@ -3519,6 +3521,8 @@ router.get('/create-event/tickets-onwards', function (req, res)
 
   console.log("the entry of the attendee stuff is " + req.session.data['attendee-quantity']);
 
+
+  // PLACESS
   if(req.session.data['attendee-quantity'] == "")
   {
     missingCapacity = true;
@@ -3529,6 +3533,29 @@ router.get('/create-event/tickets-onwards', function (req, res)
   }
 
 
+
+  // WAITING LIST
+  if(req.session.data['waiting-list'] == "no")
+  {
+    req.session.data['waiting-list-summary-text'] = "No waiting list";
+  }
+  else if(req.session.data['waiting-list'] == "yes")
+  {
+    if(req.session.data['waiting-list-free-up'] == "automatic")
+    {
+      req.session.data['waiting-list-summary-text'] = "Waiting list opened when capacity is reached" +
+                                                      "\n" + "Places will be automatically offered to whoever is at the top of waiting list";
+    }
+    else if(req.session.data['waiting-list-free-up'] == "manual")
+    {
+      req.session.data['waiting-list-summary-text'] = "Waiting list opened when capacity is reached" +
+                                                      "\n" + "You will manually select who you want to offer the place to";
+    }
+  }
+
+
+
+  //  SOLD OUT MESSAGE
   if(req.session.data['sold-out-message'] == "")
   {
     missingCapacityMessage = true;
@@ -3738,16 +3765,17 @@ router.get('/create-event/attendee-onwards', function (req, res)
 
   if(req.session.data['radio-additional-questions-boolean'] == "yes")
   {
-    req.session.quantityOfQuestions = 1;
+
     //req.session.questionsExist[0] = true;
-    req.session.data['additional-questions-incrementer'] = 1;
+
     if
-    (req.session.previousQuestionsPage == true)
+    (0 < req.session.previousQuestions.length)
     {
       res.redirect('/create-event/load-previous-additional-questions');
     } 
     else
     {
+      req.session.data['additional-questions-incrementer'] = 1;
       res.redirect('/create-event/additional-questions');
     } 
   }
@@ -3763,6 +3791,67 @@ router.get('/create-event/attendee-onwards', function (req, res)
     }
   }
 })
+
+
+
+router.get('/create-event/load-saved-questions-onwards-enter-questions', function (req, res)
+{
+  if(req.session.data['radio-saved-question-1'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[0];
+  }
+  if(req.session.data['radio-saved-question-2'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[1];
+  }
+  if(req.session.data['radio-saved-question-3'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[2];
+  }
+  if(req.session.data['radio-saved-question-4'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[3];
+  }
+  if(req.session.data['radio-saved-question-5'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[4];
+  }
+
+
+
+  req.session.data['additional-questions-incrementer'] = 1;
+  res.redirect('/create-event/additional-questions');
+});
+
+
+
+router.get('/create-event/load-saved-questions-onwards-all-done', function (req, res)
+{
+  if(req.session.data['radio-saved-question-1'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[0];
+  }
+  if(req.session.data['radio-saved-question-2'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[1];
+  }
+  if(req.session.data['radio-saved-question-3'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[2];
+  }
+  if(req.session.data['radio-saved-question-4'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[3];
+  }
+  if(req.session.data['radio-saved-question-5'] != undefined)
+  {
+    req.session.questionsData[req.session.questionsData.length] = req.session.previousQuestions[4];
+  }
+
+  res.redirect('/create-event/template-reg');
+});
+
+
 
 
 router.get('/create-event/add-other-question-submit', function (req, res)
@@ -3865,11 +3954,11 @@ router.get('/create-event/question-onwards', function (req, res)
   var manditorySelected = false;
   if(req.session.data['radio-additional-question-mandatory'] == "no")
   {
-    menditoryMessage = "Not mandatory"
+    menditoryMessage = "\nNot mandatory"
   }
   else if(req.session.data['radio-additional-question-mandatory'] == "yes")
   {
-    menditoryMessage = "Mandatory"
+    menditoryMessage = "\nMandatory"
     manditorySelected = true;
   }
 
@@ -3894,7 +3983,7 @@ router.get('/create-event/question-onwards', function (req, res)
       if(req.session.data['radio-additional-questions-answers-type'] == "enter-text")
       {
         thisNewQuestionData[1] = "Free text";
-        answersString="Free text"  + "\n";
+        answersString="Free text";
       }
       else if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
       {
@@ -4127,8 +4216,18 @@ router.get('/create-event/change-question/:number?', function (req, res)
 
 router.get('/create-event/add-another-question', function (req, res)
 {
+  // Clear fields
+  req.session.data['question'] = "";
+  req.session.data['radio-additional-questions-answers-type'] = undefined;
+  for(x=1; x<11; x++)
+  {
+    req.session.data['answer-'+x] = "";
+  }
+
   req.session.changingFromSummary = true;
   req.session.addNewQuestionFromSummary = true;
+
+
 
   req.session.data['additional-questions-incrementer'] = req.session.questionsData.length + 1;
 

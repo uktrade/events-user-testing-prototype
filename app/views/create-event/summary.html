@@ -364,8 +364,6 @@
 				  	<dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['agenda'] }}</dd>
 				  {% endif %}
 
-
-
 				  <dd class="cya-change">
 					  <a href="/create-event/change-description">
 						  Change
@@ -478,10 +476,9 @@
 
 			  <div>
 				  <dt class="cya-question">
-					  Registration closing time
+					  Waiting list
 				  </dt>
-				  <dd class="cya-answer">
-					  {{ data['reg-close-time'] }}
+				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ session.data['waiting-list-summary-text'] }}
 				  </dd>
 				  <dd class="cya-change">
 					  <a href="/create-event/change-attendees">
@@ -495,13 +492,15 @@
 				  <dt class="cya-question">
 					  Message displayed when event is full
 				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sold-out-message'] }}</dd>
+				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sold-out-message'] }}
+				  </dd>
 				  <dd class="cya-change">
 					  <a href="/create-event/change-attendees">
 						  Change
 					  </a>
 				  </dd>
 			  </div>
+
 
 			  <div>
 				  <dt class="cya-question">
@@ -619,6 +618,7 @@
 				  </dd>
 			  </div>
 			  {% endif %}
+
 
 			  {% if session.questionsData.length != 0  %}
 			  <div>
