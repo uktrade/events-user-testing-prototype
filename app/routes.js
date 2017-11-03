@@ -1016,7 +1016,7 @@ router.get('/scenario-previous-questions', function (req, res)
 {
   if(req.session.previousQuestions.length == 0)
   {
-    req.session.previousQuestions[0] = ["Do you have any food allergies?", "Select one answer", "Yes \nNo", "\nNot mandatory"];
+    req.session.previousQuestions[0] = ["Do you have any food allergies?", "Select one answer", "Yes - request details \nNo", "\nNot mandatory"];
   }
 
   res.redirect('/scenario-1');
@@ -4008,7 +4008,23 @@ router.get('/create-event/question-onwards', function (req, res)
         {
           if(req.session.data['answer-'+answersIncrementer] != "" && req.session.data['answer-'+answersIncrementer] != undefined  )
           {
-            answersString = answersString + (req.session.data['answer-'+answersIncrementer]) + "\n";
+            // IF SELECT ONE THEN ALSO CHECK IF MORE DEAILS ARE REQUIRED FROM ANSWER
+            if(req.session.data['radio-additional-questions-answers-type'] == "select-one")
+            {
+              if(req.session.data['answer-'+answersIncrementer+'-checkbox'] != undefined)
+              {
+                answersString = answersString + (req.session.data['answer-'+answersIncrementer]) + " - request details" + "\n";
+              }
+              else
+              {
+                answersString = answersString + (req.session.data['answer-'+answersIncrementer]) + "\n";
+              }
+            }
+            else
+            {
+              answersString = answersString + (req.session.data['answer-'+answersIncrementer]) + "\n";
+            }
+
 
             tempAnswers[tempAnswers.length] = req.session.data['answer-'+answersIncrementer];
 
