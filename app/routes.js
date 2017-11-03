@@ -2044,7 +2044,7 @@ router.get('/create-event/venue-onwards', function (req, res)
   // Add street to output if the field is not empty
   if(req.session.data['street'] != "")
   {
-    req.session.data['full-address-holder'] = req.session.data['street'];
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['street'];
   }
 
 
@@ -2072,6 +2072,10 @@ router.get('/create-event/venue-onwards', function (req, res)
   {
     req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['postcode'];
   }
+
+
+  console.log("-----=-=-=  THE VENUE IS \n" + req.session.data['full-address-holder']);
+
 
 
   if( req.session.data['venue-additional-notes'] == "")
@@ -4297,12 +4301,15 @@ router.get('/create-event/cancel-current-question', function (req, res)
 
 router.get('/create-event/template-reg-onwards', function (req, res)
 {
+
   if(req.session.changingFromSummary == true)
   {
     res.redirect('/create-event/summary-prelude');
   }
   else
   {
+    req.session.data['email-reminder-1'] = "2";
+
     res.redirect('/create-event/template-reminder');
   }
 })
@@ -4310,8 +4317,86 @@ router.get('/create-event/template-reg-onwards', function (req, res)
 
 router.get('/create-event/template-reminder-onwards', function (req, res)
 {
+  var reminderInvalid = false;
+  var reminderMissing = false;
+  var secondReminderInvalid = false;
+
+  req.session.data['email-reminder-1-error'] = false;
+  req.session.data['email-reminder-2-error'] = false;
+
+  // REMINDER 1
+  if (req.session.data['email-reminder-1'] == undefined || req.session.data['email-reminder-1'] == "")
+  {
+    reminderMissing = true;
+  }
+  else if( isNaN(req.session.data['email-reminder-1']) == true )
+  {
+    reminderInvalid = true;
+  }
+
+  // REMINDER 2
+  if (req.session.data['email-reminder-2'] == undefined || req.session.data['email-reminder-2'] == "")
+  {
+    // Fine just ignore this second reminder
+  }
+  else if( isNaN(req.session.data['email-reminder-2']) == true )
+  {
+    secondReminderInvalid = true;
+  }
+
+  if( (reminderInvalid || reminderMissing || secondReminderInvalid) == false )
+  {
     res.redirect('/create-event/summary-prelude');
+  }
+  else
+  {
+    res.render('create-event/template-reminder',
+        {
+          'errorReminderInvalid': reminderInvalid,
+          'errorReminderMissing': reminderMissing,
+          'errorSecondReminderInvalid': secondReminderInvalid
+        }
+    );
+  }
 })
+
+
+
+router.get('/create-event/template-reminder-skip', function (req, res)
+{
+  // REMINDER 1
+  if (req.session.data['email-reminder-1'] == undefined || req.session.data['email-reminder-1'] == "")
+  {
+    req.session.data['email-reminder-1-error'] = true;
+  }
+  else if( isNaN(req.session.data['email-reminder-1']) == true )
+  {
+    req.session.data['email-reminder-1-error'] = true;
+  }
+  else
+  {
+    req.session.data['email-reminder-1-error'] = false;
+  }
+
+  // REMINDER 2
+  if (req.session.data['email-reminder-2'] == undefined || req.session.data['email-reminder-2'] == "")
+  {
+    req.session.data['email-reminder-2-error'] = false;
+  }
+  else if( isNaN(req.session.data['email-reminder-2']) == true )
+  {
+    req.session.data['email-reminder-2-error'] = true;
+  }
+
+  res.redirect('/create-event/summary-prelude');
+
+})
+
+
+
+
+
+
 
 
 // VENUE PAGE ONWARDS BUTTON

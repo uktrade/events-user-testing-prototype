@@ -43,7 +43,7 @@
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Point of contact</dt>
 
-				  {% if session.data['owner-name-error']  %}
+				  {% if session.data['owner-name-error'] %}
 				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 				  	<dd class="cya-answer">{{ data['owner-name'] }}</dd>
@@ -682,9 +682,15 @@
 
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Reminder send time</dt>
-				  <dd class="cya-answer">
-					  {{ data['email-reminder-1'] }} days before the event
-				  </dd>
+
+				  {% if session.data['email-reminder-1-error'] == true %}
+				  	  <dd class="cya-answer bold">Required field, incomplete.</dd>
+				  {% else %}
+					  <dd class="cya-answer">
+						  {{ data['email-reminder-1'] }} days before the event
+					  </dd>
+				  {% endif %}
+
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-reminder-message">
 						  Change
@@ -692,12 +698,18 @@
 				  </dd>
 			  </div>
 
-			  {% if  data['email-reminder-2'] != 0 %}
+			  {% if 0 < data['email-reminder-2'] or session.data['email-reminder-2-error'] %}
 				  <div>
 					  <dt class="cya-question" style="vertical-align:top">Second reminder send time</dt>
-					  <dd class="cya-answer">
-						  {{ data['email-reminder-2'] }} days before the event
-					  </dd>
+
+					  {% if session.data['email-reminder-2-error'] == true%}
+					  	  <dd class="cya-answer bold">Required field, incomplete.</dd>
+					  {% else %}
+						  <dd class="cya-answer">
+							  {{ data['email-reminder-2'] }} days before the event
+						  </dd>
+					  {% endif %}
+
 					  <dd class="cya-change" style="vertical-align:top">
 						  <a href="/create-event/change-reminder-message">
 							  Change
@@ -706,10 +718,7 @@
 				  </div>
 			  {% endif %}
 
-
 		  </dl>
-
-
 
 
 		  <div class="form-group" style="margin-top:50px">

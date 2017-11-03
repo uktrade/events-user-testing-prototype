@@ -75,11 +75,11 @@
 			  <div id="venue-name-area" class="form-group {% if errorVenueName %} form-group-error {% endif %}">
 				  <label class="form-label-bold" for="venue"  style="margin-bottom:5px;  ">Venue name</label>
 				  {% if errorVenueName %}
-						  <span class="error-message">
-							  Enter your event venue
-						  </span>
+					  <span class="error-message">
+						  Enter your event venue
+					  </span>
 				  {% endif %}
-				  <input class="form-control {% if errorVenueName %} form-control-error {% endif %}" id="venue" type="text" name="venue" style="width:75%"  value="{{ data['building'] }}" >
+				  <input class="form-control {% if errorVenueName %} form-control-error {% endif %}" id="venue" type="text" name="venue" style="width:75%"  value="{{ data['venue'] }}" >
 			  </div>
 
 

@@ -20,6 +20,34 @@ GOV.UK prototype kit
 			</div>
 
 
+			<!-- CONDITIONAL ERROR  -->
+			{% if errorReminderInvalid or errorReminderMissing or errorSecondReminderInvalid %}
+				<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+					<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+						Invalid or missing fields
+					</h2>
+
+					<p>Please check the following errors and try again</p>
+
+					<ul class="error-summary-list">
+						<!--  DATE ERRORS  -->
+						{% if errorReminderInvalid %}
+							<li><a href="#reminder-1-area">DAN DAN DAN DAN DAN  INVALID</a></li>
+						{% elif errorReminderMissing %}
+							<li><a href="#reminder-1-area">DAN DAN DAN DAN DAN MISSING</a></li>
+						{% endif %}
+
+						{% if errorSecondReminderInvalid %}
+							<li><a href="#reminder-2-area">DAN DAN DAN DAN DAN  INVALID</a></li>
+						{% endif %}
+					</ul>
+
+				</div>
+			{% endif %}
+
+
+
 			<h1 class="heading-large" style="margin-top:15px; margin-bottom:35px">
 				Event reminder emails
 			</h1>
@@ -30,38 +58,57 @@ GOV.UK prototype kit
 			<form action="/create-event/template-reminder-onwards" method="get" class="form">
 
 
-				<fieldset class="form-group" style="margin-bottom:0px">
+				<fieldset id="reminder-1-area" class="form-group {% if errorReminderMissing or  errorReminderInvalid %} form-group-error {% endif %}" style="margin-bottom:0px">
 
 					<label class="form-label-bold" for="email-reminder-1">
 						When to send reminder
+						{% if errorReminderInvalid %}
+						  <span class="error-message">
+							DAN DAN DAN DAN DAN  INVALID
+						  </span>
+						{% elif errorReminderMissing %}
+						  <span class="error-message">
+							DAN DAN DAN DAN DAN MISSING
+						  </span>
+						{% endif %}
+
 					</label>
 					<!-- <p class="form-hint">For example, 31 3 1980</p>  -->
 					<div class="form-group-day form-date">
-
-						<input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
-							   id="email-reminder-1" name="email-reminder-1" type="number" pattern="[0-9]*"
-							   value="2" style="float: left; width:50px;">
+						<input class="form-control  {% if errorReminderMissing or  errorReminderInvalid %} form-control-error {% endif %}"
+							   id="email-reminder-1" name="email-reminder-1" type="text"
+							   value="{{ data['email-reminder-1'] }}" style="float: left; width:50px;">
 						<p style="float: left; margin-left:10px; margin-top:8px;">days before event</p>
 					</div>
 				</fieldset>
 
+
 				<p id="add-second-reminder"
-				   style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+				   {% if errorSecondReminderInvalid %}
+				   		style="display:none;"
+				   {% else %}
+				   		style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
+				   {% endif %}
 				   onclick="showSecondReminder()">Add another reminder</p>
 
 
-				<div id="second-reminder-section"  style="display:none; ">
-					<fieldset class="form-group" style="margin-bottom:0px; margin-top:20px;" >
+				<div id="second-reminder-section"  {% if not errorSecondReminderInvalid %} style="display:none;" {% endif %}>
+					<fieldset id="reminder-2-area" class="form-group {% if errorSecondReminderInvalid %} form-group-error {% endif %}" style="margin-bottom:0px; margin-top:20px;" >
 
 						<label class="form-label-bold" for="email-reminder-2">
 							Second reminder
+							{% if errorSecondReminderInvalid %}
+							  <span class="error-message">
+								DAN DAN DAN DAN DAN  INVALID
+							  </span>
+							{% endif %}
 						</label>
 						<!-- <p class="form-hint">For example, 31 3 1980</p>  -->
 						<div class="form-group-day form-date">
 
-							<input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
-								   id="email-reminder-2" name="email-reminder-2" type="number" pattern="[0-9]*"
-								   value="0" style="float: left; width:50px;">
+							<input class="form-control  {% if errorSecondReminderInvalid %} form-control-error {% endif %}"
+								   id="email-reminder-2" name="email-reminder-2" type="text"
+								   value="{{ data['email-reminder-2'] }}" style="float: left; width:50px;">
 							<p style="float: left; margin-left:10px; margin-top:8px;"> days before event</p>
 
 						</div>
@@ -88,6 +135,9 @@ GOV.UK prototype kit
 
 					<p style="margin-left:5px;  margin-bottom:5px;">Dear [NAME]<br><br>
 						We're getting in touch to remind you about your upcoming event
+						<br>
+						<br>{{data['event-title']}}
+						<br><a href="#">[EVENT PAGE LINK]</a>
 						<br>
 						<br>{{ data['event-day-of-the-week'] }}
 						<br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
@@ -135,7 +185,10 @@ Best wishes,
 
 				<div class="form-group" style="margin-top:10px">
 					<input type="submit" class="button" value="Save and continue">
-					<p style="margin-top:25px"><a href="/create-event/template-reminder-onwards">I'll complete this later - I don't have this information yet</a></p>
+
+					<input type="submit" formaction="/create-event/template-reminder-skip" value="I'll complete this later - I don't have this information yet"
+						   style="margin-top:25px; border:0px; padding:0px; background-color: transparent; color: #005ea5; text-decoration: underline; cursor: pointer; display:block;">
+
 				</div>
 
 			</form>
