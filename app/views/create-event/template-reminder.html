@@ -33,13 +33,17 @@ GOV.UK prototype kit
 					<ul class="error-summary-list">
 						<!--  DATE ERRORS  -->
 						{% if errorReminderInvalid %}
-							<li><a href="#reminder-1-area">DAN DAN DAN DAN DAN  INVALID</a></li>
+							<li><a href="#reminder-1-area">Event reminder: invalid entry</a></li>
 						{% elif errorReminderMissing %}
-							<li><a href="#reminder-1-area">DAN DAN DAN DAN DAN MISSING</a></li>
+							<li><a href="#reminder-1-area">Reminder timing: missing</a></li>
 						{% endif %}
 
 						{% if errorSecondReminderInvalid %}
-							<li><a href="#reminder-2-area">DAN DAN DAN DAN DAN  INVALID</a></li>
+							<li><a href="#reminder-2-area">Event reminder: invalid entry</a></li>
+						{% endif %}
+
+						{% if errorEmailSubjectMissing %}
+							<li><a href="#email-reg-subject-section">Subject line: missing</a></li>
 						{% endif %}
 					</ul>
 
@@ -52,23 +56,23 @@ GOV.UK prototype kit
 				Event reminder emails
 			</h1>
 
-			<p style="margin-bottom:40px;">Use this page to schedule up to two event reminder emails. </p>
+			<p style="">Use this page to schedule up to two event reminder emails. </p>
 
 
 			<form action="/create-event/template-reminder-onwards" method="get" class="form">
 
 
-				<fieldset id="reminder-1-area" class="form-group {% if errorReminderMissing or  errorReminderInvalid %} form-group-error {% endif %}" style="margin-bottom:0px">
+				<fieldset id="reminder-1-area" class="form-group {% if errorReminderMissing or  errorReminderInvalid %} form-group-error {% endif %}" >
 
 					<label class="form-label-bold" for="email-reminder-1">
 						When to send reminder
 						{% if errorReminderInvalid %}
 						  <span class="error-message">
-							DAN DAN DAN DAN DAN  INVALID
+							Please enter a number to specify when to send reminder
 						  </span>
 						{% elif errorReminderMissing %}
 						  <span class="error-message">
-							DAN DAN DAN DAN DAN MISSING
+							Please specify when to send reminder
 						  </span>
 						{% endif %}
 
@@ -80,16 +84,15 @@ GOV.UK prototype kit
 							   value="{{ data['email-reminder-1'] }}" style="float: left; width:50px;">
 						<p style="float: left; margin-left:10px; margin-top:8px;">days before event</p>
 					</div>
+
+					<p id="add-second-reminder"
+					   {% if errorSecondReminderInvalid %}
+					   style="display:none; margin-top:60px;"
+					   {% else %}
+					   style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-top:60px;"
+					   {% endif %}
+					   onclick="showSecondReminder()">Add another reminder</p>
 				</fieldset>
-
-
-				<p id="add-second-reminder"
-				   {% if errorSecondReminderInvalid %}
-				   		style="display:none;"
-				   {% else %}
-				   		style="color: #005ea5; text-decoration: underline; cursor: pointer; margin-top:20px; margin-bottom:0px;"
-				   {% endif %}
-				   onclick="showSecondReminder()">Add another reminder</p>
 
 
 				<div id="second-reminder-section"  {% if not errorSecondReminderInvalid %} style="display:none;" {% endif %}>
@@ -99,7 +102,7 @@ GOV.UK prototype kit
 							Second reminder
 							{% if errorSecondReminderInvalid %}
 							  <span class="error-message">
-								DAN DAN DAN DAN DAN  INVALID
+								Please enter a number to specify when to send reminder
 							  </span>
 							{% endif %}
 						</label>
@@ -121,14 +124,18 @@ GOV.UK prototype kit
 
 
 
+				<!--  SUBJECT OF EMAIL -->
 				<p class="heading-small" style="margin-top:50px;" >Email subject</p>
 
-				<div id="email-reg-subject-section" class="form-group panel panel-border-narrow" >
-					<input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-						   id="event-email-subject" name="event-email-subject" value="Reminder of your upcoming event" style="width: 80%">
+				<div id="email-reg-subject-section" class="form-group panel panel-border-narrow {% if errorEmailSubjectMissing %} form-group-error {% endif %}" >
+					{% if errorEmailSubjectMissing %} <p class="error-message">Please enter an email subject line</p> {% endif %}
+					<input type="text" class="form-control  {% if errorEmailSubjectMissing %} form-control-error {% endif %}"
+						   id="event-email-subject-reminder" name="event-email-subject-reminder" value="Reminder of your upcoming event" style="width: 80%">
 				</div>
 
 
+
+				<!-- BODY OF EMAIL -->
 				<p class="heading-small">Email body</p>
 
 				<div id="email-reg-body-section" class="form-group panel panel-border-narrow" style="margin-top:10px;">
@@ -136,36 +143,55 @@ GOV.UK prototype kit
 					<p style="margin-left:5px;  margin-bottom:5px;">Dear [NAME]<br><br>
 						We're getting in touch to remind you about your upcoming event
 						<br>
-						<br>{{data['event-title']}}
-						<br><a href="#">[EVENT PAGE LINK]</a>
 						<br>
-						<br>{{ data['event-day-of-the-week'] }}
-						<br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
-						<br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
-					</p>
-					<p style="margin-left:5px; margin-top:5px;"><a href="#">Add to calendar</a></p>
-
-
-					<!-- VENUE -->
-					<p class="heading-small" style="margin-left:5px; ">Venue</p>
-					<p style="white-space: pre-wrap; margin-left:5px; margin-bottom:5px; ">{{ data['full-address-holder'] }}</p>
-
-					<p style="margin-left:5px; margin-top:5px;"><a href="#">Map of venue</a></p>
-
-					{% if data['venue-additional-notes-entered'] == true %}
-					<p class="heading-small" style="margin-left:5px; ">Parking and directions</p>
-					<p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
-					{% endif %}
-
-					<p class="heading-small" style="margin-left:5px; ">Organiser contact details</p>
-					<p style="margin-left:5px;" >{{ data['organiser-name'] }}
-						<br> {{ data['contact-email'] }}
-						<br> {{ data['contact-phone'] }}
 					</p>
 
+					<table style="margin-left:5px; margin-bottom:50px; width:745px;">
+						<!--<caption class="heading-small" style="text-align:left">Your booking details</caption> -->
+						<tbody>
+
+							<tr>
+								<td style="width:150px; margin-right:30px;">Event title</td>
+								<td>{{ data['event-title'] }}</td>
+							</tr>
+							<tr>
+								<td>Webpage</td>
+								<td><a href="#">[EVENT PAGE LINK]</a></td>
+							</tr>
+							<tr>
+								<td>Date and time</td>
+								<td>{{ data['event-day-of-the-week'] }}
+									<br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
+									<br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
+									<br><a href="#">Add to calendar</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Venue</td>
+								<td style="white-space: pre-wrap; ">{{ data['full-address-holder'] }}
+<a href="#">Map of venue</a></td>
+							</tr>
+
+							{% if data['venue-additional-notes-entered'] == true %}
+								<tr>
+									<td>Parking and directions</td>
+									<td>{{ data['venue-additional-notes'] }}</td>
+								</tr>
+							{% endif %}
+
+							<tr>
+								<td style="width:150px; padding-right:40px;">Organiser contact details</td>
+								<td>{{ data['organiser-name'] }}
+									<br> {{ data['contact-email'] }}
+									<br> {{ data['contact-phone'] }}</td>
+							</tr>
+
+						</tbody>
+					</table>
 
 
-					<textarea class="form-control" name="event-reminder-body" id="event-reminder-body" rows="12" style="width: 80%;"
+
+					<textarea class="form-control" name="event-reminder-body" id="event-reminder-body" rows="15" style="width: 80%;"
 					>If you have any questions or special requests that will help you to get the most out of the day, please don't hesitate to get in touch. We'd be happy to assist.
 
 We look forward to seeing you on the day.

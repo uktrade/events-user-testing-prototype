@@ -2252,6 +2252,11 @@ router.get('/create-event/title-onwards', function (req, res)
   {
     errorMissingTitle = true;
   }
+  else
+  {
+    // Create email subejct line for confirmation which includes the title
+    req.session.data['event-email-reg-subject'] = "Your event booking - " + req.session.data['event-title'];
+  }
 
   console.log("sector -------------- " + req.session.data['radio-sector']);
   console.log("sector box -------------- " + req.session.data['sector-box']);
@@ -2473,6 +2478,11 @@ router.get('/create-event/title-skip', function (req, res)
   if(req.session.data['event-title'] === "")
   {
     errorMissingTitle = true;
+  }
+  else
+  {
+    // Create email subejct line for confirmation which includes the title
+    req.session.data['event-email-reg-subject'] = "Your event booking - " + req.session.data['event-title'];
   }
 
   console.log("sector -------------- " + req.session.data['radio-sector']);
@@ -4301,17 +4311,44 @@ router.get('/create-event/cancel-current-question', function (req, res)
 
 router.get('/create-event/template-reg-onwards', function (req, res)
 {
+  var missingSubject = false;
 
-  if(req.session.changingFromSummary == true)
+  if(req.session.data['event-email-reg-subject'] === "")
   {
-    res.redirect('/create-event/summary-prelude');
+    missingSubject = true;
+  }
+
+
+
+  if( (missingSubject) == false )
+  {
+    if(req.session.changingFromSummary == true)
+    {
+      res.redirect('/create-event/summary-prelude');
+    }
+    else
+    {
+      // set the default reminder days before it it hasn't been set
+      if( req.session.data['email-reminder-1'] == undefined  ||  req.session.data['email-reminder-1'] == "" )
+      {
+        req.session.data['email-reminder-1'] = "2";
+      }
+
+
+      res.redirect('/create-event/template-reminder');
+    }
   }
   else
   {
-    req.session.data['email-reminder-1'] = "2";
-
-    res.redirect('/create-event/template-reminder');
+    res.render('create-event/template-reg',
+        {
+          'errorMissingSubject': missingSubject
+        }
+    );
   }
+
+
+
 })
 
 
@@ -4320,6 +4357,7 @@ router.get('/create-event/template-reminder-onwards', function (req, res)
   var reminderInvalid = false;
   var reminderMissing = false;
   var secondReminderInvalid = false;
+  var errorMissingEmailSubject = false;
 
   req.session.data['email-reminder-1-error'] = false;
   req.session.data['email-reminder-2-error'] = false;
@@ -4344,7 +4382,17 @@ router.get('/create-event/template-reminder-onwards', function (req, res)
     secondReminderInvalid = true;
   }
 
-  if( (reminderInvalid || reminderMissing || secondReminderInvalid) == false )
+
+  //  CHECK IS SUBJECT LINE IS EMPTY
+  if(req.session.data['event-email-subject-reminder'] === "")
+  {
+    errorMissingEmailSubject = true;
+  }
+
+
+
+
+  if( (reminderInvalid || reminderMissing || secondReminderInvalid || errorMissingEmailSubject) == false )
   {
     res.redirect('/create-event/summary-prelude');
   }
@@ -4354,7 +4402,8 @@ router.get('/create-event/template-reminder-onwards', function (req, res)
         {
           'errorReminderInvalid': reminderInvalid,
           'errorReminderMissing': reminderMissing,
-          'errorSecondReminderInvalid': secondReminderInvalid
+          'errorSecondReminderInvalid': secondReminderInvalid,
+          'errorEmailSubjectMissing': errorMissingEmailSubject
         }
     );
   }

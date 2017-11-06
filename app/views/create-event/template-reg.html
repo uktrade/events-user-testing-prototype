@@ -20,6 +20,30 @@
 	  </div>
 
 
+		{% if errorMissingSubject %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Invalid or missing fields
+			</h2>
+
+			<p>
+				Please check the following errors and try again
+			</p>
+
+			<ul class="error-summary-list">
+
+				<!--  DATE ERRORS  -->
+				{% if errorMissingSubject %}
+					<li><a href="#email-reg-subject-section">Subject line: missing</a></li>
+				{% endif %}
+
+			</ul>
+
+		</div>
+		{% endif %}
+
+
 
 
 	  <h1 class="heading-large" style="margin-top:15px; margin-bottom:35px">
@@ -34,9 +58,10 @@
 
 		  <p class="heading-small">Email subject</p>
 
-		  <div id="email-reg-subject-section" class="form-group panel panel-border-narrow" >
-			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-					 id="event-email-reg-subject" name="event-email-reg-subject" value="Your event booking - {{data['event-title']}}" style="width: 80%">
+		  <div id="email-reg-subject-section" class="form-group panel panel-border-narrow {% if errorMissingSubject %} form-group-error {% endif %}" >
+			  {% if errorMissingSubject %} <p class="error-message">Please enter an email subject line</p> {% endif %}
+			  <input type="text" class="form-control  {% if errorMissingSubject %} form-control-error {% endif %}"
+					 id="event-email-reg-subject" name="event-email-reg-subject" value="{{ session.data['event-email-reg-subject'] }}" style="width: 80%">
 		  </div>
 
 
@@ -50,31 +75,51 @@
 
 			 Thank you for deciding to join us for the following event
 			  <br>
-			  <br><span class="bold">{{data['event-title']}}</span>
-			  <br>[<a href="#">EVENT PAGE LINK</a>]
 			  <br>
-			  <br>{{ data['event-day-of-the-week'] }}
-			  <br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
-			  <br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
 		  </p>
-		  <p style="margin-left:5px; margin-top:5px;"><a href="#">Add to calendar</a></p>
 
+			  <table style="margin-left:5px; margin-bottom:50px; width:745px;">
+				  <!--<caption class="heading-small" style="text-align:left">Your booking details</caption> -->
+				  <tbody>
 
-		  <p class="heading-small" style="margin-left:5px; ">Venue</p>
-		  <p style="white-space: pre-wrap; margin-left:5px; margin-bottom:5px; ">{{ data['full-address-holder'] }}</p>
+				  <tr>
+					  <td style="width:150px; margin-right:30px;">Event title</td>
+					  <td>{{ data['event-title'] }}</td>
+				  </tr>
+				  <tr>
+					  <td>Webpage</td>
+					  <td><a href="#">[EVENT PAGE LINK]</a></td>
+				  </tr>
+				  <tr>
+					  <td>Date and time</td>
+					  <td>{{ data['event-day-of-the-week'] }}
+						  <br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
+						  <br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
+						  <br><a href="#">Add to calendar</a>
+					  </td>
+				  </tr>
+				  <tr>
+					  <td>Venue</td>
+					  <td style="white-space: pre-wrap; ">{{ data['full-address-holder'] }}
+<a href="#">Map of venue</a></td>
+				  </tr>
 
-		  <p style="margin-left:5px; margin-top:5px;"><a href="#">Map of venue</a></p>
+				  {% if data['venue-additional-notes-entered'] == true %}
+				  <tr>
+					  <td>Parking and directions</td>
+					  <td>{{ data['venue-additional-notes'] }}</td>
+				  </tr>
+				  {% endif %}
 
-		  {% if data['venue-additional-notes-entered'] == true %}
-			  <p class="heading-small" style="margin-left:5px; ">Parking and directions</p>
-			  <p style="margin-left:5px; margin-top:5px; margin-bottom:40px;">  {{ data['venue-additional-notes'] }} </p>
-		  {% endif %}
+				  <tr>
+					  <td style="width:150px; padding-right:40px;">Organiser contact details</td>
+					  <td>{{ data['organiser-name'] }}
+						  <br> {{ data['contact-email'] }}
+						  <br> {{ data['contact-phone'] }}</td>
+				  </tr>
 
-		  <p class="heading-small" style="margin-left:5px; ">Organiser contact details</p>
-		  <p style="margin-left:5px;" >{{ data['organiser-name'] }}
-			 <br> {{ data['contact-email'] }}
-			 <br> {{ data['contact-phone'] }}
-		  </p>
+				  </tbody>
+			  </table>
 
 					<textarea class="form-control" name="event-reg-body" id="event-reg-body" rows="20" style="width: 80%;"
 					>Remember to regularly check the event web page for latest additions to the agenda, confirmed speakers and experts.
