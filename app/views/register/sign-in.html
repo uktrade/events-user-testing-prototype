@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
+
 {% if loggedIn == undefined %}
-{% set loggedIn = false %}
+	{% set loggedIn = false %}
 {% endif %}
+
 {% set external_journey = true %}
 
 {% block page_title %}
@@ -10,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+
 {% include "includes/great-header.html" %} 
 
 <main id="content" role="main">

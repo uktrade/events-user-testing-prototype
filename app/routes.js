@@ -221,6 +221,8 @@ router.get('/scenario-empty', function (req, res)
 
 router.get('/scenario-1', function (req, res)
 {
+  req.session.data['external-user'] = false;
+
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
 
@@ -555,6 +557,8 @@ router.get('/scenario-1', function (req, res)
 
 router.get('/scenario-2', function (req, res)
 {
+  req.session.data['external-user'] = false;
+
   req.session.data['event-title'] = "Introduction to exporting workshop";
 
   req.session.data['hero-image'] = "exporting-generic.jpg"
@@ -639,6 +643,9 @@ Lunch and networking`;
 
 router.get('/scenario-3', function (req, res)
 {
+  // External users
+  req.session.data['external-user'] = true;
+
   req.session.data['event-title'] = "Sweden food and drink seminar";
 
   req.session.data['event-day-of-the-week'] = "Wednesday";
@@ -710,6 +717,8 @@ Refreshments and networking`;
 // GERMANY
 router.get('/scenario-4', function (req, res)
 {
+  req.session.data['external-user'] = true;
+
   req.session.data['event-title'] = "Doing business in Germany - retail";
   req.session.data['event-summary'] = "Join us for this informative seminar, perfect for UK companies looking to take first steps into the German retail market.";
 
@@ -792,6 +801,8 @@ Networking and close`;
 /////////// Sports technology in France
 router.get('/scenario-5', function (req, res)
 {
+  req.session.data['external-user'] = true;
+
   req.session.data['event-title'] = "Sports technology in France";
   req.session.data['event-summary'] = "Join us for a full day of presentations and networking opportunities with a carefully selected group of French sports technology companies.";
   req.session.data['hero-image'] = "france-sport.jpg";
@@ -857,6 +868,8 @@ Over the past five years, the business of sport has become a £20bn-a-year indus
 /////////////   Sell your products and services overseas
 router.get('/scenario-6', function (req, res)
 {
+  req.session.data['external-user'] = true;
+
   req.session.data['event-title'] = "Sell your products and services overseas";
   req.session.data['event-summary'] = "In support of Global Entrepreneurship Week, an afternoon of educational talks designed to help UK small businesses to begin exporting overseas.";
 
@@ -929,6 +942,8 @@ Networking and refreshments
 /////////// Engineering
 router.get('/scenario-7', function (req, res)
 {
+  req.session.data['external-user'] = true;
+
   req.session.data['event-title'] = "Seminar series: exporting trends and opportunities for manufacturing and engineering companies";
   req.session.data['event-summary'] = "A day of inspiring talks and discussions for manufacturing and engineering companies in the East Midlands interested in exporting their products and services";
 
@@ -4336,9 +4351,9 @@ router.get('/create-event/template-reg-onwards', function (req, res)
         req.session.data['email-reminder-1'] = "2";
       }
       // IF no subject in email then make one
-      if( req.session.data['event-email-subject-reminder'] == undefined  ||  req.session.data['email-reminder-1'] == "" )
+      if( req.session.data['event-email-subject-reminder'] == undefined  ||  req.session.data['event-email-subject-reminder'] == "" )
       {
-        req.session.data['email-reminder-1'] = "Reminder of your upcoming event ";
+        req.session.data['event-email-subject-reminder'] = "Reminder of your upcoming event ";
       }
 
 
@@ -4376,9 +4391,9 @@ router.get('/create-event/template-reg-skip', function (req, res)
     req.session.data['email-reminder-1'] = "2";
   }
   // IF no subject in email then make one
-  if( req.session.data['event-email-subject-reminder'] == undefined  ||  req.session.data['email-reminder-1'] == "" )
+  if( req.session.data['event-email-subject-reminder'] == undefined  ||  req.session.data['event-email-subject-reminder'] == "" )
   {
-    req.session.data['email-reminder-1'] = "Reminder of your upcoming event ";
+    req.session.data['event-email-subject-reminder'] = "Reminder of your upcoming event ";
   }
 
   res.redirect('/create-event/template-reminder');

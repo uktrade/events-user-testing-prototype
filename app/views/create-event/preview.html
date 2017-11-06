@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-{% include "includes/great-header.html" %} 
+{% include "includes/great-header-preview-page.html" %}
 <!DOCTYPE html>
 <style type="text/css">
   .partner-logos {
@@ -31,34 +31,55 @@
     <div class="column-two-thirds" style="width:60%; margin-right:70px; padding:0;">
           <!-- EVENT title  -->
           <!-- <div class="grey" style="margin:10px 0;font-size:16px;color:#666666">{{ data['organiser-name'] }}</div>  -->
-          <h1 class="bold-large">{{ data['event-title'] }}</h1>
-          <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }} in {{ data['town'] }} </h2>
 
-       
+        {% if session.data['event-title-error'] == true %}
+            <h1 class="bold-large">Title not yet entered</h1>
+        {% else %}
+            <h1 class="bold-large">{{ data['event-title'] }}</h1>
+        {% endif %}
+
+        {% if session.data['date-error'] == true  %}
+            <h2 class="font-lead">Date not yet entered</h2>
+        {% else %}
+            <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }} in {{ data['town'] }} </h2>
+        {% endif %}
+
+
           <br/>
 
           <h3 style="font-size:18px;font-weight:normal">{{ data['event-summary'] }}</h3>
-          <br />
-        <div>
 
-           
+          <br/>
 
-                <div>
-                    <h4 class="bold" style="font-size:16px;" align="">Sectors</h4>
-                    <p style="white-space: pre-line;">{{ data['sectors'] }}</p>
-                </div>
 
-                    <div >
-                        <h4 class="bold" style="font-size:16px;" align="">Markets</h4>
-                        <p style="white-space: pre-line;">{{ data['markets'] }}</p>
-                    </div>
+          <div>
+              <div>
+                  <h4 class="bold" style="font-size:16px;" align="">Sectors</h4>
+                  {% if session.data['sectors-error'] == true %}
+                      <p style="white-space: pre-line;">Not yet entered</p>
+                  {% else %}
+                      <p style="white-space: pre-line;">{{ data['sectors'] }}</p>
+                  {% endif %}
+              </div>
 
-                    <div >
-                        <h4 class="bold" style="font-size:16px;" align="">Export experience</h4>
-                        <p style="white-space: pre-line;">{{ data['audience-experience'] }}</p>
-                    </div>
+              <div >
+                  <h4 class="bold" style="font-size:16px;" align="">Markets</h4>
+                  {% if session.data['markets-error'] == true %}
+                      <p style="white-space: pre-line;">Not yet entered</p>
+                  {% else %}
+                      <p style="white-space: pre-line;">{{ data['markets'] }}</p>
+                  {% endif %}
+              </div>
 
-        </div>
+              <div >
+                  <h4 class="bold" style="font-size:16px;" align="">Export experience</h4>
+                  {% if session.data['event-description-error'] %}
+                      <p style="white-space: pre-line;">Not yet entered</p>
+                  {% else %}
+                      <p style="white-space: pre-line;">{{ data['audience-experience'] }}</p>
+                  {% endif %}
+              </div>
+          </div>
 
 
           <br/>
@@ -72,29 +93,48 @@
 
             <div style="margin-bottom:35px; margin-top:40px;">
                 <h4 class="bold-small">Benefits of attending</h4>
-                <ul class="list push--bottom">
-                    {% for key,value in data %}
-                        {% if 'benefit-input-' in key %}
-                            {% if value != "" %}
-                                <li class="list-item">{{ value }}</li>
+
+                {% if session.data['benefits-error'] == true %}
+                    <p class="cya-answer">Not yet entered</p>
+                {% else %}
+                    <ul class="list push--bottom">
+                        {% for key,value in data %}
+                            {% if 'benefit-input-' in key %}
+                                {% if value != "" %}
+                                    <li class="list-item">{{ value }}</li>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
 
           <div style="margin-bottom:30px;">
               <h4 class="bold-small">Eligibility</h4>
-              <p style="white-space: pre-line;" >{{ data['summary-target-audience'] }}</p>
+              {% if session.data['summary-target-audience-error'] %}
+                  <p style="white-space: pre-line;" >Not yet entered</p>
+              {% else %}
+                  <p style="white-space: pre-line;" >{{ data['summary-target-audience'] }}</p>
+              {% endif %}
           </div>
 
 
 
           <div style="margin-bottom:50px;">
               <h4 class="bold-small">Further details and background</h4>
-              <p style="white-space: pre-wrap;" id="event-description">{{ data['event-description'] }}</p>
+
+              {% if session.data['event-description-error'] %}
+                  <p style="white-space: pre-wrap;" >Not yet entered</p>
+              {% else %}
+                  <p style="white-space: pre-wrap;" id="event-description">{{ data['event-description'] }}</p>
+              {% endif %}
+
+
+
 
               <br/>
+
+
               <div style="display: flex; flex-direction: row;" >
                   <a href="/register-for-event" class="button button-blue">Register</a>
                   <p style="padding-top:15px; margin-left: 25px; margin-bottom:0px; font-family: arial, helvetica, sans-serif; font-weight: 500; font-size: 18px;">Free event</p>
@@ -106,26 +146,39 @@
 
 
 
-          <h4 class="bold-small" style="margin-top:50px;">Partners</h4>
+          {% if data['logo-1-selected']  or  data['logo-2-selected'] %}
+            <h4 class="bold-small" style="margin-top:50px;">Partners</h4>
+          {% endif %}
+
           <div style="display: flex;  flex-direction: row; margin-bottom:50px;">
-              {% if data['eu-logo-selected'] %}
+              {% if data['logo-1-selected'] %}
                   <div style="width:23%; margin-right:20px;">
                       <img src="/public/images/partner11.jpg">
                   </div>
               {% endif %}
-              {% if data['dit-logo-selected'] %}
+              {% if data['logo-2-selected'] %}
                   <div style="width:23%; margin-right:20px;">
                       <img src="/public/images/partner12.jpg" >
                   </div>
               {% endif %}
-              {% if data['growth-logo-selected'] %}
+              {% if data['logo-3-selected'] %}
                   <div style="width:23%; margin-right:20px;">
                     <img src="/public/images/partner13.jpg">
                   </div>
               {% endif %}
-              {% if data['bw-logo-selected'] %}
+              {% if data['logo-4-selected'] %}
                   <div style="width:23%; margin-right:0px;">
                     <img src="/public/images/partner14.jpg">
+                  </div>
+              {% endif %}
+              {% if data['logo-5-selected'] %}
+                  <div style="width:23%; margin-right:20px;">
+                      <img src="/public/images/partner11.jpg">
+                  </div>
+              {% endif %}
+              {% if data['logo-6-selected'] %}
+                  <div style="width:23%; margin-right:0px;">
+                      <img src="/public/images/partner12.jpg">
                   </div>
               {% endif %}
            </div>
@@ -148,57 +201,86 @@
 
       <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
 
-        <ul style="margin-bottom:25px">
-            <!-- <div class="bold-xsmall">Date and time</div>  -->
-            <li>{{ data['event-day-of-the-week'] }} {{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</li>
-            <li>{{ data['event-start-time'] }} to {{ data['event-finish-time'] }}<br /></li>
-            <p><a href="#">Add to calendar</a></p>
-        </ul>
-
-            <div class="bold-xsmall" >Venue</div>
-
-            <p style="white-space: pre-wrap; margin-bottom:5px">{{ data['full-address-holder'] }}</p>
-            <p class="link-style"><a href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View on a map</a></p>
-
-
-            {% if session.data['venue-additional-notes-entered'] == true %}
-            <details>
-            <summary>Parking and directions</summary>
-            
-            <div>{{ data['venue-additional-notes'] }}</div>
-            </details>
-            {% endif %}
-      </div>
+          {% if session.data['date-error'] == true  %}
+              <p>Date not yet entered</h2>
+          {% else %}
+              <ul style="margin-bottom:25px">
+                  <!-- <div class="bold-xsmall">Date and time</div>  -->
+                  <li>{{ data['event-day-of-the-week'] }} {{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}</li>
+                  <li>{{ data['event-start-time'] }} to {{ data['event-finish-time'] }}<br /></li>
+                  <p><a href="#">Add to calendar</a></p>
+              </ul>
+          {% endif %}
 
 
-      <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
-          <ul>
-              <div class="bold-xsmall">Agenda</div>
-              <li style="white-space: pre-wrap;">{{ data['agenda'] }}</li>
-          </ul>
-      </div>
 
+
+          <div class="bold-xsmall" >Venue</div>
+              {% if session.data['full-address-holder-error'] %}
+                  <p>Not yet entered</p>
+              {% else %}
+                  <p style="white-space: pre-wrap; margin-bottom:5px">{{ data['full-address-holder'] }}</p>
+                  <p class="link-style"><a href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View on a map</a></p>
+                  {% if session.data['venue-additional-notes-entered'] == true %}
+                      <details>
+                          <summary>Parking and directions</summary>
+
+                          <div>{{ data['venue-additional-notes'] }}</div>
+                      </details>
+                  {% endif %}
+              {% endif %}
+          </div>
+
+
+      {% if session.data['agenda'] != "No agenda will be shown" %}
+          <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
+              <ul>
+                  <div class="bold-xsmall">Agenda</div>
+                  {% if session.data['markets-error'] %}
+                     <li>Not yet entered</li>
+                  {% else %}
+                     <li style="white-space: pre-wrap;">{{ data['agenda'] }}</li>
+                  {% endif %}
+              </ul>
+          </div>
+      {% endif %}
 
       <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
           <ul>
               <div class="bold-xsmall">Organiser</div>
-              <li style="white-space: pre-wrap; margin-bottom:5px;">{{ data['organiser-name'] }}</li>
-              <li>Phone: 01275 373 373</li>
-              <li>Email: {{ data['contact-email'] }}</li>
+
+              {% if session.data['organiser-name-error'] %}
+                <dd class="cya-answer">Not yet entered</dd>
+              {% else %}
+                <li style="white-space: pre-wrap; margin-bottom:5px;">{{ data['organiser-name'] }}</li>
+              {% endif %}
+
+
+              {% if session.data['contact-phone-error'] == true %}
+              {% else %}
+                  <li>Phone: {{ data['contact-phone'] }}</li>
+              {% endif %}
+
+              {% if session.data['contact-email-error'] %}
+              {% else %}
+                    <li>Email: {{ data['contact-email'] }}</li>
+              {% endif %}
+
+
           </ul>
       </div>
 
 
     </div>
 
-    
+
     </div>
 
 
 
   </div>
 
-{% include "includes/great-footer.html" %} 
+{% include "includes/great-footer.html" %}
 
 {% endblock %}
 {% block page_scripts %}

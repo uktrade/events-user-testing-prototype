@@ -320,10 +320,10 @@
 					  Event outcomes
 				  </dt>
 
-				  {% if session.data['benefits-error'] %}
+				  {% if session.data['benefits-error'] == true %}
 				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
-				 	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['benefits-error'] }}</dd>
+				 	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['benefits'] }}</dd>
 				  {% endif %}
 
 				  <dd class="cya-change">
