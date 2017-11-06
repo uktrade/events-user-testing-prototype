@@ -55,8 +55,15 @@ router.use(function (req, res, next)
   }
 
 
-  if(req.session.liveOrNot == undefined) {
-  req.session.liveOrNot = false;
+  if(req.session.liveOrNot == undefined)
+  {
+    req.session.liveOrNot = "false";
+  }
+
+  if(req.session.externalUser == undefined)
+  {
+    req.session.externalUser = false;
+  }
 
   //  THE SAVED PREVIOUS CUSTOM QUESTIONS FROM USERS
   if(req.session.previousQuestions == undefined) {
@@ -69,7 +76,6 @@ router.use(function (req, res, next)
     req.session.addNewQuestionFromSummary = false;
   }
 
-}
 
 
   // Setting up the store for the questiosna and answers
@@ -221,7 +227,7 @@ router.get('/scenario-empty', function (req, res)
 
 router.get('/scenario-1', function (req, res)
 {
-  req.session.data['external-user'] = false;
+  req.session.externalUser = false;
 
   // empty account
   //req.session.regionName = "DIT Yorkshire and the Humber";
@@ -557,7 +563,7 @@ router.get('/scenario-1', function (req, res)
 
 router.get('/scenario-2', function (req, res)
 {
-  req.session.data['external-user'] = false;
+  req.session.externalUser = false;
 
   req.session.data['event-title'] = "Introduction to exporting workshop";
 
@@ -644,7 +650,7 @@ Lunch and networking`;
 router.get('/scenario-3', function (req, res)
 {
   // External users
-  req.session.data['external-user'] = true;
+  req.session.externalUser = true;
 
   req.session.data['event-title'] = "Sweden food and drink seminar";
 
@@ -717,7 +723,7 @@ Refreshments and networking`;
 // GERMANY
 router.get('/scenario-4', function (req, res)
 {
-  req.session.data['external-user'] = true;
+  req.session.externalUser = true;
 
   req.session.data['event-title'] = "Doing business in Germany - retail";
   req.session.data['event-summary'] = "Join us for this informative seminar, perfect for UK companies looking to take first steps into the German retail market.";
@@ -801,7 +807,7 @@ Networking and close`;
 /////////// Sports technology in France
 router.get('/scenario-5', function (req, res)
 {
-  req.session.data['external-user'] = true;
+  req.session.externalUser = true;
 
   req.session.data['event-title'] = "Sports technology in France";
   req.session.data['event-summary'] = "Join us for a full day of presentations and networking opportunities with a carefully selected group of French sports technology companies.";
@@ -868,7 +874,7 @@ Over the past five years, the business of sport has become a £20bn-a-year indus
 /////////////   Sell your products and services overseas
 router.get('/scenario-6', function (req, res)
 {
-  req.session.data['external-user'] = true;
+  req.session.externalUser = true;
 
   req.session.data['event-title'] = "Sell your products and services overseas";
   req.session.data['event-summary'] = "In support of Global Entrepreneurship Week, an afternoon of educational talks designed to help UK small businesses to begin exporting overseas.";
@@ -942,7 +948,7 @@ Networking and refreshments
 /////////// Engineering
 router.get('/scenario-7', function (req, res)
 {
-  req.session.data['external-user'] = true;
+  req.session.externalUser = true;
 
   req.session.data['event-title'] = "Seminar series: exporting trends and opportunities for manufacturing and engineering companies";
   req.session.data['event-summary'] = "A day of inspiring talks and discussions for manufacturing and engineering companies in the East Midlands interested in exporting their products and services";
@@ -1120,6 +1126,8 @@ router.get('/create-event/new', function (req, res)
   {
     req.session.data['answer-'+x] = "";
   }
+
+  req.session.liveOrNot = false;
 
   res.redirect('/create-event/organiser');
 })

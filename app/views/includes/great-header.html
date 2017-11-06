@@ -49,7 +49,7 @@ main#content {max-width: 1200px}
 
 
 <!--  When the event is not live we should show the big white header -->
-{% if session.liveOrNot == "false"  and  session.data['external-user'] == false %}
+{% if session.liveOrNot == "false"  and  session.externalUser == false %}
 
 <div style="background-color: #FFFFFF; border-bottom: 10px solid #000000; height:270px; padding-top:0px; padding-bottom:10px; display: flex; " >
 
