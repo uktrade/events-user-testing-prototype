@@ -130,7 +130,7 @@ GOV.UK prototype kit
 				<div id="email-reg-subject-section" class="form-group panel panel-border-narrow {% if errorEmailSubjectMissing %} form-group-error {% endif %}" >
 					{% if errorEmailSubjectMissing %} <p class="error-message">Please enter an email subject line</p> {% endif %}
 					<input type="text" class="form-control  {% if errorEmailSubjectMissing %} form-control-error {% endif %}"
-						   id="event-email-subject-reminder" name="event-email-subject-reminder" value="Reminder of your upcoming event" style="width: 80%">
+						   id="event-email-subject-reminder" name="event-email-subject-reminder" value="{{ session.data['event-email-subject-reminder'] }}" style="width: 80%">
 				</div>
 
 
@@ -150,48 +150,75 @@ GOV.UK prototype kit
 						<!--<caption class="heading-small" style="text-align:left">Your booking details</caption> -->
 						<tbody>
 
-							<tr>
-								<td style="width:150px; margin-right:30px;">Event title</td>
-								<td>{{ data['event-title'] }}</td>
-							</tr>
-							<tr>
-								<td>Webpage</td>
-								<td><a href="#">[EVENT PAGE LINK]</a></td>
-							</tr>
-							<tr>
-								<td>Date and time</td>
-								<td>{{ data['event-day-of-the-week'] }}
-									<br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
-									<br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
-									<br><a href="#">Add to calendar</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Venue</td>
-								<td style="white-space: pre-wrap; ">{{ data['full-address-holder'] }}
-<a href="#">Map of venue</a></td>
-							</tr>
+						<tr>
+							<td style="width:150px; margin-right:30px;">Event title</td>
 
-							{% if data['venue-additional-notes-entered'] == true %}
-								<tr>
-									<td>Parking and directions</td>
-									<td>{{ data['venue-additional-notes'] }}</td>
-								</tr>
+							{% if session.data['event-title-error'] %}
+							<td>Not yet entered</td>
+							{% else %}
+							<td>{{ data['event-title'] }}</td>
 							{% endif %}
 
-							<tr>
-								<td style="width:150px; padding-right:40px;">Organiser contact details</td>
-								<td>{{ data['organiser-name'] }}
-									<br> {{ data['contact-email'] }}
-									<br> {{ data['contact-phone'] }}</td>
-							</tr>
+						</tr>
+						<tr>
+							<td>Date and time</td>
+							{% if session.data['date-error'] %}
+							<td>Not yet entered</td>
+							{% else %}
+							<td>{{ data['event-day-of-the-week'] }}
+								<br>{{data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
+								<br>{{data['event-start-time'] }} to {{ data['event-finish-time'] }}
+								<br><a href="#">Add to calendar</a>
+							</td>
+							{% endif %}
+						</tr>
+
+						<tr>
+							<td>Venue</td>
+
+							{% if session.data['full-address-holder-error'] %}
+							<td>Not yet entered</td>
+							{% else %}
+							<td style="white-space: pre-wrap; ">{{ data['full-address-holder'] }}
+								<a href="#">Map of venue</a></td>
+							{% endif %}
+						</tr>
+
+						{% if data['venue-additional-notes-entered'] == true %}
+						<tr>
+							<td>Parking and directions</td>
+							<td>{{ data['venue-additional-notes'] }}</td>
+						</tr>
+						{% endif %}
+
+						<tr>
+							<td>Name of attendee</td>
+							<td>[NAME]</td>
+						</tr>
+
+						<tr>
+							<td>Business </td>
+							<td>[BUSINESS NAME]</td>
+						</tr>
+
+						<tr>
+							<td style="width:150px; padding-right:40px;">Organiser contact details</td>
+							<td>{{ data['organiser-name'] }}
+								<br> {{ data['contact-email'] }}
+								<br> {{ data['contact-phone'] }}</td>
+						</tr>
+
+						<tr>
+							<td>Webpage</td>
+							<td><a href="#">[EVENT PAGE LINK]</a></td>
+						</tr>
 
 						</tbody>
 					</table>
 
 
 
-					<textarea class="form-control" name="event-reminder-body" id="event-reminder-body" rows="15" style="width: 80%;"
+					<textarea class="form-control" name="event-reminder-body" id="event-reminder-body" rows="12" style="width: 80%;"
 					>If you have any questions or special requests that will help you to get the most out of the day, please don't hesitate to get in touch. We'd be happy to assist.
 
 We look forward to seeing you on the day.
@@ -201,9 +228,15 @@ Best wishes,
 {{ data['organiser-name'] }}
 
 
-
-
 					</textarea>
+
+
+
+					<!-- CANCEL -->
+					<p class="bold" style="margin-top:30px; margin-bottom:5px;">No longer able to attend this event? </p>
+					<p>Please let us know if [you need to cancel] so that we can free up additional spaces for others.</p>
+
+
 
 
 				</div>

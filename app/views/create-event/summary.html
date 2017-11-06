@@ -641,6 +641,8 @@
 
 
 
+
+
 		  <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:45px;">
 
 			  <div>
@@ -654,12 +656,15 @@
 		  <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:10px;">
 
 			  <!--   EMAIL TEMPLATES  -->
-
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Registration email</dt>
-				  <dd class="cya-answer">
-					  Your event booking ...
-				  </dd>
+
+				  {% if session.data['email-reg-subject-error'] %}
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
+				  {% else %}
+				  	<dd class="cya-answer">Your event booking ...</dd>
+				  {% endif %}
+
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-registration-message">
 						  Change
@@ -670,9 +675,13 @@
 
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Reminder email</dt>
-				  <dd class="cya-answer">
-					  Reminder of your upcoming event ...
-				  </dd>
+
+				  {% if session.data['email-reminder-subject-error'] == true %}
+				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
+				  {% else %}
+				  	<dd class="cya-answer">Reminder of your upcoming event ...</dd>
+				  {% endif %}
+
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-reminder-message">
 						  Change

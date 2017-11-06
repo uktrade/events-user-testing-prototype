@@ -4317,8 +4317,10 @@ router.get('/create-event/template-reg-onwards', function (req, res)
   {
     missingSubject = true;
   }
-
-
+  else
+  {
+    req.session.data['email-reg-subject-error'] = false;
+  }
 
   if( (missingSubject) == false )
   {
@@ -4333,6 +4335,11 @@ router.get('/create-event/template-reg-onwards', function (req, res)
       {
         req.session.data['email-reminder-1'] = "2";
       }
+      // IF no subject in email then make one
+      if( req.session.data['event-email-subject-reminder'] == undefined  ||  req.session.data['email-reminder-1'] == "" )
+      {
+        req.session.data['email-reminder-1'] = "Reminder of your upcoming event ";
+      }
 
 
       res.redirect('/create-event/template-reminder');
@@ -4346,10 +4353,38 @@ router.get('/create-event/template-reg-onwards', function (req, res)
         }
     );
   }
+})
+
+router.get('/create-event/template-reg-skip', function (req, res)
+{
+  var missingSubject = false;
+
+  if(req.session.data['event-email-reg-subject'] === "")
+  {
+    missingSubject = true;
+    req.session.data['email-reg-subject-error'] = true;
+  }
+  else
+  {
+    req.session.data['email-reg-subject-error'] = false;
+  }
 
 
+  // set the default reminder days before it it hasn't been set
+  if( req.session.data['email-reminder-1'] == undefined  ||  req.session.data['email-reminder-1'] == "" )
+  {
+    req.session.data['email-reminder-1'] = "2";
+  }
+  // IF no subject in email then make one
+  if( req.session.data['event-email-subject-reminder'] == undefined  ||  req.session.data['email-reminder-1'] == "" )
+  {
+    req.session.data['email-reminder-1'] = "Reminder of your upcoming event ";
+  }
+
+  res.redirect('/create-event/template-reminder');
 
 })
+
 
 
 router.get('/create-event/template-reminder-onwards', function (req, res)
@@ -4371,6 +4406,11 @@ router.get('/create-event/template-reminder-onwards', function (req, res)
   {
     reminderInvalid = true;
   }
+  else
+  {
+    req.session.data['email-reminder-subject-error'] = false;
+  }
+
 
   // REMINDER 2
   if (req.session.data['email-reminder-2'] == undefined || req.session.data['email-reminder-2'] == "")
@@ -4390,8 +4430,6 @@ router.get('/create-event/template-reminder-onwards', function (req, res)
   }
 
 
-
-
   if( (reminderInvalid || reminderMissing || secondReminderInvalid || errorMissingEmailSubject) == false )
   {
     res.redirect('/create-event/summary-prelude');
@@ -4409,10 +4447,19 @@ router.get('/create-event/template-reminder-onwards', function (req, res)
   }
 })
 
-
-
 router.get('/create-event/template-reminder-skip', function (req, res)
 {
+  // MISSING SUBJECT LINE
+  if(req.session.data['event-email-subject-reminder'] === "")
+  {
+    req.session.data['email-reminder-subject-error'] = true;
+  }
+  else
+  {
+    req.session.data['email-reminder-subject-error'] = false;
+  }
+
+
   // REMINDER 1
   if (req.session.data['email-reminder-1'] == undefined || req.session.data['email-reminder-1'] == "")
   {
