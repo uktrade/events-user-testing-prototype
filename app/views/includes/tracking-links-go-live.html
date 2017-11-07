@@ -57,16 +57,16 @@
 
       <label class="form-label" >
         Marketing channel name
-        {% if errorTrackingName %}
-          <p class="error-message">
-            Enter tracking name
-          </p>
-        {% endif %}
+
       </label>
+      <p id="error-message-url-name" class="error-message" style="display:none;">
+        Please enter a unique label for this tracking link
+      </p>
 
       <input type="text" class="form-control  {% if errorTrackingName %} form-control-error {% endif %}"
              id="new-link-name" name="new-link-name" value="" style="width:90%;">
     </td>
+
 
     <td style="width:70%; margin-top:0px; padding-top:20px; padding-bottom:6px; ">
       {% if errorTrackingName %}
@@ -75,15 +75,30 @@
         <div style="width:100%;">
       {% endif %}
 
-          <div id="new-url-area" name="new-url-area" style="display:none; padding-top:18px;">
+          <div id="new-url-area" name="new-url-area"
+               {% if errorTrackingUrlEmpty  or errorTrackingUrlInvalid %}
+                  style=" padding-top:18px;"
+               {% else %}
+                  style="display:none; padding-top:18px;"
+               {% endif %} >
 
             <div style="display:flex; justify-content: space-between;">
 
-              <div style="display:flex">
-                <p style="margin-top:6px;">www.events.great.gov.uk/</p>
+              <div style="display:flex; flex-direction: column;">
+                {% if errorTrackingUrlEmpty %}
+                  <p class="error-message">Please enter a valid url for this tracking link.</p>
+                {% endif %}
+                {% if errorTrackingUrlInvalid %}
+                <p class="error-message">Please enter a valid webpage url. Spaces are not allowed.</p>
+                {% endif %}
+
+                <div style="display:flex">
+                  <p style="margin-top:6px;">www.events.great.gov.uk/</p>
                 <textarea type="text" class="form-control"  id="new-url" name="new-url"  rows="2"
-                          style="width:320px; margin-top:0px; margin-bottom:0px;">{{session.eventsLiveURLS[session.currentEventShowing][1][1]}}</textarea>
+                          style="width:320px; margin-top:0px; margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][1][1] }}</textarea>
+                </div>
               </div>
+
 
               <div id=divsave" style="margin-left:0px;">
                 <input style="width:100%;" type="submit" class="button" formaction="/add-tracking-link-go-live" value="Save">
@@ -93,7 +108,12 @@
 
           </div>
 
-          <div style="padding-bottom:12px;" id="link-generator">
+          <div  id="link-generator"
+               {% if errorTrackingUrlEmpty or errorTrackingUrlInvalid %}
+                  style="padding-bottom:12px; display:none"
+               {% else %}
+                  style="padding-bottom:12px;"
+               {% endif %} >
             <p class="button-secondary" onclick="makeLink()"  style="margin-top:0px">Generate link</p>
           </div>
 
@@ -116,25 +136,41 @@
   {
     var urlOfName = document.getElementById('new-link-name').value;
 
-    // Make lower case
-    urlOfName = urlOfName.toLowerCase();
+    // CHECK FOR EMTPY NAME
+    if(urlOfName == "")
+    {
+      // Show validation about missing name
+      document.getElementById('new-link-name').classList.add("form-control-error");
+      document.getElementById('error-message-url-name').style.display = 'block';
+    }
+    else
+    {
+      // REMOVE ANY ERRO STYLES
+      document.getElementById('new-link-name').classList.remove("form-control-error");
+      document.getElementById('error-message-url-name').style.display = 'none';
 
-    // remove space an then hyphens
-    urlOfName = urlOfName.replace(" - ", " ");
 
-    // remove spaces
-    urlOfName = urlOfName.replace(/\s/g, '-');
+      // Make lower case
+      urlOfName = urlOfName.toLowerCase();
 
-    // remove ampersand
-    urlOfName = urlOfName.replace(/&/g, "");
+      // remove space an then hyphens
+      urlOfName = urlOfName.replace(" - ", " ");
 
-    // aDD TO THE LINK BOX
-    document.getElementById('new-url').value = (document.getElementById('new-url').value + "-" + urlOfName);
+      // remove spaces
+      urlOfName = urlOfName.replace(/\s/g, '-');
 
-    //document.getElementById('divsave').style.display = 'block';
+      // remove ampersand
+      urlOfName = urlOfName.replace(/&/g, "");
 
-    document.getElementById('link-generator').style.display = 'none';
-    document.getElementById('new-url-area').style.display = 'block';
+      // aDD TO THE LINK BOX
+      document.getElementById('new-url').value = (document.getElementById('new-url').value + "-" + urlOfName);
+
+      //document.getElementById('divsave').style.display = 'block';
+
+      document.getElementById('link-generator').style.display = 'none';
+      document.getElementById('new-url-area').style.display = 'block';
+    }
+
 
 
   }

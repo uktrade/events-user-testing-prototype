@@ -87,7 +87,7 @@ GOV.UK prototype kit
 
                       <!-- if the link exisits show it and its count -->
                       {% if 1 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
-                          <p class="heading-small" style="margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][1] }}</p>
+                          <p class="heading-small" style="margin-bottom:0px;">Uncategorised (default link)</p>
                           {% include "includes/track-link-progress-one.html" %}
                       {% endif %}
 
@@ -122,7 +122,7 @@ GOV.UK prototype kit
                       <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{ data['attendee-reg-count'] }}</p>
 
                       {% if 1 < session.eventsLiveURLS[session.currentEventShowing][0].length %}
-                          <p class="heading-small" style="margin-bottom:0px;">{{ session.eventsLiveURLS[session.currentEventShowing][0][1] }}</p>
+                          <p class="heading-small" style="margin-bottom:0px;">Uncategorised (default link)</p>
                           {% include "includes/track-link-progress-reg-one.html" %}
                       {% endif %}
 

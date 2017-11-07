@@ -4648,6 +4648,9 @@ router.get('/create-event/go-live-now', function (req, res)
 
   console.log("  --- THE OUTPUT URL IS *+* " + req.session.eventsLiveURLS[x]);
 
+  // load in the default URLs
+  req.session.data['new-main-url'] = req.session.eventsLiveURLS[req.session.currentEventShowing][1][1];
+
   res.redirect('/create-event/go-live');
 
 
@@ -5107,56 +5110,50 @@ router.get('/make-draft-live', function (req, res)
   }
 
 
-
-
-  console.log("MOVING EVENT FROM DRAFT TO LIVE");
-  console.log("input number is : " +  req.session.currentEventShowing );
-
-  //get event from drafts
-  var tempEventArray = req.session.eventsDraft[req.session.eventsDraft.length -1];
-
-  console.log("content of event : " + tempEventArray);
-
-
-  // SET EVENT STATE TO LIVE
-  tempEventArray[17] = "live";
-
-
-  // Copy it into live events
-  req.session.eventsLiveBoolean[req.session.eventsLive.length] = true;
-  req.session.eventsLive[req.session.eventsLive.length] = tempEventArray;
-
-
-  // Remove the stuff event from draft list
-  req.session.eventsDraft[req.session.currentEventShowing] = undefined;
-
-  for (var i = 0; i < req.session.eventsDraft.length; i++)
-  {
-    if (req.session.eventsDraft[i] == undefined)
-    {
-      req.session.eventsDraft.splice(i, 1);
-      i--;
-    }
-  }
-
-  // Update which event exist.
-  for(var p=0; p<10; p++)
-  {
-    if(req.session.eventsDraft[p] == undefined)
-    {
-      req.session.eventsDraftBoolean[p] = false;
-    }
-  }
-
-  console.log("the events in draft are: " + req.session.eventsDraftBoolean);
-  console.log("the events in draft details are: " + req.session.eventsDraft);
-
-
-
-
-
   if( accessLeveMissing == false )
   {
+    console.log("MOVING EVENT FROM DRAFT TO LIVE");
+    console.log("input number is : " +  req.session.currentEventShowing );
+
+    //get event from drafts
+    var tempEventArray = req.session.eventsDraft[req.session.eventsDraft.length -1];
+
+    console.log("content of event : " + tempEventArray);
+
+
+    // SET EVENT STATE TO LIVE
+    tempEventArray[17] = "live";
+
+
+    // Copy it into live events
+    req.session.eventsLiveBoolean[req.session.eventsLive.length] = true;
+    req.session.eventsLive[req.session.eventsLive.length] = tempEventArray;
+
+
+    // Remove the stuff event from draft list
+    req.session.eventsDraft[req.session.currentEventShowing] = undefined;
+
+    for (var i = 0; i < req.session.eventsDraft.length; i++)
+    {
+      if (req.session.eventsDraft[i] == undefined)
+      {
+        req.session.eventsDraft.splice(i, 1);
+        i--;
+      }
+    }
+
+    // Update which event exist.
+    for(var p=0; p<10; p++)
+    {
+      if(req.session.eventsDraft[p] == undefined)
+      {
+        req.session.eventsDraftBoolean[p] = false;
+      }
+    }
+
+    console.log("the events in draft are: " + req.session.eventsDraftBoolean);
+    console.log("the events in draft details are: " + req.session.eventsDraft);
+
     res.redirect('/account');
   }
   else
@@ -5239,16 +5236,23 @@ router.get('/monitor/add-tracking-link', function (req, res)
 // STORE NEW MONITOR LINK - FROM GO LIVE ONLY
 router.get('/add-tracking-link-go-live', function (req, res)
 {
-  if(req.session.data['new-link-name'] === "")
+  if(req.session.data['new-url'] === "")
   {
     console.log("the new link name is empty");
 
-    errorTrackingNameIs = true;
-
-    res.render('/monitor/live-present',
+    res.render('create-event/go-live',
         {
-          tab: 2,
-          'errorTrackingName': errorTrackingNameIs,
+          'errorTrackingUrlEmpty': true
+        }
+    );
+  }
+  else if(req.session.data['new-url'].indexOf(' ') >= 0)
+  {
+    console.log("the new link name is empty");
+
+    res.render('create-event/go-live',
+        {
+          'errorTrackingUrlInvalid': true
         }
     );
   }
@@ -5300,15 +5304,23 @@ router.get('/add-tracking-link-go-live', function (req, res)
 
 router.get('/update-main-event-link-go-live', function (req, res)
 {
+  // EMPTY MAIN URL
   if(req.session.data['new-main-url'] === "")
   {
     console.log("the new link name is empty");
 
-    errorEmptyEventUrl = true;
-
-    res.render('/create-event/go-live',
+    res.render('create-event/go-live',
         {
-          'errorMainLinkEmpty': errorEmptyEventUrl
+          'errorMainLinkEmpty': true
+        }
+    );
+  }
+  // MAIN URL HAS SPACES OR INVALID CHARACTERS
+  else if(req.session.data['new-main-url'].indexOf(' ') >= 0)
+  {
+    res.render('create-event/go-live',
+        {
+          'errorMainLinkInvalid': true
         }
     );
   }

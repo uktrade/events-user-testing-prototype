@@ -2,7 +2,12 @@
 <!--  MACRO TO MAKE EACH LIVE LINE ITEM -->
 {% macro trackingLinks(number) %}
 <tr>
-  <td style="font-weight:700; width:30%; padding-top:25px; padding-bottom:20px;";>{{ session.eventsLiveURLS[session.currentEventShowing][0][number] }}</td>
+  {% if number == 1 %}
+    <td style="font-weight:700; width:30%; padding-top:25px; padding-bottom:20px;";>Uncategorised (default link)</td>
+  {% else %}
+    <td style="font-weight:700; width:30%; padding-top:25px; padding-bottom:20px;";>{{ session.eventsLiveURLS[session.currentEventShowing][0][number] }}</td>
+  {% endif %}
+
   <td style="padding-top:25px; padding-bottom:20px; width:70%;">
     <div style="display:flex;  justify-content: space-between;">
       <p style="margin-top:8px; margin-bottom:0px;">www.events.great.gov.uk/{{ session.eventsLiveURLS[session.currentEventShowing][1][number] }}</p>

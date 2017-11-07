@@ -20,8 +20,8 @@
 	  </div>
 
 		<!-- CONDITIONAL ERROR  -->
-		{% if errorLinkAccessLevel %}
-		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+		{% if errorLinkAccessLevel or errorMainLinkEmpty or errorMainLinkInvalid or errorTrackingUrlEmpty or errorTrackingUrlInvalid %}
+			<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
 			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
 				Message to alert the user to a problem goes here
@@ -33,7 +33,28 @@
 
 			<ul class="error-summary-list">
 				{% if errorLinkAccessLevel %}
-					<li><a href="#example-personal-details">DAN DAN DAN DAN DAN </a></li>
+					<li><a href="#access-level-section">Page access: no selection</a></li>
+				{% endif %}
+
+				{% if errorMainLinkEmpty %}
+					<li><a href="#main-link-section">Default link: missing</a></li>
+				{% endif %}
+
+				{% if errorMainLinkInvalid %}
+					<li><a href="#main-link-section">Default link: invalid</a></li>
+				{% endif %}
+
+				<!--  no used ad it is messily done in javascript -->
+				{% if errorTrackingUrlEmpty %}
+					<li><a href="#tracking-links-section">Tracking link: tracking link label missing</a></li>
+				{% endif %}
+
+				{% if errorTrackingUrlEmpty %}
+					<li><a href="#tracking-links-section">Tracking link url: missing</a></li>
+				{% endif %}
+
+				{% if errorTrackingUrlInvalid %}
+					<li><a href="#tracking-links-section"> Tracking link: invalid</a></li>
 				{% endif %}
 			</ul>
 
@@ -49,13 +70,13 @@
 
 	  <form action="/make-draft-live" method="get" class="form">
 
-
-		<div class="form-group {% if errorLinkAccessLevel %} form-group-error {% endif %}" style="margin-top:20px; margin-bottom:30px" >
+		<!-- Access level  -->
+		<div id="access-level-section" class="form-group {% if errorLinkAccessLevel %} form-group-error {% endif %}" style="margin-top:20px; margin-bottom:30px" >
 			<label class="form-label-bold" >
-				Who can access the event page?
+				Who should be able to view this page?
 				{% if errorLinkAccessLevel %}
 				  <span class="error-message">
-					DAN DAN DAN DAN DAN
+					Please select access level of this page
 				  </span>
 				{% endif %}
 			</label>
@@ -63,11 +84,11 @@
 				<div class="multiple-choice" style="margin-bottom:10px">
 					<input id="radio-access-level-public" type="radio" name="radio-link-access" value="public">
 					<label for="radio-access-level-public">
-						Publish event to public </label>
+						Anyone on the web</label>
 				</div>
 				<div class="multiple-choice" style="margin-bottom:10px">
-					<input id="radio-access-level-link-only" type="radio" name="adio-link-access" value="linkonly">
-					<label for="radio-access-level-link-only">Anyone with the link</label>
+					<input id="radio-access-level-link-only" type="radio" name="radio-link-access" value="linkonly">
+					<label for="radio-access-level-link-only">Only people we share the link with</label>
 				</div>
 			</div>
 		</div>
@@ -75,39 +96,51 @@
 
 
 
-
-		<div class="form-group" style="margin-top:20px; " >
+		<!-- MAIN URL LINK -->
+		<div id="main-link-section" class="form-group {% if errorMainLinkEmpty or errorMainLinkInvalid %} form-group-error {% endif %}" style="margin-top:20px; " >
 			<label class="form-label-bold" >
 				{{ session.eventsLiveURLS[session.currentEventShowing][0][1] }}
 			</label>
 
 			<!-- EDIT MODE -->
-			<div id="edit-mode" style="display:none; margin-bottom:10px">
+			<div id="edit-mode"
+				 {% if errorMainLinkEmpty or errorMainLinkInvalid %}
+				 	style="margin-bottom:10px;"
+				 {% else %}
+				 	style="display:none; margin-bottom:10px;"
+				 {% endif %}>
+
+				{% if errorMainLinkEmpty %}
+				  <p class="error-message">
+					  Please enter a valid webpage url
+				  </p>
+				{% endif %}
+				{% if errorMainLinkInvalid %}
+					<p class="error-message">
+						Please enter a valid webpage url. Spaces are not allowed.
+					</p>
+				{% endif %}
 
 				<div style="display:flex">
 					<p style="margin-top:10px;">www.events.great.gov.uk/</p>
-					<input type="text" class="form-control" id="new-main-url" name="new-main-url"
-							  style="width: 70%;  margin-top:0px; margin-bottom:10px;" value="{{session.eventsLiveURLS[session.currentEventShowing][1][1]}}">
+					<input type="text" class="form-control {% if errorMainLinkEmpty or errorMainLinkInvalid %} form-control-error  {% endif %}" id="new-main-url" name="new-main-url"
+							  style="width: 70%;  margin-top:0px; margin-bottom:10px;" value="{{ session.data['new-main-url'] }}">
 				</div>
 
 				<input style="width:10%;" id="save-button" type="submit" class="button" formaction="/update-main-event-link-go-live" value="Save">
-
 			</div>
 
 			<!-- VIEW MODE -->
-			<div id="view-mode">
+			<div id="view-mode" {% if errorMainLinkEmpty or errorMainLinkInvalid  %}  style="display:none;"  {% endif %}>
 				<p>www.events.great.gov.uk/{{ session.eventsLiveURLS[session.currentEventShowing][1][1] }}
-					<br><span style="text-decoration: underline;  color: #0000EE; cursor: pointer;" onclick="editMainLink()">Change link</span>
+					<br><span style="text-decoration: underline;  color: #0000EE; cursor: pointer;" onclick="editMainLink()">Edit link</span>
 				</p>
 			</div>
-
-
 		</div>
 
 
 
-
-
+		<!-- TRACKING LINKS -->
 		<div class="form-group" style=" margin-bottom:20px;">
 			<label class="form-label-bold" >
 				Do you want to create tracking links for this page?
@@ -117,6 +150,7 @@
 			<details role="group" style="width:650px; margin-bottom:10px;">
 				<summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">How does this work?</span></summary>
 				<div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
+					<!--
 					<p>
 						You can use tracking links to identify where webpage traffic and event registrations are coming from.
 					</p>
@@ -125,7 +159,7 @@
 						This allows you to find out exactly which promotion channels are creating the most amount of webpage traffic and converting most effectively into event registrations.
 						For example, you can measure the precise number of registrations that originate from Twitter, by using that channel's unique link in your tweets.
 					</p>
-
+					-->
 					<p>
 						Traffic and registrations originating from any of these links will appear in your performance dashboard.
 					</p>
@@ -144,13 +178,12 @@
 				</div>
 				<div class="multiple-choice" style="margin-bottom:10px" data-target="tracking-links-section">
 					<input id="radio-links-2" type="radio" name="radio-markets" value="yes"
-						   {% if 2 < session.eventsLiveURLS[session.currentEventShowing][0].length %} checked="checked" {% endif %}>
+						   {% if 2 < session.eventsLiveURLS[session.currentEventShowing][0].length  or errorTrackingName or errorTrackingUrlEmpty or errorTrackingUrlInvalid %} checked="checked" {% endif %}>
 					<label for="radio-links-2">Yes - add links now</label>
 				</div>
 			</div>
 
-
-			<div 	{% if session.eventsLiveURLS[session.currentEventShowing][0].length < 3 %}
+			<div id="tracking-links-section"	{% if session.eventsLiveURLS[session.currentEventShowing][0].length < 3 %}
 						class="form-group panel panel-border-narrow js-hidden"
 					{% else %}
 						class="form-group panel panel-border-narrow"
