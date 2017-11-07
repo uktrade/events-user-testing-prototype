@@ -193,12 +193,12 @@
 										 {% if errorFreeTextSelected %} checked="checked" {% endif %} >
 								  <label for="enter-text">Free text</label>
 							  </div>
-							  <div class="multiple-choice" data-target="show-answers">
+							  <div class="multiple-choice" data-target="show-answers" onclick="showFutherDetails()">
 								  <input id="select-one" type="radio" name="radio-additional-questions-answers-type" value="select-one"
 										 {% if errorOneSelected %} checked="checked" {% endif %} >
 								  <label for="select-one">Multiple choice: single answer</label>
 							  </div>
-							  <div class="multiple-choice" data-target="show-answers">
+							  <div class="multiple-choice" data-target="show-answers" onclick="hideFutherDetails()">
 								  <input id="select-multiple" type="radio" name="radio-additional-questions-answers-type" value="select-multiple"
 										 {% if errorMultipleSelected %} checked="checked" {% endif %} >
 								  <label for="select-multiple">Multiple choice: unrestricted</label>
@@ -236,7 +236,7 @@
 					  <div style="display:flex; flex-direction: row;">
 						  <input type="text" class="form-control  {% if errorAnswersEmpty %} form-control-error {% endif %}"
 								 id="answer-1" name="answer-1" value="{{ session.data['answer-1'] }}" style="width:45%; margin-bottom: 15px; margin-right:20px;">
-						  <div class="multiple-choice">
+						  <div class="multiple-choice" id="futher-details-1">
 							  <input id="answer-1-checkbox" name="answer-1-checkbox" type="checkbox" value="yes" {% if sector2Selected == true %} checked="checked" {% endif %}>
 							  <label for="answer-1-checkbox">If selected request details</label>
 						  </div>
@@ -246,7 +246,7 @@
 					  <div style="display:flex; flex-direction: row;">
 						  <input type="text" class="form-control  {% if errorAnswersEmpty or errorAnswersOnlyOneEntered %} form-control-error {% endif %}"
 								 id="answer-2" name="answer-2" value="{{ session.data['answer-2'] }}" style="width:45%; margin-bottom: 15px; margin-right:20px;">
-						  <div class="multiple-choice">
+						  <div class="multiple-choice" id="futher-details-2">
 							  <input id="answer-2-checkbox" name="answer-2-checkbox" type="checkbox" value="yes" {% if sector2Selected == true %} checked="checked" {% endif %}>
 							  <label for="answer-2-checkbox">If selected request details</label>
 						  </div>
@@ -257,7 +257,7 @@
 					  <div style="display:flex; flex-direction: row;  display:none;" id="answer-3-box">
 						  <input type="text" class="form-control"
 								 id="answer-3" name="answer-3" value="{{ session.data['answer-3'] }}" style="width:45%; margin-bottom: 15px; margin-right:20px;">
-						  <div class="multiple-choice">
+						  <div class="multiple-choice" id="futher-details-3">
 							  <input id="answer-3-checkbox" name="answer-3-checkbox" type="checkbox" value="yes">
 							  <label for="answer-3-checkbox">If selected request details</label>
 						  </div>
@@ -268,7 +268,7 @@
 					  <div style="display:flex; flex-direction: row;  display:none;" id="answer-4-box">
 						  <input type="text" class="form-control"
 								 id="answer-4" name="answer-4" value="{{ session.data['answer-4'] }}" style="width:45%; margin-bottom: 15px; margin-right:20px;">
-						  <div class="multiple-choice">
+						  <div class="multiple-choice"  id="futher-details-4">
 							  <input id="answer-4-checkbox" name="answer-4-checkbox" type="checkbox" value="yes">
 							  <label for="answer-4-checkbox">If selected request details</label>
 						  </div>
@@ -279,7 +279,7 @@
 					  <div style="display:flex; flex-direction: row;  display:none;" id="answer-5-box">
 						  <input type="text" class="form-control"
 								 id="answer-5" name="answer-5" value="{{ session.data['answer-5'] }}" style="width:45%; margin-bottom: 15px; margin-right:20px;">
-						  <div class="multiple-choice">
+						  <div class="multiple-choice" id="futher-details-5">
 							  <input id="answer-5-checkbox" name="answer-5-checkbox" type="checkbox" value="yes">
 							  <label for="answer-5-checkbox">If selected request details</label>
 						  </div>
@@ -652,6 +652,26 @@
 	{
 		document.getElementById('answer-5-add').style.display = 'none';
 		document.getElementById('answer-5-box').style.display = 'flex';
+	}
+
+
+	// SHOW AND HIDE THE REQUEST EXTRA DETAILS
+	function hideFutherDetails()
+	{
+		document.getElementById('futher-details-1').style.display = 'none';
+		document.getElementById('futher-details-2').style.display = 'none';
+		document.getElementById('futher-details-3').style.display = 'none';
+		document.getElementById('futher-details-4').style.display = 'none';
+		document.getElementById('futher-details-5').style.display = 'none';
+	}
+
+	function showFutherDetails()
+	{
+		document.getElementById('futher-details-1').style.display = 'inline';
+		document.getElementById('futher-details-2').style.display = 'inline';
+		document.getElementById('futher-details-3').style.display = 'inline';
+		document.getElementById('futher-details-4').style.display = 'inline';
+		document.getElementById('futher-details-5').style.display = 'inline';
 	}
 
 

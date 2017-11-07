@@ -394,16 +394,13 @@
 			  <div>
 				  <dt class="cya-question" style="vertical-align:top">Main image</dt>
 
-
 				  {% if session.data['image-error'] %}
-				  	<dd class="cya-answer bold">Required field, incomplete.</dd>
+				  	  <dd class="cya-answer bold">Required field, incomplete.</dd>
 				  {% else %}
 					  <dd class="cya-answer">
-						  <img src="/public/images/exportingheroimagesmall.jpg" style="width:240px; height:100px;">
+						  <img src="/public/images/exporting-generic.jpg" style="width:300px; height:200px;">
 					  </dd>
 				  {% endif %}
-
-
 
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-images">
@@ -434,6 +431,17 @@
 					  {% if data['logo-6-selected'] %}
 					  	<img src="/public/images/partner12.jpg" style="width:240px; height:100px;">
 					  {% endif %}
+
+					  {% if session.data['logo-1-selected'] != true  and
+						    session.data['logo-2-selected'] != true  and
+						    session.data['logo-3-selected'] != true  and
+						    session.data['logo-4-selected'] != true  and
+						    session.data['logo-5-selected'] != true  and
+						    session.data['logo-6-selected'] != true
+					  %}
+				  		<span class="cya-answer bold">Required field, incomplete.</span>
+					  {% endif %}
+
 				  </dd>
 				  <dd class="cya-change" style="vertical-align:top">
 					  <a href="/create-event/change-images">
@@ -463,9 +471,15 @@
 				  <dt class="cya-question">
 					  Number of places
 				  </dt>
-				  <dd class="cya-answer">
-					  {{ data['attendee-quantity'] }}
-				  </dd>
+
+				  {% if session.data['attendee-quantity-error'] %}
+				  	  <dd class="cya-answer bold">Required field, incomplete.</dd>
+				  {% else %}
+					  <dd class="cya-answer">
+						  {{ data['attendee-quantity'] }}
+					  </dd>
+				  {% endif %}
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-attendees">
 						  Change
@@ -478,8 +492,10 @@
 				  <dt class="cya-question">
 					  Waiting list
 				  </dt>
+
 				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ session.data['waiting-list-summary-text'] }}
 				  </dd>
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-attendees">
 						  Change
@@ -492,8 +508,14 @@
 				  <dt class="cya-question">
 					  Message displayed when event is full
 				  </dt>
-				  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sold-out-message'] }}
-				  </dd>
+
+				  {% if session.data['sold-out-message-error'] %}
+				  	  <dd class="cya-answer bold">Required field, incomplete.</dd>
+				  {% else %}
+					  <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sold-out-message'] }}
+					  </dd>
+				  {% endif %}
+
 				  <dd class="cya-change">
 					  <a href="/create-event/change-attendees">
 						  Change

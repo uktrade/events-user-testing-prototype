@@ -675,7 +675,7 @@ router.get('/scenario-3', function (req, res)
 
   req.session.data['sectors'] = "Food and drink";
   req.session.data['markets'] = "Sweden";
-  req.session.data['audience-experience'] = "Open to all";
+  req.session.data['audience-experience'] = "Not yet exporting" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `Anyone working in the food and drink industry who is interested in exporting products or services to Sweden.
 
@@ -977,7 +977,7 @@ router.get('/scenario-7', function (req, res)
 Metallurgical process plant`;
 
   req.session.data['markets'] = "Brazil" + "\n" + "China" + "\n" + "Dubai" + "\n" + "Mexico"  + "\n" + "United Arab Emirates";
-  req.session.data['audience-experience'] = "Never exported" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
+  req.session.data['audience-experience'] = "Not yet exporting" + "\n" + "Occasionally exporting" + "\n" + "Regularly exporting";
 
   req.session.data['summary-target-audience'] = `This event is for manufacturing and engineering companies based in the East Midlands that have an interest in doing business overseas - particularly in Central and South America, and the Middle East.`;
 
@@ -3348,6 +3348,7 @@ router.get('/create-event/description-skip', function (req, res)
 // IMAGES PAGE ONWARDS BUTTON
 router.get('/create-event/images-onwards', function (req, res)
 {
+  req.session.data['image-error'] = false;
   // Always an error in the prototype because the main
     res.render('create-event/images',
         {
@@ -3790,6 +3791,228 @@ router.get('/create-event/tickets-onwards', function (req, res)
         }
     );
   }
+})
+
+router.get('/create-event/tickets-skip', function (req, res)
+{
+  var missingCapacity = false;
+  var invalidCapacity = false;
+  var missingCapacityMessage = false;
+
+  var customCloseSelected = false;
+  var missingCloseDate = false;
+
+  var invalidDay = false
+  var missingDay = false;
+  var invalidMonth = false
+  var missingMonth = false;
+  var invalidYear = false
+  var missingYear = false;
+
+  var customCloseDateSelected = false;
+  var missingCustomCloseDate = false;
+  var invalidCustomCloseDate = false;
+
+  // TIME
+  var missingCloseTime = false;
+  var invalidCloseTime = false;
+
+  console.log("the entry of the attendee stuff is " + req.session.data['attendee-quantity']);
+
+
+  // PLACESS
+  if(req.session.data['attendee-quantity'] == "")
+  {
+    missingCapacity = true;
+    req.session.data['attendee-quantity-error'] = true;
+  }
+  else if ( isNaN(req.session.data['attendee-quantity']) == true )
+  {
+    invalidCapacity = true;
+    req.session.data['attendee-quantity-error'] = true;
+  }
+  else
+  {
+    req.session.data['attendee-quantity-error'] = false;
+  }
+
+
+
+  // WAITING LIST
+  if(req.session.data['waiting-list'] == "no")
+  {
+    req.session.data['waiting-list-summary-text'] = "No waiting list";
+  }
+  else if(req.session.data['waiting-list'] == "yes")
+  {
+    if(req.session.data['waiting-list-free-up'] == "automatic")
+    {
+      req.session.data['waiting-list-summary-text'] = "Waiting list opened when capacity is reached" +
+          "\n" + "Places will be automatically offered to whoever is at the top of waiting list";
+    }
+    else if(req.session.data['waiting-list-free-up'] == "manual")
+    {
+      req.session.data['waiting-list-summary-text'] = "Waiting list opened when capacity is reached" +
+          "\n" + "You will manually select who you want to offer the place to";
+    }
+  }
+
+
+
+  //  SOLD OUT MESSAGE
+  if(req.session.data['sold-out-message'] == "")
+  {
+    missingCapacityMessage = true;
+    req.session.data['sold-out-message-error'] = true;
+  }
+  else
+  {
+    req.session.data['sold-out-message-error'] = false;
+  }
+
+
+
+
+  //  message for when tickets are gone and nothing is entered in the box
+
+  console.log("the event thing close 999  " + req.session.data['radio-close-early-yes-no']);
+
+
+  if(req.session.data['radio-close-early-yes-no'] == "no")
+  {
+    req.session.data['reg-close-time'] = "12:00 " + req.session.data['event-day-of-the-week'] + " " + req.session.data['event-day'] + " " +  req.session.data['event-month-name'] + " " + req.session.data['event-year'];
+  }
+  else if(req.session.data['radio-close-early-yes-no'] == "yes")
+  {
+    // SAVE THAT EARLY REG WAS SELECTED
+    customCloseSelected = true;
+
+
+    if(req.session.data['radio-days-before'] == undefined)
+    {
+      missingCloseDate = true;
+    }
+    if(req.session.data['radio-days-before'] == "oneday")
+    {
+      req.session.data['reg-close-time'] = " 1 day before - " + req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + " " + req.session.data['days-before-1'].substr(14);
+    }
+    else if(req.session.data['radio-days-before'] == "twoday")
+    {
+      req.session.data['reg-close-time'] = " 2 days before - " + req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + " " + req.session.data['days-before-2'].substr(14);
+    }
+    else if(req.session.data['radio-days-before'] == "threeday")
+    {
+      req.session.data['reg-close-time'] = " 3 days before - " + req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + " " + req.session.data['days-before-3'].substr(14);
+    }
+    else if(req.session.data['radio-days-before'] == "differentdate")
+    {
+      // SAVE THAT DIFFERENT DATE WAS SELECTED
+      customCloseDateSelected = true;
+
+      // DAY
+      var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+      //  MONTH
+      var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+
+      console.log(" the day in   " + req.session.data['event-day-close']);
+      console.log(" the month in " + req.session.data['event-month-close']);
+      console.log(" the year in  " + req.session.data['event-year-close']);
+
+
+      // DAY - ANOTHER DATE
+      if (req.session.data['event-day-close'] != undefined)
+      {
+        if(req.session.data['event-day-close'] == "")
+        {
+          missingDay = true;
+          missingCustomCloseDate = true;
+          console.log("The day is missing!!!!!!!!!!!!!!!!!!!!!!");
+        }
+        else if(1 <= req.session.data['event-day-close'] && req.session.data['event-day-close'] <= 31)
+        {}
+        else
+        {
+          invalidDay = true;
+          invalidCustomCloseDate = true;
+        }
+      }
+
+
+      // MONTH - ANOTHER DATE
+      if (req.session.data['event-month-close'] != undefined)
+      {
+        if(req.session.data['event-month-close'] == "")
+        {
+          missingMonth = true;
+          missingCustomCloseDate = true;
+          //console.log("*************MISSING MONTH**************");
+        }
+        else if(1 <= req.session.data['event-month-close'] && req.session.data['event-month-close'] <= 12)
+        {
+        }
+        else
+        {
+          invalidMonth = true;
+          invalidCustomCloseDate = true;
+        }
+      }
+      else
+      {
+        console.log("*************UNEFINED**************");
+      }
+
+
+      // YEAR - ANOTHER DATE
+      if (req.session.data['event-year-close'] != undefined)
+      {
+        if(req.session.data['event-year-close'] == "")
+        {
+          missingYear = true;
+          missingCustomCloseDate = true;
+        }
+        else if(2017 <= req.session.data['event-year-close']  &&  req.session.data['event-year-close'] <= 2025)
+        {}
+        else
+        {
+          invalidYear = true;
+          invalidCustomCloseDate = true;
+        }
+      }
+
+
+      if( ( missingCustomCloseDate  ||  invalidCustomCloseDate ) == false )
+      {
+        var enteredCloseDate = new Date();
+        enteredCloseDate.setFullYear(req.session.data['event-year-close'], req.session.data['event-month-close']-1, req.session.data['event-day-close']);
+      }
+
+
+      // TIME
+      if( (invalidCustomCloseDate || missingCustomCloseDate || missingCloseTime || invalidCloseTime) == false)
+      {
+        req.session.data['reg-close-time'] = req.session.data['close-hours'] + ":" + req.session.data['close-minutes'] + "  " + days[enteredCloseDate.getDay()] + "  " + enteredCloseDate.getDate() + "  " +  monthNames[enteredCloseDate.getMonth()] + "  " +  enteredCloseDate.getFullYear();
+
+        console.log(" the day is - " + enteredCloseDate.getDay());
+        console.log(" the date is - " + enteredCloseDate.getDate());
+        console.log(" the month is - " + enteredCloseDate.getMonth());
+        console.log(" the year is - " + enteredCloseDate.getFullYear());
+      }
+
+    }
+    else
+    {
+      missingCloseDate = true;
+    }
+  }
+
+  console.log(" the missing close date variable is " + missingCustomCloseDate);
+
+
+  res.redirect('/create-event/attendees');
 })
 
 
