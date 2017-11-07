@@ -4597,6 +4597,8 @@ router.get('/create-event/summary-prelude', function (req, res)
 
 router.get('/create-event/go-live-now', function (req, res)
 {
+  // Set for the go ive publishing option page
+
   // Make the list of tracking links, assuming it will go live in a moment
   var x = req.session.eventsLive.length;
 
@@ -4647,6 +4649,8 @@ router.get('/create-event/go-live-now', function (req, res)
   console.log("  --- THE OUTPUT URL IS *+* " + req.session.eventsLiveURLS[x]);
 
   res.redirect('/create-event/go-live');
+
+
 });
 
 
@@ -5086,6 +5090,25 @@ router.get('/create-event/change-attendees-monitoring', function (req, res)
 // STORE EVENT
 router.get('/make-draft-live', function (req, res)
 {
+  var accessLeveMissing = false;
+
+  // Check access level selected
+  if(req.session.data['radio-link-access'] == undefined   ||  req.session.data['radio-link-access'] == ""  )
+  {
+    accessLeveMissing = true;
+  }
+  else if(req.session.data['radio-link-access'] == "public")
+  {
+
+  }
+  else if(req.session.data['radio-link-access'] == "linkonly")
+  {
+
+  }
+
+
+
+
   console.log("MOVING EVENT FROM DRAFT TO LIVE");
   console.log("input number is : " +  req.session.currentEventShowing );
 
@@ -5128,7 +5151,22 @@ router.get('/make-draft-live', function (req, res)
   console.log("the events in draft are: " + req.session.eventsDraftBoolean);
   console.log("the events in draft details are: " + req.session.eventsDraft);
 
-  res.redirect('/account');
+
+
+
+
+  if( accessLeveMissing == false )
+  {
+    res.redirect('/account');
+  }
+  else
+  {
+    res.render('create-event/go-live',
+        {
+          'errorLinkAccessLevel': accessLeveMissing
+        }
+    );
+  }
 })
 
 

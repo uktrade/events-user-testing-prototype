@@ -20,7 +20,7 @@
 	  </div>
 
 		<!-- CONDITIONAL ERROR  -->
-		{% if errorMissingImage %}
+		{% if errorLinkAccessLevel %}
 		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
 			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
@@ -32,8 +32,8 @@
 			</p>
 
 			<ul class="error-summary-list">
-				{% if errorMissingTitle %}
-				<li><a href="#example-personal-details">Descriptive link to MISSING IMAGE error</a></li>
+				{% if errorLinkAccessLevel %}
+					<li><a href="#example-personal-details">DAN DAN DAN DAN DAN </a></li>
 				{% endif %}
 			</ul>
 
@@ -50,19 +50,24 @@
 	  <form action="/make-draft-live" method="get" class="form">
 
 
-		<div class="form-group" style="margin-top:20px; margin-bottom:30px" >
+		<div class="form-group {% if errorLinkAccessLevel %} form-group-error {% endif %}" style="margin-top:20px; margin-bottom:30px" >
 			<label class="form-label-bold" >
 				Who can access the event page?
+				{% if errorLinkAccessLevel %}
+				  <span class="error-message">
+					DAN DAN DAN DAN DAN
+				  </span>
+				{% endif %}
 			</label>
 			<div class="form-date" style="margin-top:5px">
 				<div class="multiple-choice" style="margin-bottom:10px">
-					<input id="radio-inline-audience-1" type="radio" name="radio-audience-experience" value="new" {% if experienceNew %} checked="checked" {% endif %}>
-					<label for="radio-inline-audience-1">
+					<input id="radio-access-level-public" type="radio" name="radio-link-access" value="public">
+					<label for="radio-access-level-public">
 						Publish event to public </label>
 				</div>
 				<div class="multiple-choice" style="margin-bottom:10px">
-					<input id="radio-inline-audience-2" type="radio" name="radio-audience-experience" value="experienced" {% if experienceOld %} checked="checked" {% endif %}>
-					<label for="radio-inline-audience-2">Anyone with the link</label>
+					<input id="radio-access-level-link-only" type="radio" name="adio-link-access" value="linkonly">
+					<label for="radio-access-level-link-only">Anyone with the link</label>
 				</div>
 			</div>
 		</div>
@@ -71,7 +76,7 @@
 
 
 
-		<div class="form-group" style="margin-top:20px; margin-bottom:40px" >
+		<div class="form-group" style="margin-top:20px; " >
 			<label class="form-label-bold" >
 				{{ session.eventsLiveURLS[session.currentEventShowing][0][1] }}
 			</label>
@@ -92,7 +97,7 @@
 			<!-- VIEW MODE -->
 			<div id="view-mode">
 				<p>www.events.great.gov.uk/{{ session.eventsLiveURLS[session.currentEventShowing][1][1] }}
-					<br><span style="text-decoration: underline;  color: #0000EE;" onclick="editMainLink()">Change link</span>
+					<br><span style="text-decoration: underline;  color: #0000EE; cursor: pointer;" onclick="editMainLink()">Change link</span>
 				</p>
 			</div>
 
