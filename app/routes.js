@@ -3056,7 +3056,7 @@ router.get('/create-event/description-onwards', function (req, res)
   //  DESCRIPTION VALIDATION
   if(req.session.data['event-description'] == "")
   {
-    errorMissingDescription = true;
+    //errorMissingDescription = true;
     req.session.data['event-description-error'] = true;
   }
 
@@ -3423,11 +3423,10 @@ router.get('/create-event/description-skip', function (req, res)
 
 
 
-
   //  DESCRIPTION VALIDATION
   if(req.session.data['event-description'] == "")
   {
-    errorMissingDescription = true;
+    //errorMissingDescription = true;
     req.session.data['event-description-error'] = true;
   }
 
