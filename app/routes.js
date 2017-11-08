@@ -2232,7 +2232,7 @@ router.get('/create-event/venue-check-map', function (req, res)
   // no errors
   if( (errorOnVenueName || errorOnBuilding || errorOnTown || errorOnPostcode || errorOnPostcodeMissing) == false)
   {
-
+    res.redirect('/create-event/venue-map-redirect');
   }
   else
   {
@@ -4860,7 +4860,7 @@ router.get('/create-event/template-reminder-skip', function (req, res)
 
 
 
-// VENUE PAGE ONWARDS BUTTON
+//
 router.get('/create-event/summary-prelude', function (req, res)
 {
 
