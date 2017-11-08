@@ -192,6 +192,11 @@ router.use(function (req, res, next)
     req.session.eventsLiveURLS = [];
   }
 
+  if(req.session.showPublishBlockingPage == undefined)
+  {
+    req.session.showPublishBlockingPage = true;
+  }
+
   next();
 
 });
@@ -2141,6 +2146,109 @@ router.get('/create-event/venue-onwards', function (req, res)
   }
 })
 
+router.get('/create-event/venue-check-map', function (req, res)
+{
+  console.log(req.session.data['full-address-holder']);
+
+  var errorOnVenueName = false;
+  var errorOnBuilding = false;
+  var errorOnTown = false;
+  var errorOnPostcode = false;
+  var errorOnPostcodeMissing = false;
+
+  req.session.data['full-address-holder'] = "";
+
+
+
+  // Check the venue name isn't empty
+  if(req.session.data['venue'] == "")
+  {
+    errorOnVenueName = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['venue'];
+  }
+
+
+  // If building is empty then throw error;
+  if(req.session.data['building'] == "")
+  {
+    errorOnBuilding = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['building'];
+  }
+
+  // Add street to output if the field is not empty
+  if(req.session.data['street'] != "")
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['street'];
+  }
+
+
+  // If town is empty then throw error;
+  if(req.session.data['town'] == "")
+  {
+    errorOnTown = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['town'];
+  }
+
+
+  // If building is empty then throw error;
+  if(req.session.data['postcode'] == "")
+  {
+    errorOnPostcodeMissing = true;
+  }
+  else if(req.session.data['postcode'].length < 6)
+  {
+    errorOnPostcode = true;
+  }
+  else
+  {
+    req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['postcode'];
+  }
+
+
+  console.log("-----=-=-=  THE VENUE IS \n" + req.session.data['full-address-holder']);
+
+
+
+  if( req.session.data['venue-additional-notes'] == "")
+  {
+    req.session.data['venue-additional-notes-entered'] = false;
+  }
+  else
+  {
+    req.session.data['venue-additional-notes-entered'] = true;
+  }
+
+
+
+  // no errors
+  if( (errorOnVenueName || errorOnBuilding || errorOnTown || errorOnPostcode || errorOnPostcodeMissing) == false)
+  {
+
+  }
+  else
+  {
+    res.render('create-event/venue',
+        {
+          'anError' : true,
+          'errorVenueName': errorOnVenueName,
+          'errorBuilding': errorOnBuilding,
+          'errorTown': errorOnTown,
+          'errorPostcodeMissing': errorOnPostcodeMissing,
+          'errorPostcode': errorOnPostcode
+        }
+    );
+  }
+})
+
 
 router.get('/create-event/venue-skip', function (req, res)
 {
@@ -3357,6 +3465,23 @@ router.get('/create-event/images-onwards', function (req, res)
     );
 })
 
+
+router.get('/create-event/images-preview-onwards', function (req, res)
+{
+  req.session.data['image-error'] = false;
+
+  req.session.data['hero-image'] = "exporting-generic.jpg";
+
+  if(req.session.changingFromSummary == true)
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+  else
+  {
+    res.redirect('/create-event/partner-logos');
+  }
+})
+
 // IMAGES PAGE ONWARDS BUTTON
 router.get('/create-event/images-skip', function (req, res)
 {
@@ -3448,8 +3573,6 @@ router.get('/create-event/partner-logos-onwards', function (req, res)
   }
 
 })
-
-
 
 router.get('/create-event/partner-logos-skip', function (req, res)
 {
@@ -4083,8 +4206,6 @@ router.get('/create-event/load-saved-questions-onwards-enter-questions', functio
   res.redirect('/create-event/additional-questions');
 });
 
-
-
 router.get('/create-event/load-saved-questions-onwards-all-done', function (req, res)
 {
   if(req.session.data['radio-saved-question-1'] != undefined)
@@ -4121,7 +4242,6 @@ router.get('/create-event/add-other-question-submit', function (req, res)
   res.redirect('/create-event/question-onwards');
   console.log("********************** the alternative thing worked");
 })
-
 
 router.get('/create-event/final-question', function (req, res)
 {
@@ -4820,67 +4940,80 @@ router.get('/create-event/summary-prelude', function (req, res)
 
 router.get('/create-event/go-live-now', function (req, res)
 {
-  // Set for the go ive publishing option page
+  // Block publishing of event for internal user
+  if(req.session.showPublishBlockingPage == true)
+  {
+      res.redirect('/create-event/go-live-incomplete');
+  }
+  else
+  {
+      // Set for the go live publishing option page
 
-  // Make the list of tracking links, assuming it will go live in a moment
-  var x = req.session.eventsLive.length;
+      // Make the list of tracking links, assuming it will go live in a moment
+      var x = req.session.eventsLive.length;
 
-  req.session.currentEventShowing = req.session.eventsLive.length;
+      req.session.currentEventShowing = req.session.eventsLive.length;
 
-  var baseURL = req.session.data['event-title'];
+      var baseURL = req.session.data['event-title'];
 
-  // Make lower case
-  baseURL = baseURL.toLowerCase();
+      // Make lower case
+      baseURL = baseURL.toLowerCase();
 
-  // remove space an then hyphens
-  baseURL = baseURL.replace(" - ", " ");
+      // remove space an then hyphens
+      baseURL = baseURL.replace(" - ", " ");
 
-  // remove spaces
-  baseURL = baseURL.replace(/\s/g, '-');
+      // remove spaces
+      baseURL = baseURL.replace(/\s/g, '-');
 
-  // remove ampersand
-  baseURL = baseURL.replace(/&/g, "");
+      // remove ampersand
+      baseURL = baseURL.replace(/&/g, "");
 
-  // Add on DIT prefix
-  baseURL = baseURL;
+      // Add on DIT prefix
+      baseURL = baseURL;
 
-  var eachURLarrayName = [];
-  var eachURLarray = [];
+      var eachURLarrayName = [];
+      var eachURLarray = [];
 
-  // Save the name of each link
-  eachURLarrayName[0] = "NULL NAME - YOU SHOULD'T SEE THIS";
-  eachURLarrayName[1] = "Default event link";
-  //eachURLarrayName[2] = "Twitter";
+      // Save the name of each link
+      eachURLarrayName[0] = "NULL NAME - YOU SHOULD'T SEE THIS";
+      eachURLarrayName[1] = "Default event link";
+      //eachURLarrayName[2] = "Twitter";
 
-  // Save the urls of each link being tracked
-  eachURLarray[0] = "NUL URLL - YOU SHOULD'T SEE THIS";;
-  eachURLarray[1] = baseURL;
-  //eachURLarray[2] = baseURL + "-twitter";
+      // Save the urls of each link being tracked
+      eachURLarray[0] = "NUL URLL - YOU SHOULD'T SEE THIS";;
+      eachURLarray[1] = baseURL;
+      //eachURLarray[2] = baseURL + "-twitter";
 
-  var arrayOfNameAndUrls = [];
-  arrayOfNameAndUrls[0] = eachURLarrayName;
-  arrayOfNameAndUrls[1] = eachURLarray;
-  // add empty percentages
-  arrayOfNameAndUrls[2] = [0,0];
-  arrayOfNameAndUrls[3] = [100,0];
-  arrayOfNameAndUrls[4] = [0,0];
-  arrayOfNameAndUrls[5] = [100,0];
+      var arrayOfNameAndUrls = [];
+      arrayOfNameAndUrls[0] = eachURLarrayName;
+      arrayOfNameAndUrls[1] = eachURLarray;
+      // add empty percentages
+      arrayOfNameAndUrls[2] = [0,0];
+      arrayOfNameAndUrls[3] = [100,0];
+      arrayOfNameAndUrls[4] = [0,0];
+      arrayOfNameAndUrls[5] = [100,0];
 
 
-  req.session.eventsLiveURLS[x] = arrayOfNameAndUrls;
+      req.session.eventsLiveURLS[x] = arrayOfNameAndUrls;
 
-  console.log("  --- THE OUTPUT URL IS *+* " + req.session.eventsLiveURLS[x]);
+      console.log("  --- THE OUTPUT URL IS *+* " + req.session.eventsLiveURLS[x]);
 
-  // load in the default URLs
-  req.session.data['new-main-url'] = req.session.eventsLiveURLS[req.session.currentEventShowing][1][1];
+      // load in the default URLs
+      req.session.data['new-main-url'] = req.session.eventsLiveURLS[req.session.currentEventShowing][1][1];
 
-  res.redirect('/create-event/go-live');
-
+      res.redirect('/create-event/go-live');
+  }
 
 });
 
 
+router.get('/create-event/go-live-incomplete-onwards', function (req, res)
+{
+    // Block publishing of event for internal user
+    req.session.showPublishBlockingPage = false;
 
+    res.redirect('/create-event/summary');
+});
 
 
 

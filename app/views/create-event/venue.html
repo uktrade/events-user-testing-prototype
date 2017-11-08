@@ -144,8 +144,12 @@
 				<!-- LINK URL TO MAP -->
 				  <div class="form-group">
 					  <label class="form-label-bold" for="map-url"  style="margin-bottom:5px;">Link to map</label>
-					  <p id="default-map-link">Check <a target="_blank" href="https://www.google.co.uk/maps/search/olympia/">map location</a>.
-						  You can <span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="showManualUrlEntry()">enter your own link</span> if you wish.</p>
+
+					  <div id="default-map-link">
+						  <input type="submit" class="button-secondary" formaction="/create-event/venue-check-map" value="Check map location">
+						  <p style="margin-top:20px;">Or you can <span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="showManualUrlEntry()">enter your own link</span> if you wish.</p>
+					  </div>
+
 
 					  <div id="manual-map-entry" style="display:none;">
 						  <p style="margin-bottom:0;">Paste link to map</p>

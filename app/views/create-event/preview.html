@@ -130,8 +130,6 @@
               {% endif %}
 
 
-
-
               <br/>
 
 
@@ -193,16 +191,19 @@
     <div class="column-one-third" style="width:34%; margin:0px; padding:0px">
 
       {% if data['hero-image'] %}
-      <div style="background-image:url('/public/images/{{data['hero-image']}}');height:200px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
+        <div style="background-image:url('/public/images/{{data['hero-image']}}');height:270px;background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
       {% else %}
-      <div style="background-image:url('/public/images/coal-mongolia.jpg');height:260px;background-repeat: no-repeat;    background-size: cover; background-position: center center;">
+        <div style="height:270px; border: 1px solid black;">
+            <p><br><br><br><br><center>Image not yet entered</center></p>
+        </div>
+        <!-- <div style="background-image:url('/public/images/coal-mongolia.jpg');height:260px;background-repeat: no-repeat;    background-size: cover; background-position: center center;"></div>  -->
       {% endif %}
-      </div>
+
 
       <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
 
           {% if session.data['date-error'] == true  %}
-              <p>Date not yet entered</h2>
+              <h2>Date not yet entered</h2>
           {% else %}
               <ul style="margin-bottom:25px">
                   <!-- <div class="bold-xsmall">Date and time</div>  -->

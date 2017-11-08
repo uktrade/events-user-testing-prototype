@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="full-grid-mode" style="margin-left:15px">
+
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		<ol>
+			<li><a href="/account">Account home</a></li>
+		</ol>
+	  </div>
+
+
+
+
+
+	  <h1 class="heading-large" style="margin-top:15px">
+		  Missing event details
+      </h1>
+
+
+	  <form action="/create-event/go-live-incomplete-onwards" method="get" class="form">
+
+		  <p>To publish the event you'll need to complete the following details.</p>
+
+		  <ul class="list list-bullet">
+			  <li>Venue</li>
+		  </ul>
+
+
+
+
+		  <div class="form-group" style="margin-top:20px">
+			  <input type="submit" class="button" value="Add missing details">
+			  <!-- <p style="margin-top:25px"><a href="/create-event/tickets">I'll complete this later - I don't have this information yet</a></p>  -->
+		  </div>
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+
+
+
+<script>
+	function editMainLink()
+	{
+		document.getElementById('edit-mode').style.display = 'block';
+		document.getElementById('view-mode').style.display = 'none';
+	}
+
+</script>
+
+{% endblock %}
+
+
+
+
