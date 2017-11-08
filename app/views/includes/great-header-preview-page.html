@@ -85,18 +85,23 @@ main#content {max-width: 1200px}
     <!-- These require the ""  -->
     {% elif session.liveOrNot == "true" %}
 
-        <div style="background-color: #FFFFFF; border-bottom: 10px solid #000000; height:320px; padding-top:0px; padding-bottom:10px; display: flex; " >
+        <div style="background-color: #FFFFFF; border-bottom: 10px solid #000000; height:360px; padding-top:0px; padding-bottom:10px; display: flex; " >
 
             <div style="flex-grow:1"> </div>
 
             <div style=" margin:20px; margin-top:0px;  width:600px;"  >
 
-                <div class="govuk-box-highlight background--aqua" style="padding-top:60px; padding-bottom:40px;">
+                <div class="govuk-box-highlight background--aqua" style="padding-top:40px; padding-bottom:20px;">
                     <h1 class="bold-large" style="margin-bottom:10px" align="center">Live event<br> </h1>
+                    {% if session.data['radio-link-access'] != ""  %}
+                        <p>Visible to {{ session.data['radio-link-access'] }}</p>
+                    {% endif %}
                 </div>
 
                 <div>
-                    <p style="font-size:16px; margin-top:30px;" align="left"><a style="font-family: Arial,sans-serif;" href="#">Track and monitor this event</a></p>
+                    <p style="font-size:16px; margin-top:30px;" align="left"><a style="font-family: Arial,sans-serif;" href="/create-event/summary">View event summary</a></p>
+
+                    <p style="font-size:16px; " align="left"><a style="font-family: Arial,sans-serif;" href="#">Track and monitor this event</a></p>
 
                     <p><a class="button-secondary" style="font-family: Arial,sans-serif; padding: .526315em .789473em .263157em;  font-size: 1.2em;   line-height: 1.25;
                   " href="/account">Account home</a></p>

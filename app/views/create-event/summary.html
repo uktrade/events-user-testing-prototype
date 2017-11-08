@@ -120,6 +120,22 @@
 			  </div>
 
 
+			  {% if session.data['radio-link-access'] != undefined  and  session.data['radio-link-access'] != ""  %}
+				  <div>
+					  <dt class="cya-question">
+						  Visibility
+					  </dt>
+
+					  <dd class="cya-answer">{{ session.data['radio-link-access'] }}</dd>
+
+					  <dd class="cya-change">
+						  <a href="/create-event/go-live">Change</a>
+					  </dd>
+				  </div>
+			  {% endif %}
+
+
+
 
 			  <div>
 				  <dt class="cya-question">

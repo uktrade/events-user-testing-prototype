@@ -197,6 +197,8 @@ router.use(function (req, res, next)
     req.session.showPublishBlockingPage = true;
   }
 
+
+
   next();
 
 });
@@ -4855,11 +4857,6 @@ router.get('/create-event/template-reminder-skip', function (req, res)
 
 
 
-
-
-
-
-
 //
 router.get('/create-event/summary-prelude', function (req, res)
 {
@@ -5455,11 +5452,11 @@ router.get('/make-draft-live', function (req, res)
   {
     accessLeveMissing = true;
   }
-  else if(req.session.data['radio-link-access'] == "public")
+  else if(req.session.data['radio-link-access'] == "Anyone on the web")
   {
 
   }
-  else if(req.session.data['radio-link-access'] == "linkonly")
+  else if(req.session.data['radio-link-access'] == "Only people we share the link with")
   {
 
   }
@@ -5690,10 +5687,6 @@ router.get('/update-main-event-link-go-live', function (req, res)
 
 
 
-
-
-
-
 // WHEN SOMEONE CLICKS MONITOR, LOAD THE CORRESPONDING EVENT DETAILS
 router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
 {
@@ -5773,6 +5766,8 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
 
 
 
+
+
 router.post('/register/sign-in', function (req, res) {
   req.session.data['first-name'] = "Leslie";
   req.session.data['last-name'] = "Smith";
@@ -5794,7 +5789,8 @@ router.post('/register/sign-in', function (req, res) {
   res.redirect('/register/check-your-answers');
 });
 
-router.get('/register/business-sector', function (req, res) {
+router.get('/register/business-sector', function (req, res)
+{
   res.render('register/business-sector',
         {
           errorMissingTitle: false
