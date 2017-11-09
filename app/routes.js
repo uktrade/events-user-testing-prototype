@@ -3481,7 +3481,7 @@ router.get('/create-event/images-preview-onwards', function (req, res)
 {
   req.session.data['image-error'] = false;
 
-  req.session.data['hero-image'] = "oil.jpg";
+  req.session.data['hero-image'] = "oil.png";
 
   if(req.session.changingFromSummary == true)
   {
