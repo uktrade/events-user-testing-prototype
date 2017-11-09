@@ -115,7 +115,7 @@
 
 			  <div>
 				  <dt class="cya-question heading-medium" style="vertical-align:top; width:30%;">Event webpage</dt>
-				  <dd class="cya-answer">  </dd>
+				  <dd class="cya-answer"  style="width:60%;">  </dd>
 				  <dd class="cya-change" style="vertical-align:top">  </dd>
 			  </div>
 
@@ -164,7 +164,7 @@
 				  {% if session.data['summary-title-empty'] %}
 				  	<dd class="cya-answer">Optional field, left empty.</dd>
 				  {% else %}
-				  	<dd class="cya-answer">{{ data['summary-title'] }}</dd>
+				  	<dd class="cya-answer" >{{ data['summary-title'] }}</dd>
 				  {% endif %}
 
 				  <dd class="cya-change">
@@ -241,6 +241,7 @@
 					  Parking and directions
 				  </dt>
 
+
 				  {% if session.data['venue-additional-notes'] == "" %}
 				  	<dd class="cya-answer">Optional field, left empty.</dd>
 				  {% else %}
@@ -260,10 +261,11 @@
 					  Link to map
 				  </dt>
 
+
 				  {% if session.data['map-url'] == "" %}
 				  	<dd class="cya-answer">Optional field, left empty.</dd>
 				  {% else %}
-				  	<dd class="cya-answer" style="white-space: pre-wrap;">{{ data['map-url'] }}</dd>
+				  	<dd class="cya-answer" style="word-break: break-all;">{{ data['map-url'] }}</dd>
 				  {% endif %}
 
 				  <dd class="cya-change ">
