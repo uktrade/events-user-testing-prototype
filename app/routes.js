@@ -280,18 +280,18 @@ router.get('/scenario-1', function (req, res)
   req.session.eventsLive[1][31] = "12:00";
 
   // date
-  req.session.eventsLive[0][3] = "29";
-  req.session.eventsLive[1][3] = "2";
-  req.session.eventsLive[2][3] = "7";
-  req.session.eventsLive[3][3] = "10";
-  req.session.eventsLive[4][3] = "11";
+  req.session.eventsLive[0][3] = "24";
+  req.session.eventsLive[1][3] = "28";
+  req.session.eventsLive[2][3] = "4";
+  req.session.eventsLive[3][3] = "7";
+  req.session.eventsLive[4][3] = "14";
 
   // month
-  req.session.eventsLive[0][5] = "October";
+  req.session.eventsLive[0][5] = "November";
   req.session.eventsLive[1][5] = "November";
-  req.session.eventsLive[2][5] = "November";
-  req.session.eventsLive[3][5] = "November";
-  req.session.eventsLive[4][5] = "November";
+  req.session.eventsLive[2][5] = "December";
+  req.session.eventsLive[3][5] = "December";
+  req.session.eventsLive[4][5] = "December";
 
   // year
   req.session.eventsLive[0][6] = "2017";
@@ -561,6 +561,14 @@ router.get('/scenario-1', function (req, res)
     req.session.registeredPeopleCheckinNames2[k] = [ req.session.registeredPeopleData2[k][2] , req.session.registeredPeopleData2[k][3] ];
   }
   req.session.registeredPeopleCheckinNames2.sort(sortByLastName);
+
+
+  if(req.session.previousQuestions.length == 0)
+  {
+    req.session.previousQuestions[0] = ["Do you have any food allergies?", "Select one answer", "Yes - request details \nNo", "\nNot mandatory"];
+    req.session.previousQuestions[1] = ["Do you currently have an international trade advisor?", "Select one answer", "Yes - request details \nNo", "\nNot mandatory"];
+    req.session.previousQuestions[2] = ["How many employees work for your business?", "Free text", "Free text", "\nMandatory"];
+  }
 
 
   res.redirect('/signin');
@@ -2384,6 +2392,7 @@ router.get('/create-event/title-onwards', function (req, res)
   if(req.session.data['event-title'] === "")
   {
     errorMissingTitle = true;
+    req.session.data['event-email-reg-subject'] = "Your event booking";
   }
   else
   {
@@ -2611,6 +2620,7 @@ router.get('/create-event/title-skip', function (req, res)
   if(req.session.data['event-title'] === "")
   {
     errorMissingTitle = true;
+    req.session.data['event-email-reg-subject'] = "Your event booking";
   }
   else
   {
@@ -3471,7 +3481,7 @@ router.get('/create-event/images-preview-onwards', function (req, res)
 {
   req.session.data['image-error'] = false;
 
-  req.session.data['hero-image'] = "exporting-generic.jpg";
+  req.session.data['hero-image'] = "oil.jpg";
 
   if(req.session.changingFromSummary == true)
   {

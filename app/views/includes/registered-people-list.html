@@ -4,27 +4,35 @@
 
 
 {% if whichList == 1  %}
-<tr>
 
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData1[listItemNumber][2] }} </td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData1[listItemNumber][3] }}</td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;"> {{ session.registeredPeopleData1[listItemNumber][4] }}</td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;">South West<br>{{ session.registeredPeopleData1[listItemNumber][10] }}</td>
-  <td valign="top" style="border: 0px; padding-top: 14px; padding-bottom: 0px;">
-    {% if session.registeredPeopleData1[listItemNumber][17] == "New to DIT"  %}
-      <span style="font-weight:700;">{{ session.registeredPeopleData1[listItemNumber][17] }}</span>
-    {% else %}
-      {{ session.registeredPeopleData1[listItemNumber][17] }}
-    {% endif  %}
-  </td>
-</tr>
 
 <tr>
 
   <td colspan="5" style="padding-top:2px;">
     <div>
       <details>
-        <summary><span class="summary">More details</span></summary>
+        <summary style="display:inline">
+            <div style="display:flex; flex-direction: row;">
+              <div style="width:190px; text-transform: none; color: #0b0c0c;">
+                {{ session.registeredPeopleData1[listItemNumber][2] }}
+              </div>
+              <div style="width:220px; text-transform: none; color: #0b0c0c;">
+                {{ session.registeredPeopleData1[listItemNumber][3] }}
+              </div>
+              <div style="width:280px; text-transform: none; color: #0b0c0c;">
+                {{ session.registeredPeopleData1[listItemNumber][4] }}
+              </div>
+              <div style="width:160px; text-transform: none; color: #0b0c0c;">
+                South West<br>{{ session.registeredPeopleData1[listItemNumber][10] }}
+              </div>
+              <div style="width:120px; text-transform: none; color: #0b0c0c;">
+                {{ session.registeredPeopleData1[listItemNumber][17] }}
+              </div>
+            </div>
+        </summary>
+
+
+
         <div class="panel panel-border-narrow">
 
           <p><span style="font-weight:700;">Registration time</span><br>
@@ -146,6 +154,8 @@
   </td>
 
 </tr>
+
+
 
 
 {% elif whichList == 2 %}
@@ -309,7 +319,7 @@
     <table style="width:100%; margin-top:40px;">
       <thead>
         <tr  style="border-bottom: 1px solid #bfc1c3;">
-          <th scope="col" style="width:20%; padding-bottom:10px; padding-top: 0px;">First name</th>
+          <th scope="col" style="width:20%; padding-bottom:10px; padding-top: 0px; padding-left:20px;">First name</th>
           <th scope="col" style="width:23%; padding-bottom:10px; padding-top: 0px;">Last name <span style="font-weight:400;">&nbsp;<a href="#">Order A to Z</a></span></th>
           <th class="col" style="width:29%; padding-bottom:10px; padding-top: 0px;">Company <span style="font-weight:400;">&nbsp;<a href="#">Order A to Z</a></span></th>
           <th class="col" style="width:16%; padding-bottom:10px; padding-top: 0px;">Region</th>
