@@ -416,7 +416,8 @@
 						  <div style="width:100%; float:left; margin-top:5px">
 
 							  <div>
-								  <p style="margin-bottom: 10px">Hours &nbsp;&nbsp;&nbsp;&nbsp; Minutes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity</p>
+								  <p style="margin-bottom: 10px">Start time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finish time<br>
+									  			 Hours &nbsp;&nbsp;&nbsp;&nbsp;	 Minutes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hours &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 Minutes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Activity</p>
 							  </div>
 
 							  <!-- Missing -->
@@ -445,6 +446,12 @@
 								  <input class="form-control  {% if errorInvalidMinutes %} form-control-error {% endif %}" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-1" name="agenda-minutes-1" type="number"  value="{{ data['agenda-minutes-1'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-1-finish" name="agenda-hour-1-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-1-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-1-finish" name="agenda-minutes-1-finish" type="number"  value="{{ data['agenda-minutes-1-finish'] }}">
+
 								  <input class="form-control  {% if agendaMisssing1 %} form-control-error {% endif %}" style="width:52%;"
 										 id="agenda-1" name="agenda-1" type="text"  value="{{ data['agenda-1'] }}">
 							  </div>
@@ -457,6 +464,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-2" name="agenda-minutes-2" type="number"  value="{{ data['agenda-minutes-2'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-2-finish" name="agenda-hour-2-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-2-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-2-finish" name="agenda-minutes-2-finish" type="number"  value="{{ data['agenda-minutes-2-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-2" name="agenda-2" type="text"  value="{{ data['agenda-2'] }}">
 							  </div>
@@ -468,6 +481,12 @@
 
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-3" name="agenda-minutes-3" type="number"  value="{{ data['agenda-minutes-3'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-3-finish" name="agenda-hour-3-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-3-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-3-finish" name="agenda-minutes-3-finish" type="number"  value="{{ data['agenda-minutes-3-finish'] }}">
 
 								  <input class="form-control " style="width:52%;"
 										 id="agenda-3" name="agenda-3" type="text"  value="{{ data['agenda-3'] }}">
@@ -482,6 +501,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-4" name="agenda-minutes-4" type="number"  value="{{ data['agenda-minutes-4'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-4-finish" name="agenda-hour-4-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-4-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-4-finish" name="agenda-minutes-4-finish" type="number"  value="{{ data['agenda-minutes-4-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-4" name="agenda-4" type="text"  value="{{ data['agenda-4'] }}">
 							  </div>
@@ -494,6 +519,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-5" name="agenda-minutes-5" type="number"  value="{{ data['agenda-minutes-5'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-5-finish" name="agenda-hour-5-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-5-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-5-finish" name="agenda-minutes-5-finish" type="number"  value="{{ data['agenda-minutes-5-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-5" name="agenda-5" type="text"  value="{{ data['agenda-5'] }}">
 							  </div>
@@ -505,6 +536,12 @@
 
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-6" name="agenda-minutes-6" type="number"  value="{{ data['agenda-minutes-6'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-6-finish" name="agenda-hour-6-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-6-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-6-finish" name="agenda-minutes-6-finish" type="number"  value="{{ data['agenda-minutes-6-finish'] }}">
 
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-6" name="agenda-6" type="text"  value="{{ data['agenda-6'] }}">
@@ -529,6 +566,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-7" name="agenda-minutes-7" type="number"  value="{{ data['agenda-minutes-7'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-7-finish" name="agenda-hour-7-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-7-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-7-finish" name="agenda-minutes-7-finish" type="number"  value="{{ data['agenda-minutes-7-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-7" name="agenda-7" type="text"  value="{{ data['agenda-7'] }}">
 							  </div>
@@ -550,6 +593,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-8" name="agenda-minutes-8" type="number"  value="{{ data['agenda-minutes-8'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-8-finish" name="agenda-hour-8-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-8-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-8-finish" name="agenda-minutes-8-finish" type="number"  value="{{ data['agenda-minutes-8-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-8" name="agenda-8" type="text"  value="{{ data['agenda-8'] }}">
 							  </div>
@@ -570,6 +619,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-9" name="agenda-minutes-9" type="number"  value="{{ data['agenda-minutes-9'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-9-finish" name="agenda-hour-9-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-9-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-9-finish" name="agenda-minutes-9-finish" type="number"  value="{{ data['agenda-minutes-9-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-9" name="agenda-9" type="text"  value="{{ data['agenda-9'] }}">
 							  </div>
@@ -589,6 +644,12 @@
 
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-10" name="agenda-minutes-10" type="number"  value="{{ data['agenda-minutes-10'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-10-finish" name="agenda-hour-10-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-10-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-10-finish" name="agenda-minutes-10-finish" type="number"  value="{{ data['agenda-minutes-10-finish'] }}">
 
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-10" name="agenda-10" type="text"  value="{{ data['agenda-10'] }}">
@@ -611,6 +672,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-11" name="agenda-minutes-11" type="number"  value="{{ data['agenda-minutes-11'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-11-finish" name="agenda-hour-11-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-11-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-11-finish" name="agenda-minutes-11-finish" type="number"  value="{{ data['agenda-minutes-11-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-11" name="agenda-11" type="text"  value="{{ data['agenda-11'] }}">
 							  </div>
@@ -630,6 +697,12 @@
 
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-12" name="agenda-minutes-12" type="number"  value="{{ data['agenda-minutes-12'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-12-finish" name="agenda-hour-12-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-12-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-2-finish" name="agenda-minutes-12-finish" type="number"  value="{{ data['agenda-minutes-12-finish'] }}">
 
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-12" name="agenda-12" type="text"  value="{{ data['agenda-12'] }}">
@@ -652,6 +725,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-13" name="agenda-minutes-13" type="number"  value="{{ data['agenda-minutes-13'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-13-finish" name="agenda-hour-13-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-13-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-13-finish" name="agenda-minutes-13-finish" type="number"  value="{{ data['agenda-minutes-13-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-13" name="agenda-13" type="text"  value="{{ data['agenda-13'] }}">
 							  </div>
@@ -673,6 +752,12 @@
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-14" name="agenda-minutes-14" type="number"  value="{{ data['agenda-minutes-14'] }}">
 
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-14-finish" name="agenda-hour-14-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-14-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-14-finish" name="agenda-minutes-14-finish" type="number"  value="{{ data['agenda-minutes-14-finish'] }}">
+
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-14" name="agenda-14" type="text"  value="{{ data['agenda-14'] }}">
 							  </div>
@@ -693,6 +778,12 @@
 
 								  <input class="form-control" style="width:50px; margin-right:40px;"
 										 id="agenda-minutes-15" name="agenda-minutes-15" type="number"  value="{{ data['agenda-minutes-15'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:20px"
+										 id="agenda-hour-15-finish" name="agenda-hour-15-finish" type="number" pattern="[0-9]*" value="{{ data['agenda-hour-15-finish'] }}">
+
+								  <input class="form-control " style="width:50px; margin-right:40px;"
+										 id="agenda-minutes-15-finish" name="agenda-minutes-15-finish" type="number"  value="{{ data['agenda-minutes-15-finish'] }}">
 
 								  <input class="form-control" style="width:52%;"
 										 id="agenda-15" name="agenda-15" type="text"  value="{{ data['agenda-15'] }}">

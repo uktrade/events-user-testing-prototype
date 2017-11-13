@@ -221,7 +221,7 @@
                   <p>Not yet entered</p>
               {% else %}
                   <p style="white-space: pre-wrap; margin-bottom:5px">{{ data['full-address-holder'] }}</p>
-                  <p class="link-style"><a href="{{session.data['map-url']}}">View on a map</a></p>
+                  <p class="link-style"><a href="{{session.data['map-url']}}"  target="_blank">View on a map</a></p>
                   {% if session.data['venue-additional-notes-entered'] == true %}
                       <details>
                           <summary>Parking and directions</summary>

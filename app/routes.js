@@ -2821,6 +2821,8 @@ router.get('/create-event/description-onwards', function (req, res)
   var errorInvalidHourAgenda1 = false;
   var errorInvalidMinutesAgenda1 = false;
 
+  req.session.data['agenda-error'] = false;
+
 
   console.log(" the radio for markets is --*/*/*/  " + req.session.data['radio-markets']);
 
@@ -2946,6 +2948,10 @@ router.get('/create-event/description-onwards', function (req, res)
   {
     agendYesNoMissing = true;
   }
+  else if(req.session.data['radio-agenda'] == "later")
+  {
+    req.session.data['agenda-error-later'] = true;
+  }
   else if(req.session.data['radio-agenda'] == "no")
   {
     agendaShowNo = true;
@@ -2977,6 +2983,10 @@ router.get('/create-event/description-onwards', function (req, res)
       errorAgenda1 = true;
       req.session.data['agenda-error'] = true;
     }
+    else
+    {
+
+    }
 
     if(req.session.data['agenda-1'] == "")
     {
@@ -2986,77 +2996,77 @@ router.get('/create-event/description-onwards', function (req, res)
     }
     else
     {
-      req.session.data['agenda'] = req.session.data['agenda-hour-1'] + ":" + req.session.data['agenda-minutes-1'] + "  " + " " + req.session.data['agenda-1'];
+      req.session.data['agenda'] = req.session.data['agenda-hour-1'] + ":" + req.session.data['agenda-minutes-1'] + " to " + req.session.data['agenda-hour-1-finish'] + ":" + req.session.data['agenda-minutes-1-finish']  + "  " + " " + req.session.data['agenda-1'];
     }
 
     if(req.session.data['agenda-2'] != "")
     {
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-2'] + ":" + req.session.data['agenda-minutes-2'] + "  " + " " + req.session.data['agenda-2'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-2'] + ":" + req.session.data['agenda-minutes-2'] + " to " + req.session.data['agenda-hour-2-finish'] + ":" + req.session.data['agenda-minutes-2-finish']  + "  " + " " + req.session.data['agenda-2'];
     }
     if(req.session.data['agenda-3'] != "")
     {
       showAgenda3 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-3'] + ":" + req.session.data['agenda-minutes-3'] + "  " + " " + req.session.data['agenda-3'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-3'] + ":" + req.session.data['agenda-minutes-3'] + " to " + req.session.data['agenda-hour-3-finish'] + ":" + req.session.data['agenda-minutes-3-finish']  + "  " + " " + req.session.data['agenda-3'];
     }
     if(req.session.data['agenda-4'] != "")
     {
       showAgenda4 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-4'] + ":" + req.session.data['agenda-minutes-4'] + "  " + " " + req.session.data['agenda-4'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-4'] + ":" + req.session.data['agenda-minutes-4'] + " to " + req.session.data['agenda-hour-4-finish'] + ":" + req.session.data['agenda-minutes-4-finish']  + "  " + " " + req.session.data['agenda-4'];
     }
     if(req.session.data['agenda-5'] != "")
     {
       showAgenda5 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-5'] + ":" + req.session.data['agenda-minutes-5'] + "  " + " " + req.session.data['agenda-5'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-5'] + ":" + req.session.data['agenda-minutes-5'] + " to " + req.session.data['agenda-hour-5-finish'] + ":" + req.session.data['agenda-minutes-5-finish']  + "  " + " " + req.session.data['agenda-5'];
     }
     if(req.session.data['agenda-6'] != "")
     {
       showAgenda6 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-6'] + ":" + req.session.data['agenda-minutes-6'] + "  " + " " + req.session.data['agenda-6'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-6'] + ":" + req.session.data['agenda-minutes-6'] + " to " + req.session.data['agenda-hour-6-finish'] + ":" + req.session.data['agenda-minutes-6-finish']  + "  " + " " + req.session.data['agenda-6'];
     }
     if(req.session.data['agenda-7'] != "")
     {
       showAgenda7 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-7'] + ":" + req.session.data['agenda-minutes-7'] + "  " + " " + req.session.data['agenda-7'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-7'] + ":" + req.session.data['agenda-minutes-7'] + " to " + req.session.data['agenda-hour-7-finish'] + ":" + req.session.data['agenda-minutes-7-finish']  + "  " + " " + req.session.data['agenda-7'];
     }
     if(req.session.data['agenda-8'] != "")
     {
       showAgenda8 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-8'] + ":" + req.session.data['agenda-minutes-8'] + "  " + " " + req.session.data['agenda-8'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-8'] + ":" + req.session.data['agenda-minutes-8'] + " to " + req.session.data['agenda-hour-8-finish'] + ":" + req.session.data['agenda-minutes-9-finish']  + "  " + " " + req.session.data['agenda-8'];
     }
     if(req.session.data['agenda-9'] != "")
     {
       showAgenda9 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-9'] + ":" + req.session.data['agenda-minutes-9'] + "  " + " " + req.session.data['agenda-9'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-9'] + ":" + req.session.data['agenda-minutes-9'] + " to " + req.session.data['agenda-hour-9-finish'] + ":" + req.session.data['agenda-minutes-9-finish']  + "  " + " " + req.session.data['agenda-9'];
     }
     if(req.session.data['agenda-10'] != "")
     {
       showAgenda10 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-10'] + ":" + req.session.data['agenda-minutes-10'] + "  " + " " + req.session.data['agenda-10'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-10'] + ":" + req.session.data['agenda-minutes-10'] + " to " + req.session.data['agenda-hour-10-finish'] + ":" + req.session.data['agenda-minutes-10-finish']  + "  " + " " + req.session.data['agenda-10'];
     }
     if(req.session.data['agenda-11'] != "")
     {
       showAgenda11 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-11'] + ":" + req.session.data['agenda-minutes-11'] + "  " + " " + req.session.data['agenda-11'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-11'] + ":" + req.session.data['agenda-minutes-11'] + " to " + req.session.data['agenda-hour-11-finish'] + ":" + req.session.data['agenda-minutes-11-finish']  + "  " + " " + req.session.data['agenda-11'];
     }
     if(req.session.data['agenda-12'] != "")
     {
       showAgenda12 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-12'] + ":" + req.session.data['agenda-minutes-12'] + "  " + " " + req.session.data['agenda-12'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-12'] + ":" + req.session.data['agenda-minutes-12'] + " to " + req.session.data['agenda-hour-12-finish'] + ":" + req.session.data['agenda-minutes-12-finish']  + "  " + " " + req.session.data['agenda-12'];
     }
     if(req.session.data['agenda-13'] != "")
     {
       showAgenda13 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-6'] + ":" + req.session.data['agenda-minutes-13'] + "  " + " " + req.session.data['agenda-13'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-6'] + ":" + req.session.data['agenda-minutes-13'] + " to " + req.session.data['agenda-hour-13-finish'] + ":" + req.session.data['agenda-minutes-13-finish']  + "  " + " " + req.session.data['agenda-13'];
     }
     if(req.session.data['agenda-14'] != "")
     {
       showAgenda14 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-14'] + ":" + req.session.data['agenda-minutes-14'] + "  " + " " + req.session.data['agenda-14'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-14'] + ":" + req.session.data['agenda-minutes-14'] + " to " + req.session.data['agenda-hour-14-finish'] + ":" + req.session.data['agenda-minutes-14-finish']  + "  " + " " + req.session.data['agenda-14'];
     }
     if(req.session.data['agenda-15'] != "")
     {
       showAgenda15 = true;
-      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-15'] + ":" + req.session.data['agenda-minutes-15'] + "  " + " " + req.session.data['agenda-15'];
+      req.session.data['agenda'] = req.session.data['agenda'] + "\n" + req.session.data['agenda-hour-15'] + ":" + req.session.data['agenda-minutes-15'] + " to " + req.session.data['agenda-hour-15-finish'] + ":" + req.session.data['agenda-minutes-15-finish']  + "  " + " " + req.session.data['agenda-15'];
     }
   }
 
@@ -5007,6 +5017,8 @@ router.get('/create-event/go-live-now', function (req, res)
       // load in the default URLs
       req.session.data['new-main-url'] = req.session.eventsLiveURLS[req.session.currentEventShowing][1][1];
 
+      req.session.showPublishBlockingPage = false;
+
       res.redirect('/create-event/go-live');
   }
 
@@ -5016,7 +5028,7 @@ router.get('/create-event/go-live-now', function (req, res)
 router.get('/create-event/go-live-incomplete-onwards', function (req, res)
 {
     // Block publishing of event for internal user
-    req.session.showPublishBlockingPage = false;
+
 
     res.redirect('/create-event/summary');
 });

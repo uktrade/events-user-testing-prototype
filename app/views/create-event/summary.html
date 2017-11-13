@@ -376,8 +376,10 @@
 					  Agenda
 				  </dt>
 
-				  {% if session.data['markets-error'] %}
+				  {% if session.data['agenda-error-later'] %}
 				  	<dd class="cya-answer bold">Optional field, left empty - but you said you wanted to add later.</dd>
+				  {% elif session.data['agenda-error'] %}
+				  	<dd class="cya-answer bold">Incomplete</dd>
 				  {% else %}
 				  	<dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['agenda'] }}</dd>
 				  {% endif %}
