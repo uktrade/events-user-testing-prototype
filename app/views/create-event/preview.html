@@ -240,7 +240,11 @@
                   {% if session.data['markets-error'] %}
                      <li>Not yet entered</li>
                   {% else %}
-                     <li style="white-space: pre-wrap;">{{ data['agenda'] }}</li>
+                      {% if session.data['agenda-error-later'] == true %}
+                        <li>To be confirmed</li>
+                      {% else %}
+                        <li style="white-space: pre-wrap;">{{ data['agenda'] }}</li>
+                      {% endif %}
                   {% endif %}
               </ul>
           </div>

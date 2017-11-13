@@ -81,12 +81,12 @@
 			</label>
 			<div class="form-date" style="margin-top:5px">
 				<div class="multiple-choice" style="margin-bottom:10px">
-					<input id="radio-access-level-public" type="radio" name="radio-link-access" value="Anyone on the web">
+					<input id="radio-access-level-public" type="radio" name="radio-link-access" value="Anyone on the web" {% if session.data['radio-link-access'] == "Anyone on the web" %} checked="checked" {% endif %}  >
 					<label for="radio-access-level-public">
 						Anyone on the web</label>
 				</div>
 				<div class="multiple-choice" style="margin-bottom:10px">
-					<input id="radio-access-level-link-only" type="radio" name="radio-link-access" value="Only people we share the link with">
+					<input id="radio-access-level-link-only" type="radio" name="radio-link-access" value="Only people we share the link with" {% if session.data['radio-link-access'] == "Only people we share the link with" %} checked="checked" {% endif %} >
 					<label for="radio-access-level-link-only">Only people we share the link with</label>
 				</div>
 			</div>

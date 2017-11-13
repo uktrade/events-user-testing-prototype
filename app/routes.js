@@ -197,6 +197,10 @@ router.use(function (req, res, next)
     req.session.showPublishBlockingPage = true;
   }
 
+  if( req.session.data['radio-link-access'] == undefined)
+  {
+    req.session.data['radio-link-access'] = "";
+  }
 
 
   next();
@@ -4954,11 +4958,17 @@ router.get('/create-event/summary-prelude', function (req, res)
 
 
 
+
 router.get('/create-event/go-live-now', function (req, res)
 {
   // Block publishing of event for internal user
+  if(req.session.liveOrNot == true)
+  {
+    res.redirect('/create-event/go-live');
+  }
   if(req.session.showPublishBlockingPage == true)
   {
+      req.session.showPublishBlockingPage  = false;
       res.redirect('/create-event/go-live-incomplete');
   }
   else
@@ -5062,6 +5072,22 @@ router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
 
   req.session.currentEventShowing = req.params.listitem;
 
+  if( req.session.liveOrNot == "true" )
+  {
+    console.log("zdifhsdfhlsdlf  zdad   \n" + req.session.showPublishBlockingPage + "\n\n");
+    req.session.showPublishBlockingPage = false;
+  }
+
+  console.log("zdifhsdfhlsdlf   \n" + req.session.showPublishBlockingPage );
+
+  console.log("\n  ACCESS LEVEL IS ss" + req.session.data['radio-link-access'] + "ss\n" );
+
+  if( req.session.data['radio-link-access'] != "Anyone on the web" && req.session.data['radio-link-access'] != "Only people we share the link with" )
+  {
+    req.session.data['radio-link-access'] = "Anyone on the web";
+  }
+
+
   console.log("the event NUMBER for summary  +++++++  "  + req.session.currentEventShowing);
 
   // Load data into working set
@@ -5160,7 +5186,28 @@ router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
 // VIEW SUMMARY PAGE FOR A PARTICULAR EVENT
 router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
 {
+    // this variable is saved as quoted text
   req.session.liveOrNot = req.params.liveevent;
+
+    console.log("live or now is   \n" + req.session.liveOrNot + "\n\n");
+
+  if( req.session.liveOrNot == "true" )
+  {
+      console.log("zdifhsdfhlsdlf  zdad   \n" + req.session.showPublishBlockingPage + "\n\n");
+    req.session.showPublishBlockingPage = false;
+  }
+
+  console.log("zdifhsdfhlsdlf   \n" + req.session.showPublishBlockingPage );
+
+  console.log("\n  ACCESS LEVEL IS ss" + req.session.data['radio-link-access'] + "ss\n" );
+
+  if( req.session.data['radio-link-access'] != "Anyone on the web" && req.session.data['radio-link-access'] != "Only people we share the link with" )
+  {
+      req.session.data['radio-link-access'] = "Anyone on the web";
+  }
+
+  console.log("\n  ACCESS LEVEL IS ss" + req.session.data['radio-access-level'] + "ss222\n" );
+
 
   console.log("the Live event   +++++++  "  + req.session.liveOrNot);
 
@@ -5468,6 +5515,14 @@ router.get('/create-event/change-attendees-monitoring', function (req, res)
 router.get('/make-draft-live', function (req, res)
 {
   var accessLeveMissing = false;
+
+  // If the event is already lie then go back to live page
+  if( req.session.liveOrNot == "true" )
+  {
+    res.redirect('/create-event/preview');
+  }
+
+
 
   // Check access level selected
   if(req.session.data['radio-link-access'] == undefined   ||  req.session.data['radio-link-access'] == ""  )
