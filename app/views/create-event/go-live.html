@@ -198,7 +198,14 @@
 
 
 		  <div class="form-group" style="margin-top:20px">
-			  <input type="submit" class="button" value="Make the event live">
+
+			  {% if session.liveOrNot == "true" %}
+			  		<input type="submit" class="button" value="Update event" formaction="/create-event/preview">
+			  {% else %}
+			  		<input type="submit" class="button" value="Make the event live">
+			  {% endif %}
+
+
 			  <!-- <p style="margin-top:25px"><a href="/create-event/tickets">I'll complete this later - I don't have this information yet</a></p>  -->
 		  </div>
 

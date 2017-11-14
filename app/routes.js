@@ -5088,7 +5088,10 @@ router.get('/summary-data/:listitem?/:liveevent?', function (req, res)
 
   if( req.session.data['radio-link-access'] != "Anyone on the web" && req.session.data['radio-link-access'] != "Only people we share the link with" )
   {
-    req.session.data['radio-link-access'] = "Anyone on the web";
+    if( req.session.liveOrNot == "true" )
+    {
+      req.session.data['radio-link-access'] = "Anyone on the web";
+    }
   }
 
 
@@ -5207,7 +5210,10 @@ router.get('/preview-data/:listitem?/:liveevent?', function (req, res)
 
   if( req.session.data['radio-link-access'] != "Anyone on the web" && req.session.data['radio-link-access'] != "Only people we share the link with" )
   {
+    if( req.session.liveOrNot == "true" )
+    {
       req.session.data['radio-link-access'] = "Anyone on the web";
+    }
   }
 
   console.log("\n  ACCESS LEVEL IS ss" + req.session.data['radio-access-level'] + "ss222\n" );
