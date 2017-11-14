@@ -1121,6 +1121,8 @@ router.get('/clear-current-event-data', function (req, res)
 
 router.get('/create-event/new', function (req, res)
 {
+  req.session.showPublishBlockingPage = true;
+
   req.session.data['event-title'] = undefined;
   req.session.data['start-hours'] = undefined;
   req.session.data['start-minutes'] = undefined;
@@ -1154,6 +1156,7 @@ router.get('/create-event/new', function (req, res)
 
 router.get('/create-event/', function (req, res)
 {
+
   res.redirect('/create-event/organiser');
 })
 
@@ -5772,6 +5775,11 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
   console.log("the Live event   +++++++  "  + req.session.liveOrNot);
 
   req.session.currentEventShowing = req.params.listitem;
+
+  if( req.session.data['radio-link-access'] != "Anyone on the web" && req.session.data['radio-link-access'] != "Only people we share the link with" )
+  {
+    req.session.data['radio-link-access'] = "Anyone on the web";
+  }
 
   console.log("the event NUMBER for preview  +++++++  "  + req.session.currentEventShowing);
 
