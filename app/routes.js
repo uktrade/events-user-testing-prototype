@@ -1122,6 +1122,7 @@ router.get('/clear-current-event-data', function (req, res)
 router.get('/create-event/new', function (req, res)
 {
   req.session.showPublishBlockingPage = true;
+  req.session.data['radio-link-access'] = "";
 
   req.session.data['event-title'] = undefined;
   req.session.data['start-hours'] = undefined;
@@ -5605,6 +5606,8 @@ router.get('/make-draft-live', function (req, res)
 // STORE NEW MONITOR LINK
 router.get('/monitor/add-tracking-link', function (req, res)
 {
+
+
   if(req.session.data['new-link-name'] === "")
   {
     console.log("the new link name is empty");
@@ -5775,6 +5778,8 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
   console.log("the Live event   +++++++  "  + req.session.liveOrNot);
 
   req.session.currentEventShowing = req.params.listitem;
+
+  req.session.showPublishBlockingPage = false;
 
   if( req.session.data['radio-link-access'] != "Anyone on the web" && req.session.data['radio-link-access'] != "Only people we share the link with" )
   {

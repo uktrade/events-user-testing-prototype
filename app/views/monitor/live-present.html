@@ -176,8 +176,20 @@ GOV.UK prototype kit
             <div class="tabs-panel" id="track-links" >
               <div class="tabs-panel-inner " style="margin-top:20px;">
 
+                <table style="width:100%;">
+                  <tr>
+                    <td style="font-weight:700; width:30%; padding-top:25px; padding-bottom:20px;";>Page visibility</td>
 
-                <p style="margin-top:30px; margin-bottom:0px;"><span class="bold">Page visibility:</span> {{ session.data['radio-link-access'] }}</p>
+                    <td style="padding-top:25px; padding-bottom:20px; width:70%;">
+                      <div style="display:flex;  justify-content: space-between;">
+                        <p style="margin-top:8px; margin-bottom:0px;">{{ session.data['radio-link-access'] }}</p>
+                        <div>
+                          <a href="/create-event/go-live-now">Change page visibility</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
 
                 {% include "includes/tracking-links.html" %}
 
