@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% set loggedIn = false %}
+{% set external_journey = true %}
+
+<!--
+  {% for key,value in data %}
+            <h4>{{ key }}{{ value }}</h4>
+            {% endfor %}
+-->
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header-event-page.html" %}
+
+<main id="content" role="main">
+	  <h1 class="heading-large" style="font-weight:400;" >
+		  Sign in or create an account
+      </h1>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+
+	  <form action="" method="post" class="form">
+
+		  <div class="form-group">
+			  <a href="/register/sign-in" class="button button-blue" >Sign in</a>
+		  </div>
+
+
+		  <p class="bold">Don't have an account yet?</p>
+
+		  <p  style="text-decoration: underline;"><a href="/register/business-name">Create an account</a></p>
+ <!-- Noscript content for added SEO -->
+<noscript><a href="https://www.eventbrite.co.uk/e/dit-meet-the-buyer-at-tradexpo-tickets-39948447883" rel="noopener noreferrer" target="_blank"></noscript>
+<!-- You can customize this button any way you like -->
+<button id="eventbrite-widget-modal-trigger-39948447883" class="link" type="button">Register and create an account</button>
+<noscript></a>Buy Tickets</noscript>
+
+<script src="https://www.eventbrite.co.uk/static/widgets/eb_widgets.js"></script>
+
+<script type="text/javascript">
+    var exampleCallback = function() {
+        console.log('Order complete!');
+        window.location.replace("confirmation-page");
+    };
+
+    window.EBWidgets.createWidget({
+        widgetType: 'checkout',
+        eventId: '39948447883',
+        modal: true,
+        modalTriggerElementId: 'eventbrite-widget-modal-trigger-39948447883',
+        onOrderComplete: exampleCallback
+    });
+</script>
+		  <p style="margin-bottom:15px;">By creating an account, you'll be able to:</p>
+
+		  <ul class="list list-bullet" style="margin-left:20px;">
+			  <li>sign up for and manage all other GREAT services with one single login</li>
+			  <li>quickly edit your event registration, schedule and personal details</li>
+			  <li>receive personalised industry insights and tips in your account dashboard</li>
+		  </ul>
+
+	  </form>
+
+    </div>
+
+<div class="column-one-third">
+	{% include "includes/basket.html" %} 
+</div>
+
+  </div>
+
+
+</main>
+
+
+{% include "includes/great-footer.html" %} 
+
+
+{% endblock %}
+
+
