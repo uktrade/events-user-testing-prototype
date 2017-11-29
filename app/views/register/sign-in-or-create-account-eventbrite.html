@@ -46,7 +46,7 @@
 <script type="text/javascript">
     var exampleCallback = function() {
         console.log('Order complete!');
-        window.location.replace("confirmation-page");
+        window.location.replace("confirmation-page?event_id=$event_id&order_id=$order_id");
     };
 
     window.EBWidgets.createWidget({
