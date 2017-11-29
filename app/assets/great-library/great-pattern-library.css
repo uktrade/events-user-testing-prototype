@@ -266,7 +266,7 @@ textarea.form-control {
 @media (min-width: 641px) {
     .multiple-choice {
         float: left;
-        padding-top: 7px;
+        padding-top: 4px;
         padding-bottom: 7px
     }
 }

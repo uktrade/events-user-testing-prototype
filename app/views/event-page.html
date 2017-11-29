@@ -1,0 +1,611 @@
+{% extends "layout.html" %}
+{% set loggedIn = false %}
+{% set external_journey = true %}
+
+<!--
+  {% for key,value in data %}
+            <h4>{{ key }}{{ value }}</h4>
+            {% endfor %}
+-->
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header-event-page.html" %}
+<!DOCTYPE html>
+<style type="text/css">
+  .partner-logos {
+    width:150px; height:60px;
+    margin-right: 20px;
+  }
+  body {background-color: white}
+  .list-item {margin-bottom: 10px !important}
+  a {text-decoration: underline}
+</style>
+
+
+  <div class="grid-row" style="max-width: 1200px; margin-left: auto; margin-right: auto; padding-top:30px">
+
+    <div class="column-two-thirds" style="width:60%; margin-right:70px; padding:0;">
+          <!-- EVENT title  -->
+          <!-- <div class="grey" style="margin:10px 0;font-size:16px;color:#666666">{{ data['organiser-name'] }}</div>  -->
+
+        <h1 class="bold-large">DIT ‘Meet the buyer’ at Tradexpo</h1>
+
+          <h2 class="font-lead">14  to 18 January 2018 in Paris</h2>
+
+
+          <br/>
+            <h3 style="font-size:18px;font-weight:normal">{{ data['summary-title'] }}</h3>
+          <br/>
+
+
+          <div>
+              <div>
+                  <h4 class="bold" style="font-size:16px;" align="">Sectors</h4>
+                  <p style="white-space: pre-line;">Clothing, footwear and fashion
+                      Creative and media
+                      Electronics and IT hardware
+                      Giftware, jewellery and tableware
+                      Retail and luxury
+                      Textiles, interior textiles and carpets
+                      Household goods, furniture and furnishings
+                      Education and training
+                      Legal services
+                  </p>
+              </div>
+              <div >
+                  <h4 class="bold" style="font-size:16px;" align="">Markets</h4>
+                  <p style="white-space: pre-line;">Germany
+                      France
+                      Italy
+                      Austria
+                      Switzerland
+                  </p>
+              </div>
+              <div >
+                  <h4 class="bold" style="font-size:16px;" align="">Export experience</h4>
+                  <p style="white-space: pre-line;">Occasionally exporting
+                      Regularly exporting
+                  </p>
+              </div>
+          </div>
+
+
+          <br/>
+          <div style="display: flex; flex-direction: row;" >
+              <a href="/register-for-event" class="button button-blue">Register to meet buyers</a>
+              <p style="padding-top:15px; margin-left: 25px; margin-bottom:0px; font-family: arial, helvetica, sans-serif; font-weight: 500; font-size: 18px;">Free</p>
+          </div>
+
+
+            <div style="margin-bottom:30px; margin-top:20px;">
+                <h4 class="bold-small">Eligibility</h4>
+                <p style="white-space: pre-line;" >You must also have a ticket to the tradeshow to meet buyers.</p>
+            </div>
+
+
+
+          <hr style="background-color:#DDD">
+
+            <!-- Buyers -->
+            <div style="margin-bottom:30px; margin-top:20px;">
+                <h4 class="bold-small">Buyers</h4>
+                <p style="white-space: pre-line;" >200 buyers to meet
+                Currently 28 buyers available . More buyers added each week</p>
+            </div>
+
+
+
+<style>
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #f8f8f8;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+
+    font-size:16px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion-accordian, button.accordion:hover
+{
+    background-color: #eee;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+
+div.panel-accordian
+{
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-style: solid;
+    border-left: 3px solid #00549f;
+    margin-bottom:1px;
+}
+
+</style>
+
+
+                <button class="accordion">Clothing, footwear and fashion buyers (2)</button>
+                <div class="panel-accordian">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Mr Bricolage</p>
+                            <p style="margin-top:0px;">France</p>
+
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Marie Dugary</p>
+                            <p style=" margin-top:0px;">Merchandising Director</p>
+                        </div>
+                        <!-- fill space -->
+                        <div style="flex-grow: 1;">
+                            <p></p>
+                        </div>
+
+                        <div style="margin:20px; display: flex; flex-direction: row; max-height:100px;">
+                            <div style="margin-right:20px; display: flex; justify-content: center; align-items: center; ">
+                                <img src="/public/images/mrbricolage-logo.png" style="max-width:200px; max-height:100px;">
+                            </div>
+                            <div style="text-align:right">
+                                <img src="/public/images/marieprofile.jpeg" style="width:100px;height:100px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="">Mr. Bricolage is a French retail chain offering home improvement and do-it-yourself goods.
+                        The company has around 80 shops and 435 franchise stores across France and also has operations across
+                        numerous European countries, as well as in South America and North Africa.</p>
+
+                    <hr style="background-color:#DDD">
+
+                </div>
+
+
+
+                <button class="accordion">Creative and media (5)</button>
+                <div class="panel-accordian">
+                    <p style="margin:20px;">To be added soon.</p>
+                </div>
+
+                <button class="accordion">Electronics and IT hardware (3)</button>
+                <div class="panel-accordian">
+                    <p style="margin:20px;">To be added soon.</p>
+                </div>
+
+                <button class="accordion">Giftware, jewellery and tableware (5)</button>
+                <div class="panel-accordian">
+                    <p style="margin:20px;">To be added soon.</p>
+                </div>
+
+                <button class="accordion">Retail and luxury (5)</button>
+                <div class="panel-accordian">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">LeClerc</p>
+                            <p style="margin-top:0px;">France</p>
+
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Bernard Le Blanc</p>
+                            <p style=" margin-top:0px;">Merchandising Director</p>
+                        </div>
+                        <!-- fill space -->
+                        <div style="flex-grow: 1;">
+                            <p></p>
+                        </div>
+
+                        <div style="margin:20px; margin-right:0px; display: flex; flex-direction: row; max-height:100px;">
+                            <div style="margin-right:20px; display: flex; justify-content: center; align-items: center; ">
+                                <img src="/public/images/eleclerc-logo.png" style="max-width:200px; max-height:100px;">
+                            </div>
+                            <div style="text-align:right">
+                                <img src="/public/images/eleclercprofile.jpg" style="width:100px;height:100px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="">E.Leclerc is a French cooperative society and hypermarket chain, headquartered in Ivry-sur-Seine.
+                        E.Leclerc was established on 1 January 1948. Leclerc currently has more than 500 locations in France and 114 stores outside of the country, as of 2012.</p>
+
+                    <hr style="background-color:#DDD">
+
+
+                    <div style="display: flex; flex-direction: row;">
+                        <div>
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Carrefour</p>
+                            <p style="margin-top:0px;">France</p>
+
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Noëlle Pierrick</p>
+                            <p style=" margin-top:0px;">Merchandising Director</p>
+                        </div>
+                        <!-- fill space -->
+                        <div style="flex-grow: 1;">
+                            <p></p>
+                        </div>
+
+                        <div style="margin:20px; margin-right:0px; display: flex; flex-direction: row; max-height:100px;">
+                            <div style="margin-right:20px; display: flex; justify-content: center; align-items: center; ">
+                                <img src="/public/images/carrefourlogo.jpg" style="max-width:200px; max-height:100px;">
+                            </div>
+                            <div style="text-align:right">
+                                <img src="/public/images/carrefourprofile.jpeg" style="width:100px;height:100px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="">Carrefour is a French multinational retailer headquartered in Boulogne Billancourt,
+                        France, in the Hauts-de-Seine Department near Paris. It is one of the largest hypermarket chains in the world (with 1,462 hypermarkets at the end of 2016).
+                        Carrefour operates in more than 30 countries, in Europe, the Americas, Asia and Africa.</p>
+
+
+                    <hr style="background-color:#DDD">
+
+
+                    <div style="display: flex; flex-direction: row;">
+                        <div>
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Casino</p>
+                            <p style="margin-top:0px;">France</p>
+
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Éloïse Marguerite</p>
+                            <p style=" margin-top:0px;">Merchandising Director</p>
+                        </div>
+                        <!-- fill space -->
+                        <div style="flex-grow: 1;">
+                            <p></p>
+                        </div>
+
+                        <div style="margin:20px; margin-right:0px; display: flex; flex-direction: row; max-height:100px;">
+                            <div style="margin-right:20px; display: flex; justify-content: center; align-items: center; ">
+                                <img src="/public/images/casinologo.png" style="max-width:200px; max-height:100px;">
+                            </div>
+                            <div style="text-align:right">
+                                <img src="/public/images/casinoprofile.jpg" style="width:100px;height:100px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="">Groupe Casino (or Casino Guichard-Perrachon) is a French mass retailer with operations around the world.
+                        The company is listed on the NYSE Euronext Paris stock exchange and its majority shareholder is Rallye SA.
+                        The company's head office is in Saint-Étienne.</p>
+
+
+                </div>
+
+                <button class="accordion">Textiles, interior textiles and carpets (3)</button>
+                <div class="panel-accordian">
+                    <p style="margin:20px;">To be added soon.</p>
+                </div>
+
+                <button class="accordion">Household goods, furniture and furnishings (3)</button>
+                <div class="panel-accordian">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Mr Bricolage</p>
+                            <p style="margin-top:0px;">Germany</p>
+
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Marie Dugary</p>
+                            <p style=" margin-top:0px;">Merchandising Director</p>
+                        </div>
+                        <!-- fill space -->
+                        <div style="flex-grow: 1;">
+                            <p></p>
+                        </div>
+
+                        <div style="margin:20px; display: flex; flex-direction: row; max-height:100px;">
+                            <div style="margin-right:20px; display: flex; justify-content: center; align-items: center; ">
+                                <img src="/public/images/mrbricolage-logo.png" style="max-width:200px; max-height:100px;">
+                            </div>
+                            <div style="text-align:right">
+                                <img src="/public/images/marieprofile.jpeg" style="width:100px;height:100px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="">Mr. Bricolage is a French retail chain offering home improvement and do-it-yourself goods.
+                        The company has around 80 shops and 435 franchise stores across France and also has operations across
+                        numerous European countries, as well as in South America and North Africa.</p>
+
+                    <hr style="background-color:#DDD">
+
+
+                    <div style="display: flex; flex-direction: row;">
+                        <div>
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Norma</p>
+                            <p style="margin-top:0px;">France</p>
+
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Nicole Papin</p>
+                            <p style=" margin-top:0px;">Merchandising Director</p>
+                        </div>
+                        <!-- fill space -->
+                        <div style="flex-grow: 1;">
+                            <p></p>
+                        </div>
+
+                        <div style="margin:20px; display: flex; flex-direction: row; max-height:100px;">
+                            <div style="margin-right:20px; display: flex; justify-content: center; align-items: center; ">
+                                <img src="/public/images/normalogo.png" style="max-width:200px; max-height:100px;">
+                            </div>
+                            <div style="text-align:right">
+                                <img src="/public/images/normalprofile.jpg" style="width:100px;height:100px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="">Norma is a German manufacturer of machine joining components, such as hose couplings, clamps and quick connectors.
+                        The company’s products are used in industries such as automotive, aviation, construction and shipping, and for purposes such as cooling,
+                        emission outputs, hoses, water pipes and sterile pharmaceuticals production.</p>
+
+
+                    <hr style="background-color:#DDD">
+
+
+                    <div style="display: flex; flex-direction: row;">
+                        <div>
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Leroy merlin</p>
+                            <p style="margin-top:0px;">France</p>
+
+                            <p class="bold" style=" margin-top:20px; margin-bottom:5px;">Geoffroy Mélody</p>
+                            <p style=" margin-top:0px;">Merchandising Director</p>
+                        </div>
+                        <!-- fill space -->
+                        <div style="flex-grow: 1;">
+                            <p></p>
+                        </div>
+
+                        <div style="margin:20px; display: flex; flex-direction: row; max-height:100px;">
+                            <div style="margin-right:20px; display: flex; justify-content: center; align-items: center; ">
+                                <img src="/public/images/leroylogo.png" style="max-width:200px; max-height:100px;">
+                            </div>
+                            <div style="text-align:right">
+                                <img src="/public/images/leroyprofile.jpeg" style="width:100px;height:100px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="">"Leroy Merlin is a French headquartered home improvement and gardening retailer serving several countries in Europe, Russia, Asia, South America and Africa.
+                        Generally established on the outskirts of major towns and cities, Leroy Merlin stores are large centres (9000 m2 on average) providing self-service and sales assisted services.
+                        Its business is centred on six main sectors: DIY, building, gardening, sanitary equipment, renewable energy, and interior decoration."</p>
+
+
+                </div>
+
+                <button class="accordion">Education and training (6)</button>
+                <div class="panel-accordian">
+                    <p style="margin:20px;">To be added soon.</p>
+                </div>
+
+                <button class="accordion">Legal services (5)</button>
+                <div class="panel-accordian">
+                    <p style="margin:20px;">To be added soon.</p>
+                </div>
+
+
+          <hr style="background-color:#DDD">
+
+
+          <div style="margin-bottom:50px;">
+              <h4 class="bold-small">Further details and background</h4>
+
+                  <p style="white-space: pre-wrap;" >DIT ‘Meet the buyer’ events exist to connect UK products and services with interested buyers from overseas.
+
+If your company exports - or if you’re interested in beginning to sell to new global markets - then ‘Meet the buyer’ events offer a great opportunity to meet face to face with potential suitors for your products and services.
+
+And if you’re a non UK based company interested in buying a particular product or service, ‘Meet the buyer’ events allow you to explore the British market for potential suppliers that can help with your requirements.
+
+<span class="bold">How it works</span>
+The concept is simple.
+
+DIT sources a selection of buyers to participate in a ‘Meet the buyer’ event.
+
+Once registered to attend, UK businesses can then request face to face meeting slots with any of these buyers over the course of the event.
+
+Buyers receive attendee meeting requests - and if they wish to meet, a meeting will be scheduled.
+
+On the day of the event, UK sellers meet up with international buyers. Both parties hopefully leave the event with a host of new contacts, promising leads - and ultimately, fresh business.
+                  </p>
+
+              <br/>
+
+
+              <div style="display: flex; flex-direction: row;" >
+                  <a href="/register-for-event" class="button button-blue">Register to meet buyers</a>
+                  <p style="padding-top:15px; margin-left: 25px; margin-bottom:0px; font-family: arial, helvetica, sans-serif; font-weight: 500; font-size: 18px;">Free</p>
+              </div>
+
+              <br/>
+              <hr style="background-color:#DDD">
+          </div>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="column-one-third" style="width:34%; margin:0px; padding:0px">
+
+      <div style="background-image:url('/public/images/nviteimage.png');
+                    height:270px;background-repeat: no-repeat; background-size: cover;
+                    background-position: center center;"></div>
+
+
+
+      <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
+
+          {% if session.data['date-error'] == true  %}
+              <h2>Date not yet entered</h2>
+          {% else %}
+              <ul style="margin-bottom:25px">
+                  <!-- <div class="bold-xsmall">Date and time</div>  -->
+                  <li>Sunday 14 to Thursday 18 January 2018</li>
+
+                  <li>9am to 5pm<br /></li>
+                  <p><a href="#">Add to calendar</a></p>
+              </ul>
+          {% endif %}
+
+
+
+
+          <div class="bold-xsmall" >Venue</div>
+
+                  <p style="white-space: pre-wrap; margin-bottom:5px">Palais des Expositions
+Carrefour Charles Lindbergh
+Le Bourget, Île-de-France</p>
+
+                  <p class="link-style"><a href="{{session.data['map-url']}}"  target="_blank">View on a map</a></p>
+
+                      <details>
+                          <summary>Parking and directions</summary>
+
+                          <div>On site parking for a fee.</div>
+                      </details>
+          </div>
+
+
+      <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
+          <ul>
+              <div class="bold-xsmall">Agenda</div>
+              <br>
+              <details>
+                  <summary class="summary">Day 1 - Sunday</summary>
+                  <div>
+                      <li>9:00 am - 10:00am<br>Speaker panel</li>
+                      <br>
+                      <li>10:00 am - 1:00 pm<br>Meet the buyer<br></li>
+                      <br>
+                      <li>1:00 pm - 2:00 pm<br>Lunch</li>
+                      <br>
+                      <li>2:00 pm - 7:00 pm<br>Meet the buyer</li>
+                      <br>
+                  </div>
+              </details>
+              <br>
+              <details>
+                  <summary class="summary">Day 2 - Monday</summary>
+                  <div>
+                      <li>9:00 am - 10:00am<br>Speaker panel</li>
+                      <br>
+                      <li>10:00 am - 1:00 pm<br>Meet the buyer<br></li>
+                      <br>
+                      <li>1:00 pm - 2:00 pm<br>Lunch</li>
+                      <br>
+                      <li>2:00 pm - 7:00 pm<br>Meet the buyer</li>
+                      <br>
+                  </div>
+              </details>
+              <br>
+              <details>
+                  <summary class="summary">Day 3 - Tuesday</summary>
+                  <div>
+                      <li>9:00 am - 10:00am<br>Speaker panel</li>
+                      <br>
+                      <li>10:00 am - 1:00 pm<br>Meet the buyer<br></li>
+                      <br>
+                      <li>1:00 pm - 2:00 pm<br>Lunch</li>
+                      <br>
+                      <li>2:00 pm - 7:00 pm<br>Meet the buyer</li>
+                      <br>
+                  </div>
+              </details>
+              <br>
+              <details>
+                  <summary class="summary">Day 4 - Wednesday</summary>
+                  <div>
+                      <li>9:00 am - 10:00am<br>Speaker panel</li>
+                      <br>
+                      <li>10:00 am - 1:00 pm<br>Meet the buyer<br></li>
+                      <br>
+                      <li>1:00 pm - 2:00 pm<br>Lunch</li>
+                      <br>
+                      <li>2:00 pm - 7:00 pm<br>Meet the buyer</li>
+                      <br>
+                  </div>
+              </details>
+              <br>
+              <details>
+                  <summary class="summary">Day 5 - Thursday</summary>
+                  <div>
+                      <li>9:00 am - 10:00am<br>Speaker panel</li>
+                      <br>
+                      <li>10:00 am - 1:00 pm<br>Meet the buyer<br></li>
+                      <br>
+                      <li>1:00 pm - 2:00 pm<br>Lunch</li>
+                      <br>
+                      <li>2:00 pm - 7:00 pm<br>Meet the buyer</li>
+                      <br>
+                  </div>
+              </details>
+
+
+          </ul>
+      </div>
+
+
+      <div class="panel" style="background-color: #F5F2ED; border: 1px solid #DFD5C5; border-top-color: #132965; border-top-width: 8px; margin-bottom:30px;">
+          <ul>
+              <div class="bold-xsmall">Organiser</div>
+
+
+                <li style="white-space: pre-wrap; margin-bottom:5px;">Department for International Trade</li>
+
+                <li>Phone: +44 207 864 254</li>
+
+                <li>Email: dit-paris@dit.events.digital.gov.uk</li>
+
+
+
+          </ul>
+      </div>
+
+
+    </div>
+
+
+    </div>
+
+
+
+  </div>
+
+{% include "includes/great-footer.html" %}
+
+{% endblock %}
+
+{% block page_scripts %}
+
+<script>
+    var htmlString = $('#event-description').text();
+    $('#event-description').html(htmlString);
+
+
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }
+    }
+</script>
+
+
+{% endblock %}
