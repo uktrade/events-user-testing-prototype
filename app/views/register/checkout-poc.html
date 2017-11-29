@@ -1,0 +1,268 @@
+{% extends "layout.html" %}
+{% if loggedIn == undefined %}
+{% set loggedIn = false %}
+{% endif %}
+{% set external_journey = true %}
+
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+{% include "includes/great-header.html" %} 
+
+
+
+              <!-- Noscript content for added SEO -->
+<noscript><a href="https://www.eventbrite.co.uk/e/dit-meet-the-buyer-at-tradexpo-tickets-39948447883" rel="noopener noreferrer" target="_blank"></noscript>
+<!-- You can customize this button any way you like -->
+<button id="eventbrite-widget-modal-trigger-39948447883" type="button">Buy Tickets</button>
+<noscript></a>Buy Tickets on Eventbrite</noscript>
+
+<script src="https://www.eventbrite.co.uk/static/widgets/eb_widgets.js"></script>
+
+<script type="text/javascript">
+    var exampleCallback = function() {
+        console.log('Order complete!');
+    };
+
+    window.EBWidgets.createWidget({
+        widgetType: 'checkout',
+        eventId: '39948447883',
+        modal: true,
+        modalTriggerElementId: 'eventbrite-widget-modal-trigger-39948447883',
+        onOrderComplete: exampleCallback
+    });
+</script>
+
+{% macro createYesOrNoQuestion(id, question, type, values) %}
+<input type="hidden" name="question--{{id}}" value="{{question}}">
+<input type="hidden" name="question--{{id}}" value="{{type}}">
+
+{% if (type === "yes-or-no") %}
+	<div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
+
+	  <label class="form-label" for="question--{{id}}">
+		  {{question}}
+		  {% if errorQuestionEmpty %}
+					<span class="error-message">
+						Attendee question missing
+					</span>
+		  {% endif %}
+	  </label>
+
+	  <fieldset class="inline">
+		<div class="multiple-choice">
+		  <input id="radio-inline-1" type="radio" name="question--{{id}}" value="Yes">
+		  <label for="radio-inline-1">Yes</label>
+		</div>
+		<div class="multiple-choice">
+		  <input id="radio-inline-2" type="radio" name="question--{{id}}" value="No">
+		  <label for="radio-inline-2">No</label>
+		</div>
+	  </fieldset>
+	</div>
+
+
+{% elif (type == "long") %}
+	  <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
+		  <label class="form-label" for="question--{{id}}">
+			  {{question}}
+			  {% if errorQuestionEmpty %}
+						<span class="error-message">
+							Attendee question missing
+						</span>
+			  {% endif %}
+		  </label>
+		  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+			  <textarea class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+					 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" ></textarea>
+		  </div>
+	  </div>
+
+
+{% elif (type == "short") %}
+	<div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+		  <label class="form-label" for="question--{{id}}">
+			  {{question}}
+			  {% if errorQuestionEmpty %}
+						<span class="error-message">
+							Attendee question missing
+						</span>
+			  {% endif %}
+		  </label>
+		  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
+			  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+					 id="question--{{QuestionsCounter}}" name="question--{{id}}" value="" style="width:30%;">
+		  </div>
+	  </div>
+
+
+{% elif (type == "multiple") %}
+	<div class="form-group">
+			 
+		  <label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
+		  <fieldset>
+		  {% for value in values %}
+			  <div class="multiple-choice">
+				<input id="answer{{id}}" name="question--{{id}}" type="checkbox" value="{{value}}">
+				<label for="{{ value }}">{{ value }}</label>
+			  </div>
+		  {% endfor %}
+		</fieldset>
+
+	</div>
+
+
+{% elif (type == "multiple-radio") %}
+	<div class="form-group">
+
+		<label class="form-label" for="question--{{id}}" style="margin-bottom:5px; ">{{question}}</label>
+		<fieldset>
+			{% for value in values %}
+			<div class="multiple-choice">
+				<input id="answer{{id}}" name="question--{{id}}" type="radio" value="{{value}}">
+				<label for="{{ value }}">{{ value }}</label>
+			</div>
+			{% endfor %}
+		</fieldset>
+
+	</div>
+
+{% endif %}
+
+
+{% endmacro %}
+
+
+
+
+
+
+
+<main id="content" role="main">
+<h1 class="heading-large" style="font-weight:400;">
+		  Registration questions
+      </h1>
+
+	<div class="grid-row">
+    <div class="column-two-thirds">
+
+		<details role="group" style="margin-bottom:20px;">
+			<summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:5px;">
+				<span class="summary">Why are we asking this?</span></summary>
+
+			<div class="" id="details-content-0" aria-hidden="true"
+				 style="margin-top:0px; margin-bottom:30px; padding: 10px 0px 10px 15px; border-left:5px; border-style: solid;  border-left-color: #999">
+
+				<p style="white-space: pre-wrap; margin-bottom:5px">This information helps us to better understand who will be attending this event.
+					<br>We may use it to tailor event content around your needs, to check that this event is a good match for you, or to cater for any special requirements you have.</p>
+			</div>
+		</details>
+
+
+	  <!--  BREADCRUMB  -->
+	  <div class="breadcrumbs">
+		
+	  </div>
+
+
+	  <!-- CONDITIONAL ERROR  -->
+		{% if errorQuestions %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Missing fields
+			</h2>
+
+			<p>
+				Please check the following errors and try again
+			</p>
+
+			{% if errorNewQuestionEmpty %}
+				<ul class="error-summary-list">
+					<li><a href="#previous-questions">Need select a new question or a previous question</a></li>
+				</ul>
+			{% endif %}
+
+			{% if errorQuestionEmpty %}
+				<ul class="error-summary-list">
+					<li><a href="#show-answer-type">Need to enter the question</a></li>
+				</ul>
+			{% endif %}
+
+			{% if errorAnswerTypeEmpty %}
+				<ul class="error-summary-list">
+					<li><a href="#answer-types">Need to select the type of answers for their question</a></li>
+				</ul>
+			{% endif %}
+
+			{% if errorAnswersError %}
+			<ul class="error-summary-list">
+				<li><a href="#show-answers">You need to enter at least 2 answers</a></li>
+			</ul>
+			{% endif %}
+
+
+
+		</div>
+      {% endif %}
+
+
+
+	 
+	  <form action="/create-event/question-onwards" method="get" class="form">
+
+
+			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
+			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
+			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
+			  									(errorAnswersError == undefined or errorAnswersError == false) %}
+			  								 js-hidden
+			  							  {% endif %}"
+						id="show-answer-type">
+
+						<!--
+						{{ createYesOrNoQuestion(1, "Long title", "long") }}
+
+						{{ createYesOrNoQuestion(2, "Short title", "short") }}
+
+						{{ createYesOrNoQuestion(3, "Yes or no title", "yes-or-no") }}
+
+						{{ createYesOrNoQuestion(4, "Multiple title ", "multiple", ["value1", "value2"]) }}
+				  -->
+				  <!-- {{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}  -->
+                  <!-- {{ createYesOrNoQuestion(2, "What is your latest annual turnover?", "multiple-radio", ["£0 to £100,000", "£100,000 to £500,000", "£500,000 to £1,000,000", "Above £1,000,000"])  }}  -->
+						{{ createYesOrNoQuestion(1, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
+
+			  </fieldset>
+
+
+	  <div class="form-group">
+		  <input type="submit" class="button button-blue" formaction="/register/check-your-answers" value="Continue">
+	  </div>
+
+
+
+	  </form>
+
+    </div>
+
+
+	<div class="column-one-third">
+		{% include "includes/basket.html" %}
+	</div>
+
+
+  </div>
+
+
+</main>
+
+{% include "includes/great-footer.html" %} 
+
+
+{% endblock %}
+
+
