@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+
+
+
+<style>
+
+    @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");html{box-sizing:border-box}*,*::after,*::before{box-sizing:inherit}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font:inherit;font-size:100%;margin:0;padding:0;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after{content:'';content:none}q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}.text--left{text-align:left}.text--center{text-align:center}.text--right{text-align:right}.push{margin:20px}.push--top{margin-top:20px}.push--right{margin-right:20px}.push--bottom{margin-bottom:20px}.push--left{margin-left:20px}.push--ends{margin-bottom:20px;margin-top:20px}.push--sides{margin-left:20px;margin-right:20px}.push-half{margin:10px}.push-half--top{margin-top:10px}.push-half--right{margin-right:10px}.push-half--bottom{margin-bottom:10px}.push-half--left{margin-left:10px}.push-half--ends{margin-bottom:10px;margin-top:10px}.push-half--sides{margin-left:10px;margin-right:10px}.flush{margin:0}.flush--top{margin-top:0}.flush--right{margin-right:0}.flush--bottom{margin-bottom:0}.flush--left{margin-left:0}.flush--ends{margin-bottom:0;margin-top:0}.flush--sides{margin-left:0;margin-right:0}.soft{padding:20px}.soft--top{padding-top:20px}.soft--right{padding-right:20px}.soft--bottom{padding-bottom:20px}.soft--left{padding-left:20px}.soft--ends{padding-bottom:20px;padding-top:20px}.soft--sides{padding-left:20px;padding-right:20px}.soft-half{padding:10px}.soft-half--top{padding-top:10px}.soft-half--right{padding-right:10px}.soft-half--bottom{padding-bottom:10px}.soft-half--left{padding-left:10px}.soft-half--ends{padding-bottom:10px;padding-top:10px}.soft-half--sides{padding-left:10px;padding-right:10px}.hard{padding:0}.hard--top{padding-top:0}.hard--right{padding-right:0}.hard--bottom{padding-bottom:0}.hard--left{padding-left:0}.hard--ends{padding-bottom:0;padding-top:0}.hard--sides{padding-left:0;padding-right:0}.cf:after{clear:both;content:'';display:table}.image-full{width:100%}.hide{display:none}@media screen and (max-width: 767px){.hide-mobile{display:none}}.show{display:block}.float--right{float:right}.float--left{float:left}.float--none{float:none}.visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;left:-9999em;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.overflow--hidden{overflow:hidden}.navigation-main a,.footer a{color:#fff}.list-separators li:after,.navigation-toggle-middle,.footer-links--border,.footer-middle-section,.footer .footer-bottom{color:#756e8f;color:rgba(250,250,250,0.5)}hr.white{background-color:#756e8f;background-color:rgba(250,250,250,0.5)}.navigation-toggle-item a{border-color:#756e8f;border-color:rgba(250,250,250,0.5)}.navigation-login a:hover:after{border-top:3px solid #e41f13;content:'';left:0;position:absolute;top:-8px;width:100%}body{font-size:16px;letter-spacing:0;line-height:23px;background-color:#fafafa;color:#333;font-family:"Roboto",arial,helvetica,sans-serif;position:relative}body,.font-light{font-weight:300}.font-regular,.link{font-weight:400}.h1,.font-medium,h1,h2,h3,h4,h5,h6,strong,.button{font-weight:500}.font-base,blockquote{font-size:16px}.h1{font-size:48px;letter-spacing:-1px;line-height:58px}@media screen and (min-width: tablet){.h1{font-size:32px;font-weight:500}}@media screen and (min-width: mobile){.h1{font-size:30px;margin-bottom:0}}.h2{font-size:32px;letter-spacing:-.6px;line-height:40px}.h3{font-size:24px;letter-spacing:0;line-height:32px}@media screen and (min-width: mobile){.h3{font-size:19px}}.font-large,.h4,.button,.button-close:before{font-size:18px;letter-spacing:0;line-height:25px}.font-white{color:#fff}.font-brand{color:#333}.font-purple{color:#4f0b7b}.font-light-grey{color:#dce0df}.font-small{font-size:15px}.font-xsmall{font-size:14px;letter-spacing:normal;line-height:14px}blockquote{line-height:25px}hr{background-color:#4f0b7b;border:0;display:block;height:1px;padding:0}p{margin-bottom:23px}p.font-large{margin-bottom:25px}.outer-container{max-width:1200px;margin-left:auto;margin-right:auto}.outer-container::after{clear:both;content:"";display:block}@media screen and (max-width: 1200px){.outer-container{margin:0 30px}}@media screen and (max-width: 959px) and (min-width: 768px){.outer-container{margin:0 20px}}@media screen and (max-width: 767px){.outer-container{margin:0 10px}}.col-1{float:left;display:block;margin-right:1.53846%;width:6.92308%}.col-1:last-child{margin-right:0}.col-2{float:left;display:block;margin-right:1.53846%;width:15.38462%}.col-2:last-child{margin-right:0}.col-3{float:left;display:block;margin-right:1.53846%;width:23.84615%}.col-3:last-child{margin-right:0}.col-4{float:left;display:block;margin-right:1.53846%;width:32.30769%}.col-4:last-child{margin-right:0}.col-5{float:left;display:block;margin-right:1.53846%;width:40.76923%}.col-5:last-child{margin-right:0}.col-6{float:left;display:block;margin-right:1.53846%;width:49.23077%}.col-6:last-child{margin-right:0}.col-7{float:left;display:block;margin-right:1.53846%;width:57.69231%}.col-7:last-child{margin-right:0}.col-8{float:left;display:block;margin-right:1.53846%;width:66.15385%}.col-8:last-child{margin-right:0}.col-9{float:left;display:block;margin-right:1.53846%;width:74.61538%}.col-9:last-child{margin-right:0}.col-10{float:left;display:block;margin-right:1.53846%;width:83.07692%}.col-10:last-child{margin-right:0}.col-11{float:left;display:block;margin-right:1.53846%;width:91.53846%}.col-11:last-child{margin-right:0}.col-12{float:left;display:block;margin-right:1.53846%;width:100%}.col-12:last-child{margin-right:0}.omega{margin-right:0}.background--great-blue{background-color:#1e1348}.background--flag-red{background-color:#b00d23}.background--stone{background-color:#dfd5c5}.background--dark-white{background-color:#fafafa}.background--grey{background-color:#333}.background--mid-grey{background-color:#999}.background--light-grey{background-color:#dce0df}.background--purple{background-color:#4f0b7b}.background--mid-blue{background-color:#00549f}.background--aqua{background-color:#007ea3}.background--dark-navy{background-color:#160d37}.background--dark-blue{background-color:#132965}.background--light-blue{background-color:#00549f}.background--light-aqua{background-color:#8ae2fb}.background--great-red{background-color:#e41f13}.background--white{background-color:#fff}a{text-decoration:none}a:focus{outline:3px solid #ffbf47}.link{border-bottom:1px solid;color:#00549f;text-decoration:none}.link:hover{border-bottom:1px dashed;color:#007ea3;margin-bottom:-1px}.link--grey{border-bottom:0;color:#dce0df}.link--grey:hover{color:#dce0df}.link--white{border-bottom:0;color:#fff}.link--white:hover{color:#fff}.logo-hmg{display:block}.logo-hmg img{display:block}.list{margin-bottom:20px;margin-top:5px;padding:0}.list-item{margin-bottom:13px;padding-left:20px;position:relative}@media screen and (max-width: 767px){.list-item{font-size:15px}}.list-item:before{color:#1e1348;content:'\25CF';left:0;margin-right:10px;position:absolute}.list-inline li{display:inline-block}@media screen and (max-width: 767px){.list-inline li.hide-mobile{display:none}}.list-separators{font-size:0}.list-separators li{position:relative}.list-separators li:after{content:'|';font-size:20px;position:absolute;right:-1px;top:0}.list-separators li:last-child:after,.list-separators li:nth-child(3):after{content:''}.button-blue{background-color:#00549f;color:#fff;outline:0}.button-blue:link,.button-blue:visited{background-color:#00549f;color:#fff}.button-blue:hover{background-color:#132965;color:#fff}.button-blue:active{background-color:#007ea3;outline:0}.button-blue:focus{outline:3px solid #ffbf47}.button-red{background-color:#b00d23;color:#fff;outline:0}.button-red:link,.button-red:visited{background-color:#00549f;color:#fff}.button-red:hover{background-color:#132965;color:#fff}.button-red:active{background-color:#007ea3;outline:0}.button-red:focus{outline:3px solid #ffbf47}.button-border{background-color:transparent;color:#00549f;outline:0}.button-border:link,.button-border:visited{background-color:transparent;color:#007ea3}.button-border:hover{background-color:transparent;color:#007ea3}.button-border:active{background-color:#007ea3;outline:0}.button-border:focus{outline:3px solid #ffbf47}.button{border:0;border-radius:3px;box-shadow:none;cursor:pointer;display:inline-block;font-family:"Roboto",arial,helvetica,sans-serif;padding:12px 30px;text-decoration:none}.button-large{font-size:24px;padding:15px 35px}.button-close{background-color:transparent;font-weight:300;padding:0}.button-close:hover{background-color:transparent}.button-close:before{color:#b00d23;content:'X';font-size:24px;left:-35px;top:-5px}.button-border{border:2px solid;padding-bottom:10px;padding-top:10px}@media screen and (min-width: mobile){.button{font-size:18px;padding:14px;text-align:center;width:100%}}.icon-menu{background-image:url("/static/icons/menu.c6941f82c372.svg")}.icon-sign-in{background-image:url("/static/icons/signin.c1e2cba09cee.svg")}.icon-sign-out{background-image:url("/static/icons/signout.5767070ce3a5.svg")}.icon{background-position:0 0;background-repeat:no-repeat;display:inline-block}.icon--left{float:left;height:21px;left:0;margin-right:10px;position:relative;width:22px}input:focus,textarea:focus,select:focus{outline:3px solid #ffbf47}.navigation a{display:block}.navigation-main-section{position:relative}.navigation-main li:after{top:7px}.navigation-main a{font-size:15px}.navigation-main-link{margin:3px;outline:3px solid #00549f;padding:5px 8px 4px}.navigation-main-link:hover:after,.navigation-main-link--active:after{border-top:3px solid #e41f13;content:'';left:0;position:absolute;top:0;width:100%}.navigation-main-link--secondary{outline:3px solid #132965}.navigation-main-menu{overflow-x:hidden;padding-right:70px;white-space:nowrap}@media screen and (max-width: 767px){.navigation-main-menu{display:none}}.navigation-main-menu::-webkit-scrollbar{display:none}.navigation-toggle{padding:28px 0 50px}.navigation-toggle-item{padding:13px 0 0;position:relative}.navigation-toggle-item:first-child{padding-top:0}@media screen and (max-width: 767px){.navigation-toggle-item:first-child{padding-top:13px}}.navigation-toggle-item a{display:inline}.navigation-toggle-item a.last{border:0}.navigation-toggle-item a.navigation-toggle-active,.navigation-toggle-item a:hover{border-bottom-width:1px;border-style:dashed;padding-bottom:2px}@media screen and (max-width: 767px){.navigation-toggle-item a.navigation-toggle-active,.navigation-toggle-item a:hover{border-style:solid;display:block;padding-bottom:10px}.navigation-toggle-item a.navigation-toggle-active:after,.navigation-toggle-item a:hover:after{border-bottom:10px solid transparent;border-left:15px solid #e41f13;border-top:10px solid transparent;content:'';height:0;left:0;position:absolute;top:15px;width:0}}@media screen and (max-width: 767px){.navigation-toggle-item a{border-bottom-width:1px;border-style:solid;display:block;padding-bottom:10px}.navigation-toggle-item a.navigation-toggle-active.last,.navigation-toggle-item a:hover.last{border:0}}.navigation-toggle-item-last{border:0}@media screen and (max-width: 767px){.navigation-toggle-item{padding-left:25px}}@media screen and (max-width: 767px){.navigation-toggle-services{background-color:#00549f;font-weight:500}}.navigation-toggle-services-section{padding-left:10px}@media screen and (max-width: 767px){.navigation-toggle-services-section{padding-left:0}}@media screen and (max-width: 767px){.navigation-toggle .outer-container{margin:0;width:100%}}@media screen and (max-width: 767px){.navigation-toggle{padding:0}.navigation-toggle .col-3{float:left;display:block;margin-right:1.53846%;width:100%}.navigation-toggle .col-3:last-child{margin-right:0}}.navigation-toggle-middle{border-left:1px;border-style:solid;min-height:100px;padding-left:20px}@media screen and (max-width: 767px){.navigation-toggle-middle{border:0;min-height:inherit;padding:0}}.navigation-main-button{background-color:#00549f;border-left:2px solid #000;border-radius:0;font-size:15px;font-weight:400;padding:8px 10px 5px;position:absolute;right:0;top:0}.navigation-main-button .icon{height:12px;line-height:15px;margin-right:2px;top:1px;width:25px}@media screen and (max-width: 767px){.navigation-main-button{background:transparent;border:1px solid;border-color:#756e8f;border-color:rgba(250,250,250,0.5);top:-50px}}.navigation-main-button:hover,.navigation-main-button--open{background-color:#160d37;border-top:3px solid #e41f13;bottom:0;display:block;padding-top:5px}@media screen and (max-width: 767px){.navigation-main-button:hover,.navigation-main-button--open{border-bottom:0;border-left:0;border-right:0}}.navigation-strip{padding:8px 0 3px}.navigation-strip a{font-size:14px;padding:0 5px 0 2px}@media screen and (max-width: 767px){.navigation-strip{float:left;display:block;margin-right:1.53846%;width:100%}.navigation-strip:last-child{margin-right:0}}.navigation-logo-link{margin-bottom:3px}.navigation-logo{padding:17px 0 4px}@media screen and (max-width: 767px){.navigation-logo{width:70%}}.navigation-skip-to a{left:-9999em;position:absolute}.navigation-skip-to a:focus{left:0;position:relative}.navigation-skip-to:after{display:none}@media screen and (max-width: 767px){.navigation-login li{padding-right:0}.navigation-login li .icon{margin-right:0}.navigation-login li:after{content:none}.navigation-login a{padding:0}}.js-enabled .navigation-toggle{display:none}.js-enabled .navigation-toggle--open{display:block}.footer{font-size:15px;padding-top:40px}.footer-logo{width:200px}@media screen and (max-width: 959px) and (min-width: 768px){.footer-logo{width:170px}}@media screen and (max-width: 767px){.footer-logo{width:150px}}.footer-links{padding-left:10px}@media screen and (max-width: 767px){.footer-links li{padding-bottom:10px}}.footer-links a:hover{border-bottom:1px dashed #fff;padding-bottom:2px}@media screen and (max-width: 767px){.footer-links--border{border-left:1px;border-style:solid;padding-left:20px}}.footer-middle-section{border-left:1px;border-right:1px;border-style:solid;padding-left:20px}@media screen and (max-width: 767px){.footer-middle-section{border:0;padding-left:0}}.footer-section{float:left;display:block;margin-right:1.53846%;width:49.23077%}.footer-section:last-child{margin-right:0}@media screen and (max-width: 959px) and (min-width: 768px){.footer-section .col-8,.footer-section .col-4{float:left;display:block;margin-right:1.53846%;width:49.23077%}.footer-section .col-8:last-child,.footer-section .col-4:last-child{margin-right:0}}@media screen and (max-width: 767px){.footer-section{float:left;display:block;margin-right:1.53846%;width:100%;border-bottom:1px solid;color:#756e8f;color:rgba(250,250,250,0.5);padding:20px 0}.footer-section:last-child{margin-right:0}.footer-section .col-8,.footer-section .col-4{float:left;display:block;margin-right:1.53846%;width:49.23077%}.footer-section .col-8:last-child,.footer-section .col-4:last-child{margin-right:0}}.footer-section-right li{padding-left:40px;padding-right:5px}@media screen and (max-width: 767px){.footer-section-right li{padding-left:0}}@media screen and (max-width: 1200px){.footer-section-right li{padding-left:0}}@media screen and (max-width: 959px) and (min-width: 768px){.footer-section-right .col-6:nth-child(1){float:left;display:block;margin-right:1.53846%;width:57.69231%}.footer-section-right .col-6:nth-child(1):last-child{margin-right:0}.footer-section-right .col-6:nth-child(2){float:left;display:block;margin-right:1.53846%;width:40.76923%}.footer-section-right .col-6:nth-child(2):last-child{margin-right:0}}@media screen and (max-width: 767px){.footer-section-right{margin-bottom:10px}}.footer-copy{text-align:right}@media screen and (max-width: 767px){.footer-copy{float:left;display:block;margin-right:1.53846%;width:100%;padding:10px 0 20px;text-align:center}.footer-copy:last-child{margin-right:0}}@media screen and (max-width: 767px){.footer .list-separators li{float:left;display:block;margin-right:1.53846%;width:49.23077%}.footer .list-separators li:last-child{margin-right:0}.footer .list-separators li:after{content:''}}.footer .footer-bottom{border-top:1px solid;margin-top:60px;padding-bottom:20px;padding-top:10px}@media screen and (max-width: 767px){.footer .footer-bottom{border:0;margin-top:0}}@media screen and (max-width: 767px){.footer{padding-top:0}}
+
+
+
+    body {
+        background-color: #ffffff;
+    }
+
+    @media (max-width: 979px) {
+        padding: 0;
+        .container {
+            max-width: 960px;
+            padding: 0 20px;
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 979px) {
+        .container {
+            max-width: 960px;
+            width: 100%;
+        }
+    }
+
+    .button-primary {
+        background-color: #e41f13;
+        color: #ffffff;
+        font-size: 24px;
+    }
+
+    .button {
+        border: 0;
+        border-radius: 3px;
+        box-shadow: none;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Roboto",arial,helvetica,sans-serif;
+        padding: 12px 30px;
+        text-decoration: none;
+    }
+
+    .button-border {
+        border: 2px solid;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    .button-border:active {
+        background-color: #ffffff;
+    }
+    .button-border:active {
+        background-color: #007ea3;
+        outline: 0;
+    }
+    .button-border:hover {
+        background-color: transparent;
+        color: #007ea3;
+    }
+    .button-border:link, .button-border:visited {
+        background-color: transparent;
+        color: #007ea3;
+    }
+    .button-border:focus {
+        outline: 3px solid #ffbf47;
+    }
+
+    a:focus {
+        outline: 3px solid #ffbf47;
+    }
+
+    .link {
+        border-bottom: 1px solid;
+        color: #00549f;
+        text-decoration: none;
+    }
+
+    .font-large, .h4, .button, .button-close:before {
+        font-size: 18px;
+        letter-spacing: 0;
+        line-height: 25px;
+    }
+
+    .h1, .font-medium, h1, h2, h3, h4, h5, h6, strong, .button {
+        font-weight: 500;
+    }
+
+    .button-border:active {
+        background-color: #ffffff;
+    }
+
+    .button.navigation-main-button {
+        padding: 8px 10px 5px;
+    }
+
+    .information-breakout {
+        background-image: url("/static/images/EiG_Profile_welcome_pointed_hand_grey.b68ccad279a7.png");
+        background-position: 20px 20px;
+        background-repeat: no-repeat;
+        border: #979797 solid 1px;
+        color: #4a4a4a;
+        letter-spacing: -0.2px;
+        min-height: 90px;
+        padding: 20px 20px 20px 80px;
+    }
+
+    .sso-profile-tab-container {
+        margin-top: 30px;
+        background-color: #F0F3F2;
+    }
+
+    .sso-profile-tab-container ul {
+        padding-left: 0;
+    }
+
+    .sso-profile-tab-container li.active {
+        background-color: white;
+        border-top: 5px solid #E41F13;
+    }
+
+    .sso-profile-tab-container li a {
+        display: block;
+        font-weight: bold;
+        color: #363636;
+        padding: 20px;
+    }
+
+    .sso-profile-toolbar-labels-container {
+        margin-top: 10px;
+    }
+
+    .sso-profile-toolbar-buttons-container {
+        margin-top: 30px;
+        text-align: right;
+    }
+
+    .sso-profile-toolbar-buttons-container .button,
+    .sso-profile-toolbar-buttons-container .link {
+        font-size: 16px;
+        margin-left: 20px;
+    }
+
+    /* Shared tab content
+     **********************/
+    #tab-content {
+        padding-top: 40px;
+    }
+
+    #tab-content .span3:first-child {
+        min-height: 1px; /* avoids area appearing to collapse */
+        width: 220px;
+    }
+
+    #tab-content h2 {
+        font-size: 36px;
+        line-height: 1.1em;
+        margin-bottom: 20px;
+    }
+
+    #tab-content li {
+        list-style-type: disc;
+        margin: 0 0 10px 20px;
+        padding-left: 15px;
+    }
+
+    #tab-content section {
+        margin-bottom: 156px;
+    }
+
+    #tab-content ul {
+        margin-bottom: 30px;
+    }
+
+    /* FAB tab content
+     **********************/
+
+    #profile-required ul {
+        padding: 0;
+    }
+    .sso-profile-fab-container {
+        margin-top: 20px;
+        margin-bottom: 100px;
+    }
+
+    .sso-profile-success-message {
+        background: #28a197;
+        padding: 20px;
+        margin-top: 20px;
+        color: white;
+        font-size: 18px;
+    }
+
+    .sso-profile-fab-logo-container {
+        position: relative;
+    }
+
+    .sso-profile-fab-logo-edit-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #00549f;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .sso-profile-fab-company-name {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.29;
+        color: #4a4a4a;
+    }
+
+    .sso-profile-external-links {
+        margin-top: 20px;
+    }
+
+    .sso-profile-external-links a {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.56;
+        color: #00549f;
+    }
+
+    .sso-profile-fab-company-links-seperator {
+        display: inline-block;
+        font-size: 20px;
+        color: #999999;
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+
+    /* EiG tab content
+     **********************/
+    .sso-profile-eig-title {
+        font-size: 36px;
+        font-weight: 500;
+        line-height: 1.29;
+        color: #4a4a4a;
+        margin-bottom: 40px;
+    }
+
+    #sso-profile-eig-buttons a,
+    #sso-profile-eig-buttons span {
+        text-align: center;
+        padding: 20px;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 500;
+        color: #333333;
+        width: 100%;
+    }
+
+    .sso-profile-eig-button-active {
+        border: 1px solid #979797;
+        border-right: 0;
+        height: 63px;
+        background-color: white;
+    }
+
+    .sso-profile-eig-button-inactive {
+        border: 1px solid #979797;
+        height: 63px;
+        background-color: rgba(220, 224, 223, 0.4);
+    }
+
+    #sso-profile-eig-button-applications {
+        border-bottom: 0;
+    }
+
+    .sso-profile-eig-opportunity-item {
+        border-bottom: solid 1px #999999;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+
+    .sso-profile-eig-opportunity-item:last-child {
+        border-bottom-width: 0;
+        padding-bottom: 0;
+        margin-bottom: 50px;
+    }
+
+    .sso-profile-eig-opportunity-item-title {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.29;
+        color: #00549f;
+        margin-bottom: 17px;
+    }
+
+    .sso-profile-eig-opportunity-item-description {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.39;
+        color: #4a4a4a;
+    }
+
+    .sso-profile-eig-opportunity-item-expires {
+        font-size: 18px;
+        line-height: 1.39;
+        color: #4a4a4a;
+        margin-bottom: 23px;
+    }
+
+    .sso-profile-eig-opportunity-item-application-link {
+        font-size: 16px;
+        line-height: 1.56;
+        color: #00549f;
+    }
+
+    .sso-profile-eig-email-alert-item {
+        border: solid 1px #999999;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        padding: 30px;
+    }
+
+    .sso-profile-eig-email-alert-item:last-child {
+        padding-bottom: 30px;
+        margin-bottom: 50px;
+    }
+
+    .sso-profile-eig-email-alert-item-search-term-label {
+        font-size: 16px;
+        line-height: 1.56;
+        color: #4a4a4a;
+        margin-bottom: 20px;
+    }
+
+    .sso-profile-eig-email-alert-item-search-term {
+        margin-bottom: 20px;
+    }
+
+    .service-error-container {
+        padding: 20px;
+    }
+
+    #sso-profile-landing-page-container {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    #sso-profile-landing-page-container h1 {
+        font-size: 48px;
+        font-weight: 500;
+        letter-spacing: -0.5px;
+        margin-bottom: 40px;
+        display: inline-block;
+        line-height: 1em;
+    }
+
+    #sso-profile-landing-page-container p {
+        margin-bottom: 20px;
+    }
+
+
+    /*********
+      Utilities
+     *********/
+
+    .sso-profile-external-links-seperator {
+        display: inline-block;
+        font-size: 20px;
+        color: #999999;
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+
+    .button-primary {
+        background-color: #e41f13;
+        color: #ffffff;
+        font-size: 24px;
+    }
+
+    .sso-profile-pill-button {
+        border-radius: 8px;
+        background-color: #dfd5c5;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.72;
+        color: #333333;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .sso-profile-fab-logo-container img {
+        width: 100%;
+    }
+
+    @media (min-width: 767px) {
+        #sso-profile-eig-container {
+            margin-top: 50px;
+        }
+
+        .sso-profile-fab-logo-container img {
+            max-width: 200px;
+        }
+        .sso-profile-tab-container li {
+            display: inline-block;
+            list-style-type: none;
+        }
+        .sso-profile-tab-container ul {
+            margin: 0;
+        }
+    }
+
+    /* Mobile changes
+     **********************/
+    @media (max-width: 767px) {
+
+        /* mobile hidden elements */
+        .soo-startpage-image {
+            display: none;
+        }
+
+        /* mobile alternatives */
+        .button-primary {
+            font-size: 18px;
+        }
+
+        .h1 {
+            font-size: 30px;
+        }
+
+        .sso-profile-tab-container {
+            background: none;
+        }
+
+        .sso-profile-tab-container li {
+            border-bottom: #ffffff solid 5px;
+            border-left: #ffffff solid 5px;
+            float: left;
+            margin: 0;
+            width: 49.2%;
+        }
+
+        .sso-profile-tab-container li a {
+            background-color: #F0F3F2;
+            border-bottom: 5px solid #F0F3F2;
+            display: block;
+            letter-spacing: -0.3px;
+            min-height: 60px;
+            padding: 20px 0 0 0;
+            text-align: center;
+        }
+
+        .sso-profile-tab-container li:nth-child(odd) {
+            border-right: none;
+            clear: left;
+        }
+
+        .sso-profile-tab-container li.active {
+            background-color: transparent;
+            border-top: none;
+        }
+
+        .sso-profile-tab-container li.active a {
+            border-bottom: 5px solid #E41F13;
+        }
+
+        .sso-profile-toolbar-buttons-container {
+            text-align: left;
+        }
+
+        .sso-profile-toolbar-labels-container {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        #tab-content section {
+            padding: 0 20px;
+        }
+
+        .sso-profile-fab-container,
+        #sso-profile-eig-container {
+            margin-top: 5px;
+            padding: 10px;
+        }
+
+        #sso-profile-eig-buttons {
+            margin-bottom: 10px;
+        }
+
+        .sso-profile-fab-logo-container {
+            margin-top: 20px;
+        }
+
+        #tab-content h2 {
+            font-size: 24px;
+        }
+    }
+
+    /* header/footer fixes */
+    .static-header-footer .container {
+        width: auto;
+    }
+    #footer a {
+        line-height: inherit;
+    }
+
+
+    /*!
+ * Bootstrap Responsive v2.3.2
+ *
+ * Copyright 2013 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world by @mdo and @fat.
+ */.clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;line-height:0;content:""}.clearfix:after{clear:both}.hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}@-ms-viewport{width:device-width}.hidden{display:none;visibility:hidden}.visible-phone{display:none!important}.visible-tablet{display:none!important}.hidden-desktop{display:none!important}.visible-desktop{display:inherit!important}@media(min-width:768px) and (max-width:979px){.hidden-desktop{display:inherit!important}.visible-desktop{display:none!important}.visible-tablet{display:inherit!important}.hidden-tablet{display:none!important}}@media(max-width:767px){.hidden-desktop{display:inherit!important}.visible-desktop{display:none!important}.visible-phone{display:inherit!important}.hidden-phone{display:none!important}}.visible-print{display:none!important}@media print{.visible-print{display:inherit!important}.hidden-print{display:none!important}}@media(min-width:1200px){.row{margin-left:-30px;*zoom:1}.row:before,.row:after{display:table;line-height:0;content:""}.row:after{clear:both}[class*="span"]{float:left;min-height:1px;margin-left:30px}.container,.navbar-static-top .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:1170px}.span12{width:1170px}.span11{width:1070px}.span10{width:970px}.span9{width:870px}.span8{width:770px}.span7{width:670px}.span6{width:570px}.span5{width:470px}.span4{width:370px}.span3{width:270px}.span2{width:170px}.span1{width:70px}.offset12{margin-left:1230px}.offset11{margin-left:1130px}.offset10{margin-left:1030px}.offset9{margin-left:930px}.offset8{margin-left:830px}.offset7{margin-left:730px}.offset6{margin-left:630px}.offset5{margin-left:530px}.offset4{margin-left:430px}.offset3{margin-left:330px}.offset2{margin-left:230px}.offset1{margin-left:130px}.row-fluid{width:100%;*zoom:1}.row-fluid:before,.row-fluid:after{display:table;line-height:0;content:""}.row-fluid:after{clear:both}.row-fluid [class*="span"]{display:block;float:left;width:100%;min-height:30px;margin-left:2.564102564102564%;*margin-left:2.5109110747408616%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.row-fluid [class*="span"]:first-child{margin-left:0}.row-fluid .controls-row [class*="span"]+[class*="span"]{margin-left:2.564102564102564%}.row-fluid .span12{width:100%;*width:99.94680851063829%}.row-fluid .span11{width:91.45299145299145%;*width:91.39979996362975%}.row-fluid .span10{width:82.90598290598291%;*width:82.8527914166212%}.row-fluid .span9{width:74.35897435897436%;*width:74.30578286961266%}.row-fluid .span8{width:65.81196581196582%;*width:65.75877432260411%}.row-fluid .span7{width:57.26495726495726%;*width:57.21176577559556%}.row-fluid .span6{width:48.717948717948715%;*width:48.664757228587014%}.row-fluid .span5{width:40.17094017094017%;*width:40.11774868157847%}.row-fluid .span4{width:31.623931623931625%;*width:31.570740134569924%}.row-fluid .span3{width:23.076923076923077%;*width:23.023731587561375%}.row-fluid .span2{width:14.52991452991453%;*width:14.476723040552828%}.row-fluid .span1{width:5.982905982905983%;*width:5.929714493544281%}.row-fluid .offset12{margin-left:105.12820512820512%;*margin-left:105.02182214948171%}.row-fluid .offset12:first-child{margin-left:102.56410256410257%;*margin-left:102.45771958537915%}.row-fluid .offset11{margin-left:96.58119658119658%;*margin-left:96.47481360247316%}.row-fluid .offset11:first-child{margin-left:94.01709401709402%;*margin-left:93.91071103837061%}.row-fluid .offset10{margin-left:88.03418803418803%;*margin-left:87.92780505546462%}.row-fluid .offset10:first-child{margin-left:85.47008547008548%;*margin-left:85.36370249136206%}.row-fluid .offset9{margin-left:79.48717948717949%;*margin-left:79.38079650845607%}.row-fluid .offset9:first-child{margin-left:76.92307692307693%;*margin-left:76.81669394435352%}.row-fluid .offset8{margin-left:70.94017094017094%;*margin-left:70.83378796144753%}.row-fluid .offset8:first-child{margin-left:68.37606837606839%;*margin-left:68.26968539734497%}.row-fluid .offset7{margin-left:62.393162393162385%;*margin-left:62.28677941443899%}.row-fluid .offset7:first-child{margin-left:59.82905982905982%;*margin-left:59.72267685033642%}.row-fluid .offset6{margin-left:53.84615384615384%;*margin-left:53.739770867430444%}.row-fluid .offset6:first-child{margin-left:51.28205128205128%;*margin-left:51.175668303327875%}.row-fluid .offset5{margin-left:45.299145299145295%;*margin-left:45.1927623204219%}.row-fluid .offset5:first-child{margin-left:42.73504273504273%;*margin-left:42.62865975631933%}.row-fluid .offset4{margin-left:36.75213675213675%;*margin-left:36.645753773413354%}.row-fluid .offset4:first-child{margin-left:34.18803418803419%;*margin-left:34.081651209310785%}.row-fluid .offset3{margin-left:28.205128205128204%;*margin-left:28.0987452264048%}.row-fluid .offset3:first-child{margin-left:25.641025641025642%;*margin-left:25.53464266230224%}.row-fluid .offset2{margin-left:19.65811965811966%;*margin-left:19.551736679396257%}.row-fluid .offset2:first-child{margin-left:17.094017094017094%;*margin-left:16.98763411529369%}.row-fluid .offset1{margin-left:11.11111111111111%;*margin-left:11.004728132387708%}.row-fluid .offset1:first-child{margin-left:8.547008547008547%;*margin-left:8.440625568285142%}input,textarea,.uneditable-input{margin-left:0}.controls-row [class*="span"]+[class*="span"]{margin-left:30px}input.span12,textarea.span12,.uneditable-input.span12{width:1156px}input.span11,textarea.span11,.uneditable-input.span11{width:1056px}input.span10,textarea.span10,.uneditable-input.span10{width:956px}input.span9,textarea.span9,.uneditable-input.span9{width:856px}input.span8,textarea.span8,.uneditable-input.span8{width:756px}input.span7,textarea.span7,.uneditable-input.span7{width:656px}input.span6,textarea.span6,.uneditable-input.span6{width:556px}input.span5,textarea.span5,.uneditable-input.span5{width:456px}input.span4,textarea.span4,.uneditable-input.span4{width:356px}input.span3,textarea.span3,.uneditable-input.span3{width:256px}input.span2,textarea.span2,.uneditable-input.span2{width:156px}input.span1,textarea.span1,.uneditable-input.span1{width:56px}.thumbnails{margin-left:-30px}.thumbnails>li{margin-left:30px}.row-fluid .thumbnails{margin-left:0}}@media(min-width:768px) and (max-width:979px){.row{margin-left:-20px;*zoom:1}.row:before,.row:after{display:table;line-height:0;content:""}.row:after{clear:both}[class*="span"]{float:left;min-height:1px;margin-left:20px}.container,.navbar-static-top .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:724px}.span12{width:724px}.span11{width:662px}.span10{width:600px}.span9{width:538px}.span8{width:476px}.span7{width:414px}.span6{width:352px}.span5{width:290px}.span4{width:228px}.span3{width:166px}.span2{width:104px}.span1{width:42px}.offset12{margin-left:764px}.offset11{margin-left:702px}.offset10{margin-left:640px}.offset9{margin-left:578px}.offset8{margin-left:516px}.offset7{margin-left:454px}.offset6{margin-left:392px}.offset5{margin-left:330px}.offset4{margin-left:268px}.offset3{margin-left:206px}.offset2{margin-left:144px}.offset1{margin-left:82px}.row-fluid{width:100%;*zoom:1}.row-fluid:before,.row-fluid:after{display:table;line-height:0;content:""}.row-fluid:after{clear:both}.row-fluid [class*="span"]{display:block;float:left;width:100%;min-height:30px;margin-left:2.7624309392265194%;*margin-left:2.709239449864817%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.row-fluid [class*="span"]:first-child{margin-left:0}.row-fluid .controls-row [class*="span"]+[class*="span"]{margin-left:2.7624309392265194%}.row-fluid .span12{width:100%;*width:99.94680851063829%}.row-fluid .span11{width:91.43646408839778%;*width:91.38327259903608%}.row-fluid .span10{width:82.87292817679558%;*width:82.81973668743387%}.row-fluid .span9{width:74.30939226519337%;*width:74.25620077583166%}.row-fluid .span8{width:65.74585635359117%;*width:65.69266486422946%}.row-fluid .span7{width:57.18232044198895%;*width:57.12912895262725%}.row-fluid .span6{width:48.61878453038674%;*width:48.56559304102504%}.row-fluid .span5{width:40.05524861878453%;*width:40.00205712942283%}.row-fluid .span4{width:31.491712707182323%;*width:31.43852121782062%}.row-fluid .span3{width:22.92817679558011%;*width:22.87498530621841%}.row-fluid .span2{width:14.3646408839779%;*width:14.311449394616199%}.row-fluid .span1{width:5.801104972375691%;*width:5.747913483013988%}.row-fluid .offset12{margin-left:105.52486187845304%;*margin-left:105.41847889972962%}.row-fluid .offset12:first-child{margin-left:102.76243093922652%;*margin-left:102.6560479605031%}.row-fluid .offset11{margin-left:96.96132596685082%;*margin-left:96.8549429881274%}.row-fluid .offset11:first-child{margin-left:94.1988950276243%;*margin-left:94.09251204890089%}.row-fluid .offset10{margin-left:88.39779005524862%;*margin-left:88.2914070765252%}.row-fluid .offset10:first-child{margin-left:85.6353591160221%;*margin-left:85.52897613729868%}.row-fluid .offset9{margin-left:79.8342541436464%;*margin-left:79.72787116492299%}.row-fluid .offset9:first-child{margin-left:77.07182320441989%;*margin-left:76.96544022569647%}.row-fluid .offset8{margin-left:71.2707182320442%;*margin-left:71.16433525332079%}.row-fluid .offset8:first-child{margin-left:68.50828729281768%;*margin-left:68.40190431409427%}.row-fluid .offset7{margin-left:62.70718232044199%;*margin-left:62.600799341718584%}.row-fluid .offset7:first-child{margin-left:59.94475138121547%;*margin-left:59.838368402492065%}.row-fluid .offset6{margin-left:54.14364640883978%;*margin-left:54.037263430116376%}.row-fluid .offset6:first-child{margin-left:51.38121546961326%;*margin-left:51.27483249088986%}.row-fluid .offset5{margin-left:45.58011049723757%;*margin-left:45.47372751851417%}.row-fluid .offset5:first-child{margin-left:42.81767955801105%;*margin-left:42.71129657928765%}.row-fluid .offset4{margin-left:37.01657458563536%;*margin-left:36.91019160691196%}.row-fluid .offset4:first-child{margin-left:34.25414364640884%;*margin-left:34.14776066768544%}.row-fluid .offset3{margin-left:28.45303867403315%;*margin-left:28.346655695309746%}.row-fluid .offset3:first-child{margin-left:25.69060773480663%;*margin-left:25.584224756083227%}.row-fluid .offset2{margin-left:19.88950276243094%;*margin-left:19.783119783707537%}.row-fluid .offset2:first-child{margin-left:17.12707182320442%;*margin-left:17.02068884448102%}.row-fluid .offset1{margin-left:11.32596685082873%;*margin-left:11.219583872105325%}.row-fluid .offset1:first-child{margin-left:8.56353591160221%;*margin-left:8.457152932878806%}input,textarea,.uneditable-input{margin-left:0}.controls-row [class*="span"]+[class*="span"]{margin-left:20px}input.span12,textarea.span12,.uneditable-input.span12{width:710px}input.span11,textarea.span11,.uneditable-input.span11{width:648px}input.span10,textarea.span10,.uneditable-input.span10{width:586px}input.span9,textarea.span9,.uneditable-input.span9{width:524px}input.span8,textarea.span8,.uneditable-input.span8{width:462px}input.span7,textarea.span7,.uneditable-input.span7{width:400px}input.span6,textarea.span6,.uneditable-input.span6{width:338px}input.span5,textarea.span5,.uneditable-input.span5{width:276px}input.span4,textarea.span4,.uneditable-input.span4{width:214px}input.span3,textarea.span3,.uneditable-input.span3{width:152px}input.span2,textarea.span2,.uneditable-input.span2{width:90px}input.span1,textarea.span1,.uneditable-input.span1{width:28px}}@media(max-width:767px){body{padding-right:20px;padding-left:20px}.navbar-fixed-top,.navbar-fixed-bottom,.navbar-static-top{margin-right:-20px;margin-left:-20px}.container-fluid{padding:0}.dl-horizontal dt{float:none;width:auto;clear:none;text-align:left}.dl-horizontal dd{margin-left:0}.container{width:auto}.row-fluid{width:100%}.row,.thumbnails{margin-left:0}.thumbnails>li{float:none;margin-left:0}[class*="span"],.uneditable-input[class*="span"],.row-fluid [class*="span"]{display:block;float:none;width:100%;margin-left:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.span12,.row-fluid .span12{width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.row-fluid [class*="offset"]:first-child{margin-left:0}.input-large,.input-xlarge,.input-xxlarge,input[class*="span"],select[class*="span"],textarea[class*="span"],.uneditable-input{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.input-prepend input,.input-append input,.input-prepend input[class*="span"],.input-append input[class*="span"]{display:inline-block;width:auto}.controls-row [class*="span"]+[class*="span"]{margin-left:0}.modal{position:fixed;top:20px;right:20px;left:20px;width:auto;margin:0}.modal.fade{top:-100px}.modal.fade.in{top:20px}}@media(max-width:480px){.nav-collapse{-webkit-transform:translate3d(0,0,0)}.page-header h1 small{display:block;line-height:20px}input[type="checkbox"],input[type="radio"]{border:1px solid #ccc}.form-horizontal .control-label{float:none;width:auto;padding-top:0;text-align:left}.form-horizontal .controls{margin-left:0}.form-horizontal .control-list{padding-top:0}.form-horizontal .form-actions{padding-right:10px;padding-left:10px}.media .pull-left,.media .pull-right{display:block;float:none;margin-bottom:10px}.media-object{margin-right:0;margin-left:0}.modal{top:10px;right:10px;left:10px}.modal-header .close{padding:10px;margin:-10px}.carousel-caption{position:static}}@media(max-width:979px){body{padding-top:0}.navbar-fixed-top,.navbar-fixed-bottom{position:static}.navbar-fixed-top{margin-bottom:20px}.navbar-fixed-bottom{margin-top:20px}.navbar-fixed-top .navbar-inner,.navbar-fixed-bottom .navbar-inner{padding:5px}.navbar .container{width:auto;padding:0}.navbar .brand{padding-right:10px;padding-left:10px;margin:0 0 0 -5px}.nav-collapse{clear:both}.nav-collapse .nav{float:none;margin:0 0 10px}.nav-collapse .nav>li{float:none}.nav-collapse .nav>li>a{margin-bottom:2px}.nav-collapse .nav>.divider-vertical{display:none}.nav-collapse .nav .nav-header{color:#777;text-shadow:none}.nav-collapse .nav>li>a,.nav-collapse .dropdown-menu a{padding:9px 15px;font-weight:bold;color:#777;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.nav-collapse .btn{padding:4px 10px 4px;font-weight:normal;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.nav-collapse .dropdown-menu li+li a{margin-bottom:2px}.nav-collapse .nav>li>a:hover,.nav-collapse .nav>li>a:focus,.nav-collapse .dropdown-menu a:hover,.nav-collapse .dropdown-menu a:focus{background-color:#f2f2f2}.navbar-inverse .nav-collapse .nav>li>a,.navbar-inverse .nav-collapse .dropdown-menu a{color:#999}.navbar-inverse .nav-collapse .nav>li>a:hover,.navbar-inverse .nav-collapse .nav>li>a:focus,.navbar-inverse .nav-collapse .dropdown-menu a:hover,.navbar-inverse .nav-collapse .dropdown-menu a:focus{background-color:#111}.nav-collapse.in .btn-group{padding:0;margin-top:5px}.nav-collapse .dropdown-menu{position:static;top:auto;left:auto;display:none;float:none;max-width:none;padding:0;margin:0 15px;background-color:transparent;border:0;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}.nav-collapse .open>.dropdown-menu{display:block}.nav-collapse .dropdown-menu:before,.nav-collapse .dropdown-menu:after{display:none}.nav-collapse .dropdown-menu .divider{display:none}.nav-collapse .nav>li>.dropdown-menu:before,.nav-collapse .nav>li>.dropdown-menu:after{display:none}.nav-collapse .navbar-form,.nav-collapse .navbar-search{float:none;padding:10px 15px;margin:10px 0;border-top:1px solid #f2f2f2;border-bottom:1px solid #f2f2f2;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.1);-moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1),0 1px 0 rgba(255,255,255,0.1)}.navbar-inverse .nav-collapse .navbar-form,.navbar-inverse .nav-collapse .navbar-search{border-top-color:#111;border-bottom-color:#111}.navbar .nav-collapse .nav.pull-right{float:none;margin-left:0}.nav-collapse,.nav-collapse.collapse{height:0;overflow:hidden}.navbar .btn-navbar{display:block}.navbar-static .navbar-inner{padding-right:10px;padding-left:10px}}@media(min-width:980px){.nav-collapse.collapse{height:auto!important;overflow:visible!important}}
+
+
+
+
+    /*!
+ * Bootstrap v2.3.2
+ *
+ * Copyright 2013 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world by @mdo and @fat.
+ */.row-fluid:after,.row-fluid:before,.row:after,.row:before{display:table;content:""}.container-fluid:after,.container:after,.row-fluid:after,.row:after{clear:both}.row{margin-left:-20px}[class*=span]{float:left;margin-left:20px}.container,.navbar-fixed-bottom .container,.navbar-fixed-top .container,.navbar-static-top .container,.span12{width:940px}.span11{width:860px}.span10{width:780px}.span9{width:700px}.span8{width:620px}.span7{width:540px}.span6{width:460px}.span5{width:380px}.span4{width:300px}.span3{width:220px}.span2{width:140px}.span1{width:60px}.row-fluid,.row-fluid .span12{width:100%}.offset12{margin-left:980px}.offset11{margin-left:900px}.offset10{margin-left:820px}.offset9{margin-left:740px}.offset8{margin-left:660px}.offset7{margin-left:580px}.offset6{margin-left:500px}.offset5{margin-left:420px}.offset4{margin-left:340px}.offset3{margin-left:260px}.offset2{margin-left:180px}.offset1{margin-left:100px}.row-fluid [class*=span]{display:block;float:left;width:100%;margin-left:2.127659574468085%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.row-fluid [class*=span]:first-child{margin-left:0}.row-fluid .controls-row [class*=span]+[class*=span]{margin-left:2.127659574468085%}.row-fluid .span11{width:91.48936170212765%}.row-fluid .span10{width:82.97872340425532%}.row-fluid .span9{width:74.46808510638297%}.row-fluid .span8{width:65.95744680851064%}.row-fluid .span7{width:57.44680851063829%}.row-fluid .span6{width:48.93617021276595%}.row-fluid .span5{width:40.42553191489362%}.row-fluid .span4{width:31.914893617021278%}.row-fluid .span3{width:23.404255319148934%}.row-fluid .span2{width:14.893617021276595%}.row-fluid .span1{width:6.382978723404255%}.row-fluid .offset12{margin-left:104.25531914893617%}.row-fluid .offset12:first-child{margin-left:102.12765957446808%}.row-fluid .offset11{margin-left:95.74468085106382%}.row-fluid .offset11:first-child{margin-left:93.61702127659574%}.row-fluid .offset10{margin-left:87.23404255319149%}.row-fluid .offset10:first-child{margin-left:85.1063829787234%}.row-fluid .offset9{margin-left:78.72340425531914%}.row-fluid .offset9:first-child{margin-left:76.59574468085106%}.row-fluid .offset8{margin-left:70.2127659574468%}.row-fluid .offset8:first-child{margin-left:68.08510638297872%}.row-fluid .offset7{margin-left:61.70212765957446%}.row-fluid .offset7:first-child{margin-left:59.574468085106375%}.row-fluid .offset6{margin-left:53.191489361702125%}.row-fluid .offset6:first-child{margin-left:51.063829787234035%}.row-fluid .offset5{margin-left:44.68085106382979%}.row-fluid .offset5:first-child{margin-left:42.5531914893617%}.row-fluid .offset4{margin-left:36.170212765957444%}.row-fluid .offset4:first-child{margin-left:34.04255319148936%}.row-fluid .offset3{margin-left:27.659574468085104%}.row-fluid .offset3:first-child{margin-left:25.53191489361702%}.row-fluid .offset2{margin-left:19.148936170212764%}.row-fluid .offset2:first-child{margin-left:17.02127659574468%}.row-fluid .offset1{margin-left:10.638297872340425%}.row-fluid .offset1:first-child{margin-left:8.51063829787234%}.row-fluid [class*=span].hide,[class*=span].hide{display:none}.container-fluid:after,.container-fluid:before,.container:after,.container:before{display:table;content:""}.row-fluid [class*=span].pull-right,[class*=span].pull-right{float:right}.container{margin-right:auto;margin-left:auto}.container-fluid{padding-right:20px;padding-left:20px}[class*=" icon-"],[class^=icon-]{display:inline-block;width:14px;height:14px;margin-top:1px;line-height:14px;vertical-align:text-top;background-image:url("../img/glyphicons-halflings.2516339970d7.png");background-position:14px 14px;background-repeat:no-repeat}.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-menu>.active>a>[class^=icon-],.dropdown-menu>li>a:focus>[class*=" icon-"],.dropdown-menu>li>a:focus>[class^=icon-],.dropdown-menu>li>a:hover>[class*=" icon-"],.dropdown-menu>li>a:hover>[class^=icon-],.dropdown-submenu:focus>a>[class*=" icon-"],.dropdown-submenu:focus>a>[class^=icon-],.dropdown-submenu:hover>a>[class*=" icon-"],.dropdown-submenu:hover>a>[class^=icon-],.icon-white,.nav-list>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^=icon-],.nav-pills>.active>a>[class*=" icon-"],.nav-pills>.active>a>[class^=icon-],.navbar-inverse .nav>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^=icon-]{background-image:url("../img/glyphicons-halflings-white.9bbc6e960299.png")}.icon-glass{background-position:0 0}.icon-music{background-position:-24px 0}.icon-search{background-position:-48px 0}.icon-envelope{background-position:-72px 0}.icon-heart{background-position:-96px 0}.icon-star{background-position:-120px 0}.icon-star-empty{background-position:-144px 0}.icon-user{background-position:-168px 0}.icon-film{background-position:-192px 0}.icon-th-large{background-position:-216px 0}.icon-th{background-position:-240px 0}.icon-th-list{background-position:-264px 0}.icon-ok{background-position:-288px 0}.icon-remove{background-position:-312px 0}.icon-zoom-in{background-position:-336px 0}.icon-zoom-out{background-position:-360px 0}.icon-off{background-position:-384px 0}.icon-signal{background-position:-408px 0}.icon-cog{background-position:-432px 0}.icon-trash{background-position:-456px 0}.icon-home{background-position:0 -24px}.icon-file{background-position:-24px -24px}.icon-time{background-position:-48px -24px}.icon-road{background-position:-72px -24px}.icon-download-alt{background-position:-96px -24px}.icon-download{background-position:-120px -24px}.icon-upload{background-position:-144px -24px}.icon-inbox{background-position:-168px -24px}.icon-play-circle{background-position:-192px -24px}.icon-repeat{background-position:-216px -24px}.icon-refresh{background-position:-240px -24px}.icon-list-alt{background-position:-264px -24px}.icon-lock{background-position:-287px -24px}.icon-flag{background-position:-312px -24px}.icon-headphones{background-position:-336px -24px}.icon-volume-off{background-position:-360px -24px}.icon-volume-down{background-position:-384px -24px}.icon-volume-up{background-position:-408px -24px}.icon-qrcode{background-position:-432px -24px}.icon-barcode{background-position:-456px -24px}.icon-tag{background-position:0 -48px}.icon-tags{background-position:-25px -48px}.icon-book{background-position:-48px -48px}.icon-bookmark{background-position:-72px -48px}.icon-print{background-position:-96px -48px}.icon-camera{background-position:-120px -48px}.icon-font{background-position:-144px -48px}.icon-bold{background-position:-167px -48px}.icon-italic{background-position:-192px -48px}.icon-text-height{background-position:-216px -48px}.icon-text-width{background-position:-240px -48px}.icon-align-left{background-position:-264px -48px}.icon-align-center{background-position:-288px -48px}.icon-align-right{background-position:-312px -48px}.icon-align-justify{background-position:-336px -48px}.icon-list{background-position:-360px -48px}.icon-indent-left{background-position:-384px -48px}.icon-indent-right{background-position:-408px -48px}.icon-facetime-video{background-position:-432px -48px}.icon-picture{background-position:-456px -48px}.icon-pencil{background-position:0 -72px}.icon-map-marker{background-position:-24px -72px}.icon-adjust{background-position:-48px -72px}.icon-tint{background-position:-72px -72px}.icon-edit{background-position:-96px -72px}.icon-share{background-position:-120px -72px}.icon-check{background-position:-144px -72px}.icon-move{background-position:-168px -72px}.icon-step-backward{background-position:-192px -72px}.icon-fast-backward{background-position:-216px -72px}.icon-backward{background-position:-240px -72px}.icon-play{background-position:-264px -72px}.icon-pause{background-position:-288px -72px}.icon-stop{background-position:-312px -72px}.icon-forward{background-position:-336px -72px}.icon-fast-forward{background-position:-360px -72px}.icon-step-forward{background-position:-384px -72px}.icon-eject{background-position:-408px -72px}.icon-chevron-left{background-position:-432px -72px}.icon-chevron-right{background-position:-456px -72px}.icon-plus-sign{background-position:0 -96px}.icon-minus-sign{background-position:-24px -96px}.icon-remove-sign{background-position:-48px -96px}.icon-ok-sign{background-position:-72px -96px}.icon-question-sign{background-position:-96px -96px}.icon-info-sign{background-position:-120px -96px}.icon-screenshot{background-position:-144px -96px}.icon-remove-circle{background-position:-168px -96px}.icon-ok-circle{background-position:-192px -96px}.icon-ban-circle{background-position:-216px -96px}.icon-arrow-left{background-position:-240px -96px}.icon-arrow-right{background-position:-264px -96px}.icon-arrow-up{background-position:-289px -96px}.icon-arrow-down{background-position:-312px -96px}.icon-share-alt{background-position:-336px -96px}.icon-resize-full{background-position:-360px -96px}.icon-resize-small{background-position:-384px -96px}.icon-plus{background-position:-408px -96px}.icon-minus{background-position:-433px -96px}.icon-asterisk{background-position:-456px -96px}.icon-exclamation-sign{background-position:0 -120px}.icon-gift{background-position:-24px -120px}.icon-leaf{background-position:-48px -120px}.icon-fire{background-position:-72px -120px}.icon-eye-open{background-position:-96px -120px}.icon-eye-close{background-position:-120px -120px}.icon-warning-sign{background-position:-144px -120px}.icon-plane{background-position:-168px -120px}.icon-calendar{background-position:-192px -120px}.icon-random{width:16px;background-position:-216px -120px}.icon-comment{background-position:-240px -120px}.icon-magnet{background-position:-264px -120px}.icon-chevron-up{background-position:-288px -120px}.icon-chevron-down{background-position:-313px -119px}.icon-retweet{background-position:-336px -120px}.icon-shopping-cart{background-position:-360px -120px}.icon-folder-close{width:16px;background-position:-384px -120px}.icon-folder-open{width:16px;background-position:-408px -120px}.icon-resize-vertical{background-position:-432px -119px}.icon-resize-horizontal{background-position:-456px -118px}.icon-hdd{background-position:0 -144px}.icon-bullhorn{background-position:-24px -144px}.icon-bell{background-position:-48px -144px}.icon-certificate{background-position:-72px -144px}.icon-thumbs-up{background-position:-96px -144px}.icon-thumbs-down{background-position:-120px -144px}.icon-hand-right{background-position:-144px -144px}.icon-hand-left{background-position:-168px -144px}.icon-hand-up{background-position:-192px -144px}.icon-hand-down{background-position:-216px -144px}.icon-circle-arrow-right{background-position:-240px -144px}.icon-circle-arrow-left{background-position:-264px -144px}.icon-circle-arrow-up{background-position:-288px -144px}.icon-circle-arrow-down{background-position:-312px -144px}.icon-globe{background-position:-336px -144px}.icon-wrench{background-position:-360px -144px}.icon-tasks{background-position:-384px -144px}.icon-filter{background-position:-408px -144px}.icon-briefcase{background-position:-432px -144px}.icon-fullscreen{background-position:-456px -144px}
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- saved from url=(0053)https://profile.great.gov.uk/selling-online-overseas/ -->
+<html lang="en-us" class="ie8"><!--<![endif]--><!--[if gt IE 8]><!--><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta id="utmCookieDomain" value=".great.gov.uk">
+    <!-- Google Tag Manager -->
+    <script type="text/javascript" async="" src="./Exporting is Great Profile - GREAT.gov.uk_files/analytics.js.download"></script><script async="" src="./Exporting is Great Profile - GREAT.gov.uk_files/gtm.js.download"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&amp;gtm_auth=lyGFhzAjITssglu9x3MXJg&amp;gtm_preview=env-2&amp;gtm_debug=x&amp;url=https://profile.great.gov.uk';f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NWRFRBG');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <title>Exporting is Great Profile - GREAT.gov.uk</title>
+
+    <link rel="shortcut icon" href="https://profile.great.gov.uk/static/images/favicon.f76d9be9fd95.ico" type="image/x-icon">
+    <link rel="mask-icon" href="https://profile.great.gov.uk/static/images/gov.uk_logotype_crown.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://profile.great.gov.uk/static/images/apple-touch-icon-152x152.928276216f05.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://profile.great.gov.uk/static/images/apple-touch-icon-120x120.93cc374f93c8.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://profile.great.gov.uk/static/images/apple-touch-icon-76x76.502fb715e00a.png">
+    <link rel="apple-touch-icon-precomposed" href="https://profile.great.gov.uk/static/images/apple-touch-icon-60x60.27e25ffcc84e.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="/static/images/opengraph-image.f86f1d0dd106.png">
+    <!--[if IE 8]>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script type="text/javascript" src="/static/Dit-Pattern-Styling/public/js/selectivizr.98a8cbc024c5.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script src="./Exporting is Great Profile - GREAT.gov.uk_files/jquery-3.1.1.min.js.download"></script>
+    <!--<![endif]-->
+
+    <link href="./Exporting is Great Profile - GREAT.gov.uk_files/main_old.09db053fadb0.css" media="all" rel="stylesheet">
+
+
+
+    <link href="./Exporting is Great Profile - GREAT.gov.uk_files/bootstrap-grid-icons-only.min.af6efd1a2b87.css" media="all" rel="stylesheet">
+    <link href="./Exporting is Great Profile - GREAT.gov.uk_files/bootstrap-responsive.min.365a247af403.css" media="all" rel="stylesheet">
+    <link href="./Exporting is Great Profile - GREAT.gov.uk_files/main.932a412d46cb.css" media="all" rel="stylesheet">
+</head>
+
+<body class="js-enabled">
+<!-- Google Tag Manager (noscript) -->
+<noscript>&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWRFRBG"
+    height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+
+
+<header role="banner">
+    <div class="navigation">
+        <div class="navigation-strip background--dark-navy">
+            <div class="outer-container">
+                <ul class="list-inline list-separators">
+                    <li class="float--left soft-half--right navigation-skip-to"><a class="link link--grey" href="https://profile.great.gov.uk/selling-online-overseas/#content" title="Skip to main content"><strong>Skip to main content</strong></a></li>
+                    <li class="float--left soft-half--right">
+                        <a class="logo-hmg" href="https://www.gov.uk/" title="Go to the GOV.UK homepage">
+                            <img src="/public/images/hm_government_logo_horizontal.svg" alt="HM Government logo"></a></li>
+                    <li class="float--left soft-half--left"><a class="link link--white" href="http://great.gov.uk/" title="part of great.gov.uk"><span class="hide-mobile font-light-grey font-light">Part of </span><span class="font-regular">great.gov.uk</span></a></li>
+                </ul>
+
+                <ul class="list-inline list-separators float--right navigation-login font-regular">
+
+                    <li class="float--left soft-half--right"><a class="link--white" href="https://profile.great.gov.uk/" title="Profile"><i class="icon icon--left icon-sign-out"><span class="visuallyhidden">Profile icon</span></i><span class="hide-mobile">Profile</span></a></li>
+                    <li class="float--left soft-half--left hide-mobile"><a class="link--white" href="https://sso.trade.great.gov.uk/accounts/logout/?next=https://profile.great.gov.uk/" title="Sign out"><span>Sign out</span></a></li>
+
+                </ul>
+                <ul class="list-inline list-separators float--right navigation-login font-regular" id="sso-signout" style="display:none">
+
+                    <li class="float--left soft-half--right"><a class="link--white" href="https://profile.great.gov.uk/" title="Profile"><i class="icon icon--left icon-sign-out"></i><span class="hide-mobile">Profile</span></a></li>
+                    <li class="float--left soft-half--left hide-mobile">
+                        <a class="link--white" href="https://sso.trade.great.gov.uk/accounts/logout/?next=https://profile.great.gov.uk/" title="Sign out"><span>Sign out</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="background--great-blue">
+            <div class="outer-container">
+                <a href="#" title="Go to the Exporting is GREAT homepage" class="navigation-logo-link float--left">
+                    <img src="/public/images/EiG_logo_horizontal.svg" alt="Exporting is GREAT logo" class="navigation-logo">
+                </a>
+            </div>
+        </div>
+        <div class="navigation-main background--dark-blue">
+            <div class="navigation-main-section outer-container">
+                <nav>
+                    <ul class="list-inline list-separators navigation-main-menu">
+                        <li><a title="new to exporting" href="#" class="navigation-main-link navigation-main-link--primary background--light-blue font-regular">New to exporting</a></li>
+                        <li><a title="occasional exporter" href="#" class="navigation-main-link navigation-main-link--primary background--light-blue font-regular">Occasional exporter</a></li>
+                        <li><a title="regular exporter" href="#" class="navigation-main-link navigation-main-link--primary background--light-blue font-regular">Regular exporter</a></li>
+                        <li><a href="#" title="Export opportunities" class="navigation-main-link navigation-main-link--secondary">Export opportunities</a></li>
+                        <li><a id="nav-fab" href="#" title="Find a buyer" class="navigation-main-link navigation-main-link--secondary">Find a buyer</a></li>
+                        <li><a id="nav-soo" href="#" title="Selling online overseas" class="navigation-main-link navigation-main-link--secondary">Selling online overseas</a></li>
+                        <li><a href="#" title="Get finance" class="navigation-main-link navigation-main-link--secondary">Get finance</a></li>
+                        <li><a href="#" title="Events" class="navigation-main-link navigation-main-link--secondary">Events</a></li>
+                    </ul>
+                </nav>
+                <a class="button navigation-main-button font-white" title="" href="#">
+                    <i class="icon icon-menu"></i>All</a>
+            </div>
+            <div class="navigation-toggle background--dark-navy">
+                <div class="outer-container">
+                    <div class="col-3">
+                        <div class="navigation-toggle-services-section">
+                            <h3 class="font-large font-light-grey font-light push--bottom hide-mobile">Export readiness</h3>
+                            <ul class="font-regular">
+                                <li class="navigation-toggle-item navigation-toggle-services">
+                                    <a title="new to exporting" href="#">New to exporting</a></li>
+                                <li class="navigation-toggle-item navigation-toggle-services">
+                                    <a title="occasional exporter" href="#">Occasional exporter</a></li>
+                                <li class="navigation-toggle-item navigation-toggle-services">
+                                    <a title="regular exporter" href="#" class="last">Regular exporter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h3 class="font-large font-light-grey font-light push--bottom hide-mobile soft--left">Online tools</h3>
+                        <ul class="navigation-toggle-middle">
+                            <li class="navigation-toggle-item"><a href="#" title="Export opportunities">Export opportunities</a></li>
+                            <li class="navigation-toggle-item"><a href="#" title="Find a buyer" class="">Find a buyer</a></li>
+                            <li class="navigation-toggle-item"><a href="#" title="Selling online overseas">Selling online overseas</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-3">
+                        <h3 class="font-large font-light-grey font-light push--bottom hide-mobile soft--left">Other support</h3>
+                        <ul class="navigation-toggle-middle">
+                            <li class="navigation-toggle-item"><a href="#" title="Get finance">Get finance</a></li>
+                            <li class="navigation-toggle-item"><a href="#" title="Events">Events</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-3">
+                        <h3 class="font-large font-light-grey font-light soft--left push--bottom hide-mobile">About us</h3>
+                        <ul class="navigation-toggle-middle">
+                            <li class="navigation-toggle-item"><a href="#" title="About great.gov.uk">About great.gov.uk</a></li>
+                            <li class="navigation-toggle-item"><a href="#" title="Contact us" class="last">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div id="content" class="enrolment-content">
+
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span8 sso-profile-toolbar-labels-container">
+                <h1 class="h1">Profile</h1>
+
+                <div>You are signed in as guy.tristram@digital.trade.gov.uk.</div>
+
+            </div>
+            <div class="span4 sso-profile-toolbar-buttons-container">
+
+                <a class="button button-border" href="#">Sign out</a>
+
+                <a href="#" class="link">Reset password</a>
+            </div>
+        </div>
+    </div>
+    <div class="sso-profile-tab-container">
+        <div class="container">
+            <div class="row-fluid">
+                <ul>
+                    <li class=""><a href="/return-journey/great-sud-export-opps">Export opportunities</a></li>
+                    <li class="active"><a href="/return-journey/great-sud-events">Events</a></li>
+                    <li class=""><a href="/return-journey/great-sud-fab">Find a buyer</a></li>
+                    <li class=""><a href="#">Selling online overseas</a></li>
+                    <li class=""><a href="/return-journey/great-sud-about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row-fluid" id="tab-content">
+            <div class="span9">
+                <section>
+                    <h2 style="margin-bottom:40px;">Your events</h2>
+
+
+                    <div style="display:flex; flex-direction: row; margin-bottom:20px;">
+                        <div style="margin-right:20px;">
+                            <img src="/public/images/fashion-milan.jpg" style="width:150px; height:100px;">
+                        </div>
+                        <div>
+                            <p style="margin-bottom:10px;"><span style="font-weight:700;">Luxury is great showcase in Milan</span><br>
+                                5 December 2017 to 7 January 2018
+                            </p>
+                            <p class="">
+                                <a href="#" style="text-decoration: underline">View event</a><br>
+                                <a href="/return-journey/cancel-confirm" style="text-decoration: underline">Cancel attendance</a><br>
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div style="display:flex; flex-direction: row; margin-bottom:20px;">
+                        <div style="margin-right:20px;">
+                            <img src="/public/images/fashion-dussedorf.jpg" style="width:150px; height:100px;">
+                        </div>
+                        <div>
+                            <p style="margin-bottom:10px;"><span style="font-weight:700;">Meet the buyer: Dusseldorf Fashion Week</span><br>
+                                8 July 2017 to 14 July 2017
+                            </p>
+                            <p class="">
+                                <a href="#" style="text-decoration: underline">Book meetings</a><br>
+                                <a href="#" style="text-decoration: underline">View event</a><br>
+                                <a href="#" style="text-decoration: underline">Cancel attendance</a><br>
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div style="display:flex; flex-direction: row;  margin-bottom:20px;">
+                        <div style="margin-right:20px;">
+                            <img src="/public/images/digital-trade.jpg" style="width:150px; height:100px;">
+                        </div>
+                        <div>
+                            <p style="margin-bottom:10px;"><span style="font-weight:700;">Digital Trade Advice Clinic</span><br>
+                                13 March 2017
+                            </p>
+                            <p class="">
+                                <a href="#" style="text-decoration: underline">View event</a><br>
+                                <a href="#" style="text-decoration: underline">Cancel attendance</a><br>
+                            </p>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<footer role="contentinfo">
+    <div class="footer background--great-blue soft--top">
+        <div class="outer-container">
+            <div class="footer-section">
+                <div class="col-8">
+                    <a href="#" title="Go to the Exporting is Great homepage">
+                        <img src="/public/images/EiG-logo-stacked.svg" alt="Exporting is Great logo" class="footer-logo">
+                    </a>
+                </div>
+
+                <div class="col-4">
+                    <ul class="footer-links footer-links--border">
+                        <li class="push-half--bottom"><a href="#" title="New to exporting">New to exporting</a></li>
+                        <li class="push-half--bottom"><a href="#" title="Occasional exporter">Occasional exporter</a></li>
+                        <li><a href="#" title="Regular exporter">Regular exporter</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-section footer-section-right">
+
+                <div class="col-6">
+                    <ul class="footer-links footer-middle-section">
+                        <li class="push-half--bottom"><a href="#" title="Export opportunities">Export opportunities</a></li>
+                        <li class="push-half--bottom"><a href="#" title="Find a buyer">Find a buyer</a></li>
+                        <li class="push-half--bottom"><a href="#" title="Selling online overseas">Selling online overseas</a></li>
+                        <li class="push-half--bottom"><a href="#" title="Get Finance">Get Finance</a></li>
+                        <li class=""><a href="#" title="Events">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6">
+                    <ul class="footer-links footer-links--border">
+                        <li class="push-half--bottom"><a href="#" title="About great.gov.uk">About great.gov.uk</a></li>
+                        <li class="push-half--bottom"><a href="#" title="">Contact us</a></li>
+                        <li class="push-half--bottom"><a href="#" title="Privacy and Cookies">Privacy &amp; cookies</a></li>
+                        <li class="push-half--bottom"><a href="#" title="Terms and conditions">Terms &amp; conditions</a></li>
+                        <li><a href="#" title="Department for International Trade">Department for International Trade</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="outer-container">
+            <div class="footer-bottom">
+                <div class="navigation-strip">
+                    <ul class="list-inline list-separators">
+                        <li class="float--left soft--right"><a class="" href="#" title="hm government">
+                            <img src="/public/images/hm_government_logo_horizontal.svg"></a></li>
+                        <li class="float--left soft--left footer-links--border">
+                            <a class="link--grey" href="#" title="part of great.gov.uk">Part of <strong>great.gov.uk</strong></a></li>
+                    </ul>
+                </div>
+                <div class="footer-copy font-light-grey font-xsmall">
+                    <p>© Crown copyright 2017. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script type="text/javascript" src="./Exporting is Great Profile - GREAT.gov.uk_files/navigation.217cdbe1a248.js.download"></script>
+
+<script type="text/javascript" src="./Exporting is Great Profile - GREAT.gov.uk_files/index.512e7747ff6a.js.download"></script>
+<script type="text/javascript">GOVUK.page.init();</script>
+
+
+
+</body></html>
