@@ -1,0 +1,629 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<style>
+ul#proposition-links {float: right}
+a.link:visited, a:visited {color:#005ea5 !important};
+</style>
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-three-thirds">
+
+      <h1 class="heading-xlarge">
+        DIT UAE events
+        <span class="heading-secondary">Your name</span>
+      </h1>
+     <style type="text/css">
+     	.button-great {
+     		font-size: 16px; font-weight: 600;  
+     		font-family: Roboto;
+     		button height: 50px;
+			border: none; 
+			background-color: #006CCC;
+			padding: 10px;
+			color: white !important;
+			text-decoration: none;
+		}
+     </style>
+  
+
+<form action="/create-event/new" method="get" class="form">
+
+    <div class="tabs" style="margin-top:30px;">
+
+      <div class="tabs-nav">
+        <ul class="tabs-list" role="tablist">
+          <li role="presentation"><a class="live-events" href="#live-events" style="text-decoration: none;" role="tab" tabindex="0" aria-controls="live-events" aria-selected="true">Live</a></li>
+          <li role="presentation"><a class="draft-events" href="#draft-events" style="text-decoration: none;" role="tab" tabindex="-1" aria-controls="draft-events">Draft</a></li>
+          <!--  <li><a class="template-events" href="#template-events" style="text-decoration: none;">Templates</a></li>  -->
+          <li role="presentation"><a class="past-events" href="#past-events" style="text-decoration: none;" role="tab" tabindex="-1" aria-controls="past-events">Past</a></li>
+        </ul>
+
+        <div style="padding-top:10px; text-align: end;">
+          <input type="submit" class="button-secondary" value="Create new event">
+        </div>
+      </div>
+
+
+
+      <div class="tabs-content">
+
+        <!-- Live -->
+        <div class="tabs-panel" id="live-events" style="border-top:1px solid #bfc1c3;" role="tabpanel">
+          <div class="tabs-panel-inner" tabindex="0">
+            
+<!--  MACRO TO MAKE EACH LIVE LINE ITEM -->
+
+
+
+
+
+
+<div>
+
+  <!-- EMPTY LIST STATE  -->
+  
+
+
+      <!-- EVENT ONE  -->
+      
+             
+
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th scope="col" style="width:65%; border-bottom: 0px; padding-top: 0px; padding-top:0px;"> </th>
+    <th class="col" style="width:20%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <th class="col" style="width:16%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+  </tr>
+  </thead>
+
+  <tbody>
+<tr style="">
+
+  <th scope="row" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">Low Carbon Vehicles 2017<br>
+
+  </th>
+  <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">24 November 2017</td>
+
+  <!-- Number to match Filips scenarios  -->
+    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">
+     17  / 20 tickets</td>
+</tr>
+
+
+  </tbody>
+</table>
+
+<!--  the bottom roww of data  -->
+<table style="width:100%; margin-top:0px; padding-bottom:10px; border-bottom:1px solid #bfc1c3;">
+  <thead>
+    <tr>
+      <th scope="col" style="width:34%; border-bottom: 0px; padding-top: 0px; padding-bottom: 0px;"> </th>
+      <th class="col" style="width:26%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
+      <th class="col" style="width:40%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
+      <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+    <tr>
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; ">
+        <a href="/monitor-event/0/true">Monitor registrations</a>  &nbsp; &nbsp; &nbsp;
+        <a href="/monitor-event/0/true">Monitor meetings</a>  &nbsp; &nbsp; &nbsp;
+
+        <a href="/preview-data/0/true">View web page</a>
+      </td>
+
+      <td valign="top" style=" border: 0px; padding-right: 0px; padding-top: 2px; padding-bottom: 12px;">
+        <details style="display:inline;" role="group">
+          <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="summary">Make changes</span></summary>
+          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+            <ul>
+              <li style="margin-bottom:3px;"><a href="/summary-data/0/true">Edit page</a></li>
+              
+              <li style="margin-bottom:3px;"><a href="/toggle-closed-reg/0">Close registrations</a></li>
+              
+
+              <li style="margin-bottom:3px;"><a href="#">Unpublish</a></li>
+              <li style="margin-bottom:3px;"><a href="#">Delete</a></li>
+            </ul>
+          </div>
+        </details>
+      </td>
+
+
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; padding-right:0px; text-align:right;">
+        
+            
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:106px solid #000000;"> </div>
+            
+        
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+          
+             
+
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th scope="col" style="width:65%; border-bottom: 0px; padding-top: 0px; padding-top:0px;"> </th>
+    <th class="col" style="width:20%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <th class="col" style="width:16%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+  </tr>
+  </thead>
+
+  <tbody>
+<tr style="">
+
+  <th scope="row" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">Coal Mongolia 2017<br>
+
+  </th>
+  <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">28 November 2017</td>
+
+  <!-- Number to match Filips scenarios  -->
+    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">
+     20  / 30 tickets</td>
+</tr>
+
+
+  </tbody>
+</table>
+
+<!--  the bottom roww of data  -->
+<table style="width:100%; margin-top:0px; padding-bottom:10px; border-bottom:1px solid #bfc1c3;">
+  <thead>
+    <tr>
+      <th scope="col" style="width:34%; border-bottom: 0px; padding-top: 0px; padding-bottom: 0px;"> </th>
+      <th class="col" style="width:26%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
+      <th class="col" style="width:40%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
+      <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+    <tr>
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; ">
+        <a href="/monitor-event/1/true">Monitor and track</a>  &nbsp; &nbsp; &nbsp;
+        <a href="/preview-data/1/true">View web page</a>
+      </td>
+
+      <td valign="top" style=" border: 0px; padding-right: 0px; padding-top: 2px; padding-bottom: 12px;">
+        <details style="display:inline;" role="group">
+          <summary role="button" aria-controls="details-content-1" aria-expanded="false"><span class="summary">Make changes</span></summary>
+          <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true">
+            <ul>
+              <li style="margin-bottom:3px;"><a href="/summary-data/1/true">Edit page</a></li>
+              <li style="margin-bottom:3px;"><a href="/clone-event/1/true">Clone event</a></li>
+
+              
+                 <li style="margin-bottom:3px;"><a href="/toggle-closed-reg/1">Close registrations</a></li>
+              
+
+              <li style="margin-bottom:3px;"><a href="#">Unpublish</a></li>
+              <li style="margin-bottom:3px;"><a href="#">Delete</a></li>
+            </ul>
+          </div>
+        </details>
+      </td>
+
+
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; padding-right:0px; text-align:right;">
+        
+            
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:79px solid #000000;"> </div>
+            
+        
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+          
+             
+
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th scope="col" style="width:65%; border-bottom: 0px; padding-top: 0px; padding-top:0px;"> </th>
+    <th class="col" style="width:20%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <th class="col" style="width:16%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+  </tr>
+  </thead>
+
+  <tbody>
+<tr style="">
+
+  <th scope="row" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">Researching Overseas Markets Masterclass<br>
+
+  </th>
+  <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">4 December 2017</td>
+
+  <!-- Number to match Filips scenarios  -->
+    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">
+     4  / 14 tickets</td>
+</tr>
+
+
+  </tbody>
+</table>
+
+<!--  the bottom roww of data  -->
+<table style="width:100%; margin-top:0px; padding-bottom:10px; border-bottom:1px solid #bfc1c3;">
+  <thead>
+    <tr>
+      <th scope="col" style="width:34%; border-bottom: 0px; padding-top: 0px; padding-bottom: 0px;"> </th>
+      <th class="col" style="width:26%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
+      <th class="col" style="width:40%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
+      <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+    <tr>
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; ">
+        <a href="/monitor-event/2/true">Monitor and track</a>  &nbsp; &nbsp; &nbsp;
+        <a href="/preview-data/2/true">View web page</a>
+      </td>
+
+      <td valign="top" style=" border: 0px; padding-right: 0px; padding-top: 2px; padding-bottom: 12px;">
+        <details style="display:inline;" role="group">
+          <summary role="button" aria-controls="details-content-2" aria-expanded="false"><span class="summary">Make changes</span></summary>
+          <div class="panel panel-border-narrow" id="details-content-2" aria-hidden="true">
+            <ul>
+              <li style="margin-bottom:3px;"><a href="/summary-data/2/true">Edit page</a></li>
+              <li style="margin-bottom:3px;"><a href="/clone-event/2/true">Clone event</a></li>
+
+              
+                 <li style="margin-bottom:3px;"><a href="/toggle-closed-reg/2">Close registrations</a></li>
+              
+
+              <li style="margin-bottom:3px;"><a href="#">Unpublish</a></li>
+              <li style="margin-bottom:3px;"><a href="#">Delete</a></li>
+            </ul>
+          </div>
+        </details>
+      </td>
+
+
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; padding-right:0px; text-align:right;">
+        
+            
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:31px solid #000000;"> </div>
+            
+        
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+          
+             
+
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th scope="col" style="width:65%; border-bottom: 0px; padding-top: 0px; padding-top:0px;"> </th>
+    <th class="col" style="width:20%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <th class="col" style="width:16%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+  </tr>
+  </thead>
+
+  <tbody>
+<tr style="">
+
+  <th scope="row" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">International Market Research<br>
+
+  </th>
+  <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">7 December 2017</td>
+
+  <!-- Number to match Filips scenarios  -->
+    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">
+     3  / 18 tickets</td>
+</tr>
+
+
+  </tbody>
+</table>
+
+<!--  the bottom roww of data  -->
+<table style="width:100%; margin-top:0px; padding-bottom:10px; border-bottom:1px solid #bfc1c3;">
+  <thead>
+    <tr>
+      <th scope="col" style="width:34%; border-bottom: 0px; padding-top: 0px; padding-bottom: 0px;"> </th>
+      <th class="col" style="width:26%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
+      <th class="col" style="width:40%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
+      <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+    <tr>
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; ">
+        <a href="/monitor-event/3/true">Monitor and track</a>  &nbsp; &nbsp; &nbsp;
+        <a href="/preview-data/3/true">View web page</a>
+      </td>
+
+      <td valign="top" style=" border: 0px; padding-right: 0px; padding-top: 2px; padding-bottom: 12px;">
+        <details style="display:inline;" role="group">
+          <summary role="button" aria-controls="details-content-3" aria-expanded="false"><span class="summary">Make changes</span></summary>
+          <div class="panel panel-border-narrow" id="details-content-3" aria-hidden="true">
+            <ul>
+              <li style="margin-bottom:3px;"><a href="/summary-data/3/true">Edit page</a></li>
+              <li style="margin-bottom:3px;"><a href="/clone-event/3/true">Clone event</a></li>
+
+              
+                 <li style="margin-bottom:3px;"><a href="/toggle-closed-reg/3">Close registrations</a></li>
+              
+
+              <li style="margin-bottom:3px;"><a href="#">Unpublish</a></li>
+              <li style="margin-bottom:3px;"><a href="#">Delete</a></li>
+            </ul>
+          </div>
+        </details>
+      </td>
+
+
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; padding-right:0px; text-align:right;">
+        
+            
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:19px solid #000000;"> </div>
+            
+        
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+          
+             
+
+<table style="width:100%;">
+  <thead>
+  <tr>
+    <th scope="col" style="width:65%; border-bottom: 0px; padding-top: 0px; padding-top:0px;"> </th>
+    <th class="col" style="width:20%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <th class="col" style="width:16%; border-bottom: 0px; padding-top: 0px; padding-top:0px;" scope="col"></th>
+    <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+  </tr>
+  </thead>
+
+  <tbody>
+<tr style="">
+
+  <th scope="row" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">Grow your Business with Social Media<br>
+
+  </th>
+  <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; border-bottom:0px">14 December 2017</td>
+
+  <!-- Number to match Filips scenarios  -->
+    <td class="row" valign="top" style="padding-top:2px; padding-bottom: 3px; padding-right:0px; text-align:right; border-bottom:0px">
+     3  / 16 tickets</td>
+</tr>
+
+
+  </tbody>
+</table>
+
+<!--  the bottom roww of data  -->
+<table style="width:100%; margin-top:0px; padding-bottom:10px; border-bottom:1px solid #bfc1c3;">
+  <thead>
+    <tr>
+      <th scope="col" style="width:34%; border-bottom: 0px; padding-top: 0px; padding-bottom: 0px;"> </th>
+      <th class="col" style="width:26%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;" scope="col"></th>
+      <th class="col" style="width:40%; border-bottom: 0px; padding-top: 0px;; padding-bottom: 0px;"></th>
+      <!-- <th class="col" style="width:13%; border-bottom: 0px; padding-top: 0px;" scope="col"></th>  -->
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+    <tr>
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; ">
+        <a href="/monitor-event/4/true">Monitor and track</a>  &nbsp; &nbsp; &nbsp;
+        <a href="/preview-data/4/true">View web page</a>
+      </td>
+
+      <td valign="top" style=" border: 0px; padding-right: 0px; padding-top: 2px; padding-bottom: 12px;">
+        <details style="display:inline;" role="group">
+          <summary role="button" aria-controls="details-content-4" aria-expanded="false"><span class="summary">Make changes</span></summary>
+          <div class="panel panel-border-narrow" id="details-content-4" aria-hidden="true">
+            <ul>
+              <li style="margin-bottom:3px;"><a href="/summary-data/4/true">Edit page</a></li>
+              <li style="margin-bottom:3px;"><a href="/clone-event/4/true">Clone event</a></li>
+
+              
+                 <li style="margin-bottom:3px;"><a href="/toggle-closed-reg/4">Close registrations</a></li>
+              
+
+              <li style="margin-bottom:3px;"><a href="#">Unpublish</a></li>
+              <li style="margin-bottom:3px;"><a href="#">Delete</a></li>
+            </ul>
+          </div>
+        </details>
+      </td>
+
+
+
+      <td valign="top" style="border: 0px; padding-top: 2px; padding-bottom: 12px; padding-right:0px; text-align:right;">
+        
+            
+                <div style="background-color: #FFFFFF; margin-left:261px; border:1px solid #000000; height:5px; border-left:19px solid #000000;"> </div>
+            
+        
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+          
+
+
+  
+
+
+
+
+</div>
+          </div>
+        </div>
+
+
+        <!--  Draft   -->
+        <div class="tabs-panel" id="draft-events" style="border-top:1px solid #bfc1c3;" role="tabpanel" aria-hidden="true">
+          <div class="tabs-panel-inner" tabindex="0">
+            
+<!--  MACRO TO MAKE EACH DRAFT LINE ITEM -->
+
+
+
+
+
+
+<div>
+
+  <!-- EMPTY LIST STATE  -->
+  
+    <br>
+    <br>
+
+    <p>You don't have any draft events right now.</p>
+
+    
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Create new event">
+      </div>
+
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  
+
+
+
+
+</div>
+          </div>
+        </div>
+
+
+        <!--  Templates   -->
+        <div class="tabs-panel" id="template-events" style="border-top:1px solid #bfc1c3;" role="tabpanel" aria-hidden="true">
+          <div class="tabs-panel-inner" tabindex="0">
+
+            <br>
+            <br>
+
+            <p>You don't have any templates.</p>
+
+              <div class="form-group">
+                <input type="submit" class="button-secondary" value="Create template">
+              </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+
+        <!--   Past   -->
+        <div class="tabs-panel" id="past-events" style="border-top:1px solid #bfc1c3;" role="tabpanel" aria-hidden="true">
+          <div class="tabs-panel-inner" tabindex="0">
+            <br>
+            <br>
+
+            <p>You don't have any past events.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div></form>
+
+
+
+
+<br>
+    <a href="https://www.eventbrite.co.uk/myevent?eid=39948447883" class="link">View all DIT UAE events</a>
+
+
+<h2 class="heading-medium">Create new event</h2>
+
+    <ul class="list numeric">
+      <li><a href="mvp-internal/available-templates" class="link" target="_new">Start from a template</a></li>
+      <li><a href="mvp-internal/scratch-warning" class="link" target="_new">Create from scratch</a></li>
+    </ul>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
