@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<style>ul#proposition-links {float: right}</style>
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">
+        DIT UAE events
+        <span class="heading-secondary">Your name</span>
+      </h1>
+     <style type="text/css">
+     	.button-great {
+     		font-size: 16px; font-weight: 600;  
+     		font-family: Roboto;
+     		button height: 50px;
+			border: none; 
+			background-color: #006CCC;
+			padding: 10px;
+			color: white !important;
+			text-decoration: none;
+		}
+     </style>
+    
+    <h2 class="heading-medium">Set up new event (Eventbrite)</h2>
+
+    <span>Start from a template:</span>
+    <ul class="list numeric">
+      <li><a href="https://www.eventbrite.co.uk/myevent?eid=41007308965" class="link" target="_new">Event without meetings (e.g. Seminars)</a> - click 'Copy'</li>
+      <li><a href="https://www.eventbrite.co.uk/myevent?eid=40836275399" class="link" target="_new">Event with meetings (e.g. Meet the buyer)</a>  - click 'Copy'</li>
+    </ul>
+
+    <a href="scratch-warning" class="button" target="_new">Create from scratch</a><br>
+<br><br>
+    <h2 class="bold-medium">Customise and publish events to Great</h2>
+    <p>Import your Eventbrite events in Nvite to publish to Great.</p>
+
+    <ul class="list numeric">
+      <li><a href="https://i.nvite.com" class="link" target="_new">Login into Nvite</a></li>
+      <li><a href="https://i.nvite.com/communities/" class="link" target="_new">See your listing pages (Communities)</a></li>
+    </ul>
+
+    <h2 class="heading-medium">Manage your events</h2>
+    <ul class="list numeric">
+      <li><a href="https://www.eventbrite.co.uk/myevents/?org=15842842998" class="link" target="_new">Monitor or edit your events</a> (Eventbrite)</li>
+      <li><a href="https://admin.b2match.com" class="link" target="_new">Monitor or edit your meetings</a> (B2Match)</li>
+    </ul>
+  
+    
+
+
+<!--
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Event name</th>
+      <th class="numeric" scope="col"></th>
+      <th class="numeric" scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">DIT ‘Meet the buyer’ at Tradexpo</th>
+      <td class="numeric"><a href="">View</a></td>
+      <td class="numeric"><a href="">Edit</a></td>
+    </tr>
+    <tr>
+      <th scope="row">DIT ‘Meet the buyer’ at Tradexpo</th>
+      <td class="numeric">£165.00</td>
+      <td class="numeric">£85.00</td>
+    </tr>
+    <tr>
+      <th scope="row">DIT ‘Meet the buyer’ at Tradexpo</th>
+      <td class="numeric">£151.25</td>
+      <td class="numeric">£77.90</td>
+    </tr>
+    <tr>
+      <th scope="row">DIT ‘Meet the buyer’ at Tradexpo</th>
+      <td class="numeric">£136.10</td>
+      <td class="numeric">£70.10</td>
+    </tr>
+  </tbody>
+</table>
+
+		<a href="https://www.eventbrite.co.uk/myevent?eid=39948447883" class="button-great">Manage this event</a>
+		<br><br>
+-->
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

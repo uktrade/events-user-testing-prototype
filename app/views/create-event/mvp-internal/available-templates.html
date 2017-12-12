@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<style>ul#proposition-links {float: right}</style>
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+     <style type="text/css">
+     	.button-great {
+     		font-size: 16px; font-weight: 600;  
+     		font-family: Roboto;
+     		button height: 50px;
+			border: none; 
+			background-color: #006CCC;
+			padding: 10px;
+			color: white !important;
+			text-decoration: none;
+		}
+     </style>
+    
+    <h2 class="heading-medium">Available templates</h2>
+
+    <ul class="list numeric">
+      <li><a href="https://www.eventbrite.co.uk/myevent?eid=41007308965" class="link" target="_new">Event without meetings (e.g. Seminars)</a> - click 'Copy'</li>
+      <li><a href="https://www.eventbrite.co.uk/myevent?eid=40836275399" class="link" target="_new">Event with meetings (e.g. Meet the buyer)</a>  - click 'Copy'</li>
+    </ul>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
