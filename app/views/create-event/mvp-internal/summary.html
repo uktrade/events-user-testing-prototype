@@ -1,0 +1,788 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="full-grid-mode" style="margin-left:15px; width:957px">
+
+      <!--  BREADCRUMB  -->
+    <div class="breadcrumbs">
+    <ol>
+      <li><a href="/account">Account home</a></li>
+    </ol>
+    </div>
+
+    <h1 class="heading-large" style="margin-top:15px">
+        Summary
+      </h1>
+
+
+    <form action="/create-event/preview" method="get" class="form">
+
+      <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+      <!--   * `cya-questions-short` for short questions -->
+      <!--   * `cya-questions-long` for long questions -->
+      <!--   * none for single group of q&a -->
+
+
+      <!-- contact details -->
+      <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:35px;">
+
+        <div>
+          <dt class="cya-question heading-medium" style="vertical-align:top">Event ownership</dt>
+          <dd class="cya-answer">  </dd>
+          <dd class="cya-change" style="vertical-align:top">  </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Point of contact</dt>
+
+          {% if session.data['owner-name-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">{{ data['owner-name'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-organiser">
+              Change
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Event organiser</dt>
+
+          {% if session.data['organiser-name-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">{{ data['organiser-name'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-organiser">
+              Change
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Contact email address</dt>
+
+          {% if session.data['contact-email-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">{{ data['contact-email'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-organiser">
+              Change
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Contact phone number</dt>
+
+          {% if session.data['contact-phone-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">{{ data['contact-phone'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-organiser">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+      </dl>
+
+
+
+
+
+      <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:45px;">
+
+        <div>
+          <dt class="cya-question heading-medium" style="vertical-align:top; width:30%;">Event webpage</dt>
+          <dd class="cya-answer"  style="width:60%;">  </dd>
+          <dd class="cya-change" style="vertical-align:top">  </dd>
+        </div>
+
+
+        {% if session.data['radio-link-access'] != undefined  and  session.data['radio-link-access'] != ""  %}
+          <div>
+            <dt class="cya-question">
+              Page visibility
+            </dt>
+
+            <dd class="cya-answer">{{ session.data['radio-link-access'] }}</dd>
+
+            <dd class="cya-change">
+              <a href="/create-event/go-live">Change</a>
+            </dd>
+          </div>
+        {% endif %}
+
+
+
+
+        <div>
+          <dt class="cya-question">
+            Event title
+          </dt>
+
+          {% if session.data['event-title-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">{{ data['event-title'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-title">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Event summary
+          </dt>
+
+          {% if session.data['summary-title-empty'] %}
+            <dd class="cya-answer">Optional field, left empty.</dd>
+          {% else %}
+            <dd class="cya-answer" >{{ data['summary-title'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-title">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Date
+          </dt>
+
+          {% if session.data['date-error'] %}
+              <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">
+              {{ data['event-day-of-the-week'] }}<br>{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }}
+            </dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-date">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Time
+          </dt>
+
+          {% if session.data['time-error'] %}
+              <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">
+              {{ data['event-start-time'] }} to {{ data['event-finish-time'] }}
+            </dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-date">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Venue
+          </dt>
+
+          {% if session.data['full-address-holder-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['full-address-holder'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change ">
+            <a href="/create-event/change-venue">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Parking and directions
+          </dt>
+
+
+          {% if session.data['venue-additional-notes'] == "" %}
+            <dd class="cya-answer">Optional field, left empty.</dd>
+          {% else %}
+            <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['venue-additional-notes'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change ">
+            <a href="/create-event/change-venue">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Link to map
+          </dt>
+
+
+          {% if session.data['map-url'] == "" %}
+            <dd class="cya-answer">Optional field, left empty.</dd>
+          {% else %}
+            <dd class="cya-answer" style="word-break: break-all;">{{ data['map-url'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change ">
+            <a href="/create-event/change-venue">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Target sectors
+          </dt>
+
+          {% if session.data['sectors-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sectors'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change" >
+            <a href="/create-event/change-title">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Export experience
+          </dt>
+
+          {% if session.data['audience-experience-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['audience-experience'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-title">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Eligibility
+          </dt>
+
+          {% if session.data['summary-target-audience-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['summary-target-audience'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-title">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Event outcomes
+          </dt>
+
+          {% if session.data['benefits-error'] == true %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+          <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['benefits'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-description">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Target markets
+          </dt>
+
+          {% if session.data['markets-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['markets'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-description">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Agenda
+          </dt>
+
+          {% if session.data['agenda-error-later'] %}
+            <dd class="cya-answer bold">Optional field, left empty - but you said you wanted to add later.</dd>
+          {% elif session.data['agenda-error'] %}
+            <dd class="cya-answer bold">Incomplete</dd>
+          {% else %}
+            <dd class="cya-answer"     style="white-space: pre-wrap;">{{ data['agenda'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-description">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Further details and background
+          </dt>
+
+          {% if session.data['event-description-error'] %}
+            <dd class="cya-answer bold">Optional field, left empty.</dd>
+          {% else %}
+            <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['event-description'] }}</dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-description">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Main image</dt>
+
+          {% if session.data['image-error'] %}
+              <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">
+              <img src="/public/images/oil.png" style="width:300px; height:200px;">
+            </dd>
+          {% endif %}
+
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-images">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Partner logos</dt>
+          <dd class="cya-answer">
+            {% if data['logo-1-selected'] %}
+              <img src="/public/images/partner11.jpg" style="width:240px; height:100px;">
+            {% endif %}
+            {% if data['logo-2-selected'] %}
+              <img src="/public/images/partner12.jpg" style="width:240px; height:100px;">
+            {% endif %}
+            {% if data['logo-3-selected'] %}
+              <img src="/public/images/partner13.jpg" style="width:240px; height:100px;">
+            {% endif %}
+            {% if data['logo-4-selected'] %}
+              <img src="/public/images/partner14.jpg" style="width:240px; height:100px;">
+            {% endif %}
+            {% if data['logo-5-selected'] %}
+              <img src="/public/images/partner11.jpg" style="width:240px; height:100px;">
+            {% endif %}
+            {% if data['logo-6-selected'] %}
+              <img src="/public/images/partner12.jpg" style="width:240px; height:100px;">
+            {% endif %}
+
+            {% if session.data['logo-1-selected'] != true  and
+                session.data['logo-2-selected'] != true  and
+                session.data['logo-3-selected'] != true  and
+                session.data['logo-4-selected'] != true  and
+                session.data['logo-5-selected'] != true  and
+                session.data['logo-6-selected'] != true
+            %}
+              <span class="cya-answer bold">Required field, incomplete.</span>
+            {% endif %}
+
+          </dd>
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-images">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+      </dl>
+
+
+
+
+
+
+      <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:50px;">
+
+        <div>
+          <dt class="cya-question heading-medium" style="vertical-align:top">Registration form</dt>
+          <dd class="cya-answer">  </dd>
+          <dd class="cya-change" style="vertical-align:top">  </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Number of places
+          </dt>
+
+          {% if session.data['attendee-quantity-error'] %}
+              <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">
+              {{ data['attendee-quantity'] }}
+            </dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-attendees">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Waiting list
+          </dt>
+
+          <dd class="cya-answer" style="white-space: pre-wrap;">{{ session.data['waiting-list-summary-text'] }}
+          </dd>
+
+          <dd class="cya-change">
+            <a href="/create-event/change-attendees">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Message displayed when event is full
+          </dt>
+
+          {% if session.data['sold-out-message-error'] %}
+              <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer" style="white-space: pre-wrap;">{{ data['sold-out-message'] }}
+            </dd>
+          {% endif %}
+
+          <dd class="cya-change">
+            <a href="/create-event/change-attendees">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Default registration questions
+          </dt>
+          <dd class="cya-answer" style="">
+            <ul class="list list-bullet">
+              <li>full name</li>
+              <li>job title</li>
+              <li>business  name</li>
+              <li>full business address</li>
+              <li>phone number</li>
+              <li>email address</li>
+              <li>primary sector of business</li>
+              <li>company website (optional)</li>
+              <li>export experience level</li>
+              <li>annual turnover</li>
+            </ul>
+          </dd>
+          <dd class="cya-change">  </dd>
+        </div>
+
+
+
+        {% if session.questionsData.length == 0  %}
+          <div>
+            <dt class="cya-question">
+              Additional registration questions
+            </dt>
+            <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">No additional questions</dd>
+            <dd class="cya-change">
+              <a href="/create-event/change-questions">
+                Change<span class="visually-hidden">Contact details</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+
+        {% if 0 < session.questionsData.length  %}
+          <div>
+            <dt class="cya-question">
+              Question 1<br><br>
+              Answers
+            </dt>
+            <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ session.questionsData[0][0] }}<br><br>{{ session.questionsData[0][2] }}<br>{{ session.questionsData[0][3] }}</dd>
+            <dd class="cya-change">
+              <a href="/create-event/change-question/0">
+                Change<span class="visually-hidden"> contact details</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+
+        {% if 1 < session.questionsData.length  %}
+        <div>
+          <dt class="cya-question">
+            Question 2<br><br>
+            Answers
+          </dt>
+          <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top">{{ session.questionsData[1][0] }}<br><br>{{ session.questionsData[1][2] }}<br>{{ session.questionsData[1][3] }}</dd>
+          <dd class="cya-change">
+            <a href="/create-event/change-question/1">
+              Change<span class="visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+
+        {% if  2 < session.questionsData.length%}
+        <div>
+          <dt class="cya-question">
+            Question 3<br><br>
+            Answers
+          </dt>
+          <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[2][0] }}<br><br>{{ session.questionsData[2][2] }}<br>{{ session.questionsData[2][3] }}</dd>
+          <dd class="cya-change">
+            <a href="/create-event/change-question/2">
+              Change<span class="visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+
+        {% if  3 < session.questionsData.length %}
+        <div>
+          <dt class="cya-question">
+            Question 4<br><br>
+            Answers
+          </dt>
+          <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[3][0] }}<br><br>{{ session.questionsData[3][2] }}<br>{{ session.questionsData[3][3] }}</dd>
+          <dd class="cya-change">
+            <a href="/create-event/change-question/3">
+              Change<span class="visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+
+        {% if  4 < session.questionsData.length %}
+        <div>
+          <dt class="cya-question">
+            Question 5<br><br>
+            Answers
+          </dt>
+          <dd class="cya-answer"   style="white-space: pre-wrap;">{{ session.questionsData[4][0] }}<br><br>{{ session.questionsData[4][2] }}<br>{{ session.questionsData[4][3] }}</dd>
+          <dd class="cya-change">
+            <a href="/create-event/change-question/6">
+              Change<span class="visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+
+        {% if session.questionsData.length != 0  %}
+        <div>
+          <dt class="cya-question" style="font-weight:400">
+            <a href="/create-event/add-another-question">
+              Add question<span class="visually-hidden">Add question</span>
+            </a>
+          </dt>
+          <dd class="cya-answer" style="white-space: pre-wrap; vertical-align:top"></dd>
+          <dd class="cya-change">
+
+          </dd>
+        </div>
+        {% endif %}
+
+      </dl>
+
+
+
+
+
+
+
+
+      <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:45px;">
+
+        <div>
+          <dd class="cya-answer heading-medium" style="vertical-align:top">Registration confirmation and reminder messages</dd>
+          <dd class="cya-change" style="vertical-align:top">  </dd>
+        </div>
+
+      </dl>
+
+
+      <dl class="govuk-check-your-answers cya-questions-short" style="margin-top:10px;">
+
+        <!--   EMAIL TEMPLATES  -->
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Registration email</dt>
+
+          {% if session.data['email-reg-subject-error'] %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">Your event booking ...</dd>
+          {% endif %}
+
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-registration-message">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Reminder email</dt>
+
+          {% if session.data['email-reminder-subject-error'] == true %}
+            <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">Reminder of your upcoming event ...</dd>
+          {% endif %}
+
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-reminder-message">
+              Change
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt class="cya-question" style="vertical-align:top">Reminder send time</dt>
+
+          {% if session.data['email-reminder-1-error'] == true %}
+              <dd class="cya-answer bold">Required field, incomplete.</dd>
+          {% else %}
+            <dd class="cya-answer">
+              {{ data['email-reminder-1'] }} days before the event
+            </dd>
+          {% endif %}
+
+          <dd class="cya-change" style="vertical-align:top">
+            <a href="/create-event/change-reminder-message">
+              Change
+            </a>
+          </dd>
+        </div>
+
+        {% if 0 < data['email-reminder-2'] or session.data['email-reminder-2-error'] %}
+          <div>
+            <dt class="cya-question" style="vertical-align:top">Second reminder send time</dt>
+
+            {% if session.data['email-reminder-2-error'] == true%}
+                <dd class="cya-answer bold">Required field, incomplete.</dd>
+            {% else %}
+              <dd class="cya-answer">
+                {{ data['email-reminder-2'] }} days before the event
+              </dd>
+            {% endif %}
+
+            <dd class="cya-change" style="vertical-align:top">
+              <a href="/create-event/change-reminder-message">
+                Change
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+      </dl>
+
+
+      <div class="form-group" style="margin-top:50px">
+        <a class="button" href="preview">Preview event page</a>
+        <p style="margin-top:30px"><a href="/account">Account home</a></p>
+      </div>
+
+    </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

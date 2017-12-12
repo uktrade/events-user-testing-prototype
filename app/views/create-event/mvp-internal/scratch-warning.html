@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<style>ul#proposition-links {float: right}</style>
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+     <style type="text/css">
+     	.button-great {
+     		font-size: 16px; font-weight: 600;  
+     		font-family: Roboto;
+     		button height: 50px;
+			border: none; 
+			background-color: #006CCC;
+			padding: 10px;
+			color: white !important;
+			text-decoration: none;
+		}
+     </style>
+    
+    <h2 class="heading-medium">Are you sure you want to create your event from scratch?</h2>
+
+    <p>If you start from a template, most of the settings and registration requirements will be copied for you,</p>
+
+    <div class="form-group">
+      <a href="https://www.eventbrite.co.uk/create" class="button" target="_new">Continue - create from scratch</a><br><br>
+      <a href="available-templates" class="link" target="_new">Create from a template</a>
+    </div>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

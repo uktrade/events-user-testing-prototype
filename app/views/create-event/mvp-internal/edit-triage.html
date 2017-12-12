@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<style>ul#proposition-links {float: right}</style>
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+     <style type="text/css">
+     	.button-great {
+     		font-size: 16px; font-weight: 600;  
+     		font-family: Roboto;
+     		button height: 50px;
+			border: none; 
+			background-color: #006CCC;
+			padding: 10px;
+			color: white !important;
+			text-decoration: none;
+		}
+     </style>
+    
+    <h2 class="heading-medium">What do you want to edit?</h2>
+
+
+    <div class="form-group">
+      
+    <ul class="list numeric">
+      <li><a href="https://www.eventbrite.co.uk/edit?eid=39948447883" class="link" >Change event details</a></li>
+      <li><a href="add-tages" class="link" >Change event tags (sector, market or target experience)</a></li>
+    </ul>
+    </div>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

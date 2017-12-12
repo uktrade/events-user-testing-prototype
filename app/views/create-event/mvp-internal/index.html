@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<style>
+ul#proposition-links {float: right}
+a.link:visited, a:visited {color:#005ea5 !important};
+</style>
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-three-thirds">
+
+      <h1 class="heading-xlarge">
+        DIT UAE events
+        <span class="heading-secondary">Your name</span>
+      </h1>
+     <style type="text/css">
+     	.button-great {
+     		font-size: 16px; font-weight: 600;  
+     		font-family: Roboto;
+     		button height: 50px;
+			border: none; 
+			background-color: #006CCC;
+			padding: 10px;
+			color: white !important;
+			text-decoration: none;
+		}
+     </style>
+    
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Events by DIT UAE (<a href="#">change</a>)</th>
+      <th class="numeric" scope="col"></th>
+      <th class="numeric" scope="col">Webpage</th>
+      <th class="numeric" scope="col">Registrations</th>
+      <th class="numeric" scope="col">Meetings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">DIT ‘Meet the buyer’ at Tradexpo</th>
+      <td class="numeric grey"><a href="">www.great.gov.uk/events/123456</a></td>
+      <td class="numeric"><a href="edit-triage">Edit</a></td>
+      <td class="numeric"><a href="https://www.eventbrite.co.uk/myevent?eid=39948447883">Manage</a></td>
+      <td class="numeric"><a href="https://admin.b2match.com/e/2832">Manage</a></td>
+    </tr>
+    <tr>
+      <th scope="row">DIT ‘Meet the buyer’ at Tradexpo</th>
+      <td class="numeric grey">Not published<br><a href="add-tags">Publish to GREAT</a></td>
+      <td class="numeric"><a href="https://www.eventbrite.co.uk/edit?eid=39948447883">Edit</a></td>
+      <td class="numeric"><a href="https://www.eventbrite.co.uk/myevent?eid=39948447883">Manage</a></td>
+      <td class="numeric"><a href="https://admin.b2match.com/e/2832">Manage</a></td>
+    </tr>
+    <tr>
+      <th scope="row">DIT ‘Meet the buyer’ at Tradexpo</th>
+      <td class="numeric grey">Not published<br><a href="add-tags">Publish to GREAT</a></td>
+       <td class="numeric"><a href="https://www.eventbrite.co.uk/edit?eid=39948447883">Edit</a></td>
+      <td class="numeric"><a href="https://www.eventbrite.co.uk/myevent?eid=39948447883">Manage</a></td>
+      <td class="numeric"><a href="https://admin.b2match.com/e/2832">Add</a></td>
+    </tr>
+    <tr>
+      <th scope="row">DIT ‘Meet the buyer’ at Tradexpo</th>
+      <td class="numeric grey">Not published<br><a href="add-tags">Publish to GREAT</a></td>
+      <td class="numeric"><a href="https://www.eventbrite.co.uk/edit?eid=39948447883">Edit</a></td>
+      <td class="numeric"><a href="https://www.eventbrite.co.uk/myevent?eid=39948447883">Manage</a></td>
+      <td class="numeric"><a href="https://admin.b2match.com/e/2832">Add</a></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+    <a href="https://www.eventbrite.co.uk/myevent?eid=39948447883" class="link">View all DIT UAE events</a>
+
+
+<h2 class="heading-medium">Create new event</h2>
+
+    <ul class="list numeric">
+      <li><a href="available-templates" class="link" target="_new">Start from a template</a></li>
+      <li><a href="scratch-warning" class="link" target="_new">Create from scratch</a></li>
+    </ul>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
