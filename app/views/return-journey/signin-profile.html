@@ -1,8 +1,5 @@
 
 
-
-
-
 <!DOCTYPE html>
 
 <style>
@@ -869,7 +866,6 @@
 			display: none;
 		}
 	</style>
-
 	<noscript>
 		&lt;style type="text/css"&gt;
 		.navigation-toggle {
@@ -883,7 +879,6 @@
 		}
 		&lt;/style&gt;
 	</noscript>
-
 	<style id="dit-responsive-css" type="text/css">@media (min-width: 768px) {
 		#dit-responsive-size{
 			z-index: 0;
@@ -938,17 +933,67 @@
 			<div class="account-locale-links">
 				<ul aria-label="Account links" class="navigation account-links">
 
-
-
+					<!--<li class="authenticated"><a href="#" class="profile">Profile</a></li>-->
+					<li><a href="/return-journey/signin-general" >Sign in</a></li>
 
 				</ul><span class="greeting"></span>
-				</div>
+				<a class="LanguageSelectorDialog-Tracker bidi-ltr" href="#" aria-controls="LanguageSelectorDialog_1513072894430_007526234367374318"><span class="lang">en</span><span class="label">UK</span></a></div>
 		</div>
-
 		<div class="container">
 			<a class="dit-logo" href="#">
 				<img src="/public/images/DfIT_WHITE_AW.de9db0b6a757.png" alt="Home">
 			</a>
+		</div>
+	</div>
+	<div id="header-menu">
+		<div class="container">
+			<nav id="menu">
+				<ul class="navigation level-1">
+					<li><a href="/return-journey/great-home">Home</a>
+					</li>
+					<li><a href="#" id="export-readiness-links" class="list-header ExpanderControl" aria-controls="Expander_1513072894422_033378351627676905" aria-expanded="false" aria-haspopup="true" tabindex="0">Export readiness</a><div class="Expander collapsed" id="Expander_1513072894422_033378351627676905"><ul id="export-readiness-links-list" aria-labelledby="export-readiness-links" class="navigation level-2">
+						<li class="items-3"><a href="#" tabindex="-1">I'm new to exporting</a></li>
+						<li class="items-3"><a href="#" tabindex="-1">I export occasionally</a></li>
+						<li class="items-3"><a href="#" tabindex="-1">I'm a regular exporter</a></li>
+					</ul></div>
+
+					</li>
+					<li><a href="#" id="guidance-links" class="list-header ExpanderControl" aria-controls="Expander_1513072894426_030331269695459184" aria-expanded="false" aria-haspopup="true" tabindex="0">Guidance</a><div class="Expander collapsed" id="Expander_1513072894426_030331269695459184"><ul id="guidance-links-list" aria-labelledby="guidance-links" class="navigation level-2">
+						<li class="items-6"><a href="#" tabindex="-1">Market research</a></li>
+						<li class="items-6"><a href="#" tabindex="-1">Customer insight</a></li>
+						<li class="items-6"><a href="#" tabindex="-1">Finance</a></li>
+						<li class="items-6"><a href="#" tabindex="-1">Business planning</a></li>
+						<li class="items-6"><a href="#" tabindex="-1">Getting paid</a></li>
+						<li class="items-6"><a href="#" tabindex="-1">Operations and compliance</a></li>
+					</ul></div>
+
+					</li>
+					<li>
+						<a href="#" id="services-links" class="list-header ExpanderControl" aria-controls="Expander_1513072894427_06709799540267853" aria-expanded="false" aria-haspopup="true" tabindex="0">Services</a>
+
+						<div class="Expander collapsed" id="Expander_1513072894427_06709799540267853">
+							<ul id="services-links-list" aria-labelledby="services-links" class="navigation level-2">
+								<li class="items-5"><a href="https://find-a-buyer.export.great.gov.uk/" tabindex="-1">Create an export profile</a>
+									<span class="description">Get promoted internationally with a great.gov.uk trade profile</span>
+								</li>
+								<li class="items-5"><a href="#" tabindex="-1">Sell online overseas</a>
+									<span class="description">Find the right marketplace for your business and access special offers for sellers</span>
+								</li>
+								<li class="items-5"><a href="#" tabindex="-1">Find export opportunities</a>
+									<span class="description">Find and apply for overseas opportunities</span>
+								</li>
+								<li class="items-5"><a href="#" tabindex="-1">Get finance</a>
+									<span class="description">Get the finance you need to compete and grow</span>
+								</li>
+								<li class="items-5"><a href="/return-journey/great-events" tabindex="-1">Attend events</a>
+									<span class="description">Sign up for networking events and trade missions</span>
+								</li>
+							</ul>
+						</div>
+
+					</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 </header>
@@ -960,35 +1005,71 @@
 	<section id="resource-guidance" style="background-color: #fafafa; padding-top:40px;">
 		<div class="container">
 
+			<h1 style="font-size: 48px; font-weight: 400; line-height: 50px; margin-top:0px;margin-bottom:0px;">Sign in</h1>
+
+			<p>If you have not created an account yet, then please
+				<a href="#">register</a> first.</p>
 
 
-			<div style="width:600px;">
+			<form class="login" method="POST" action="#" style="width: 570px;">
+				<input type="hidden" name="csrfmiddlewaretoken" value="Gf6kkpz9e0ux8STC9X08BbxA1h5SducDd7we9g9T73Broa1BIhpDRowU1ggnkJnC">
 
-				<p>Dear [attendee name],</p>
+				<p style="margin-bottom:0px;"><label for="id_login" style="font-size:18px; margin-bottom:10px;">Email:</label>
+					<input type="email" name="login" id="id_login" autocomplete="new-password" placeholder="Email address" required="" autofocus="autofocus"
+					style="border-radius: 0;
+							font-size: 18px;
+							height: 56px;
+							width: 100%;
+							color: #4a4a4a;
+							background-color: #fafafa;
+							border: 3px solid #6f777b;
+							margin-bottom: 10px;
+							font-family: 'Roboto', sans-serif;"></p>
 
-				<p>You're now set up with a b2match account for the event, DIT Meet the Buyer at Tradexpo.</p>
+				<p style="margin-bottom:5px;"><label for="id_password" style="font-size:18px; margin-bottom:10px;">Password:</label>
+					<input type="password" name="password" id="id_password" autocomplete="new-password" placeholder="Password" required=""style="border-radius: 0;
+							font-size: 18px;
+							height: 56px;
+							width: 100%;
+							color: #4a4a4a;
+							background-color: #fafafa;
+							border: 3px solid #6f777b;
+							margin-bottom: 10px;
+							font-family: 'Roboto', sans-serif;"></p>
 
-				<p>This means that you are now visible to attending buyers and can start using b2match to:</p>
-
-				<ul>
-					<li><a href="/return-journey/signin-b2match-buyers">request and book meetings</a>: simply use the 'Request meeting' button displayed on the profiles of available buyers </li>
-					<li><a href="/return-journey/signin-b2match-profile">edit your attendee profile</a>: including the ability to add products or services and edit your availability schedule</li>
-				</ul>
-
-				<p>If you want to manage your general registration for this event, visit
-					<a href="/return-journey/signin-events">Your events dashboard</a> on the GREAT website
-				</p>
-
-				<p>We hope that you enjoy the event.</p>
-
-				<p>Best wishes,
-					<br>DIT Events
-				</p>
-
-			</div>
+				<div class="form-field checkbox">
+					<input type="checkbox" name="remember" id="id_remember">
+					<label for="id_remember">Remember me:</label>
+				</div>
 
 
-
+				<a href="/return-journey/great-sud-events"
+				   style="
+					width: auto;
+					background-color: #00549F;
+					padding: .5em;
+					border: none;
+					border-radius: 0;
+					line-height: 1.25;
+					text-decoration: none;
+					-webkit-font-smoothing: antialiased;
+					cursor: pointer;
+					color: #fff;
+					box-sizing: border-box;
+					font-size: 19px;
+					font-family: 'Roboto', sans-serif;
+					font-weight:400;"
+				>Login</a>
+				<!--  <button class="primaryAction" type="submit">Login</button>   -->
+				<a class="" href="#" style="border: 0;
+								border-radius: 3px;
+								box-shadow: none;
+								cursor: pointer;
+								display: inline-block;
+								font-family:  arial, helvetica, sans-serif;
+								padding: 12px 30px;
+								text-decoration: none;">Reset your password</a>
+			</form>
 
 		</div>
 	</section>
@@ -998,6 +1079,11 @@
 </main>
 
 
+<section class="error-reporting">
+	<div class="container">
+		<a href="#" target="_blank">Is there anything wrong with this page?</a>
+	</div>
+</section>
 
 
 
@@ -1007,12 +1093,43 @@
 		<div class="link-group"><img id="footer-dit-logo" src="/public/images/DfIT_WHITE_AW.de9db0b6a757.png" height="70px" alt="Department for International Trade"><img id="footer-eig-logo" src="./public/images/eig-logo-stacked.90894c28d774.svg" height="82px" alt="Exporting is Great">
 		</div>
 		<div class="link-group">
-
+			<p id="footer-export-readiness-links" class="list-heading">Export readiness</p>
+			<ul aria-labelledby="footer-export-readiness-links" class="navigation">
+				<li><a href="#">I'm new to exporting</a></li>
+				<li><a href="#">I export occasionally</a></li>
+				<li><a href="#">I'm a regular exporter</a></li>
+			</ul>
 		</div>
-
+		<div class="link-group">
+			<p id="footer-guidance-links" class="list-heading">Guidance</p>
+			<ul aria-labelledby="footer-guidance-links" class="navigation">
+				<li><a href="#">Market research</a></li>
+				<li><a href="#">Customer insight</a></li>
+				<li><a href="#">Finance</a></li>
+				<li><a href="#">Business planning</a></li>
+				<li><a href="#">Getting paid</a></li>
+				<li><a href="#">Operations and compliance</a></li>
+			</ul>
+		</div>
+		<div class="link-group">
+			<p id="footer-services-links" class="list-heading">Services</p>
+			<ul aria-labelledby="footer-services-links" class="navigation">
+				<li><a href="#">Create an export profile</a></li>
+				<li><a href="#">Sell online overseas</a></li>
+				<li><a href="#">Find export opportunities</a></li>
+				<li><a href="#">Get finance</a></li>
+				<li><a href="#">Attend events</a></li>
+			</ul>
+		</div>
 	</nav>
 	<div class="site-links container">
-
+		<ul class="navigation">
+			<li><a href="#" class="">About</a></li>
+			<li><a href="#" class="">Contact us</a></li>
+			<li><a href="#" class="">Privacy and cookies</a></li>
+			<li><a href="#" class="">Terms and conditions</a></li>
+			<li><a href="#" class="">Department for International Trade on GOV.UK</a></li>
+		</ul>
 	</div>
 	<div class="global-footer">
 		<p class="container"><span>© Crown copyright 2017. All rights reserved.</span></p>
