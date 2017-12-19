@@ -413,17 +413,17 @@ router.get('/scenario-1', function (req, res)
     if(2 < rawCountsViews[x].length)
     {
       eachURLarrayName[2] = "Email Marketing";
-      eachURLarray[2] = "-email-marketing";
+      eachURLarray[2] = baseURL + "-email-marketing";
     }
     if(3 < rawCountsViews[x].length)
     {
       eachURLarrayName[3] = "Twitter";
-      eachURLarray[3] = "-twitter";
+      eachURLarray[3] = baseURL + "-twitter";
     }
     if(4 < rawCountsViews[x].length)
     {
       eachURLarrayName[4] = "Export for Growth";
-      eachURLarray[4] = baseURL + "-export-for-Growth";
+      eachURLarray[4] = baseURL + "-export-for-growth";
     }
     if(5 < rawCountsViews[x].length)
     {
@@ -5704,17 +5704,16 @@ router.get('/add-tracking-link-go-live', function (req, res)
 
 
     // Make and save new URL for this new tracking link name
-
     req.session.eventsLiveURLS[req.session.currentEventShowing][1][req.session.eventsLiveURLS[req.session.currentEventShowing][1].length]
-        = req.session.data['new-url'].substring(25);
+        = req.session.data['new-url'];
 
 
-    // Save 0 numbers for the useaue of the links
+    // Save 0 numbers for the use of the links
     //  Percentage of page views
     req.session.eventsLiveURLS[req.session.currentEventShowing][2]
         [req.session.eventsLiveURLS[req.session.currentEventShowing][2].length]= 0;
 
-    // qunatity of page views
+    // quantity of page views
     req.session.eventsLiveURLS[req.session.currentEventShowing][3]
         [req.session.eventsLiveURLS[req.session.currentEventShowing][3].length]= 0;
 
@@ -5727,7 +5726,7 @@ router.get('/add-tracking-link-go-live', function (req, res)
 
     console.log("  --- THE REG PERCENATGES SHOULD BE   " + req.session.eventsLiveURLS[req.session.currentEventShowing][4] +"\n");
 
-    //  Quanity of regs
+    //  Quantity of regs
     req.session.eventsLiveURLS[req.session.currentEventShowing][5]
         [req.session.eventsLiveURLS[req.session.currentEventShowing][5].length]= 0;
 
