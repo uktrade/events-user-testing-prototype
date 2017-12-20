@@ -96,7 +96,7 @@ router.use(function (req, res, next)
   }
 
   //console.log("INITIAL CODE RUN ______________");
-  req.session.regionName = "DIT Yorkshire and the Humber";
+  //req.session.regionName = "DIT Yorkshire and the Humber";
 
   if(req.session.trackingLinksNames == undefined)
   {
@@ -212,7 +212,17 @@ router.use(function (req, res, next)
 // SIGNING PAGE
 router.get('/homepage-prelude', function (req, res)
 {
-  req.session.regionName = "DIT Yorkshire and the Humber";
+  if(req.session.data['radio-region'] == undefined   ||  req.session.data['radio-region'] == ""  )
+  {
+    agendYesNoMissing = true;
+  }
+  else //if(req.session.data['radio-region'] == "East of England")
+  {
+    req.session.regionName = req.session.data['radio-region'];
+  }
+
+
+  // DECEMBER 2017 - guy is not sure what these few lines are for
   //console.log("the first event from data is " + req.session.eventsDraftBoolean[0]);
   console.log("event title is saved as HOMEPAGE LENGTH  " + req.session.eventsDraft.length);
   if(1 <  req.session.eventsDraft.length )
@@ -582,7 +592,7 @@ router.get('/scenario-1', function (req, res)
 
 router.get('/scenario-2', function (req, res)
 {
-  req.session.externalUser = false;
+  req.session.externalUser = true;
 
   req.session.data['event-title'] = "Introduction to exporting workshop";
 
@@ -1070,6 +1080,16 @@ router.get('/scenario-previous-questions', function (req, res)
 
 ///////////////////   EXTERNAL USER  /////////////////////////////////////////
 
+
+router.get('/register-for-event-attendee', function (req, res)
+{
+  req.session.externalUser = true;
+
+  res.redirect('/register/sign-in-or-create-account');
+})
+
+
+
 router.get('/register-for-event', function (req, res)
 {
   res.redirect('/register/sign-in-or-create-account');
@@ -1147,6 +1167,11 @@ router.get('/create-event/new', function (req, res)
   for(var x=1; x<11; x++)
   {
     req.session.data['answer-'+x] = "";
+  }
+
+  for(var y=0; y<5; y++)
+  {
+    req.session.data['benefit-input-'+y] = "";
   }
 
   req.session.liveOrNot = false;

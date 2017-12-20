@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+      <h1 class="heading-large">
+		  Which team do you work in?
+      </h1>
+
+
+	  <form action="/homepage-prelude" method="get" class="form">
+
+
+		  <div style="margin-top:30px">
+			  <div class="multiple-choice">
+				  <input id="region-1" type="radio" name="radio-region" value="East of England">
+				  <label for="region-1">East of England</label>
+			  </div>
+			  <div class="multiple-choice">
+				  <input id="region-2" type="radio" name="radio-region" value="East Midlands">
+				  <label for="region-2">East Midlands</label>
+			  </div>
+			  <div class="multiple-choice">
+				  <input id="region-3" type="radio" name="radio-region" value="London">
+				  <label for="region-3">London</label>
+			  </div>
+			  <div class="multiple-choice">
+				  <input id="region-4" type="radio" name="radio-region" value="North East">
+				  <label for="region-4">North East</label>
+			  </div>
+			  <div class="multiple-choice">
+				  <input id="region-5" type="radio" name="radio-region" value="North West">
+				  <label for="region-5">North West</label>
+			  </div>
+			  <div class="multiple-choice">
+				  <input id="region-6" type="radio" name="radio-region" value="South East">
+				  <label for="region-6">South East</label>
+			  </div>
+			  <div class="multiple-choice">
+				  <input id="region-7" type="radio" name="radio-region" value="South West">
+				  <label for="region-7">South West</label>
+			  </div>
+			  <div class="multiple-choice">
+				  <input id="region-8" type="radio" name="radio-region" value="West Midlands">
+				  <label for="region-8">West Midlands</label>
+			  </div>
+			  <div class="multiple-choice">
+				  <input id="region-9" type="radio" name="radio-region" value="Yorkshire and the Humber">
+				  <label for="region-9">Yorkshire and the Humber</label>
+			  </div>
+		  </div>
+
+
+		  <div class="form-group" style="margin-top:40px;">
+			<input type="submit" class="button" value="Continue">
+		  </div>
+
+	  </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+
