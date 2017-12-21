@@ -2,18 +2,21 @@
 {% set loggedIn = true %}
 {% set external_journey = true %}
 
-<!--
-  {% for key,value in data %}
-            <h4>{{ key }}{{ value }}</h4>
-            {% endfor %}
--->
-{% block page_title %}
 
+{% block after_header %}
+<!-- nothing to there is no second alpha banner -->
+{% endblock %}
+
+
+{% block page_title %}
   GOV.UK prototype kit
 {% endblock %}
 
+
 {% block content %}
+
 {% include "includes/great-header-preview-page.html" %}
+
 <!DOCTYPE html>
 <style type="text/css">
   .partner-logos {
