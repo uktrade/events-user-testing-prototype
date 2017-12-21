@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block proposition_header %}
-
   <div class="header-proposition">
     <div class="content">
       <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
@@ -23,18 +22,19 @@
         </a>
         {% if loggedIn %} 
         <ul id="proposition-links">
-          <li><a href="url-to-page-1">Sign out</a></li>
+          <li><a href="#">Sign out</a></li>
         </ul>
         {% endif %}
       </nav>
     </div>
   </div>
-
 {% endblock %}
+
 
 {% block header_class %}
   with-proposition
 {% endblock %}
+
 
 {% block footer_support_links %}
   {% if useAutoStoreData %}
@@ -44,7 +44,6 @@
       </li>
     </ul>
   {% endif %}
-
 {% endblock %}
 
 {% block body_end %}

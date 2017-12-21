@@ -153,7 +153,7 @@ router.use(function (req, res, next)
 
   if(req.session.data['organiser-name'] == undefined)
   {
-    req.session.data['organiser-name'] = "Department for International Trade South West ";
+    req.session.data['organiser-name'] = "Department for International Trade";
   }
 
   if(req.session.data['sold-out-message'] == undefined)
@@ -214,11 +214,13 @@ router.get('/homepage-prelude', function (req, res)
 {
   if(req.session.data['radio-region'] == undefined   ||  req.session.data['radio-region'] == ""  )
   {
-    agendYesNoMissing = true;
+    req.session.regionName = req.session.data['radio-region'];
+    req.session.data['organiser-name'] = "Department for International Trade " + req.session.regionName;
   }
   else //if(req.session.data['radio-region'] == "East of England")
   {
     req.session.regionName = req.session.data['radio-region'];
+    req.session.data['organiser-name'] = "Department for International Trade " + req.session.regionName;
   }
 
 
@@ -1872,7 +1874,7 @@ router.get('/create-event/date-skip', function (req, res)
       errorYearMissing = true;
       errorMissingDate = true;
     }
-    if(0000 <= req.session.data['event-year']  &&  req.session.data['event-year'] <= 3000)
+    if(0 <= req.session.data['event-year']  &&  req.session.data['event-year'] <= 3000)
     {}
     else
     {
