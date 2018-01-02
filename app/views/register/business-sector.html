@@ -42,7 +42,7 @@ GOV.UK prototype kit
 		</div>
 	{% endif %}
 
-	<h1 class="heading-large"  style="font-weight:400;">
+	<h1 class="heading-large">
 		Which sector do you work in?
     </h1>
 
@@ -66,19 +66,9 @@ GOV.UK prototype kit
 				</div>
 			</details>
 
-		   <!--  BREADCRUMB  -->
-		   <div class="breadcrumbs"></div>
-
-
 		   <form action="" method="post" class="form">
 
-			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
-												(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
-												(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
-												(errorAnswersError == undefined or errorAnswersError == false) %}
-											 js-hidden
-										  {% endif %}"
-						id="show-answer-type">
+			  <fieldset class="form-group">
 
 
 				<style type="text/css">

@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+Go to an event
 {% endblock %}
 
 {% block content %}
@@ -122,7 +122,7 @@
 
 
 <main id="content" role="main">
-<h1 class="heading-large" style="font-weight:400;">
+<h1 class="heading-large">
 		  Registration questions
       </h1>
 
@@ -148,59 +148,13 @@
 	  </div>
 
 
-	  <!-- CONDITIONAL ERROR  -->
-		{% if errorQuestions %}
-		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
-
-			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-				Missing fields
-			</h2>
-
-			<p>
-				Please check the following errors and try again
-			</p>
-
-			{% if errorNewQuestionEmpty %}
-				<ul class="error-summary-list">
-					<li><a href="#previous-questions">Need select a new question or a previous question</a></li>
-				</ul>
-			{% endif %}
-
-			{% if errorQuestionEmpty %}
-				<ul class="error-summary-list">
-					<li><a href="#show-answer-type">Need to enter the question</a></li>
-				</ul>
-			{% endif %}
-
-			{% if errorAnswerTypeEmpty %}
-				<ul class="error-summary-list">
-					<li><a href="#answer-types">Need to select the type of answers for their question</a></li>
-				</ul>
-			{% endif %}
-
-			{% if errorAnswersError %}
-			<ul class="error-summary-list">
-				<li><a href="#show-answers">You need to enter at least 2 answers</a></li>
-			</ul>
-			{% endif %}
-
-
-
-		</div>
-      {% endif %}
-
-
+	 
 
 	 
 	  <form action="/create-event/question-onwards" method="get" class="form">
 
 
-			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
-			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
-			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
-			  									(errorAnswersError == undefined or errorAnswersError == false) %}
-			  								 js-hidden
-			  							  {% endif %}"
+			  <fieldset class="form-group"
 						id="show-answer-type">
 
 						<!--

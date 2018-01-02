@@ -16,7 +16,7 @@ GOV.UK prototype kit
 {% include "includes/great-header.html" %} 
 
 <main id="content" role="main">
-	  <h1 class="heading-large"  style="font-weight:400;">
+	  <h1 class="heading-large">
 		  Your business address
       </h1>
   <div class="grid-row">
@@ -35,13 +35,7 @@ GOV.UK prototype kit
    <!--     <label for="example-contact-by-email">This business is not based in the UK</label> -->
       </div>
 	
-			  <fieldset class="form-group {% if 0 < session.previousQuestions.length  and
-			  									(errorQuestionEmpty == undefined or errorQuestionEmpty == false) and
-			  									(errorAnswerTypeEmpty == undefined or errorAnswerTypeEmpty == false) and
-			  									(errorAnswersError == undefined or errorAnswersError == false) %}
-			  								 js-hidden
-			  							  {% endif %}"
-						id="show-answer-type">
+			  <fieldset>
 
 <div class="form-group js-hidden" id="country-selection">
         <label class="form-label" for="contact-email">Country</label>

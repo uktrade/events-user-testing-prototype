@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block page_title %}
-GOV.UK prototype kit
+Go to an event
 {% endblock %}
 
 
@@ -31,7 +31,7 @@ GOV.UK prototype kit
       <p>An email confirmation containing further details and instructions has been sent to {{ data['email-address'] }}</p>
       </div>
 
-<p>You may also want to print or take a screenshot of this page, for reference on the day of your event. Alternatively, you can download a <a class="link" href="#">PDF</a> version.</p>
+<p>You may also want to print or take a screenshot of this page, for reference on the day of your event. Alternatively, you can download a <a  href="#">PDF</a> version.</p>
 
       {% if  session.loggedIn == false %}
       <div style="border-left:6px solid #CCC; padding:14px 10px;margin-bottom:15px">We’ve created a new account and sent the details via email. <br />Please verify your email to access your account.</div>
@@ -54,13 +54,13 @@ GOV.UK prototype kit
       <td>Date and time</td>
       <td>{{ session.data['event-day'] }} {{ session.data['event-month-name'] }} {{ session.data['event-year'] }} <br />
             {{ session.data['event-start-time'] }} to {{ session.data['event-finish-time'] }}<br /><br />
-            <a class="link" href="#">Add to calendar</a>
+            <a  href="#">Add to calendar</a>
       </td>
     </tr>
     <tr>
       <td>Venue</td>
       <td style="white-space: pre-wrap;">{{ data['full-address-holder'] }}<br />
-<a class="link" href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View map</a>
+<a  href="https://www.google.co.uk/maps/place/University+of+Exeter+Innovation+Centre/@50.7384791,-3.5323014,17z/data=!3m1!4b1!4m5!3m4!1s0x486da4430cc4d16f:0xec0fc5491010f1f4!8m2!3d50.7384791!4d-3.5301074">View map</a>
 {% if data['venue-additional-notes-entered'] == true %}
 {{ data['venue-additional-notes'] }}
 {% endif %}</td>
@@ -81,7 +81,7 @@ GOV.UK prototype kit
      
       
       <h2 class="heading-medium">What did you think of this service?</h2>
-      <p><a class="link" href="#">Our feedback survey</a> only takes about 30 seconds to complete and helps us to understand how we can improve our events experience.</p>
+      <p><a  href="#">Our feedback survey</a> only takes about 30 seconds to complete and helps us to understand how we can improve our events experience.</p>
 
 
     </div>

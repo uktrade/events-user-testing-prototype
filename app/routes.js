@@ -1087,7 +1087,7 @@ router.get('/register-for-event-attendee', function (req, res)
 {
   req.session.externalUser = true;
 
-  res.redirect('/register/sign-in-or-create-account');
+  res.redirect('/scenario-3');
 })
 
 
@@ -5908,7 +5908,7 @@ router.post('/register/sign-in', function (req, res) {
   req.session.data['email-address'] = "leslie.smith@fashion.co.uk";
   req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "Yes"];
   req.session.loggedIn = true;
-  res.redirect('/register/check-your-answers');
+  res.redirect('/register/additional-questions');
 });
 
 router.get('/register/business-sector', function (req, res)

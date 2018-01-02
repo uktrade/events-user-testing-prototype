@@ -1,12 +1,12 @@
 <div class="panel panel--info ">
     	<p>You're booking tickets for</p>
-    	<h4 class="heading-small">{{ data['event-title'] }}</h4>
+    	<h4 class="heading-medium flush--top">{{ data['event-title'] }}</h4>
     	<ul>
-    		<div class="bold-xsmall" style="margin-top:15px">Date and time</div>
-    		<li style="font-size:16px">{{ session.data['event-day'] }} {{ session.data['event-month-name'] }} {{ session.data['event-year'] }}</li>
-    		<li style="font-size:16px">{{ session.data['event-start-time'] }} to {{ session.data['event-finish-time'] }} <br /><br /></li>
-    		<div class="bold-xsmall">Location</div>
-    		<li style="font-size:16px;white-space: pre-wrap;">{{ data['full-address-holder'] }}</li>
+    		<div class="bold-small" style="margin-top:15px">Date and time</div>
+    		<li style="padding-left:0">{{ session.data['event-day'] }} {{ session.data['event-month-name'] }} {{ session.data['event-year'] }}</li>
+    		<li style="padding-left:0">{{ session.data['event-start-time'] }} to {{ session.data['event-finish-time'] }} <br /><br /></li>
+    		<div class="bold-small">Location</div>
+    		<li style="white-space: pre-wrap;padding-left:0">{{ data['full-address-holder'] }}</li>
     	</ul>
     	<br>
 		<p>Free</p>
