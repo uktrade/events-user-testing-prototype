@@ -31,14 +31,14 @@
 
   <div class="grid-row" style="max-width: 1200px; margin-left: auto; margin-right: auto; padding-top:30px">
 
-    <div class="column-two-thirds" style="width:60%; margin-right:70px; padding:0;">
+    <div class="column-two-thirds">
           <!-- EVENT title  -->
           <!-- <div class="grey" style="margin:10px 0;font-size:16px;color:#666666">{{ data['organiser-name'] }}</div>  -->
 
         {% if session.data['event-title-error'] == true %}
             <h1 class="bold-large">Title not yet entered</h1>
         {% else %}
-            <h1 class="bold-large">{{ data['event-title'] }}</h1>
+            <h1 class="bold-large flush--bottom">{{ data['event-title'] }}</h1>
         {% endif %}
 
         {% if session.data['date-error'] == true  %}
@@ -47,13 +47,13 @@
             <h2 class="font-lead">{{ data['event-day'] }} {{ data['event-month-name'] }} {{ data['event-year'] }} in {{ data['town'] }} </h2>
         {% endif %}
 
-
+        {% if data['summary-title'] %}
           <br/>
 
           <h3 style="font-size:18px;font-weight:normal">{{ data['summary-title'] }}</h3>
 
           <br/>
-
+        {% endif %}
 
           <div>
               <div>
@@ -191,7 +191,7 @@
 
 
 
-    <div class="column-one-third" style="width:34%; margin:0px; padding:0px">
+    <div class="column-one-third">
 
       {% if data['hero-image'] %}
         <div style="background-image:url('/public/images/{{data['hero-image']}}');height:270px;background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
