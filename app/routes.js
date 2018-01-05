@@ -745,7 +745,7 @@ Refreshments and networking`;
   req.session.data['growth-logo-selected'] = true;
   req.session.data['bw-logo-selected'] = true;
 
-  res.redirect('/create-event/preview');
+  res.redirect('/register/event-page');
  
 })
 
