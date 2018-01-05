@@ -120,7 +120,7 @@ GOV.UK prototype kit
 
                       <p style="margin-bottom:5px">Total registrations</p>
                       {% if 0 < session.data['attendee-reg-count'] %}
-                          <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{ data['attendee-reg-count'] }}</p>
+                          <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">{{ data['attendee-reg-count'] }} {{ session.eventsLiveURLS[session.currentEventShowing][20] }}</p>
                       {% else %}
                           <p class="heading-xlarge" style="margin-top:0px; margin-bottom:30px;">0</p>
                       {% endif %}
