@@ -194,7 +194,7 @@ router.use(function (req, res, next)
 
   if(req.session.showPublishBlockingPage == undefined)
   {
-    req.session.showPublishBlockingPage = true;
+    req.session.showPublishBlockingPage = false;
   }
 
   if( req.session.data['radio-link-access'] == undefined)
@@ -281,8 +281,8 @@ router.get('/scenario-1', function (req, res)
   }
 
   // name
-  req.session.eventsLive[0][0] = "Low Carbon Vehicles 2017";
-  req.session.eventsLive[1][0] = "Coal Mongolia 2017";
+  req.session.eventsLive[0][0] = "Low Carbon Vehicles 2018";
+  req.session.eventsLive[1][0] = "Coal Mongolia 2018";
   req.session.eventsLive[2][0] = "Researching Overseas Markets Masterclass";
   req.session.eventsLive[3][0] = "International Market Research";
   req.session.eventsLive[4][0] = "Grow your Business with Social Media";
@@ -303,18 +303,18 @@ router.get('/scenario-1', function (req, res)
   req.session.eventsLive[4][3] = "14";
 
   // month
-  req.session.eventsLive[0][5] = "November";
-  req.session.eventsLive[1][5] = "November";
-  req.session.eventsLive[2][5] = "December";
-  req.session.eventsLive[3][5] = "December";
-  req.session.eventsLive[4][5] = "December";
+  req.session.eventsLive[0][5] = "February";
+  req.session.eventsLive[1][5] = "February";
+  req.session.eventsLive[2][5] = "March";
+  req.session.eventsLive[3][5] = "March";
+  req.session.eventsLive[4][5] = "March";
 
   // year
-  req.session.eventsLive[0][6] = "2017";
-  req.session.eventsLive[1][6] = "2017";
-  req.session.eventsLive[2][6] = "2017";
-  req.session.eventsLive[3][6] = "2017";
-  req.session.eventsLive[4][6] = "2017";
+  req.session.eventsLive[0][6] = "2018";
+  req.session.eventsLive[1][6] = "2018";
+  req.session.eventsLive[2][6] = "2018";
+  req.session.eventsLive[3][6] = "2018";
+  req.session.eventsLive[4][6] = "2018";
 
   // Capacity
   req.session.eventsLive[0][8] = 20;
@@ -364,7 +364,7 @@ router.get('/scenario-1', function (req, res)
   // REgistration counts for each link
   var rawCountsRegistrations = [];
   rawCountsRegistrations[0] = [req.session.eventsLive[0][20], 8, 3, 4, 2];
-  rawCountsRegistrations[1] = [req.session.eventsLive[1][20], 4, 1, 1, 1];
+  rawCountsRegistrations[1] = [req.session.eventsLive[1][20], 11, 6, 2, 1];
   rawCountsRegistrations[2] = [req.session.eventsLive[2][20], 2, 2];
   rawCountsRegistrations[3] = [req.session.eventsLive[3][20], 2, 1];
   rawCountsRegistrations[4] = [req.session.eventsLive[4][20], 3, 0];
@@ -1143,7 +1143,7 @@ router.get('/clear-current-event-data', function (req, res)
 
 router.get('/create-event/new', function (req, res)
 {
-  req.session.showPublishBlockingPage = true;
+  req.session.showPublishBlockingPage = false;
   req.session.data['radio-link-access'] = "";
 
   req.session.data['event-title'] = undefined;
@@ -2149,6 +2149,8 @@ router.get('/create-event/venue-onwards', function (req, res)
 
   console.log("-----=-=-=  THE VENUE IS \n" + req.session.data['full-address-holder']);
 
+
+  req.session.data['map-url'] = "https://www.google.co.uk/maps/place/The+Innovation+Centre/@50.7369133,-3.5307244,16.25z/data=!4m5!3m4!1s0x0:0x9a5f61816c99672c!8m2!3d50.7381353!4d-3.5306391";
 
 
   if( req.session.data['venue-additional-notes'] == "")

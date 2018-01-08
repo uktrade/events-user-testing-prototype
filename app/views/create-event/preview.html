@@ -17,6 +17,7 @@
 
 {% include "includes/great-header-preview-page.html" %}
 
+
 <!DOCTYPE html>
 <style type="text/css">
   .partner-logos {
@@ -50,9 +51,13 @@
 
           <br/>
 
+        {% if session.data['summary-title-empty'] == false  %}
           <h3 style="font-size:18px;font-weight:normal">{{ data['summary-title'] }}</h3>
+            <br/>
+        {% endif %}
 
-          <br/>
+
+
 
 
           <div>
@@ -100,7 +105,7 @@
                 {% if session.data['benefits-error'] == true %}
                     <p class="cya-answer">Not yet entered</p>
                 {% else %}
-                    <ul class="list push--bottom">
+                    <ul class="list push--bottom"  style="list-style-position:inside; ">
                         {% for key,value in data %}
                             {% if 'benefit-input-' in key %}
                                 {% if value != "" %}
@@ -291,9 +296,13 @@
 {% include "includes/great-footer.html" %}
 
 {% endblock %}
+
+
+
+
 {% block page_scripts %}
-<script>
-var htmlString = $('#event-description').text();
-$('#event-description').html(htmlString);
-</script>
+    <script>
+        var htmlString = $('#event-description').text();
+        $('#event-description').html(htmlString);
+    </script>
 {% endblock %}

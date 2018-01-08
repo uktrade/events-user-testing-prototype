@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% set loggedIn = true %}
 {% block page_title %}
-
   GOV.UK prototype kit
 {% endblock %}
 
@@ -268,7 +267,7 @@
 				  {% if session.data['map-url'] == "" %}
 				  	<dd class="cya-answer">Optional field, left empty.</dd>
 				  {% else %}
-				  	<dd class="cya-answer" style="word-break: break-all;"><a href="{{ data['map-url'] }}">{{ data['map-url'] }}</a></a></dd>
+				  	<dd class="cya-answer" style="word-break: break-all;"><a href="{{ data['map-url'] }}" target="_blank">{{ data['map-url'] }}</a></a></dd>
 				  {% endif %}
 
 				  <dd class="cya-change ">
