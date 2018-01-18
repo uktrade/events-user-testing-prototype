@@ -74,13 +74,40 @@
 
 		  <!-- <p class="panel panel-border-narrow" style="margin-bottom:0px;">The following information will appear on your event webpage and emails.</p> -->
 
-		  <div class="form-group {% if errorOrganiserMissing %} form-group-error {% endif %}" style="margin-top:10px;" id="organiser-name-area">
+
+
+
+		  <!-- internal contact -->
+		  <div id="contact-internal-area" class="form-group {% if errorInternalContactMissing %} form-group-error {% endif %}" style="margin-top:30px; float:none;"  >
 
 			  <label class="form-label-bold" for="organiser-name">
-				  Organiser name to display on webpage<br>
+				  Name of internal contact for this event<br>
+				  <span class="form-hint" style="margin-bottom: 0px;">Not publicly displayed - for staff reference.</span>
+				  {% if errorInternalContactMissing %}
+					  <span class="error-message">
+						  Please enter an internal contact
+					  </span>
+				  {% endif %}
+			  </label>
+
+			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
+					 id="owner-name" name="owner-name" value="{{ data['owner-name'] }}" style="width: 60%">
+		  </div>
+
+
+
+
+		  <p class="font-medium bold" style="margin-bottom:20px; margin-top: 45px;">Contact details to display on webpage</p>
+
+
+
+		  <div class="form-group {% if errorOrganiserMissing %} form-group-error {% endif %}" style="" id="organiser-name-area">
+
+			  <label class="form-label-bold" for="organiser-name">
+				  Organiser name<br>
 				  <!-- <span class="form-hint" style="margin-bottom: 0px;">Public facing - to be displayed on your webpage.</span> -->
 
-					  <span style="font-weight:400"></span>
+				  <span style="font-weight:400"></span>
 				  {% if errorOrganiserMissing %}
 					  <span class="error-message">
 						  Please enter event organiser name
@@ -94,28 +121,8 @@
 
 
 
-
-		  <!--  contact from the public   -->
-		  <div class="form-group {% if experienceEmpty %} form-group-error {% endif %}" style="margin-top:10px" id="contact-details-area">
-			  <label class="form-label-bold" >
-				  Contact details to display on webpage
-			  </label>
-
-			  <div class="form-date" style="margin-top:5px">
-				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-email-area">
-					  <input id="checkbox-contact-email" type="checkbox" name="checkbox-contact-email" value="email" {% if errorEmailSelected %} checked="checked" {% endif %}>
-					  <label for="checkbox-contact-email">Email address</label>
-				  </div>
-				  <div class="multiple-choice" style="margin-bottom:10px"  data-target="contact-phone-area">
-					  <input id="checkbox-contact-phone" type="checkbox" name="checkbox-contact-phone" value="phone" {% if errorPhoneSelected %} checked="checked" {% endif %}>
-					  <label for="checkbox-contact-phone">Phone number</label>
-				  </div>
-			  </div>
-		  </div>
-
-
 		  <!-- EMAIL  -->
-		  <div class=" js-hidden form-group {% if errorEmailMissing or errorInvalidEmail %} form-group-error {% endif %}" style=""  id="contact-email-area">
+		  <div class="form-group {% if errorEmailMissing or errorInvalidEmail %} form-group-error {% endif %}" style=""  id="contact-email-area">
 
 			  <label class="form-label-bold" for="contact-email">
 				  Email address
@@ -136,10 +143,10 @@
 
 
 		  <!--  PHONE  -->
-		  <div id="contact-phone-area" class=" js-hidden form-group {% if errorPhoneMissing or errorPhoneInvalid %} form-group-error {% endif %}" style=" margin-bottom:35px"  >
+		  <div id="contact-phone-area" class=" form-group {% if errorPhoneMissing or errorPhoneInvalid %} form-group-error {% endif %}" style=" margin-bottom:35px"  >
 
 			  <label class="form-label-bold" for="contact-phone">
-				  Phone number
+				  Phone number (optional)
 				  {% if errorPhoneMissing %}
 					  <span class="error-message">
 						  Please enter organiser phone number contact
@@ -156,23 +163,6 @@
 		  </div>
 
 
-
-		  <!-- internal contact -->
-		  <div id="contact-internal-area" class="form-group {% if errorInternalContactMissing %} form-group-error {% endif %}" style="margin-top:10px;"  >
-
-			  <label class="form-label-bold" for="organiser-name">
-				  Name of internal contact for this event<br>
-				  <span class="form-hint" style="margin-bottom: 0px;">Not publicly displayed - for staff reference.</span>
-				  {% if errorInternalContactMissing %}
-					  <span class="error-message">
-						  Please enter an internal contact
-					  </span>
-				  {% endif %}
-			  </label>
-
-			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
-					 id="owner-name" name="owner-name" value="{{ data['owner-name'] }}" style="width: 60%">
-		  </div>
 
 
 
