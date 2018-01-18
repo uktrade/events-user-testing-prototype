@@ -67,7 +67,7 @@
 		  Event venue and location
       </h1>
 
-	  <form action="/create-event/venue-onwards" method="get" class="form">
+	  <form action="/create-event/venue-onwards" method="get" class="form" id="venueform">
 
 		  <!--   ADDRESS  -->
 		  <div class="form-group" style="margin-top:0px; margin-bottom:0px; width:100%;">
@@ -131,6 +131,28 @@
 			  	</div>
 
 
+				  <!-- LINK URL TO MAP -->
+				  <div class="form-group">
+					  <label class="form-label-bold" for="map-url"  style="margin-bottom:5px;">Link to map</label>
+
+					  <div id="default-map-link">
+						  <p><a class="button-secondary" style=" padding: .526315em .789473em .263157em;  font-size: 1em;   line-height: 1.25;
+				  " onclick="openLinkorValidate()">Check map location</a></p>
+						  <p style="margin-top:20px; margin-bottom:10px;">Or you can <span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="showManualUrlEntry()">enter your own link</span> if you wish.</p>
+					  </div>
+
+					  <div id="manual-map-entry" style="display:none;">
+						  <p style="margin-bottom:0;">Paste link to map</p>
+						  <input class="form-control" id="map-url" type="text" name="map-url" style="width:100%"  value="{{ data['map-url'] }}" >
+						  <p>Alternatively, <span span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="hideManualUrlEntry()">revert to automatic map link</span></p>
+						  <p><a class="button-secondary" style=" padding: .526315em .789473em .263157em;  font-size: 1em;   line-height: 1.25;
+				  " onclick="openCustomLink()">Check map location</a></p>
+					  </div>
+
+				  </div>
+
+
+
 
 				  <!--  LOCATION NOTES-->
 				  <div class="form-group">
@@ -145,30 +167,13 @@
 
 
 
-				<!-- LINK URL TO MAP -->
-				  <div class="form-group">
-					  <label class="form-label-bold" for="map-url"  style="margin-bottom:5px;">Link to map</label>
-
-					  <div id="default-map-link">
-						  <p><a class="button-secondary" style=" padding: .526315em .789473em .263157em;  font-size: 1em;   line-height: 1.25;
-              " onclick="openLinkorValidate()">Check map location</a></p>
-						  <p style="margin-top:20px;">Or you can <span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="showManualUrlEntry()">enter your own link</span> if you wish.</p>
-					  </div>
-
-					  <div id="manual-map-entry" style="display:none;">
-						  <p style="margin-bottom:0;">Paste link to map</p>
-						  <input class="form-control" id="map-url" type="text" name="map-url" style="width:100%"  value="{{ data['map-url'] }}" >
-						  <p>Alternatively, <span span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="hideManualUrlEntry()">revert to automatic map link</span></p>
-					  </div>
-
-				  </div>
 
 
 		  </div>
 
 
 
-		  <div class="form-group" style="margin-top:0px">
+		  <div class="form-group" style="margin-top:20px">
 			  <input type="submit" class="button" value="Save and continue">
 
 			  <input type="submit" formaction="/create-event/venue-skip" value="I'll complete this later - I don't have this information yet"
@@ -207,13 +212,23 @@
 				document.getElementById('town').value.length == 0  ||
 				document.getElementById('postcode').value.length == 0 )
 			{
-				window.location = "/create-event/venue-onwards";
+				document.getElementById("venueform").submit();
+				//window.location = "/create-event/venue-onwards";
 			}
 			else  // otherwise show addresss
 			{
 				window.open("https://www.google.co.uk/maps/place/The+Innovation+Centre/@50.7369133,-3.5307244,16.25z/data=!4m5!3m4!1s0x0:0x9a5f61816c99672c!8m2!3d50.7381353!4d-3.5306391", '_blank');
 			}
+		}
 
+
+		function openCustomLink()
+		{
+			var mapurltemp = document.getElementById("map-url").value;
+
+			//window.alert("Hello! " + mapurltemp);
+
+			window.open("" + mapurltemp, '_blank');
 		}
 
 	</script>

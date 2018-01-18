@@ -2149,17 +2149,19 @@ router.get('/create-event/venue-onwards', function (req, res)
   }
   else
   {
+    errorOnVenueName = false;
     req.session.data['full-address-holder'] = req.session.data['venue'];
   }
 
 
   // If building is empty then throw error;
-  if(req.session.data['building'] == "")
+  if(req.session.data['building'] == ""  || req.session.data['building'] == undefined )
   {
     errorOnBuilding = true;
   }
   else
   {
+    errorOnBuilding = false;
     req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['building'];
   }
 
@@ -2171,22 +2173,23 @@ router.get('/create-event/venue-onwards', function (req, res)
 
 
   // If town is empty then throw error;
-  if(req.session.data['town'] == "")
+  if(req.session.data['town'] == ""  || req.session.data['town'] == undefined )
   {
     errorOnTown = true;
   }
   else
   {
+    errorOnTown = false;
     req.session.data['full-address-holder'] = req.session.data['full-address-holder'] + "\n" + req.session.data['town'];
   }
 
 
   // If building is empty then throw error;
-  if(req.session.data['postcode'] == "")
+  if(req.session.data['postcode'] == "" || req.session.data['postcode'] == undefined )
   {
     errorOnPostcodeMissing = true;
   }
-  else if(req.session.data['postcode'].length < 6)
+  else if(req.session.data['postcode'].length < 6 )
   {
     errorOnPostcode = true;
   }
