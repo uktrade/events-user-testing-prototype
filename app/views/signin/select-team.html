@@ -17,12 +17,40 @@
     <div class="column-two-thirds">
 
 
+		{% if errorsExist %}
+			<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					Missing fields
+				</h2>
+
+				<p>
+					Please check the following errors and try again.
+				</p>
+
+				<ul class="error-summary-list">
+					{% if errorTeamMissing %}
+					<li><a href="#team-selection-area">Team: missing</a></li>
+					{% endif %}
+				</ul>
+
+			</div>
+		{% endif %}
+
+
       <h1 class="heading-large">
 		  Which team do you work in?
       </h1>
 
 
-	  <form action="/homepage-prelude" method="get" class="form">
+	  <form action="/signin/select-team-onwards" method="get" class="form {% if errorTeamMissing %} form-group-error {% endif %}" id="team-selection-area">
+
+
+		  {% if errorTeamMissing %}
+			  <p class="error-message">
+				  Please select your team
+			  </p>
+		  {% endif %}
 
 
 		  <div style="margin-top:30px">
@@ -67,6 +95,10 @@
 					  <div class="multiple-choice">
 						  <input id="region-9" type="radio" name="radio-region" value="Yorkshire and the Humber">
 						  <label for="region-9">Yorkshire and the Humber</label>
+					  </div>
+					  <div class="multiple-choice">
+						  <input id="region-9" type="radio" name="radio-region" value="UK Export Finance">
+						  <label for="region-9">UK Export Finance</label>
 					  </div>
 
 				  </div>

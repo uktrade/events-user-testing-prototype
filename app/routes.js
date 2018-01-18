@@ -209,33 +209,6 @@ router.use(function (req, res, next)
 
 
 
-// SIGNING PAGE
-router.get('/homepage-prelude', function (req, res)
-{
-  if(req.session.data['radio-region'] == undefined   ||  req.session.data['radio-region'] == ""  )
-  {
-    req.session.regionName = req.session.data['radio-region'];
-    req.session.data['organiser-name'] = "Department for International Trade " + req.session.regionName;
-  }
-  else //if(req.session.data['radio-region'] == "East of England")
-  {
-    req.session.regionName = req.session.data['radio-region'];
-    req.session.data['organiser-name'] = "Department for International Trade " + req.session.regionName;
-  }
-
-
-  // DECEMBER 2017 - guy is not sure what these few lines are for
-  //console.log("the first event from data is " + req.session.eventsDraftBoolean[0]);
-  console.log("event title is saved as HOMEPAGE LENGTH  " + req.session.eventsDraft.length);
-  if(1 <  req.session.eventsDraft.length )
-  {
-    console.log("event title is saved as HOMEPAGE" + req.session.eventsDraft[0][0]);
-  }
-
-  res.redirect('account/index');
-})
-
-
 
 router.get('/scenario-empty', function (req, res)
 {
@@ -253,7 +226,7 @@ router.get('/scenario-1', function (req, res)
   req.session.externalUser = false;
 
   // empty account
-  //req.session.regionName = "DIT Yorkshire and the Humber";
+  req.session.regionName = undefined;
 
   req.session.ticketsSoldPercentage = 0;
   req.session.ticketsRemaining = 20;
@@ -587,7 +560,7 @@ router.get('/scenario-1', function (req, res)
   }
 
 
-  res.redirect('/signin');
+  res.redirect('/signin/select-team');
 })
 
 
@@ -1080,7 +1053,7 @@ router.get('/scenario-previous-questions', function (req, res)
 
 
 
-///////////////////   EXTERNAL USER  /////////////////////////////////////////
+///////////////////   ATTENDEE USER  /////////////////////////////////////////
 
 
 router.get('/register-for-event-attendee', function (req, res)
@@ -1097,6 +1070,82 @@ router.get('/register-for-event', function (req, res)
   res.redirect('/register/sign-in-or-create-account');
 })
 
+
+
+
+
+
+
+
+
+
+
+////////////////////////  ORGANISER USER  /////////////////////////////////////////
+
+
+
+//  SELETC TEAMS
+router.get('/signin/select-team-onwards', function (req, res)
+{
+  var errorMissingTeamSelection = false;
+
+  console.log("THE TEAM IS ---**-*-   " + req.session.data['radio-region']);
+
+
+  if (req.session.data['radio-region'] == undefined || req.session.data['radio-region'] == "")
+  {
+    errorMissingTeamSelection = true;
+  }
+  else
+  {
+    req.session.regionName = req.session.data['radio-region'];
+  }
+
+  if ( errorMissingTeamSelection == false )
+  {
+    res.redirect('/homepage-prelude');
+  }
+  else
+  {
+    res.render('signin/select-team',
+        {
+          'errorsExist' : true,
+          'errorTeamMissing': errorMissingTeamSelection
+        }
+    );
+  }
+
+})
+
+
+
+
+
+// SIGNING PAGE
+router.get('/homepage-prelude', function (req, res)
+{
+  if(req.session.data['radio-region'] == undefined   ||  req.session.data['radio-region'] == ""  )
+  {
+    req.session.regionName = req.session.data['radio-region'];
+    req.session.data['organiser-name'] = "Department for International Trade " + req.session.regionName;
+  }
+  else //if(req.session.data['radio-region'] == "East of England")
+  {
+    req.session.regionName = req.session.data['radio-region'];
+    req.session.data['organiser-name'] = "Department for International Trade " + req.session.regionName;
+  }
+
+
+  // DECEMBER 2017 - guy is not sure what these few lines are for
+  //console.log("the first event from data is " + req.session.eventsDraftBoolean[0]);
+  console.log("event title is saved as HOMEPAGE LENGTH  " + req.session.eventsDraft.length);
+  if(1 <  req.session.eventsDraft.length )
+  {
+    console.log("event title is saved as HOMEPAGE" + req.session.eventsDraft[0][0]);
+  }
+
+  res.redirect('account/index');
+})
 
 
 

@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% set loggedIn = true %}
+{% block page_title %}
+
+GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+	<div class="grid-row">
+		<div class="full-grid-mode" style="margin-left:15px">
+
+
+			<!--  BREADCRUMB  -->
+			<div class="breadcrumbs">
+				<ol>
+					<li><a href="/account">Account home</a></li>
+				</ol>
+			</div>
+
+
+
+
+			<h1 class="heading-large" style="margin-top:15px; margin-bottom:35px">
+				Set event reminder message
+			</h1>
+
+
+			<form action="/create-event/template-reminder-onwards" method="get" class="form">
+
+
+				<fieldset class="form-group" style="margin-bottom:20px">
+
+					<label class="form-label-bold" for="sold-out-message">
+						When to send reminder
+					</label>
+					<!-- <p class="form-hint">For example, 31 3 1980</p>  -->
+					<div class="form-group form-group-day form-date">
+
+						<input class="form-control  {% if errorAttendee %} form-control-error {% endif %}"
+							   id="close-reg-early-days" name="close-reg-early-days" type="number" pattern="[0-9]*"
+							   value="2" style="float: left; width:50px;">
+						<p style="float: left; margin-left:10px; margin-top:8px;"> days before event</p>
+					</div>
+				</fieldset>
+
+				<br>
+
+
+				<p class="heading-small">Email subject</p>
+
+				<div id="email-reg-subject-section" class="form-group panel panel-border-narrow" >
+					<p style="margin-left:5px; ">Reminder of your upcoming event</p>
+				</div>
+
+
+				<p class="heading-small">Email body</p>
+
+				<div id="email-reg-body-section" class="form-group panel panel-border-narrow" style="margin-top:10px;">
+
+
+
+					<p style="margin-left:5px; ">Dear [NAME]<br><br>
+
+						We're getting in touch to remind you about your upcoming event
+						<br>
+						<br>Sweden food and drink seminar
+						<br>
+						<br>Wednesday 1 November 2017
+						<br>10am to 1pm
+					</p>
+					<p style=" margin-left:5px; ">Olympia<br>
+						Hammersmith Rd<br>
+						London<br>
+						W14 8UX</p>
+
+
+
+					<textarea class="form-control" name="event-reminder-body" id="event-reminder-body" rows="6" style="width: 80%;"
+					>If you have any questions or special requests that will help you to get the most out of the day, please don't hesitate to get in touch. We'd be happy to assist.
+
+We look forward to seeing you on the day.
+
+</textarea>
+
+
+	<p><br>
+		Best wishes,<br>
+		<br>
+		Department for International Trade<br>
+		London<br>
+		<br>
+		contact@tradelondon.org.uk<br>
+		020 7234 3000<br>
+	</p>
+
+				</div>
+
+
+				<div class="form-group" style="margin-top:10px">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</main>
+
+{% endblock %}
+
