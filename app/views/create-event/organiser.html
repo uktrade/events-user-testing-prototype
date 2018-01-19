@@ -37,6 +37,9 @@
 				</p>
 
 				<ul class="error-summary-list">
+					{% if errorInternalContactMissing %}
+					<li><a href="#contact-internal-area">Internal contact: missing</a></li>
+					{% endif %}
 					{% if errorOrganiserMissing %}
 						<li><a href="#organiser-name-area">Organiser name: missing</a></li>
 					{% endif %}
@@ -52,9 +55,7 @@
 					{% if errorPhoneInvalid %}
 						<li><a href="#contact-phone-area">Organiser phone number contact: invalid</a></li>
 					{% endif %}
-					{% if errorInternalContactMissing %}
-						<li><a href="#contact-internal-area">Internal contact: missing</a></li>
-					{% endif %}
+
 
 				</ul>
 
@@ -93,7 +94,6 @@
 			  <input type="text" class="form-control  {% if errorMissingTitle %} form-control-error {% endif %}"
 					 id="owner-name" name="owner-name" value="{{ data['owner-name'] }}" style="width: 60%">
 		  </div>
-
 
 
 

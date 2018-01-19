@@ -131,6 +131,7 @@
 			  	</div>
 
 
+
 				  <!-- LINK URL TO MAP -->
 				  <div class="form-group">
 					  <label class="form-label-bold" for="map-url"  style="margin-bottom:5px;">Link to map</label>
@@ -163,10 +164,6 @@
 					  </label>
 					  <textarea class="form-control" name="venue-additional-notes" id="venue-additional-notes" rows="3" style="width: 100%;">{{ data['venue-additional-notes'] }}</textarea>
 				  </div>
-
-
-
-
 
 
 		  </div>
@@ -226,12 +223,44 @@
 		{
 			var mapurltemp = document.getElementById("map-url").value;
 
-			//window.alert("Hello! " + mapurltemp);
+			if(mapurltemp.length < 5)
+			{
+				window.alert("Not enough input");
+			}
+			else
+			{
+				window.open("" + mapurltemp, '_blank');
+			}
 
-			window.open("" + mapurltemp, '_blank');
+
 		}
 
 	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

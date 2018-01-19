@@ -1251,6 +1251,7 @@ router.get('/create-event/organiser-onwards', function (req, res)
   var errorCheckboxPhoneSelected = false;
   var errorMissingPhone = false;
   var errorInvalidPhone = false;
+  req.session.data['contact-phone-error'] = false;
 
   var errorMissingInternalContact = false;
 
@@ -1266,6 +1267,28 @@ router.get('/create-event/organiser-onwards', function (req, res)
   }
 
 
+  // Check if the emil is empty
+  if(req.session.data['contact-email'] == ""  ||  req.session.data['contact-email'] == undefined )
+  {
+    errorMissingEmail = true;
+    req.session.data['contact-email-error'] = true;
+  }
+  else // Check if the email has valid characters
+  {
+    if( (req.session.data['contact-email'].indexOf("@") == -1)  ||  (req.session.data['contact-email'].indexOf(".") == -1)  )
+    {
+      errorInvalidEmail = true;
+      req.session.data['contact-email-error'] = true;
+    }
+    else
+    {
+      errorInvalidEmail = false;
+      req.session.data['contact-email-error'] = false;
+    }
+  }
+
+
+  /*
   if(req.session.data['contact-email'] != undefined)
   {
     // Check if the email checkbos is selected
@@ -1293,45 +1316,38 @@ router.get('/create-event/organiser-onwards', function (req, res)
       req.session.data['contact-email'] = "Not entered"
     }
   }
+  */
 
 
-  if(req.session.data['contact-phone'] != undefined)
-  {
     // Check if the email checkbos is selected
-    if(req.session.data['checkbox-contact-phone'] != undefined )
-    {
-      errorCheckboxPhoneSelected = true;
 
-      // Check if phone field is empty
-      if (req.session.data['contact-phone'] == "")
-      {
-        errorMissingPhone = true;
-        req.session.data['contact-phone-error'] = true;
-      }
-      else // Check if the phone number is invalid
-      {
-        var tempString = req.session.data['contact-phone'].replace(/\s/g, '');
-        if ( isNaN(tempString) == true )
-        {
-          errorInvalidPhone = true;
-          req.session.data['contact-phone-error'] = true;
-        }
-      }
-    }
-    else // save that they didn't want a phone number recording
+    // Check if phone field is empty
+    if (req.session.data['contact-phone'] == ""   ||  req.session.data['contact-phone'] == undefined )
     {
       req.session.data['contact-phone'] = "Not entered"
     }
-  }
+    else // Check if the phone number is invalid
+    {
+      var tempString = req.session.data['contact-phone'].replace(/\s/g, '');
+      if ( isNaN(tempString) == true )
+      {
+        errorInvalidPhone = true;
+        req.session.data['contact-phone-error'] = true;
+      }
+    }
 
-  if(req.session.data['owner-name'] != undefined)
-  {
-    if(req.session.data['owner-name'] == "")
+
+
+    if(req.session.data['owner-name'] == ""   ||   req.session.data['owner-name'] != undefined)
     {
       errorMissingInternalContact = true;
       req.session.data['owner-name-error'] = true;
     }
-  }
+    else
+    {
+      errorMissingInternalContact = false;
+      req.session.data['owner-name-error'] = false;
+    }
 
 
   // ERRORS OR PROCEED
