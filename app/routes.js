@@ -1264,6 +1264,10 @@ router.get('/create-event/organiser-onwards', function (req, res)
       errorMissingOrganiser = true;
       req.session.data['organiser-name-error'] = true;
     }
+    else
+    {
+      req.session.data['organiser-name-error'] = false;
+    }
   }
 
 
@@ -1338,7 +1342,7 @@ router.get('/create-event/organiser-onwards', function (req, res)
 
 
 
-    if(req.session.data['owner-name'] == ""   ||   req.session.data['owner-name'] != undefined)
+    if(req.session.data['owner-name'] == ""   ||   req.session.data['owner-name'] == undefined)
     {
       errorMissingInternalContact = true;
       req.session.data['owner-name-error'] = true;
