@@ -144,7 +144,11 @@
 
 					  <div id="manual-map-entry" style="display:none;">
 						  <p style="margin-bottom:0;">Paste link to map</p>
-						  <input class="form-control" id="map-url" type="text" name="map-url" style="width:100%"  value="{{ data['map-url'] }}" >
+
+						  <!-- <input class="form-control" id="map-url" type="text" name="map-url" style="width:100%"  value="{{ data['map-url'] }}" >  -->
+
+						  <textarea class="form-control" name="map-url" id="map-url" rows="3" style="width: 100%;">{{ data['map-url'] }}</textarea>
+
 						  <p>Alternatively, <span span style="color: #006ea5; text-decoration: underline; cursor: pointer;" onclick="hideManualUrlEntry()">revert to automatic map link</span></p>
 						  <p><a class="button-secondary" style=" padding: .526315em .789473em .263157em;  font-size: 1em;   line-height: 1.25;
 				  " onclick="openCustomLink()">Check map location</a></p>
@@ -225,7 +229,7 @@
 
 			if(mapurltemp.length < 5)
 			{
-				window.alert("Not enough input");
+				window.alert("See story for empty validation state");
 			}
 			else
 			{
