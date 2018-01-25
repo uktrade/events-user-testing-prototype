@@ -1485,7 +1485,15 @@ router.get('/create-event/organiser-skip', function (req, res)
   }
 
   // Continue on regardless of errors
-  res.redirect('/create-event/date');
+  if(req.session.changingFromSummary == true)
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+  else
+  {
+    res.redirect('/create-event/date');
+  }
+
 
 })
 
@@ -2138,8 +2146,15 @@ router.get('/create-event/date-skip', function (req, res)
     req.session.data['time-error'] = false;
   }
 
-  res.redirect('/create-event/venue');
 
+  if(req.session.changingFromSummary == true)
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+  else
+  {
+    res.redirect('/create-event/venue');
+  }
 
 })
 
@@ -3060,18 +3075,22 @@ router.get('/create-event/description-onwards', function (req, res)
   else if(req.session.data['radio-agenda'] == "later")
   {
     req.session.data['agenda-error-later'] = true;
+    req.session.data['markets-error'] = false;
   }
   else if(req.session.data['radio-agenda'] == "no")
   {
     agendaShowNo = true;
     console.log("THE AGENDA IS NO");
     req.session.data['agenda'] = "No agenda will be shown";
+    req.session.data['agenda-error-later'] = false;
+    req.session.data['markets-error'] = false;
   }
   else if(req.session.data['radio-agenda'] == "yes")
   {
     agendaShowIs = true;
     // save agenda data
-
+    req.session.data['agenda-error-later'] = false;
+    req.session.data['markets-error'] = false;
 
     if(req.session.data['agenda-hour-1'] == "")
     {
@@ -3319,13 +3338,19 @@ router.get('/create-event/description-skip', function (req, res)
     errorMissingmarketAnswer = true;
     req.session.data['markets-error'] = true;
   }
+  else if(req.session.data['radio-agenda'] == "later")
+  {
+    req.session.data['markets-error'] = false;
+  }
   else if(req.session.data['radio-markets'] == "no")
   {
     marketsNoSelected = true;
     req.session.data['markets'] = "Relevant to all markets";
+    req.session.data['markets-error'] = false;
   }
   else if(req.session.data['radio-markets'] == "yes")
   {
+    req.session.data['markets-error'] = false;
     marketsYesSelected = true;
 
     console.log("The first market is  --**  " + req.session.data['market-box']);
@@ -3435,18 +3460,27 @@ router.get('/create-event/description-skip', function (req, res)
   if(req.session.data['radio-agenda'] == undefined   ||  req.session.data['radio-agenda'] == ""  )
   {
     agendYesNoMissing = true;
+    req.session.data['agenda-error'] = true;
+  }
+  else if(req.session.data['radio-agenda'] == "later")
+  {
+    req.session.data['agenda-error-later'] = true;
+    req.session.data['agenda-error'] = false;
   }
   else if(req.session.data['radio-agenda'] == "no")
   {
     agendaShowNo = true;
     console.log("THE AGENDA IS NO");
     req.session.data['agenda'] = "No agenda will be shown";
+    req.session.data['agenda-error-later'] = false;
+    req.session.data['agenda-error'] = false;
   }
   else if(req.session.data['radio-agenda'] == "yes")
   {
     agendaShowIs = true;
     // save agenda data
-
+    req.session.data['agenda-error-later'] = false;
+    req.session.data['agenda-error'] = false;
 
     if(req.session.data['agenda-hour-1'] == "")
     {
@@ -3617,7 +3651,13 @@ router.get('/create-event/images-skip', function (req, res)
 {
   req.session.data['image-error'] = true;
 
-  res.redirect('/create-event/partner-logos');
+  if(req.session.changingFromSummary == true)
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+  else {
+    res.redirect('/create-event/partner-logos');
+  }
 })
 
 
@@ -4265,7 +4305,15 @@ router.get('/create-event/tickets-skip', function (req, res)
   console.log(" the missing close date variable is " + missingCustomCloseDate);
 
 
-  res.redirect('/create-event/attendees');
+  if(req.session.changingFromSummary == true)
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+  else
+  {
+    res.redirect('/create-event/attendees');
+  }
+
 })
 
 
@@ -4837,7 +4885,6 @@ router.get('/create-event/template-reg-onwards', function (req, res)
         req.session.data['event-email-subject-reminder'] = "Reminder of your upcoming event ";
       }
 
-
       res.redirect('/create-event/template-reminder');
     }
   }
@@ -4850,6 +4897,8 @@ router.get('/create-event/template-reg-onwards', function (req, res)
     );
   }
 })
+
+
 
 router.get('/create-event/template-reg-skip', function (req, res)
 {
@@ -4877,7 +4926,16 @@ router.get('/create-event/template-reg-skip', function (req, res)
     req.session.data['event-email-subject-reminder'] = "Reminder of your upcoming event ";
   }
 
-  res.redirect('/create-event/template-reminder');
+  if(req.session.changingFromSummary == true)
+  {
+    res.redirect('/create-event/summary-prelude');
+  }
+  else
+  {
+    res.redirect('/create-event/template-reminder');
+  }
+
+
 
 })
 
