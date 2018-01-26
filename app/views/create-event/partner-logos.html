@@ -87,32 +87,42 @@
 						  Partner logo 1
 					  </label>
 					  <div id="logo-1-button" style="margin-top:2px">
-						  <input type="submit" class="button-secondary" value="Choose an image" onclick="hidelogo1()">
+						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo1()">
 					  </div>
+
+					  <div id="uploading-1" style="margin-top:5px; margin-bottom:251px; display:none;">
+						  <img id="upload-image-1" src="/public/images/uploading.gif" style="width:20px;height:54px;">
+						  <p><a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo1()" >Cancel upload</a></p>
+					  </div>
+
 					  <div id="image-area-1" style="margin-top:2px; display:none">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
 							  	  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
-								  <a href="">Remove image</a></p>
+								  	<a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo1()" >Remove image</a></p>
 							  </div>
 						  </div>
 					  </div>
 				  </div>
 
 
+
 				  <div id="partner-2" style="margin-bottom:30px; display:none;">
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 2
 					  </label>
+					  <div id="logo-2-button" style="margin-top:2px; display:none;">
+						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo2()">
+					  </div>
 					  <div id="image-area-2" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
 								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
-									  <a href="">Remove image</a></p>
+									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo2()" >Remove image</a></p>
 							  </div>
 						  </div>
 					  </div>
@@ -124,13 +134,16 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 3
 					  </label>
+					  <div id="logo-3-button" style="margin-top:2px; display:none;">
+						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo3()">
+					  </div>
 					  <div id="image-area-3" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner13.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
 								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
-									  <a href="">Remove image</a></p>
+									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo3()">Remove image</a></p>
 							  </div>
 						  </div>
 					  </div>
@@ -142,13 +155,16 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 4
 					  </label>
+					  <div id="logo-4-button" style="margin-top:2px; display:none;">
+						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo4()">
+					  </div>
 					  <div id="image-area-4" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner14.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
 								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
-									  <a href="">Remove image</a></p>
+									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo4()">Remove image</a></p>
 							  </div>
 						  </div>
 					  </div>
@@ -160,13 +176,16 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 5
 					  </label>
+					  <div id="logo-5-button" style="margin-top:2px; display:none;">
+						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo5()">
+					  </div>
 					  <div id="image-area-5" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
 								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
-									  <a href="">Remove image</a></p>
+									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo5()">Remove image</a></p>
 							  </div>
 						  </div>
 					  </div>
@@ -178,13 +197,16 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 6
 					  </label>
+					  <div id="logo-6-button" style="margin-top:2px; display:none;">
+						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo6()">
+					  </div>
 					  <div id="image-area-6" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
 								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
-									  <a href="">Remove image</a></p>
+									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo6()">Remove image</a></p>
 							  </div>
 						  </div>
 					  </div>
@@ -238,12 +260,77 @@
 <script>
 	// When pressing the get main image button it swap in an image
 
-	function hidelogo1()
+
+
+
+
+
+
+	function showlogo1()
 	{
 		document.getElementById('logo-1-button').style.display = 'none';
-		document.getElementById('image-area-1').style.display = 'inline';
-		document.getElementById("logo-1").checked = true;
+		document.getElementById('uploading-1').style.display = 'block';
+
+		//document.getElementById('upload-image-1').attr('/public/images/uploading.gif', src);
+		//document.getElementById('upload-image-1').show();
+		//setTimeout(updatefirstgif, 0);
+
+		setTimeout(showlogo1end, 2500)
 	}
+
+	function updatefirstgif()
+	{
+
+	}
+
+	function showlogo1end()
+	{
+		if(document.getElementById('uploading-1').style.display != 'none')
+		{
+			document.getElementById('uploading-1').style.display = 'none';
+			document.getElementById('image-area-1').style.display = 'block';
+			document.getElementById("logo-1").checked = true;
+		}
+	}
+
+
+
+	function showlogo2()
+	{
+		document.getElementById('logo-2-button').style.display = 'none';
+		document.getElementById('image-area-2').style.display = 'block';
+		document.getElementById("logo-2").checked = true;
+	}
+
+	function showlogo3()
+	{
+		document.getElementById('logo-3-button').style.display = 'none';
+		document.getElementById('image-area-3').style.display = 'block';
+		document.getElementById("logo-3").checked = true;
+	}
+
+	function showlogo4()
+	{
+		document.getElementById('logo-4-button').style.display = 'none';
+		document.getElementById('image-area-4').style.display = 'block';
+		document.getElementById("logo-4").checked = true;
+	}
+
+	function showlogo5()
+	{
+		document.getElementById('logo-5-button').style.display = 'none';
+		document.getElementById('image-area-5').style.display = 'block';
+		document.getElementById("logo-5").checked = true;
+	}
+
+	function showlogo6()
+	{
+		document.getElementById('logo-6-button').style.display = 'none';
+		document.getElementById('image-area-6').style.display = 'block';
+		document.getElementById("logo-6").checked = true;
+	}
+
+
 
 	function shownextlogo()
 	{
@@ -269,10 +356,56 @@
 		}
 		else if(document.getElementById('partner-6').style.display == 'none')
 		{
-			document.getElementById('partner-6').style.display = 'block';
 			document.getElementById("logo-6").checked = true;
+			document.getElementById('partner-6').style.display = 'block';
+			document.getElementById('partner-another').style.display = 'none';
 		}
 	}
+
+
+	function hidelogo1()
+	{
+		document.getElementById('logo-1-button').style.display = 'inline';
+		document.getElementById('image-area-1').style.display = 'none';
+		document.getElementById("logo-1").checked = false;
+		document.getElementById('uploading-1').style.display = 'none';
+	}
+
+	function hidelogo2()
+	{
+		document.getElementById('logo-2-button').style.display = 'inline';
+		document.getElementById('image-area-2').style.display = 'none';
+		document.getElementById("logo-2").checked = false;
+	}
+
+	function hidelogo3()
+	{
+		document.getElementById('logo-3-button').style.display = 'inline';
+		document.getElementById('image-area-3').style.display = 'none';
+		document.getElementById("logo-3").checked = false;
+	}
+
+	function hidelogo4()
+	{
+		document.getElementById('logo-4-button').style.display = 'inline';
+		document.getElementById('image-area-4').style.display = 'none';
+		document.getElementById("logo-4").checked = false;
+	}
+
+	function hidelogo5()
+	{
+		document.getElementById('logo-5-button').style.display = 'inline';
+		document.getElementById('image-area-5').style.display = 'none';
+		document.getElementById("logo-5").checked = false;
+	}
+
+	function hidelogo6()
+	{
+		document.getElementById('logo-6-button').style.display = 'inline';
+		document.getElementById('image-area-6').style.display = 'none';
+		document.getElementById("logo-6").checked = false;
+	}
+
 </script>
 
 {% endblock %}
