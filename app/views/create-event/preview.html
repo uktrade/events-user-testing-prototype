@@ -196,10 +196,10 @@
 
 
 
-    <div class="column-one-third" style="width:34%; margin:0px; padding:0px">
+    <div class="column-one-third" style="width:400px; margin:0px; padding:0px">
 
       {% if data['hero-image'] %}
-        <div style="background-image:url('/public/images/{{data['hero-image']}}');height:270px;background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+        <div style="background-image:url('/public/images/{{data['hero-image']}}');height:266px;background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
       {% else %}
         <div style="height:270px; border: 1px solid black;">
             <p><br><br><br><br><center>Image not yet entered</center></p>
@@ -232,7 +232,7 @@
                   <p class="link-style"><a href="{{session.data['map-url']}}"  target="_blank">View on a map</a></p>
                   {% if session.data['venue-additional-notes-entered'] == true %}
                       <details>
-                          <summary>Parking and directions</summary>
+                          <summary class="summary">Parking and directions</summary>
 
                           <div>{{ data['venue-additional-notes'] }}</div>
                       </details>
