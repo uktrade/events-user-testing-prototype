@@ -79,10 +79,23 @@
 			  <div class="form-group"
 				   style="margin-top:10px; margin-bottom:20px">
 
-				  <p>Partner logos will be displayed on the footer of your webpage.<br>Images will appear in the order that you upload them.</p>
+				  <p style="margin-bottom:0px;">Partner logos will be displayed on the footer of your webpage.<br>Images will appear in the order that you upload them.</p>
+
+				  <details role="group" style="width:650px;  ">
+					  <summary role="button" aria-controls="details-content-0" aria-expanded="false" style="margin-top:0px;">
+						  <span class="summary">Image guidance</span></summary>
+					  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
+						  <p style="margin-bottom:10px;">  <!-- note these are made up -->
+							  Minimum resolution width: 160px
+							  <br>
+							  Images won't be cropped or stretched.
+						  </p>
+					  </div>
+				  </details>
 
 
-				  <div id="partner-1" style="margin-bottom:30px;">
+
+				  <div id="partner-1" style="margin-bottom:30px; margin-top:30px;">
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 1
 					  </label>
@@ -90,8 +103,8 @@
 						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo1()">
 					  </div>
 
-					  <div id="uploading-1" style="margin-top:5px; margin-bottom:251px; display:none;">
-						  <img id="upload-image-1" src="/public/images/uploading.gif" style="width:20px;height:54px;">
+					  <div id="uploading-1" style="margin-top:5px; margin-bottom:20px; display:none;">
+						  <img id="upload-image-1" src="/public/images/uploading.gif" style="width:217px;height:54px;">
 						  <p><a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo1()" >Cancel upload</a></p>
 					  </div>
 
@@ -100,7 +113,7 @@
 							  <img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
-							  	  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
+							  	  <p style="margin-left:10px; margin-bottom:0px; color: #005ea5; text-decoration: underline; cursor: pointer;" ><a onclick="showlogo1()">Change image</a><br>
 								  	<a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo1()" >Remove image</a></p>
 							  </div>
 						  </div>
@@ -113,15 +126,22 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 2
 					  </label>
+
 					  <div id="logo-2-button" style="margin-top:2px; display:none;">
 						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo2()">
 					  </div>
+
+					  <div id="uploading-2" style="margin-top:5px; margin-bottom:20px; display:none;">
+						  <img id="upload-image-2" src="/public/images/uploading.gif" style="width:217px;height:54px;">
+						  <p><a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo2()" >Cancel upload</a></p>
+					  </div>
+
 					  <div id="image-area-2" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
-								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
+								  <p style="margin-left:10px; margin-bottom:0px; color: #005ea5; text-decoration: underline; cursor: pointer;" ><a onclick="showlogo2()">Change image</a><br>
 									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo2()" >Remove image</a></p>
 							  </div>
 						  </div>
@@ -134,15 +154,22 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 3
 					  </label>
+
 					  <div id="logo-3-button" style="margin-top:2px; display:none;">
 						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo3()">
 					  </div>
+
+					  <div id="uploading-3" style="margin-top:5px; margin-bottom:20px; display:none;">
+						  <img id="upload-image-3" src="/public/images/uploading.gif" style="width:217px;height:54px;">
+						  <p><a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo3()" >Cancel upload</a></p>
+					  </div>
+
 					  <div id="image-area-3" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner13.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
-								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
+								  <p style="margin-left:10px; margin-bottom:0px; color: #005ea5; text-decoration: underline; cursor: pointer;" ><a onclick="showlogo3()">Change image</a><br>
 									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo3()">Remove image</a></p>
 							  </div>
 						  </div>
@@ -155,15 +182,22 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 4
 					  </label>
+
 					  <div id="logo-4-button" style="margin-top:2px; display:none;">
 						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo4()">
 					  </div>
+
+					  <div id="uploading-4" style="margin-top:5px; margin-bottom:20px; display:none;">
+						  <img id="upload-image-4" src="/public/images/uploading.gif" style="width:217px;height:54px;">
+						  <p><a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo4()" >Cancel upload</a></p>
+					  </div>
+
 					  <div id="image-area-4" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner14.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
-								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
+								  <p style="margin-left:10px; margin-bottom:0px; color: #005ea5; text-decoration: underline; cursor: pointer;" ><a onclick="showlogo4()">Change image</a><br>
 									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo4()">Remove image</a></p>
 							  </div>
 						  </div>
@@ -176,15 +210,22 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 5
 					  </label>
+
 					  <div id="logo-5-button" style="margin-top:2px; display:none;">
 						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo5()">
 					  </div>
+
+					  <div id="uploading-5" style="margin-top:5px; margin-bottom:20px; display:none;">
+						  <img id="upload-image-5" src="/public/images/uploading.gif" style="width:217px;height:54px;">
+						  <p><a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo5()" >Cancel upload</a></p>
+					  </div>
+
 					  <div id="image-area-5" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner11.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
-								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
+								  <p style="margin-left:10px; margin-bottom:0px; color: #005ea5; text-decoration: underline; cursor: pointer;" ><a onclick="showlogo5()">Change image</a><br>
 									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo5()">Remove image</a></p>
 							  </div>
 						  </div>
@@ -197,16 +238,23 @@
 					  <label class="form-label-bold" style="margin-bottom:0px;">
 						  Partner logo 6
 					  </label>
+
 					  <div id="logo-6-button" style="margin-top:2px; display:none;">
 						  <input type="submit" class="button-secondary" value="Choose an image" onclick="showlogo6()">
 					  </div>
+
+					  <div id="uploading-6" style="margin-top:5px; margin-bottom:20px; display:none;">
+						  <img id="upload-image-6" src="/public/images/uploading.gif" style="width:217px;height:54px;">
+						  <p><a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo6()" >Cancel upload</a></p>
+					  </div>
+
 					  <div id="image-area-6" style="margin-top:2px;">
 						  <div style="display:flex; flex-direction: row;">
 							  <img src="/public/images/partner12.jpg" style="width:205px;height:89px; border:1px solid #000000; margin-bottom:4px;">
 							  <div style="display:flex; flex-direction: column;">
 								  <p style="flex: 1 1 auto;"></p>
-								  <p style="margin-left:10px; margin-bottom:0px;" ><a href="">Change image</a><br>
-									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer;" onclick="hidelogo6()">Remove image</a></p>
+								  <p style="margin-left:10px; margin-bottom:0px; color: #005ea5; text-decoration: underline; cursor: pointer;" ><a onclick="showlogo6()">Change image</a><br>
+									  <a style="color: #005ea5; text-decoration: underline; cursor: pointer; color: #005ea5; text-decoration: underline; cursor: pointer;" ><a onclick="hidelogo6()">Remove image</a></p>
 							  </div>
 						  </div>
 					  </div>
@@ -262,25 +310,17 @@
 
 
 
-
-
-
-
 	function showlogo1()
 	{
 		document.getElementById('logo-1-button').style.display = 'none';
-		document.getElementById('uploading-1').style.display = 'block';
+		document.getElementById('image-area-1').style.display = 'none';
 
-		//document.getElementById('upload-image-1').attr('/public/images/uploading.gif', src);
-		//document.getElementById('upload-image-1').show();
-		//setTimeout(updatefirstgif, 0);
+		// Show the alert and then loading gif
+		document.getElementById('uploading-1').style.display = 'block';
+		alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+		document.getElementById('upload-image-1').src = '/public/images/uploading.gif';
 
 		setTimeout(showlogo1end, 2500)
-	}
-
-	function updatefirstgif()
-	{
-
 	}
 
 	function showlogo1end()
@@ -293,76 +333,6 @@
 		}
 	}
 
-
-
-	function showlogo2()
-	{
-		document.getElementById('logo-2-button').style.display = 'none';
-		document.getElementById('image-area-2').style.display = 'block';
-		document.getElementById("logo-2").checked = true;
-	}
-
-	function showlogo3()
-	{
-		document.getElementById('logo-3-button').style.display = 'none';
-		document.getElementById('image-area-3').style.display = 'block';
-		document.getElementById("logo-3").checked = true;
-	}
-
-	function showlogo4()
-	{
-		document.getElementById('logo-4-button').style.display = 'none';
-		document.getElementById('image-area-4').style.display = 'block';
-		document.getElementById("logo-4").checked = true;
-	}
-
-	function showlogo5()
-	{
-		document.getElementById('logo-5-button').style.display = 'none';
-		document.getElementById('image-area-5').style.display = 'block';
-		document.getElementById("logo-5").checked = true;
-	}
-
-	function showlogo6()
-	{
-		document.getElementById('logo-6-button').style.display = 'none';
-		document.getElementById('image-area-6').style.display = 'block';
-		document.getElementById("logo-6").checked = true;
-	}
-
-
-
-	function shownextlogo()
-	{
-		if(document.getElementById('partner-2').style.display == 'none')
-		{
-			document.getElementById('partner-2').style.display = 'block';
-			document.getElementById("logo-2").checked = true;
-		}
-		else if(document.getElementById('partner-3').style.display == 'none')
-		{
-			document.getElementById('partner-3').style.display = 'block';
-			document.getElementById("logo-3").checked = true;
-		}
-		else if(document.getElementById('partner-4').style.display == 'none')
-		{
-			document.getElementById('partner-4').style.display = 'block';
-			document.getElementById("logo-4").checked = true;
-		}
-		else if(document.getElementById('partner-5').style.display == 'none')
-		{
-			document.getElementById('partner-5').style.display = 'block';
-			document.getElementById("logo-5").checked = true;
-		}
-		else if(document.getElementById('partner-6').style.display == 'none')
-		{
-			document.getElementById("logo-6").checked = true;
-			document.getElementById('partner-6').style.display = 'block';
-			document.getElementById('partner-another').style.display = 'none';
-		}
-	}
-
-
 	function hidelogo1()
 	{
 		document.getElementById('logo-1-button').style.display = 'inline';
@@ -371,11 +341,65 @@
 		document.getElementById('uploading-1').style.display = 'none';
 	}
 
+
+
+
+
+	function showlogo2()
+	{
+		document.getElementById('logo-2-button').style.display = 'none';
+		document.getElementById('image-area-2').style.display = 'none';
+
+		// Show the alert and then loading gif
+		document.getElementById('uploading-2').style.display = 'block';
+		alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+		document.getElementById('upload-image-2').src = '/public/images/uploading.gif';
+
+		setTimeout(showlogo2end, 2500)
+	}
+
+	function showlogo2end()
+	{
+		if(document.getElementById('uploading-2').style.display != 'none')
+		{
+			document.getElementById('uploading-2').style.display = 'none';
+			document.getElementById('image-area-2').style.display = 'block';
+			document.getElementById("logo-2").checked = true;
+		}
+	}
+
 	function hidelogo2()
 	{
 		document.getElementById('logo-2-button').style.display = 'inline';
 		document.getElementById('image-area-2').style.display = 'none';
 		document.getElementById("logo-2").checked = false;
+		document.getElementById('uploading-2').style.display = 'none';
+	}
+
+
+
+
+	function showlogo3()
+	{
+		document.getElementById('logo-3-button').style.display = 'none';
+		document.getElementById('image-area-3').style.display = 'none';
+
+		// Show the alert and then loading gif
+		document.getElementById('uploading-3').style.display = 'block';
+		alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+		document.getElementById('upload-image-3').src = '/public/images/uploading.gif';
+
+		setTimeout(showlogo3end, 2500)
+	}
+
+	function showlogo3end()
+	{
+		if(document.getElementById('uploading-3').style.display != 'none')
+		{
+			document.getElementById('uploading-3').style.display = 'none';
+			document.getElementById('image-area-3').style.display = 'block';
+			document.getElementById("logo-3").checked = true;
+		}
 	}
 
 	function hidelogo3()
@@ -383,6 +407,32 @@
 		document.getElementById('logo-3-button').style.display = 'inline';
 		document.getElementById('image-area-3').style.display = 'none';
 		document.getElementById("logo-3").checked = false;
+		document.getElementById('uploading-3').style.display = 'none';
+	}
+
+
+
+
+	function showlogo4()
+	{
+		document.getElementById('logo-4-button').style.display = 'none';
+		document.getElementById('image-area-4').style.display = 'none';
+		// Show the alert and then loading gif
+		document.getElementById('uploading-4').style.display = 'block';
+		alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+		document.getElementById('upload-image-4').src = '/public/images/uploading.gif';
+
+		setTimeout(showlogo4end, 2500)
+	}
+
+	function showlogo4end()
+	{
+		if(document.getElementById('uploading-4').style.display != 'none')
+		{
+			document.getElementById('uploading-4').style.display = 'none';
+			document.getElementById('image-area-4').style.display = 'block';
+			document.getElementById("logo-4").checked = true;
+		}
 	}
 
 	function hidelogo4()
@@ -390,6 +440,32 @@
 		document.getElementById('logo-4-button').style.display = 'inline';
 		document.getElementById('image-area-4').style.display = 'none';
 		document.getElementById("logo-4").checked = false;
+		document.getElementById('uploading-4').style.display = 'none';
+	}
+
+
+
+
+	function showlogo5()
+	{
+		document.getElementById('logo-5-button').style.display = 'none';
+		document.getElementById('image-area-5').style.display = 'none';
+		// Show the alert and then loading gif
+		document.getElementById('uploading-5').style.display = 'block';
+		alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+		document.getElementById('upload-image-5').src = '/public/images/uploading.gif';
+
+		setTimeout(showlogo5end, 2500)
+	}
+
+	function showlogo5end()
+	{
+		if(document.getElementById('uploading-5').style.display != 'none')
+		{
+			document.getElementById('uploading-5').style.display = 'none';
+			document.getElementById('image-area-5').style.display = 'block';
+			document.getElementById("logo-5").checked = true;
+		}
 	}
 
 	function hidelogo5()
@@ -397,6 +473,33 @@
 		document.getElementById('logo-5-button').style.display = 'inline';
 		document.getElementById('image-area-5').style.display = 'none';
 		document.getElementById("logo-5").checked = false;
+		document.getElementById('uploading-5').style.display = 'none';
+	}
+
+
+
+
+
+	function showlogo6()
+	{
+		document.getElementById('logo-6-button').style.display = 'none';
+		document.getElementById('image-area-6').style.display = 'none';
+		// Show the alert and then loading gif
+		document.getElementById('uploading-6').style.display = 'block';
+		alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+		document.getElementById('upload-image-6').src = '/public/images/uploading.gif';
+
+		setTimeout(showlogo6end, 2500)
+	}
+
+	function showlogo6end()
+	{
+		if(document.getElementById('uploading-6').style.display != 'none')
+		{
+			document.getElementById('uploading-6').style.display = 'none';
+			document.getElementById('image-area-6').style.display = 'block';
+			document.getElementById("logo-6").checked = true;
+		}
 	}
 
 	function hidelogo6()
@@ -404,7 +507,65 @@
 		document.getElementById('logo-6-button').style.display = 'inline';
 		document.getElementById('image-area-6').style.display = 'none';
 		document.getElementById("logo-6").checked = false;
+		document.getElementById('uploading-6').style.display = 'none';
 	}
+
+
+
+
+
+
+
+	function shownextlogo()
+	{
+		if(document.getElementById('partner-2').style.display == 'none')
+		{
+			document.getElementById('image-area-2').style.display = 'none';
+			document.getElementById('partner-2').style.display = 'block';
+			document.getElementById('uploading-2').style.display = 'block';
+			alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+			document.getElementById('upload-image-2').src = '/public/images/uploading.gif';
+			setTimeout(showlogo2end, 2500);
+		}
+		else if(document.getElementById('partner-3').style.display == 'none')
+		{
+			document.getElementById('image-area-3').style.display = 'none';
+			document.getElementById('partner-3').style.display = 'block';
+			document.getElementById('uploading-3').style.display = 'block';
+			alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+			document.getElementById('upload-image-3').src = '/public/images/uploading.gif';
+			setTimeout(showlogo3end, 2500);
+		}
+		else if(document.getElementById('partner-4').style.display == 'none')
+		{
+			document.getElementById('image-area-4').style.display = 'none';
+			document.getElementById('partner-4').style.display = 'block';
+			document.getElementById('uploading-4').style.display = 'block';
+			alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+			document.getElementById('upload-image-4').src = '/public/images/uploading.gif';
+			setTimeout(showlogo4end, 2500);
+		}
+		else if(document.getElementById('partner-5').style.display == 'none')
+		{
+			document.getElementById('image-area-5').style.display = 'none';
+			document.getElementById('partner-5').style.display = 'block';
+			document.getElementById('uploading-5').style.display = 'block';
+			alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+			document.getElementById('upload-image-5').src = '/public/images/uploading.gif';
+			setTimeout(showlogo5end, 2500);
+		}
+		else if(document.getElementById('partner-6').style.display == 'none')
+		{
+			document.getElementById('image-area-6').style.display = 'none';
+			document.getElementById('partner-6').style.display = 'block';
+			document.getElementById('uploading-6').style.display = 'block';
+			alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+			document.getElementById('upload-image-6').src = '/public/images/uploading.gif';
+			document.getElementById('partner-another').style.display = 'none';
+			setTimeout(showlogo6end, 2500);
+		}
+	}
+
 
 </script>
 
