@@ -71,7 +71,7 @@
 		  </style>
 
 
-		<form action="/create-event/images-onwards" method="get" class="form">
+
 
 
 		  <div class="form-group {% if errorMissingImage %} form-group-error {% endif %}" style="margin-top:10px; margin-bottom:10px;" id="new-image-area">
@@ -87,15 +87,16 @@
 							  Please upload a relevant image for this event
 						  </p>
 					  {% endif %}
-					  <input type="submit" class="button-secondary" formaction="/create-event/images-uploading" value="Choose an image" id="main-button-image">
+					  <input type="submit" class="button-secondary" formaction="" value="Choose an image" id="main-button-image"  onclick="selectimage()">
+
 
 					  <div style="display:block; margin-bottom:70px;">
-						  <details role="group" style="width:650px;  ">
+						  <details role="group" style="width:650px;">
 							  <summary role="button" aria-controls="details-content-0" aria-expanded="false"
 									   style="margin-top:10px;"><span class="summary">Image guidance</span></summary>
 							  <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true"  style="margin-top:0px; margin-bottom:30px; padding-bottom:10px;">
 								  <p style="margin-bottom:10px;">  <!-- note these are made up -->
-									  Minimum resolution: 400px by 266px. Images will be cropped to 3:2 aspect ratio.
+									  Minimum resolution: 400px by 266px. <br>Images will be cropped to 3:2 aspect ratio.
 								  </p>
 
 								  <p>  <!-- note these are made up -->
@@ -174,6 +175,7 @@
 		  	  </div>
 		  </div>
 
+		<form action="/create-event/images-onwards" method="get" class="form">
 
 		  <div class="form-group" style="margin-top:160px">
 			  <input type="submit" class="button" value="Save and continue">
@@ -202,6 +204,13 @@
 		document.getElementById('image-and-guidance').style.display = 'none';
 		document.getElementById('image-area').style.display = 'inline';
 	}
+
+	function selectimage()
+	{
+		alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+		window.location = "/create-event/images-uploading";
+	}
+
 
 </script>
 

@@ -52,7 +52,6 @@
       </h1>
 
 
-
 		  <!-- MAIN IMAGE LOGO -->
 
 		  <!-- styles to adjust checkboxes positioning. To be fixed with a cleaner solution :D -->
@@ -71,11 +70,10 @@
 		  </style>
 
 
-		<form action="/create-event/images-preview-onwards" method="get" class="form">
 
 
 			<div style="margin-top:30px; margin-bottom:30px">
-				<input type="submit" class="button-secondary" formaction="/create-event/images" value="Choose a different image" id="main-button-image">
+				<input type="submit" class="button-secondary"  value="Choose a different image" id="main-button-image" onclick="selectimage()">
 			</div>
 
 
@@ -119,6 +117,7 @@
 			</div>
 
 
+		<form action="/create-event/images-preview-onwards" method="get" class="form">
 
 			  <div class="form-group" style="margin-top:30px">
 				  <input type="submit" class="button" value="Save and continue">
@@ -144,6 +143,12 @@
 	{
 		document.getElementById('image-and-guidance').style.display = 'none';
 		document.getElementById('image-area').style.display = 'inline';
+	}
+
+	function selectimage()
+	{
+		alert("\n \n \n A window would open and you would select an image from your computer. \n \n \n" );
+		window.location = "/create-event/images-uploading";
 	}
 
 </script>
