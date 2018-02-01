@@ -6055,19 +6055,173 @@ router.post('/register/sign-in', function (req, res)
     );
   }
 
+});
 
 
 
 
 
 
+router.post('/register/reset-password', function (req, res)
+{
+  var errorMissingEmail = false;
+  var errorInvalidEmail = false;
+
+  // email errors
+  if (req.session.data['email-address'] == ""  || req.session.data['email-address'] == undefined)
+  {
+    errorMissingEmail = true;
+  }
+  else
+  {
+    if( (req.session.data['email-address'].indexOf("@") == -1)  ||  (req.session.data['email-address'].indexOf(".") == -1)  )
+    {
+      errorInvalidEmail = true;
+    }
+  }
 
 
+  // ERRORS OR PROCEED
+  if( ( errorMissingEmail || errorInvalidEmail ) == false)
+  {
+    res.redirect('/');
+  }
+  else
+  {
+    res.render('register/reset-password',
+        {
+          'errorsExist': true,
 
-
-
+          'errorEmailMissing': errorMissingEmail,
+          'errorInvalidEmail': errorInvalidEmail,
+        }
+    );
+  }
 
 });
+
+
+
+router.get('/register', function (req, res)
+{
+  res.redirect('/register/create-account-name');
+});
+
+
+
+
+router.post('/register/create-account-name', function (req, res)
+{
+  var errorMissingFirstName = false;
+  var errorMissingLastName = false;
+
+  // FIRST NAME
+  if (req.session.data['first-name'] == ""  ||  req.session.data['first-name'] == undefined)
+  {
+    errorMissingFirstName = true;
+  }
+
+  // LAST NAME
+  if (req.session.data['last-name'] == ""  ||  req.session.data['last-name'] == undefined)
+  {
+    errorMissingLastName = true;
+  }
+
+  // ERRORS OR PROCEED
+  if( ( errorMissingFirstName || errorMissingLastName ) == false)
+  {
+    res.redirect('/register/create-account-email');
+  }
+  else
+  {
+    res.render('register/create-account-name',
+        {
+          'errorsExist': true,
+
+          'errorFirstNameMissing': errorMissingFirstName,
+          'errorLastNameMissing': errorMissingLastName
+        }
+    );
+  }
+
+});
+
+
+
+
+
+router.post('/register/create-account-email', function (req, res)
+{
+  var errorMissingEmail = false;
+  var errorInvalidEmail = false;
+
+  var errorMissingEmailConfirm = false;
+  var errorEmailConfirmationDoesNotMatchOther = false;
+
+  // FIRST NAME
+  if (req.session.data['email-address'] == ""  ||  req.session.data['email-address'] == undefined)
+  {
+    errorMissingEmail = true;
+  }
+  else
+  {
+    if( (req.session.data['email-address'].indexOf("@") == -1)  ||  (req.session.data['email-address'].indexOf(".") == -1)  )
+    {
+      errorInvalidEmail = true;
+    }
+  }
+
+
+  // Confirm email
+  if (req.session.data['email-confirm-address'] == ""  ||  req.session.data['email-confirm-address'] == undefined)
+  {
+    errorMissingEmailConfirm = true;
+  }
+  else
+  {
+    console.log(req.session.data['email-address']);
+    console.log(req.session.data['email-confirm-address']);
+
+    // check if email addresses match
+    if( ( req.session.data['email-address'] === req.session.data['email-confirm-address'] ) == false )
+    {
+      errorEmailConfirmationDoesNotMatchOther = true;
+    }
+  }
+
+
+  // ERRORS OR PROCEED
+  if( ( errorMissingEmail || errorInvalidEmail || errorMissingEmailConfirm || errorEmailConfirmationDoesNotMatchOther ) == false)
+  {
+    res.redirect('/register/create-account-password');
+  }
+  else
+  {
+    res.render('register/create-account-email',
+        {
+          'errorsExist': true,
+
+          'errorEmailMissing': errorMissingEmail,
+          'errorEmailInvalid': errorInvalidEmail,
+
+          'errorEmailConfirmMissing': errorMissingEmailConfirm,
+          'errorEmailConfirmationDoesNotMatch': errorEmailConfirmationDoesNotMatchOther
+        }
+    );
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 router.get('/register/business-sector', function (req, res)
 {

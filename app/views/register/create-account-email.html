@@ -39,16 +39,16 @@ GOV.UK prototype kit
 
 		<ul class="error-summary-list">
 			{% if errorEmailMissing %}
-			<li><a href="#email-field">Email: missing</a></li>
+				<li><a href="#email-field">Email: missing</a></li>
 			{% endif %}
-			{% if errorInvalidEmail %}
-			<li><a href="#email-field">Email: invalid</a></li>
+			{% if errorEmailInvalid %}
+				<li><a href="#email-field">Email: invalid</a></li>
 			{% endif %}
-			{% if errorPasswordMissing %}
-			<li><a href="#password-field">Password: missing</a></li>
+			{% if errorEmailConfirmMissing %}
+				<li><a href="#email-confirm-field">Confirm email: missing</a></li>
 			{% endif %}
-			{% if errorEmailPasswordInvalid %}
-			<li><a href="#bothfields">Email address and/or password: not correct</a></li>
+			{% if errorEmailConfirmationDoesNotMatch %}
+				<li><a href="#email-confirm-field">Confirm email: Does not match</a></li>
 			{% endif %}
 		</ul>
 	</div>
@@ -58,8 +58,8 @@ GOV.UK prototype kit
 
 
 	<h1 class="heading-large" style="font-weight:400; font-size:48px; margin-top:40px;" >
-		  Sign in
-      </h1>
+		Create an account
+	</h1>
 
   <div class="grid-row">
     <div class="column-two-thirds">
@@ -68,23 +68,20 @@ GOV.UK prototype kit
 
 	  <form action="" method="post" class="form">
 
-		  <p style="margin-bottom:30px;"><a href="#" >Register</a> if you don't have an account.</p>
+		  <!-- <p style="margin-bottom:30px;"><a href="#" >Register</a> if you don't have an account.</p>  -->
 
 
-			  <fieldset id="bothfields" class="form-group {% if errorEmailPasswordInvalid %} form-group-error {% endif %}" >
+			  <fieldset id="bothfields" class="" >
 
-				  {% if errorEmailPasswordInvalid %}
-				  		<p class="error-message" style="margin-bottom:30px; margin-top:10px;" >The e-mail address and/or password you entered are not correct.</p>
-				  {% endif %}
 
-				  <div id="email-field" class="form-group form-control-2-3 {% if errorEmailMissing or errorInvalidEmail %} form-group-error {% endif %}" style="width:580px;">
+				  <div id="email-field" class="form-group form-control-2-3 {% if errorEmailMissing or errorEmailInvalid %} form-group-error {% endif %}" style="width:580px;">
 					  <label class="form-label" for="email-area" style="margin-bottom:5px;">
 						  Email address
 						  {% if errorEmailMissing %}
 							  <span class="error-message">
 								  Please enter an email address
 							  </span>
-						  {% elif errorInvalidEmail %}
+						  {% elif errorEmailInvalid %}
 							  <span class="error-message">
 								  Please enter a valid email address
 							  </span>
@@ -95,36 +92,34 @@ GOV.UK prototype kit
 								 id="email-address" name="email-address" value="{{ data['email-address'] }}" style="width:100%;">
 					  </div>
 				  </div>
-		
 
-		          <div id="password-field" class="form-group {% if errorPasswordMissing %} form-group-error {% endif %}">
-					  <label class="form-label" for="password"  style="margin-bottom:5px;">
-						  Password
-						  {% if errorPasswordMissing %}
+
+				  <div id="email-confirm-field" class="form-group form-control-2-3 {% if errorEmailConfirmMissing or errorEmailConfirmationDoesNotMatch %} form-group-error {% endif %}" style="width:580px;">
+					  <label class="form-label" for="email-confirm-area" style="margin-bottom:5px;">
+						  Confirm email address
+						  {% if errorEmailConfirmMissing %}
 							  <span class="error-message">
-								  Please enter a password
+								  Please enter an email address
+							  </span>
+						  {% elif errorEmailConfirmationDoesNotMatch %}
+							  <span class="error-message">
+								  Email addresses are not the same
 							  </span>
 						  {% endif %}
 					  </label>
-					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <input type="password" class="form-control" id="password" name="password" value="{{ data['password'] }}" style="width: 170px;">
+					  <div id="email-confirm-area" style="width:100%;  margin-bottom:0px;">
+						  <input type="text" class="form-control"
+								 id="email-confirm-address" name="email-confirm-address" value="{{ data['email-confirm-address'] }}" style="width:100%;">
 					  </div>
 				  </div>
 
-
-		  		  <!-- REMEMBER ME -->
-				  <div class="multiple-choice" style="padding-top: 5px; padding-left: 40px;">
-					  <input id="remember" name="remember" type="checkbox" value="">
-					  <label for="remember">Remember me</label>
-				  </div>
 
 			  </fieldset>
 
 			  
 
-			  <div class="form-group" style="display: flex;  flex-direction: row;">
-				  <input type="submit" class="button button-blue"  value="Sign in">
-				  <p style="margin-left:32px; margin-top:15px;"><a href="/register/reset-password" style="font-size: 19px; text-decoration: none">Reset your password</a></p>
+			  <div class="form-group" style="display: flex;  flex-direction: row;   margin-top:10px;">
+				  <input type="submit" class="button button-blue"  value="Continue">
 			  </div>
 
 	  </form>
