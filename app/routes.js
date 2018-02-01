@@ -5979,25 +5979,94 @@ router.get('/monitor-event/:listitem?/:liveevent?', function (req, res)
 
 
 
-router.post('/register/sign-in', function (req, res) {
-  req.session.data['first-name'] = "Leslie";
-  req.session.data['last-name'] = "Smith";
-  req.session.data['job-title'] = "Director of International Sales";
-  req.session.data['phone-number'] = "020 1234567890";
-  req.session.data['mobile-number'] = "07965491256";
-  req.session.data['business-name'] = "Fashion Retail Ltd";
-  req.session.data['sectors'] = "Clothing, footwear fashion";
-  req.session.data['website'] = "www.fashion.co.uk ";
-  
-  req.session.data['building'] = "Unit 10";
-  req.session.data['street'] = "Westworld Industrial Park";
-  req.session.data['town'] = "Bristol";
-  req.session.data['postcode'] = "BS4 6JY";
+router.post('/register/sign-in', function (req, res)
+{
+  var errorMissingEmail = false;
+  var errorInvalidEmail = false;
+  var errorMissingPassword = false;
+  var errorInvalidEmailOrPassword = false;
 
-  req.session.data['email-address'] = "leslie.smith@fashion.co.uk";
-  req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "Yes"];
-  req.session.loggedIn = true;
-  res.redirect('/register/additional-questions');
+
+  // email errors
+  if (req.session.data['email-address'] == ""  || req.session.data['email-address'] == undefined)
+  {
+    errorMissingEmail = true;
+  }
+  else
+  {
+    if (req.session.data['email-address'] == "fail")
+    {
+        // ignore this state. it is to trigger a sign in validation error
+    }
+    else if( (req.session.data['email-address'].indexOf("@") == -1)  ||  (req.session.data['email-address'].indexOf(".") == -1)  )
+    {
+      errorInvalidEmail = true;
+    }
+  }
+
+  // password errors
+  if (req.session.data['password'] == ""  || req.session.data['password'] == undefined)
+  {
+    errorMissingPassword = true;
+  }
+
+  // password errors
+  if (req.session.data['email-address'] == "fail"  &&  req.session.data['password'] == "fail")
+  {
+    errorInvalidEmailOrPassword = true;
+  }
+
+
+  // ERRORS OR PROCEED
+  if( ( errorMissingEmail || errorInvalidEmail || errorMissingPassword || errorInvalidEmailOrPassword ) == false)
+  {
+    req.session.data['first-name'] = "Leslie";
+    req.session.data['last-name'] = "Smith";
+    req.session.data['job-title'] = "Director of International Sales";
+    req.session.data['phone-number'] = "020 1234567890";
+    req.session.data['mobile-number'] = "07965491256";
+    req.session.data['business-name'] = "Fashion Retail Ltd";
+    req.session.data['sectors'] = "Clothing, footwear fashion";
+    req.session.data['website'] = "www.fashion.co.uk ";
+
+    req.session.data['building'] = "Unit 10";
+    req.session.data['street'] = "Westworld Industrial Park";
+    req.session.data['town'] = "Bristol";
+    req.session.data['postcode'] = "BS4 6JY";
+
+    req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "Yes"];
+    req.session.loggedIn = true;
+
+    res.redirect('/register/additional-questions');
+  }
+  else
+  {
+    res.render('register/sign-in',
+        {
+          'errorsExist': true,
+
+          'errorEmailMissing': errorMissingEmail,
+          'errorInvalidEmail': errorInvalidEmail,
+
+          'errorPasswordMissing': errorMissingPassword,
+
+          'errorEmailPasswordInvalid': errorInvalidEmailOrPassword
+        }
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 router.get('/register/business-sector', function (req, res)

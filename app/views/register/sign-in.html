@@ -17,10 +17,47 @@ GOV.UK prototype kit
 
 {% block content %}
 
-{% include "includes/great-header.html" %} 
+{% include "includes/great-header-no-beta.html" %}
+
+
+
+
 
 <main id="content" role="main">
-	  <h1 class="heading-large" style="font-weight:400;" >
+
+	<!-- CONDITIONAL ERROR  -->
+	{% if errorsExist %}
+	<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+		<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+			Missing fields
+		</h2>
+
+		<p>
+			Please check the following errors and try again.
+		</p>
+
+		<ul class="error-summary-list">
+			{% if errorEmailMissing %}
+			<li><a href="#email-field">Email: missing</a></li>
+			{% endif %}
+			{% if errorInvalidEmail %}
+			<li><a href="#email-field">Email: invalid</a></li>
+			{% endif %}
+			{% if errorPasswordMissing %}
+			<li><a href="#password-field">Password: missing</a></li>
+			{% endif %}
+			{% if errorEmailPasswordInvalid %}
+			<li><a href="#bothfields">Email address and/or password: not correct</a></li>
+			{% endif %}
+		</ul>
+	</div>
+	{% endif %}
+
+
+
+
+	<h1 class="heading-large" style="font-weight:400; font-size:48px; margin-top:40px;" >
 		  Sign in
       </h1>
 
@@ -31,29 +68,51 @@ GOV.UK prototype kit
 
 	  <form action="" method="post" class="form">
 
-		  <p style="">If you have not created an account yet, then please <a href="/register/business-name">register</a> first. </p>
+		  <p style="margin-bottom:30px;"><a href="#" >Register</a> if you don't have an account.</p>
 
-			  <fieldset class="form-group">
 
-				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="email-area">Email address</label>
+			  <fieldset id="bothfields" class="form-group {% if errorEmailPasswordInvalid %} form-group-error {% endif %}" >
+
+				  {% if errorEmailPasswordInvalid %}
+				  		<p class="error-message" style="margin-bottom:30px; margin-top:10px;" >The e-mail address and/or password you entered are not correct.</p>
+				  {% endif %}
+
+				  <div id="email-field" class="form-group form-control-2-3 {% if errorEmailMissing or errorInvalidEmail %} form-group-error {% endif %}">
+					  <label class="form-label" for="email-area" style="margin-bottom:5px;">
+						  Email address
+						  {% if errorEmailMissing %}
+							  <span class="error-message">
+								  Please enter an email address
+							  </span>
+						  {% elif errorInvalidEmail %}
+							  <span class="error-message">
+								  Please enter a valid email address
+							  </span>
+						  {% endif %}
+					  </label>
 					  <div id="email-area" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control"
-								 id="email-address" name="email-address" value="" style="width:100%;">
+								 id="email-address" name="email-address" value="{{ data['email-address'] }}" style="width:100%;">
 					  </div>
 				  </div>
 		
 
-		          <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="password">
+		          <div id="password-field" class="form-group {% if errorPasswordMissing %} form-group-error {% endif %}">
+					  <label class="form-label" for="password"  style="margin-bottom:5px;">
 						  Password
+						  {% if errorPasswordMissing %}
+							  <span class="error-message">
+								  Please enter a password
+							  </span>
+						  {% endif %}
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <input type="password" class="form-control" id="password" name="password" value="" style="width: 170px;">
+						  <input type="password" class="form-control" id="password" name="password" value="{{ data['password'] }}" style="width: 170px;">
 					  </div>
 				  </div>
 
-		  		  <!-- REMEBER ME -->
+
+		  		  <!-- REMEMBER ME -->
 				  <div class="multiple-choice" style="padding-top: 5px; padding-left: 40px;">
 					  <input id="remember" name="remember" type="checkbox" value="">
 					  <label for="remember">Remember me</label>
@@ -61,11 +120,11 @@ GOV.UK prototype kit
 
 			  </fieldset>
 
-
 			  
 
-			  <div class="form-group">
+			  <div class="form-group" style="display: flex;  flex-direction: row;">
 				  <input type="submit" class="button button-blue"  value="Sign in">
+				  <p style="margin-left:32px; margin-top:15px;"><a href="#" style="font-size: 19px; text-decoration: none">Reset your password</a></p>
 			  </div>
 
 	  </form>

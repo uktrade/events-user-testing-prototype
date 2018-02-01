@@ -1647,12 +1647,12 @@ a:focus {
 }
 
 .form-group-error {
-    border-left: 10px solid #e41f13;
+    border-left: 10px solid #b10e1e
     padding-left: 20px
 }
 
 .error-message {
-    color: #e41f13
+    color: #b10e1e
 }
 
 input:focus,
