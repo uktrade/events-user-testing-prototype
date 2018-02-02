@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% if loggedIn == undefined %}
+	{% set loggedIn = false %}
+{% endif %}
+
+{% set external_journey = true %}
+
+{% block after_header %}
+<!-- nothing to there is no second alpha banner -->
+{% endblock %}
+
+{% block page_title %}
+GOV.UK prototype kit
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/great-header-no-beta.html" %}
+
+
+
+
+
+<main id="content" role="main">
+
+
+
+
+	<h1 class="heading-large" style="font-weight:400; font-size:48px; margin-top:40px;" >
+		Confirm email address
+	</h1>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+
+	  <form  method="post" class="form">
+
+		  <p style="">Confirm you are Leslie Smith and your email address is </p>
+
+		  <p style="margin-bottom:30px;">leslie.smith@gmail.com</p>
+
+		  <div class="form-group" style="display: flex;  flex-direction: row;   ">
+			  <input type="submit" class="button button-blue"  value="Confirm email">
+		  </div>
+
+	  </form>
+
+    </div>
+
+	  <!--
+<div class="column-one-third">
+	{% include "includes/basket.html" %} 
+</div>
+-->
+
+  </div>
+
+
+</main>
+
+
+{% include "includes/great-footer.html" %} 
+
+
+{% endblock %}
+
+

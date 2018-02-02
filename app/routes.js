@@ -6217,6 +6217,142 @@ router.post('/register/create-account-email', function (req, res)
 
 
 
+router.post('/register/create-account-password', function (req, res)
+{
+  var errorMissingPassword = false;
+  var errorMissingConfirmPassword = false;
+  var errorPasswordDoNotMatch = false;
+  var errorPasswordTooShort = false;
+  var errorPasswordOnlyLetters = false;
+  var errorPasswordOnlyNumbers = false;
+  var errorPasswordContainsPassword = false;
+
+
+  // PASSWORD MISSING
+  if (req.session.data['password'] == ""  ||  req.session.data['password'] == undefined)
+  {
+    errorMissingPassword = true;
+  }
+  else
+  {
+    // Password is too short
+    if (req.session.data['password'].length < 10 )
+    {
+      errorPasswordTooShort = true;
+    }
+
+
+    // Password contains only letters
+    if ( /\d/.test(req.session.data['password']) == false )
+    {
+      errorPasswordOnlyLetters = true;
+    }
+
+
+    // Password contains only numbers
+    if ( isNaN(req.session.data['password']) == false )
+    {
+      errorPasswordOnlyNumbers = true;
+    }
+
+
+    // Password cntains "password"
+    if ( (req.session.data['password'].includes("password") == true) || (req.session.data['password'].includes("Password") == true) )
+    {
+      errorPasswordContainsPassword = true;
+    }
+  }
+
+
+
+
+  // CONFIRM PASSWORD MISSING
+  if (req.session.data['password-confirm'] == ""  ||  req.session.data['password-confirm'] == undefined)
+  {
+    errorMissingConfirmPassword = true;
+  }
+
+
+  // PASSWORDS DO NOT MATCH
+  if( ( req.session.data['password'] === req.session.data['password-confirm'] ) == false )
+  {
+    errorPasswordDoNotMatch = true;
+  }
+
+
+
+  // ERRORS OR PROCEED
+  if( ( errorMissingPassword || errorMissingConfirmPassword || errorPasswordDoNotMatch || errorPasswordTooShort || errorPasswordOnlyLetters || errorPasswordOnlyNumbers || errorPasswordContainsPassword  ) == false)
+  {
+    res.redirect('/register/create-account-tandc');
+  }
+  else
+  {
+    res.render('register/create-account-password',
+        {
+          'errorsExist': true,
+
+          'errorMissingPasswordError' : errorMissingPassword,
+          'errorMissingConfirmPasswordError' : errorMissingConfirmPassword,
+          'errorPasswordDoNotMatchError' : errorPasswordDoNotMatch,
+          'errorPasswordTooShortError' : errorPasswordTooShort,
+          'errorPasswordOnlyLettersError' : errorPasswordOnlyLetters,
+          'errorPasswordOnlyNumbersError' : errorPasswordOnlyNumbers,
+          'errorPasswordContainsPasswordError' : errorPasswordContainsPassword
+        }
+    );
+  }
+
+});
+
+
+
+
+router.post('/register/create-account-tandc', function (req, res)
+{
+  var errorNotAccepted = false;
+
+  // FIRST NAME
+  if (req.session.data['tandc-checkbox'] == undefined)
+  {
+    errorNotAccepted = true;
+  }
+
+
+  // ERRORS OR PROCEED
+  if( ( errorNotAccepted ) == false)
+  {
+    res.redirect('/register/create-account-verify-email-sent');
+  }
+  else
+  {
+    res.render('register/create-account-tandc',
+        {
+          'errorsExist': true,
+
+          'errorTandcNotAccepted': errorNotAccepted
+        }
+    );
+  }
+
+});
+
+
+
+
+
+
+router.post('/register/create-account-verify-confirm', function (req, res)
+{
+    res.redirect('/register/business-name');
+
+});
+
+
+
+
+
+
 
 
 

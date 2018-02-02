@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% if loggedIn == undefined %}
+	{% set loggedIn = false %}
+{% endif %}
+
+{% set external_journey = true %}
+
+{% block after_header %}
+<!-- nothing to there is no second alpha banner -->
+{% endblock %}
+
+{% block page_title %}
+GOV.UK prototype kit
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/great-header-no-beta.html" %}
+
+
+
+
+
+<main id="content" role="main">
+
+	<!-- CONDITIONAL ERROR  -->
+	{% if errorsExist %}
+	<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="width:620px;">
+
+		<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+			Missing fields
+		</h2>
+
+		<p>
+			Please check the following errors and try again.
+		</p>
+
+		<ul class="error-summary-list">
+
+			{% if errorTandcNotAccepted %}
+				<li><a href="#password-field">Terms and conditions: not selected</a></li>
+			{% endif %}
+
+		</ul>
+	</div>
+	{% endif %}
+
+
+	<h1 class="heading-large" style="font-weight:400; font-size:48px; margin-top:40px;" >
+		Create an account
+	</h1>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+
+
+	  <form action="" method="post" class="form">
+
+		  <p style="margin-bottom:30px;">Great.gov.uk account and services have <a href="https://great.gov.uk/terms-and-conditions/" target="_blank" >terms and conditions</a>.</p>
+
+
+		  <fieldset id="bothfields" class="form-group {% if errorTandcNotAccepted %} form-group-error {% endif %} " >
+
+			  {% if errorTandcNotAccepted %}
+				  <label class="form-label"  style="margin-bottom:5px;">
+					  <span class="error-message">
+						  Terms and conditions must be accepted to continue
+					  </span>
+				  </label>
+			  {% endif %}
+
+
+			  <div class="multiple-choice" style="padding-top: 0px; padding-left: 40px;">
+				  <input id="tandc-checkbox" name="tandc-checkbox" type="checkbox" value="Creative and media" >
+				  <label for="tandc-checkbox">Accept terms and conditions</label>
+			  </div>
+
+		  </fieldset>
+
+
+		  <div class="form-group" style="display: flex;  flex-direction: row;   ">
+			  <input type="submit" class="button button-blue"  value="Continue">
+		  </div>
+
+
+	  </form>
+
+    </div>
+
+	  <!--
+<div class="column-one-third">
+	{% include "includes/basket.html" %} 
+</div>
+-->
+
+  </div>
+
+
+</main>
+
+
+{% include "includes/great-footer.html" %} 
+
+
+{% endblock %}
+
+
