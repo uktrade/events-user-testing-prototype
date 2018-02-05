@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
+
 {% if loggedIn == undefined %}
 {% set loggedIn = false %}
 {% endif %}
+
 {% set external_journey = true %}
 
 {% block after_header %}
@@ -14,6 +16,8 @@ GOV.UK prototype kit
 
 
 {% block content %}
+
+{% include "includes/great-header-beta-signed-in.html" %}
 
 
 <main id="content" role="main">
@@ -89,26 +93,38 @@ GOV.UK prototype kit
 				  <div style="margin-top:5px;">
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="revenue-1" type="radio" name="radio-revenue" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
-						  <label for="revenue-1">£0 to £100,000</label>
+						  <input id="revenue-1" type="radio" name="radio-revenue" value="£0  to  £150,000" {% if sectorIsNo %} checked="checked" {% endif %}>
+						  <label for="revenue-1">£0  to  £150,000</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="revenue-2" type="radio" name="radio-revenue" value="yes"
+						  <input id="revenue-2" type="radio" name="radio-revenue" value="£150,001  to  £500,000"
 								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
-						  <label for="revenue-2">£100,000 to £500,000</label>
+						  <label for="revenue-2">£150,001  to  £500,000</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="revenue-3" type="radio" name="radio-revenue" value="yes"
+						  <input id="revenue-3" type="radio" name="radio-revenue" value="£500,001  to  £2,000,000"
 								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
-						  <label for="revenue-3">£500,000 to £1,000,000</label>
+						  <label for="revenue-3">£500,001  to  £2,000,000</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="revenue-4" type="radio" name="radio-revenue" value="yes"
+						  <input id="revenue-4" type="radio" name="radio-revenue" value="£2,000,001  to  £5,000,000"
 								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
-						  <label for="revenue-4">Above £1,000,000</label>
+						  <label for="revenue-4">£2,000,001  to  £5,000,000</label>
+					  </div>
+
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="revenue-5" type="radio" name="radio-revenue" value="£5,000,001  to  £34,000,000"
+								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+						  <label for="revenue-5">£5,000,001  to  £34,000,000</label>
+					  </div>
+
+					  <div class="multiple-choice" style="margin-bottom:10px">
+						  <input id="revenue-6" type="radio" name="radio-revenue" value="£34,000,000+"
+								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+						  <label for="revenue-6">£34,000,000+</label>
 					  </div>
 
 				  </div>
@@ -134,12 +150,12 @@ GOV.UK prototype kit
 				  <div style="margin-top:5px;">
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-inline-2" type="radio" name="radio-sector" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
+						  <input id="radio-inline-2" type="radio" name="radio-exported-before" value="No" {% if sectorIsNo %} checked="checked" {% endif %}>
 						  <label for="radio-inline-2">No</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px" data-target="export-frequency-section">
-						  <input id="radio-inline-1" type="radio" name="radio-sector" value="yes"
+						  <input id="radio-inline-1" type="radio" name="radio-exported-before" value="Yes"
 								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
 						  <label for="radio-inline-1">Yes</label>
 					  </div>
@@ -162,12 +178,12 @@ GOV.UK prototype kit
 					  <div style="margin-top:5px;">
 
 						  <div class="multiple-choice" style="margin-bottom:10px">
-							  <input id="radio-frequency-1" type="radio" name="radio-sector-frequency" value="no" {% if sectorIsNo %} checked="checked" {% endif %}>
+							  <input id="radio-frequency-1" type="radio" name="radio-sector-frequency" value="No" {% if sectorIsNo %} checked="checked" {% endif %}>
 							  <label for="radio-frequency-1">No</label>
 						  </div>
 
 						  <div class="multiple-choice" style="margin-bottom:10px">
-							  <input id="radio-frequency-2" type="radio" name="radio-sector-frequency" value="yes"
+							  <input id="radio-frequency-2" type="radio" name="radio-sector-frequency" value="Yes"
 									 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
 							  <label for="radio-frequency-2">Yes</label>
 						  </div>

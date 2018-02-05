@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
-{% set loggedIn = true %}
+
+{% if loggedIn == undefined %}
+{% set loggedIn = false %}
+{% endif %}
+
 {% set external_journey = true %}
 
 {% block after_header %}
@@ -10,13 +14,17 @@
 GOV.UK prototype kit
 {% endblock %}
 
+
 {% block content %}
-{% include "includes/great-header.html" %} 
+
+{% include "includes/great-header-beta-signed-in.html" %}
+
+
 
 {% macro createSectorList(name) %}
 <li>
 	<div class="multiple-choice">
-		<input id="sector{{name}}" name="sectors" type="radio" value="{{ name }}">
+		<input id="sector{{name}}" name="business-sectors" type="radio" value="{{ name }}">
 		<label for="sector{{name}}">{{ name | capitalize}}</label>
 	</div>
 

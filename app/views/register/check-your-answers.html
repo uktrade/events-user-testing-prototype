@@ -37,7 +37,7 @@ GOV.UK prototype kit
 
 <!-- EVENT DETAILS -->
 
-      
+      <!--
       <h2 class="heading-medium">
         Event details
       </h2>
@@ -91,9 +91,11 @@ GOV.UK prototype kit
         </div>
       </dl>
 
+      -->
+
 
 <!-- BUSINESS DETAILS -->
-        <h2 class="heading-medium">
+      <h2 class="heading-medium">
         Business details
       </h2>
       <dl class="govuk-check-your-answers cya-questions-short">
@@ -105,8 +107,8 @@ GOV.UK prototype kit
             {{ data['business-name'] }}
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> name</span>
+            <a href="/register/change-business-name">
+              Change
             </a>
           </dd>
         </div>
@@ -116,11 +118,11 @@ GOV.UK prototype kit
             Primary sector
           </dt>
           <dd class="cya-answer">
-            {{ data['sectors'] }}
+            {{ data['business-sectors'] }}
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> date of birth</span>
+            <a href="/register/change-business-sector">
+              Change
             </a>
           </dd>
         </div>
@@ -130,17 +132,65 @@ GOV.UK prototype kit
             Business address
           </dt>
           <dd class="cya-answer">
-            {{ data['building'] }} <br />
-            {{ data['street'] }} <br />
-            {{ data['town'] }} <br />
-            {{ data['postcode'] }} <br />
+            {{ data['business-building'] }} <br />
+            {{ data['business-street'] }} <br />
+            {{ data['business-town'] }} <br />
+            {{ data['business-postcode'] }} <br />
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> home address</span>
+            <a href="/register/change-business-address">
+              Change
             </a>
           </dd>
         </div>
+
+
+        <div>
+          <dt class="cya-question">
+            Exported before
+          </dt>
+          <dd class="cya-answer">
+            {{ data['radio-exported-before'] }} <br/>
+          </dd>
+          <dd class="cya-change">
+            <a href="/register/change-business-name">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+        {% if session.data['radio-exported-before'] == "Yes" %}
+          <div>
+            <dt class="cya-question">
+              Export regularly
+            </dt>
+            <dd class="cya-answer">
+              {{ data['radio-sector-frequency'] }} <br/>
+            </dd>
+            <dd class="cya-change">
+              <a href="/register/change-business-name">
+                Change
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+
+        <div>
+          <dt class="cya-question">
+            Turnover
+          </dt>
+          <dd class="cya-answer">
+            {{ data['radio-revenue'] }}<br />
+          </dd>
+          <dd class="cya-change">
+            <a href="/register/change-business-name">
+              Change
+            </a>
+          </dd>
+        </div>
+
 
         <div>
           <dt class="cya-question">
@@ -150,11 +200,12 @@ GOV.UK prototype kit
             {{ data['website'] }}<br />
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> contact details</span>
+            <a href="/register/change-business-name">
+              Change
             </a>
           </dd>
         </div>
+
       </dl>
 
 
@@ -174,8 +225,8 @@ GOV.UK prototype kit
             {{ data['first-name'] }}
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> name</span>
+            <a href="/register/change-ticket-details">
+              Change
             </a>
           </dd>
         </div>
@@ -188,8 +239,8 @@ GOV.UK prototype kit
             {{ data['last-name'] }}
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> name</span>
+            <a href="/register/change-ticket-details">
+              Change
             </a>
           </dd>
         </div>
@@ -202,8 +253,8 @@ GOV.UK prototype kit
             {{ data['job-title'] }}
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> date of birth</span>
+            <a href="/register/change-ticket-details">
+              Change
             </a>
           </dd>
         </div>
@@ -216,9 +267,11 @@ GOV.UK prototype kit
             {{ data['email-address'] }}
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> home address</span>
-            </a>
+            <!--
+              <a href="#">
+                Change<span class="visually-hidden"> home address</span>
+              </a>
+            -->
           </dd>
         </div>
 
@@ -228,15 +281,17 @@ GOV.UK prototype kit
           </dt>
           <dd class="cya-answer">
             {{ data['phone-number'] }}<br />
-            Yes to text reminders on this number
+            <!-- Yes to text reminders on this number   -->
           </dd>
           <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> contact details</span>
+            <a href="/register/change-ticket-details">
+              Change
             </a>
           </dd>
         </div>
       </dl>
+
+
 
 
 <!-- REGISTRATION QUESTIONS -->
@@ -245,24 +300,24 @@ GOV.UK prototype kit
        
       <dl class="govuk-check-your-answers cya-questions-short">
          {% for key,value in data %}
-        {% if "question--" in key %}
-        {% if value[2] %}
-        <div>
-          <dt class="cya-question">
-            {{ value[0]}}            
-          </dt>
-          <dd class="cya-answer">
-            {{ value[2]}}<br />{{ value[3]}}
-          </dd>
-          <dd class="cya-change">
-            <a href="#">
-              Change<span class="visually-hidden"> name</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
-        {% endif %}
-{% endfor %}
+              {% if "question--" in key %}
+                  {% if value[2] %}
+                  <div>
+                    <dt class="cya-question">
+                      {{ value[0]}}
+                    </dt>
+                    <dd class="cya-answer">
+                      {{ value[2]}}<br />{{ value[3]}}
+                    </dd>
+                    <dd class="cya-change">
+                      <a href="/register/change-additional-questions">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+                  {% endif %}
+              {% endif %}
+      {% endfor %}
       </dl>
 
 <!-- POLICY TO BE AGREED
@@ -281,6 +336,10 @@ GOV.UK prototype kit
 
     </div>
 
+
+    <div class="column-one-third" style="margin-top: 135px">
+      {% include "includes/basket.html" %}
+    </div>
 
   </div>
 

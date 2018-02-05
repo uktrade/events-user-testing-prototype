@@ -60,7 +60,7 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="full-name" name="first-name" value="" style="width:80%;">
+								 id="first-name" name="first-name" value="{{ data['first-name'] }}" style="width:80%;">
 					  </div>
 				  </div>
 
@@ -75,7 +75,7 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="full-name" name="last-name" value="" style="width:80%;">
+								 id="last-name" name="last-name" value="{{ data['last-name'] }}" style="width:80%;">
 					  </div>
 				  </div>
 
@@ -96,7 +96,7 @@ GOV.UK prototype kit
 
 
 
-
+				<!--
 				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
 						  Email address
@@ -105,6 +105,8 @@ GOV.UK prototype kit
 					  	</div>
 					  </label>
 					 <!-- <div class="form-hint">We’ll send a confirmation to this email address</div> -->
+
+				  <!--
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
 								 id="email-address" name="email-address" value="" style="width:80%;">
@@ -134,6 +136,8 @@ GOV.UK prototype kit
 					  </div> 
 				  </div>
 
+	  			-->
+
 				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
 						  Phone number
@@ -158,7 +162,7 @@ GOV.UK prototype kit
 				  </div>
 
 
-
+				  <!--
 				  <div class="form-group form-control-2-3" style="margin-bottom:15px; ">
 					  <label class="form-label" for="questio">
 						  Would you also like to get text updates about this event?
@@ -174,6 +178,7 @@ GOV.UK prototype kit
 						  </div>
 					  </fieldset>
 				  </div>
+				  -->
 
 				  <div class="form-group form-control-2-3">
 					  <div class="js-hidden" id="enter-phone" style="border-left:5px solid #bfc1c3; padding:15px; margin-bottom:15px">
@@ -186,10 +191,12 @@ GOV.UK prototype kit
 
 		  </fieldset>
 
+
+		  <!--
 		<div class="form-group">
 			<a href="#">Add another attendee</a><br />
 		</div>
-
+		-->
 
 		  <div class="form-group">
 			  <input type="submit" class="button button-blue" formaction="/register/additional-questions" value="Continue">

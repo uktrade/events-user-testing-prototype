@@ -203,6 +203,18 @@ router.use(function (req, res, next)
   }
 
 
+  if(req.session.returningEventsUser == undefined)
+  {
+    req.session.returningEventsUser = false;
+  }
+
+  if(req.session.changeRegDetails == undefined)
+  {
+    req.session.changeRegDetails = false;
+  }
+
+
+
   next();
 
 });
@@ -218,6 +230,40 @@ router.get('/scenario-empty', function (req, res)
 
   res.redirect('/signin');
 })
+
+
+
+router.get('/testing-scenario-1', function (req, res)
+  {
+    returningEventsUser = false;
+
+    res.redirect('/scenario-4');
+  }
+);
+
+
+router.get('/testing-scenario-2', function (req, res)
+    {
+      returningEventsUser = false;
+
+      res.redirect('/scenario-3');
+    }
+);
+
+
+router.get('/testing-scenario-3', function (req, res)
+    {
+      returningEventsUser = true;
+
+      res.redirect('/scenario-5');
+
+    }
+);
+
+
+
+
+
 
 
 
@@ -661,8 +707,8 @@ router.get('/scenario-3', function (req, res)
   req.session.data['event-day-of-the-week'] = "Wednesday";
   req.session.data['event-summary'] = "  An excellent opportunity for UK businesses to learn how to take their first steps into one of Europe's most attractive markets.";
   req.session.data['event-day'] = "1"
-  req.session.data['event-month-name'] = "November";
-  req.session.data['event-year'] = "2017"
+  req.session.data['event-month-name'] = "May";
+  req.session.data['event-year'] = "2018"
   req.session.data['hero-image'] = "food-drink.png"
   req.session.data['event-start-time'] = "10am";
   req.session.data['event-finish-time'] = "1pm";
@@ -6037,7 +6083,18 @@ router.post('/register/sign-in', function (req, res)
     req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "Yes"];
     req.session.loggedIn = true;
 
-    res.redirect('/register/additional-questions');
+
+    if(req.session.returningEventsUser == true)
+    {
+      res.redirect('/register/additional-questions');
+    }
+    else
+    {
+      res.redirect('/register/business-name');
+    }
+
+
+
   }
   else
   {
@@ -6344,8 +6401,9 @@ router.post('/register/create-account-tandc', function (req, res)
 
 router.post('/register/create-account-verify-confirm', function (req, res)
 {
+
+
     res.redirect('/register/business-name');
-
 });
 
 
@@ -6355,45 +6413,149 @@ router.post('/register/create-account-verify-confirm', function (req, res)
 
 
 
-
-
-
-
-router.get('/register/business-sector', function (req, res)
+router.post('/register/business-name', function (req, res)
 {
-  res.render('register/business-sector',
-        {
-          errorMissingTitle: false
-        });
-  //res.redirect('/register/ticket-details');
-  
-  
-});
-
-router.post('/register/business-sector', function (req, res) {
-  errorMissingTitle = false;
-  console.log(req.session.data['sectors']);
-  if ( req.session.data['sectors'] == undefined) {
-    res.render('register/business-sector',
-        {
-          errorMissingTitle: true
-        });
-              
-
-  }
-  else if (req.session.data['sectors'].length > 0) 
-  {
-  res.redirect('/register/ticket-details');
-  }
-});
-
-router.post('/register/business-name', function (req, res) {
 
   req.session.loggedIn = false;
-  res.redirect('/register/business-address');
-  
+
+  // text for when website is skipped
+  if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
+  {
+    req.session.data['website'] = "Optional field, left empty."
+  }
+
+  if(req.session.changeRegDetails == true)
+  {
+    req.session.changeRegDetails = false;
+    res.redirect('/register/check-your-answers');
+  }
+  else
+  {
+    res.redirect('/register/business-address');
+  }
+
+
 });
 
+
+router.post('/register/business-address', function (req, res)
+{
+
+  req.session.loggedIn = false;
+
+  // text for when website is skipped
+  if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
+  {
+    req.session.data['website'] = "Optional field, left empty."
+  }
+
+  if(req.session.changeRegDetails == true)
+  {
+    req.session.changeRegDetails = false;
+    res.redirect('/register/check-your-answers');
+  }
+  else
+  {
+    res.redirect('/register/business-sector');
+  }
+});
+
+
+router.post('/register/business-sector', function (req, res)
+{
+  var errorSectorMissing = false;
+
+  console.log(req.session.data['sectors']);
+
+  if ( req.session.data['business-sectors'] == undefined )
+  {
+    errorSectorMissing = true;
+  }
+
+  if ( errorSectorMissing == true )
+    {
+    res.render('register/business-sector',
+        {
+          errorMissingTitle: errorSectorMissing
+        });
+  }
+  else if (req.session.data['business-sectors'].length > 0)
+  {
+    res.redirect('/register/ticket-details');
+  }
+});
+
+
+router.post('/register/ticket-details', function (req, res)
+{
+  // text for when website is skipped
+  if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
+  {
+    req.session.data['website'] = "Optional field, left empty."
+  }
+
+  if(req.session.changeRegDetails == true)
+  {
+    req.session.changeRegDetails = false;
+    res.redirect('/register/check-your-answers');
+  }
+  else
+  {
+    res.redirect('/register/additional-questions');
+  }
+
+});
+
+
+router.post('/register/additional-questions', function (req, res)
+{
+  // text for when website is skipped
+  if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
+  {
+    req.session.data['website'] = "Optional field, left empty."
+  }
+
+  res.redirect('/register/check-your-answers');
+});
+
+
+
+
+
+router.get('/register/change-business-name', function (req, res)
+{
+  changeRegDetails = true;
+
+  res.redirect('/register/business-name');
+});
+
+router.get('/register/change-business-address', function (req, res)
+{
+  changeRegDetails = true;
+
+  res.redirect('/register/business-address');
+});
+
+router.get('/register/change-business-sector', function (req, res)
+{
+  changeRegDetails = true;
+
+  res.redirect('/register/business-sector');
+});
+
+router.get('/register/change-ticket-details', function (req, res)
+{
+  changeRegDetails = true;
+
+  res.redirect('/register/ticket-details');
+});
+
+router.get('/register/change-additional-questions', function (req, res)
+{
+  changeRegDetails = true;
+
+  res.redirect('/register/additional-questions');
+});
 
 
 
