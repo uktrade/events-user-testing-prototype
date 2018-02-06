@@ -53,7 +53,7 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="business-name" name="business-name" value="" style="width:100%;">
+								 id="business-name" name="business-name" value="{{ session.data['business-name'] }}" style="width:100%;">
 					  </div>
 				  </div>
 		
@@ -69,11 +69,12 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="website" name="website" value="" style="width:50%;">
+								 id="website" name="website" value="{{ session.data['website'] }}" style="width:50%;">
 					  </div>
 				  </div>
 
 		  </fieldset>
+
 
 
 		  <fieldset>
@@ -93,37 +94,38 @@ GOV.UK prototype kit
 				  <div style="margin-top:5px;">
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="revenue-1" type="radio" name="radio-revenue" value="£0  to  £150,000" {% if sectorIsNo %} checked="checked" {% endif %}>
+						  <input id="revenue-1" type="radio" name="radio-revenue" value="£0  to  £150,000"
+								 {% if session.data['radio-revenue'] == "£0  to  £150,000" %} checked="checked" {% endif %}>
 						  <label for="revenue-1">£0  to  £150,000</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
 						  <input id="revenue-2" type="radio" name="radio-revenue" value="£150,001  to  £500,000"
-								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+								 { {% if session.data['radio-revenue'] == "£150,001  to  £500,000" %} checked="checked" {% endif %}>
 						  <label for="revenue-2">£150,001  to  £500,000</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
 						  <input id="revenue-3" type="radio" name="radio-revenue" value="£500,001  to  £2,000,000"
-								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+								 {% if session.data['radio-revenue'] == "500,001  to  £2,000,000" %} checked="checked" {% endif %}>
 						  <label for="revenue-3">£500,001  to  £2,000,000</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
 						  <input id="revenue-4" type="radio" name="radio-revenue" value="£2,000,001  to  £5,000,000"
-								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+								 {% if session.data['radio-revenue'] == "£2,000,001  to  £5,000,000" %} checked="checked" {% endif %}>
 						  <label for="revenue-4">£2,000,001  to  £5,000,000</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
 						  <input id="revenue-5" type="radio" name="radio-revenue" value="£5,000,001  to  £34,000,000"
-								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+								 {% if session.data['radio-revenue'] == "£5,000,001  to  £34,000,000" %} checked="checked" {% endif %}>
 						  <label for="revenue-5">£5,000,001  to  £34,000,000</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
 						  <input id="revenue-6" type="radio" name="radio-revenue" value="£34,000,000+"
-								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+								 {% if session.data['radio-revenue'] == "£34,000,000+" %} checked="checked" {% endif %}>
 						  <label for="revenue-6">£34,000,000+</label>
 					  </div>
 
@@ -150,13 +152,14 @@ GOV.UK prototype kit
 				  <div style="margin-top:5px;">
 
 					  <div class="multiple-choice" style="margin-bottom:10px">
-						  <input id="radio-inline-2" type="radio" name="radio-exported-before" value="No" {% if sectorIsNo %} checked="checked" {% endif %}>
+						  <input id="radio-inline-2" type="radio" name="radio-exported-before" value="No"
+								 {% if session.data['radio-exported-before'] == "No" %} checked="checked" {% endif %}>
 						  <label for="radio-inline-2">No</label>
 					  </div>
 
 					  <div class="multiple-choice" style="margin-bottom:10px" data-target="export-frequency-section">
 						  <input id="radio-inline-1" type="radio" name="radio-exported-before" value="Yes"
-								 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+								 {% if session.data['radio-exported-before'] == "Yes" %} checked="checked" {% endif %}>
 						  <label for="radio-inline-1">Yes</label>
 					  </div>
 
@@ -178,13 +181,14 @@ GOV.UK prototype kit
 					  <div style="margin-top:5px;">
 
 						  <div class="multiple-choice" style="margin-bottom:10px">
-							  <input id="radio-frequency-1" type="radio" name="radio-sector-frequency" value="No" {% if sectorIsNo %} checked="checked" {% endif %}>
+							  <input id="radio-frequency-1" type="radio" name="radio-sector-frequency" value="No"
+									 {% if session.data['radio-sector-frequency'] == "No" %} checked="checked" {% endif %}>
 							  <label for="radio-frequency-1">No</label>
 						  </div>
 
 						  <div class="multiple-choice" style="margin-bottom:10px">
 							  <input id="radio-frequency-2" type="radio" name="radio-sector-frequency" value="Yes"
-									 {% if errorMissingSectorBox %} checked="checked" {% endif %} {% if sectorIsYes %} checked="checked" {% endif %}>
+									 {% if session.data['radio-sector-frequency'] == "Yes" %} checked="checked" {% endif %}>
 							  <label for="radio-frequency-2">Yes</label>
 						  </div>
 
@@ -210,9 +214,11 @@ GOV.UK prototype kit
 
     </div>
 
-<div class="column-one-third">
-	{% include "includes/basket.html" %} 
-</div>
+
+	<div class="column-one-third" style="margin-top:30px;">
+		{% include "includes/basket.html" %}
+	</div>
+
 
   </div>
 

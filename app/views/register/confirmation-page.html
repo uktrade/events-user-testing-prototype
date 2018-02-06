@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
+
 {% if loggedIn == undefined %}
 {% set loggedIn = false %}
 {% endif %}
+
 {% set external_journey = true %}
 
 {% block after_header %}
@@ -9,12 +11,14 @@
 {% endblock %}
 
 {% block page_title %}
-Go to an event
+GOV.UK prototype kit
 {% endblock %}
 
 
 {% block content %}
-{% include "includes/great-header.html" %} 
+
+{% include "includes/great-header-beta-signed-in.html" %}
+
 
 <main id="content" role="main">
 
@@ -28,26 +32,30 @@ Go to an event
           <strong class="heading-medium">HDJ2123F</strong>
         </p>
       -->
-      <p>An email confirmation containing further details and instructions has been sent to {{ data['email-address'] }}</p>
+      <p>We've email this confirmation to {{ data['email-address'] }}</p>
       </div>
 
-<p>You may also want to print or take a screenshot of this page, for reference on the day of your event. Alternatively, you can download a <a  href="#">PDF</a> version.</p>
 
+
+
+ <!--
       {% if  session.loggedIn == false %}
       <div style="border-left:6px solid #CCC; padding:14px 10px;margin-bottom:15px">We’ve created a new account and sent the details via email. <br />Please verify your email to access your account.</div>
       {% endif %}
+-->
 
-<p>As the event date approaches, you may receive further email updates and reminders, so do keep an eye on your inbox.</p>
 
-<p>We look forward to seeing you on the day.</p>
+<p style="margin-top:40px; margin-bottom:30px;">You may receive further email updates and reminders.</p>
+
+<!-- <p>We look forward to seeing you on the day.</p>  -->
 
 
       <table>
-    <caption class="heading-small" style="text-align:left">Your booking details</caption>
+    <!--  <caption class="heading-small" style="text-align:left">Your booking details</caption>  -->
 
   <tbody>
     <tr>
-      <td>Event title</td>
+      <td style="width:200px;">Event title</td>
       <td>{{ data['event-title'] }}</td>
     </tr>
     <tr>
@@ -78,10 +86,14 @@ Go to an event
   </tbody>
 </table>
 <br />
+
+        <p style="margin-top:40px;"><a  href="#">Download PDF</a> of this confirmation.</p>
      
       
       <h2 class="heading-medium">What did you think of this service?</h2>
-      <p><a  href="#">Our feedback survey</a> only takes about 30 seconds to complete and helps us to understand how we can improve our events experience.</p>
+      <p><a  href="#">Our feedback survey</a> only takes about 30 seconds to complete.</p>
+
+        <p>It will help us to understand how we can improve our events experience.</p>
 
 
     </div>

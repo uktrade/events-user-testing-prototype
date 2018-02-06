@@ -235,7 +235,7 @@ router.get('/scenario-empty', function (req, res)
 
 router.get('/testing-scenario-1', function (req, res)
   {
-    returningEventsUser = false;
+    req.session.returningEventsUser = false;
 
     res.redirect('/scenario-4');
   }
@@ -244,7 +244,28 @@ router.get('/testing-scenario-1', function (req, res)
 
 router.get('/testing-scenario-2', function (req, res)
     {
-      returningEventsUser = false;
+      req.session.returningEventsUser = false;
+
+      //  This data will be saved when the user signs in
+      req.session.data['email-address'] = "";
+      req.session.data['password'] = "";
+
+      req.session.data['business-name'] = "";
+      req.session.data['business-sectors'] = "";
+      req.session.data['business-building'] = "";
+      req.session.data['business-street'] = "";
+      req.session.data['business-town'] = "";
+      req.session.data['business-postcode'] = "";
+      req.session.data['radio-exported-before'] = "";
+      req.session.data['radio-sector-frequency'] = "";
+      req.session.data['radio-revenue'] = "";
+      req.session.data['first-name'] = "Leslie";
+      req.session.data['last-name'] = "Smith";
+      req.session.data['job-title'] = "";
+      req.session.data['phone-number'] = "";
+
+      req.session.data['food-allergy'] = "";
+      req.session.data['food-allergy-details'] = "";
 
       res.redirect('/scenario-3');
     }
@@ -253,7 +274,32 @@ router.get('/testing-scenario-2', function (req, res)
 
 router.get('/testing-scenario-3', function (req, res)
     {
-      returningEventsUser = true;
+      req.session.returningEventsUser = true;
+
+      //  This data will be saved when the user signs in
+      req.session.data['email-address'] = "";
+      req.session.data['password'] = "";
+
+
+      req.session.data['business-name'] = "Fashion Designs Ltd";
+      req.session.data['website'] = "http://www.fashionpatterns.com";
+      req.session.data['business-sectors'] = "Clothing, footwear fashion";
+      req.session.data['business-building'] = "Unit 10";
+      req.session.data['business-street'] = "Westworld Industrial Park";
+      req.session.data['business-town'] = "Exeter";
+      req.session.data['business-postcode'] = "EX4 4RN";
+      req.session.data['radio-exported-before'] = "Yes";
+      req.session.data['radio-sector-frequency'] = "No";
+      req.session.data['radio-revenue'] = "£2,000,001  to  £5,000,000";
+      req.session.data['first-name'] = "Leslie";
+      req.session.data['last-name'] = "Smith";
+      req.session.data['job-title'] = "Director of International Sales";
+      req.session.data['phone-number'] = "07965491256";
+
+      req.session.data['food-allergy'] = "No";
+      req.session.data['food-allergy-details'] = "";
+
+
 
       res.redirect('/scenario-5');
 
@@ -6446,12 +6492,16 @@ router.post('/register/business-address', function (req, res)
   // text for when website is skipped
   if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
   {
-    req.session.data['website'] = "Optional field, left empty."
+    req.session.data['website'] = "Optional field, left empty.";
   }
+
+  console.log("The chnage stuff is " + req.session.changeRegDetails);
 
   if(req.session.changeRegDetails == true)
   {
     req.session.changeRegDetails = false;
+
+    console.log("The chnage stuff BEFORE GOING TO SUMMARY is " + req.session.changeRegDetails);
     res.redirect('/register/check-your-answers');
   }
   else
@@ -6481,7 +6531,15 @@ router.post('/register/business-sector', function (req, res)
   }
   else if (req.session.data['business-sectors'].length > 0)
   {
-    res.redirect('/register/ticket-details');
+    if(req.session.changeRegDetails == true)
+    {
+      req.session.changeRegDetails = false;
+      res.redirect('/register/check-your-answers');
+    }
+    else
+    {
+      res.redirect('/register/ticket-details');
+    }
   }
 });
 
@@ -6491,7 +6549,7 @@ router.post('/register/ticket-details', function (req, res)
   // text for when website is skipped
   if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
   {
-    req.session.data['website'] = "Optional field, left empty."
+    req.session.data['website'] = "Optional field, left empty.";
   }
 
   if(req.session.changeRegDetails == true)
@@ -6524,35 +6582,37 @@ router.post('/register/additional-questions', function (req, res)
 
 router.get('/register/change-business-name', function (req, res)
 {
-  changeRegDetails = true;
+  req.session.changeRegDetails = true;
 
   res.redirect('/register/business-name');
 });
 
 router.get('/register/change-business-address', function (req, res)
 {
-  changeRegDetails = true;
+  req.session.changeRegDetails = true;
+
+  console.log("The chnage stuff from address change  is " + req.session.changeRegDetails);
 
   res.redirect('/register/business-address');
 });
 
 router.get('/register/change-business-sector', function (req, res)
 {
-  changeRegDetails = true;
+  req.session.changeRegDetails = true;
 
   res.redirect('/register/business-sector');
 });
 
 router.get('/register/change-ticket-details', function (req, res)
 {
-  changeRegDetails = true;
+  req.session.changeRegDetails = true;
 
   res.redirect('/register/ticket-details');
 });
 
 router.get('/register/change-additional-questions', function (req, res)
 {
-  changeRegDetails = true;
+  req.session.changeRegDetails = true;
 
   res.redirect('/register/additional-questions');
 });

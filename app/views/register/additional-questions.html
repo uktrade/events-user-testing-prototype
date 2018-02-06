@@ -142,11 +142,6 @@ Go to an event
 		</details>
 
 
-	  <!--  BREADCRUMB  -->
-	  <div class="breadcrumbs">
-		
-	  </div>
-
 
 	 
 
@@ -154,8 +149,7 @@ Go to an event
 	  <form method="post" class="form">
 
 
-			  <fieldset class="form-group"
-						id="show-answer-type">
+			  <fieldset class="form-group" id="show-answer-type" style="margin-bottom:0px;">
 
 						<!--
 						{{ createYesOrNoQuestion(1, "Long title", "long") }}
@@ -168,7 +162,61 @@ Go to an event
 				  -->
 				  <!-- {{ createYesOrNoQuestion(1, "Is your business currently exporting?", "yes-or-no") }}  -->
                   <!-- {{ createYesOrNoQuestion(2, "What is your latest annual turnover?", "multiple-radio", ["£0 to £100,000", "£100,000 to £500,000", "£500,000 to £1,000,000", "Above £1,000,000"])  }}  -->
-						{{ createYesOrNoQuestion(1, "Do you have any food allergies we should be aware of?", "yes-or-no") }}
+						<!-- {{ createYesOrNoQuestion(1, "Do you have any food allergies we should be aware of?", "yes-or-no") }} -->
+
+
+				  <div class="form-group" id="sector-area"  >
+
+					  <label class="form-label" >
+						  Do you have any food allergies we should be aware of?
+
+						  {% if errorMissingAllergy %}
+						  <span class="error-message">
+							  Select no or yes
+						  </span>
+						  {% endif %}
+					  </label>
+
+					  <div style="margin-top:5px;">
+
+						  <div class="multiple-choice" style="margin-bottom:10px">
+							  <input id="radio-inline-allergy-2" type="radio" name="food-allergy" value="No"
+									 {% if session.data['food-allergy'] == "No" %} checked="checked" {% endif %}>
+							  <label for="radio-inline-allergy-2">No</label>
+						  </div>
+
+						  <div class="multiple-choice" style="margin-bottom:10px" data-target="export-frequency-section">
+							  <input id="radio-inline-allergy-1" type="radio" name="food-allergy" value="Yes"
+									 {% if session.data['food-allergy'] == "Yes" %} checked="checked" {% endif %}>
+							  <label for="radio-inline-allergy-1">Yes</label>
+						  </div>
+
+					  </div>
+
+
+					  <div class="form-group js-hidden" id="export-frequency-section"  style="border-left:5px solid #bfc1c3; padding:15px; margin-top:5px; margin-bottom:0px;" >
+
+						  <label class="form-label">
+							  What food allergies do you have?
+
+							  {% if errorMissingSector %}
+								  <span class="error-message">
+									  Select no or yes
+								  </span>
+							  {% endif %}
+						  </label>
+
+						  <div style="margin-top:5px;">
+
+							  <textarea class="form-control {% if emptyTargetAudienceText %} form-control-error {% endif %}"
+										name="food-allergy-details" id="food-allergy-details" rows="4" style="width:570px;%; margin-bottom:0px;">{{ data['food-allergy-details'] }}</textarea>
+
+						  </div>
+
+					  </div>
+
+				  </div>
+
 
 			  </fieldset>
 

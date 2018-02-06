@@ -38,7 +38,7 @@ GOV.UK prototype kit
 	  </div>
 
 
-	  <form action="/create-event/question-onwards" method="get" class="form">
+	  <form method="post" class="form">
 
 
 		  
@@ -60,9 +60,10 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="first-name" name="first-name" value="{{ data['first-name'] }}" style="width:80%;">
+								 id="first-name" name="first-name" value="{{ data['first-name'] }}" style="width:400px;">
 					  </div>
 				  </div>
+
 
 				   <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
@@ -75,9 +76,10 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="last-name" name="last-name" value="{{ data['last-name'] }}" style="width:80%;">
+								 id="last-name" name="last-name" value="{{ data['last-name'] }}" style="width:400px;">
 					  </div>
 				  </div>
+
 
 				  <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
@@ -90,7 +92,7 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="job-title" name="job-title" value="" style="width:30%;">
+								 id="job-title" name="job-title" value="{{ session.data['job-title'] }}" style="width:400px;">
 					  </div>
 				  </div>
 
@@ -149,7 +151,7 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="phone-number" name="phone-number" value="" style="width:200px;">
+								 id="phone-number" name="phone-number" value="{{ session.data['phone-number'] }}" style="width:200px;">
 					  </div>
 
 					  <!--
@@ -199,7 +201,7 @@ GOV.UK prototype kit
 		-->
 
 		  <div class="form-group">
-			  <input type="submit" class="button button-blue" formaction="/register/additional-questions" value="Continue">
+			  <input type="submit" class="button button-blue"  value="Continue">
 		  </div>
 
 
@@ -208,7 +210,7 @@ GOV.UK prototype kit
 
     </div>
 
-<div class="column-one-third">
+<div class="column-one-third" style="margin-top:30px;">
 	{% include "includes/basket.html" %} 
 </div>
 

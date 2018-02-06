@@ -27,7 +27,8 @@ GOV.UK prototype kit
   <div class="grid-row">
     <div class="column-two-thirds"> 
 
-	  <form action="" method="get" class="form">
+	  <form action="" method="post" class="form">
+
 	    <div class="multiple-choice" data-target="country-selection" onclick="checkLabel()">
         <input id="example-contact-by-email" type="checkbox" name="radio-contact-group" value="Yes">
    <!--     <label for="example-contact-by-email">This business is not based in the UK</label> -->
@@ -36,9 +37,12 @@ GOV.UK prototype kit
 			  <fieldset>
 
 <div class="form-group js-hidden" id="country-selection">
-        <label class="form-label" for="contact-email">Country</label>
-        <input class="form-control" name="contact-email" type="text" id="contact-email" style="width:60%">
-      	</div>
+
+	<label class="form-label" for="contact-email">Country</label>
+
+	<input class="form-control" name="contact-email" type="text" id="contact-email" style="width:60%">
+
+</div>
 
 				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
 
@@ -52,26 +56,26 @@ GOV.UK prototype kit
 					  </label>
 				
 			  
-				  <input class="form-control " id="business-building" type="text" name="business-building" style="width:75%" value="">
-				  <input class="form-control" id="business-street" type="text" name="business-street" style="width:75%; margin-top:8px" value="">
+				  <input class="form-control " id="business-building" type="text" name="business-building" style="width:75%" value="{{ session.data['business-building'] }}">
+				  <input class="form-control" id="business-street" type="text" name="business-street" style="width:75%; margin-top:8px" value="{{ session.data['business-street'] }}">
 			  
 				</div>
 			  
 				<div class="form-group">
 				  <label class="form-label" for="business-town" style="margin-bottom:5px; ">Town or city</label>
-				  <input class="form-control " id="business-town" type="text" name="business-town" style="width:40%" value="">
+				  <input class="form-control " id="business-town" type="text" name="business-town" style="width:40%" value="{{ session.data['business-town'] }}">
 				</div>
 			  
 				<div class="form-group">
 				  <label class="form-label" for="business-postcode" style="margin-bottom:5px;" id="postcode-zipcode">Postcode</label>
-				  <input class="form-control " id="business-postcode" type="text" name="business-postcode" style="width:25%" value="">
+				  <input class="form-control " id="business-postcode" type="text" name="business-postcode" style="width:25%" value="{{ session.data['business-postcode'] }}">
 
 				</div>
 
 
 			</fieldset>
 		  <div class="form-group">
-			  <input type="submit" class="button button-blue" formaction="/register/business-sector" value="Continue">
+			  <input type="submit" class="button button-blue" value="Continue">
 		  </div>
 
 
@@ -80,7 +84,7 @@ GOV.UK prototype kit
 
     </div>
 
-<div class="column-one-third">
+<div class="column-one-third" style="margin-top:30px;">
 	{% include "includes/basket.html" %} 
 </div>
 

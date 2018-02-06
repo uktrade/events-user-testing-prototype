@@ -297,7 +297,36 @@ GOV.UK prototype kit
 <!-- REGISTRATION QUESTIONS -->
         <h2 class="heading-medium">
         Registration questions </h2>
-       
+
+
+
+      <dl class="govuk-check-your-answers cya-questions-short">
+          <div>
+            <dt class="cya-question">
+              Do you have any food allergies we should be aware of?
+            </dt>
+
+            {% if session.data['food-allergy'] == "No" %}
+              <dd class="cya-answer">
+                {{ data['food-allergy'] }}
+              </dd>
+            {% endif %}
+
+            {% if session.data['food-allergy'] == "Yes" %}
+              <dd class="cya-answer">
+                {{ data['food-allergy-details'] }}
+              </dd>
+            {% endif %}
+
+            <dd class="cya-change">
+              <a href="/register/change-additional-questions">
+                Change
+              </a>
+            </dd>
+          </div>
+      </dl>
+
+      <!--
       <dl class="govuk-check-your-answers cya-questions-short">
          {% for key,value in data %}
               {% if "question--" in key %}
@@ -319,6 +348,7 @@ GOV.UK prototype kit
               {% endif %}
       {% endfor %}
       </dl>
+      -->
 
 <!-- POLICY TO BE AGREED
       <h2 class="heading-medium">Booking your event</h2>
