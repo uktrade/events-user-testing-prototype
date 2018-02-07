@@ -6479,9 +6479,6 @@ router.post('/register/business-name', function (req, res)
   }
 
 
-
-
-
   if( (errorBusinessNameMissingError || errorTurnoverMissingError || errorExportMissingError || errorExportFrequencyMissingError ) == false)
   {
     if(req.session.changeRegDetails == true)
@@ -6513,28 +6510,62 @@ router.post('/register/business-name', function (req, res)
 
 router.post('/register/business-address', function (req, res)
 {
+  var errorOnBuildingError = false;
+  var errorOnTownError = false;
+  var errorOnPostcodeError = false;
+  var errorOnPostcodeMissingError = false;
 
-  req.session.loggedIn = false;
 
-  // text for when website is skipped
-  if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
+  // If building is empty then throw error;
+  if(req.session.data['business-building'] == ""  || req.session.data['business-building'] == undefined )
   {
-    req.session.data['website'] = "Optional field, left empty.";
+    errorOnBuildingError = true;
   }
 
-  console.log("The chnage stuff is " + req.session.changeRegDetails);
-
-  if(req.session.changeRegDetails == true)
+  // If town is empty then throw error;
+  if(req.session.data['business-town'] == ""  || req.session.data['business-town'] == undefined )
   {
-    req.session.changeRegDetails = false;
+    errorOnTownError = true;
+  }
 
-    console.log("The chnage stuff BEFORE GOING TO SUMMARY is " + req.session.changeRegDetails);
-    res.redirect('/register/check-your-answers');
+  // If building is empty then throw error;
+  if(req.session.data['business-postcode'] == "" || req.session.data['business-postcode'] == undefined )
+  {
+    errorOnPostcodeMissingError = true;
+  }
+  else if(req.session.data['business-postcode'].length < 6 )
+  {
+    errorOnPostcodeError = true;
+  }
+
+
+  if( (errorOnBuildingError || errorOnTownError || errorOnPostcodeError || errorOnPostcodeMissingError ) == false)
+  {
+    if (req.session.changeRegDetails == true)
+    {
+      req.session.changeRegDetails = false;
+      res.redirect('/register/check-your-answers');
+    }
+    else {
+      res.redirect('/register/business-sector');
+    }
   }
   else
   {
-    res.redirect('/register/business-sector');
+    res.render('register/business-address',
+        {
+          'errorsExist': true,
+
+          'errorOnBuildingMissing': errorOnBuildingError,
+          'errorOnTownMissing': errorOnTownError,
+          'errorOnPostcodeNotValid': errorOnPostcodeError,
+          'errorOnPostcodeMissing': errorOnPostcodeMissingError
+        }
+    );
   }
+
+
+
 });
 
 

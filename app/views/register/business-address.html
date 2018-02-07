@@ -21,89 +21,140 @@ GOV.UK prototype kit
 
 
 <main id="content" role="main">
-	  <h1 class="heading-large">
+
+
+	<!-- CONDITIONAL ERROR  -->
+	{% if errorsExist %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="width:620px;">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Missing fields
+			</h2>
+
+			<p>
+				Please check the following errors and try again.
+			</p>
+
+			<ul class="error-summary-list">
+				{% if errorOnBuildingMissing %}
+					<li><a href="#building-and-street-area">Building and street: missing</a></li>
+				{% endif %}
+				{% if errorOnTownMissing %}
+					<li><a href="#town-city-area">Town or city: missing</a></li>
+				{% endif %}
+				{% if errorOnPostcodeNotValid %}
+					<li><a href="#postcode-area">Postcode: invalid</a></li>
+				{% endif %}
+				{% if errorOnPostcodeMissing %}
+					<li><a href="#postcode-area">Postcode: missing</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	{% endif %}
+
+
+	<h1 class="heading-large">
 		  Your business address
-      </h1>
-  <div class="grid-row">
-    <div class="column-two-thirds"> 
+    </h1>
 
-	  <form action="" method="post" class="form">
 
-	    <div class="multiple-choice" data-target="country-selection" onclick="checkLabel()">
-        <input id="example-contact-by-email" type="checkbox" name="radio-contact-group" value="Yes">
-   <!--     <label for="example-contact-by-email">This business is not based in the UK</label> -->
-      </div>
+	<div class="grid-row">
+
+    	<div class="column-two-thirds">
+
+	  		<form action="" method="post" class="form">
+
+	    		<div class="multiple-choice" data-target="country-selection" onclick="checkLabel()">
+        			<input id="example-contact-by-email" type="checkbox" name="radio-contact-group" value="Yes">
+   					<!--     <label for="example-contact-by-email">This business is not based in the UK</label> -->
+      			</div>
 	
-			  <fieldset>
+			  	<fieldset>
 
-<div class="form-group js-hidden" id="country-selection">
+					<div class="form-group js-hidden" id="country-selection">
+						<label class="form-label" for="contact-email">Country</label>
+						<input class="form-control" name="contact-email" type="text" id="contact-email" style="width:60%">
+					</div>
 
-	<label class="form-label" for="contact-email">Country</label>
 
-	<input class="form-control" name="contact-email" type="text" id="contact-email" style="width:60%">
+				    <div id="building-and-street-area" class="form-group {% if errorOnBuildingMissing %} form-group-error {% endif %}">
 
-</div>
+						<label class="form-label" for="business-building">
+							Building and street
+							{% if errorOnBuildingMissing %}
+								<span class="error-message">
+									Enter a building and street
+								</span>
+							{% endif %}
+						</label>
 
-				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
-
-					  <label class="form-label" for="question">
-						  Building and street
-						  {% if errorQuestionEmpty %}
-							<span class="error-message">
-								Attendee question missing
-							</span>
-						  {% endif %}
-					  </label>
-				
+						<input class="form-control " id="business-building" type="text" name="business-building" style="width:75%" value="{{ session.data['business-building'] }}">
+						<input class="form-control" id="business-street" type="text" name="business-street" style="width:75%; margin-top:8px" value="{{ session.data['business-street'] }}">
 			  
-				  <input class="form-control " id="business-building" type="text" name="business-building" style="width:75%" value="{{ session.data['business-building'] }}">
-				  <input class="form-control" id="business-street" type="text" name="business-street" style="width:75%; margin-top:8px" value="{{ session.data['business-street'] }}">
-			  
-				</div>
-			  
+					</div>
+
+
+					<div id="town-city-area" class="form-group {% if errorOnTownMissing %} form-group-error {% endif %}">
+						<label class="form-label" for="business-town" style="margin-bottom:5px; ">
+							Town or city
+							{% if errorOnTownMissing %}
+								<span class="error-message">
+									Enter valid town or city
+								</span>
+							{% endif %}
+						</label>
+						<input class="form-control " id="business-town" type="text" name="business-town" style="width:40%" value="{{ session.data['business-town'] }}">
+					</div>
+
+					<div id="postcode-area"  class="form-group  {% if errorOnPostcodeNotValid or errorOnPostcodeMissing %} form-group-error {% endif %}">
+						<label class="form-label" for="business-postcode" style="margin-bottom:5px;" id="postcode-zipcode">
+							Postcode
+							{% if errorOnPostcodeNotValid or errorOnPostcodeMissing %}
+								<span class="error-message">
+									Enter valid postcode
+								</span>
+							{% endif %}
+						</label>
+						<input class="form-control " id="business-postcode" type="text" name="business-postcode" style="width:25%" value="{{ session.data['business-postcode'] }}">
+					</div>
+
+				</fieldset>
+
 				<div class="form-group">
-				  <label class="form-label" for="business-town" style="margin-bottom:5px; ">Town or city</label>
-				  <input class="form-control " id="business-town" type="text" name="business-town" style="width:40%" value="{{ session.data['business-town'] }}">
-				</div>
-			  
-				<div class="form-group">
-				  <label class="form-label" for="business-postcode" style="margin-bottom:5px;" id="postcode-zipcode">Postcode</label>
-				  <input class="form-control " id="business-postcode" type="text" name="business-postcode" style="width:25%" value="{{ session.data['business-postcode'] }}">
-
+					<input type="submit" class="button button-blue" value="Continue" style="margin-top:10px;">
 				</div>
 
+	  		</form>
 
-			</fieldset>
-		  <div class="form-group">
-			  <input type="submit" class="button button-blue" value="Continue">
-		  </div>
+    	</div>
 
 
+		<div class="column-one-third" style="margin-top:30px;">
+			{% include "includes/basket.html" %}
+		</div>
 
-	  </form>
-
-    </div>
-
-<div class="column-one-third" style="margin-top:30px;">
-	{% include "includes/basket.html" %} 
-</div>
-
-  </div>
-
+  	</div>
 
 </main>
 
 
 {% include "includes/great-footer.html" %} 
+{% include "includes/scripts.html" %}
 
-    {% include "includes/scripts.html" %}
+
 
 <script>
-function checkLabel() { 
-	if ($('#country-selection').hasClass("js-hidden"))
-	$('#postcode-zipcode').text("Zipcode")
-	else $('#postcode-zipcode').text("Postcode")
-}
+	function checkLabel()
+	{
+		if ($('#country-selection').hasClass("js-hidden"))
+		{
+			$('#postcode-zipcode').text("Zipcode")
+		}
+		else
+		{
+			$('#postcode-zipcode').text("Postcode")
+		}
+	}
 </script>
 
 {% endblock %}
