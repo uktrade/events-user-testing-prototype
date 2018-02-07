@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
+
 {% if loggedIn == undefined %}
 {% set loggedIn = false %}
 {% endif %}
+
 {% set external_journey = true %}
 
 {% block after_header %}
@@ -14,7 +16,10 @@ GOV.UK prototype kit
 
 
 {% block content %}
-{% include "includes/great-header.html" %} 
+
+{% include "includes/great-header-beta-signed-in.html" %}
+
+
 
 <style type="text/css">
   dt.cya-question {font-weight: normal !important}

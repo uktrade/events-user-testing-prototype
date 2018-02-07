@@ -27,31 +27,31 @@ GOV.UK prototype kit
 
 	<!-- CONDITIONAL ERROR  -->
 	{% if errorsExist %}
-	<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="width:620px;">
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="width:620px;">
 
-		<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-			Missing fields
-		</h2>
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Missing fields
+			</h2>
 
-		<p>
-			Please check the following errors and try again.
-		</p>
+			<p>
+				Please check the following errors and try again.
+			</p>
 
-		<ul class="error-summary-list">
-			{% if errorEmailMissing %}
-			<li><a href="#email-field">Email: missing</a></li>
-			{% endif %}
-			{% if errorInvalidEmail %}
-			<li><a href="#email-field">Email: invalid</a></li>
-			{% endif %}
-			{% if errorPasswordMissing %}
-			<li><a href="#password-field">Password: missing</a></li>
-			{% endif %}
-			{% if errorEmailPasswordInvalid %}
-			<li><a href="#bothfields">Email address and/or password: not correct</a></li>
-			{% endif %}
-		</ul>
-	</div>
+			<ul class="error-summary-list">
+				{% if errorEmailMissing %}
+				<li><a href="#email-field">Email: missing</a></li>
+				{% endif %}
+				{% if errorInvalidEmail %}
+				<li><a href="#email-field">Email: invalid</a></li>
+				{% endif %}
+				{% if errorPasswordMissing %}
+				<li><a href="#password-field">Password: missing</a></li>
+				{% endif %}
+				{% if errorEmailPasswordInvalid %}
+				<li><a href="#bothfields">Email address and/or password: not correct</a></li>
+				{% endif %}
+			</ul>
+		</div>
 	{% endif %}
 
 

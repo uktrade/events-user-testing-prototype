@@ -6123,8 +6123,6 @@ router.post('/register/sign-in', function (req, res)
       res.redirect('/register/business-name');
     }
 
-
-
   }
   else
   {
@@ -6445,25 +6443,70 @@ router.post('/register/create-account-verify-confirm', function (req, res)
 
 router.post('/register/business-name', function (req, res)
 {
+  var errorBusinessNameMissingError = false;
+  var errorTurnoverMissingError = false;
 
-  req.session.loggedIn = false;
+  var errorExportMissingError = false;
+  var errorExportFrequencyMissingError = false;
 
-  // text for when website is skipped
-  if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
+
+
+  // BUSINESS NAME VALIDATION
+  if(req.session.data['business-name'] == ""  ||  req.session.data['business-name'] == undefined)
   {
-    req.session.data['website'] = "Optional field, left empty."
+    errorBusinessNameMissingError = true;
   }
 
-  if(req.session.changeRegDetails == true)
+  // TURNOVER VALIDATION
+  if(req.session.data['radio-revenue'] == ""  ||  req.session.data['radio-revenue'] == undefined)
   {
-    req.session.changeRegDetails = false;
-    res.redirect('/register/check-your-answers');
+    errorTurnoverMissingError = true;
+  }
+
+
+  // EXPORT LEVEL VALIDATION
+  if(req.session.data['radio-exported-before'] == ""  ||  req.session.data['radio-exported-before'] == undefined)
+  {
+    errorExportMissingError = true;
+  }
+  else if(req.session.data['radio-exported-before'] == "Yes" )
+  {
+    // SECOND ANSWER REQUIRED
+    if(req.session.data['radio-sector-frequency'] == ""  ||  req.session.data['radio-sector-frequency'] == undefined)
+    {
+      errorExportFrequencyMissingError = true;
+    }
+  }
+
+
+
+
+
+  if( (errorBusinessNameMissingError || errorTurnoverMissingError || errorExportMissingError || errorExportFrequencyMissingError ) == false)
+  {
+    if(req.session.changeRegDetails == true)
+    {
+      req.session.changeRegDetails = false;
+      res.redirect('/register/check-your-answers');
+    }
+    else
+    {
+      res.redirect('/register/business-address');
+    }
   }
   else
   {
-    res.redirect('/register/business-address');
-  }
+    res.render('register/business-name',
+        {
+          'errorsExist': true,
 
+          'errorBusinessNameMissing': errorBusinessNameMissingError,
+          'errorTurnoverMissing': errorTurnoverMissingError,
+          'errorExportMissing': errorExportMissingError,
+          'errorExportFrequencyMissing': errorExportFrequencyMissingError
+        }
+    );
+  }
 
 });
 
