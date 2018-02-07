@@ -6564,30 +6564,21 @@ router.post('/register/business-address', function (req, res)
     );
   }
 
-
-
 });
+
 
 
 router.post('/register/business-sector', function (req, res)
 {
-  var errorSectorMissing = false;
+  var errorSectorMissingError = false;
 
-  console.log(req.session.data['sectors']);
-
-  if ( req.session.data['business-sectors'] == undefined )
+  if ( req.session.data['business-sectors'] == undefined || req.session.data['business-sectors'].length < 1)
   {
-    errorSectorMissing = true;
+    errorSectorMissingError = true;
   }
 
-  if ( errorSectorMissing == true )
-    {
-    res.render('register/business-sector',
-        {
-          errorMissingTitle: errorSectorMissing
-        });
-  }
-  else if (req.session.data['business-sectors'].length > 0)
+
+  if ( errorSectorMissingError == false)
   {
     if(req.session.changeRegDetails == true)
     {
@@ -6599,25 +6590,77 @@ router.post('/register/business-sector', function (req, res)
       res.redirect('/register/ticket-details');
     }
   }
+  else
+  {
+    res.render('register/business-sector',
+        {
+          'errorsExist': true,
+
+           errorMissingSector: errorSectorMissingError
+        });
+  }
 });
+
 
 
 router.post('/register/ticket-details', function (req, res)
 {
-  // text for when website is skipped
-  if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
+  var errorFirstNameMissingError = false;
+  var errorLastNameMissingError = false;
+
+  var errorJobTitleMissingError = false;
+  var errorPhoneMissingError = false;
+
+
+  // FIRST NAME VALIDATION
+  if(req.session.data['first-name'] == ""  ||  req.session.data['first-name'] == undefined)
   {
-    req.session.data['website'] = "Optional field, left empty.";
+    errorFirstNameMissingError = true;
   }
 
-  if(req.session.changeRegDetails == true)
+  // FIRST NAME VALIDATION
+  if(req.session.data['last-name'] == ""  ||  req.session.data['last-name'] == undefined)
   {
-    req.session.changeRegDetails = false;
-    res.redirect('/register/check-your-answers');
+    errorLastNameMissingError = true;
+  }
+
+  // JOB TITLE VALIDATION
+  if(req.session.data['job-title'] == ""  ||  req.session.data['job-title'] == undefined)
+  {
+    errorJobTitleMissingError = true;
+  }
+
+  // PHONE NUMBER VALIDATION
+  if(req.session.data['phone-number'] == ""  ||  req.session.data['phone-number'] == undefined)
+  {
+    errorPhoneMissingError = true;
+  }
+
+
+  if( (errorFirstNameMissingError || errorLastNameMissingError || errorJobTitleMissingError || errorPhoneMissingError ) == false)
+  {
+    if(req.session.changeRegDetails == true)
+    {
+      req.session.changeRegDetails = false;
+      res.redirect('/register/check-your-answers');
+    }
+    else
+    {
+      res.redirect('/register/additional-questions');
+    }
   }
   else
   {
-    res.redirect('/register/additional-questions');
+    res.render('register/ticket-details',
+        {
+          'errorsExist': true,
+
+          'errorFirstNameMissing': errorFirstNameMissingError,
+          'errorLastNameMissing': errorLastNameMissingError,
+          'errorJobTitleMissing': errorJobTitleMissingError,
+          'errorPhoneMissing': errorPhoneMissingError
+        }
+    );
   }
 
 });
@@ -6625,13 +6668,38 @@ router.post('/register/ticket-details', function (req, res)
 
 router.post('/register/additional-questions', function (req, res)
 {
+  var errorAllergyError = false;
+  var errorAllergyNotEnteredError = false;
+
   // text for when website is skipped
-  if(req.session.data['website'] == ""  ||  req.session.data['website'] == undefined)
+  if(req.session.data['food-allergy'] == ""  ||  req.session.data['food-allergy'] == undefined)
   {
-    req.session.data['website'] = "Optional field, left empty."
+    errorAllergyError = true;
+  }
+  else if( req.session.data['food-allergy'] == "Yes" )
+  {
+    if(req.session.data['food-allergy-details'] == ""  ||  req.session.data['food-allergy-details'] == undefined)
+    {
+      errorAllergyNotEnteredError = true;
+    }
   }
 
-  res.redirect('/register/check-your-answers');
+  if( ( errorAllergyError || errorAllergyNotEnteredError ) == false)
+  {
+      res.redirect('/register/check-your-answers');
+  }
+  else
+  {
+    res.render('register/additional-questions',
+        {
+          'errorsExist': true,
+
+          'errorAllergy': errorAllergyError,
+          'errorAllergyNotEntered': errorAllergyNotEnteredError
+        }
+    );
+  }
+
 });
 
 

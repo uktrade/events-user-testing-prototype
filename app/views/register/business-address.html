@@ -53,7 +53,7 @@ GOV.UK prototype kit
 	{% endif %}
 
 
-	<h1 class="heading-large">
+	<h1 class="heading-large" style="font-weight:400; font-size:48px; margin-top:40px;">
 		  Your business address
     </h1>
 
@@ -78,7 +78,6 @@ GOV.UK prototype kit
 
 
 				    <div id="building-and-street-area" class="form-group {% if errorOnBuildingMissing %} form-group-error {% endif %}">
-
 						<label class="form-label" for="business-building">
 							Building and street
 							{% if errorOnBuildingMissing %}
@@ -90,7 +89,6 @@ GOV.UK prototype kit
 
 						<input class="form-control " id="business-building" type="text" name="business-building" style="width:75%" value="{{ session.data['business-building'] }}">
 						<input class="form-control" id="business-street" type="text" name="business-street" style="width:75%; margin-top:8px" value="{{ session.data['business-street'] }}">
-			  
 					</div>
 
 

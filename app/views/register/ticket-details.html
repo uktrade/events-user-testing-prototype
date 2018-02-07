@@ -17,81 +17,101 @@ GOV.UK prototype kit
 {% include "includes/great-header.html" %} 
 
 <main id="content" role="main">
-<h1 class="heading-large">
+
+
+	<!-- CONDITIONAL ERROR  -->
+	{% if errorsExist %}
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="width:620px;">
+
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Missing fields
+			</h2>
+
+			<p>
+				Please check the following errors and try again.
+			</p>
+
+			<ul class="error-summary-list">
+				{% if errorFirstNameMissing %}
+					<li><a href="#first-name-area">First name: missing</a></li>
+				{% endif %}
+				{% if errorLastNameMissing %}
+					<li><a href="#last-name-area">Last name: missing</a></li>
+				{% endif %}
+				{% if errorJobTitleMissing %}
+					<li><a href="#job-title-area">Job title: missing</a></li>
+				{% endif %}
+				{% if errorPhoneMissing %}
+					<li><a href="#phone-number-area">Phone number: missing</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	{% endif %}
+
+
+
+	<h1 class="heading-large"  style="font-weight:400; font-size:48px; margin-top:40px;">
 		  Attendee details 
-      </h1>
-      
-  <div class="grid-row">
+    </h1>
+
+	<div class="grid-row">
   
-    <div class="column-two-thirds">
+		<div class="column-two-thirds">
 
-		<!--  we will tackl this later
-    <h2 class="bold-medium" style="margin-bottom:15px">
-		  Attendee 1 
-    </h2>
-    -->
-
-
-	  <!--  BREADCRUMB  -->
-	  <div class="breadcrumbs">
-		
-	  </div>
+			<!--  we will tackl this later
+			<h2 class="bold-medium" style="margin-bottom:15px">
+				  Attendee 1
+			</h2>
+			-->
 
 
-	  <form method="post" class="form">
+			<form method="post" class="form">
 
+				<fieldset>
 
-		  
-
-
-
-			  <fieldset>
-
-
-
-				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+					<div id="first-name-area" class="form-group form-control-2-3 {% if errorFirstNameMissing %} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
 						  First name
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
+						  {% if errorFirstNameMissing %}
+								<span class="error-message">
+									Enter your first name
+								</span>
 						  {% endif %}
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+						  <input type="text" class="form-control  {% if errorFirstNameMissing %} form-control-error {% endif %}"
 								 id="first-name" name="first-name" value="{{ data['first-name'] }}" style="width:400px;">
 					  </div>
-				  </div>
+					</div>
 
 
-				   <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
+				   <div id="last-name-area" class="form-group form-control-2-3 {% if errorLastNameMissing%} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
 						  Last name
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
+						  {% if errorLastNameMissing %}
+								<span class="error-message">
+									Enter your last name
+								</span>
 						  {% endif %}
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+						  <input type="text" class="form-control  {% if errorLastNameMissing %} form-control-error {% endif %}"
 								 id="last-name" name="last-name" value="{{ data['last-name'] }}" style="width:400px;">
 					  </div>
 				  </div>
 
 
-				  <div class="form-group  {% if errorQuestionEmpty%} form-group-error {% endif %}">
+				  <div id="job-title-area" class="form-group  {% if errorJobTitleMissing%} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
 						  Job title
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
+						  {% if errorJobTitleMissing %}
+								<span class="error-message">
+									Enter your job title
+								</span>
 						  {% endif %}
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+						  <input type="text" class="form-control  {% if errorJobTitleMissing %} form-control-error {% endif %}"
 								 id="job-title" name="job-title" value="{{ session.data['job-title'] }}" style="width:400px;">
 					  </div>
 				  </div>
@@ -140,17 +160,17 @@ GOV.UK prototype kit
 
 	  			-->
 
-				  <div class="form-group {% if errorQuestionEmpty%} form-group-error {% endif %}">
-					  <label class="form-label" for="question">
+				  <div  id="phone-number-area" class="form-group {% if errorPhoneMissing %} form-group-error {% endif %}">
+					  <label class="form-label" for="phone-number">
 						  Phone number
-						  {% if errorQuestionEmpty %}
-									<span class="error-message">
-										Attendee question missing
-									</span>
+						  {% if errorPhoneMissing %}
+							<span class="error-message">
+								Enter your phone number
+							</span>
 						  {% endif %}
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
-						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
+						  <input type="text" class="form-control  {% if errorPhoneMissing %} form-control-error {% endif %}"
 								 id="phone-number" name="phone-number" value="{{ session.data['phone-number'] }}" style="width:200px;">
 					  </div>
 
@@ -190,29 +210,21 @@ GOV.UK prototype kit
 				  </div>
 
 
-
 		  </fieldset>
 
-
-		  <!--
-		<div class="form-group">
-			<a href="#">Add another attendee</a><br />
-		</div>
-		-->
 
 		  <div class="form-group">
 			  <input type="submit" class="button button-blue"  value="Continue">
 		  </div>
 
 
-
 	  </form>
 
     </div>
 
-<div class="column-one-third" style="margin-top:30px;">
-	{% include "includes/basket.html" %} 
-</div>
+	<div class="column-one-third" style="margin-top:30px;">
+		{% include "includes/basket.html" %}
+	</div>
 
   </div>
 

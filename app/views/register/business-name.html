@@ -24,31 +24,31 @@ GOV.UK prototype kit
 
 	<!-- CONDITIONAL ERROR  -->
 	{% if errorsExist %}
-	<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="width:620px;">
+		<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="width:620px;">
 
-		<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-			Missing fields
-		</h2>
+			<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+				Missing fields
+			</h2>
 
-		<p>
-			Please check the following errors and try again.
-		</p>
+			<p>
+				Please check the following errors and try again.
+			</p>
 
-		<ul class="error-summary-list">
-			{% if errorBusinessNameMissing %}
-				<li><a href="#business-name-area">Business name: missing</a></li>
-			{% endif %}
-			{% if errorTurnoverMissing %}
-				<li><a href="#revenue">Annual turnover: invalid</a></li>
-			{% endif %}
-			{% if errorExportMissing %}
-				<li><a href="#export-at-all-area">Exported before: missing</a></li>
-			{% endif %}
-			{% if errorExportFrequencyMissing %}
-				<li><a href="#export-frequency-section">Export regularly: not correct</a></li>
-			{% endif %}
-		</ul>
-	</div>
+			<ul class="error-summary-list">
+				{% if errorBusinessNameMissing %}
+					<li><a href="#business-name-area">Business name: missing</a></li>
+				{% endif %}
+				{% if errorTurnoverMissing %}
+					<li><a href="#revenue">Annual turnover: invalid</a></li>
+				{% endif %}
+				{% if errorExportMissing %}
+					<li><a href="#export-at-all-area">Exported before: missing</a></li>
+				{% endif %}
+				{% if errorExportFrequencyMissing %}
+					<li><a href="#export-frequency-section">Export regularly: not correct</a></li>
+				{% endif %}
+			</ul>
+		</div>
 	{% endif %}
 
 

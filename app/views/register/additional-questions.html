@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
+
 {% if loggedIn == undefined %}
 {% set loggedIn = false %}
 {% endif %}
+
 {% set external_journey = true %}
 
 {% block after_header %}
@@ -9,11 +11,16 @@
 {% endblock %}
 
 {% block page_title %}
-Go to an event
+GOV.UK prototype kit
 {% endblock %}
 
+
 {% block content %}
-{% include "includes/great-header.html" %} 
+
+{% include "includes/great-header-beta-signed-in.html" %}
+
+
+
 
 
 {% macro createYesOrNoQuestion(id, question, type, values) %}
@@ -122,9 +129,36 @@ Go to an event
 
 
 <main id="content" role="main">
-<h1 class="heading-large">
+
+
+	<!-- CONDITIONAL ERROR  -->
+	{% if errorsExist %}
+	<div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" style="width:620px;">
+
+		<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+			Missing fields
+		</h2>
+
+		<p>
+			Please check the following errors and try again.
+		</p>
+
+		<ul class="error-summary-list">
+			{% if errorAllergy %}
+			<li><a href="#alergy-area">First question: missing</a></li>
+			{% endif %}
+			{% if errorAllergyNotEntered %}
+			<li><a href="#alergy-details-area">First question details: missing</a></li>
+			{% endif %}
+		</ul>
+	</div>
+	{% endif %}
+
+
+
+	<h1 class="heading-large" style="font-weight:400; font-size:48px; margin-top:40px;">
 		  Registration questions
-      </h1>
+	</h1>
 
 	<div class="grid-row">
     <div class="column-two-thirds">
@@ -165,14 +199,14 @@ Go to an event
 						<!-- {{ createYesOrNoQuestion(1, "Do you have any food allergies we should be aware of?", "yes-or-no") }} -->
 
 
-				  <div class="form-group" id="sector-area"  >
+				  <div class="form-group {% if errorAllergy %} form-group-error {% endif %}" id="alergy-area"  >
 
 					  <label class="form-label" >
 						  Do you have any food allergies we should be aware of?
 
-						  {% if errorMissingAllergy %}
+						  {% if errorAllergy %}
 						  <span class="error-message">
-							  Select no or yes
+							  Select an answer
 						  </span>
 						  {% endif %}
 					  </label>
@@ -180,13 +214,13 @@ Go to an event
 					  <div style="margin-top:5px;">
 
 						  <div class="multiple-choice" style="margin-bottom:10px">
-							  <input id="radio-inline-allergy-2" type="radio" name="food-allergy" value="No"
+							  <input id="radio-inline-allergy-2" type="radio" name="food-allergy" value="No" onclick="hideSection()"
 									 {% if session.data['food-allergy'] == "No" %} checked="checked" {% endif %}>
 							  <label for="radio-inline-allergy-2">No</label>
 						  </div>
 
 						  <div class="multiple-choice" style="margin-bottom:10px" data-target="export-frequency-section">
-							  <input id="radio-inline-allergy-1" type="radio" name="food-allergy" value="Yes"
+							  <input id="radio-inline-allergy-1" type="radio" name="food-allergy" value="Yes" onclick="showSection()"
 									 {% if session.data['food-allergy'] == "Yes" %} checked="checked" {% endif %}>
 							  <label for="radio-inline-allergy-1">Yes</label>
 						  </div>
@@ -194,21 +228,26 @@ Go to an event
 					  </div>
 
 
-					  <div class="form-group js-hidden" id="export-frequency-section"  style="border-left:5px solid #bfc1c3; padding:15px; margin-top:5px; margin-bottom:0px;" >
+					  <div id="alergy-details-area"
+						   {% if errorAllergyNotEntered != true %} style="border-left:5px solid #bfc1c3; padding:15px; margin-top:5px; margin-bottom:0px;" {% endif %}
+						   class="form-group
+					    			{% if session.data['food-allergy'] != "Yes" %}  js-hidden {% endif %}
+					  				{% if errorAllergyNotEntered %} form-group-error {% endif %}"
+					  				>
 
 						  <label class="form-label">
-							  What food allergies do you have?
+							  Please give details
 
-							  {% if errorMissingSector %}
+							  {% if errorAllergyNotEntered %}
 								  <span class="error-message">
-									  Select no or yes
+									  Enter details
 								  </span>
 							  {% endif %}
 						  </label>
 
 						  <div style="margin-top:5px;">
 
-							  <textarea class="form-control {% if emptyTargetAudienceText %} form-control-error {% endif %}"
+							  <textarea class="form-control {% if errorAllergyNotEntered %} form-control-error {% endif %}"
 										name="food-allergy-details" id="food-allergy-details" rows="4" style="width:570px;%; margin-bottom:0px;">{{ data['food-allergy-details'] }}</textarea>
 
 						  </div>
@@ -243,6 +282,22 @@ Go to an event
 </main>
 
 {% include "includes/great-footer.html" %} 
+
+
+<script>
+
+	function showSection()
+	{
+		document.getElementById('alergy-details-area').classList.remove("js-hidden");
+	}
+	function hideSection()
+	{
+		document.getElementById('alergy-details-area').classList.add("js-hidden");
+	}
+
+
+</script>
+
 
 
 {% endblock %}
