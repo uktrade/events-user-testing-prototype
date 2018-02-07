@@ -35,12 +35,7 @@ GOV.UK prototype kit
 
 	  <form action="" method="post" class="form">
 
-
-
-
 			<fieldset>
-
-
 
 				  <div class="form-group form-control-2-3 {% if errorQuestionEmpty%} form-group-error {% endif %}">
 					  <label class="form-label" for="question">
@@ -53,7 +48,7 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="business-name" name="business-name" value="{{ session.data['business-name'] }}" style="width:100%;">
+								 id="business-name" name="business-name" value="{{ data['business-name'] }}" style="width:100%;">
 					  </div>
 				  </div>
 		
@@ -69,7 +64,7 @@ GOV.UK prototype kit
 					  </label>
 					  <div id="show-new-question" style="width:100%;  margin-bottom:0px;">
 						  <input type="text" class="form-control  {% if errorQuestionEmpty %} form-control-error {% endif %}"
-								 id="website" name="website" value="{{ session.data['website'] }}" style="width:50%;">
+								 id="website" name="website" value="{{ data['website'] }}" style="width:50%;">
 					  </div>
 				  </div>
 

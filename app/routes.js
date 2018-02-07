@@ -237,6 +237,9 @@ router.get('/testing-scenario-1', function (req, res)
   {
     req.session.returningEventsUser = false;
 
+    req.session.data['first-name'] = "";
+    req.session.data['last-name'] = "";
+
     res.redirect('/scenario-4');
   }
 );
@@ -279,7 +282,6 @@ router.get('/testing-scenario-3', function (req, res)
       //  This data will be saved when the user signs in
       req.session.data['email-address'] = "";
       req.session.data['password'] = "";
-
 
       req.session.data['business-name'] = "Fashion Designs Ltd";
       req.session.data['website'] = "http://www.fashionpatterns.com";
@@ -6112,24 +6114,6 @@ router.post('/register/sign-in', function (req, res)
   // ERRORS OR PROCEED
   if( ( errorMissingEmail || errorInvalidEmail || errorMissingPassword || errorInvalidEmailOrPassword ) == false)
   {
-    req.session.data['first-name'] = "Leslie";
-    req.session.data['last-name'] = "Smith";
-    req.session.data['job-title'] = "Director of International Sales";
-    req.session.data['phone-number'] = "020 1234567890";
-    req.session.data['mobile-number'] = "07965491256";
-    req.session.data['business-name'] = "Fashion Retail Ltd";
-    req.session.data['sectors'] = "Clothing, footwear fashion";
-    req.session.data['website'] = "www.fashion.co.uk ";
-
-    req.session.data['building'] = "Unit 10";
-    req.session.data['street'] = "Westworld Industrial Park";
-    req.session.data['town'] = "Bristol";
-    req.session.data['postcode'] = "BS4 6JY";
-
-    req.session.data['question--1'] = ['Do you have any food allergies we should be aware of?', "yes-or-no", "Yes"];
-    req.session.loggedIn = true;
-
-
     if(req.session.returningEventsUser == true)
     {
       res.redirect('/register/additional-questions');
