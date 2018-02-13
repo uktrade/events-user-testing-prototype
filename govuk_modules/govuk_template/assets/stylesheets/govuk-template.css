@@ -320,9 +320,8 @@ button:focus {
       vertical-align: bottom;
       visibility: hidden; }
     #global-header #logo:hover, #global-header #logo:focus {
-      /*  GUY CHNAGE IN JAN 2018 */
-      /*  text-decoration: none;
-      border-bottom-color: white; */}
+      text-decoration: none;
+      border-bottom-color: white; }
   #global-header .header-proposition {
     padding-top: 10px; }
     @media (min-width: 769px) {
@@ -342,9 +341,7 @@ button:focus {
           font-size: 24px;
           line-height: 1.25; } }
     #global-header .header-proposition a#proposition-name:hover {
-     /* text-decoration: underline; */
-      /*  GUY CHNAGED JAN 2018 */
-    }
+      text-decoration: underline; }
     #global-header .header-proposition a#proposition-name:focus {
       color: #0b0c0c; }
     #global-header .header-proposition a.menu {

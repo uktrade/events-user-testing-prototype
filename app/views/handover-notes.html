@@ -1,0 +1,55 @@
+
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Testing prototype
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <!--  BREADCRUMB  -->
+      <div class="breadcrumbs">
+        <ol>
+          <li><a href="/account">Account home</a></li>
+        </ol>
+      </div>
+
+      <h1 class="heading-large" style="margin-top:15px">
+        Resuming the project
+        <br>Notes from the old team
+      </h1>
+
+
+      <h2 class="heading-medium">Register as an attendee journey</h2>
+
+      <p>This journey involves a user going from our page to the external SSO login and then back to our register for event journey to complete registration.</p>
+
+      <p>See the <a target="_blank"  href="https://docs.google.com/presentation/d/1vShtYkQ8wnoo5HGRur2XCrHkG_gdUJSgqx7JkvRO_as/edit?ts=5a8198cd">most recent research</a> finding on this.
+      <br> It was too long and disjointed and didn't tell people up front about multiple stapes and what the account was.</p>
+
+
+      <h2 class="heading-medium">Create an event journey</h2>
+
+      <p>Most of what is in the prototype has tested well and most of the validation states are in the prototype or the JIRA stories.</p>
+      <p>The skip button allows for many odd validation states to pass through.  All these are reflected on the summary page.  Some of which should block an event from being published.  Thought that blocking page is not automatic int he prototype.</p>
+
+
+      <h2 class="heading-medium">Monitoring a live event</h2>
+      <p>Monitoring first and second tabs have tested well.</p>
+      <p>The final tab hasn't been tested and checkin functionality doesn't work in the prototype.  Who attended and who didn't will need to be recorded at some point.</p>
+      <p>The registrations tab has way too many actions exposed as empty links.  These links need the functionality behind them designing and perhaps being shown in an expandable area.
+      <br>There will likely be many lists for the different states attendees can get in.  e.g cancelled, waiting list, etc.  So a short list of link contents might be useful to jump to these lists.</p>
+
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+

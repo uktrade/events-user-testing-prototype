@@ -55,36 +55,22 @@
       <div class="header-wrapper">
         <div class="header-global">
           <div class="header-logo">
-            <p  id="logo" class="content">
+            <a href="{{ homepage_url|default('https://www.gov.uk') }}" title="{{ logo_link_title|default('Go to the GOV.UK homepage') }}" id="logo" class="content">
               <img src="{{ asset_path }}images/gov.uk_logotype_crown_invert_trans.png?0.22.1" width="36" height="32" alt=""> {{ global_header_text|default('GOV.UK') }}
-            </p>
+            </a>
           </div>
           {% block inside_header %}{% endblock %}
         </div>
         {% block proposition_header %}{% endblock %}
       </div>
     </header>
+    
 
+    {% block after_header %}{% endblock %}
 
-    {% block after_header %}
-      <div id="global-header-bar"></div>
-      <!-- edited by guy in December 2017  -->
+    <div id="global-header-bar"></div>
 
-    {% endblock %}
-
-
-
-    {% block content %}
-
-    {% endblock %}
-
-
-
-    <div id="gethelp" style=margin:30px;">
-      <p style="width:960px; margin: auto;"><a href="#" style="color: #6f777b; text-decoration: underline">Get help with this page</a></p>
-    </div>
-
-
+    {% block content %}{% endblock %}
 
     <footer class="group js-footer" id="footer" role="contentinfo">
 
